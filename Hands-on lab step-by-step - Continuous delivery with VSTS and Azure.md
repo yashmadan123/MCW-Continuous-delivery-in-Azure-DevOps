@@ -170,42 +170,55 @@ Tip: In the labs, when adding resources to the Azure Resource Manager template, 
 1.  Open a web browser, and navigate to <https://git-scm.com>
 
 2.  If you get a prompt about Internet Explorer defaults, just click OK.
+    
     ![In the Set up Internet Explorer 11 dialog box, Use recommended security, privacy, and compatibility settings is selected, Send Do Not Track requests to tell sites you prefer not to be tracked is selected, and the OK button is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image9.png "Set up Internet Explorer 11 dialog box")
 
 3.  Find the computer screen icon on the left that says, "Latest source Release" and click "Downloads for Windows." **NOTE: In this screenshot, it shows version 2.14.3 but you might see a more recent version. Use whatever version is listed on the site.**
+    
     ![Download 2.14.3 for Windows is highlighted on a computer screen icon.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image10.png "Downloads for Windows")
 
 4.  The download should start; click **Run** in the security prompt.
+    
     ![At the prompt to run or save Git-2.11.0.3-64-bit.exe (32.6 MB) from github-cloud.s3.amazonaws.com, Run is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image11.png "Run or save prompt")
 
 5.  Click **Next**.
+    
     ![In the Git 2.14.3 Setup wizard, on the GNU General Public License page, Next is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image12.png "GNU General Public License page")
 
 6.  Click **Next**.
+    
     ![In the Git 2.14.3 Setup wizard, on the Select Destination Location page, C:\\Program Files (x86)\\Git is in the Browse box, and Next is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image13.png "Select Destination Location page")
 
 7.  Click **Next**.
+   
     ![In the Git 2.14.3 Setup wizard, on the Select Components page, the following options are selected: ??? Windows Explorer integration ??? Git Bash Here ??? Git GUI Here ??? Git LFS (Large File Support) ??? Associate .git\* configuration files with the default text editor ??? Associate .sh files to be run with Bash Next is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image14.png "Select Components page")
 
 8.  Click **Next**.
+    
     ![In the Git 2.14.3 Setup wizard, on the Select Start Menu page, the word Git is in the Browse box, and Next is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image15.png "Select Start Menu Folder page")
 
 9.  Click **"Use Git and optional Unix tools from the Windows Command Prompt**", and click **Next**.
+    
     ![In the Git 2.14.3 Setup wizard, on the Adjusting your PATH environment page, Use Git and optional Unix tools from the Windows Command Prompt is selected, and Next is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image16.png "Adjusting your PATH environment page")
 
 10. Click **Next**.
+    
     ![In the Git 2.14.3 Setup wizard, on the Choosing HTTPS transport backend page, Use the OpenSSL library is selected, and Next is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image17.png "Choosing HTTPS transport backend page")
 
 11. Leave the next screen at "**Checkout Windows-style, commit Unix-style line endings**." Click **Next**.
+    
     ![In the Git 2.14.3 Setup wizard, on the Configuring the line ending conversions page, Checkout Windows-style, commit Unix-style line endings is selected, and Next is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image18.png "Configuring the line ending conversions page")
 
 12. On the next screen, click "**Use Windows' default console window**." Then, click **Next**.
+    
     ![In the Git 2.14.3 Setup wizard, on the Configuring the terminal emulator to use with Git Bash page, Use Windows' default console window is selected, and Next is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image19.png "Configuring the terminal emulator to use with Git Bash page")
 
 13. Leave box check boxes checked, and click **Install**.
+    
     ![In the Git 2.14.3 Setup wizard, on the Configuring extra options page, Enable file system caching and Enable Git Credential Manager are selected, and Install is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image20.png "Configuring extra options page")
 
 14. The Git install should complete. Click **Finish** on the final screen.
+    
     ![In the Git 2.14.3 Setup wizard, on the Completing the Git Setup Wizard page, View Release Notes is selected, and Finish is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image21.png "Completing the Git Setup Wizard page")
 
 15. Open a **command prompt**, and type these commands on the command line.
@@ -241,12 +254,15 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 ### Task 1: Create an Azure Resource Manager (ARM) template using Visual Studio
 
 1.  Open Visual Studio and create a new project of the type Cloud -- Azure Resource Group. Name the new project "TailspinToys.AzureResourceTemplate" and save it to **C:\\Hackathon**. Also, make sure that both check boxes are checked on the lower right, as in the screen shot below. When finished, click **OK**.
+    
     ![In this screenshot of the New Project dialog box, all the options to create the TailspinToys.AzureResourceTemplate project are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image22.png "Visual Studio New Project dialog box")
 
 2.  On the next window, click **Blank Template**, and click **OK**.
+    
     ![In the Select Azure Template window, Visual Studio Templates has been selected in the Show templates from this location drop-down list, the Blank Template option is selected and highlighted, and Next is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image23.png "Blank Template selection")
 
 3.  In the Solution Explorer window, open the azuredeploy.json file by double-clicking it.
+    
     ![In the Solution Explorer window, azuredeploy.json is highlighted under TailspinToys.AzureResourceTemplate.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image24.png "Selecting the azuredeploy.json file")
 
 4.  Then, probably on the left side of the Visual Studio window, open the window called JSON Outline. It will look like this screen shot.
@@ -258,6 +274,7 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 ### Task 2: Add an Azure SQL database and server to the template
 
 1.  Right-click on the **resources** item in the **JSON Outline** and click **Add New Resource**.
+    
     ![In JSON Outline, resources (0) is selected, and a submenu displays a selected and highlighted Add New Resource option.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image26.png "Add New Resource selection")
 
 2.  Select **SQL Server** and give it a name like "tailspinsql", then click **Add**.
