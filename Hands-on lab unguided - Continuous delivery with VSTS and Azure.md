@@ -1,10 +1,18 @@
 ![](images/HeaderPic.png "Microsoft Cloud Workshops")
 
-# Continuous delivery with VSTS and Azure
+<div class="MCWHeader1">
+Continuous delivery with VSTS and Azure
+</div>
 
-## Hands-on lab unguided
+<div class="MCWHeader2">
+Hands-on lab unguided
+</div>
 
-## April 2018
+<div class="MCWHeader3">
+April 2018
+</div>
+
+
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -15,34 +23,30 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-# Contents 
+**Contents** 
 
 <!-- TOC -->
 
-- [Continuous delivery with VSTS and Azure](#continuous-delivery-with-vsts-and-azure)
-    - [Hands-on lab unguided](#hands-on-lab-unguided)
-    - [April 2018](#april-2018)
-- [Contents](#contents)
-    - [Abstract and learning objectives](#abstract-and-learning-objectives)
-    - [Overview](#overview)
-    - [Solution architecture](#solution-architecture)
-    - [Requirements](#requirements)
-    - [Before the hands-on lab](#before-the-hands-on-lab)
-        - [Prerequisites](#prerequisites)
-        - [Task 1: Configure a development environment](#task-1--configure-a-development-environment)
-        - [Task 2: Disable IE enhanced security](#task-2--disable-ie-enhanced-security)
-        - [Task 3: Validate connectivity to Azure](#task-3--validate-connectivity-to-azure)
-        - [Task 4: Download and install Git](#task-4--download-and-install-git)
-    - [Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, SQL database, and deployment slots in a single automated process.](#exercise-1--create-an-azure-resource-manager-arm-template-that-can-provision-the-web-application--sql-database--and-deployment-slots-in-a-single-automated-process)
-    - [Exercise 2: Create a Visual Studio Team Services team project and Git Repository](#exercise-2--create-a-visual-studio-team-services-team-project-and-git-repository)
-    - [Exercise 3: Create Visual Studio Team Services build definition](#exercise-3--create-visual-studio-team-services-build-definition)
-        - [Tasks to complete](#tasks-to-complete)
-        - [Exit criteria](#exit-criteria)
-    - [Exercise 4: Create Visual Studio Team Services release pipeline](#exercise-4--create-visual-studio-team-services-release-pipeline)
-    - [Exercise 5: Trigger a build and release](#exercise-5--trigger-a-build-and-release)
-    - [Exercise 6: Create a feature branch and submit a pull request](#exercise-6--create-a-feature-branch-and-submit-a-pull-request)
-    - [After the hands-on lab](#after-the-hands-on-lab)
-        - [Task 1: Delete Resources](#task-1--delete-resources)
+- [Abstract and learning objectives](#abstract-and-learning-objectives)
+- [Overview](#overview)
+- [Solution architecture](#solution-architecture)
+- [Requirements](#requirements)
+- [Before the hands-on lab](#before-the-hands-on-lab)
+    - [Prerequisites](#prerequisites)
+    - [Task 1: Configure a development environment](#task-1-configure-a-development-environment)
+    - [Task 2: Disable IE enhanced security](#task-2-disable-ie-enhanced-security)
+    - [Task 3: Validate connectivity to Azure](#task-3-validate-connectivity-to-azure)
+    - [Task 4: Download and install Git](#task-4-download-and-install-git)
+- [Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, SQL database, and deployment slots in a single automated process.](#exercise-1-create-an-azure-resource-manager-arm-template-that-can-provision-the-web-application-sql-database-and-deployment-slots-in-a-single-automated-process)
+- [Exercise 2: Create a Visual Studio Team Services team project and Git Repository](#exercise-2-create-a-visual-studio-team-services-team-project-and-git-repository)
+- [Exercise 3: Create Visual Studio Team Services build definition](#exercise-3-create-visual-studio-team-services-build-definition)
+    - [Tasks to complete](#tasks-to-complete)
+    - [Exit criteria](#exit-criteria)
+- [Exercise 4: Create Visual Studio Team Services release pipeline](#exercise-4-create-visual-studio-team-services-release-pipeline)
+- [Exercise 5: Trigger a build and release](#exercise-5-trigger-a-build-and-release)
+- [Exercise 6: Create a feature branch and submit a pull request](#exercise-6-create-a-feature-branch-and-submit-a-pull-request)
+- [After the hands-on lab](#after-the-hands-on-lab)
+    - [Task 1: Delete Resources](#task-1-delete-resources)
 
 <!-- /TOC -->
 

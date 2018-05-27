@@ -1,10 +1,17 @@
 ![](images/HeaderPic.png "Microsoft Cloud Workshops")
 
-# Continuous delivery with VSTS and Azure
+<div class="MCWHeader1">
+Continuous delivery with VSTS and Azure
+</div>
 
-## Hands-on lab step-by-step
+<div class="MCWHeader2">
+Hands-on lab step-by-step
+</div>
 
-## April 2018
+<div class="MCWHeader3">
+April 2018
+</div>
+
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -15,13 +22,9 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-## Contents
+**Contents**
 <!-- TOC -->
 
-- [Continuous delivery with VSTS and Azure](#continuous-delivery-with-vsts-and-azure)
-    - [Hands-on lab step-by-step](#hands-on-lab-step-by-step)
-    - [April 2018](#april-2018)
-    - [Contents](#contents)
 - [Continuous delivery with VSTS and Azure hands-on lab step-by-step](#continuous-delivery-with-vsts-and-azure-hands-on-lab-step-by-step)
     - [Abstract and learning objectives](#abstract-and-learning-objectives)
     - [Overview](#overview)
@@ -29,40 +32,40 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Requirements](#requirements)
     - [Before the hands-on lab](#before-the-hands-on-lab)
         - [Prerequisites](#prerequisites)
-        - [Task 1: Configure a development environment](#task-1--configure-a-development-environment)
-        - [Task 2: Disable IE enhanced security](#task-2--disable-ie-enhanced-security)
-        - [Task 3: Validate connectivity to Azure](#task-3--validate-connectivity-to-azure)
-        - [Task 4: Download and install Git](#task-4--download-and-install-git)
-    - [Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, SQL database, and deployment slots in a single automated process](#exercise-1--create-an-azure-resource-manager-arm-template-that-can-provision-the-web-application--sql-database--and-deployment-slots-in-a-single-automated-process)
-        - [Task 1: Create an Azure Resource Manager (ARM) template using Visual Studio](#task-1--create-an-azure-resource-manager-arm-template-using-visual-studio)
-        - [Task 2: Add an Azure SQL database and server to the template](#task-2--add-an-azure-sql-database-and-server-to-the-template)
-        - [Task 3: Add a web hosting plan and web app to the template](#task-3--add-a-web-hosting-plan-and-web-app-to-the-template)
-        - [Task 4: Add Application Insights to the template](#task-4--add-application-insights-to-the-template)
-        - [Task 5: Configure automatic scale for the web app in the template](#task-5--configure-automatic-scale-for-the-web-app-in-the-template)
-        - [Task 6: Configure the list of release environments parameters](#task-6--configure-the-list-of-release-environments-parameters)
-        - [Task 7: Configure the name of the web app using the environments parameters](#task-7--configure-the-name-of-the-web-app-using-the-environments-parameters)
-        - [Task 8: Add a deployment slot for the "staging" version of the site](#task-8--add-a-deployment-slot-for-the-staging-version-of-the-site)
-        - [Task 9: Create the dev environment and deploy the template to Azure](#task-9--create-the-dev-environment-and-deploy-the-template-to-azure)
-        - [Task 10: Create the test environment and deploy the template to Azure](#task-10--create-the-test-environment-and-deploy-the-template-to-azure)
-        - [Task 11: Create the production environment and deploy the template to Azure](#task-11--create-the-production-environment-and-deploy-the-template-to-azure)
-    - [Exercise 2: Create Visual Studio Team Services team project and Git Repository](#exercise-2--create-visual-studio-team-services-team-project-and-git-repository)
-        - [Task 1: Create Visual Studio Team Services Account](#task-1--create-visual-studio-team-services-account)
-        - [Task 2: Add the Tailspin Toys source code repository to Visual Studio Team Services](#task-2--add-the-tailspin-toys-source-code-repository-to-visual-studio-team-services)
-    - [Exercise 3: Create Visual Studio Team Services build definition](#exercise-3--create-visual-studio-team-services-build-definition)
-        - [Task 1: Create a build definition](#task-1--create-a-build-definition)
-        - [Task 2: Enable continuous integration](#task-2--enable-continuous-integration)
-    - [Exercise 4: Create Visual Studio Team Services release pipeline](#exercise-4--create-visual-studio-team-services-release-pipeline)
-        - [Task 1: Create a release definition](#task-1--create-a-release-definition)
-        - [Task 2: Add test and production environments to release definition](#task-2--add-test-and-production-environments-to-release-definition)
-    - [Exercise 5: Trigger a build and release](#exercise-5--trigger-a-build-and-release)
-        - [Task 1: Manually queue a new build and follow it through the release pipeline](#task-1--manually-queue-a-new-build-and-follow-it-through-the-release-pipeline)
-    - [Exercise 6: Create a feature branch and submit a pull request](#exercise-6--create-a-feature-branch-and-submit-a-pull-request)
-        - [Task 1: Create a new branch](#task-1--create-a-new-branch)
-        - [Task 2: Make a code change to the feature branch](#task-2--make-a-code-change-to-the-feature-branch)
-        - [Task 3: Submit a pull request](#task-3--submit-a-pull-request)
-        - [Task 4: Approve and complete a pull request](#task-4--approve-and-complete-a-pull-request)
+        - [Task 1: Configure a development environment](#task-1-configure-a-development-environment)
+        - [Task 2: Disable IE enhanced security](#task-2-disable-ie-enhanced-security)
+        - [Task 3: Validate connectivity to Azure](#task-3-validate-connectivity-to-azure)
+        - [Task 4: Download and install Git](#task-4-download-and-install-git)
+    - [Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, SQL database, and deployment slots in a single automated process](#exercise-1-create-an-azure-resource-manager-arm-template-that-can-provision-the-web-application-sql-database-and-deployment-slots-in-a-single-automated-process)
+        - [Task 1: Create an Azure Resource Manager (ARM) template using Visual Studio](#task-1-create-an-azure-resource-manager-arm-template-using-visual-studio)
+        - [Task 2: Add an Azure SQL database and server to the template](#task-2-add-an-azure-sql-database-and-server-to-the-template)
+        - [Task 3: Add a web hosting plan and web app to the template](#task-3-add-a-web-hosting-plan-and-web-app-to-the-template)
+        - [Task 4: Add Application Insights to the template](#task-4-add-application-insights-to-the-template)
+        - [Task 5: Configure automatic scale for the web app in the template](#task-5-configure-automatic-scale-for-the-web-app-in-the-template)
+        - [Task 6: Configure the list of release environments parameters](#task-6-configure-the-list-of-release-environments-parameters)
+        - [Task 7: Configure the name of the web app using the environments parameters](#task-7-configure-the-name-of-the-web-app-using-the-environments-parameters)
+        - [Task 8: Add a deployment slot for the "staging" version of the site](#task-8-add-a-deployment-slot-for-the-staging-version-of-the-site)
+        - [Task 9: Create the dev environment and deploy the template to Azure](#task-9-create-the-dev-environment-and-deploy-the-template-to-azure)
+        - [Task 10: Create the test environment and deploy the template to Azure](#task-10-create-the-test-environment-and-deploy-the-template-to-azure)
+        - [Task 11: Create the production environment and deploy the template to Azure](#task-11-create-the-production-environment-and-deploy-the-template-to-azure)
+    - [Exercise 2: Create Visual Studio Team Services team project and Git Repository](#exercise-2-create-visual-studio-team-services-team-project-and-git-repository)
+        - [Task 1: Create Visual Studio Team Services Account](#task-1-create-visual-studio-team-services-account)
+        - [Task 2: Add the Tailspin Toys source code repository to Visual Studio Team Services](#task-2-add-the-tailspin-toys-source-code-repository-to-visual-studio-team-services)
+    - [Exercise 3: Create Visual Studio Team Services build definition](#exercise-3-create-visual-studio-team-services-build-definition)
+        - [Task 1: Create a build definition](#task-1-create-a-build-definition)
+        - [Task 2: Enable continuous integration](#task-2-enable-continuous-integration)
+    - [Exercise 4: Create Visual Studio Team Services release pipeline](#exercise-4-create-visual-studio-team-services-release-pipeline)
+        - [Task 1: Create a release definition](#task-1-create-a-release-definition)
+        - [Task 2: Add test and production environments to release definition](#task-2-add-test-and-production-environments-to-release-definition)
+    - [Exercise 5: Trigger a build and release](#exercise-5-trigger-a-build-and-release)
+        - [Task 1: Manually queue a new build and follow it through the release pipeline](#task-1-manually-queue-a-new-build-and-follow-it-through-the-release-pipeline)
+    - [Exercise 6: Create a feature branch and submit a pull request](#exercise-6-create-a-feature-branch-and-submit-a-pull-request)
+        - [Task 1: Create a new branch](#task-1-create-a-new-branch)
+        - [Task 2: Make a code change to the feature branch](#task-2-make-a-code-change-to-the-feature-branch)
+        - [Task 3: Submit a pull request](#task-3-submit-a-pull-request)
+        - [Task 4: Approve and complete a pull request](#task-4-approve-and-complete-a-pull-request)
     - [After the hands-on lab](#after-the-hands-on-lab)
-        - [Task 1: Delete Resources](#task-1--delete-resources)
+        - [Task 1: Delete Resources](#task-1-delete-resources)
 
 <!-- /TOC -->
 
@@ -500,7 +503,7 @@ If a ."git" folder and local repository already exists in the TailspinToys.Web f
 3.  Leave that command prompt window open and switch back to the web browser window for Visual Studio Team Services from the previous Task.
 
 4.  Within the list of Branches, click on the **master** branch name.
-![In the Visual Studio Team Services window, the master branch name is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image60.emf "Visual Studio Team Services window")
+![In the Visual Studio Team Services window, the master branch name is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image60.png "Visual Studio Team Services window")
 
 5.  Click on the **Clone** link in the upper-right.
 ![In the upper-right corner of the window, the Clone link is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image61.emf "Clone link")
