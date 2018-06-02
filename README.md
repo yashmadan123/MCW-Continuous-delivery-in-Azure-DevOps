@@ -1,3 +1,34 @@
+# Abstract
+
+## Workshop
+
+In this workshop, students will learn how to setup and configure continuous delivery within Azure using a combination of Azure Resource Manager (ARM) templates and Visual Studio Team Services (VSTS). Attendees will do this throughout the use of a new VSTS project, Git repository for source control, and an ARM template for Azure resource deployment and configuration management.
+
+Attendees will be better able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition,
+
+-   Create an Azure Resource Manager (ARM) template to provision Azure resources
+
+-   Configure continuous delivery with Visual Studio Team Services (VSTS)
+
+-   Configure Application Insights into an application
+
+-   Create a Visual Studio Team Services project and Git repository
+
+
+## Whiteboard Design Session
+TBD
+
+## Hand-on Lab
+TBD
+
+
+## Azure services and related products
+- Azure App Service 
+- Azure SQL Database
+- Application Insights
+- Azure Resource Manager
+- Visual Studio Team Services 
+
 
 # Contributing
 
@@ -13,19 +44,3 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-# Legal Notices
-
-Microsoft and any contributors grant you a license to the Microsoft documentation and other content
-in this repository under the [Creative Commons Attribution 4.0 International Public License](https://creativecommons.org/licenses/by/4.0/legalcode),
-see the [LICENSE](LICENSE) file, and grant you a license to any code in the repository under the [MIT License](https://opensource.org/licenses/MIT), see the
-[LICENSE-CODE](LICENSE-CODE) file.
-
-Microsoft, Windows, Microsoft Azure and/or other Microsoft products and services referenced in the documentation
-may be either trademarks or registered trademarks of Microsoft in the United States and/or other countries.
-The licenses for this project do not grant you rights to use any Microsoft names, logos, or trademarks.
-Microsoft's general trademark guidelines can be found at http://go.microsoft.com/fwlink/?LinkID=254653.
-
-Privacy information can be found at https://privacy.microsoft.com/en-us/
-
-Microsoft and any contributors reserve all others rights, whether under their respective copyrights, patents,
-or trademarks, whether by implication, estoppel or otherwise.
