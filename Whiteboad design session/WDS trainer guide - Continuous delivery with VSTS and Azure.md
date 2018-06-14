@@ -439,9 +439,31 @@ The solution for the Tailspin Toys scenario involved several technologies, inclu
 
 -   Visual Studio Team Services' build and release management features are a complete end to end solution for automating builds deployment for the solutions. From there, you can customize the gates your solution needs to promote the solution from environment to environment. You're in complete control of how the CI/CD process is implemented.
 
+-   Once we have the build definition producing build artifacts, we create a release pipeline using the Release Management features of Visual Studio Team Services.
+
+-   The release pipeline is like the build definition in that it is a series to steps or tasks that we put together to produce an outcome. In this case...we produce the deployment of a release to one or more environments and perform some level of validation and verification of each release.
+
+-   We can then configure approval steps between each environment as quality stage gates. This allows us to control the flow of releases as they proceed through the environments.
+
+-   The pipeline for development would simply deploy upon a successful build from the build pipeline.
+
+-   Then, before we deploy to test, we may want the QA team to decide when to deploy the release into the environment. If that were the case, we would configure a manual approval and the deployment, although still automated, would not occur until a member of the QA team approved it to be deployed. This is useful when a QA team may be reviewing an existing release (previously deployed) and does not want the current release to be overwritten in their test environment.
+
+-   Once the deployment to test occurs, we would likely have additional acceptance tests executed.
+
+-   If these acceptance tests pass, we could then trigger the deployment to production.
+
+-   It is important to note that each environment can have its own set of tasks as often times, the deployment and validation steps vary by environment.
+
 2.  Explain how you can continuously deploy new builds directly to the cloud without interfering with the production site.
 
--   App Service resources in Azure has the ability to have multiple deployment slots configure. These deployments slots are a feature than can greatly help with the implementation of streamlined testing, staging, and deployment process without interfering with a production site. Along with the ability to configure multiple hosting environments, the use of Deployment Slots enables zero downtime when deploying application changes, or even rolling back a failed deployment. When you are ready to promote your most recent release to production, you can simply swap the deployment slots.
+-   For a production deployment, the customer wants to maintain the uptime of the application. Thus, when we are deploying a new release, we want the application to remain available.
+
+-   Azure App Services have a deployment slot feature specifically to enable this scenario. Each App Service has, by default, a production deployment slot. This is not to be confused with a production environment. For the purposes of this case study, we could add a new deployment slot named "staging."
+
+-   To do this, we add an additional deployment slot to the Azure App Service and configure the release pipeline to deploy to the newly created deployment slot.
+
+-   Assuming a successful deployment and verification to the staging slot, we add an additional task to the deployment that switches the staging deployment slot with the production deployment slot and all new requests will be directed to the newly deployed application. All of this is done with no downtime to the application.
 
 3.  Document how to integrate unit tests into the continuous delivery process such that when a test fails to pass, the deployment process is flagged and stopped.
 
@@ -466,6 +488,8 @@ The solution for the Tailspin Toys scenario involved several technologies, inclu
 
 -   Application Insights provide rich performance monitoring, alerting, and easy-to-consume dashboards. The service also allows us to quickly see if we have a problem and how many customers may be affected. The service provides for interactive queries and and full-text search for unlocking insights into our logs.
 
+![Application Insights provides a rich interactive dashboard and search feature over the logs that it collects from the application. In these screenshots, Search is highlighted in the menu, and a Search screen displays information about Trace, Request, Page View, Custom Event, and Exception Event Types, which are selected in a Filter submenu. At this time, we are unable to capture all of the information in the window. Future versions of this course should address this.](images/Whiteboarddesignsessiontrainerguide-ContinuousdeliverywithVSTSandAzureimages/media/image3.png "Open diagnostic search")
+
 1.  Implement a solution to enhance the application logs to provide more useful performance and application behavior details, specifically around browser metrics and application dependencies. Discuss which visualization, or dashboard, options exist for the log results. Existing App Service logs already cover these topics:
 
     1.  **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater)
@@ -478,71 +502,18 @@ The solution for the Tailspin Toys scenario involved several technologies, inclu
 
     5.  **Deployment Logs**
 
+-   The website logs can be easily and significantly enhanced by enabling Application Insights in the project. To do this, you need to get the Application Insights Software Developer Kit SDK from NuGet, and configure it for use within the app. Application Insights is configured in the ApplicationInsights.config file in the solution, and this file should be added to the source control repository.
+
+-   After Application Insights has been configured within the application, you need to create an App Insights service instance in the Azure Portal to collect the log data. Do not forget to configure the application with the correct Instrumentation Key and log settings to connect to the App Insights service where it sends its collected data.
+
+-   By using App Insights now, you need to adapt the App Service deployment slots by creating slot-bound settings for the App Insights Instrumentation Key. That way, staging and production can report independent log analytics even after a swap.
+
 -   From the Application Insights Portal, we can see detailed metrics from our solution and get a visual layout of the dependency relationships between our application components using App map. Each component displays specific KPIs such as load, performance, failures, and alerts. By clicking on the App Analytics on one of the application components, we can open the Application Insights Analytics feature. This will provide a query language for analyzing all of the data collected by Application Insights.
 
 -   To get custom information about our users, the Users panel in Application Insights, will allow us to understand important details in a variety of ways. We can use this panel to understand such information as where our users are connecting from, the browser type they are using, and what areas of the application they're accessing.
 
-### Continuous integration
-
--   This is the development practice where developers integrate code into a shared repository frequently, often several times a day. Each "integration" can then be verified by an automated build and automated tests. The immediate benefit is that we can quickly detect errors and locate issues more easily. The idea is that each commit is small, thus pinpointing the specific change that introduced a defect can be done quickly.
-
--   With Visual Studio Team Services, we create a build definition that is automatically triggered by each commit a developer makes to the git repository.
-
--   That build definition may also execute unit tests or perform any task related to producing build artifacts.
-
--   Build artifacts are the output of a build definition and ultimately used when it comes time to deploy the solution.
-
--   In this case study, we would create a build definition and point it at the ASP.NET MVC Visual Studio solution file to build the application and then we would add a testing task and point it at the unit test project within the solution to execute the unit tests.
-
-### Continuous deployment / continuous delivery
-
--   Continuous deployment vs. continuous delivery -- Simply put, continuous deployment is the idea that we are deploying, in an automation fashion, all the way through to production. The system automates all testing and verification. Continuous delivery is the broader term describing the lean practice that aims to eliminate diverging code, duplication of effort and, most important, merge conflicts. It starts with the practices we described earlier in continuous integration.
-
--   Once we have the build definition producing build artifacts, we create a release pipeline using the Release Management features of Visual Studio Team Services.
-
--   The release pipeline is like the build definition in that it is a series to steps or tasks that we put together to produce an outcome. In this case...we produce the deployment of a release to one or more environments and perform some level of validation and verification of each release.
-
--   We can then configure approval steps between each environment as quality stage gates. This allows us to control the flow of releases as they proceed through the environments.
-
--   In this case study, we would create a release pipeline that consists of three environments: development, test, and production.
-
--   The pipeline for development would simply deploy upon a successful build from the build pipeline.
-
--   Then, before we deploy to test, we may want the QA team to decide when to deploy the release into the environment. If that were the case, we would configure a manual approval and the deployment, although still automated, would not occur until a member of the QA team approved it to be deployed. This is useful when a QA team may be reviewing an existing release (previously deployed) and does not want the current release to be overwritten in their test environment.
-
--   Once the deployment to test occurs, we would likely have additional acceptance tests executed.
-
--   If these acceptance tests pass, we could then trigger the deployment to production.
-
--   It is important to note that each environment can have its own set of tasks as often times, the deployment and validation steps vary by environment.
-
--   For a production deployment, the customer wants to maintain the uptime of the application. Thus, when we are deploying a new release, we want the application to remain available.
-
--   Azure App Services have a deployment slot feature specifically to enable this scenario. Each App Service has, by default, a production deployment slot. This is not to be confused with a production environment. For the purposes of this case study, we could add a new deployment slot named "staging."
-
--   To do this, we add an additional deployment slot to the Azure App Service and configure the release pipeline to deploy to the newly created deployment slot.
-
--   Assuming a successful deployment and verification to the staging slot, we add an additional task to the deployment that switches the staging deployment slot with the production deployment slot and all new requests will be directed to the newly deployed application. All of this is done with no downtime to the application.
-
-### Enhance system logging functionality
-
-**Explain how this solution enables the logs to searchable and visible.**
-
-Application Insights provides a rich interactive dashboard and search feature over the logs that it collects from the application. If you want to enable a searchable log dashboard for logs across every tier of the solution (application, virtual machines, and SQL Server), you should implement a different solution such as OMS or Splunk.
-
-![Application Insights provides a rich interactive dashboard and search feature over the logs that it collects from the application. In these screenshots, Search is highlighted in the menu, and a Search screen displays information about Trace, Request, Page View, Custom Event, and Exception Event Types, which are selected in a Filter submenu. At this time, we are unable to capture all of the information in the window. Future versions of this course should address this.](images/Whiteboarddesignsessiontrainerguide-ContinuousdeliverywithVSTSandAzureimages/media/image3.png "Open diagnostic search")
-
-**Explain how the web application logs from the website front end can be enhanced.**
-
-The website logs can be easily and significantly enhanced by enabling Application Insights in the project. To do this, you need to get the Application Insights Software Developer Kit SDK from NuGet, and configure it for use within the app. Application Insights is configured in the ApplicationInsights.config file in the solution, and this file should be added to the source control repository.\
-\
-Application Insights brings a host of new diagnostic reporting information including the requested browser-related diagnostics and statistics, dependency-related diagnostics and statistics, and an automatic proactive alert system that detects common and aberrant application behavior trends. To enable a complete diagnostic picture, you need to add instrumentation code blocks within the HTML and Controller files in the application.
-
-After Application Insights has been configured within the application, you need to create an App Insights service instance in the Azure Portal to collect the log data. Do not forget to configure the application with the correct Instrumentation Key and log settings to connect to the App Insights service where it sends its collected data.
-
-By using App Insights now, you need to adapt the App Service deployment slots by creating slot-bound settings for the App Insights Instrumentation Key. That way, staging and production can report independent log analytics even after a swap.
-
 ![In these Application Insights screenshots, the Settings icon in the menu is selected, and an arrow points from it to a circled Investigate group (Failures, Exceptions, Browser, Usage, Operational events) in the Settings and Diagnostics pane, and an arrow points from this group to a Server responses pane, which displays various information. Below this, in the main window below Application health, BROWSER PAGE LOAD is circled, and an arrow points from the circle to a Browsers pane, which displays various information. At this time, we are unable to capture all of the information in the window. Future versions of this course should address this.](images/Whiteboarddesignsessiontrainerguide-ContinuousdeliverywithVSTSandAzureimages/media/image4.png "Major routes to view your telemetry")
+
 
 ## Checklist of preferred objection handling
 
