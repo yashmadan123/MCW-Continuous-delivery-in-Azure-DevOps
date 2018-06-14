@@ -37,6 +37,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
         - [Customer situation](#customer-situation)
         - [Customer needs](#customer-needs)
         - [Customer objections](#customer-objections)
+        - [Infographic for common scenarios](#infographic-for-common-scenarios)
     - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
     - [Step 3: Present the solution](#step-3-present-the-solution)
     - [Wrap-up](#wrap-up)
@@ -248,6 +249,10 @@ Todd wants to improve the turnaround time for fixing these bugs, and he needs be
 
 5.  "Our developers are already having a challenge learning how to use Git---will adding a continuous deployment system on top of that slow them down and confuse them even more?" 
 
+### Infographic for common scenarios
+
+![Common Scenarios for building a continuous deployment pipeline with Visual Studio Team Services. Images include the icon for VSTS, a Git repo, and a pipeline](images/commonscenarios.png "Common Scenarios for building a continuous deployment pipeline with Visual Studio Team Services")
+
 ## Step 2: Design a proof of concept solution
 
 **Outcome** 
@@ -393,9 +398,9 @@ Have the table attendees reconvene with the larger session group to hear a SME s
 
 ##  Preferred target audience
 
--   Alex Montgomery---VP of Sales
+-   Alex Montgomery, VP of Sales
 
--   Todd Culp---Enterprise Architect
+-   Todd Culp, Enterprise Architect
 
 -   Development team
 
@@ -426,6 +431,41 @@ The solution for the Tailspin Toys scenario involved several technologies, inclu
     -   Automatic switching of deployment slots upon successful deployment conditions
 
 -   Creating an Application Insights account to gather more detailed analytics on the application's performance and health
+
+
+*Continuous Integration and Deployment*
+
+1.  What available system should you use to automate software builds and deployments of the application?
+
+2.  Explain how you can continuously deploy new builds directly to the cloud without interfering with the production site.
+
+3.  Document how to integrate unit tests into the continuous delivery process such that when a test fails to pass, the deployment process is flagged and stopped.
+
+4.  Explain how you can test a new build simultaneously with an existing build, like an A/B test?
+
+5.  Why shouldn't we have multiple long lived branches in source control?
+
+6.  Create a plan on how to switch the source control location from Visual Studio Team Services to GitHub.
+
+
+
+*Enhance system logging functionality*
+
+1.  Implement a solution that will enable the logs to be searchable and visible in an online dashboard.
+
+2.  Implement a solution to enhance the application logs to provide more useful performance and application behavior details, specifically around browser metrics and application dependencies. Discuss which visualization, or dashboard, options exist for the log results. Existing App Service logs already cover these topics:
+
+    1.  **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater)
+
+    2.  **Failed Request Tracing**---detailed information on failed requests, including a trace of the Internet Information Server IIS components used to process the request and the time taken in each component
+
+    3.  **Web Server Logging**---information about HTTP transactions using the W3C extended log file format
+
+    4.  **Application Diagnostics**---trace messages as defined in the source code
+
+    5.  **Deployment Logs**
+
+
 
 ### Continuous integration
 

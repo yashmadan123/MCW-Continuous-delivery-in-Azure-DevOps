@@ -32,6 +32,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
         - [Customer situation](#customer-situation)
         - [Customer needs](#customer-needs)
         - [Customer objections](#customer-objections)
+        - [Infographic for common scenarios](#infographic-for-common-scenarios)
     - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
     - [Step 3: Present the solution](#step-3-present-the-solution)
     - [Wrap-up](#wrap-up)
@@ -123,6 +124,10 @@ Todd wants to improve the turnaround time for fixing these bugs, and he needs be
 4.  "How much of an impact will these process changes have on our development cadence? Will learning this place a new burden on the developers?"
 
 5.  "Our developers are already having a challenge learning how to use Git---will adding a continuous deployment system on top of that slow them down and confuse them even more?" 
+
+### Infographic for common scenarios
+
+![Common Scenarios for building a continuous deployment pipeline with Visual Studio Team Services. Images include the icon for VSTS, a Git repo, and a pipeline](images/commonscenarios.png "Common Scenarios for building a continuous deployment pipeline with Visual Studio Team Services")
 
 ## Step 2: Design a proof of concept solution
 
