@@ -437,16 +437,27 @@ The solution for the Tailspin Toys scenario involved several technologies, inclu
 
 1.  What available system should you use to automate software builds and deployments of the application?
 
+-   Visual Studio Team Services' build and release management features are a complete end to end solution for automating builds deployment for the solutions. From there, you can customize the gates your solution needs to promote the solution from environment to environment. You're in complete control of how the CI/CD process is implemented.
+
 2.  Explain how you can continuously deploy new builds directly to the cloud without interfering with the production site.
+
+-   App Service resources in Azure has the ability to have multiple deployment slots configure. These deployments slots are a feature than can greatly help with the implementation of streamlined testing, staging, and deployment process without interfering with a production site. Along with the ability to configure multiple hosting environments, the use of Deployment Slots enables zero downtime when deploying application changes, or even rolling back a failed deployment. When you are ready to promote your most recent release to production, you can simply swap the deployment slots.
 
 3.  Document how to integrate unit tests into the continuous delivery process such that when a test fails to pass, the deployment process is flagged and stopped.
 
+-   Let's assume your solution already includes a test project with unit tests. You can create or edit your build definition to include a task (Visual Studio Test task) that runs unit tests. After your build starts, this task automatically runs all the unit tests in your solution. If one or more tests fail, the continuous delivery process will halt for that particular build. You could then also configure the test task to create a new work item when a test fails.
+
 4.  Explain how you can test a new build simultaneously with an existing build, like an A/B test?
+
+-   The most common technique to meet this requirement is to create a deployment slots where your App Service variation can be deployed to. Then, configure the release pipeline to deploy to the preferred deployment slot. Using the Azure Portal you can configure the Traffic Routing feature, specifying which percentage of users should go to the primary site and each deployment slot when they browse to your site's URL. Additionally, you could use Application Insights to measure the effectiveness of each version of the site.
 
 5.  Why shouldn't we have multiple long lived branches in source control?
 
+-   If you think if your work as delta off of a master...the size of the delta increases as your branch incorporates more and more work. As the size of your team grows, the amount of work hidden from each other increases. And the chances that your assumptions about the state of the code hold true decreases the more you use long lived branches. If you merge your code back to master frequently, you demonstrate the direction you're taking the code. When you merge your code more frequently to master, the pain of integration happens at the beginning instead of the end of your work. This allows you to find issues faster and fix them at the earliest possible moment. Merging your code frequently also results in fewer merge conflicts. If you're developing a large feature, consider using feature flags so that you can continue to merge your code frequently.
+
 6.  Create a plan on how to switch the source control location from Visual Studio Team Services to GitHub.
 
+-   Let's assume you have already uploaded your codebase to GitHub from Visual Studio Team Services. First, start by editing your existing build definition. When you initially configured the build definition, you selected Visual Studio Team Services as the source for your code. You would now change the "Get sources" item to select GitHub. This, in turn, will require you to authenticate to GitHub (if you have not previously done so). Finally, you select the specifics for your Repository and Default branch. The rest of the build and release process remains unchanged.
 
 
 *Enhance system logging functionality*
