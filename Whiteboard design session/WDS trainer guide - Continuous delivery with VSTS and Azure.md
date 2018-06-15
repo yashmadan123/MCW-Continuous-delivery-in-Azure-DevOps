@@ -130,7 +130,7 @@ Before conducting your first whiteboard design session:
 
 -   Become familiar with all key points and activities
 
--   Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions.
+-   Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions
 
 -   Prior to the whiteboard design session, discuss the case study to pick up more ideas
 
