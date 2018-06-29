@@ -44,17 +44,17 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 ## Abstract and learning objectives 
 
-In this workshop, students will learn how to setup and configure continuous delivery within Azure using a combination of Azure Resource Manager (ARM) Templates and Visual Studio Team Services (VSTS). Students will do this throughout the use of a new VSTS project, Git repository for source control, and an ARM Template for Azure resource deployment and configuration management.
+In this whiteboard design session, you will learn how to design a solution with a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS) to enable continuous delivery with several Azure PaaS services. 
 
-Attendees will be better able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition,
+At the end of this whiteboard design session, you will be better able to design solutions for continuous delivery with VSTS in Azure and additionally: 
 
--   Create an Azure Resource Manager (ARM) template to provision Azure resources
+-   Understand how Azure Resource Manager templates are used provision Azure resources
 
--   Configure Continuous Delivery with Visual Studio Team Services (VSTS)
+-   Understand how to enable continuous delivery with Visual Studio Team Services (VSTS)
 
--   Configure Application Insights into an application
+-   Understand how to enable configure Application Insights with an application
 
--   Create a Visual Studio Team Services project and Git repository
+-   Understand how Visual Studio Team Services and Git repositories work together 
 
 ## Step 1: Review the customer case study 
 
