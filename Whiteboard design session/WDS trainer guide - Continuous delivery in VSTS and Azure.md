@@ -31,7 +31,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Whiteboard design session flow](#whiteboard-design-session-flow)
     - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
     - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
-- [Continuous delivery with VSTS and Azure whiteboard design session student guide](#continuous-delivery-with-vsts-and-azure-whiteboard-design-session-student-guide)
+- [Continuous delivery in VSTS and Azure whiteboard design session student guide](#continuous-delivery-in-vsts-and-azure-whiteboard-design-session-student-guide)
     - [Abstract and learning objectives](#abstract-and-learning-objectives)
     - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
         - [Customer situation](#customer-situation)
@@ -42,7 +42,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Step 3: Present the solution](#step-3-present-the-solution)
     - [Wrap-up](#wrap-up)
     - [Additional references](#additional-references)
-- [Continuous delivery with VSTS and Azure whiteboard design session trainer guide](#continuous-delivery-with-vsts-and-azure-whiteboard-design-session-trainer-guide)
+- [Continuous delivery in VSTS and Azure whiteboard design session trainer guide](#continuous-delivery-in-vsts-and-azure-whiteboard-design-session-trainer-guide)
     - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
     - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
     - [Step 3: Present the solution](#step-3-present-the-solution-1)
@@ -160,17 +160,17 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 **Wait for responses**. If you ask a question such as, "What is your experience with (fill in the blank)?" then wait. Do not be afraid of a little silence. If you leap into the silence, your participants will feel you are not serious about involving them and will become passive. Give participants a chance to think, and if no one answers, patiently ask again. You will usually get a response.
 
-# Continuous delivery with VSTS and Azure whiteboard design session student guide
+# Continuous delivery in VSTS and Azure whiteboard design session student guide
 
 ## Abstract and learning objectives 
 
 In this whiteboard design session, you will learn how to design a solution with a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS) to enable continuous delivery with several Azure PaaS services. 
 
-At the end of this whiteboard design session, you will be better able to design solutions for continuous delivery with VSTS in Azure and additionally: 
+At the end of this whiteboard design session, you will be better able to design solutions for continuous delivery in VSTS in Azure and additionally: 
 
 -   Understand how Azure Resource Manager templates are used provision Azure resources
 
--   Understand how to enable continuous delivery with Visual Studio Team Services (VSTS)
+-   Understand how to enable continuous delivery in Visual Studio Team Services (VSTS)
 
 -   Understand how to enable configure Application Insights with an application
 
@@ -181,8 +181,10 @@ At the end of this whiteboard design session, you will be better able to design 
 
 **Outcome** 
 
-Analyze your customer’s needs.
+Analyze your customer’s needs
+
 Time frame: 15 minutes 
+
 Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips. 
 1.  Meet your table participants and trainer 
 2.  Read all of the directions for steps 1–3 in the student guide 
@@ -217,29 +219,29 @@ Todd wants to improve the turnaround time for fixing these bugs, and he needs be
 
 ### Customer needs 
 
-1.  Be able to automatically and continuously deploy new software builds to the Azure App Service web app.
+1.  Be able to automatically and continuously deploy new software builds to the Azure App Service web app
 
-2.  Ensure that continuously deployed builds to the cloud do not interfere with the production copy of the solution.
+2.  Ensure that continuously deployed builds to the cloud do not interfere with the production copy of the solution
 
-3.  Identify an automated way of deploying to different environments for "development," "test," and "production" so that changes or deployments to one environment do not affect the others.
+3.  Identify an automated way of deploying to different environments for "development," "test," and "production" so that changes or deployments to one environment do not affect the others
 
-4.  Configure the automated builds to first require that a full series of unit tests pass before a deployment is started.
+4.  Configure the automated builds to first require that a full series of unit tests pass before a deployment is started
 
-5.  Providing a search feature and visual dashboard for the application logs so the developers can more quickly resolve help desk tickets.
+5.  Providing a search feature and visual dashboard for the application logs so the developers can more quickly resolve help desk tickets
 
-6.  Enhance the logged data from the front-end website to give the developers a more complete picture of the application's performance and behavior.
+6.  Enhance the logged data from the front-end website to give the developers a more complete picture of the application's performance and behavior
 
-    a.  Browser information such as browser page load time and user activity per page.
+    - Browser information such as browser page load time and user activity per page
 
-    b.  Application dependency metrics such as request times and request failures for communication with the database or other services.
+    - Application dependency metrics such as request times and request failures for communication with the database or other services
 
-7.  Implement proactive diagnostics to generate automatic alerts for unusual application behavior including aberrant request response time, dependency response time, and page load time. 
+7.  Implement proactive diagnostics to generate automatic alerts for unusual application behavior including aberrant request response time, dependency response time, and page load time
 
 ### Customer objections 
 
-1.  "We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Visual Studio Team Services and need to be able to change between them without frustrating rework."
+1.  "We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Visual Studio Team Services and need to be able to change between them without frustrating rework"
 
-2.  "We do not want the developers to be able to make changes to the Azure resources even though they will have access to make source code changes."
+2.  "We do not want the developers to be able to make changes to the Azure resources even though they will have access to make source code changes"
 
 3.  "If developers can deploy directly to the cloud, will that expose us to the same quality problems we had before when untested code was promoted to production?"
 
@@ -271,15 +273,15 @@ Directions: With all participants at your table, respond to the following questi
 
 1.  What available system should you use to automate software builds and deployments of the application?
 
-2.  Explain how you can continuously deploy new builds directly to the cloud without interfering with the production site.
+2.  Explain how you can continuously deploy new builds directly to the cloud without interfering with the production site
 
-3.  Document how to integrate unit tests into the continuous delivery process such that when a test fails to pass, the deployment process is flagged and stopped.
+3.  Document how to integrate unit tests into the continuous delivery process so that when a test fails to pass, the deployment process is flagged and stopped
 
 4.  Explain how you can test a new build simultaneously with an existing build, like an A/B test?
 
 5.  Why shouldn't we have multiple long lived branches in source control?
 
-6.  Create a plan on how to switch the source control location from Visual Studio Team Services to GitHub.
+6.  Create a plan on how to switch the source control location from Visual Studio Team Services to GitHub
 
 *Enhance system logging functionality*
 
@@ -348,7 +350,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | App service staging environments | <https://azure.microsoft.com/en-us/documentation/articles/web-sites-staged-publishing/> |
 | Application Insights | <https://azure.microsoft.com/en-us/documentation/services/application-insights/> |
 
-# Continuous delivery with VSTS and Azure whiteboard design session trainer guide
+# Continuous delivery in VSTS and Azure whiteboard design session trainer guide
 
 ## Step 1: Review the customer case study
 
@@ -376,19 +378,16 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 -   Determine which table will be paired with your table before Step 3 begins
 
--   For the first round, assign one table as the Microsoft team and the other table as the customer
+-   For the first round, assign one table as the presenting team and the other table as the customer
 
--   Have the Microsoft team present their solution to the customer team
+-   Have the presenting team present their solution to the customer team
 
-    -   Have the customer team provide one objection for the Microsoft team to respond to
+    -   Have the customer team provide one objection for the presenting team to respond to
 
-    -   The presentation and objections should be no longer than 10-minutes
-
--   Have participants on the customer team give feedback to the Microsoft team
-
-    -   The feedback should be no longer than 5 minutes
-
+    -   The presentation and objections should be no longer than 15-minutes
+    
     -   If needed, the trainer may also provide feedback
+
 
 ## Wrap-up
 
@@ -404,7 +403,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 ## Preferred solution
 
-The solution for the Tailspin Toys scenario involved several technologies, including:
+The solution for the Tailspin Toys scenario involves several technologies, including:
 
 -   Creating a local, short lived branch for feature work
 
@@ -543,7 +542,7 @@ The solution for the Tailspin Toys scenario involved several technologies, inclu
     
     **Potential answer**
 
-    There is a learning curve with every quality gate added. Developers will need to do more automated testing locally to ensure code will pass the CI process. Working from master (or trunk) requires that developers really own the state of the build process. When the build is broken, fixing the build becomes the priority. This is another area where we slow down to go faster...with higher quality deliverable.
+    There is a learning curve with every quality gate added. Developers will need to do more automated testing locally to ensure code will pass the CI process. Working from master (or trunk) requires that developers really own the state of the build process. When the build is broken, fixing the build becomes the priority. This is another area where we slow down to go faster for a higher quality deliverable.
 
 ## Customer quote (to be read back to the attendees at the end)
 

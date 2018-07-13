@@ -26,7 +26,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 <!-- TOC -->
 
-- [Continuous delivery with VSTS and Azure whiteboard design session student guide](#continuous-delivery-with-vsts-and-azure-whiteboard-design-session-student-guide)
+- [Continuous delivery in VSTS and Azure whiteboard design session student guide](#continuous-delivery-in-vsts-and-azure-whiteboard-design-session-student-guide)
     - [Abstract and learning objectives](#abstract-and-learning-objectives)
     - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
         - [Customer situation](#customer-situation)
@@ -40,17 +40,17 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 <!-- /TOC -->
 
-# Continuous delivery with VSTS and Azure whiteboard design session student guide
+# Continuous delivery in VSTS and Azure whiteboard design session student guide
 
 ## Abstract and learning objectives 
 
 In this whiteboard design session, you will learn how to design a solution with a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS) to enable continuous delivery with several Azure PaaS services. 
 
-At the end of this whiteboard design session, you will be better able to design solutions for continuous delivery with VSTS in Azure and additionally: 
+At the end of this whiteboard design session, you will be better able to design solutions for continuous delivery in VSTS in Azure and additionally: 
 
 -   Understand how Azure Resource Manager templates are used provision Azure resources
 
--   Understand how to enable continuous delivery with Visual Studio Team Services (VSTS)
+-   Understand how to enable continuous delivery in Visual Studio Team Services (VSTS)
 
 -   Understand how to enable configure Application Insights with an application
 
@@ -60,8 +60,10 @@ At the end of this whiteboard design session, you will be better able to design 
 
 **Outcome** 
 
-Analyze your customer’s needs.
-Time frame: 15 minutes 
+Analyze your customer’s needs
+
+Time frame: 15 minutes
+
 Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips. 
 1.  Meet your table participants and trainer 
 2.  Read all of the directions for steps 1–3 in the student guide 
@@ -79,7 +81,7 @@ When it moved its existing systems into Microsoft Azure, Tailspin Toys decided t
 
 **Public website and data layer**
 
-Todd Culp is the enterprise architect at Tailspin Toys, and he is responsible for the application and development team's environments in Azure. He has also been tasked with changing the development processes for his team, so they can be more agile and adaptive in the marketplace.
+Todd Culp is the enterprise architect at Tailspin Toys, and he is responsible for the application and development team's environments in Azure. He has also been tasked with changing the development processes for his team so they can be more agile and adaptive in the marketplace.
 
 The public website is currently deployed as an ASP.NET MVC 4 Web App in an App Service Plan in the S3 tier. The development team is hosting its source control for the system in Visual Studio Team Services using a Git repository with branches set up for multiple environments including "development," "test," and "master." As they get close to a release point, the developers have a manual internal code review and QA process in which they debug the application on each other's machines and run through some use cases to test new and existing features in the application. When the build is ready, they manually deploy updates to the website through Visual Studio or FTP. Todd has been tasked with automating the entire process of testing, building, and deploying to the cloud for both the QA team, so they can fully test new builds in a realistic cloud environment, and for the developers, so they cannot deploy any builds that fail the test suite. The builds for the different environments should not affect each other, and there must be an easy way to promote a tested build to production.
 
@@ -95,23 +97,23 @@ Todd wants to improve the turnaround time for fixing these bugs, and he needs be
 
 ### Customer needs 
 
-1.  Be able to automatically and continuously deploy new software builds to the Azure App Service web app.
+1.  Be able to automatically and continuously deploy new software builds to the Azure App Service web app
 
-2.  Ensure that continuously deployed builds to the cloud do not interfere with the production copy of the solution.
+2.  Ensure that continuously deployed builds to the cloud do not interfere with the production copy of the solution
 
-3.  Identify an automated way of deploying to different environments for "development," "test," and "production" so that changes or deployments to one environment do not affect the others.
+3.  Identify an automated way of deploying to different environments for "development," "test," and "production" so that changes or deployments to one environment do not affect the others
 
-4.  Configure the automated builds to first require that a full series of unit tests pass before a deployment is started.
+4.  Configure the automated builds to first require that a full series of unit tests pass before a deployment is started
 
-5.  Providing a search feature and visual dashboard for the application logs so the developers can more quickly resolve help desk tickets.
+5.  Providing a search feature and visual dashboard for the application logs so the developers can more quickly resolve help desk tickets
 
-6.  Enhance the logged data from the front-end website to give the developers a more complete picture of the application's performance and behavior.
+6.  Enhance the logged data from the front-end website to give the developers a more complete picture of the application's performance and behavior
 
-    a.  Browser information such as browser page load time and user activity per page.
+    -  Browser information such as browser page load time and user activity per page
 
-    b.  Application dependency metrics such as request times and request failures for communication with the database or other services.
+    -  Application dependency metrics such as request times and request failures for communication with the database or other services
 
-7.  Implement proactive diagnostics to generate automatic alerts for unusual application behavior including aberrant request response time, dependency response time, and page load time. 
+7.  Implement proactive diagnostics to generate automatic alerts for unusual application behavior including aberrant request response time, dependency response time, and page load time
 
 ### Customer objections 
 

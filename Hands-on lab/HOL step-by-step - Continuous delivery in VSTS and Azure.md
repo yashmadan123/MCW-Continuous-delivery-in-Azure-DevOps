@@ -103,7 +103,7 @@ Tailspin Toys has asked you to automate their development process in two specifi
 
 Duration: 45 Minutes
 
-Tailspin Toys has requested three Azure environments (dev, test, production) each consisting of the following resources:
+Tailspin Toys has requested three Azure environments (dev, test, production), each consisting of the following resources:
 
 -   App Service
 
@@ -131,11 +131,11 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
     
     ![In the Select Azure Template window, Visual Studio Templates has been selected in the Show templates from this location drop-down list, the Blank Template option is selected and highlighted, and Next is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image23.png "Blank Template selection")
 
-3.  In the Solution Explorer window, open the azuredeploy.json file by double-clicking it.
+3.  In the Solution Explorer window, open the azuredeploy.json file by double-clicking it
     
     ![In the Solution Explorer window, azuredeploy.json is highlighted under TailspinToys.AzureResourceTemplate.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image24.png "Selecting the azuredeploy.json file")
 
-4.  Then, probably on the left side of the Visual Studio window, open the window called JSON Outline. It will look like this screen shot.
+4.  Then, probably on the left side of the Visual Studio window, open the window called JSON Outline. It will look like this screen shot
     
     ![The screenshot of the JSON Outline window depicts the following: parameters (0), variables (0), resources (0), and outputs (0).](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image25.png "JSON Outline window")
 
@@ -147,35 +147,35 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
     
     ![In JSON Outline, resources (0) is selected, and a submenu displays a selected and highlighted Add New Resource option.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image26.png "Add New Resource selection")
 
-2.  Select **SQL Server** and give it a name like "tailspinsql", then click **Add**.
+2.  Select **SQL Server** and give it a name like "tailspinsql", then click **Add**
     \
     ![In the Add Resource window, SQL Server is highlighted on the left, tailspinsql is highlighted next to that in the Name box, and Add is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image27.png "Add Resource window")
 
-3.  Now that the SQL Server has been created as a resource, right-click that SQL Server resource and choose **Add New Resource** so that you can add a database.
+3.  Now that the SQL Server has been created as a resource, right-click that SQL Server resource and choose **Add New Resource** so that you can add a database
     
     ![In JSON Outline, under resources (1), tailspinsql is selected, and a submenu displays a selected and highlighted Add New Resource option.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image28.png "Add New Resource selection")
 
-4.  Choose SQL Database, and call it "TailspinData." Make sure that your server is selected in the drop-down list below, and click **Add**.
+4.  Choose SQL Database, and call it "TailspinData." Make sure that your server is selected in the drop-down list below, and click **Add**
     
     ![In the Add Resource window, SQL Database is highlighted on the left, TailspinData is highlighted next to that in the Name box, and Add is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image29.png "Add Resource window")
 
 ### Task 3: Add a web hosting plan and web app to the template
 
-1.  Add another resource, this time choose **App Service Plan**, and call it "TailspinToysHostingPlan", followed by clicking **Add**.
+1.  Add another resource, this time choose **App Service Plan**, and call it "TailspinToysHostingPlan", followed by clicking **Add**
     
     ![In the Add Resource window, App Service Plan (Server Farm) is highlighted on the left, TailspinToysHostingPlan is highlighted next to that in the Name box, and Add is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image30.png "Add Resource window")
 
-2.  Right-click the hosting plan resource and add a new resource underneath it.
+2.  Right-click the hosting plan resource and add a new resource underneath it
     
     ![In JSON Outline, under resources (2), TailspinToysHostingPlan is selected, and a submenu displays a selected and highlighted Add New Resource option.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image31.png "Add New Resource selection")
 
-3.  Choose **Web App**, name it "TailspinToysWeb", make sure your hosting plan is selected in the drop-down list, and then click **Add**.
+3.  Choose **Web App**, name it "TailspinToysWeb", make sure your hosting plan is selected in the drop-down list, and then click **Add**
     
     ![In the Add Resource window, Web App is highlighted on the left, TailspinToysWeb is highlighted next to that in the Name box, and Add is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image32.png "Add Resource window")
 
 ### Task 4: Add Application Insights to the template
 
-1.  Add a new resource to the template, this time choose **Application Insights for Web Apps**. Make sure your correct hosting plan and web app are selected in the boxes. Name the Application Insights resource "TailspinToysWeb" and then click **Add**.
+1.  Add a new resource to the template, this time choose **Application Insights for Web Apps**. Make sure your correct hosting plan and web app are selected in the boxes. Name the Application Insights resource "TailspinToysWeb" and then click **Add**
     
     ![In the Add Resource window, Application Insights for Web App is highlighted on the left, TailspinToysWeb is highlighted next to that in the Name box, and Add is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image33.png "Add Resource window")
 
@@ -205,7 +205,7 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
 ### Task 5: Configure automatic scale for the web app in the template
 
-1.  Click on the resource called "TailspinToysWeb AutoScale" to see its JSON value.
+1.  Click on the resource called "TailspinToysWeb AutoScale" to see its JSON value
     
     ![TailspinToysWeb AutoScale is selected and highlighted in the template.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image35.png "TailspinToysWeb AutoScale selection")
 
@@ -228,9 +228,9 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
     },
     ```
 
-After adding the code, it will look like this.
+    After adding the code, it will look like this.
 
-![This is a screenshot of the code pasted inside the of the "parameters" object.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image37.png "Pasted block of JSON code")
+    ![This is a screenshot of the code pasted inside the of the "parameters" object.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image37.png "Pasted block of JSON code")
 
 ### Task 7: Configure the name of the web app using the environments parameters
 
@@ -295,7 +295,7 @@ It will look something like this screen shot.
     
     ![In the Edit Parameters window, the dev value is highlighted along with the values for the admin username and the database password. The TailspinData, TailspinHostingPlan1, and S1 values are also highlighted, and the Save passwords as plain text in the parameters file check box is selected.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image44.png "Edit Parameters window")
 
-7.  Then, click the **Deploy** button on the deployment window.
+7.  Then, click the **Deploy** button on the deployment window
     
     ![In the Deploy to Resource Group window, Deploy is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image45.png "Deploy to Resource Group window")
 
@@ -305,14 +305,15 @@ It will look something like this screen shot.
 
 ### Task 10: Create the test environment and deploy the template to Azure
 
-The following steps are very similar to what was done in the previous task with the exception that you are now creating the test environment.
+The following steps are very similar to what was done in the previous task with the exception that you are now creating the test environment
 
 1.  Right-click the project in Solution Explorer and choose "Deploy" and then "New...."\
     ![In Solution Explorer, TailspinToysAzureResourceTemplate is selected, a submenu has New selected and highlighted, and another submenu has Deploy highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image40.png "Choosing New and Deploy")
 
 2.  Sign in to your Azure account if necessary, and then choose your correct subscription. Under Resource group, choose "Create New..." and create a new resource group for this deployment. Since we are creating a test environment, let us name it "TailspinToys-test." Choose a location near you.
-    ![In the Deploy to Resource Group window, Create New is selected in the Resource group drop-down list.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image41.png "Deploy to Resource Group window")\
-    \
+
+    ![In the Deploy to Resource Group window, Create New is selected in the Resource group drop-down list.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image41.png "Deploy to Resource Group window")
+    
     ![In the Create Resource Group window, Tailspintoys-test is in the Resource group name box, and South Central US is in the Resource group location box.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image47.png "Create Resource Group window")
 
 3.  Once you have the resource group created, click the **Edit Parameters** button.
@@ -320,6 +321,7 @@ The following steps are very similar to what was done in the previous task with 
     ![In the Deploy to Resource Group window, the resource group has been created, and the Edit Parameters button is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image48.png "Deploy to Resource Group window")
 
 4.  In the next window, select "test" from the list of environments. Then, pick an admin username, and password for the database, it does not matter what you choose. Then use "TailspinData" for the TailspinDataName value. Call the hosting plan "TailspinHostingPlan1" and choose "S1" for the Sku. Finally, be sure to check the "Save passwords..." option at the bottom See this screen shot for help. When finished, click Save.
+
     ![In the Edit Parameters window, the test value is highlighted along with the values for the admin username and the database password. The TailspinData, TailspinHostingPlan1, and S1 values are also highlighted, and the Save passwords as plain text in the parameters file check box is selected.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image49.png "Edit Parameters window")
 
 5.  Then, click the **Deploy** button on the deployment window.
@@ -332,12 +334,14 @@ The following steps are very similar to what was done in the previous task with 
 
 The following steps are very similar to what was done in the previous task with the exception that you are now creating the production environment.
 
-1.  Right-click the project in Solution Explorer and choose "Deploy" and then "New...."\
+1.  Right-click the project in Solution Explorer and choose "Deploy" and then "New...."
+
     ![In Solution Explorer, TailspinToysAzureResourceTemplate is selected, a submenu has New selected and highlighted, and another submenu has Deploy highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image40.png "Choosing New and Deploy")
 
 2.  Sign in to your Azure account if necessary, and then choose your correct subscription. Under Resource group, choose "Create New..." and create a new resource group for this deployment. Since we are creating a production environment, let us name it "TailspinToys-prod." Choose a location near you.
-    ![In the Deploy to Resource Group window, Create New is selected in the Resource group drop-down list.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image41.png "Deploy to Resource Group window")\
-    \
+
+    ![In the Deploy to Resource Group window, Create New is selected in the Resource group drop-down list.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image41.png "Deploy to Resource Group window")
+    
     ![In the Create Resource Group window, TailspinToys-production is in the Resource group name box, and South Central US is in the Resource group location box.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image51.png "Create Resource Group window")
 
 3.  Once you have the resource group created, click the **Edit Parameters** button.

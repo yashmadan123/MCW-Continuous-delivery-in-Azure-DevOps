@@ -128,7 +128,7 @@ Exit criteria
 
 -   You have a completed ARM template and parameters file saved and committed to source control
 
--   You have deployed the completed template to Azure that creates the three environments: dev, test, and production.
+-   You have deployed the completed template to Azure that creates the three environments: dev, test, and production
 
 ## Exercise 2: Create a Visual Studio Team Services team project and Git Repository
 
