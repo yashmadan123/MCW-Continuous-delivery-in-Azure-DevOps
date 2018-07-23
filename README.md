@@ -27,7 +27,7 @@ Attendees will be better able to build templates to automate cloud infrastructur
 -   Create a Visual Studio Team Services project and Git repository
 
 
-### Whiteboard Design Session
+### Whiteboard design session
 In this whiteboard design session, you will learn how to design a solution with a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS) to enable continuous delivery with several Azure PaaS services. 
 
 At the end of this whiteboard design session, you will be better able to design solutions for continuous delivery in VSTS in Azure and additionally: 
@@ -41,7 +41,7 @@ At the end of this whiteboard design session, you will be better able to design 
 -   Understand how Visual Studio Team Services and Git repositories work together 
 
 
-### Hand-on Lab
+### Hands-on Lab
 In this hands-on lab, you will learn how to implement a solution with a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS) to enable continuous delivery with several Azure PaaS services. 
 
 At the end of this hands-on lab, you will be better able to implement solutions for continuous delivery with VSTS in Azure and additionally: 
@@ -54,8 +54,6 @@ At the end of this hands-on lab, you will be better able to implement solutions 
 
 -   Create a Visual Studio Team Services project and Git repository
 
-
-
 ## Azure services and related products
 - Azure App Service 
 - Azure SQL Database
@@ -63,4 +61,8 @@ At the end of this hands-on lab, you will be better able to implement solutions 
 - Azure Resource Manager
 - Visual Studio Team Services 
 
+## Azure solutions
+TBD
 
+## Related references
+- [MCW](https://github.com/Microsoft/MCW)
