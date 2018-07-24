@@ -302,15 +302,15 @@ Directions: With all participants at your table, respond to the following questi
 
 2.  Implement a solution to enhance the application logs to provide more useful performance and application behavior details, specifically around browser metrics and application dependencies. Discuss which visualization, or dashboard, options exist for the log results. Existing App Service logs already cover these topics:
 
-    a.  **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater)
+    -  **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater)
 
-    b.  **Failed Request Tracing**---detailed information on failed requests, including a trace of the Internet Information Server IIS components used to process the request and the time taken in each component
+    -  **Failed Request Tracing**---detailed information on failed requests, including a trace of the Internet Information Server IIS components used to process the request and the time taken in each component
 
-    c.  **Web Server Logging**---information about HTTP transactions using the W3C extended log file format
+    -  **Web Server Logging**---information about HTTP transactions using the W3C extended log file format
 
-    d.  **Application Diagnostics**---trace messages as defined in the source code
+    -  **Application Diagnostics**---trace messages as defined in the source code
 
-    e.  **Deployment Logs**
+    -  **Deployment Logs**
 
 **Prepare**
 
