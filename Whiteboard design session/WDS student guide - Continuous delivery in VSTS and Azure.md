@@ -109,27 +109,27 @@ Todd wants to improve the turnaround time for fixing these bugs, and he needs be
 
 4.  Configure the automated builds to first require that a full series of unit tests pass before a deployment is started
 
-5.  Providing a search feature and visual dashboard for the application logs so the developers can more quickly resolve help desk tickets
+5.  Provide a search feature and visual dashboard for the application logs so the developers can more quickly resolve help desk tickets
 
 6.  Enhance the logged data from the front-end website to give the developers a more complete picture of the application's performance and behavior
 
-    -  Browser information such as browser page load time and user activity per page
+    - Browser information such as browser page load time and user activity per page
 
-    -  Application dependency metrics such as request times and request failures for communication with the database or other services
+    - Application dependency metrics such as request times and request failures for communication with the database or other services
 
 7.  Implement proactive diagnostics to generate automatic alerts for unusual application behavior including aberrant request response time, dependency response time, and page load time
 
 ### Customer objections 
 
-1.  "We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Visual Studio Team Services and need to be able to change between them without frustrating rework."
+1.  We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Visual Studio Team Services and need to be able to change between them without frustrating rework.
 
-2.  "We do not want the developers to be able to make changes to the Azure resources even though they will have access to make source code changes."
+2.  We do not want the developers to be able to make changes to the Azure resources even though they will have access to make source code changes
 
-3.  "If developers can deploy directly to the cloud, will that expose us to the same quality problems we had before when untested code was promoted to production?"
+3.  If developers can deploy directly to the cloud, will that expose us to the same quality problems we had before when untested code was promoted to production?
 
-4.  "How much of an impact will these process changes have on our development cadence? Will learning this place a new burden on the developers?"
+4.  How much of an impact will these process changes have on our development cadence? Will learning this place a new burden on the developers?
 
-5.  "Our developers are already having a challenge learning how to use Git---will adding a continuous deployment system on top of that slow them down and confuse them even more?" 
+5.  Our developers are already having a challenge learning how to use Git---will adding a continuous deployment system on top of that slow them down and confuse them even more?  
 
 ### Infographic for common scenarios
 
@@ -159,31 +159,31 @@ Directions: With all participants at your table, respond to the following questi
 
 1.  What available system should you use to automate software builds and deployments of the application?
 
-2.  Explain how you can continuously deploy new builds directly to the cloud without interfering with the production site.
+2.  Explain how you can continuously deploy new builds directly to the cloud without interfering with the production site
 
-3.  Document how to integrate unit tests into the continuous delivery process such that when a test fails to pass, the deployment process is flagged and stopped.
+3.  Document how to integrate unit tests into the continuous delivery process so that when a test fails to pass, the deployment process is flagged and stopped
 
-4.  Explain how you can test a new build simultaneously with an existing build, like an A/B test?
+4.  Explain how you can test a new build simultaneously with an existing build, like an A/B test
 
 5.  Why shouldn't we have multiple long lived branches in source control?
 
-6.  Create a plan on how to switch the source control location from Visual Studio Team Services to GitHub.
+6.  Create a plan on how to switch the source control location from Visual Studio Team Services to GitHub
 
 *Enhance system logging functionality*
 
-1.  Implement a solution that will enable the logs to be searchable and visible in an online dashboard.
+1.  Implement a solution that will enable the logs to be searchable and visible in an online dashboard
 
 2.  Implement a solution to enhance the application logs to provide more useful performance and application behavior details, specifically around browser metrics and application dependencies. Discuss which visualization, or dashboard, options exist for the log results. Existing App Service logs already cover these topics:
 
-    1.  **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater)
+    -  **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater)
 
-    2.  **Failed Request Tracing**---detailed information on failed requests, including a trace of the Internet Information Server IIS components used to process the request and the time taken in each component
+    -  **Failed Request Tracing**---detailed information on failed requests, including a trace of the Internet Information Server IIS components used to process the request and the time taken in each component
 
-    3.  **Web Server Logging**---information about HTTP transactions using the W3C extended log file format
+    -  **Web Server Logging**---information about HTTP transactions using the W3C extended log file format
 
-    4.  **Application Diagnostics**---trace messages as defined in the source code
+    -  **Application Diagnostics**---trace messages as defined in the source code
 
-    5.  **Deployment Logs**
+    -  **Deployment Logs**
 
 **Prepare**
 
@@ -204,7 +204,6 @@ Prepare a 15-minute chalk-talk style presentation to the customer.
 Present a solution to the target customer audience in a 15-minute chalk-talk format.
 
 Timeframe: 30 minutes
-
 
 **Presentation**
 
