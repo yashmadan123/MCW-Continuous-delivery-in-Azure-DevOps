@@ -236,7 +236,7 @@ Todd wants to improve the turnaround time for fixing these bugs, and he needs be
 
 4.  Configure the automated builds to first require that a full series of unit tests pass before a deployment is started
 
-5.  Providing a search feature and visual dashboard for the application logs so the developers can more quickly resolve help desk tickets
+5.  Provide a search feature and visual dashboard for the application logs so the developers can more quickly resolve help desk tickets
 
 6.  Enhance the logged data from the front-end website to give the developers a more complete picture of the application's performance and behavior
 
@@ -248,7 +248,7 @@ Todd wants to improve the turnaround time for fixing these bugs, and he needs be
 
 ### Customer objections 
 
-1.  We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Visual Studio Team Services and need to be able to change between them without frustrating rework
+1.  We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Visual Studio Team Services and need to be able to change between them without frustrating rework.
 
 2.  We do not want the developers to be able to make changes to the Azure resources even though they will have access to make source code changes
 
@@ -290,7 +290,7 @@ Directions: With all participants at your table, respond to the following questi
 
 3.  Document how to integrate unit tests into the continuous delivery process so that when a test fails to pass, the deployment process is flagged and stopped
 
-4.  Explain how you can test a new build simultaneously with an existing build, like an A/B test?
+4.  Explain how you can test a new build simultaneously with an existing build, like an A/B test
 
 5.  Why shouldn't we have multiple long lived branches in source control?
 
@@ -453,80 +453,80 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
 1.  What available system should you use to automate software builds and deployments of the application?
 
--   Visual Studio Team Services' build and release management features are a complete end to end solution for automating builds deployment for the solutions. From there, you can customize the gates your solution needs to promote the solution from environment to environment. You're in complete control of how the CI/CD process is implemented.
+    -   Visual Studio Team Services' build and release management features are a complete end to end solution for automating builds deployment for the solutions. From there, you can customize the gates your solution needs to promote the solution from environment to environment. You're in complete control of how the CI/CD process is implemented.
 
--   Once we have the build definition producing build artifacts, we create a release pipeline using the Release Management features of Visual Studio Team Services.
+    -   Once we have the build definition producing build artifacts, we create a release pipeline using the Release Management features of Visual Studio Team Services
 
--   The release pipeline is like the build definition in that it is a series to steps or tasks that we put together to produce an outcome. In this case...we produce the deployment of a release to one or more environments and perform some level of validation and verification of each release.
+    -   The release pipeline is like the build definition in that it is a series to steps or tasks that we put together to produce an outcome. In this case...we produce the deployment of a release to one or more environments and perform some level of validation and verification of each release.
 
--   We can then configure approval steps between each environment as quality stage gates. This allows us to control the flow of releases as they proceed through the environments.
+    -   We can then configure approval steps between each environment as quality stage gates. This allows us to control the flow of releases as they proceed through the environments.
 
--   The pipeline for development would simply deploy upon a successful build from the build pipeline.
+    -   The pipeline for development would simply deploy upon a successful build from the build pipeline
 
--   Then, before we deploy to test, we may want the QA team to decide when to deploy the release into the environment. If that were the case, we would configure a manual approval and the deployment, although still automated, would not occur until a member of the QA team approved it to be deployed. This is useful when a QA team may be reviewing an existing release (previously deployed) and does not want the current release to be overwritten in their test environment.
+    -   Then, before we deploy to test, we may want the QA team to decide when to deploy the release into the environment. If that were the case, we would configure a manual approval and the deployment, although still automated, would not occur until a member of the QA team approved it to be deployed. This is useful when a QA team may be reviewing an existing release (previously deployed) and does not want the current release to be overwritten in their test environment.
 
--   Once the deployment to test occurs, we would likely have additional acceptance tests executed.
+    -   Once the deployment to test occurs, we would likely have additional acceptance tests executed
 
--   If these acceptance tests pass, we could then trigger the deployment to production.
+    -   If these acceptance tests pass, we could then trigger the deployment to production
 
--   It is important to note that each environment can have its own set of tasks as often times, the deployment and validation steps vary by environment.
+    -   It is important to note that each environment can have its own set of tasks as often times, the deployment and validation steps vary by environment
 
 2.  Explain how you can continuously deploy new builds directly to the cloud without interfering with the production site.
 
--   For a production deployment, the customer wants to maintain the uptime of the application. Thus, when we are deploying a new release, we want the application to remain available.
+    -   For a production deployment, the customer wants to maintain the uptime of the application. Thus, when we are deploying a new release, we want the application to remain available.
 
--   Azure App Services have a deployment slot feature specifically to enable this scenario. Each App Service has, by default, a production deployment slot. This is not to be confused with a production environment. For the purposes of this case study, we could add a new deployment slot named "staging."
+    -   Azure App Services have a deployment slot feature specifically to enable this scenario. Each App Service has, by default, a production deployment slot. This is not to be confused with a production environment. For the purposes of this case study, we could add a new deployment slot named "staging."
 
--   To do this, we add an additional deployment slot to the Azure App Service and configure the release pipeline to deploy to the newly created deployment slot.
+    -   To do this, we add an additional deployment slot to the Azure App Service and configure the release pipeline to deploy to the newly created deployment slot
 
--   Assuming a successful deployment and verification to the staging slot, we add an additional task to the deployment that switches the staging deployment slot with the production deployment slot and all new requests will be directed to the newly deployed application. All of this is done with no downtime to the application.
+    -   Assuming a successful deployment and verification to the staging slot, we add an additional task to the deployment that switches the staging deployment slot with the production deployment slot and all new requests will be directed to the newly deployed application. All of this is done with no downtime to the application.
 
 3.  Document how to integrate unit tests into the continuous delivery process such that when a test fails to pass, the deployment process is flagged and stopped.
 
--   Let's assume your solution already includes a test project with unit tests. You can create or edit your build definition to include a task (Visual Studio Test task) that runs unit tests. After your build starts, this task automatically runs all the unit tests in your solution. If one or more tests fail, the continuous delivery process will halt for that particular build. You could then also configure the test task to create a new work item when a test fails.
+    -   Let's assume your solution already includes a test project with unit tests. You can create or edit your build definition to include a task (Visual Studio Test task) that runs unit tests. After your build starts, this task automatically runs all the unit tests in your solution. If one or more tests fail, the continuous delivery process will halt for that particular build. You could then also configure the test task to create a new work item when a test fails.
 
 4.  Explain how you can test a new build simultaneously with an existing build, like an A/B test?
 
--   The most common technique to meet this requirement is to create a deployment slots where your App Service variation can be deployed to. Then, configure the release pipeline to deploy to the preferred deployment slot. Using the Azure Portal you can configure the Traffic Routing feature, specifying which percentage of users should go to the primary site and each deployment slot when they browse to your site's URL. Additionally, you could use Application Insights to measure the effectiveness of each version of the site.
+    -   The most common technique to meet this requirement is to create a deployment slots where your App Service variation can be deployed to. Then, configure the release pipeline to deploy to the preferred deployment slot. Using the Azure Portal you can configure the Traffic Routing feature, specifying which percentage of users should go to the primary site and each deployment slot when they browse to your site's URL. Additionally, you could use Application Insights to measure the effectiveness of each version of the site.
 
 5.  Why shouldn't we have multiple long lived branches in source control?
 
--   If you think if your work as delta off of a master...the size of the delta increases as your branch incorporates more and more work. As the size of your team grows, the amount of work hidden from each other increases. And the chances that your assumptions about the state of the code hold true decreases the more you use long lived branches. If you merge your code back to master frequently, you demonstrate the direction you're taking the code. When you merge your code more frequently to master, the pain of integration happens at the beginning instead of the end of your work. This allows you to find issues faster and fix them at the earliest possible moment. Merging your code frequently also results in fewer merge conflicts. If you're developing a large feature, consider using feature flags so that you can continue to merge your code frequently.
+    -   If you think if your work as delta off of a master...the size of the delta increases as your branch incorporates more and more work. As the size of your team grows, the amount of work hidden from each other increases. And the chances that your assumptions about the state of the code hold true decreases the more you use long lived branches. If you merge your code back to master frequently, you demonstrate the direction you're taking the code. When you merge your code more frequently to master, the pain of integration happens at the beginning instead of the end of your work. This allows you to find issues faster and fix them at the earliest possible moment. Merging your code frequently also results in fewer merge conflicts. If you're developing a large feature, consider using feature flags so that you can continue to merge your code frequently.
 
 6.  Create a plan on how to switch the source control location from Visual Studio Team Services to GitHub.
 
--   Let's assume you have already uploaded your codebase to GitHub from Visual Studio Team Services. First, start by editing your existing build definition. When you initially configured the build definition, you selected Visual Studio Team Services as the source for your code. You would now change the "Get sources" item to select GitHub. This, in turn, will require you to authenticate to GitHub (if you have not previously done so). Finally, you select the specifics for your Repository and Default branch. The rest of the build and release process remains unchanged.
+    -   Let's assume you have already uploaded your codebase to GitHub from Visual Studio Team Services. First, start by editing your existing build definition. When you initially configured the build definition, you selected Visual Studio Team Services as the source for your code. You would now change the "Get sources" item to select GitHub. This, in turn, will require you to authenticate to GitHub (if you have not previously done so). Finally, you select the specifics for your Repository and Default branch. The rest of the build and release process remains unchanged.
 
 
 *Enhance system logging functionality*
 
-1.  Implement a solution that will enable the logs to be searchable and visible in an online dashboard.
+1.  Implement a solution that will enable the logs to be searchable and visible in an online dashboard
 
--   Application Insights provide rich performance monitoring, alerting, and easy-to-consume dashboards. The service also allows us to quickly see if we have a problem and how many customers may be affected. The service provides for interactive queries and and full-text search for unlocking insights into our logs.
+    -   Application Insights provide rich performance monitoring, alerting, and easy-to-consume dashboards. The service also allows us to quickly see if we have a problem and how many customers may be affected. The service provides for interactive queries and and full-text search for unlocking insights into our logs.
 
     ![Application Insights provides a rich interactive dashboard and search feature over the logs that it collects from the application. In these screenshots, Search is highlighted in the menu, and a Search screen displays information about Trace, Request, Page View, Custom Event, and Exception Event Types, which are selected in a Filter submenu. At this time, we are unable to capture all of the information in the window. Future versions of this course should address this.](images/Whiteboarddesignsessiontrainerguide-ContinuousdeliverywithVSTSandAzureimages/media/image3.png "Open diagnostic search")
 
 2.  Implement a solution to enhance the application logs to provide more useful performance and application behavior details, specifically around browser metrics and application dependencies. Discuss which visualization, or dashboard, options exist for the log results. Existing App Service logs already cover these topics:
 
-    1.  **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater)
+    a.  **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater)
 
-    2.  **Failed Request Tracing**---detailed information on failed requests, including a trace of the Internet Information Server IIS components used to process the request and the time taken in each component
+    b.  **Failed Request Tracing**---detailed information on failed requests, including a trace of the Internet Information Server IIS components used to process the request and the time taken in each component
 
-    3.  **Web Server Logging**---information about HTTP transactions using the W3C extended log file format
+    c.  **Web Server Logging**---information about HTTP transactions using the W3C extended log file format
 
-    4.  **Application Diagnostics**---trace messages as defined in the source code
+    d.  **Application Diagnostics**---trace messages as defined in the source code
 
-    5.  **Deployment Logs**
+    e.  **Deployment Logs**
 
--   The website logs can be easily and significantly enhanced by enabling Application Insights in the project. To do this, you need to get the Application Insights Software Developer Kit SDK from NuGet, and configure it for use within the app. Application Insights is configured in the ApplicationInsights.config file in the solution, and this file should be added to the source control repository.
+    -   The website logs can be easily and significantly enhanced by enabling Application Insights in the project. To do this, you need to get the Application Insights Software Developer Kit SDK from NuGet, and configure it for use within the app. Application Insights is configured in the ApplicationInsights.config file in the solution, and this file should be added to the source control repository.
 
--   After Application Insights has been configured within the application, you need to create an App Insights service instance in the Azure Portal to collect the log data. Do not forget to configure the application with the correct Instrumentation Key and log settings to connect to the App Insights service where it sends its collected data.
+    -   After Application Insights has been configured within the application, you need to create an App Insights service instance in the Azure Portal to collect the log data. Do not forget to configure the application with the correct Instrumentation Key and log settings to connect to the App Insights service where it sends its collected data.
 
--   By using App Insights now, you need to adapt the App Service deployment slots by creating slot-bound settings for the App Insights Instrumentation Key. That way, staging and production can report independent log analytics even after a swap.
+    -   By using App Insights now, you need to adapt the App Service deployment slots by creating slot-bound settings for the App Insights Instrumentation Key. That way, staging and production can report independent log analytics even after a swap.
 
--   From the Application Insights Portal, we can see detailed metrics from our solution and get a visual layout of the dependency relationships between our application components using App map. Each component displays specific KPIs such as load, performance, failures, and alerts. By clicking on the App Analytics on one of the application components, we can open the Application Insights Analytics feature. This will provide a query language for analyzing all of the data collected by Application Insights.
+    -   From the Application Insights Portal, we can see detailed metrics from our solution and get a visual layout of the dependency relationships between our application components using App map. Each component displays specific KPIs such as load, performance, failures, and alerts. By clicking on the App Analytics on one of the application components, we can open the Application Insights Analytics feature. This will provide a query language for analyzing all of the data collected by Application Insights.
 
--   To get custom information about our users, the Users panel in Application Insights, will allow us to understand important details in a variety of ways. We can use this panel to understand such information as where our users are connecting from, the browser type they are using, and what areas of the application they're accessing.
+    -   To get custom information about our users, the Users panel in Application Insights, will allow us to understand important details in a variety of ways. We can use this panel to understand such information as where our users are connecting from, the browser type they are using, and what areas of the application they're accessing.
 
     ![In these Application Insights screenshots, the Settings icon in the menu is selected, and an arrow points from it to a circled Investigate group (Failures, Exceptions, Browser, Usage, Operational events) in the Settings and Diagnostics pane, and an arrow points from this group to a Server responses pane, which displays various information. Below this, in the main window below Application health, BROWSER PAGE LOAD is circled, and an arrow points from the circle to a Browsers pane, which displays various information. At this time, we are unable to capture all of the information in the window. Future versions of this course should address this.](images/Whiteboarddesignsessiontrainerguide-ContinuousdeliverywithVSTSandAzureimages/media/image4.png "Major routes to view your telemetry")
 
