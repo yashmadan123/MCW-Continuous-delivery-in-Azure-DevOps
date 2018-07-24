@@ -18,6 +18,7 @@ Information in this document, including URL and other Internet Web site referenc
 Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
+
 © 2018 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
@@ -97,8 +98,6 @@ Tailspin Toys has asked you to automate their development process in two specifi
 
     -   Git command-line interface (CLI)
 
-
-
 ## Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, SQL database, and deployment slots in a single automated process
 
 Duration: 45 Minutes
@@ -127,7 +126,7 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
     
     ![In this screenshot of the New Project dialog box, all the options to create the TailspinToys.AzureResourceTemplate project are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image22.png "Visual Studio New Project dialog box")
 
-2.  On the next window, click **Blank Template**, and click **OK**.
+2.  On the next window, click **Blank Template**, and click **OK**
     
     ![In the Select Azure Template window, Visual Studio Templates has been selected in the Show templates from this location drop-down list, the Blank Template option is selected and highlighted, and Next is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image23.png "Blank Template selection")
 
@@ -139,16 +138,16 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
     
     ![The screenshot of the JSON Outline window depicts the following: parameters (0), variables (0), resources (0), and outputs (0).](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image25.png "JSON Outline window")
 
-5.  Save your files.
+5.  Save your files
 
 ### Task 2: Add an Azure SQL database and server to the template
 
-1.  Right-click on the **resources** item in the **JSON Outline** and click **Add New Resource**.
+1.  Right-click on the **resources** item in the **JSON Outline** and click **Add New Resource**
     
     ![In JSON Outline, resources (0) is selected, and a submenu displays a selected and highlighted Add New Resource option.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image26.png "Add New Resource selection")
 
 2.  Select **SQL Server** and give it a name like "tailspinsql", then click **Add**
-    \
+
     ![In the Add Resource window, SQL Server is highlighted on the left, tailspinsql is highlighted next to that in the Name box, and Add is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image27.png "Add Resource window")
 
 3.  Now that the SQL Server has been created as a resource, right-click that SQL Server resource and choose **Add New Resource** so that you can add a database
@@ -175,7 +174,7 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
 ### Task 4: Add Application Insights to the template
 
-1.  Add a new resource to the template, this time choose **Application Insights for Web Apps**. Make sure your correct hosting plan and web app are selected in the boxes. Name the Application Insights resource "TailspinToysWeb" and then click **Add**
+1.  Add a new resource to the template, this time choose **Application Insights for Web Apps**. Make sure your correct hosting plan and web app are selected in the boxes. Name the Application Insights resource "TailspinToysWeb" and then click **Add**.
     
     ![In the Add Resource window, Application Insights for Web App is highlighted on the left, TailspinToysWeb is highlighted next to that in the Name box, and Add is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image33.png "Add Resource window")
 
@@ -199,7 +198,7 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
     ]
     ```
 
-    It will look something like this screen shot.
+    It will look something like this screen shot:
 
     ![This is a screenshot of the code pasted below the "properties" property.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image34.png "Pasted block of JSON code")
 
@@ -228,23 +227,24 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
     },
     ```
 
-    After adding the code, it will look like this.
+    After adding the code, it will look like this:
 
     ![This is a screenshot of the code pasted inside the of the "parameters" object.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image37.png "Pasted block of JSON code")
 
 ### Task 7: Configure the name of the web app using the environments parameters
 
-1.  Next, you need to configure the template so that it dynamically generates the name of the web application based on the environment it is being deployed to. Click on the parameters item in the JSON Outline window to locate its JSON code. Then, location the "variables" section and replace the corresponding TailspinToysWebName value with the following code.
+1.  Next, you need to configure the template so that it dynamically generates the name of the web application based on the environment it is being deployed to. Click on the parameters item in the JSON Outline window to locate its JSON code. Then, location the "variables" section and replace the corresponding TailspinToysWebName value with the following code:
 
     "TailspinToysWebName": "[concat('TailspinToysWeb', '-', parameters('environment'), '-', uniqueString(resourceGroup().id))]"},
 
-After adding the code, it will look like this.
+After adding the code, it will look like this:
 
 ![This is a screenshot of the code replacement of the TailspinToysWebName value in the "variables" section.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image38.png "Pasted block of JSON code")
 
 ### Task 8: Add a deployment slot for the "staging" version of the site
 
 2.  Next, you need to add the "staging" deployment slot to the web app. This is used during a deployment to stage the new version of the web app. This is going to require some manual code because there is not a wizard for this resource type. Click on the TailspinToysWeb web app resource to locate its JSON code. Then, add this code to the "resources" array, just below the element for the application insights extension.
+
     ```
     {
         "apiVersion": "2015-08-01",
@@ -262,7 +262,7 @@ After adding the code, it will look like this.
         "resources": []
     }
     ```
-It will look something like this screen shot.
+It will look something like this screen shot:
 
 ![This is a screenshot of the code pasted just below the element for the application insights extension in the "resources" array.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image39.png "Pasted block of JSON code")
 
@@ -276,18 +276,19 @@ It will look something like this screen shot.
             "type": "string"
             }
     ```
-2.  Now, save all your files.
+2.  Now, save all your files
 
-3.  Right-click the project in Solution Explorer and choose "Deploy" and then "New...."\
+3.  Right-click the project in Solution Explorer and choose "Deploy" and then "New...."
+
     ![In Solution Explorer, TailspinToysAzureResourceTemplate is selected, a submenu has New selected and highlighted, and another submenu has Deploy highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image40.png "Choosing New and Deploy")
 
 4.  Sign in to your Azure account if necessary, and then choose your correct subscription. Under Resource group, choose "Create New..." and create a new resource group for this deployment. Since we are creating a dev environment, let us name it "TailspinToys-dev." Choose a location near you.
   
-    ![In the Deploy to Resource Group window, Create New is selected in the Resource group drop-down list.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image41.png "Deploy to Resource Group window")\
-    \
+    ![In the Deploy to Resource Group window, Create New is selected in the Resource group drop-down list.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image41.png "Deploy to Resource Group window")
+    
     ![In the Create Resource Group window, Tailspintoys-dev is highlighted in the Resource group name box, and Create is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image42.png "Create Resource Group window")
 
-5.  Once you have the resource group created, click the **Edit Parameters** button.
+5.  Once you have the resource group created, click the **Edit Parameters** button
 
     ![In the Deploy to Resource Group window, the resource group has been created, and the Edit Parameters button is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image43.png "Deploy to Resource Group window")
 
@@ -299,15 +300,18 @@ It will look something like this screen shot.
     
     ![In the Deploy to Resource Group window, Deploy is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image45.png "Deploy to Resource Group window")
 
-8.  If we have done everything correct, the deployment will begin. You can watch the output window inside Visual Studio to follow along. This deployment typically takes a few minutes. Upon completion, you should see success and you should see an instrumentation key be written out in the output window. Copy this down for a future step in this process. Note that your key will be different from the one shown in this screen shot.
+8.  If we have done everything correct, the deployment will begin. You can watch the output window inside Visual Studio to follow along. This deployment typically takes a few minutes. Upon completion, you should see success and you should see an instrumentation key be written out in the output window. Copy this down for a future step in this process. 
+
+>Note that your key will be different from the one shown in this screen shot.
     
-    ![This is a screenshot of a highlighted instrumentation key in the output window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image46.png "instrumentation key")
+   ![This is a screenshot of a highlighted instrumentation key in the output window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image46.png "instrumentation key")
 
 ### Task 10: Create the test environment and deploy the template to Azure
 
 The following steps are very similar to what was done in the previous task with the exception that you are now creating the test environment
 
-1.  Right-click the project in Solution Explorer and choose "Deploy" and then "New...."\
+1.  Right-click the project in Solution Explorer and choose "Deploy" and then "New...."
+
     ![In Solution Explorer, TailspinToysAzureResourceTemplate is selected, a submenu has New selected and highlighted, and another submenu has Deploy highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image40.png "Choosing New and Deploy")
 
 2.  Sign in to your Azure account if necessary, and then choose your correct subscription. Under Resource group, choose "Create New..." and create a new resource group for this deployment. Since we are creating a test environment, let us name it "TailspinToys-test." Choose a location near you.
@@ -316,7 +320,7 @@ The following steps are very similar to what was done in the previous task with 
     
     ![In the Create Resource Group window, Tailspintoys-test is in the Resource group name box, and South Central US is in the Resource group location box.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image47.png "Create Resource Group window")
 
-3.  Once you have the resource group created, click the **Edit Parameters** button.
+3.  Once you have the resource group created, click the **Edit Parameters** button
 
     ![In the Deploy to Resource Group window, the resource group has been created, and the Edit Parameters button is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image48.png "Deploy to Resource Group window")
 
@@ -324,10 +328,12 @@ The following steps are very similar to what was done in the previous task with 
 
     ![In the Edit Parameters window, the test value is highlighted along with the values for the admin username and the database password. The TailspinData, TailspinHostingPlan1, and S1 values are also highlighted, and the Save passwords as plain text in the parameters file check box is selected.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image49.png "Edit Parameters window")
 
-5.  Then, click the **Deploy** button on the deployment window.
+5.  Then, click the **Deploy** button on the deployment window
+
     ![In the Deploy to Resource Group window, Deploy is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image50.png "Deploy to Resource Group window")
 
 6.  If we have done everything correct, the deployment will begin. You can watch the output window inside Visual Studio to follow along. This deployment typically takes a few minutes. Upon completion, you should see success and you should see an instrumentation key be written out in the output window. Copy this down for a future step in this process. Note that your key will be different from the one shown in this screen shot.
+
     ![This is a screenshot of a highlighted instrumentation key in the output window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image46.png "Instrumentation key")
 
 ### Task 11: Create the production environment and deploy the template to Azure
@@ -344,7 +350,7 @@ The following steps are very similar to what was done in the previous task with 
     
     ![In the Create Resource Group window, TailspinToys-production is in the Resource group name box, and South Central US is in the Resource group location box.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image51.png "Create Resource Group window")
 
-3.  Once you have the resource group created, click the **Edit Parameters** button.
+3.  Once you have the resource group created, click the **Edit Parameters** button
 
     ![In the Deploy to Resource Group window, the resource group has been created, and the Edit Parameters button is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image52.png "Deploy to Resource Group window")
 
@@ -352,13 +358,15 @@ The following steps are very similar to what was done in the previous task with 
 
     ![](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image53.png)
 
-5.  Then, click the **Deploy** button on the deployment window.
+5.  Then, click the **Deploy** button on the deployment window
     
     ![In the Deploy to Resource Group window, Deploy is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image54.png "Deploy to Resource Group window")
 
-6.  If we have done everything correct, the deployment will begin. You can watch the output window inside Visual Studio to follow along. This deployment typically takes a few minutes. Upon completion, you should see success and you should see an instrumentation key be written out in the output window. Copy this down for a future step in this process. Note that your key will be different from the one shown in this screen shot.
+6.  If we have done everything correct, the deployment will begin. You can watch the output window inside Visual Studio to follow along. This deployment typically takes a few minutes. Upon completion, you should see success and you should see an instrumentation key be written out in the output window. Copy this down for a future step in this process. 
+
+>Note that your key will be different from the one shown in this screen shot.
     
-    ![This is a screenshot of a highlighted instrumentation key in the output window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image46.png "Instrumentation key")
+   ![This is a screenshot of a highlighted instrumentation key in the output window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image46.png "Instrumentation key")
 
 7.  If you visit the Azure Portal for your Azure subscription, you should now see the three newly created resource groups.
 
@@ -378,17 +386,17 @@ In this exercise, you will create and configure a Visual Studio Team Services ac
     
     ![In this screenshot, Get started for free is selected under Visual Studio Team Services.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image56.png "Visual Studio Team Services screenshot")
 
-3.  Authenticate with a Microsoft account.
+3.  Authenticate with a Microsoft account
 
 4.  Choose a name for your visualstudio.com account. For the purposes of this scenario, we will use "TailspinToys." Choose **Git** for the source code and then click Create.
     
     ![In the Create new project window, TailspinToys is highlighted in the Project name box, Git is highlighted in the Version control box, and Create is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image57.png "Create new project window")
 
-5.  Once the Project is created, click on the **Code** menu option in the header navigation\
-    \
+5.  Once the Project is created, click on the **Code** menu option in the header navigation
+
     ![In the TailspinToys window, Code is highlighted in the ribbon.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image58.png "TailspinToys window")
 
-6.  On the **Code** -\> **File** page for the **TailspinToys** repository, scroll down to the bottom of the page, then click on the **Initialize** button to get the "master" branch created.
+6.  On the **Code** -\> **File** page for the **TailspinToys** repository, scroll down to the bottom of the page, then click on the **Initialize** button to get the "master" branch created
     
     ![In the TailspinToys is empty. Add some code! window, URLs appear in the Clone to your computer or push an existing repository from command line boxes, and Initialize is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image59.png "TailspinToys is empty. Add some code! window")
 
@@ -396,77 +404,85 @@ In this exercise, you will create and configure a Visual Studio Team Services ac
 
 In this Task, you will configure the Visual Studio Team Services Git repository. You will configure the remote repository using Git and then push the source code up to Visual Studio Team Services through the command line tools.
 
-1.  In the support files, open a command prompt in the **C:\\Hackathon** folder.
+1.  In the support files, open a command prompt in the **C:\\Hackathon** folder
 
 2.  Initialize a local Git repository by running the following commands at the command prompt:
+
     ```
     git init
     git add *
     git commit -m "adding files"
     ```
     
-If a ."git" folder and local repository already exists in the TailspinToys.Web folder, then you will need to delete the ."git" folder first before running the above commands to initialize the Git repository.
+If a ."git" folder and local repository already exists in the TailspinToys.Web folder, then you will need to delete the ."git" folder first before running the above commands to initialize the Git repository
 
-3.  Leave that command prompt window open and switch back to the web browser window for Visual Studio Team Services from the previous Task.
+3.  Leave that command prompt window open and switch back to the web browser window for Visual Studio Team Services from the previous Task
 
-4.  Within the list of Branches, click on the **master** branch name.
+4.  Within the list of Branches, click on the **master** branch name
     
     ![In the Visual Studio Team Services window, the master branch name is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image60.png "Visual Studio Team Services window")
 
-5.  Click on the **Clone** link in the upper-right.
+5.  Click on the **Clone** link in the upper-right
     
     ![In the upper-right corner of the window, the Clone link is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image61.png "Clone link")
 
-6.  Copy the **HTTPS** URL for the Git repository for use in the following step![The HTTPS URL is highlighted under Clone Repo.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image62.png "HTTPS URL")
+6.  Copy the **HTTPS** URL for the Git repository for use in the following step
 
-7.  Go back to the **Command Prompt** and run the following command with including the HTTPS URL for your Git repository.
+    ![The HTTPS URL is highlighted under Clone Repo.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image62.png "HTTPS URL")
+
+7.  Go back to the **Command Prompt** and run the following command with including the HTTPS URL for your Git repository
+
     ```
     git remote add origin https://<vsts account name>.visualstudio.com/_git/TailspinToys
     ```
 
 8.  Next, run the following command:
+
     ```
     git push -u origin --all
     ```
 
-9.  When prompted, login with your Microsoft Account for your VSTS Account.
+9.  When prompted, login with your Microsoft Account for your VSTS Account
     
     ![This is a screenshot of the Enter password dialog box.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image63.png "Enter password dialog box")
 
-10. You will get an error message similar to the following since the local repository was created before the clone of the VSTS Git repository.
+10. You will get an error message similar to the following since the local repository was created before the clone of the VSTS Git repository:
     
     ![In this screenshot of the Command Prompt window, an error message appears because the local repository was created before the clone of the VSTS Git repository. At this time, we are unable to capture all of the information in the window. Future versions of this course should address this.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image64.png "Command Prompt window")
 
 11. To fix this error, you will need to pull down the latest from the VSTS Git repository and force it to merge even though the histories do not match. You can do this by running the following command:
+
     ```
     git pull origin master --allow-unrelated-histories
     ```
 
 12. Now run the "git push" command again
+
     ```
     git push -u origin --all
     ```
 
-13. Once the local changes are pushed up to the VSTS Git repository, you should see command-line output similar to the following:\
+13. Once the local changes are pushed up to the VSTS Git repository, you should see command-line output similar to the following:
+
     ![In this screenshot of the Command Prompt window is command-line output that results from local changes pushing to the VSTS Git repository. At this time, we are unable to capture all of the information in the window. Future versions of this course should address this.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image65.png "Command Prompt window")
 
-14. Go back to the web browser window for Visual Studio Team Services and click on the **Files** link.
+14. Go back to the web browser window for Visual Studio Team Services and click on the **Files** link
     
     ![In the Visual Studio Team Services window, the Files link is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image66.png "Visual Studio Team Services ")
 
-15. You should see your source code now appearing inside of Visual Studio Team Services.
+15. You should see your source code now appearing inside of Visual Studio Team Services
     
     ![In the Visual Studio Team Services window, your source code now appears.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image67.png "Visual Studio Team Services")
 
 ## Exercise 3: Create Visual Studio Team Services build definition
 
-Duration: 13 Minutes
+Duration: 15 Minutes
 
 In this exercise, you will create a build definition in Visual Studio Team Services (VSTS) that automatically builds the web application with every commit of source code. This will lay the groundwork for us to then create a release pipeline for publishing the code to our Azure environments.
 
 ### Task 1: Create a build definition
 
-1.  Select the Build and Release hub in your VSTS project, and then select the Builds link.
+1.  Select the Build and Release hub in your VSTS project, and then select the Builds link
 
     ![In the Visual Studio Team Services window, Build and Release is highlighted in the ribbon. Below that, Builds is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image68.png "Visual Studio Team Services window")
 
@@ -476,7 +492,7 @@ In this exercise, you will create a build definition in Visual Studio Team Servi
 
     ![A screen that shows choosing the VSTS Git option for the TailspinToys project.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image70.png "Select a source")
 
-3.  Select the "Empty process" link.
+3.  Select the "Empty process" link
 
     ![Under Select a template, Empty process is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image71.png "Select the Empty process link")
 
@@ -512,9 +528,9 @@ In this exercise, you will create a build definition in Visual Studio Team Servi
 
     ![In the TailspinToys-CI build window, VsTest - testAssemblies is highlighted on the left, Publish Build Artifacts is highlighted in the search box, and the Add button is highlighted below that.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image79.png "Package up the build and prepare it for deployment")
 
-12. Now that we have added the final task, we will need to go back and configure several of the tasks.
+12. Now that we have added the final task, we will need to go back and configure several of the tasks
 
-13. Select the "Build solution \*\*\\\*.sln" task that you added copy the following text into the "MSBuild Arguments" field as shown in the screen shot below.
+13. Select the "Build solution \*\*\\\*.sln" task that you added copy the following text into the "MSBuild Arguments" field as shown in the screen shot below
 
     ```
     /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"
@@ -522,7 +538,7 @@ In this exercise, you will create a build definition in Visual Studio Team Servi
 
     ![In the TailspinToys-CI build window, Build solution \*\*\\\*.sln is highlighted on the left, and the above text is highlighted in the MSBuild Arguments box.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image80.png "MSBuild Arguments box")
 
-14. Select the "Publish Artifact" task that you added and enter "\$(Build.ArtifactStagingDirectory)" into the Path to publish field and enter "TailspinToys-CI" into the Artifact name field as shown in the screen shot below.
+14. Select the "Publish Artifact" task that you added and enter "\$(Build.ArtifactStagingDirectory)" into the Path to publish field and enter "TailspinToys-CI" into the Artifact name field as shown in the screen shot below
 
     ![In the TailspinToys-CI build window, Publish Artifact: TailspinToys-CI is highlighted on the left, and on the right, \$(Build.ArtifactStagingDirectory) in the Path to publish box and TailspinToys-CI in the Artifact name box are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image81.png "Path to publish and Artifact name boxes")
 
@@ -538,7 +554,7 @@ In this exercise, you will create a build definition in Visual Studio Team Servi
 
     ![In the TailspinToys-CI build window, the Triggers menu item is highlighted, and to the right, the Enable continuous integration option, Include Type, and master Branch specification are also highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image83.png "Automatically triggering a build")
 
-2.  Save the changes.
+2.  Save the changes
 
 ## Exercise 4: Create Visual Studio Team Services release pipeline
 
@@ -576,11 +592,11 @@ In this exercise, you will create a release pipeline in Visual Studio Team Servi
 
 8.  This brings up the task editor. This interface will be familiar to you as it is very similar to the task editor you used when creating the build definition. For this release definition we will need to add two tasks.
 
-9.  Click on the "+" button to bring up the Add tasks window.
+9.  Click on the "+" button to bring up the Add tasks window
 
-10. Enter "Azure App Service" into the search box.
+10. Enter "Azure App Service" into the search box
 
-11. Select Azure App Services Deploy, and then click the "Add" button.
+11. Select Azure App Services Deploy, and then click the "Add" button
 
     ![In the task editor, the plus sign (+) is highlighted next to Agent phase, Azure App Service is highlighted in the search box, and below that, Add is highlighted next to Azure App Service Deploy.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image90.png "Add Azure App Service Deploy")
 
@@ -594,15 +610,15 @@ In this exercise, you will create a release pipeline in Visual Studio Team Servi
 
 15. In the App Service name field, select the item that begins with "TailspinToysWeb-dev." There will be series of numbers and letters after which will not match the screen shot below. This is due to the uniqueness requirement of resource names.
 
-16. Check the Deploy to slot checkbox.
+16. Check the Deploy to slot checkbox
 
-17. Select "TailspinToys-dev" from the Resource group drop down list.
+17. Select "TailspinToys-dev" from the Resource group drop down list
 
 18. Finally, select the "staging" value from the Slot drop down list. This tells the deployment to deploy to the slot first.
 
     ![After selecting the Azure App Service Deploy task, fill in various boxes in the configuration window, including Azure subscription, App Service name (select Deploy to slot), Resource group, and Slot. These values are highlighted in the screenshot of the configuration window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image92.png "Configure the Azure App Service Deploy task")
 
-19. Scroll down the configuration screen to see additional configuration fields.
+19. Scroll down the configuration screen to see additional configuration fields
 
 20. In the Package or folder option enter the following text:
     
@@ -618,15 +634,15 @@ In this exercise, you will create a release pipeline in Visual Studio Team Servi
 
 23. In the App Service name field, select the item that begins with "TailspinToysWeb-dev." There will be series of numbers and letters after which will not match the screen shot below. This is due to the uniqueness requirement of resource names.
 
-24. Select "TailspinToys-dev" from the Resource group drop down list.
+24. Select "TailspinToys-dev" from the Resource group drop down list
 
 25. Finally, select the "staging" value from the Source Slot drop down list. This tells the deployment to swap the staging slot with production.
 
     ![After selecting the Swap Slots task, fill in various boxes in the configuration window, including Azure subscription, App Service name, Resource group, and Source Slot (select Swap with Production). These values are highlighted in the screenshot of the configuration window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image94.png "Configure the Swap Slots task")
 
-26. Click the "Save" button at the top of the screen and confirm by clicking the "OK" button.
+26. Click the "Save" button at the top of the screen and confirm by clicking the "OK" button
 
-27. Congratulations! You have just created your first release pipeline.
+27. Congratulations! You have just created your first release pipeline
 
 ### Task 2: Add test and production environments to release definition
 
@@ -638,9 +654,9 @@ In this exercise, you will create a release pipeline in Visual Studio Team Servi
 
     ![The Clone button is highlighted under the dev environment.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image96.png "Copy the deployment tasks")
 
-3.  Click on the new environment "Copy of dev" to bring up the configuration screen.
+3.  Click on the new environment "Copy of dev" to bring up the configuration screen
 
-4.  Change the Environment name to "test."
+4.  Change the Environment name to "test"
 
 5.  Now, we will begin editing the configuration for the test environment. Click the "1 phase, 2 tasks" link for the test environment.
 
@@ -648,41 +664,41 @@ In this exercise, you will create a release pipeline in Visual Studio Team Servi
 
 6.  Select the "Azure App Service Deploy" task to bring up the task configuration panel. Notice the settings are the same as when we configured it for the dev environment because we cloned the dev environment to create the test environment.
 
-7.  For the App Service name field, select the item that begins with "TailspinToysWeb-test."
+7.  For the App Service name field, select the item that begins with "TailspinToysWeb-test"
 
-8.  For the Resource group field, select "TailspinToys-test."
+8.  For the Resource group field, select "TailspinToys-test"
 
-9.  For the Slot field, select "staging."
+9.  For the Slot field, select "staging"
 
     ![After selecting the Azure App Service Deploy task, fill in various boxes in the configuration window, including App Service name (select Deploy to slot), Resource group, and Slot. These values are highlighted in the screenshot of the configuration window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image98.png "Configure the Azure App Service Deploy task")
 
 10. We have completed configuration of the first task. Now, select the "Swap Slots" task to bring up the configuration panel.
 
-11. For the App Service name field, select the item that begins with "TailspinToysWeb-test."
+11. For the App Service name field, select the item that begins with "TailspinToysWeb-test"
 
-12. For the Resource group field, select "TailspinToys-test."
+12. For the Resource group field, select "TailspinToys-test"
 
-13. For the Source Slot field, select "staging."
+13. For the Source Slot field, select "staging"
 
     ![After selecting the Swap Slots task, fill in various boxes in the configuration window, including App Service name, Resource group, and Source Slot (select Swap with Production). These values are highlighted in the screenshot of the configuration window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image99.png "Configure the Swap Slots task")
 
-14. Click the "Save" button at the top of the screen, and confirm by clicking the "OK" button.
+14. Click the "Save" button at the top of the screen, and confirm by clicking the "OK" button
 
-15. Congratulations! You have just created a test environment and added it to your pipeline.
+15. Congratulations! You have just created a test environment and added it to your pipeline
 
 16. Repeat all of the steps in Task 2 to create a production environment being careful to enter "production" as a replacement for "test" and selecting "TailspinWeb-production" instead of "TailspinWeb-test" where applicable. Do not forget to configure to individual steps in the newly cloned production environment.
 
-17. The final release pipeline should look like the screen shot below.
+17. The final release pipeline should look like the screen shot below:
 
     ![On the left is the TailspinToys-CI artifact, which is connected on the right by a line through the following environments (left to right): dev, test, and production (selected).](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image100.png "The final release pipeline")
 
 18. Now you will enable the continuous deployment trigger so the release process automatically begins as soon as a build successfully completes. To do this, click on the lightning bolt icon in the Artifacts window.
 
-19. This will bring up the Continuous deployment trigger panel. Change the setting to "Enabled."
+19. This will bring up the Continuous deployment trigger panel. Change the setting to "Enabled".
 
     ![The lightning bolt icon next to the TailspinToys-CI artifact is highlighted, and to the right, Enabled is selected and highlighted in the Continuous deployment trigger panel.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image101.png "Enable the continuous deployment trigger")
 
-20. Click Save, and confirm your changes.
+20. Click Save, and confirm your changes
 
 21. Congratulations! You have completed the creation of a release pipeline with three environments.
 
@@ -726,13 +742,13 @@ In the tasks below, you will make changes directly through the Visual Studio Tea
 
     ![In the Visual Studio Team Services web interface for TailspinToys, Code, Branches, and the New Branch button are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image106.png "Visual Studio Team Services window")
 
-2.  Click the "New branch" button in the upper right corner of the page.
+2.  Click the "New branch" button in the upper right corner of the page
 
 3.  In the "Create a branch" dialog, enter a name for the new branch. In this scenario, name it "new-heading". In the "Based on" field, be sure master is selected.
 
     ![In the Create a branch dialog box, new-heading is highlighted in the Name box, master is highlighted in the Based on box, and Create branch is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image107.png "Create a branch dialog box")
 
-4.  Click "Create branch".
+4.  Click "Create branch"
 
 ### Task 2: Make a code change to the feature branch
 
@@ -740,17 +756,17 @@ In the tasks below, you will make changes directly through the Visual Studio Tea
 
     ![This is a screenshot of the Files window for Tailspin Toys.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image108.png "Files window")
 
-2.  Next, you'll make a change to a page in the web application in the web browser.
+2.  Next, you'll make a change to a page in the web application in the web browser
 
-3.  Click on the "TailspinToys.Web" folder.
+3.  Click on the "TailspinToys.Web" folder
 
-4.  Then, click on the "Views" folder.
+4.  Then, click on the "Views" folder
 
-5.  Then, click on the "Home" folder.
+5.  Then, click on the "Home" folder
 
 6.  Locate and click on the "Index.cshtml" file. You will now see the contents of the file.
 
-7.  Click on the "Edit" button on the top right of the screen to begin editing the page.
+7.  Click on the "Edit" button on the top right of the screen to begin editing the page
 
     ![The screenshot depicts the editing page for Index.cshtml. Index.cshtml is selected in the navigation pane, Index.cshtml is highlighted in the address bar, and Edit is highlighted at the top right.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image109.png "Editing page")
 
@@ -760,7 +776,7 @@ In the tasks below, you will make changes directly through the Visual Studio Tea
     <h1>Tailspin Toys</h1>
     ```
     
-9.  Now that you've completed the code change, click on the "Commit..." button on the top right side of the screen.
+9.  Now that you've completed the code change, click on the "Commit..." button on the top right side of the screen
 
     ![The code change above is highlighted on the editing page, and Commit is highlighted at the top right.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image110.png "Completing the code change")
 
@@ -778,15 +794,15 @@ In the tasks below, you will make changes directly through the Visual Studio Tea
 
     ![This is a screenshot of the New Pull Request page with details of the code change at the bottom of the page.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image113.png "New Pull Request page")
 
-3.  Click the "Create" button to submit the pull request.
+3.  Click the "Create" button to submit the pull request
 
 ### Task 4: Approve and complete a pull request
 
 Typically, the next few steps would be performed by another team member. This would allow for the code to be peer reviewed. However, in this scenario, you will continue as if you are the only developer on the project.
 
-1.  After submitting the pull request, you are presented with Pull Requests review screen.
+1.  After submitting the pull request, you are presented with Pull Requests review screen
 
-2.  First, click the "Approve" button assuming you approve of the code that was modified.
+2.  First, click the "Approve" button assuming you approve of the code that was modified
 
 3.  This will note that you approved the pull request. Then, click the "Complete" button to finish and merge the pull request into the master branch.
 
@@ -796,9 +812,9 @@ Typically, the next few steps would be performed by another team member. This wo
 
     ![In the Complete pull request dialog box, Delete new-heading after merging is selected and highlighted, and Complete merge is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image115.png "Complete pull request dialog box")
 
-5.  Click the "Complete merge" button.
+5.  Click the "Complete merge" button
 
-6.  You will then see a confirmation of the completed pull request.
+6.  You will then see a confirmation of the completed pull request
 
     ![This is a screenshot of the confirmation message.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image116.png "Confirmation message")
 
