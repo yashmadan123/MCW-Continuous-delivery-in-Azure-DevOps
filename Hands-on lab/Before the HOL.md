@@ -23,7 +23,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-# Building a resilient IaaS architecture before the hands-on labe setup guide
+# Building a resilient IaaS architecture before the hands-on lab setup guide
 
 ## Requirements
 
@@ -50,7 +50,7 @@ In this lab, you will create a developer environment and download the required f
 
 ### Task 1: Configure a development environment
 
-If you do not have a machine setup with Visual Studio 2017 Community complete this task.
+If you do not have a machine setup with Visual Studio 2017 Community, complete this task.
 
 1.  Create a virtual machine in Azure using the Visual Studio Community 2017 on Windows Server 2016 image.
 
