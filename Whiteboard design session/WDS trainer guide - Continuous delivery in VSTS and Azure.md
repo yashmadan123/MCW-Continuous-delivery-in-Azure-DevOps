@@ -18,6 +18,7 @@ Information in this document, including URL and other Internet Web site referenc
 Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
+
 © 2018 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
@@ -88,7 +89,9 @@ Each whiteboard design session uses the following flow:
 
 **Step 1: Review the customer case study (15 minutes)**
 
-Outcome: Analyze your customer's needs
+**Outcome**
+
+Analyze your customer's needs.
 
 -   Customer's background, situation, needs and technical requirements
 
@@ -98,7 +101,9 @@ Outcome: Analyze your customer's needs
 
 **Step 2: Design a proof of concept solution (60 minutes)**
 
-Outcome: Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format
+**Outcome**
+
+Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
 
 -   Determine your target customer audience
 
@@ -110,7 +115,9 @@ Outcome: Design a solution and prepare to present the solution to the target cus
 
 **Step 3: Present the solution (30 minutes)**
 
-Outcome: Present solution to your customer
+**Outcome**
+
+Present solution to your customer.
 
 -   Present solution
 
@@ -144,7 +151,7 @@ Before conducting your first whiteboard design session:
 
 When participants are doing activities, you can **look ahead to refresh your memory**.
 
--   **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing.
+-   **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing
 
 -   **Add examples, points, and stories** from your own experience. Think about stories you can share that help you make your points clearly and effectively.
 
@@ -158,7 +165,7 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 **Ask first**, whenever possible. Before launching into a topic, learn your audience's opinions about it and experiences with it. Asking first enables you to assess their level of knowledge and experience, and leaves them more open to what you are presenting.
 
-**Wait for responses**. If you ask a question such as, "What is your experience with (fill in the blank)?" then wait. Do not be afraid of a little silence. If you leap into the silence, your participants will feel you are not serious about involving them and will become passive. Give participants a chance to think, and if no one answers, patiently ask again. You will usually get a response.
+**Wait for responses**. If you ask a question such as, "What's your experience with (fill in the blank)?" then wait. Do not be afraid of a little silence. If you leap into the silence, your participants will feel you are not serious about involving them and will become passive. Give participants a chance to think, and if no one answers, patiently ask again. You will usually get a response.
 
 # Continuous delivery in VSTS and Azure whiteboard design session student guide
 
@@ -179,17 +186,19 @@ At the end of this whiteboard design session, you will be better able to design 
 
 ## Step 1: Review the customer case study 
 
-**Outcome** 
+**Outcome**
 
-Analyze your customer’s needs
+Analyze your customer's needs.
 
-Time frame: 15 minutes 
+Timeframe: 15 minutes
 
-Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips. 
-1.  Meet your table participants and trainer 
-2.  Read all of the directions for steps 1–3 in the student guide 
+Directions:  With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
+
+1.  Meet your table participants and trainer
+
+2.  Read all of the directions for steps 1-3 in the student guide
+
 3.  As a table team, review the following customer case study
-
 
 ### Customer situation
 
@@ -239,15 +248,15 @@ Todd wants to improve the turnaround time for fixing these bugs, and he needs be
 
 ### Customer objections 
 
-1.  "We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Visual Studio Team Services and need to be able to change between them without frustrating rework"
+1.  We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Visual Studio Team Services and need to be able to change between them without frustrating rework
 
-2.  "We do not want the developers to be able to make changes to the Azure resources even though they will have access to make source code changes"
+2.  We do not want the developers to be able to make changes to the Azure resources even though they will have access to make source code changes
 
-3.  "If developers can deploy directly to the cloud, will that expose us to the same quality problems we had before when untested code was promoted to production?"
+3.  If developers can deploy directly to the cloud, will that expose us to the same quality problems we had before when untested code was promoted to production?
 
-4.  "How much of an impact will these process changes have on our development cadence? Will learning this place a new burden on the developers?"
+4.  How much of an impact will these process changes have on our development cadence? Will learning this place a new burden on the developers?
 
-5.  "Our developers are already having a challenge learning how to use Git---will adding a continuous deployment system on top of that slow them down and confuse them even more?" 
+5.  Our developers are already having a challenge learning how to use Git---will adding a continuous deployment system on top of that slow them down and confuse them even more? 
 
 ### Infographic for common scenarios
 
@@ -255,18 +264,22 @@ Todd wants to improve the turnaround time for fixing these bugs, and he needs be
 
 ## Step 2: Design a proof of concept solution
 
-**Outcome** 
-Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format. 
+**Outcome**
 
-Time frame: 60 minutes
+Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
+
+Timeframe: 60 minutes
 
 **Business needs**
 
-Directions: With all participants at your table, answer the following questions and list the answers on a flip chart. 
-1.  Who should you present this solution to? Who is your target customer audience? Who are the decision makers? 
+Directions: With all participants at your table, answer the following questions and list the answers on a flip chart:
+
+1.  Who should you present this solution to? Who is your target customer audience? Who are the decision makers?
+
 2.  What customer business needs do you need to address with your solution?
 
 **Design** 
+
 Directions: With all participants at your table, respond to the following questions on a flip chart.
 
 *Continuous Integration and Deployment*
@@ -285,56 +298,63 @@ Directions: With all participants at your table, respond to the following questi
 
 *Enhance system logging functionality*
 
-1.  Implement a solution that will enable the logs to be searchable and visible in an online dashboard.
+1.  Implement a solution that will enable the logs to be searchable and visible in an online dashboard
 
 2.  Implement a solution to enhance the application logs to provide more useful performance and application behavior details, specifically around browser metrics and application dependencies. Discuss which visualization, or dashboard, options exist for the log results. Existing App Service logs already cover these topics:
 
-    1.  **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater)
+    a.  **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater)
 
-    2.  **Failed Request Tracing**---detailed information on failed requests, including a trace of the Internet Information Server IIS components used to process the request and the time taken in each component
+    b.  **Failed Request Tracing**---detailed information on failed requests, including a trace of the Internet Information Server IIS components used to process the request and the time taken in each component
 
-    3.  **Web Server Logging**---information about HTTP transactions using the W3C extended log file format
+    c.  **Web Server Logging**---information about HTTP transactions using the W3C extended log file format
 
-    4.  **Application Diagnostics**---trace messages as defined in the source code
+    d.  **Application Diagnostics**---trace messages as defined in the source code
 
-    5.  **Deployment Logs**
+    e.  **Deployment Logs**
 
 **Prepare**
 
-Directions: With all participants at your table: 
+Directions: With all participants at your table:
 
-1.  Identify any customer needs that are not addressed with the proposed solution. 
-2.  Identify the benefits of your solution. 
-3.  Determine how you will respond to the customer’s objections. 
+1.  Identify any customer needs that are not addressed with the proposed solution
 
-Prepare a 15-minute chalk-talk style presentation to the customer. 
+2.  Identify the benefits of your solution
 
+3.  Determine how you will respond to the customer's objections
 
+Prepare a 15-minute chalk-talk style presentation to the customer.
 
 ## Step 3: Present the solution
 
 **Outcome**
- 
+
 Present a solution to the target customer audience in a 15-minute chalk-talk format.
 
-Time frame: 30 minutes
+Timeframe: 30 minutes
 
-**Presentation** 
+**Presentation**
 
 Directions:
+
 1.  Pair with another table
+
 2.  One table is the Microsoft team and the other table is the customer
+
 3.  The Microsoft team presents their proposed solution to the customer
+
 4.  The customer makes one of the objections from the list of objections
+
 5.  The Microsoft team responds to the objection
-6.  The customer team gives feedback to the Microsoft team 
-7.  Tables switch roles and repeat Steps 2–6
 
-## Wrap-up 
+6.  The customer team gives feedback to the Microsoft team
 
-Time frame: 15 minutes
+7.  Tables switch roles and repeat Steps 2-6
 
-Directions: Tables reconvene with the larger group to hear the facilitator/SME share the preferred solution for the case study. 
+##  Wrap-up 
+
+Timeframe: 15 minutes
+
+Directions: Tables reconvene with the larger group to hear the facilitator/SME share the preferred solution for the case study.
  
 ## Additional references
 
@@ -358,9 +378,9 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 -   Ask, "What questions do you have about the customer case study?"
 
--   Briefly review the steps and time frames of the whiteboard design session
+-   Briefly review the steps and timeframes of the whiteboard design session
 
--   Ready, set, go! Let the table participants begin
+-   Ready, set, go! Let the table participants begin.
 
 ## Step 2: Design a proof of concept solution
 
@@ -384,10 +404,9 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
     -   Have the customer team provide one objection for the presenting team to respond to
 
-    -   The presentation and objections should be no longer than 15-minutes
-    
-    -   If needed, the trainer may also provide feedback
+    -   The presentation, objections, and feedback should take no longer than 15 minutes
 
+    -   If needed, the trainer may also provide feedback
 
 ## Wrap-up
 
@@ -514,31 +533,31 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
 ## Checklist of preferred objection handling
 
-1.  "We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Visual Studio Team Services and need to be able to change between them without frustrating rework."
+1.  We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Visual Studio Team Services and need to be able to change between them without frustrating rework.
     
     **Potential answer**
     
     Visual Studio Team Services allows you to use GitHub as an alternate repository for source control. The code can still be built, tested, packaged and deployed using Visual Studio Team Services.
 
-2.  "We do not want the developers to be able to make changes to the Azure resources even though they have access to the source code."
+2.  We do not want the developers to be able to make changes to the Azure resources even though they have access to the source code
     
     **Potential answer**
 
     By using the Release Management features of Visual Studio Team Services, a developer never needs to touch Azure resources. Once the code is checked into the source code repository, the CI/CD activities automate the building, testing and deployment of that code without developer intervention.
 
-3.  "If developers can deploy directly to the cloud, will that expose us to the same problems we had before when untested code was promoted to production?"
+3.  If developers can deploy directly to the cloud, will that expose us to the same problems we had before when untested code was promoted to production?
     
     **Potential answer**
     
     If we use Visual Studio Team Service's Release Management features, we have the opportunity to configure all the necessary rules / approvals for ensuring a smooth and secure deployment process. The goal here is to remove human touches from the process thus increasing the stability of the release process.
 
-4.  "How much of an impact will these process changes have on our development cadence? Will learning this place a new burden on the developers?"
+4.  How much of an impact will these process changes have on our development cadence? Will learning this place a new burden on the developers?
     
     **Potential answer**
 
     CI/CD is a commitment. To achieve velocity with confidence, there is a required rigor in testing that becomes key to success. This will likely result in a learning curve where you must slow down to go fast. It might even be painful at the start, but that pain is ultimately what drives the automation, monitoring, and incident handling efforts.
 
-5.  "Our developers are already having a challenge learning how to use Git---will adding a continuous deployment system on top of that slow them down and confuse them  even more?"
+5.  Our developers are already having a challenge learning how to use Git---will adding a continuous deployment system on top of that slow them down and confuse them  even more?
     
     **Potential answer**
 
