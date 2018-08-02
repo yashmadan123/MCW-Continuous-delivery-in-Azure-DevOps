@@ -235,11 +235,13 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
 1.  Next, you need to configure the template so that it dynamically generates the name of the web application based on the environment it is being deployed to. Click on the parameters item in the JSON Outline window to locate its JSON code. Then, location the "variables" section and replace the corresponding TailspinToysWebName value with the following code:
 
-    "TailspinToysWebName": "[concat('TailspinToysWeb', '-', parameters('environment'), '-', uniqueString(resourceGroup().id))]"},
+    ```
+        "TailspinToysWebName": "[concat('TailspinToysWeb', '-', parameters('environment'), '-', uniqueString(resourceGroup().id))]"},
+    ```
 
-After adding the code, it will look like this:
+    After adding the code, it will look like this:
 
-![This is a screenshot of the code replacement of the TailspinToysWebName value in the "variables" section.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image38.png "Pasted block of JSON code")
+    ![This is a screenshot of the code replacement of the TailspinToysWebName value in the "variables" section.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image38.png "Pasted block of JSON code")
 
 ### Task 8: Add a deployment slot for the "staging" version of the site
 
@@ -262,9 +264,9 @@ After adding the code, it will look like this:
         "resources": []
     }
     ```
-It will look something like this screen shot:
+    It will look something like this screen shot:
 
-![This is a screenshot of the code pasted just below the element for the application insights extension in the "resources" array.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image39.png "Pasted block of JSON code")
+    ![This is a screenshot of the code pasted just below the element for the application insights extension in the "resources" array.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image39.png "Pasted block of JSON code")
 
 ### Task 9: Create the dev environment and deploy the template to Azure
 
