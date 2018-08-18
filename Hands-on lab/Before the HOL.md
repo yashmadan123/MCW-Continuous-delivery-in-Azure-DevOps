@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-April 2018
+August 2018
 </div>
 
 
@@ -56,7 +56,9 @@ If you do not have a machine setup with Visual Studio 2017 Community, complete t
 
     ![This is a screenshot of a results window of a search on visual studio community 2017. The results table has the following columns: Name, Publisher, and Category. The second result is highlighted and has the following values: Visual Studio Community 2017 on Windows Server 2016 (x64), Microsoft, and Compute.](images/Setup/image3.png "Virtual machine creation screenshot")
 
-It is **highly** recommended to use a DS2 or D2 instance size for this VM.
+    > It is **highly** recommended to use a DS2_v2 or D2s_v3 instance size for this VM.
+
+    > You will also need to make sure to enable RDP (port 3389) inbound access to the VM.
 
 ### Task 2: Disable IE enhanced security
 
