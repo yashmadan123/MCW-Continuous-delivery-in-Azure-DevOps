@@ -357,7 +357,7 @@ The following steps are very similar to what was done in the previous task with 
 
 4.  In the next window, select "production" from the list of environments. Then, pick an admin username, and password for the database, it does not matter what you choose. Then use "TailspinData" for the TailspinDataName value. Call the hosting plan "TailspinHostingPlan1" and choose "S1" for the Sku. Finally, be sure to check the "Save passwords..." option at the bottom See this screen shot for help. When finished, click Save.
 
-    ![](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image53.png)
+    ![In the Edit Parameters window, the production value is highlighted along with the values for the admin username and the database password. The TailspinData, TailspinHostingPlan1, and S1 values are also highlighted, and the Save passwords as plain text in the parameters file check box is selected.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image53.png "Edit Parameters window")
 
 5.  Then, click the **Deploy** button on the deployment window
     
@@ -724,7 +724,7 @@ Any commit of new or modified code to the master branch will automatically trigg
 
 3. Click the **Build number** next to the name of the Build pipeline to view the status of the build.
 
-    ![](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image120.png)
+    ![The screenshot depicts the list of Build pipelines showing the Tailspin-CI pipeline. The number for the queued build is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image120.png "Screenshot of Build pipelines with the queued build number highlighted")
 
 3.  If the build is successful, it will resemble the screen shot below.
 
