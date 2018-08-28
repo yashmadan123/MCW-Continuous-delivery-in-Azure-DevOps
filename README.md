@@ -6,53 +6,30 @@ When it moved its existing systems into Microsoft Azure, Tailspin Toys decided t
 
 Tailspin wants to improve the turnaround time for fixing these bugs, and they need better logs for the developers. Tailspin needs a solution to gather new types of logs including browser errors and application dependency errors such as timeouts. Ideally, they want to make the application logs searchable as well as implement an automated warning system that emails alerts when application behavior is unusually slow or problematic.
 
+
 ## Target audience
 
-- Application developer
+- Application Developer
 
 ## Abstract
 
 ### Workshop
 
-In this workshop, you will learn how to setup and configure continuous delivery in Azure using a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS). Attendees will do this throughout the use of a new VSTS project, Git repository for source control, and an Azure Resource Manager template for Azure resource deployment and configuration management.
+In this workshop, you will learn how to setup and configure continuous delivery within Azure using a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS). You will do this throughout the use of a new VSTS project, Git repository for source control, and an Azure Resource Manager template for Azure resource deployment and configuration management.
 
-Attendees will be better able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition,
-
--   Create an Azure Resource Manager (ARM) template to provision Azure resources
-
--   Configure continuous delivery in Visual Studio Team Services (VSTS)
-
--   Configure Application Insights into an application
-
--   Create a Visual Studio Team Services project and Git repository
-
+At the end of this workshop, you will be able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition,  you'll create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with Visual Studio Team Services (VSTS), configure Application Insights into an application, and create a Visual Studio Team Services project and Git repository.
 
 ### Whiteboard design session
-In this whiteboard design session, you will learn how to design a solution with a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS) to enable continuous delivery with several Azure PaaS services. 
 
-At the end of this whiteboard design session, you will be better able to design solutions for continuous delivery in VSTS in Azure and additionally: 
+In this whiteboard design session, you will learn how to design a solution with a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS) to enable continuous delivery with several Azure PaaS services.
 
--   Understand how Azure Resource Manager templates are used provision Azure resources
-
--   Understand how to enable continuous delivery in Visual Studio Team Services (VSTS)
-
--   Understand how to enable configure Application Insights with an application
-
--   Understand how Visual Studio Team Services and Git repositories work together 
-
+At the end of this workshop, you will be better able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition, you'll create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with VSTS, configure Application Insights into an application, and create a Visual Studio Team Services project and Git repository.
 
 ### Hands-on Lab
-In this hands-on lab, you will learn how to implement a solution with a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS) to enable continuous delivery with several Azure PaaS services. 
 
-At the end of this hands-on lab, you will be better able to implement solutions for continuous delivery with VSTS in Azure and additionally: 
+In this hands-on lab, you will learn how to implement a solution with a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS) to enable continuous delivery with several Azure PaaS services.
 
--   Create an Azure Resource Manager (ARM) template to provision Azure resources
-
--   Configure continuous delivery with Visual Studio Team Services (VSTS)
-
--   Configure Application Insights into an application
-
--   Create a Visual Studio Team Services project and Git repository
+At the end of this workshop, you will be better able to implement solutions for continuous delivery with VSTS in Azure, as well create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with VSTS, configure Application Insights into an application, and create a Visual Studio Team Services project and Git repository.
 
 ## Azure services and related products
 - Azure App Service 
@@ -62,7 +39,7 @@ At the end of this hands-on lab, you will be better able to implement solutions 
 - Visual Studio Team Services 
 
 ## Azure solutions
-TBD
+DevOps
 
 ## Related references
 - [MCW](https://github.com/Microsoft/MCW)
