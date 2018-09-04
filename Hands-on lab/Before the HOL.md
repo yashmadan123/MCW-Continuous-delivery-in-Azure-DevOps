@@ -52,7 +52,7 @@ In this lab, you will create a developer environment and download the required f
 
 If you do not have a machine setup with Visual Studio 2017 Community, complete this task.
 
-1.  Create a virtual machine in Azure using the Visual Studio Community 2017 on Windows Server 2016 image.
+1.  At the Azure web portal, create a virtual machine in Azure using the Visual Studio Community 2017 on Windows Server 2016 image.
 
     ![This is a screenshot of a results window of a search on visual studio community 2017. The results table has the following columns: Name, Publisher, and Category. The second result is highlighted and has the following values: Visual Studio Community 2017 on Windows Server 2016 (x64), Microsoft, and Compute.](images/Setup/image3.png "Virtual machine creation screenshot")
 
