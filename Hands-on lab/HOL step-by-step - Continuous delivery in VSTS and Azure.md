@@ -9,9 +9,8 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-April 2018
+August 2018
 </div>
-
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -358,7 +357,7 @@ The following steps are very similar to what was done in the previous task with 
 
 4.  In the next window, select "production" from the list of environments. Then, pick an admin username, and password for the database, it does not matter what you choose. Then use "TailspinData" for the TailspinDataName value. Call the hosting plan "TailspinHostingPlan1" and choose "S1" for the Sku. Finally, be sure to check the "Save passwords..." option at the bottom See this screen shot for help. When finished, click Save.
 
-    ![](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image53.png)
+    ![In the Edit Parameters window, the production value is highlighted along with the values for the admin username and the database password. The TailspinData, TailspinHostingPlan1, and S1 values are also highlighted, and the Save passwords as plain text in the parameters file check box is selected.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image53.png "Edit Parameters window")
 
 5.  Then, click the **Deploy** button on the deployment window
     
@@ -388,6 +387,7 @@ In this exercise, you will create and configure a Visual Studio Team Services ac
     
     ![In this screenshot, Get started for free is selected under Visual Studio Team Services.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image56.png "Visual Studio Team Services screenshot")
 
+
 3.  Authenticate with a Microsoft account
 
 4.  Choose a name for your visualstudio.com account. For the purposes of this scenario, we will use "TailspinToys." Choose **Git** for the source code and then click Create.
@@ -416,7 +416,7 @@ In this Task, you will configure the Visual Studio Team Services Git repository.
     git commit -m "adding files"
     ```
     
-If a ."git" folder and local repository already exists in the TailspinToys.Web folder, then you will need to delete the ."git" folder first before running the above commands to initialize the Git repository
+    >If a ".git" folder and local repository already exists in the TailspinToys.Web folder, then you will need to delete the ."git" folder first before running the above gcommands to initialize the Git repository
 
 3.  Leave that command prompt window open and switch back to the web browser window for Visual Studio Team Services from the previous Task
 
@@ -488,41 +488,41 @@ In this exercise, you will create a build definition in Visual Studio Team Servi
 
     ![In the Visual Studio Team Services window, Build and Release is highlighted in the ribbon. Below that, Builds is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image68.png "Visual Studio Team Services window")
 
-2.  Create a new definition and click continue on the following selection screen below
+2.  Create a new pipeline and click continue on the following selection screen below
 
-    ![In Builds, +New definition is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image69.png "Create a new definition")
+    ![In Builds, +New pipeline is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image69.png "Create a new pipeline")
 
     ![A screen that shows choosing the VSTS Git option for the TailspinToys project.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image70.png "Select a source")
 
-3.  Select the "Empty process" link
+3.  Select the "Empty job" link
 
-    ![Under Select a template, Empty process is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image71.png "Select the Empty process link")
+    ![Under Select a template, Empty job is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image71.png "Select the Empty job link")
 
-4.  Then, you are presented with the build definition process editor. Because we selected "Empty process" in the previous step, this process template comes is pretty empty at the moment. This is where we will add and configure Tasks that define our build process. Notice the Name field on the right side of the screen is already filled in for us with "TailspinToys-CI." You can change this name for your builds, but for now, we will leave it as is.
+4.  Then, you are presented with the build definition process editor. Because we selected "Empty job" in the previous step, this process template comes is pretty empty at the moment. This is where we will add and configure Tasks that define our build process. Notice the Name field on the right side of the screen is already filled in for us with "TailspinToys-CI." You can change this name for your builds, but for now, we will leave it as is.
 
     ![In the TailspinToys-CI build window, the Agent queue drop-down box is empty, below which is a message that states, "This setting is required."](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image72.png "Empty Agent queue drop-down box")
 
-5.  Use the dropdown menu to set Agent queue to "Hosted." This tells VSTS that you want to use their provided build server to build your application. Very convenient.
+5.  Use the dropdown menu to set Agent pool to "Hosted." This tells VSTS that you want to use their provided build server to build your application. Very convenient.
 
-    ![In the Agent queue drop-down box, Hosted is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image73.png "Agent queue drop-down box")
+    ![In the Agent pool drop-down box, Hosted is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image73.png "Agent pool drop-down box")
 
 6.  On the left side of the screen, select the "Get sources" task. Notice the configuration options that appear on the right side of the screen. This is a consistent experience when navigating through the task list. This task is already configured to point to our "TailspinToys" repository and master branch that we configured earlier. No changes are needed to this task.
 
     ![In the TailspinToys-CI build window, the Get sources task is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image74.png "Get sources task")
 
-7.  Next, it is time to add the tasks the perform the build process. Note the default "Phase 1" section on the left side of the screen. This section will hold all of the upcoming tasks we add for our build process. It is simply a way of logically grouping tasks. You can change the display name of "Phase 1", but we will leave it as is for this scenario. Click on the "+" plus sign to the right of the "Phase 1" section header. This will bring up the Add tasks list on the right.
+7.  Next, it is time to add the tasks the perform the build process. Note the default "Agent job 1" section on the left side of the screen. This section will hold all of the upcoming tasks we add for our build process. It is simply a way of logically grouping tasks. You can change the display name of "Agent job 1", but we will leave it as is for this scenario. Click on the "+" plus sign to the right of the "Agent job 1" section header. This will bring up the Add tasks list on the right.
 
     ![In the TailspinToys-CI build window, the plus sign (+) is highlighted next to Phase 1. To the right of that is the Add tasks list.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image75.png "Add tasks list")
 
-8.  We will add four new tasks to Phase 1. In the Search box in the top right of the Add tasks screen, type "Nuget" to filter down the list. Several will be listed and your list may differ slightly from the list below. Select the "NuGet" task and click the "Add" button. 
+8.  We will add four new tasks. In the Search box in the top right of the Add tasks screen, type "Nuget" to filter down the list. Several will be listed and your list may differ slightly from the list below. Select the "NuGet" task and click the "Add" button. 
 
     ![In the Add tasks screen, the Nuget search box and Add button are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image76.png "Add tasks screen")
 
-9.  This adds a new item to the Phase 1 list on the left side of the screen labeled "NuGet restore." Next, we will add the task for actually building the solution. Replace the "Nuget" text in the search box with "Visual Studio Build" and select the Visual Studio Build task by clicking the "Add" button.
- 
+9.  This adds a new item to the Agent job 1 list on the left side of the screen labeled "NuGet restore." Next, we will add the task for actually building the solution. Replace the "Nuget" text in the search box with "Visual Studio Build" and select the Visual Studio Build task by clicking the "Add" button.
+
     ![In the TailspinToys-CI build window, NuGet restore is highlighted on the left, Visual Studio Build is highlighted in the search box, and the Add button is highlighted below that.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image77.png "NuGet restore item")
 
-10. This also added a new item to Phase 1 list on the left side of the screen labeled "Build solution \*\*\\\*.sln." Next, add the task for executing unit tests. Replace the "Visual Studio Build" text in the search box with "Visual Studio Test" and select the task by clicking the "Add" button.
+10. This also added a new item to Agent job 1 list on the left side of the screen labeled "Build solution \*\*\\\*.sln." Next, add the task for executing unit tests. Replace the "Visual Studio Build" text in the search box with "Visual Studio Test" and select the task by clicking the "Add" button.
 
     ![In the TailspinToys-CI build window, Build solution \*\*\\\*.sln is highlighted on the left, Visual Studio Test is highlighted in the search box, and the Add button is highlighted below that.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image78.png "Build solution **\*.sln item")
 
@@ -570,7 +570,7 @@ In this exercise, you will create a release pipeline in Visual Studio Team Servi
 
     ![On the Release Management screen, the Build and Release hub is highlighted in the menu, Releases is highlighted in the submenu, and the + New definition button is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image84.png "Release Management screen")
 
-2.  You are then presented with several release templates to choose from. Click the "Empty process" link at the top of the screen.
+2.  You are then presented with several release templates to choose from. Click the "Empty job" link at the top of the screen.
 
     ![Under Select a Template, the Empty process link is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image85.png "Select a template")
 
@@ -722,7 +722,11 @@ Any commit of new or modified code to the master branch will automatically trigg
 
     ![The Queue button is selected at the bottom of the popup dialog box.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image103.png "Queue button")
 
-3.  A notification banner will indicate your build has been queued. You can follow the build process by clicking on the build notification banner. If the build is successful, it will resemble the screen shot below.
+3. Click the **Build number** next to the name of the Build pipeline to view the status of the build.
+
+    ![The screenshot depicts the list of Build pipelines showing the Tailspin-CI pipeline. The number for the queued build is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image120.png "Screenshot of Build pipelines with the queued build number highlighted")
+
+3.  If the build is successful, it will resemble the screen shot below.
 
     ![The screenshot depicts a green notification banner that reads, "Build succeeded." The banner appears above a summary screen of the build details.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image104.png "Successful notification banner")
 
@@ -824,7 +828,7 @@ Typically, the next few steps would be performed by another team member. This wo
 
 8.  Because we configured continuous integration and continuous deployment, an automated build will be triggered and deployment to dev environment will then begin immediately after a successful build. It will continue through on to the test and production environments.
 
-## After the hands-on lab 
+## After the hands-on lab
 
 Duration: 10 Minutes
 
@@ -833,4 +837,3 @@ These steps should be followed only *after* completing the hands-on lab
 ### Task 1: Delete Resources
 
 1.  Now since the hands-on lab is complete, go ahead and delete all of the Resource Groups that were created for this hands-on lab. You will no longer need those resources and it will be beneficial to clean up your Azure Subscription.
-
