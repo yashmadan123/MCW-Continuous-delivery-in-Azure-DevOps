@@ -90,7 +90,7 @@ Tailspin Toys has requested an Azure environment consisting of the following res
 
 Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, it should take advantage of that platform by utilizing automatic scale for the web app and the SQL Database PaaS service instead of SQL Server virtual machines.
 
-Tasks to complete
+#### Tasks to complete
 
 -   Create an Azure Resource Manager (ARM) template file using Visual Studio.
 
@@ -114,7 +114,7 @@ Tasks to complete
 
 -   Create the production environment and deploy the template to Azure.
 
-Exit criteria
+#### Exit criteria
 
 -   You have a completed ARM template and parameters file saved and committed to source control.
 
@@ -126,13 +126,13 @@ Duration: 15 Minutes
 
 Tailspin Toys has asked you to create a continuous delivery process for their development team. To do that without disrupting their current production application, you are tasked with creating an environment in Azure where this new process and workflow can be proven. Your first task is to create a Visual Studio Team Services Team Project with Git source control where their source code can be maintained.
 
-Tasks to complete
+#### Tasks to complete
 
 -   Create Visual Studio Team Services account.
 
 -   Add the Tailspin Toys source code repository to Visual Studio Team Services.
 
-Exit criteria
+#### Exit criteria
 
 -   You can connect Visual Studio to the Visual Studio Team Services account, clone and view the web app repository from the master branch.
 
@@ -164,7 +164,7 @@ Duration: 30 Minutes
 
 In this exercise you will create a release pipeline in Visual Studio Team Services that performs automated deployment of build artifacts to Microsoft Azure. The release pipeline will deploy to three environments: dev, test, and production.
 
-Tasks to complete
+#### Tasks to complete
 
 -   Create a release definition.
 
@@ -178,7 +178,7 @@ Tasks to complete
 
     -   Deploy to staging slot and then switch the slots after a successful deployment.
 
-Exit criteria
+#### Exit criteria
 
 -   You have created a release pipeline that includes three sequential environments: dev, test, and production. The deployments to dev are automatically triggered upon a successful build. The deployment to test is automatically triggered upon a successful deployment to dev. The deployment to production is automatically triggered upon a successful deployment to production.
 
@@ -188,11 +188,11 @@ Duration: 10 Minutes
 
 In this exercise you will trigger an automated build and release of the web application using the build definition and release pipeline you created in earlier exercises. The release pipeline will deploy to three environments: dev, test, and production.
 
-Tasks to complete
+#### Tasks to complete
 
 -   Manually queue a new build and follow it through the build and release pipeline.
 
-Exit criteria
+#### Exit criteria
 
 -   You have successfully queued a new build and released it through the three environments: dev, test, and production.
 
@@ -202,7 +202,7 @@ Duration: 20 Minutes
 
 In this exercise you will create a short-lived feature branch, make a small code change, and submit a pull request. You'll then merge the pull request into the master branch which triggers an automated build and release of the application
 
-Tasks to complete
+#### Tasks to complete
 
 -   Create a new feature branch.
 
@@ -214,7 +214,7 @@ Tasks to complete
 
 -   Approve and complete a pull request.
 
-Exit criteria
+#### Exit criteria
 
 -   You have successfully created a branch, made a code change, submitted a pull request, approved the pull request, and merged the code.
 
