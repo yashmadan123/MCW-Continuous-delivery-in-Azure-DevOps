@@ -329,7 +329,7 @@ The following steps are very similar to what was done in the previous task with 
 
 >**Note:** Your key will be different from the one shown in this screen shot.
 
-    ![This is a screenshot of a highlighted instrumentation key in the output window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image46.png "Instrumentation key")
+   ![This is a screenshot of a highlighted instrumentation key in the output window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image46.png "Instrumentation key")
 
 ### Task 11: Create the production environment and deploy the template to Azure
 
