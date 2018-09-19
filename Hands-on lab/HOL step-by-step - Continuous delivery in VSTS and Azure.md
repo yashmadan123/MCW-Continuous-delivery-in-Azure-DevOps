@@ -325,7 +325,9 @@ The following steps are very similar to what was done in the previous task with 
 
     ![In the Deploy to Resource Group window, Deploy is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image50.png "Deploy to Resource Group window")
 
-6.  If we have done everything correct, the deployment will begin. You can watch the output window inside Visual Studio to follow along. This deployment typically takes a few minutes. Upon completion, you should see success and you should see an instrumentation key be written out in the output window. Copy this down for a future step in this process. Note that your key will be different from the one shown in this screen shot.
+6.  If we have done everything correct, the deployment will begin. You can watch the output window inside Visual Studio to follow along. This deployment typically takes a few minutes. Upon completion, you should see success and you should see an instrumentation key be written out in the output window. Copy this down for a future step in this process. 
+
+>**Note:** Your key will be different from the one shown in this screen shot.
 
     ![This is a screenshot of a highlighted instrumentation key in the output window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image46.png "Instrumentation key")
 
