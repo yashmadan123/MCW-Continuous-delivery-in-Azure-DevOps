@@ -63,25 +63,25 @@ Thank you for taking time to support the whiteboard design sessions as a trainer
 
 An amazing trainer:
 
--   Creates a safe environment in which learning can take place
+-   Creates a safe environment in which learning can take place.
 
--   Stimulates the participant's thinking
+-   Stimulates the participant's thinking.
 
--   Involves the participant in the learning process
+-   Involves the participant in the learning process.
 
--   Manages the learning process (on time, on topic, and adjusting to benefit participants)
+-   Manages the learning process (on time, on topic, and adjusting to benefit participants).
 
--   Ensures individual participant accountability
+-   Ensures individual participant accountability.
 
--   Ties it all together for the participant
+-   Ties it all together for the participant.
 
--   Provides insight and experience to the learning process
+-   Provides insight and experience to the learning process.
 
--   Effectively leads the whiteboard design session discussion
+-   Effectively leads the whiteboard design session discussion.
 
--   Monitors quality and appropriateness of participant deliverables
+-   Monitors quality and appropriateness of participant deliverables.
 
--   Effectively leads the feedback process
+-   Effectively leads the feedback process.
 
 ## Whiteboard design session flow 
 
@@ -105,19 +105,19 @@ Analyze your customer's needs.
 
 Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
 
--   Determine your target customer audience
+-   Determine your target customer audience.
 
--   Determine customer's business needs to address your solution
+-   Determine customer's business needs to address your solution.
 
--   Design and diagram your solution
+-   Design and diagram your solution.
 
--   Prepare to present your solution
+-   Prepare to present your solution.
 
 **Step 3: Present the solution (30 minutes)**
 
 **Outcome**
 
-Present solution to your customer.
+Present solution to your customer:
 
 -   Present solution
 
@@ -133,15 +133,15 @@ Present solution to your customer.
 
 Before conducting your first whiteboard design session:
 
--   Read the Student guide (including the case study) and Trainer guide
+-   Read the Student guide (including the case study) and Trainer guide.
 
--   Become familiar with all key points and activities
+-   Become familiar with all key points and activities.
 
--   Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions
+-   Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions.
 
--   Prior to the whiteboard design session, discuss the case study to pick up more ideas
+-   Prior to the whiteboard design session, discuss the case study to pick up more ideas.
 
--   Make notes for later
+-   Make notes for later.
 
 ## During the whiteboard design session: Tips for an effective whiteboard design session
 
@@ -151,7 +151,7 @@ Before conducting your first whiteboard design session:
 
 When participants are doing activities, you can **look ahead to refresh your memory**.
 
--   **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing
+-   **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing.
 
 -   **Add examples, points, and stories** from your own experience. Think about stories you can share that help you make your points clearly and effectively.
 
@@ -185,11 +185,11 @@ Timeframe: 15 minutes
 
 Directions:  With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
 
-1.  Meet your table participants and trainer
+1.  Meet your table participants and trainer.
 
-2.  Read all of the directions for steps 1-3 in the student guide
+2.  Read all of the directions for steps 1-3 in the student guide.
 
-3.  As a table team, review the following customer case study
+3.  As a table team, review the following customer case study.
 
 ### Customer situation
 
@@ -219,35 +219,35 @@ Todd wants to improve the turnaround time for fixing these bugs, and he needs be
 
 ### Customer needs 
 
-1.  Be able to automatically and continuously deploy new software builds to the Azure App Service web app
+1.  Be able to automatically and continuously deploy new software builds to the Azure App Service web app.
 
-2.  Ensure that continuously deployed builds to the cloud do not interfere with the production copy of the solution
+2.  Ensure that continuously deployed builds to the cloud do not interfere with the production copy of the solution.
 
-3.  Identify an automated way of deploying to different environments for "development," "test," and "production" so that changes or deployments to one environment do not affect the others
+3.  Identify an automated way of deploying to different environments for "development," "test," and "production" so that changes or deployments to one environment do not affect the others.
 
-4.  Configure the automated builds to first require that a full series of unit tests pass before a deployment is started
+4.  Configure the automated builds to first require that a full series of unit tests pass before a deployment is started.
 
-5.  Provide a search feature and visual dashboard for the application logs so the developers can more quickly resolve help desk tickets
+5.  Provide a search feature and visual dashboard for the application logs so the developers can more quickly resolve help desk tickets.
 
-6.  Enhance the logged data from the front-end website to give the developers a more complete picture of the application's performance and behavior
+6.  Enhance the logged data from the front-end website to give the developers a more complete picture of the application's performance and behavior.
 
-    - Browser information such as browser page load time and user activity per page
+    - Browser information such as browser page load time and user activity per page.
 
-    - Application dependency metrics such as request times and request failures for communication with the database or other services
+    - Application dependency metrics such as request times and request failures for communication with the database or other services.
 
-7.  Implement proactive diagnostics to generate automatic alerts for unusual application behavior including aberrant request response time, dependency response time, and page load time
+7.  Implement proactive diagnostics to generate automatic alerts for unusual application behavior including aberrant request response time, dependency response time, and page load time.
 
 ### Customer objections 
 
 1.  We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Visual Studio Team Services and need to be able to change between them without frustrating rework.
 
-2.  We do not want the developers to be able to make changes to the Azure resources even though they will have access to make source code changes
+2.  We do not want the developers to be able to make changes to the Azure resources even though they will have access to make source code changes.
 
 3.  If developers can deploy directly to the cloud, will that expose us to the same quality problems we had before when untested code was promoted to production?
 
 4.  How much of an impact will these process changes have on our development cadence? Will learning this place a new burden on the developers?
 
-5.  Our developers are already having a challenge learning how to use Git---will adding a continuous deployment system on top of that slow them down and confuse them even more? 
+5.  Our developers are already having a challenge learning how to use Git; will adding a continuous deployment system on top of that slow them down and confuse them even more? 
 
 ### Infographic for common scenarios
 
@@ -271,35 +271,35 @@ Directions: With all participants at your table, answer the following questions 
 
 **Design** 
 
-Directions: With all participants at your table, respond to the following questions on a flip chart.
+Directions: With all participants at your table, respond to the following questions on a flip chart:
 
 *Continuous Integration and Deployment*
 
 1.  What available system should you use to automate software builds and deployments of the application?
 
-2.  Explain how you can continuously deploy new builds directly to the cloud without interfering with the production site
+2.  Explain how you can continuously deploy new builds directly to the cloud without interfering with the production site.
 
-3.  Document how to integrate unit tests into the continuous delivery process so that when a test fails to pass, the deployment process is flagged and stopped
+3.  Document how to integrate unit tests into the continuous delivery process so that when a test fails to pass, the deployment process is flagged and stopped.
 
-4.  Explain how you can test a new build simultaneously with an existing build, like an A/B test
+4.  Explain how you can test a new build simultaneously with an existing build, like an A/B test.
 
 5.  Why shouldn't we have multiple long lived branches in source control?
 
-6.  Create a plan on how to switch the source control location from Visual Studio Team Services to GitHub
+6.  Create a plan on how to switch the source control location from Visual Studio Team Services to GitHub.
 
 *Enhance system logging functionality*
 
-1.  Implement a solution that will enable the logs to be searchable and visible in an online dashboard
+1.  Implement a solution that will enable the logs to be searchable and visible in an online dashboard.
 
 2.  Implement a solution to enhance the application logs to provide more useful performance and application behavior details, specifically around browser metrics and application dependencies. Discuss which visualization, or dashboard, options exist for the log results. Existing App Service logs already cover these topics:
 
-    -  **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater)
+    -  **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater).
 
-    -  **Failed Request Tracing**---detailed information on failed requests, including a trace of the Internet Information Server IIS components used to process the request and the time taken in each component
+    -  **Failed Request Tracing**---detailed information on failed requests, including a trace of the Internet Information Server IIS components used to process the request and the time taken in each component.
 
-    -  **Web Server Logging**---information about HTTP transactions using the W3C extended log file format
+    -  **Web Server Logging**---information about HTTP transactions using the W3C extended log file format.
 
-    -  **Application Diagnostics**---trace messages as defined in the source code
+    -  **Application Diagnostics**---trace messages as defined in the source code.
 
     -  **Deployment Logs**
 
@@ -307,11 +307,11 @@ Directions: With all participants at your table, respond to the following questi
 
 Directions: With all participants at your table:
 
-1.  Identify any customer needs that are not addressed with the proposed solution
+1.  Identify any customer needs that are not addressed with the proposed solution.
 
-2.  Identify the benefits of your solution
+2.  Identify the benefits of your solution.
 
-3.  Determine how you will respond to the customer's objections
+3.  Determine how you will respond to the customer's objections.
 
 Prepare a 15-minute chalk-talk style presentation to the customer.
 
@@ -327,19 +327,19 @@ Timeframe: 30 minutes
 
 Directions:
 
-1.  Pair with another table
+1.  Pair with another table.
 
-2.  One table is the Microsoft team and the other table is the customer
+2.  One table is the Microsoft team and the other table is the customer.
 
-3.  The Microsoft team presents their proposed solution to the customer
+3.  The Microsoft team presents their proposed solution to the customer.
 
-4.  The customer makes one of the objections from the list of objections
+4.  The customer makes one of the objections from the list of objections.
 
-5.  The Microsoft team responds to the objection
+5.  The Microsoft team responds to the objection.
 
-6.  The customer team gives feedback to the Microsoft team
+6.  The customer team gives feedback to the Microsoft team.
 
-7.  Tables switch roles and repeat Steps 2-6
+7.  Tables switch roles and repeat Steps 2-6.
 
 ##  Wrap-up 
 
@@ -365,43 +365,43 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 ## Step 1: Review the customer case study
 
--   Check in with your table participants to introduce yourself as the trainer
+-   Check in with your table participants to introduce yourself as the trainer.
 
 -   Ask, "What questions do you have about the customer case study?"
 
--   Briefly review the steps and timeframes of the whiteboard design session
+-   Briefly review the steps and timeframes of the whiteboard design session.
 
 -   Ready, set, go! Let the table participants begin.
 
 ## Step 2: Design a proof of concept solution
 
--   Check in with your tables to ensure that they are transitioning from step to step on time
+-   Check in with your tables to ensure that they are transitioning from step to step on time.
 
--   Provide some feedback on their responses to the business needs and design
+-   Provide some feedback on their responses to the business needs and design.
 
-    -   Try asking questions first that will lead the participants to discover the answers on their own
+    -   Try asking questions first that will lead the participants to discover the answers on their own.
 
--   Provide feedback for their responses to the customer's objections
+-   Provide feedback for their responses to the customer's objections.
 
-    -   Try asking questions first that will lead the participants to discover the answers on their own
+    -   Try asking questions first that will lead the participants to discover the answers on their own.
 
 ## Step 3: Present the solution
 
--   Determine which table will be paired with your table before Step 3 begins
+-   Determine which table will be paired with your table before Step 3 begins.
 
--   For the first round, assign one table as the presenting team and the other table as the customer
+-   For the first round, assign one table as the presenting team and the other table as the customer.
 
--   Have the presenting team present their solution to the customer team
+-   Have the presenting team present their solution to the customer team.
 
-    -   Have the customer team provide one objection for the presenting team to respond to
+    -   Have the customer team provide one objection for the presenting team to respond to.
 
-    -   The presentation, objections, and feedback should take no longer than 15 minutes
+    -   The presentation, objections, and feedback should take no longer than 15 minutes.
 
-    -   If needed, the trainer may also provide feedback
+    -   If needed, the trainer may also provide feedback.
 
 ## Wrap-up
 
--   Have the table participants reconvene with the larger session group to hear the facilitator/SME share the following preferred solution
+-   Have the table participants reconvene with the larger session group to hear the facilitator/SME share the following preferred solution.
 
 ##  Preferred target audience
 
@@ -415,29 +415,29 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 The solution for the Tailspin Toys scenario involves several technologies, including:
 
--   Creating a local, short lived branch for feature work
+-   Creating a local, short lived branch for feature work.
 
--   Committing to the local branch and pushing to a central repository
+-   Committing to the local branch and pushing to a central repository.
 
--   Using pull requests to merge to a single, long lived master branch after peer review
+-   Using pull requests to merge to a single, long lived master branch after peer review.
 
--   Creating a build definition that is automatically triggered with each commit
+-   Creating a build definition that is automatically triggered with each commit.
 
--   Executing unit tests as part of the automated build process
+-   Executing unit tests as part of the automated build process.
 
 -   Creating a release pipeline that relies upon several Visual Studio Team Services Release Management features:
 
-    -   Provisioning of Azure resources using Azure Resource Management (ARM) Templates
+    -   Provisioning of Azure resources using Azure Resource Management (ARM) Templates.
 
-    -   Automated deployment of solution to development environment
+    -   Automated deployment of solution to development environment.
 
-    -   Execution of automated tests
+    -   Execution of automated tests.
 
-    -   Manual approval process for promoting solution to test and ultimately production environments using deployment slots
+    -   Manual approval process for promoting solution to test and ultimately production environments using deployment slots.
 
-    -   Automatic switching of deployment slots upon successful deployment conditions
+    -   Automatic switching of deployment slots upon successful deployment conditions.
 
--   Creating an Application Insights account to gather more detailed analytics on the application's performance and health
+-   Creating an Application Insights account to gather more detailed analytics on the application's performance and health.
 
 
 *Continuous Integration and Deployment*
@@ -482,7 +482,7 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
 5.  Why shouldn't we have multiple long lived branches in source control?
 
-    If you think if your work as delta off of a master...the size of the delta increases as your branch incorporates more and more work. As the size of your team grows, the amount of work hidden from each other increases. And the chances that your assumptions about the state of the code hold true decreases the more you use long lived branches. If you merge your code back to master frequently, you demonstrate the direction you're taking the code. When you merge your code more frequently to master, the pain of integration happens at the beginning instead of the end of your work. This allows you to find issues faster and fix them at the earliest possible moment. Merging your code frequently also results in fewer merge conflicts. If you're developing a large feature, consider using feature flags so that you can continue to merge your code frequently.
+    If you think of your work as delta off of a master, the size of the delta increases as your branch incorporates more and more work. As the size of your team grows, the amount of work hidden from each other increases. And the chances that your assumptions about the state of the code hold true decreases the more you use long lived branches. If you merge your code back to master frequently, you demonstrate the direction you're taking the code. When you merge your code more frequently to master, the pain of integration happens at the beginning instead of the end of your work. This allows you to find issues faster and fix them at the earliest possible moment. Merging your code frequently also results in fewer merge conflicts. If you're developing a large feature, consider using feature flags so that you can continue to merge your code frequently.
 
 6.  Create a plan on how to switch the source control location from Visual Studio Team Services to GitHub.
 
@@ -499,13 +499,13 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
 2.  Implement a solution to enhance the application logs to provide more useful performance and application behavior details, specifically around browser metrics and application dependencies. Discuss which visualization, or dashboard, options exist for the log results. Existing App Service logs already cover these topics:
 
-    -  **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater)
+    -  **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater).
 
-    -  **Failed Request Tracing**---detailed information on failed requests, including a trace of the Internet Information Server IIS components used to process the request and the time taken in each component
+    -  **Failed Request Tracing**---detailed information on failed requests, including a trace of the Internet Information Server IIS components used to process the request and the time taken in each component.
 
-    -  **Web Server Logging**---information about HTTP transactions using the W3C extended log file format
+    -  **Web Server Logging**---information about HTTP transactions using the W3C extended log file format.
 
-    -  **Application Diagnostics**---trace messages as defined in the source code
+    -  **Application Diagnostics**---trace messages as defined in the source code.
 
     -  **Deployment Logs**
 
@@ -540,7 +540,7 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
     
     **Potential answer**
     
-    If we use Visual Studio Team Service's Release Management features, we have the opportunity to configure all the necessary rules / approvals for ensuring a smooth and secure deployment process. The goal here is to remove human touches from the process thus increasing the stability of the release process.
+    If we use Visual Studio Team Service's Release Management features, we have the opportunity to configure all the necessary rules and/or approvals for ensuring a smooth and secure deployment process. The goal here is to remove human touches from the process thus increasing the stability of the release process.
 
 4.  How much of an impact will these process changes have on our development cadence? Will learning this place a new burden on the developers?
     
@@ -548,7 +548,7 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
     CI/CD is a commitment. To achieve velocity with confidence, there is a required rigor in testing that becomes key to success. This will likely result in a learning curve where you must slow down to go fast. It might even be painful at the start, but that pain is ultimately what drives the automation, monitoring, and incident handling efforts.
 
-5.  Our developers are already having a challenge learning how to use Git---will adding a continuous deployment system on top of that slow them down and confuse them  even more?
+5.  Our developers are already having a challenge learning how to use Git; will adding a continuous deployment system on top of that slow them down and confuse them  even more?
     
     **Potential answer**
 
