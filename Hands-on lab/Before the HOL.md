@@ -23,18 +23,30 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
+**Contents**
+
+<!-- TOC -->
+
+- [\[insert workshop name here\] before the hands-on lab setup guide](#\insert-workshop-name-here\-before-the-hands-on-lab-setup-guide)
+    - [Requirements](#requirements)
+    - [Before the hands-on lab](#before-the-hands-on-lab)
+        - [Task 1: Configure a development environment](#task-1-Configure-a-development-environment)
+        - [Task 2: Disable IE enhanced security](#task-2-Disable-IE-enhanced-security)
+        - [Task 3: Validate connectivity to Azure](#task-3-Validate-connectivity-to-Azure)
+
+<!-- /TOC -->
+
 # Continuous delivery in VSTS and Azure before the hands-on lab setup guide
 
 ## Requirements
 
-1.  Microsoft Azure subscription
+1.  Microsoft Azure subscription.
 
 2.  Local machine or a virtual machine configured with:
 
     -   Visual Studio Community 2017
 
     -   Git command-line interface (CLI)
-
 
 ## Before the hands-on lab
 
@@ -44,9 +56,9 @@ In this lab, you will create a developer environment and download the required f
 
 ### Prerequisites
 
--   Microsoft Azure subscription <http://azure.microsoft.com/en-us/pricing/free-trial/>
+-   Microsoft Azure subscription <http://azure.microsoft.com/en-us/pricing/free-trial/>.
 
--   Client computer with Windows 7 or later with Visual Studio 2017
+-   Client computer with Windows 7 or later with Visual Studio 2017.
 
 ### Task 1: Configure a development environment
 
@@ -62,7 +74,7 @@ If you do not have a machine setup with Visual Studio 2017 Community, complete t
 
 ### Task 2: Disable IE enhanced security
 
-Note: Sometimes this image has IE ESC disabled, and sometimes it does not.
+>**Note:** Sometimes this image has IE ESC disabled, and sometimes it does not.
 
 1.  On the new VM, you just created click the Server Manager icon.
 
@@ -92,25 +104,27 @@ Note: Sometimes this image has IE ESC disabled, and sometimes it does not.
 
 1.  Download the exercise files for the training (from within the virtual machine).
 
-    -   Create a new folder on your computer named **C:\\Hackathon**
+    -   Create a new folder on your computer named **C:\\Hackathon**.
 
     -   Download the support files (.zip format), https://cloudworkshop.blob.core.windows.net/agile-continous-delivery/Agile-Continuous-Delivery-Student%20Files-6-2017.zip to the new folder.
 
     -   Extract the contents to the **C:\\Hackathon** folder.
 
-Tip: In the labs, when adding resources to the Azure Resource Manager template, ensure there are no spaces at the end of the resource names. Visual Studio will include the space in all of the code it generates.
+**Tip:** In the labs, when adding resources to the Azure Resource Manager template, ensure there are no spaces at the end of the resource names. Visual Studio will include the space in all of the code it generates.
 
 ### Task 4: Download and install Git
 
-1.  Open a web browser, and navigate to <https://git-scm.com>
+1.  Open a web browser, and navigate to <https://git-scm.com>.
 
 2.  If you get a prompt about Internet Explorer defaults, just click OK.
     
     ![In the Set up Internet Explorer 11 dialog box, Use recommended security, privacy, and compatibility settings is selected, Send Do Not Track requests to tell sites you prefer not to be tracked is selected, and the OK button is highlighted.](images/Setup/image9.png "Set up Internet Explorer 11 dialog box")
 
-3.  Find the computer screen icon on the left that says, "Latest source Release" and click "Downloads for Windows." **NOTE: In this screenshot, it shows version 2.14.3 but you might see a more recent version. Use whatever version is listed on the site.**
+3.  Find the computer screen icon on the left that says, "Latest source Release" and click "Downloads for Windows." 
+
+>**Note: In this screenshot, it shows version 2.14.3 but you might see a more recent version. Use whatever version is listed on the site.**
     
-    ![Download 2.14.3 for Windows is highlighted on a computer screen icon.](images/Setup/image10.png "Downloads for Windows")
+   ![Download 2.14.3 for Windows is highlighted on a computer screen icon.](images/Setup/image10.png "Downloads for Windows")
 
 4.  The download should start; click **Run** in the security prompt.
     
@@ -157,6 +171,7 @@ Tip: In the labs, when adding resources to the Azure Resource Manager template, 
     ![In the Git 2.14.3 Setup wizard, on the Completing the Git Setup Wizard page, View Release Notes is selected, and Finish is highlighted at the bottom.](images/Setup/image21.png "Completing the Git Setup Wizard page")
 
 15. Open a **command prompt**, and type these commands on the command line.
+
     ```
     git config --global user.name "<your name>"
     git config --global user.email <your email>
