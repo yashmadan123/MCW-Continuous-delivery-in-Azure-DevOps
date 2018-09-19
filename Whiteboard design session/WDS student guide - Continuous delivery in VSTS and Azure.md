@@ -121,7 +121,7 @@ Todd wants to improve the turnaround time for fixing these bugs, and he needs be
 
 4.  How much of an impact will these process changes have on our development cadence? Will learning this place a new burden on the developers?
 
-5.  Our developers are already having a challenge learning how to use Git---will adding a continuous deployment system on top of that slow them down and confuse them even more?  
+5.  Our developers are already having a challenge learning how to use Git; will adding a continuous deployment system on top of that slow them down and confuse them even more?  
 
 ### Infographic for common scenarios
 
