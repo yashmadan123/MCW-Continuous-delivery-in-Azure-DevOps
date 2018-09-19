@@ -25,37 +25,29 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 <!-- TOC -->
 
-- [Abstract and learning objectives](#abstract-and-learning-objectives)
-- [Overview](#overview)
-- [Solution architecture](#solution-architecture)
-- [Requirements](#requirements)
-- [Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, SQL database, and deployment slots in a single automated process.](#exercise-1-create-an-azure-resource-manager-arm-template-that-can-provision-the-web-application-sql-database-and-deployment-slots-in-a-single-automated-process)
-- [Exercise 2: Create a Visual Studio Team Services team project and Git Repository](#exercise-2-create-a-visual-studio-team-services-team-project-and-git-repository)
-- [Exercise 3: Create Visual Studio Team Services build definition](#exercise-3-create-visual-studio-team-services-build-definition)
-    - [Tasks to complete](#tasks-to-complete)
-    - [Exit criteria](#exit-criteria)
-- [Exercise 4: Create Visual Studio Team Services release pipeline](#exercise-4-create-visual-studio-team-services-release-pipeline)
-- [Exercise 5: Trigger a build and release](#exercise-5-trigger-a-build-and-release)
-- [Exercise 6: Create a feature branch and submit a pull request](#exercise-6-create-a-feature-branch-and-submit-a-pull-request)
-- [After the hands-on lab](#after-the-hands-on-lab)
-    - [Task 1: Delete Resources](#task-1-delete-resources)
+- [Continuous delivery in VSTS and Azure hands-on lab unguided](#continuous-delivery-in-vsts-and-azure-hands-on-lab-unguided)
+    - [Abstract and learning objectives](#abstract-and-learning-objectives)
+    - [Overview](#overview)
+    - [Solution architecture](#solution-architecture)
+    - [Requirements](#requirements)
+    - [Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, SQL database, and deployment slots in a single automated process.](#exercise-1-create-an-azure-resource-manager-arm-template-that-can-provision-the-web-application-sql-database-and-deployment-slots-in-a-single-automated-process)
+    - [Exercise 2: Create a Visual Studio Team Services team project and Git Repository](#exercise-2-create-a-visual-studio-team-services-team-project-and-git-repository)
+    - [Exercise 3: Create Visual Studio Team Services build definition](#exercise-3-create-visual-studio-team-services-build-definition)
+    - [Exercise 4: Create Visual Studio Team Services release pipeline](#exercise-4-create-visual-studio-team-services-release-pipeline)
+    - [Exercise 5: Trigger a build and release](#exercise-5-trigger-a-build-and-release)
+    - [Exercise 6: Create a feature branch and submit a pull request](#exercise-6-create-a-feature-branch-and-submit-a-pull-request)
+    - [After the hands-on lab](#after-the-hands-on-lab)
+       - [Task 1: Delete resources](#task-1-delete-resources)
 
 <!-- /TOC -->
 
+# Continuous delivery in VSTS and Azure hands-on lab unguided
+
 ## Abstract and learning objectives 
 
-In this hands-on lab, you will learn how to implement a solution with a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS) to enable continuous delivery with several Azure PaaS services. 
+In this hands-on lab, you will learn how to implement a solution with a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS) to enable continuous delivery with several Azure PaaS services.
 
-At the end of this hands-on lab, you will be better able to implement solutions for continuous delivery with VSTS in Azure and additionally: 
-
--   Create an Azure Resource Manager (ARM) template to provision Azure resources
-
--   Configure continuous delivery with Visual Studio Team Services (VSTS)
-
--   Configure Application Insights into an application
-
--   Create a Visual Studio Team Services project and Git repository
-
+At the end of this workshop, you will be better able to implement solutions for continuous delivery with VSTS in Azure, as well create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with VSTS, configure Application Insights into an application, and create a Visual Studio Team Services project and Git repository.
 
 ## Overview
 
@@ -67,7 +59,7 @@ Tailspin Toys has asked you to automate their development process in two specifi
 
 ## Requirements
 
-1.  Microsoft Azure subscription
+1.  Microsoft Azure subscription.
 
 2.  Local machine or a virtual machine configured with:
 
@@ -100,33 +92,33 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
 Tasks to complete
 
--   Create an Azure Resource Manager (ARM) template file using Visual Studio
+-   Create an Azure Resource Manager (ARM) template file using Visual Studio.
 
--   Add an Azure SQL Database and Server to the template
+-   Add an Azure SQL Database and Server to the template.
 
--   Add a web hosting plan and web app to the template
+-   Add a web hosting plan and web app to the template.
 
--   Add Application Insights as to the template
+-   Add Application Insights as to the template.
 
--   Configure automatic scale for the web app in the template
+-   Configure automatic scale for the web app in the template.
 
--   Configure the list of release environments parameters
+-   Configure the list of release environments parameters.
 
--   Configure the name of the web app using the environments parameters
+-   Configure the name of the web app using the environments parameters.
 
--   Add a deployment slot for the "staging" version of the site
+-   Add a deployment slot for the "staging" version of the site.
 
--   Create the dev environment and deploy the template to Azure
+-   Create the dev environment and deploy the template to Azure.
 
--   Create the test environment and deploy the template to Azure
+-   Create the test environment and deploy the template to Azure.
 
--   Create the production environment and deploy the template to Azure
+-   Create the production environment and deploy the template to Azure.
 
 Exit criteria
 
--   You have a completed ARM template and parameters file saved and committed to source control
+-   You have a completed ARM template and parameters file saved and committed to source control.
 
--   You have deployed the completed template to Azure that creates the three environments: dev, test, and production
+-   You have deployed the completed template to Azure that creates the three environments: dev, test, and production.
 
 ## Exercise 2: Create a Visual Studio Team Services team project and Git Repository
 
@@ -136,9 +128,9 @@ Tailspin Toys has asked you to create a continuous delivery process for their de
 
 Tasks to complete
 
--   Create Visual Studio Team Services account
+-   Create Visual Studio Team Services account.
 
--   Add the Tailspin Toys source code repository to Visual Studio Team Services
+-   Add the Tailspin Toys source code repository to Visual Studio Team Services.
 
 Exit criteria
 
@@ -152,19 +144,19 @@ In this exercise, you will create a build definition in Visual Studio Team Servi
 
 ### Tasks to complete
 
--   Create a build definition
+-   Create a build definition.
 
-    -   Build the web app
+    -   Build the web app.
 
-    -   Execute unit tests
+    -   Execute unit tests.
 
-    -   Publish artifacts
+    -   Publish artifacts.
 
--   Enable continuous integration
+-   Enable continuous integration.
 
 ### Exit criteria
 
--   An automated build is triggered with each commit of code
+-   An automated build is triggered with each commit of code.
 
 ## Exercise 4: Create Visual Studio Team Services release pipeline
 
@@ -174,17 +166,17 @@ In this exercise you will create a release pipeline in Visual Studio Team Servic
 
 Tasks to complete
 
--   Create a release definition
+-   Create a release definition.
 
-    -   Link the build artifacts to the release
+    -   Link the build artifacts to the release.
 
-    -   Sequential automated flow to three environments: dev, test, and production
+    -   Sequential automated flow to three environments: dev, test, and production.
 
-    -   Deploy to staging slot and then switch the slots after a successful deployment
+    -   Deploy to staging slot and then switch the slots after a successful deployment.
 
--   Add test and production environments to release definition
+-   Add test and production environments to release definition.
 
-    -   Deploy to staging slot and then switch the slots after a successful deployment
+    -   Deploy to staging slot and then switch the slots after a successful deployment.
 
 Exit criteria
 
@@ -198,7 +190,7 @@ In this exercise you will trigger an automated build and release of the web appl
 
 Tasks to complete
 
--   Manually queue a new build and follow it through the build and release pipeline
+-   Manually queue a new build and follow it through the build and release pipeline.
 
 Exit criteria
 
@@ -212,15 +204,15 @@ In this exercise you will create a short-lived feature branch, make a small code
 
 Tasks to complete
 
--   Create a new feature branch
+-   Create a new feature branch.
 
--   Make a code change to the feature branch
+-   Make a code change to the feature branch.
 
--   Commit the code change
+-   Commit the code change.
 
--   Submit a pull request
+-   Submit a pull request.
 
--   Approve and complete a pull request
+-   Approve and complete a pull request.
 
 Exit criteria
 
@@ -228,9 +220,9 @@ Exit criteria
 
 ## After the hands-on lab 
 
-You should follow all steps provided *after* attending the hands-on lab
+You should follow all steps provided *after* attending the hands-on lab.
 
-### Task 1: Delete Resources
+### Task 1: Delete resources
 
 1.  Now since the hands-on lab is complete, go ahead and delete all of the Resource Groups that were created for this Hackathon. You will no longer need those resources and it will be beneficial to clean up your Azure Subscription.
 
