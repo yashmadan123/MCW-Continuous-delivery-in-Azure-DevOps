@@ -27,12 +27,14 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [\[insert workshop name here\] before the hands-on lab setup guide](#\insert-workshop-name-here\-before-the-hands-on-lab-setup-guide)
+- [Continuous delivery in VSTS and Azure before the hands-on lab setup guide](#continuous-delivery-in-vsts-and-azure-before-the-hands-on-lab-setup-guide)
     - [Requirements](#requirements)
     - [Before the hands-on lab](#before-the-hands-on-lab)
-        - [Task 1: Configure a development environment](#task-1-Configure-a-development-environment)
-        - [Task 2: Disable IE enhanced security](#task-2-Disable-IE-enhanced-security)
-        - [Task 3: Validate connectivity to Azure](#task-3-Validate-connectivity-to-Azure)
+        - [Prerequisites](#prerequisites)
+        - [Task 1: Configure a development environment](#task-1-configure-a-development-environment)
+        - [Task 2: Disable IE enhanced security](#task-2-disable-ie-enhanced-security)
+        - [Task 3: Validate connectivity to Azure](#task-3-validate-connectivity-to-azure)
+        - [Task 4: Download and install Git](#task-4-download-and-install-git)
 
 <!-- /TOC -->
 

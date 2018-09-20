@@ -401,6 +401,8 @@ In this Task, you will configure the Visual Studio Team Services Git repository.
 
 1.  In the support files, open a command prompt in the **C:\\Hackathon** folder.
 
+    > **Note**: If this folder doesn't exist ensure you followed the instructions in the Before the HOL.
+
 2.  Initialize a local Git repository by running the following commands at the command prompt:
 
     ```
