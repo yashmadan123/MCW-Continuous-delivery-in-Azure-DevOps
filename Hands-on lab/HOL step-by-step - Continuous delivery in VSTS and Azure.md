@@ -224,7 +224,7 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
 ### Task 7: Configure the name of the web app using the environments parameters
 
-1.  Next, you need to configure the template so that it dynamically generates the name of the web application based on the environment it is being deployed to. Click on the parameters item in the JSON Outline window to locate its JSON code. Then, location the "variables" section and replace the corresponding TailspinToysWebName value with the following code:
+1.  Next, you need to configure the template so that it dynamically generates the name of the web application based on the environment it is being deployed to. Click on the variables item in the JSON Outline window to locate its JSON code. Then, location the "variables" section and replace the corresponding TailspinToysWebName value with the following code:
 
     ```
         "TailspinToysWebName": "[concat('TailspinToysWeb', '-', parameters('environment'), '-', uniqueString(resourceGroup().id))]"},
