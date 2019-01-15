@@ -1,7 +1,7 @@
 ![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Continuous delivery in VSTS and Azure
+Continuous delivery in Azure DevOps and Azure
 </div>
 
 <div class="MCWHeader2">
@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-August 2018
+January 2019
 </div>
 
 
@@ -27,18 +27,18 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Continuous delivery in VSTS and Azure before the hands-on lab setup guide](#continuous-delivery-in-vsts-and-azure-before-the-hands-on-lab-setup-guide)
-    - [Requirements](#requirements)
-    - [Before the hands-on lab](#before-the-hands-on-lab)
-        - [Prerequisites](#prerequisites)
-        - [Task 1: Configure a development environment](#task-1-configure-a-development-environment)
-        - [Task 2: Disable IE enhanced security](#task-2-disable-ie-enhanced-security)
-        - [Task 3: Validate connectivity to Azure](#task-3-validate-connectivity-to-azure)
-        - [Task 4: Download and install Git](#task-4-download-and-install-git)
+- [Continuous delivery in Azure DevOps and Azure before the hands-on lab setup guide](#continuous-delivery-in-azure-devops-and-azure-before-the-hands-on-lab-setup-guide)
+  - [Requirements](#requirements)
+  - [Before the hands-on lab](#before-the-hands-on-lab)
+    - [Prerequisites](#prerequisites)
+    - [Task 1: Configure a development environment](#task-1-configure-a-development-environment)
+    - [Task 2: Disable IE enhanced security](#task-2-disable-ie-enhanced-security)
+    - [Task 3: Validate connectivity to Azure](#task-3-validate-connectivity-to-azure)
+    - [Task 4: Download and install Git](#task-4-download-and-install-git)
 
 <!-- /TOC -->
 
-# Continuous delivery in VSTS and Azure before the hands-on lab setup guide
+# Continuous delivery in Azure DevOps and Azure before the hands-on lab setup guide
 
 ## Requirements
 

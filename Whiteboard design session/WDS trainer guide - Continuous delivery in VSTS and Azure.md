@@ -1,7 +1,7 @@
 ![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Continuous delivery in VSTS and Azure
+Continuous delivery in Azure DevOps and Azure
 </div>
 
 <div class="MCWHeader2">
@@ -9,7 +9,7 @@ Continuous delivery in VSTS and Azure
 </div>
 
 <div class="MCWHeader3">
-August 2018
+January 2019
 </div>
 
 
@@ -28,30 +28,30 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 <!-- TOC -->
 
 - [Trainer information](#trainer-information)
-    - [Role of the trainer](#role-of-the-trainer)
-    - [Whiteboard design session flow](#whiteboard-design-session-flow)
-    - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
-    - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
-- [Continuous delivery in VSTS and Azure whiteboard design session student guide](#continuous-delivery-in-vsts-and-azure-whiteboard-design-session-student-guide)
-    - [Abstract and learning objectives](#abstract-and-learning-objectives)
-    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
-        - [Customer situation](#customer-situation)
-        - [Customer needs](#customer-needs)
-        - [Customer objections](#customer-objections)
-        - [Infographic for common scenarios](#infographic-for-common-scenarios)
-    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
-    - [Step 3: Present the solution](#step-3-present-the-solution)
-    - [Wrap-up](#wrap-up)
-    - [Additional references](#additional-references)
-- [Continuous delivery in VSTS and Azure whiteboard design session trainer guide](#continuous-delivery-in-vsts-and-azure-whiteboard-design-session-trainer-guide)
-    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
-    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
-    - [Step 3: Present the solution](#step-3-present-the-solution-1)
-    - [Wrap-up](#wrap-up-1)
-    - [Preferred target audience](#preferred-target-audience)
-    - [Preferred solution](#preferred-solution)
-    - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
-    - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
+  - [Role of the trainer](#role-of-the-trainer)
+  - [Whiteboard design session flow](#whiteboard-design-session-flow)
+  - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
+  - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
+- [Continuous delivery in Azure DevOps and Azure whiteboard design session student guide](#continuous-delivery-in-azure-devops-and-azure-whiteboard-design-session-student-guide)
+  - [Abstract and learning objectives](#abstract-and-learning-objectives)
+  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
+    - [Customer situation](#customer-situation)
+    - [Customer needs](#customer-needs)
+    - [Customer objections](#customer-objections)
+    - [Infographic for common scenarios](#infographic-for-common-scenarios)
+  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
+  - [Step 3: Present the solution](#step-3-present-the-solution)
+  - [Wrap-up](#wrap-up)
+  - [Additional references](#additional-references)
+- [Continuous delivery in Azure DevOps and Azure whiteboard design session trainer guide](#continuous-delivery-in-azure-devops-and-azure-whiteboard-design-session-trainer-guide)
+  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
+  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
+  - [Step 3: Present the solution](#step-3-present-the-solution-1)
+  - [Wrap-up](#wrap-up-1)
+  - [Preferred target audience](#preferred-target-audience)
+  - [Preferred solution](#preferred-solution)
+  - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
+  - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
 
 <!-- /TOC -->
 
@@ -167,13 +167,13 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 **Wait for responses**. If you ask a question such as, "What's your experience with (fill in the blank)?" then wait. Do not be afraid of a little silence. If you leap into the silence, your participants will feel you are not serious about involving them and will become passive. Give participants a chance to think, and if no one answers, patiently ask again. You will usually get a response.
 
-# Continuous delivery in VSTS and Azure whiteboard design session student guide
+# Continuous delivery in Azure DevOps and Azure whiteboard design session student guide
 
 ## Abstract and learning objectives 
 
-In this whiteboard design session, you will learn how to design a solution with a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS) to enable continuous delivery with several Azure PaaS services.
+In this whiteboard design session, you will learn how to design a solution with a combination of Azure Resource Manager templates and Azure DevOps to enable continuous delivery with several Azure PaaS services.
 
-At the end of this workshop, you will be better able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition, you'll create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with VSTS, configure Application Insights into an application, and create a Visual Studio Team Services project and Git repository.
+At the end of this workshop, you will be better able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition, you'll create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with Azure DevOps, configure Application Insights into an application, and create an Azure DevOps project and Git repository.
 
 ## Step 1: Review the customer case study 
 
@@ -205,7 +205,7 @@ When it moved its existing systems into Microsoft Azure, Tailspin Toys decided t
 
 Todd Culp is the enterprise architect at Tailspin Toys, and he is responsible for the application and development team's environments in Azure. He has also been tasked with changing the development processes for his team, so they can be more agile and adaptive in the marketplace.
 
-The public website is currently deployed as an ASP.NET MVC 4 Web App in an App Service Plan in the S3 tier. The development team is hosting its source control for the system in Visual Studio Team Services using a Git repository with branches set up for multiple environments including "development," "test," and "master." As they get close to a release point, the developers have a manual internal code review and QA process in which they debug the application on each other's machines and run through some use cases to test new and existing features in the application. When the build is ready, they manually deploy updates to the website through Visual Studio or FTP. Todd has been tasked with automating the entire process of testing, building, and deploying to the cloud for both the QA team, so they can fully test new builds in a realistic cloud environment, and for the developers, so they cannot deploy any builds that fail the test suite. The builds for the different environments should not affect each other, and there must be an easy way to promote a tested build to production.
+The public website is currently deployed as an ASP.NET MVC 4 Web App in an App Service Plan in the S3 tier. The development team is hosting its source control for the system in Azure DevOps using a Git repository with branches set up for multiple environments including "development," "test," and "master." As they get close to a release point, the developers have a manual internal code review and QA process in which they debug the application on each other's machines and run through some use cases to test new and existing features in the application. When the build is ready, they manually deploy updates to the website through Visual Studio or FTP. Todd has been tasked with automating the entire process of testing, building, and deploying to the cloud for both the QA team, so they can fully test new builds in a realistic cloud environment, and for the developers, so they cannot deploy any builds that fail the test suite. The builds for the different environments should not affect each other, and there must be an easy way to promote a tested build to production.
 
 Todd requires the development team to run unit and integration tests for every build, but there is no formal procedure or accountability over this process within the team. Also, he always makes the team sign off on the build before it goes live, but there have been some bugs that appeared in production that should have been caught by a software-based test before deployment. He thinks the developers are not consistently running all required tests and needs an automated way to enforce this before builds are deployed into the cloud.
 
@@ -215,7 +215,7 @@ Todd wants to improve the turnaround time for fixing these bugs, and he needs be
 
 **Existing solution architecture**
 
-![This is a diagram of Tailspin Toys existing solution architecture. On the left is a Visual Studio icon and the words "development," "test," and "master," which represents the development team hosting its source control in Visual Studio Team Services with branches set up for development, test, and master environments. Three arrows point from these environments to a server and monitor icon on the right labeled Manual internal code review & QA on local developer machines. An arrow points from this icon to another Visual Studio icon on the right labeled Visual Studio/FTP, which represents developers manually deploying updates through Visual Studio or FTP. Two arrows point from this icon to two icons on the right: on the top, Azure App Service with Web App (S3 Instance), and on the bottom, Azure SQL Database (S1 Instance).](images/Whiteboarddesignsessiontrainerguide-ContinuousdeliverywithVSTSandAzureimages/media/image2.png "Existing solution architecture diagram")
+![This is a diagram of Tailspin Toys existing solution architecture. On the left is a Visual Studio icon and the words "development," "test," and "master," which represents the development team hosting its source control in Azure DevOps with branches set up for development, test, and master environments. Three arrows point from these environments to a server and monitor icon on the right labeled Manual internal code review & QA on local developer machines. An arrow points from this icon to another Visual Studio icon on the right labeled Visual Studio/FTP, which represents developers manually deploying updates through Visual Studio or FTP. Two arrows point from this icon to two icons on the right: on the top, Azure App Service with Web App (S3 Instance), and on the bottom, Azure SQL Database (S1 Instance).](images/Whiteboarddesignsessiontrainerguide-ContinuousdeliverywithVSTSandAzureimages/media/image2.png "Existing solution architecture diagram")
 
 ### Customer needs 
 
@@ -239,7 +239,7 @@ Todd wants to improve the turnaround time for fixing these bugs, and he needs be
 
 ### Customer objections 
 
-1.  We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Visual Studio Team Services and need to be able to change between them without frustrating rework.
+1.  We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Azure DevOps and need to be able to change between them without frustrating rework.
 
 2.  We do not want the developers to be able to make changes to the Azure resources even though they will have access to make source code changes.
 
@@ -251,7 +251,7 @@ Todd wants to improve the turnaround time for fixing these bugs, and he needs be
 
 ### Infographic for common scenarios
 
-![Common Scenarios for building a continuous deployment pipeline with Visual Studio Team Services. Images include the icon for VSTS, a Git repo, and a pipeline](images/commonscenarios.png "Common Scenarios for building a continuous deployment pipeline with Visual Studio Team Services")
+![Common Scenarios for building a continuous deployment pipeline with Azure DevOps. Images include the icon for Azure DevOps, a Git repo, and a pipeline](images/commonscenarios.png "Common Scenarios for building a continuous deployment pipeline with Visual Studio Team Services")
 
 ## Step 2: Design a proof of concept solution
 
@@ -285,7 +285,7 @@ Directions: With all participants at your table, respond to the following questi
 
 5.  Why shouldn't we have multiple long lived branches in source control?
 
-6.  Create a plan on how to switch the source control location from Visual Studio Team Services to GitHub.
+6.  Create a plan on how to switch the source control location from Azure DevOps to GitHub.
 
 *Enhance system logging functionality*
 
@@ -361,7 +361,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | App service staging environments | <https://azure.microsoft.com/en-us/documentation/articles/web-sites-staged-publishing/> |
 | Application Insights | <https://azure.microsoft.com/en-us/documentation/services/application-insights/> |
 
-# Continuous delivery in VSTS and Azure whiteboard design session trainer guide
+# Continuous delivery in Azure DevOps and Azure whiteboard design session trainer guide
 
 ## Step 1: Review the customer case study
 
@@ -425,7 +425,7 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
 -   Executing unit tests as part of the automated build process.
 
--   Creating a release pipeline that relies upon several Visual Studio Team Services Release Management features:
+-   Creating a release pipeline that relies upon several Azure DevOps Release Management features:
 
     -   Provisioning of Azure resources using Azure Resource Management (ARM) Templates.
 
@@ -444,9 +444,9 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
 1.  What available system should you use to automate software builds and deployments of the application?
 
-    Visual Studio Team Services' build and release management features are a complete end to end solution for automating builds deployment for the solutions. From there, you can customize the gates your solution needs to promote the solution from environment to environment. You're in complete control of how the CI/CD process is implemented.
+    Azure DevOps' build and release management features are a complete end to end solution for automating builds deployment for the solutions. From there, you can customize the gates your solution needs to promote the solution from environment to environment. You're in complete control of how the CI/CD process is implemented.
 
-    Once we have the build definition producing build artifacts, we create a release pipeline using the Release Management features of Visual Studio Team Services.
+    Once we have the build definition producing build artifacts, we create a release pipeline using the Release Management features of Azure DevOps.
 
     The release pipeline is like the build definition in that it is a series to steps or tasks that we put together to produce an outcome. In this case...we produce the deployment of a release to one or more environments and perform some level of validation and verification of each release.
 
@@ -484,9 +484,9 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
     If you think of your work as delta off of a master, the size of the delta increases as your branch incorporates more and more work. As the size of your team grows, the amount of work hidden from each other increases. And the chances that your assumptions about the state of the code hold true decreases the more you use long lived branches. If you merge your code back to master frequently, you demonstrate the direction you're taking the code. When you merge your code more frequently to master, the pain of integration happens at the beginning instead of the end of your work. This allows you to find issues faster and fix them at the earliest possible moment. Merging your code frequently also results in fewer merge conflicts. If you're developing a large feature, consider using feature flags so that you can continue to merge your code frequently.
 
-6.  Create a plan on how to switch the source control location from Visual Studio Team Services to GitHub.
+6.  Create a plan on how to switch the source control location from Azure DevOps to GitHub.
 
-    Let's assume you have already uploaded your codebase to GitHub from Visual Studio Team Services. First, start by editing your existing build definition. When you initially configured the build definition, you selected Visual Studio Team Services as the source for your code. You would now change the "Get sources" item to select GitHub. This, in turn, will require you to authenticate to GitHub (if you have not previously done so). Finally, you select the specifics for your Repository and Default branch. The rest of the build and release process remains unchanged.
+    Let's assume you have already uploaded your codebase to GitHub from Azure DevOps. First, start by editing your existing build definition. When you initially configured the build definition, you selected Azure DevOps as the source for your code. You would now change the "Get sources" item to select GitHub. This, in turn, will require you to authenticate to GitHub (if you have not previously done so). Finally, you select the specifics for your Repository and Default branch. The rest of the build and release process remains unchanged.
 
 
 *Enhance system logging functionality*
@@ -524,23 +524,23 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
 ## Checklist of preferred objection handling
 
-1.  We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Visual Studio Team Services and need to be able to change between them without frustrating rework.
+1.  We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Azure DevOps and need to be able to change between them without frustrating rework.
     
     **Potential answer**
     
-    Visual Studio Team Services allows you to use GitHub as an alternate repository for source control. The code can still be built, tested, packaged and deployed using Visual Studio Team Services.
+    Azure DevOps allows you to use GitHub as an alternate repository for source control. The code can still be built, tested, packaged and deployed using Visual Studio Team Services.
 
 2.  We do not want the developers to be able to make changes to the Azure resources even though they have access to the source code
     
     **Potential answer**
 
-    By using the Release Management features of Visual Studio Team Services, a developer never needs to touch Azure resources. Once the code is checked into the source code repository, the CI/CD activities automate the building, testing and deployment of that code without developer intervention.
+    By using the Release Management features of Azure DevOps, a developer never needs to touch Azure resources. Once the code is checked into the source code repository, the CI/CD activities automate the building, testing and deployment of that code without developer intervention.
 
 3.  If developers can deploy directly to the cloud, will that expose us to the same problems we had before when untested code was promoted to production?
     
     **Potential answer**
     
-    If we use Visual Studio Team Service's Release Management features, we have the opportunity to configure all the necessary rules and/or approvals for ensuring a smooth and secure deployment process. The goal here is to remove human touches from the process thus increasing the stability of the release process.
+    If we use Azure DevOps' Release Management features, we have the opportunity to configure all the necessary rules and/or approvals for ensuring a smooth and secure deployment process. The goal here is to remove human touches from the process thus increasing the stability of the release process.
 
 4.  How much of an impact will these process changes have on our development cadence? Will learning this place a new burden on the developers?
     

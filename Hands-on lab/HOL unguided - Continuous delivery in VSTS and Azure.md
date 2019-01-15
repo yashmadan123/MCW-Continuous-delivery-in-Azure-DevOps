@@ -1,7 +1,7 @@
 ﻿![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Continuous delivery in VSTS and Azure
+Continuous delivery in Azure DevOps and Azure
 </div>
 
 <div class="MCWHeader2">
@@ -9,7 +9,7 @@ Hands-on lab unguided
 </div>
 
 <div class="MCWHeader3">
-August 2018
+January 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -25,29 +25,41 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 <!-- TOC -->
 
-- [Continuous delivery in VSTS and Azure hands-on lab unguided](#continuous-delivery-in-vsts-and-azure-hands-on-lab-unguided)
-    - [Abstract and learning objectives](#abstract-and-learning-objectives)
-    - [Overview](#overview)
-    - [Solution architecture](#solution-architecture)
-    - [Requirements](#requirements)
-    - [Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, SQL database, and deployment slots in a single automated process.](#exercise-1-create-an-azure-resource-manager-arm-template-that-can-provision-the-web-application-sql-database-and-deployment-slots-in-a-single-automated-process)
-    - [Exercise 2: Create a Visual Studio Team Services team project and Git Repository](#exercise-2-create-a-visual-studio-team-services-team-project-and-git-repository)
-    - [Exercise 3: Create Visual Studio Team Services build definition](#exercise-3-create-visual-studio-team-services-build-definition)
-    - [Exercise 4: Create Visual Studio Team Services release pipeline](#exercise-4-create-visual-studio-team-services-release-pipeline)
-    - [Exercise 5: Trigger a build and release](#exercise-5-trigger-a-build-and-release)
-    - [Exercise 6: Create a feature branch and submit a pull request](#exercise-6-create-a-feature-branch-and-submit-a-pull-request)
-    - [After the hands-on lab](#after-the-hands-on-lab)
-       - [Task 1: Delete resources](#task-1-delete-resources)
+- [Continuous delivery in Azure DevOps and Azure hands-on lab unguided](#continuous-delivery-in-azure-devops-and-azure-hands-on-lab-unguided)
+  - [Abstract and learning objectives](#abstract-and-learning-objectives)
+  - [Overview](#overview)
+  - [Solution architecture](#solution-architecture)
+  - [Requirements](#requirements)
+  - [Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, SQL database, and deployment slots in a single automated process.](#exercise-1-create-an-azure-resource-manager-arm-template-that-can-provision-the-web-application-sql-database-and-deployment-slots-in-a-single-automated-process)
+      - [Tasks to complete](#tasks-to-complete)
+      - [Exit criteria](#exit-criteria)
+  - [Exercise 2: Create an Azure DevOps team project and Git Repository](#exercise-2-create-an-azure-devops-team-project-and-git-repository)
+      - [Tasks to complete](#tasks-to-complete-1)
+      - [Exit criteria](#exit-criteria-1)
+  - [Exercise 3: Create Azure DevOps build definition](#exercise-3-create-azure-devops-build-definition)
+    - [Tasks to complete](#tasks-to-complete-2)
+    - [Exit criteria](#exit-criteria-2)
+  - [Exercise 4: Create Azure DevOps release pipeline](#exercise-4-create-azure-devops-release-pipeline)
+      - [Tasks to complete](#tasks-to-complete-3)
+      - [Exit criteria](#exit-criteria-3)
+  - [Exercise 5: Trigger a build and release](#exercise-5-trigger-a-build-and-release)
+      - [Tasks to complete](#tasks-to-complete-4)
+      - [Exit criteria](#exit-criteria-4)
+  - [Exercise 6: Create a feature branch and submit a pull request](#exercise-6-create-a-feature-branch-and-submit-a-pull-request)
+      - [Tasks to complete](#tasks-to-complete-5)
+      - [Exit criteria](#exit-criteria-5)
+  - [After the hands-on lab](#after-the-hands-on-lab)
+    - [Task 1: Delete resources](#task-1-delete-resources)
 
 <!-- /TOC -->
 
-# Continuous delivery in VSTS and Azure hands-on lab unguided
+# Continuous delivery in Azure DevOps and Azure hands-on lab unguided
 
 ## Abstract and learning objectives 
 
-In this hands-on lab, you will learn how to implement a solution with a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS) to enable continuous delivery with several Azure PaaS services.
+In this hands-on lab, you will learn how to implement a solution with a combination of Azure Resource Manager templates and Azure DevOps to enable continuous delivery with several Azure PaaS services.
 
-At the end of this workshop, you will be better able to implement solutions for continuous delivery with VSTS in Azure, as well create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with VSTS, configure Application Insights into an application, and create a Visual Studio Team Services project and Git repository.
+At the end of this workshop, you will be better able to implement solutions for continuous delivery with Azure DevOps in Azure, as well create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with Azure DevOps, configure Application Insights into an application, and create an Azure DevOps project and Git repository.
 
 ## Overview
 
@@ -55,7 +67,7 @@ Tailspin Toys has asked you to automate their development process in two specifi
 
 ## Solution architecture
 
-![Image that shows the pipeline for checking in code to Visual Studio tTeam Services that goes through automated build and testing with release management to production.](images/Hands-onlabunguided-ContinuousdeliverywithVSTSandAzureimages/media/image2.png "Solution architecture")
+![Image that shows the pipeline for checking in code to Azure DevOps that goes through automated build and testing with release management to production.](images/Hands-onlabunguided-ContinuousdeliverywithVSTSandAzureimages/media/image2.png "Solution architecture")
 
 ## Requirements
 
@@ -120,27 +132,27 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
 -   You have deployed the completed template to Azure that creates the three environments: dev, test, and production.
 
-## Exercise 2: Create a Visual Studio Team Services team project and Git Repository
+## Exercise 2: Create an Azure DevOps team project and Git Repository
 
 Duration: 15 Minutes
 
-Tailspin Toys has asked you to create a continuous delivery process for their development team. To do that without disrupting their current production application, you are tasked with creating an environment in Azure where this new process and workflow can be proven. Your first task is to create a Visual Studio Team Services Team Project with Git source control where their source code can be maintained.
+Tailspin Toys has asked you to create a continuous delivery process for their development team. To do that without disrupting their current production application, you are tasked with creating an environment in Azure where this new process and workflow can be proven. Your first task is to create an Azure DevOps Team Project with Git source control where their source code can be maintained.
 
 #### Tasks to complete
 
--   Create Visual Studio Team Services account.
+-   Create an Azure DevOps account.
 
--   Add the Tailspin Toys source code repository to Visual Studio Team Services.
+-   Add the Tailspin Toys source code repository to Azure DevOps.
 
 #### Exit criteria
 
--   You can connect Visual Studio to the Visual Studio Team Services account, clone and view the web app repository from the master branch.
+-   You can connect Visual Studio to the Azure DevOps account, clone and view the web app repository from the master branch.
 
-## Exercise 3: Create Visual Studio Team Services build definition
+## Exercise 3: Create Azure DevOps build definition
 
 Duration: 15 Minutes
 
-In this exercise, you will create a build definition in Visual Studio Team Services (VSTS) that automatically builds the web application with every commit of source code. This will lay the groundwork for us to then create a release pipeline for publishing the code to our Azure environments.
+In this exercise, you will create a build definition in Azure DevOps that automatically builds the web application with every commit of source code. This will lay the groundwork for us to then create a release pipeline for publishing the code to our Azure environments.
 
 ### Tasks to complete
 
@@ -158,11 +170,11 @@ In this exercise, you will create a build definition in Visual Studio Team Servi
 
 -   An automated build is triggered with each commit of code.
 
-## Exercise 4: Create Visual Studio Team Services release pipeline
+## Exercise 4: Create Azure DevOps release pipeline
 
 Duration: 30 Minutes
 
-In this exercise you will create a release pipeline in Visual Studio Team Services that performs automated deployment of build artifacts to Microsoft Azure. The release pipeline will deploy to three environments: dev, test, and production.
+In this exercise you will create a release pipeline in Azure DevOps that performs automated deployment of build artifacts to Microsoft Azure. The release pipeline will deploy to three environments: dev, test, and production.
 
 #### Tasks to complete
 

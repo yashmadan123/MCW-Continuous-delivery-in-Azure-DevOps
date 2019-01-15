@@ -1,7 +1,7 @@
 ![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Continuous delivery in VSTS and Azure
+Continuous delivery in Azure DevOps and Azure
 </div>
 
 <div class="MCWHeader2">
@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-August 2018
+January 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -25,51 +25,51 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 **Contents**
 <!-- TOC -->
 
-- [Continuous delivery in VSTS and Azure hands-on lab step-by-step](#continuous-delivery-in-vsts-and-azure-hands-on-lab-step-by-step)
-    - [Abstract and learning objectives](#abstract-and-learning-objectives)
-    - [Overview](#overview)
-    - [Solution architecture](#solution-architecture)
-    - [Requirements](#requirements)
-    - [Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, SQL database, and deployment slots in a single automated process](#exercise-1-create-an-azure-resource-manager-arm-template-that-can-provision-the-web-application-sql-database-and-deployment-slots-in-a-single-automated-process)
-        - [Task 1: Create an Azure Resource Manager (ARM) template using Visual Studio](#task-1-create-an-azure-resource-manager-arm-template-using-visual-studio)
-        - [Task 2: Add an Azure SQL database and server to the template](#task-2-add-an-azure-sql-database-and-server-to-the-template)
-        - [Task 3: Add a web hosting plan and web app to the template](#task-3-add-a-web-hosting-plan-and-web-app-to-the-template)
-        - [Task 4: Add Application Insights to the template](#task-4-add-application-insights-to-the-template)
-        - [Task 5: Configure automatic scale for the web app in the template](#task-5-configure-automatic-scale-for-the-web-app-in-the-template)
-        - [Task 6: Configure the list of release environments parameters](#task-6-configure-the-list-of-release-environments-parameters)
-        - [Task 7: Configure the name of the web app using the environments parameters](#task-7-configure-the-name-of-the-web-app-using-the-environments-parameters)
-        - [Task 8: Add a deployment slot for the "staging" version of the site](#task-8-add-a-deployment-slot-for-the-staging-version-of-the-site)
-        - [Task 9: Create the dev environment and deploy the template to Azure](#task-9-create-the-dev-environment-and-deploy-the-template-to-azure)
-        - [Task 10: Create the test environment and deploy the template to Azure](#task-10-create-the-test-environment-and-deploy-the-template-to-azure)
-        - [Task 11: Create the production environment and deploy the template to Azure](#task-11-create-the-production-environment-and-deploy-the-template-to-azure)
-    - [Exercise 2: Create Visual Studio Team Services team project and Git Repository](#exercise-2-create-visual-studio-team-services-team-project-and-git-repository)
-        - [Task 1: Create Visual Studio Team Services Account](#task-1-create-visual-studio-team-services-account)
-        - [Task 2: Add the Tailspin Toys source code repository to Visual Studio Team Services](#task-2-add-the-tailspin-toys-source-code-repository-to-visual-studio-team-services)
-    - [Exercise 3: Create Visual Studio Team Services build definition](#exercise-3-create-visual-studio-team-services-build-definition)
-        - [Task 1: Create a build definition](#task-1-create-a-build-definition)
-        - [Task 2: Enable continuous integration](#task-2-enable-continuous-integration)
-    - [Exercise 4: Create Visual Studio Team Services release pipeline](#exercise-4-create-visual-studio-team-services-release-pipeline)
-        - [Task 1: Create a release definition](#task-1-create-a-release-definition)
-        - [Task 2: Add test and production environments to release definition](#task-2-add-test-and-production-environments-to-release-definition)
-    - [Exercise 5: Trigger a build and release](#exercise-5-trigger-a-build-and-release)
-        - [Task 1: Manually queue a new build and follow it through the release pipeline](#task-1-manually-queue-a-new-build-and-follow-it-through-the-release-pipeline)
-    - [Exercise 6: Create a feature branch and submit a pull request](#exercise-6-create-a-feature-branch-and-submit-a-pull-request)
-        - [Task 1: Create a new branch](#task-1-create-a-new-branch)
-        - [Task 2: Make a code change to the feature branch](#task-2-make-a-code-change-to-the-feature-branch)
-        - [Task 3: Submit a pull request](#task-3-submit-a-pull-request)
-        - [Task 4: Approve and complete a pull request](#task-4-approve-and-complete-a-pull-request)
-    - [After the hands-on lab](#after-the-hands-on-lab)
-        - [Task 1: Delete resources](#task-1-delete-resources)
+- [Continuous delivery in Azure DevOps and Azure hands-on lab step-by-step](#continuous-delivery-in-azure-devops-and-azure-hands-on-lab-step-by-step)
+  - [Abstract and learning objectives](#abstract-and-learning-objectives)
+  - [Overview](#overview)
+  - [Solution architecture](#solution-architecture)
+  - [Requirements](#requirements)
+  - [Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, SQL database, and deployment slots in a single automated process](#exercise-1-create-an-azure-resource-manager-arm-template-that-can-provision-the-web-application-sql-database-and-deployment-slots-in-a-single-automated-process)
+    - [Task 1: Create an Azure Resource Manager (ARM) template using Visual Studio](#task-1-create-an-azure-resource-manager-arm-template-using-visual-studio)
+    - [Task 2: Add an Azure SQL database and server to the template](#task-2-add-an-azure-sql-database-and-server-to-the-template)
+    - [Task 3: Add a web hosting plan and web app to the template](#task-3-add-a-web-hosting-plan-and-web-app-to-the-template)
+    - [Task 4: Add Application Insights to the template](#task-4-add-application-insights-to-the-template)
+    - [Task 5: Configure automatic scale for the web app in the template](#task-5-configure-automatic-scale-for-the-web-app-in-the-template)
+    - [Task 6: Configure the list of release environments parameters](#task-6-configure-the-list-of-release-environments-parameters)
+    - [Task 7: Configure the name of the web app using the environments parameters](#task-7-configure-the-name-of-the-web-app-using-the-environments-parameters)
+    - [Task 8: Add a deployment slot for the "staging" version of the site](#task-8-add-a-deployment-slot-for-the-%22staging%22-version-of-the-site)
+    - [Task 9: Create the dev environment and deploy the template to Azure](#task-9-create-the-dev-environment-and-deploy-the-template-to-azure)
+    - [Task 10: Create the test environment and deploy the template to Azure](#task-10-create-the-test-environment-and-deploy-the-template-to-azure)
+    - [Task 11: Create the production environment and deploy the template to Azure](#task-11-create-the-production-environment-and-deploy-the-template-to-azure)
+  - [Exercise 2: Create Visual Studio Team Services team project and Git Repository](#exercise-2-create-visual-studio-team-services-team-project-and-git-repository)
+    - [Task 1: Create Visual Studio Team Services Account](#task-1-create-visual-studio-team-services-account)
+    - [Task 2: Add the Tailspin Toys source code repository to Azure DevOps](#task-2-add-the-tailspin-toys-source-code-repository-to-azure-devops)
+  - [Exercise 3: Create Azure DevOps build definition](#exercise-3-create-azure-devops-build-definition)
+    - [Task 1: Create a build definition](#task-1-create-a-build-definition)
+    - [Task 2: Enable continuous integration](#task-2-enable-continuous-integration)
+  - [Exercise 4: Create Azure DevOps release pipeline](#exercise-4-create-azure-devops-release-pipeline)
+    - [Task 1: Create a release definition](#task-1-create-a-release-definition)
+    - [Task 2: Add test and production environments to release definition](#task-2-add-test-and-production-environments-to-release-definition)
+  - [Exercise 5: Trigger a build and release](#exercise-5-trigger-a-build-and-release)
+    - [Task 1: Manually queue a new build and follow it through the release pipeline](#task-1-manually-queue-a-new-build-and-follow-it-through-the-release-pipeline)
+  - [Exercise 6: Create a feature branch and submit a pull request](#exercise-6-create-a-feature-branch-and-submit-a-pull-request)
+    - [Task 1: Create a new branch](#task-1-create-a-new-branch)
+    - [Task 2: Make a code change to the feature branch](#task-2-make-a-code-change-to-the-feature-branch)
+    - [Task 3: Submit a pull request](#task-3-submit-a-pull-request)
+    - [Task 4: Approve and complete a pull request](#task-4-approve-and-complete-a-pull-request)
+  - [After the hands-on lab](#after-the-hands-on-lab)
+    - [Task 1: Delete resources](#task-1-delete-resources)
 
 <!-- /TOC -->
 
-# Continuous delivery in VSTS and Azure hands-on lab step-by-step
+# Continuous delivery in Azure DevOps and Azure hands-on lab step-by-step
 
 ## Abstract and learning objectives 
 
-In this hands-on lab, you will learn how to implement a solution with a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS) to enable continuous delivery with several Azure PaaS services.
+In this hands-on lab, you will learn how to implement a solution with a combination of Azure Resource Manager templates and Azure DevOps to enable continuous delivery with several Azure PaaS services.
 
-At the end of this workshop, you will be better able to implement solutions for continuous delivery with VSTS in Azure, as well create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with VSTS, configure Application Insights into an application, and create a Visual Studio Team Services project and Git repository.
+At the end of this workshop, you will be better able to implement solutions for continuous delivery with Azure DevOps in Azure, as well create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with Azure DevOps, configure Application Insights into an application, and create an Azure DevOps project and Git repository.
 
 ## Overview
 
@@ -77,7 +77,7 @@ Tailspin Toys has asked you to automate their development process in two specifi
 
 ## Solution architecture
 
-![Image that shows the pipeline for checking in code to Visual Studio tTeam Services that goes through automated build and testing with release management to production.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image2.png "Solution architecture")
+![Image that shows the pipeline for checking in code to Azure DevOps that goes through automated build and testing with release management to production.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image2.png "Solution architecture")
 
 ## Requirements
 
@@ -379,7 +379,7 @@ In this exercise, you will create and configure a Visual Studio Team Services ac
 
 2.  If you do not already have an account, click **Get started for free**.
     
-    ![In this screenshot, Get started for free is selected under Visual Studio Team Services.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image56.png "Visual Studio Team Services screenshot")
+    ![In this screenshot, Get started for free is selected under Azure DevOps.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image56.png "Azure DevOps screenshot")
 
 3.  Authenticate with a Microsoft account.
 
@@ -395,9 +395,9 @@ In this exercise, you will create and configure a Visual Studio Team Services ac
     
     ![In the TailspinToys is empty. Add some code! window, URLs appear in the Clone to your computer or push an existing repository from command line boxes, and Initialize is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image59.png "TailspinToys is empty. Add some code! window")
 
-### Task 2: Add the Tailspin Toys source code repository to Visual Studio Team Services
+### Task 2: Add the Tailspin Toys source code repository to Azure DevOps
 
-In this Task, you will configure the Visual Studio Team Services Git repository. You will configure the remote repository using Git and then push the source code up to Visual Studio Team Services through the command line tools.
+In this Task, you will configure the Azure DevOps Git repository. You will configure the remote repository using Git and then push the source code up to Azure DevOps through the command line tools.
 
 1.  In the support files, open a command prompt in the **C:\\Hackathon** folder.
 
@@ -411,13 +411,13 @@ In this Task, you will configure the Visual Studio Team Services Git repository.
     git commit -m "adding files"
     ```
     
-    >If a ".git" folder and local repository already exists in the TailspinToys.Web folder, then you will need to delete the ."git" folder first before running the above gcommands to initialize the Git repository.
+    >If a ".git" folder and local repository already exists in the TailspinToys.Web folder, then you will need to delete the ."git" folder first before running the above commands to initialize the Git repository.
 
-3.  Leave that command prompt window open and switch back to the web browser window for Visual Studio Team Services from the previous Task.
+3.  Leave that command prompt window open and switch back to the web browser window for Azure DevOps from the previous Task.
 
 4.  Within the list of Branches, click on the **master** branch name.
     
-    ![In the Visual Studio Team Services window, the master branch name is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image60.png "Visual Studio Team Services window")
+    ![In the Azure DevOps window, the master branch name is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image60.png "Azure DevOps window")
 
 5.  Click on the **Clone** link in the upper-right.
     
@@ -430,7 +430,7 @@ In this Task, you will configure the Visual Studio Team Services Git repository.
 7.  Go back to the **Command Prompt** and run the following command with including the HTTPS URL for your Git repository.
 
     ```
-    git remote add origin https://<vsts account name>.visualstudio.com/_git/TailspinToys
+    git remote add origin https://<azure devops account name>.visualstudio.com/_git/TailspinToys
     ```
 
 8.  Next, run the following command:
@@ -439,15 +439,15 @@ In this Task, you will configure the Visual Studio Team Services Git repository.
     git push -u origin --all
     ```
 
-9.  When prompted, login with your Microsoft Account for your VSTS Account.
+9.  When prompted, login with your Microsoft Account for your Azure DevOps Account.
     
     ![This is a screenshot of the Enter password dialog box.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image63.png "Enter password dialog box")
 
-10. You will get an error message similar to the following since the local repository was created before the clone of the VSTS Git repository:
+10. You will get an error message similar to the following since the local repository was created before the clone of the Azure DevOps Git repository:
     
-    ![In this screenshot of the Command Prompt window, an error message appears because the local repository was created before the clone of the VSTS Git repository.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image64.png "Command Prompt window")
+    ![In this screenshot of the Command Prompt window, an error message appears because the local repository was created before the clone of the Azure DevOps Git repository.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image64.png "Command Prompt window")
 
-11. To fix this error, you will need to pull down the latest from the VSTS Git repository and force it to merge even though the histories do not match. You can do this by running the following command:
+11. To fix this error, you will need to pull down the latest from the Azure DevOps Git repository and force it to merge even though the histories do not match. You can do this by running the following command:
 
     ```
     git pull origin master --allow-unrelated-histories
@@ -459,35 +459,35 @@ In this Task, you will configure the Visual Studio Team Services Git repository.
     git push -u origin --all
     ```
 
-13. Once the local changes are pushed up to the VSTS Git repository, you should see command-line output similar to the following:
+13. Once the local changes are pushed up to the Azure DevOps Git repository, you should see command-line output similar to the following:
 
-    ![In this screenshot of the Command Prompt window is command-line output that results from local changes pushing to the VSTS Git repository.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image65.png "Command Prompt window")
+    ![In this screenshot of the Command Prompt window is command-line output that results from local changes pushing to the Azure DevOps Git repository.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image65.png "Command Prompt window")
 
-14. Go back to the web browser window for Visual Studio Team Services and click on the **Files** link.
+14. Go back to the web browser window for Azure DevOps and click on the **Files** link.
     
-    ![In the Visual Studio Team Services window, the Files link is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image66.png "Visual Studio Team Services ")
+    ![In the Azure DevOps window, the Files link is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image66.png "Azure DevOps")
 
 15. You should see your source code now appearing inside of Visual Studio Team Services.
     
-    ![In the Visual Studio Team Services window, your source code now appears.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image67.png "Visual Studio Team Services")
+    ![In the Azure DevOps window, your source code now appears.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image67.png "Azure DevOps")
 
-## Exercise 3: Create Visual Studio Team Services build definition
+## Exercise 3: Create Azure DevOps build definition
 
 Duration: 15 Minutes
 
-In this exercise, you will create a build definition in Visual Studio Team Services (VSTS) that automatically builds the web application with every commit of source code. This will lay the groundwork for us to then create a release pipeline for publishing the code to our Azure environments.
+In this exercise, you will create a build definition in Azure DevOps that automatically builds the web application with every commit of source code. This will lay the groundwork for us to then create a release pipeline for publishing the code to our Azure environments.
 
 ### Task 1: Create a build definition
 
-1.  Select the Build and Release hub in your VSTS project, and then select the Builds link.
+1.  Select the Build and Release hub in your Azure DevOps project, and then select the Builds link.
 
-    ![In the Visual Studio Team Services window, Build and Release is highlighted in the ribbon. Below that, Builds is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image68.png "Visual Studio Team Services window")
+    ![In the Azure DevOps window, Build and Release is highlighted in the ribbon. Below that, Builds is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image68.png "Azure DevOps window")
 
 2.  Create a new pipeline and click continue on the following selection screen below.
 
     ![In Builds, +New pipeline is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image69.png "Create a new pipeline")
 
-    ![A screen that shows choosing the VSTS Git option for the TailspinToys project.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image70.png "Select a source")
+    ![A screen that shows choosing the Azure DevOps Git option for the TailspinToys project.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image70.png "Select a source")
 
 3.  Select the "Empty job" link.
 
@@ -497,7 +497,7 @@ In this exercise, you will create a build definition in Visual Studio Team Servi
 
     ![In the TailspinToys-CI build window, the Agent queue drop-down box is empty, below which is a message that states, "This setting is required."](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image72.png "Empty Agent queue drop-down box")
 
-5.  Use the dropdown menu to set Agent pool to "Hosted." This tells VSTS that you want to use their provided build server to build your application. Very convenient.
+5.  Use the dropdown menu to set Agent pool to "Hosted." This tells Azure DevOps that you want to use their provided build server to build your application. Very convenient.
 
     ![In the Agent pool drop-down box, Hosted is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image73.png "Agent pool drop-down box")
 
@@ -553,11 +553,11 @@ In this exercise, you will create a build definition in Visual Studio Team Servi
 
 2.  Save the changes.
 
-## Exercise 4: Create Visual Studio Team Services release pipeline
+## Exercise 4: Create Azure DevOps release pipeline
 
 Duration: 30 Minutes
 
-In this exercise, you will create a release pipeline in Visual Studio Team Services that performs automated deployment of build artifacts to Microsoft Azure. The release pipeline will deploy to three environments: dev, test, and production.
+In this exercise, you will create a release pipeline in Azure DevOps that performs automated deployment of build artifacts to Microsoft Azure. The release pipeline will deploy to three environments: dev, test, and production.
 
 ### Task 1: Create a release definition
 
@@ -735,13 +735,13 @@ Duration: 20 Minutes
 
 In this exercise, you will create a short-lived feature branch, make a small code change, commit the code, and submit a pull request. You'll then merge the pull request into the master branch which triggers an automated build and release of the application.
 
-In the tasks below, you will make changes directly through the Visual Studio Team Services web interface. These steps could also be performed through the Visual Studio IDE.
+In the tasks below, you will make changes directly through the Azure DevOps web interface. These steps could also be performed through the Visual Studio IDE.
 
 ### Task 1: Create a new branch
 
 1.  Select the "Code" hub. Then, select "Branches".
 
-    ![In the Visual Studio Team Services web interface for TailspinToys, Code, Branches, and the New Branch button are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image106.png "Visual Studio Team Services window")
+    ![In the Azure DevOps web interface for TailspinToys, Code, Branches, and the New Branch button are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image106.png "Azure DevOps window")
 
 2.  Click the "New branch" button in the upper right corner of the page.
 
@@ -789,7 +789,7 @@ In the tasks below, you will make changes directly through the Visual Studio Tea
 
 1.  Select the "Branches" menu. Then, select the "..." button next to the branch you created earlier. Then, click on the "New pull request" option.
 
-    ![In the Visual Studio Team Services web interface for TailspinToys, Branches is highlighted in the menu, the ellipsis highlighted next to new-heading (selected), and New pull request is selected in the submenu.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image112.png "New pull request")
+    ![In the Azure DevOps web interface for TailspinToys, Branches is highlighted in the menu, the ellipsis highlighted next to new-heading (selected), and New pull request is selected in the submenu.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image112.png "New pull request")
 
 2.  This brings up the New Pull Request page. It shows we are submitting a request to merge code from our new-heading branch into the master branch. You have the option to change the Title and Description fields. The TailspinToys Team has been selected to review this pull request before it will be merged. The details of the code change are at the bottom of the page.
 
