@@ -289,3 +289,6 @@ __pycache__/
 
 # Mac generated files
 *.DS_Store
+
+# Windows generated files
+Thumbs.db

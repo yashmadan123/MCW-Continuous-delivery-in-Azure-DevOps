@@ -113,7 +113,7 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
 ### Task 1: Create an Azure Resource Manager (ARM) template using Visual Studio
 
-1.  Open Visual Studio and create a new project of the type Cloud -- Azure Resource Group. Name the new project "TailspinToys.AzureResourceTemplate" and save it to **C:\\Hackathon**. Also, make sure that both check boxes are checked on the lower right, as in the screen shot below. When finished, click **OK**.
+1.  Open Visual Studio and create a new project of the type Cloud -- Azure Resource Group. Name the new project "TailspinToys.AzureResourceTemplate" and save it to **C:\\Hackathon**. Also, make sure that only the "Create directory for solution" option is checked on the lower right, as in the screen shot below. When finished, click **OK**.
     
     ![In this screenshot of the New Project dialog box, all the options to create the TailspinToys.AzureResourceTemplate project are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image22.png "Visual Studio New Project dialog box")
 
@@ -393,85 +393,47 @@ In this exercise, you will create and configure an Azure DevOps account along wi
 
     ![In the TailspinToys project window, Repos is highlighted in the left-hand navigation.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image58.png "TailspinToys navigation window")
 
-7.  On the **Repos** page for the **TailspinToys** repository, scroll down to the bottom of the page, then click on the **Initialize** button to create the "master" branch.
+7.  On the **Repos** page for the **TailspinToys** repository, locate the "or push an existing repository from command line" section. Click the Copy button to copy the contents of the panel. We're going to use these commands in an upcoming step.
+
     
-    ![The TailspinToys repository is empty. In the "Add some code!" window, URLs appear to clone to your computer or push an existing repository from command line boxes, and Initialize is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image59.png "TailspinToys is empty. Add some code! window")
+    ![In the "Add some code!" window, URLs appear to clone to your computer or push an existing repository from command line.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image59.png "TailspinToys is empty. Add some code! window")
 
 ### Task 2: Add the Tailspin Toys source code repository to Azure DevOps
 
 In this Task, you will configure the Azure DevOps Git repository. You will configure the remote repository using Git and then push the source code up to Azure DevOps through the command line tools.
 
-1.  In the support files, open a command prompt in the **C:\\Hackathon** folder.
+1.  Open a command prompt in the **C:\\Hackathon** folder.
 
     > **Note**: If this folder doesn't exist ensure you followed the instructions in the Before the HOL.
 
-2.  Initialize a local Git repository by running the following commands at the command prompt:
+2.  Initialize a local Git repository by running the following command at the command prompt:
+
+    > If a ".git" folder and local repository already exists in the folder, then you will need to delete the ".git" folder first before running the commands below to initialize the Git repository.
 
     ```
     git init
+    ```
+
+3.  Paste the first command you copied from Azure DevOps. It will resemble the command below:
+    
+    ```
+    git remote add origin https://<your-org>@dev.azure.com/<your-org>/TailspinToys/_git/TailspinToys
+    ```
+
+4.  Enter the following commands to commit the changes made locally to the new repository:
+    
+    ```
     git add *
     git commit -m "adding files"
     ```
-    
-    >If a ".git" folder and local repository already exists in the TailspinToys.Web folder, then you will need to delete the ."git" folder first before running the above commands to initialize the Git repository.
 
-3.  Leave that command prompt window open and switch back to the web browser window for Azure DevOps from the previous Task.
-
-4.  Within the list of Branches, click on the **master** branch name.
-    
-    ![In the Azure DevOps window, the master branch name is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image60.png "Azure DevOps window")
-
-5.  Click on the **Clone** link in the upper-right.
-    
-    ![In the upper-right corner of the window, the Clone link is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image61.png "Clone link")
-
-6.  Copy the **HTTPS** URL for the Git repository for use in the following step.
-
-    ![The HTTPS URL is highlighted under Clone Repo.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image62.png "HTTPS URL")
-
-7.  Go back to the **Command Prompt** and run the following command with including the HTTPS URL for your Git repository.
+5.  Push the changes up to the Azure DevOps repository with the following command:
 
     ```
-    git remote add origin https://<azure devops account name>.visualstudio.com/_git/TailspinToys
+    git push -u origin -all
     ```
 
-8.  Next, run the following command:
-
-    ```
-    git push -u origin --all
-    ```
-
-9.  When prompted, login with your Microsoft Account for your Azure DevOps Account.
-    
-    ![This is a screenshot of the Enter password dialog box.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image63.png "Enter password dialog box")
-
-10. You will get an error message similar to the following since the local repository was created before the clone of the Azure DevOps Git repository:
-    
-    ![In this screenshot of the Command Prompt window, an error message appears because the local repository was created before the clone of the Azure DevOps Git repository.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image64.png "Command Prompt window")
-
-11. To fix this error, you will need to pull down the latest from the Azure DevOps Git repository and force it to merge even though the histories do not match. You can do this by running the following command:
-
-    ```
-    git pull origin master --allow-unrelated-histories
-    ```
-
-12. Now run the "git push" command again.
-
-    ```
-    git push -u origin --all
-    ```
-
-13. Once the local changes are pushed up to the Azure DevOps Git repository, you should see command-line output similar to the following:
-
-    ![In this screenshot of the Command Prompt window is command-line output that results from local changes pushing to the Azure DevOps Git repository.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image65.png "Command Prompt window")
-
-14. Go back to the web browser window for Azure DevOps and click on the **Files** link.
-    
-    ![In the Azure DevOps window, the Files link is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image66.png "Azure DevOps")
-
-15. You should see your source code now appearing inside of Visual Studio Team Services.
-    
-    ![In the Azure DevOps window, your source code now appears.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image67.png "Azure DevOps")
+6.  Leave that command prompt window open and switch back to the web browser window for Azure DevOps from the previous Task. Navigate to the Repos > Files page which shows the files in the repository. You may need to refresh the page to see the updated files. Your source code is now appearing in Azure DevOps.
 
 ## Exercise 3: Create Azure DevOps build definition
 
