@@ -42,8 +42,8 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Task 9: Create the dev environment and deploy the template to Azure](#task-9-create-the-dev-environment-and-deploy-the-template-to-azure)
     - [Task 10: Create the test environment and deploy the template to Azure](#task-10-create-the-test-environment-and-deploy-the-template-to-azure)
     - [Task 11: Create the production environment and deploy the template to Azure](#task-11-create-the-production-environment-and-deploy-the-template-to-azure)
-  - [Exercise 2: Create Visual Studio Team Services team project and Git Repository](#exercise-2-create-visual-studio-team-services-team-project-and-git-repository)
-    - [Task 1: Create Visual Studio Team Services Account](#task-1-create-visual-studio-team-services-account)
+  - [Exercise 2: Create Azure DevOps team project and Git Repository](#exercise-2-create-azure-devops-team-project-and-git-repository)
+    - [Task 1: Create Azure DevOps Account](#task-1-create-azure-devops-account)
     - [Task 2: Add the Tailspin Toys source code repository to Azure DevOps](#task-2-add-the-tailspin-toys-source-code-repository-to-azure-devops)
   - [Exercise 3: Create Azure DevOps build definition](#exercise-3-create-azure-devops-build-definition)
     - [Task 1: Create a build definition](#task-1-create-a-build-definition)
@@ -367,33 +367,35 @@ The following steps are very similar to what was done in the previous task with 
 
     ![In this screenshot, TailspinToys-dev, TailspinToys-production, and TailspinToys-test appear under Resource groups in the Azure Portal.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image55.png "Resource groups screenshot")
 
-## Exercise 2: Create Visual Studio Team Services team project and Git Repository
+## Exercise 2: Create Azure DevOps team project and Git Repository
 
 Duration: 15 Minutes
 
-In this exercise, you will create and configure a Visual Studio Team Services account along with an Agile team project.
+In this exercise, you will create and configure an Azure DevOps account along with an Agile team project.
 
-### Task 1: Create Visual Studio Team Services Account
+### Task 1: Create Azure DevOps Account
 
-1.  Browse to the Visual Studio site at <http://visualstudio.com>.
+1.  Browse to the Azure DevOps site at <https://dev.azure.com>.
 
-2.  If you do not already have an account, click **Get started for free**.
+2.  If you do not already have an account, click the **Start free** button.
     
-    ![In this screenshot, Get started for free is selected under Azure DevOps.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image56.png "Azure DevOps screenshot")
+    ![In this screenshot, a Start free button is shown on the Azure DevOps home page.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image56.png "Azure DevOps screenshot")
 
 3.  Authenticate with a Microsoft account.
 
-4.  Choose a name for your visualstudio.com account. For the purposes of this scenario, we will use "TailspinToys." Choose **Git** for the source code and then click Create.
+4.  Click **Continue** to accept the Terms of Service, Privacy Statement, and Code of Conduct.
+
+5.  Choose a name for new your project. For the purposes of this scenario, we will use "TailspinToys". Choose **Private** in the Visibility section so that our project is only visible to those who we specifically grant access. Then, click **+ Create project**.
     
-    ![In the Create new project window, TailspinToys is highlighted in the Project name box, Git is highlighted in the Version control box, and Create is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image57.png "Create new project window")
+    ![In the Create a project to get started window, TailspinToys is highlighted in the Project name box, Private is highlighted in the Visibility box, and Create project is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image57.png "Create a project window")
 
-5.  Once the Project is created, click on the **Code** menu option in the header navigation.
+6.  Once the Project is created, click on the **Repos** menu option in the left-hand navigation.
 
-    ![In the TailspinToys window, Code is highlighted in the ribbon.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image58.png "TailspinToys window")
+    ![In the TailspinToys project window, Repos is highlighted in the left-hand navigation.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image58.png "TailspinToys navigation window")
 
-6.  On the **Code** -\> **File** page for the **TailspinToys** repository, scroll down to the bottom of the page, then click on the **Initialize** button to get the "master" branch created.
+7.  On the **Repos** page for the **TailspinToys** repository, scroll down to the bottom of the page, then click on the **Initialize** button to create the "master" branch.
     
-    ![In the TailspinToys is empty. Add some code! window, URLs appear in the Clone to your computer or push an existing repository from command line boxes, and Initialize is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image59.png "TailspinToys is empty. Add some code! window")
+    ![The TailspinToys repository is empty. In the "Add some code!" window, URLs appear to clone to your computer or push an existing repository from command line boxes, and Initialize is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image59.png "TailspinToys is empty. Add some code! window")
 
 ### Task 2: Add the Tailspin Toys source code repository to Azure DevOps
 
