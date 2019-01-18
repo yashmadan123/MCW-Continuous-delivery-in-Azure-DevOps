@@ -47,7 +47,6 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Task 2: Add the Tailspin Toys source code repository to Azure DevOps](#task-2-add-the-tailspin-toys-source-code-repository-to-azure-devops)
   - [Exercise 3: Create Azure DevOps build definition](#exercise-3-create-azure-devops-build-definition)
     - [Task 1: Create a build definition](#task-1-create-a-build-definition)
-    - [Task 2: Enable continuous integration](#task-2-enable-continuous-integration)
   - [Exercise 4: Create Azure DevOps release pipeline](#exercise-4-create-azure-devops-release-pipeline)
     - [Task 1: Create a release definition](#task-1-create-a-release-definition)
     - [Task 2: Add test and production environments to release definition](#task-2-add-test-and-production-environments-to-release-definition)
@@ -485,14 +484,6 @@ In this exercise, you will create a build definition using, Azure Pipelines, tha
 
 10. Congratulations! You have just created your first build pipeline. In the next exercise, we will create a release pipeline that deploys your successful builds.
 
-### Task 2: Enable continuous integration
-
-1.  For this scenario, we want the build definition to automatically trigger a build when any code is committed to the master repository. This is known as continuous integration. To configure a build definition for continuous integration, select the "Triggers" menu item and check the "Enable continuous integration" option. Be sure to set the Branch filters fields to match the screen shot below.
-
-    ![In the TailspinToys-CI build window, the Triggers menu item is highlighted, and to the right, the Enable continuous integration option, Include Type, and master Branch specification are also highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image83.png "Automatically triggering a build")
-
-2.  Save the changes.
-
 ## Exercise 4: Create Azure DevOps release pipeline
 
 Duration: 30 Minutes
@@ -501,85 +492,81 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
 ### Task 1: Create a release definition
 
-1.  Navigate to the "Build and Release" hub and select "Releases" from the menu. This will bring up the Release Management screen. Click on the "+ New definition" button to begin the creation of a new release definition.
+1.  Click **Releases** on the left-hand navigation. This will bring up the Releases screen. 
 
-    ![On the Release Management screen, the Build and Release hub is highlighted in the menu, Releases is highlighted in the submenu, and the + New definition button is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image84.png "Release Management screen")
+    ![A screen that shows the left-side navigation. Releases is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image84.png "Releases")
 
-2.  You are then presented with several release templates to choose from. Click the "Empty job" link at the top of the screen.
+2.  Click on the **New pipeline** button to begin the creation of a new release pipeline.
 
-    ![Under Select a Template, the Empty process link is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image85.png "Select a template")
+    ![On the Releases screen, the New pipeline button is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image85.png "Releases screen")
 
-3.  This will present you with the Release Management editor which allows you to manage your release environments. Let us start by giving this release definition a name. Change the value "New Release Definition" at the top of the editor to "TailspinToys-Release" by clicking on name to begin editing.
+3.  Then, you'll need to select the template that matches the pipeline you are building. Since we are deploying and Azure App Service, select **Azure App Service deployment** from the list of templates and click the **Apply** button.
 
-4.  Then, let us name our first environment by changing the Environment name field from "Environment 1" to "dev." In a future step, we will add additional environments.
+    ![A screen that shows choosing Azure App Service deployment.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image85a.png "Select a template")
 
-    ![At the top of the window, TailspinToys-Release is highlighted, and to the right, dev is highlighted in the Environment name box.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image86.png "Changing the environment name")
+4.  This will present you with the New release pipeline editor which allows you to manage your release stages. A stage is a logical and independent concept that represents where you want to deploy a release generated from a release pipeline. Often times, this is considered an environment. Let's start by giving this stage a name. Change the value "Stage 1" in the editor to "dev" and then click the "X" in the top-right corner to close the panel and save the name change.
 
-5.  In this step, we will connect the artifacts from our build definition to this newly created release definition. Click on the "+ Add" button or the "+ Add artifact" icon on the left side of the screen to begin this process.
+    ![A screen that shows Stage details. The Stage name is highlighted. The X is also highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image86.png "Stage")
 
-    ![+ Add and + Add artifact are highlighted in this step.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image87.png "Connect the artifacts")
+5.  A release consists of a collection of artifacts in your CD/CD process. An artifact is any deployable component of your application. When authoring a release pipeline, you link the appropriate artifact sources to your release pipeline. In this step, we will connect the artifacts from our previously created build pipeline to this newly created release pipeline. Click on the "+ Add" button next to "Artifacts" or the "+ Add an artifact" icon inside the "Artifacts" box. Both buttons perform the same action.
 
-6.  The Add artifact screen will display and many of the fields will already be populated. In the Source (Build definition) field select the "TailspinToys-CI" build definition you created in a previous exercise and then click the "Add" button.
+    ![+ Add and + Add an artifact are highlighted in this step.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image87.png "New release pipeline")
 
-    ![On the Add artifact screen, TailspinToys-CI is highlighted in the Source (Build definition) box, and the Add button is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image88.png "Add artifact screen")
+6.  The Add an artifact panel will display several configurations for linking to an artifact. In the **Source (build pipeline)** dropdown list, select **TailspinToys**. The panel fields will adjust to show additional details based on your selection. The default values will produce a new release when future builds successfully complete. Click the **Add** button.
 
-7.  Now, it is time to begin adding specific tasks to perform a deployment to the dev environment. To navigate to the task editor, click on the "Task" menu drop down and then click the "dev" environment.
+    ![On the Add an artifact screen, TailspinToys is highlighted in the Source (build pipeline) field, and the Add button is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image88.png "Add an artifact")
 
-    ![In the menu, dev is highlighted in the Tasks drop-down list.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image89.png "Adding specific tasks to perform")
+7.  Now, it is time to begin configuring specific tasks to perform our deployment during the dev stage. To navigate to the task editor, click on the **Task** menu item.
 
-8.  This brings up the task editor. This interface will be familiar to you as it is very similar to the task editor you used when creating the build definition. For this release definition we will need to add two tasks.
+    ![In the menu, the Tasks item is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image89.png "New release pipeline")
 
-9.  Click on the "+" button to bring up the Add tasks window.
+8.  This brings up the task editor and opens a panel with configuration details for the dev stage we created earlier. The configuration items set here will be made available to the tasks in this stage.
 
-10. Enter "Azure App Service" into the search box.
+9.  On this panel, we first need to configure the necessary details to connect the task to Azure for deployment. Let's first start by connecting to our Azure subscription. Select your Azure subscription from the "Azure subscription" dropdown and then click the **Authorize** button to login and authenticate to the selected subscription.
 
-11. Select Azure App Services Deploy, and then click the "Add" button.
+    ![On the panel, Azure subscription is highlighted along with the Authorize button.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image89b.png "Parameters")
 
-    ![In the task editor, the plus sign (+) is highlighted next to Agent phase, Azure App Service is highlighted in the search box, and below that, Add is highlighted next to Azure App Service Deploy.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image90.png "Add Azure App Service Deploy")
+10. Then, in the "App service name field" select the one that begins with **TailspinToysWeb-dev-**.
 
-12. We also need to add the second task on that search list "Azure App Service Manage." This task will assist us with the deployment slot swap after deployment. Click the "Add" button next to that task to also add it.
+    ![On the panel, App service name is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image89c.png "Service connections")
 
-    ![In the task editor, under Add tasks, Add is highlighted next to Azure App Service Manage.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image91.png "Add Azure App Service Manage")
+11. Now, let's configure the task specific details. Click on the "Deploy Azure App Service" task to bring up the configuration panel for task.
 
-13. Both tasks need some configuration before they will work. On the left side of the screen, click on the Azure App Service Deploy task to bring up the configuration window. At the start of this task, your list of fields may not look the same as the screen shot below, but the display will change as you begin to configure the fields from top to bottom.
+    ![On the screen, Deploy Azure App Service is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image89d.png "Deploy Azure App Service")
 
-14. In the Azure subscription field, select your subscription. You may see an "Authorize" button which will require you to authentication to Azure before populating this drop-down list.
+12. In a previous exercise, we created a deployment slot for the web app. Deployment slots are actually live apps with their own hostnames. App content and configuration elements can be swapped between two deployment slots, including the production slot. In the "Azure App Service Deploy" panel, locate the **Deploy to slot** checkbox and click it to checked.
 
-15. In the App Service name field, select the item that begins with "TailspinToysWeb-dev." There will be series of numbers and letters after which will not match the screen shot below. This is due to the uniqueness requirement of resource names.
+    ![On the panel, Deploy to slot is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image89e.png "Azure App Service Deploy")
 
-16. Check the Deploy to slot checkbox.
+13. The checkbox will trigger the panel to update with additional configuration items. In the **Resource group** dropdown, select **TailspinToys-dev**. In the **Slot** dropdown, select **staging**.
 
-17. Select "TailspinToys-dev" from the Resource group drop down list.
+    ![On the panel, Resource group and Slot are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image89f.png "Deployment slot configuration")
 
-18. Finally, select the "staging" value from the Slot drop down list. This tells the deployment to deploy to the slot first.
+14. Now that we've completed the configuration for the "Deploy Azure App Service" task to deploy our application to Azure App Service deployment slot, we'll need a way to swap the staging slot with the production slot. To do that, we'll need to add an additional task to the dev stage. Click the **+** (plus sign) on the task list to create a new task.
 
-    ![After selecting the Azure App Service Deploy task, fill in various boxes in the configuration window, including Azure subscription, App Service name (select Deploy to slot), Resource group, and Slot. These values are highlighted in the screenshot of the configuration window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image92.png "Configure the Azure App Service Deploy task")
+    ![On the screen, the plus sign is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image89g.png "Task list")
 
-19. Scroll down the configuration screen to see additional configuration fields.
+15. This opens the "Add tasks" panel. Enter **App Service Manage** into the search box and press **Enter**. Then select the **Azure App Service Manage** task from the search results and click the **Add** button.
 
-20. In the Package or folder option enter the following text:
-    
-    ```
-    $(System.DefaultWorkingDirectory)/**/*.zip
-    ```
-    
-    ![The above value is highlighted in the Package or folder box in the screenshot of the configuration window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image93.png "Package or folder box ")
+    ![On the panel, App Service Manage is entered into the search textbox and Azure App Service Manage is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image90.png "Add tasks")
 
-21. That completes the configuration for the Azure App Service Deploy task. Now, select the Swap Slots task to bring up the configuration screen.
+16. After adding the new task, we now have two tasks for the dev stage. The new task now needs to be configured. Click on the **Swap Slots:** task to open the task configuration panel.
 
-22. In the Azure subscription field, select your subscription. You may see an "Authorize" button which will require you to authentication to Azure before populating this drop-down list.
+    ![On the screen, the Swap Slots task is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image91.png "Task list")
 
-23. In the App Service name field, select the item that begins with "TailspinToysWeb-dev." There will be series of numbers and letters after which will not match the screen shot below. This is due to the uniqueness requirement of resource names.
+17. In the "Azure App Service Manage" task panel there are a few configurations we need to set. First, locate the "Azure subscription" field and select the same subscription used in the "Deploy Azure App Service" task.
 
-24. Select "TailspinToys-dev" from the Resource group drop down list.
+18. Locate the "App Service name" field, select the item that begins with **TailspinToysWeb-dev-** just like in the "Deploy Azure App Service" task. In the "Resource Group" field, select **TailspinToys-dev**. In the "Source Slot" field, select **staging**.
 
-25. Finally, select the "staging" value from the Source Slot drop down list. This tells the deployment to swap the staging slot with production.
+    ![On the panel, App Service name, Resource group, and Source Slot are all highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image92.png "Swap Slots task configuration")
 
-    ![After selecting the Swap Slots task, fill in various boxes in the configuration window, including Azure subscription, App Service name, Resource group, and Source Slot (select Swap with Production). These values are highlighted in the screenshot of the configuration window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image94.png "Configure the Swap Slots task")
+19. Let's wrap up this activity by giving our release pipeline a new name. Click on the existing "New release pipeline" name to begin editing it. Change the name to "TailspinToys Release".
 
-26. Click the "Save" button at the top of the screen and confirm by clicking the "OK" button.
+    ![On the screen, TailspinToys Release name is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image92a.png "Release pipeline name change")
 
-27. Congratulations! You have just created your first release pipeline.
+20. Click the "Save" button at the top of the screen and confirm by clicking the "OK" button.
+
+21. Congratulations! You have just created your first release pipeline.
 
 ### Task 2: Add test and production environments to release definition
 
