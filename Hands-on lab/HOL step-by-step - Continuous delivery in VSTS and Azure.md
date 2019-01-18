@@ -49,7 +49,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Task 1: Create a build definition](#task-1-create-a-build-definition)
   - [Exercise 4: Create Azure DevOps release pipeline](#exercise-4-create-azure-devops-release-pipeline)
     - [Task 1: Create a release definition](#task-1-create-a-release-definition)
-    - [Task 2: Add test and production environments to release definition](#task-2-add-test-and-production-environments-to-release-definition)
+    - [Task 2: Add test and production environments to release pipeline](#task-2-add-test-and-production-environments-to-release-pipeline)
   - [Exercise 5: Trigger a build and release](#exercise-5-trigger-a-build-and-release)
     - [Task 1: Manually queue a new build and follow it through the release pipeline](#task-1-manually-queue-a-new-build-and-follow-it-through-the-release-pipeline)
   - [Exercise 6: Create a feature branch and submit a pull request](#exercise-6-create-a-feature-branch-and-submit-a-pull-request)
@@ -568,63 +568,55 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
 21. Congratulations! You have just created your first release pipeline.
 
-### Task 2: Add test and production environments to release definition
+### Task 2: Add test and production environments to release pipeline
 
-1.  Navigate to the "Releases" menu and click "..." next to the TailspinToys-Release definition. Then, click "Edit" to bring up the Release Management editor.
+1.  Move your mouse over the dev stage and a click the **Clone** button to create a copy of the tasks from the dev stage. We will use the same steps to deploy to test with a few configuration changes.
 
-    ![The Release menu item is highlighted, and below that, Edit is highlighted in the submenu for the TailspinToys-Release definition.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image95.png "Release Management editor")
+    ![On the screen, the Clone button is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image96.png "Copy the deployment tasks")
 
-2.  Move your mouse over the dev environment and a click the "Clone" button to create a copy of the deployment tasks from the dev environment. We will use these same steps to deploy to test with a few configuration changes.
+2.  Click on the newly created stage titled "Copy of dev" to bring up the stage configuration panel.
 
-    ![The Clone button is highlighted under the dev environment.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image96.png "Copy the deployment tasks")
+3.  Change the "Stage name" to **test** and then close the panel.
 
-3.  Click on the new environment "Copy of dev" to bring up the configuration screen.
+    ![On the panel, Stage name is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image96a.png "Stage configuration panel")
 
-4.  Change the Environment name to "test".
+4.  Now, we will begin modifying the configuration specifics for the test stage. Click the "1 job, 2 tasks" link for the test stage.
 
-5.  Now, we will begin editing the configuration for the test environment. Click the "1 phase, 2 tasks" link for the test environment.
+    ![On the screen, 1 job, 2 tasks is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image97.png "Begin configuring the test stage")
 
-    ![On the left, 1 phase, 2 tasks is highlighted under the test environment, and on the right, test is highlighted in the Environment name box.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image97.png "Begin configuring the test environment")
+5.  This opens the configuration panel for the stage and includes several pre-populated fields. Locate the **App service name** field and change the value to the app service that starts with **TailspinToysWeb-test-**.
 
-6.  Select the "Azure App Service Deploy" task to bring up the task configuration panel. Notice the settings are the same as when we configured it for the dev environment because we cloned the dev environment to create the test environment.
+    ![On the panel, App service name is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image97a.png "Stage configuration panel")
 
-7.  For the App Service name field, select the item that begins with "TailspinToysWeb-test".
+6.  Select the "Deploy Azure App Service" task to bring up the task configuration panel. Notice the settings are the same as when we configured it for the dev stage because we cloned the dev stage to create the test stage. You may need to scroll down the panel to see additional fields.
 
-8.  For the Resource group field, select "TailspinToys-test".
+7.  Locate the **Resource group** field and select **TailspinToys-test**. Then, locate the **Slot** field and select **staging**.
 
-9.  For the Slot field, select "staging".
+    ![On the panel, Resource group and Slot are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image98.png "Task configuration panel")
 
-    ![After selecting the Azure App Service Deploy task, fill in various boxes in the configuration window, including App Service name (select Deploy to slot), Resource group, and Slot. These values are highlighted in the screenshot of the configuration window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image98.png "Configure the Azure App Service Deploy task")
+8.  Now, select the "Swap Slots" task to bring up the task configuration panel. Fi*rst, locate the **Display name** field and simplify it to **Swap Slots**. Then, locate the **App Service name** and select the app service that starts with **TailspinToys-test-**. Next, locate the **Resource group** field and change the value to **TailspinToys-test**. Finally, locate the **Source Slot** field and set it to **staging**.
 
-10. We have completed configuration of the first task. Now, select the "Swap Slots" task to bring up the configuration panel.
+    ![On the panel, Display name, App Service name, Resource group, and Source Slot are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image99.png "Configure the Swap Slots task")
 
-11. For the App Service name field, select the item that begins with "TailspinToysWeb-test".
+9.  Click the "Save" button at the top of the screen, and confirm by clicking the "OK" button.
 
-12. For the Resource group field, select "TailspinToys-test".
+10. Congratulations! You have just created a test stage and added it to your pipeline.
 
-13. For the Source Slot field, select "staging".
+11. Repeat all of the steps in Task 2 to create a production stage being careful to enter "production" as a replacement for "test" and selecting "TailspinWeb-production" instead of "TailspinWeb-test" where applicable. Do not forget to configure to individual steps in the newly cloned production environment.
 
-    ![After selecting the Swap Slots task, fill in various boxes in the configuration window, including App Service name, Resource group, and Source Slot (select Swap with Production). These values are highlighted in the screenshot of the configuration window.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image99.png "Configure the Swap Slots task")
+12. The final release pipeline should look like the screen shot below:
 
-14. Click the "Save" button at the top of the screen, and confirm by clicking the "OK" button.
+    ![On the screen, all three stages are shown: dev, test, and production.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image100.png "The final release pipeline")
 
-15. Congratulations! You have just created a test environment and added it to your pipeline.
+13. Now you will enable the continuous deployment trigger so the release process automatically begins as soon as a build successfully completes. To do this, click on the lightning bolt icon in the Artifacts window.
 
-16. Repeat all of the steps in Task 2 to create a production environment being careful to enter "production" as a replacement for "test" and selecting "TailspinWeb-production" instead of "TailspinWeb-test" where applicable. Do not forget to configure to individual steps in the newly cloned production environment.
+14. This will bring up the Continuous deployment trigger panel. Change the setting to "Enabled".
 
-17. The final release pipeline should look like the screen shot below:
+    ![On the screen, Continuous deployment artifact lightning bolt is highlighted and the Continuous deployment trigger is enabled.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image101.png "Enable the continuous deployment trigger")
 
-    ![On the left is the TailspinToys-CI artifact, which is connected on the right by a line through the following environments (left to right): dev, test, and production (selected).](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image100.png "The final release pipeline")
+15. Click Save, and confirm your changes by clicking "OK". Then, close the panel.
 
-18. Now you will enable the continuous deployment trigger so the release process automatically begins as soon as a build successfully completes. To do this, click on the lightning bolt icon in the Artifacts window.
-
-19. This will bring up the Continuous deployment trigger panel. Change the setting to "Enabled".
-
-    ![The lightning bolt icon next to the TailspinToys-CI artifact is highlighted, and to the right, Enabled is selected and highlighted in the Continuous deployment trigger panel.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image101.png "Enable the continuous deployment trigger")
-
-20. Click Save, and confirm your changes.
-
-21. Congratulations! You have completed the creation of a release pipeline with three environments.
+16. Congratulations! You have completed the creation of a release pipeline with three stages.
 
 ## Exercise 5: Trigger a build and release
 
