@@ -430,7 +430,7 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
 5.  Push the changes up to the Azure DevOps repository with the following command:
 
     ```
-    git push -u origin -all
+    git push -u origin --all
     ```
 
 6.  Leave that command prompt window open and switch back to the web browser window for Azure DevOps from the previous Task. Navigate to the Repos > Files page which shows the files in the repository. You may need to refresh the page to see the updated files. Your source code is now appearing in Azure DevOps.
@@ -439,75 +439,51 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
 
 Duration: 15 Minutes
 
-In this exercise, you will create a build definition in Azure DevOps that automatically builds the web application with every commit of source code. This will lay the groundwork for us to then create a release pipeline for publishing the code to our Azure environments.
+Implementing CI and CD pipelines helps to ensure consistent and quality code that's readily available to users. Azure Pipelines is a quick, easy, and safe way to automate building your projects and making them available to users,
+
+In this exercise, you will create a build definition using, Azure Pipelines, that will automatically build the web application with every commit of source code. This will lay the groundwork for us to then create a release pipeline for publishing the code to our Azure environments.
 
 ### Task 1: Create a build definition
 
-1.  Select the Build and Release hub in your Azure DevOps project, and then select the Builds link.
+1.  In your Azure DevOps project, select the Pipelines menu option from the left-hand navigation.
 
-    ![In the Azure DevOps window, Build and Release is highlighted in the ribbon. Below that, Builds is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image68.png "Azure DevOps window")
+    ![In the Azure DevOps window, Pipelines is highlighted in the ribbon.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image68.png "Azure DevOps window")
 
-2.  Create a new pipeline and click continue on the following selection screen below.
+2.  Click the **New pipeline** button to create a new build pipeline.
 
-    ![In Builds, +New pipeline is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image69.png "Create a new pipeline")
+    ![In Builds, New pipeline is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image69.png "Create a new pipeline")
 
-    ![A screen that shows choosing the Azure DevOps Git option for the TailspinToys project.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image70.png "Select a source")
+3.  This starts a wizard where you'll first need to select where your current code is located. In a previous step, you pushed code up to Azure Repos. Select the **Azure Repos** option.
 
-3.  Select the "Empty job" link.
+    ![A screen that shows choosing the Azure Repos option for the TailspinToys project.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image70.png "Where is your code?")
 
-    ![Under Select a template, Empty job is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image71.png "Select the Empty job link")
+4.  Next, you'll need to select the specific repository where your code was pushed. In a previous step, you pushed it to the **TailspinToys** repository. Select the **TailspinToys** git repository.
 
-4.  Then, you are presented with the build definition process editor. Because we selected "Empty job" in the previous step, this process template comes is pretty empty at the moment. This is where we will add and configure Tasks that define our build process. Notice the Name field on the right side of the screen is already filled in for us with "TailspinToys-CI." You can change this name for your builds, but for now, we will leave it as is.
+    ![A screen that shows choosing the TailspinToys repository.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image71.png "Select a repository")
 
-    ![In the TailspinToys-CI build window, the Agent queue drop-down box is empty, below which is a message that states, "This setting is required."](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image72.png "Empty Agent queue drop-down box")
+5.  Then, you'll need to select the type of pipeline to configure. Since the Tailspin Toys solution is an ASP.NET web application, select **ASP.NET** from the list of options.
 
-5.  Use the dropdown menu to set Agent pool to "Hosted." This tells Azure DevOps that you want to use their provided build server to build your application. Very convenient.
+    ![A screen that shows choosing ASP.NET.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image72.png "Configure your pipeline")
 
-    ![In the Agent pool drop-down box, Hosted is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image73.png "Agent pool drop-down box")
+6.  As a final step in the creation of a build pipeline, you are presented with a configured pipeline in the form of an azure-pipelines.yml file. The YAML file contains the instructions for the pipeline. Inspect the file to understand how tasks are defined in the **Steps:** section. This file contains four tasks. Click the **Save and run** button to save our new pipeline and also kick off the first build.
 
-6.  On the left side of the screen, select the "Get sources" task. Notice the configuration options that appear on the right side of the screen. This is a consistent experience when navigating through the task list. This task is already configured to point to our "TailspinToys" repository and master branch that we configured earlier. No changes are needed to this task.
+    ![A screen that shows the contents of azure-pipelines.yml. The Save and run button is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image73.png "azure-pipelines.yml")    
 
-    ![In the TailspinToys-CI build window, the Get sources task is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image74.png "Get sources task")
+7.  The new azure-pipelines.yml file will automatically be added to the root of your TailspinToys repository. This is done through a git commit that Azure DevOps facilitates. You are then asked to enter a commit description. By default, it will be populated for you. Once again, click the **Save and run** button at the bottom of the screen.
 
-7.  Next, it is time to add the tasks the perform the build process. Note the default "Agent job 1" section on the left side of the screen. This section will hold all of the upcoming tasks we add for our build process. It is simply a way of logically grouping tasks. You can change the display name of "Agent job 1", but we will leave it as is for this scenario. Click on the "+" plus sign to the right of the "Agent job 1" section header. This will bring up the Add tasks list on the right.
+    ![A screen that shows the commit of azure-pipelines.yml. The Save and run button is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image74.png "Save and run")   
 
-    ![In the TailspinToys-CI build window, the plus sign (+) is highlighted next to Phase 1. To the right of that is the Add tasks list.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image75.png "Add tasks list")
+8.  The build process will immediately begin and run through the steps defined in the azure-pipelines.yml file. Your Azure DevOps screen will refresh to show you the build process executing, in real-time.
+   
+   ![A screen that shows the beginning of the build process.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image75.png "Waiting to start the build process")   
 
-8.  We will add four new tasks. In the Search box in the top right of the Add tasks screen, type "Nuget" to filter down the list. Several will be listed and your list may differ slightly from the list below. Select the "NuGet" task and click the "Add" button. 
+   ![A screen that shows the real-time output of the build process.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image76.png "Real-time output")   
 
-    ![In the Add tasks screen, the Nuget search box and Add button are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image76.png "Add tasks screen")
+9.  After the build process completes, you should see a green check mark next to each of the build pipeline steps.
 
-9.  This adds a new item to the Agent job 1 list on the left side of the screen labeled "NuGet restore." Next, we will add the task for actually building the solution. Replace the "Nuget" text in the search box with "Visual Studio Build" and select the Visual Studio Build task by clicking the "Add" button.
+    ![A screen that shows a successfully completed build pipeline.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image77.png "Success") 
 
-    ![In the TailspinToys-CI build window, NuGet restore is highlighted on the left, Visual Studio Build is highlighted in the search box, and the Add button is highlighted below that.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image77.png "NuGet restore item")
-
-10. This also added a new item to Agent job 1 list on the left side of the screen labeled "Build solution \*\*\\\*.sln." Next, add the task for executing unit tests. Replace the "Visual Studio Build" text in the search box with "Visual Studio Test" and select the task by clicking the "Add" button.
-
-    ![In the TailspinToys-CI build window, Build solution \*\*\\\*.sln is highlighted on the left, Visual Studio Test is highlighted in the search box, and the Add button is highlighted below that.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image78.png "Build solution **\*.sln item")
-
-11. The last task you add will be to package up the build and prepare it for deployment. Replace the "Visual Studio Test" text in the search box with "Publish Build Artifacts" and select the task by clicking the "Add" button.
-
-    ![In the TailspinToys-CI build window, VsTest - testAssemblies is highlighted on the left, Publish Build Artifacts is highlighted in the search box, and the Add button is highlighted below that.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image79.png "Package up the build and prepare it for deployment")
-
-12. Now that we have added the final task, we will need to go back and configure several of the tasks.
-
-13. Select the "Build solution \*\*\\\*.sln" task that you added copy the following text into the "MSBuild Arguments" field as shown in the screen shot below:
-
-    ```
-    /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"
-    ```
-
-    ![In the TailspinToys-CI build window, Build solution \*\*\\\*.sln is highlighted on the left, and the above text is highlighted in the MSBuild Arguments box.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image80.png "MSBuild Arguments box")
-
-14. Select the "Publish Artifact" task that you added and enter "\$(Build.ArtifactStagingDirectory)" into the Path to publish field and enter "TailspinToys-CI" into the Artifact name field as shown in the screen shot below:
-
-    ![In the TailspinToys-CI build window, Publish Artifact: TailspinToys-CI is highlighted on the left, and on the right, \$(Build.ArtifactStagingDirectory) in the Path to publish box and TailspinToys-CI in the Artifact name box are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image81.png "Path to publish and Artifact name boxes")
-
-15. As a last step, select the dropdown arrow next to the "Save & queue" button near the top of the screen. You will be asked to confirm the save request. Just click "Save" again.
-
-    ![In the TailspinToys-CI build window, Save is highlighted in the Save & queue drop-down list.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image82.png "Save")
-
-16. Congratulations! You have just created your first build definition. In the next exercise, we will create a release pipeline that deploys your builds.
+10. Congratulations! You have just created your first build pipeline. In the next exercise, we will create a release pipeline that deploys your successful builds.
 
 ### Task 2: Enable continuous integration
 
