@@ -777,15 +777,15 @@ In the tasks below, you will make changes directly through the Azure DevOps web 
 
 Typically, the next few steps would be performed by another team member. This would allow for the code to be peer reviewed. However, in this scenario, you will continue as if you are the only developer on the project.
 
-1.  After submitting the pull request, you are presented with Pull Requests review screen.
+1.  After submitting the pull request, you are presented with Pull Request review screen. Let's assume all the changes made were acceptable to the review team.
 
-2.  First, click the "Approve" button assuming you approve of the code that was modified.
+2.  First, click the "Approve" button to approve of the code that was modified submitted as part of the pull request.
 
-3.  This will note that you approved the pull request. Then, click the "Complete" button to finish and merge the pull request into the master branch.
+3.  This will note that you approved the pull request. Then, click the "Complete" button to finish and merge the code from the pull request into the master branch.
 
-    ![On the New Pull Request page, Approve and Complete are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image114.png "Finish merging the pull request")
+    ![On the screen, Approve and Complete are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image114.png "Approve and complete to merge the pull request")
 
-4.  After clicking the Complete button in the previous step, you will be presented with the Complete pull request popup. You can add additional comments for the merge activity. By selecting the "Delete new-heading after merging" option, our branch will be deleted after the merge has been completed. This keeps our repository clean of old and abandoned branches and eliminates the possibility of confusion.
+4.  After clicking the Complete button in the previous step, you will be presented with the Complete pull request popup. You can add additional comments for the merge activity. By selecting the "Delete new-heading after merging" option, our branch will be deleted after the merge has been completed. This keeps our repository clean of old and abandoned branches and eliminates the possibility of future confusion.
 
     ![In the Complete pull request dialog box, Delete new-heading after merging is selected and highlighted, and Complete merge is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image115.png "Complete pull request dialog box")
 
@@ -793,7 +793,7 @@ Typically, the next few steps would be performed by another team member. This wo
 
 6.  You will then see a confirmation of the completed pull request.
 
-    ![This is a screenshot of the confirmation message.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image116.png "Confirmation message")
+    ![On the popup, Complete merge is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image116.png "Complete pull request popup")
 
 7.  Congratulations! You just created a branch, made a code change, submitted a pull request, approved the pull request, and merged the code.
 
