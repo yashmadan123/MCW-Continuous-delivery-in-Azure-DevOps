@@ -723,17 +723,17 @@ In the tasks below, you will make changes directly through the Azure DevOps web 
 
 3.  In the "Create a branch" dialog, enter a name for the new branch. In this scenario, name it "new-heading". In the "Based on" field, be sure **master** is selected.
 
-    ![On the popup window, Name and Based on are hihglighted along with the Create branch button.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image107.png "Create a branch popup")
+    ![On the popup window, Name and Based on are highlighted along with the Create branch button.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image107.png "Create a branch popup")
 
 4.  Click "Create branch".
 
 ### Task 2: Make a code change to the feature branch
 
-1.  Click on the name of the newly created branch. This will present the "Files" window.
+1.  Click on the name of the newly created branch. This will present the "Files" window showing all the files in the repository.
 
-    ![This is a screenshot of the Files window for Tailspin Toys.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image108.png "Files window")
+    ![On the screen, the new-heading branch is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image108.png "Branches window")
 
-2.  Next, you'll make a change to a page in the web application in the web browser.
+2.  Next, you'll make a change to a page in the web application inside the web browser.
 
 3.  Click on the "TailspinToys.Web" folder.
 
@@ -741,13 +741,13 @@ In the tasks below, you will make changes directly through the Azure DevOps web 
 
 5.  Then, click on the "Home" folder.
 
-6.  Locate and click on the "Index.cshtml" file. You will now see the contents of the file.
+6.  Locate and click on the "Index.cshtml" file. It will display the contents of the file.
 
 7.  Click on the "Edit" button on the top right of the screen to begin editing the page.
 
-    ![The screenshot depicts the editing page for Index.cshtml. Index.cshtml is selected in the navigation pane, Index.cshtml is highlighted in the address bar, and Edit is highlighted at the top right.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image109.png "Editing page")
+    ![On the screen, Edit is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image109.png "Files window")
 
-8.  Replace the code on line 6 with the following:
+8.  Replace the code ```<h1>ASP.NET</h1>``` on line 6 with the following:
 
     ```
     <h1>Tailspin Toys</h1>
@@ -755,11 +755,11 @@ In the tasks below, you will make changes directly through the Azure DevOps web 
     
 9.  Now that you've completed the code change, click on the "Commit..." button on the top right side of the screen.
 
-    ![The code change above is highlighted on the editing page, and Commit is highlighted at the top right.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image110.png "Completing the code change")
+    ![On the screen, line 6 code change and the Commit button are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image110.png "Completing the code change")
 
 10. This will present the Commit popup where you can enter a comment. Click the "Commit" button.
 
-    ![The Commit button is highlighted at the bottom of the Commit dialog box.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image111.png "Commit dialog box")
+    ![On the popup, the Commit button is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image111.png "Commit dialog popup")
 
 ### Task 3: Submit a pull request
 
