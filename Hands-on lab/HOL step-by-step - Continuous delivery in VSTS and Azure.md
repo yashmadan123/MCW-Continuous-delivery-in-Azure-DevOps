@@ -713,15 +713,17 @@ In the tasks below, you will make changes directly through the Azure DevOps web 
 
 ### Task 1: Create a new branch
 
-1.  Select the "Code" hub. Then, select "Branches".
+1.  Select the "Repos" menu item from the left-hand navigation. Then, click on "Branches".
 
-    ![In the Azure DevOps web interface for TailspinToys, Code, Branches, and the New Branch button are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image106.png "Azure DevOps window")
+    ![On the screen, Repos and Branches are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image106.png "Azure DevOps window")
 
 2.  Click the "New branch" button in the upper right corner of the page.
 
-3.  In the "Create a branch" dialog, enter a name for the new branch. In this scenario, name it "new-heading". In the "Based on" field, be sure master is selected.
+    ![On the screen, New branch is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image106a.png "Azure DevOps window")
 
-    ![In the Create a branch dialog box, new-heading is highlighted in the Name box, master is highlighted in the Based on box, and Create branch is highlighted at the bottom.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image107.png "Create a branch dialog box")
+3.  In the "Create a branch" dialog, enter a name for the new branch. In this scenario, name it "new-heading". In the "Based on" field, be sure **master** is selected.
+
+    ![On the popup window, Name and Based on are hihglighted along with the Create branch button.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image107.png "Create a branch popup")
 
 4.  Click "Create branch".
 
