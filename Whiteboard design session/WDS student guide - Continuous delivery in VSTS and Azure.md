@@ -1,7 +1,7 @@
 ![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Continuous delivery in Azure DevOps and Azure
+Continuous delivery in Azure DevOps
 </div>
 
 <div class="MCWHeader2">
@@ -26,7 +26,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 <!-- TOC -->
 
-- [Continuous delivery in Azure DevOps and Azure whiteboard design session student guide](#continuous-delivery-in-azure-devops-and-azure-whiteboard-design-session-student-guide)
+- [Continuous delivery in Azure DevOps whiteboard design session student guide](#continuous-delivery-in-azure-devops-whiteboard-design-session-student-guide)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
     - [Customer situation](#customer-situation)
@@ -40,7 +40,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 <!-- /TOC -->
 
-# Continuous delivery in Azure DevOps and Azure whiteboard design session student guide
+# Continuous delivery in Azure DevOps whiteboard design session student guide
 
 ## Abstract and learning objectives 
 
@@ -225,12 +225,12 @@ Directions:  Tables reconvene with the larger group to hear the facilitator/SME 
 |    |            |
 |----------|:-------------:|
 | **Description** | **Links** |
-| Enable diagnostics logging for web apps | <<https://azure.microsoft.com/en-us/documentation/articles/web-sites-enable-diagnostic-log/> |
+| Enable diagnostics logging for web apps | <https://azure.microsoft.com/en-us/documentation/articles/web-sites-enable-diagnostic-log/> |
 | Monitor web app performance  | <https://azure.microsoft.com/en-us/documentation/articles/insights-perf-analytics/> |
-| Release management | <https://www.visualstudio.com/en-us/features/release-management-vs.aspx> |
-| Release management examples | <https://www.visualstudio.com/docs/release/examples/examples-index#azure> |
-| Switch deployment slots in Azure web apps | <https://www.visualstudio.com/docs/release/examples/azure/deployment-slots-webapps> |
-| App service continuous deployment | <https://www.visualstudio.com/en-us/docs/release/examples/azure/continuous-to-app-service> |
+| Azure Pipelines | <https://azure.microsoft.com/en-us/services/devops/pipelines/> |
+| Azure Pipelines examples | <https://docs.microsoft.com/en-us/azure/devops/pipelines/index?view=vsts#azure> |
+| Switch deployment slots in Azure web apps | <https://blogs.msdn.microsoft.com/devops/2017/04/10/considerations-on-using-deployment-slots-in-your-devops-pipeline/> |
+| App service continuous deployment | <https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment> |
 | App service staging environments | <https://azure.microsoft.com/en-us/documentation/articles/web-sites-staged-publishing/> |
 | Application Insights | <https://azure.microsoft.com/en-us/documentation/services/application-insights/> |
 

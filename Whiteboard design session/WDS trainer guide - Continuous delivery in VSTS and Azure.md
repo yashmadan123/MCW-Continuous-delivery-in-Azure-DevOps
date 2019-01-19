@@ -1,7 +1,7 @@
 ![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Continuous delivery in Azure DevOps and Azure
+Continuous delivery in Azure DevOps
 </div>
 
 <div class="MCWHeader2">
@@ -43,7 +43,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
   - [Step 3: Present the solution](#step-3-present-the-solution)
   - [Wrap-up](#wrap-up)
   - [Additional references](#additional-references)
-- [Continuous delivery in Azure DevOps and Azure whiteboard design session trainer guide](#continuous-delivery-in-azure-devops-and-azure-whiteboard-design-session-trainer-guide)
+- [Continuous delivery in Azure DevOps whiteboard design session trainer guide](#continuous-delivery-in-azure-devops-whiteboard-design-session-trainer-guide)
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
   - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
   - [Step 3: Present the solution](#step-3-present-the-solution-1)
@@ -352,16 +352,16 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 |    |            |
 |----------|:-------------:|
 | **Description** | **Links** |
-| Enable diagnostics logging for web apps | <<https://azure.microsoft.com/en-us/documentation/articles/web-sites-enable-diagnostic-log/> |
+| Enable diagnostics logging for web apps | <https://azure.microsoft.com/en-us/documentation/articles/web-sites-enable-diagnostic-log/> |
 | Monitor web app performance  | <https://azure.microsoft.com/en-us/documentation/articles/insights-perf-analytics/> |
-| Release management | <https://www.visualstudio.com/en-us/features/release-management-vs.aspx> |
-| Release management examples | <https://www.visualstudio.com/docs/release/examples/examples-index#azure> |
-| Switch deployment slots in Azure web apps | <https://www.visualstudio.com/docs/release/examples/azure/deployment-slots-webapps> |
-| App service continuous deployment | <https://www.visualstudio.com/en-us/docs/release/examples/azure/continuous-to-app-service> |
+| Azure Pipelines | <https://azure.microsoft.com/en-us/services/devops/pipelines/> |
+| Azure Pipelines examples | <https://docs.microsoft.com/en-us/azure/devops/pipelines/index?view=vsts#azure> |
+| Switch deployment slots in Azure web apps | <https://blogs.msdn.microsoft.com/devops/2017/04/10/considerations-on-using-deployment-slots-in-your-devops-pipeline/> |
+| App service continuous deployment | <https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment> |
 | App service staging environments | <https://azure.microsoft.com/en-us/documentation/articles/web-sites-staged-publishing/> |
 | Application Insights | <https://azure.microsoft.com/en-us/documentation/services/application-insights/> |
 
-# Continuous delivery in Azure DevOps and Azure whiteboard design session trainer guide
+# Continuous delivery in Azure DevOps whiteboard design session trainer guide
 
 ## Step 1: Review the customer case study
 
@@ -534,13 +534,13 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
     
     **Potential answer**
 
-    By using the Release Management features of Azure DevOps, a developer never needs to touch Azure resources. Once the code is checked into the source code repository, the CI/CD activities automate the building, testing and deployment of that code without developer intervention.
+    By using the Azure Pipelines features of Azure DevOps, a developer never needs to touch Azure resources. Once the code is checked into the source code repository, the CI/CD activities automate the building, testing and deployment of that code without developer intervention.
 
 3.  If developers can deploy directly to the cloud, will that expose us to the same problems we had before when untested code was promoted to production?
     
     **Potential answer**
     
-    If we use Azure DevOps' Release Management features, we have the opportunity to configure all the necessary rules and/or approvals for ensuring a smooth and secure deployment process. The goal here is to remove human touches from the process thus increasing the stability of the release process.
+    If we use Azure DevOps' Pipelines features, we have the opportunity to configure all the necessary rules and/or approvals for ensuring a smooth and secure deployment process. The goal here is to remove human touches from the process thus increasing the stability of the release process.
 
 4.  How much of an impact will these process changes have on our development cadence? Will learning this place a new burden on the developers?
     
