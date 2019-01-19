@@ -763,13 +763,13 @@ In the tasks below, you will make changes directly through the Azure DevOps web 
 
 ### Task 3: Submit a pull request
 
-1.  Select the "Branches" menu. Then, select the "..." button next to the branch you created earlier. Then, click on the "New pull request" option.
+1.  Near the top of the screen, locate the "Create a pull request" link.
 
-    ![In the Azure DevOps web interface for TailspinToys, Branches is highlighted in the menu, the ellipsis highlighted next to new-heading (selected), and New pull request is selected in the submenu.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image112.png "New pull request")
+    ![On the screen, Create a pull request is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image112.png "Create a pull request")
 
-2.  This brings up the New Pull Request page. It shows we are submitting a request to merge code from our new-heading branch into the master branch. You have the option to change the Title and Description fields. The TailspinToys Team has been selected to review this pull request before it will be merged. The details of the code change are at the bottom of the page.
+2.  This brings up the "New Pull Request" page. It shows we are submitting a request to merge code from our **new-heading** branch into the **master** branch. You have the option to change the "Title" and "Description" fields. Locate the "Reviewers" field. Type in **Tailspin** and click the search tooltip. Select the **[TailspinToys]\Tailspin Toys** team from the search results. This assigns The TailspinToys Team (which you are a member of) to review this pull request before it will be merged. The details of the code change are at the bottom of the page.
 
-    ![This is a screenshot of the New Pull Request page with details of the code change at the bottom of the page.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image113.png "New Pull Request page")
+    ![On the screen, Reviewers is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image113.png "New Pull Request page")
 
 3.  Click the "Create" button to submit the pull request.
 
