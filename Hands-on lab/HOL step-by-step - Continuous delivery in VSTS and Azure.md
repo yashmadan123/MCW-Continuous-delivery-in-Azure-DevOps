@@ -464,15 +464,70 @@ In this exercise, you will create a build definition using, Azure Pipelines, tha
 
     ![A screen that shows choosing ASP.NET.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image72.png "Configure your pipeline")
 
-6.  As a final step in the creation of a build pipeline, you are presented with a configured pipeline in the form of an azure-pipelines.yml file. The YAML file contains the instructions for the pipeline. Inspect the file to understand how tasks are defined in the **Steps:** section. This file contains four tasks. Click the **Save and run** button to save our new pipeline and also kick off the first build.
+6.  As a final step in the creation of a build pipeline, you are presented with a configured pipeline in the form of an azure-pipelines.yml file. The YAML file contains the instructions for the pipeline. Inspect the file to understand how tasks are defined in the **Steps:** section. This file contains four tasks. 
+
+7.  We also need to publish the output of the build pipeline so it can be used in our release pipeline. To do that, we'll add a task to the end of the current build pipeline. Add an additional task by inserting the following code at the end of the azure-pipelines.yml file.
+
+    ```yml
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+        artifactName: 'TailspinToys-CI'
+    ```
+
+8.  The final result will look like the following:
+
+    ```yml
+    # ASP.NET
+    # Build and test ASP.NET projects.
+    # Add steps that publish symbols, save build artifacts, deploy, and more:
+    # https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+    trigger:
+    - master
+
+    pool:
+    vmImage: 'VS2017-Win2016'
+
+    variables:
+    solution: '**/*.sln'
+    buildPlatform: 'Any CPU'
+    buildConfiguration: 'Release'
+
+    steps:
+    - task: NuGetToolInstaller@0
+
+    - task: NuGetCommand@2
+    inputs:
+        restoreSolution: '$(solution)'
+
+    - task: VSBuild@1
+    inputs:
+        solution: '$(solution)'
+        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
+
+    - task: VSTest@2
+    inputs:
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
+
+    - task: PublishBuildArtifacts@1
+    inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+        artifactName: 'TailspinToys-CI'
+    ```
+
+9.  Click the **Save and run** button to save our new pipeline and also kick off the first build.
 
     ![A screen that shows the contents of azure-pipelines.yml. The Save and run button is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image73.png "azure-pipelines.yml")    
 
-7.  The new azure-pipelines.yml file will automatically be added to the root of your TailspinToys repository. This is done through a git commit that Azure DevOps facilitates. You are then asked to enter a commit description. By default, it will be populated for you. Once again, click the **Save and run** button at the bottom of the screen.
+10. The new azure-pipelines.yml file will automatically be added to the root of your TailspinToys repository. This is done through a git commit that Azure DevOps facilitates. You are then asked to enter a commit description. By default, it will be populated for you. Once again, click the **Save and run** button at the bottom of the screen.
 
     ![A screen that shows the commit of azure-pipelines.yml. The Save and run button is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image74.png "Save and run")   
 
-8.  The build process will immediately begin and run through the steps defined in the azure-pipelines.yml file. Your Azure DevOps screen will refresh to show you the build process executing, in real-time.
+11. The build process will immediately begin and run through the steps defined in the azure-pipelines.yml file. Your Azure DevOps screen will refresh to show you the build process executing, in real-time.
    
    ![A screen that shows the beginning of the build process.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image75.png "Waiting to start the build process")   
 
@@ -622,31 +677,31 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
 Duration: 10 Minutes
 
-In this exercise, you will trigger an automated build and release of the web application using the build definition and release pipeline you created in earlier exercises. The release pipeline will deploy to three environments: dev, test, and production.
+In this exercise, you will trigger an automated build and release of the web application using the build and release pipelines you created in earlier exercises. The release pipeline will deploy to three stages: dev, test, and production.
 
-Any commit of new or modified code to the master branch will automatically trigger a build. The task below is for when you want to manually trigger a build without a code change.
+Any commit of new or modified code to the master branch will automatically trigger a build. The steps below are useful when you want to manually trigger a build without a code change.
 
 ### Task 1: Manually queue a new build and follow it through the release pipeline
 
-1.  Navigate to the "Builds" menu and click "..." next to the TailspinToys-CI build definition. Then, select "Queue new build..." menu option.
+1.  Click on the "Pipelines" menu item from the left-hand navigation. Then, click the "Queue" button.
 
-    ![In the Build menu, the TailspinToys-CI build definition is selected, the ellipsis next to it is highlighted, and Queue new build is highlighted in the shortcut menu.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image102.png "Queue a new build")
+    ![On the screen, the Pipelines button and the Queue button are highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image102.png "Queue a new build")
 
-2.  This will present a popup titled "Queue build for TailspinToys-CI." Click the "Queue" button at the bottom of the popup.
+2.  This will present a popup titled "Queue build for TailspinToys". Click the "Queue" button at the bottom of the popup.
 
-    ![The Queue button is selected at the bottom of the popup dialog box.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image103.png "Queue button")
+    ![On the popup, the Queue button is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image103.png "Queue button")
 
-3. Click the **Build number** next to the name of the Build pipeline to view the status of the build.
+3. Double-click the build view the status of the build.
 
-    ![The screenshot depicts the list of Build pipelines showing the Tailspin-CI pipeline. The number for the queued build is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image120.png "Screenshot of Build pipelines with the queued build number highlighted")
+    ![On the screen, the current build is highlighted.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image120.png "List of builds")
 
-4.  If the build is successful, it will resemble the screen shot below:
+4.  If the build is successful, it will resemble the screen shot below.
 
-    ![The screenshot depicts a green notification banner that reads, "Build succeeded." The banner appears above a summary screen of the build details.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image104.png "Successful notification banner")
+    ![On the screen, the build has successfully completed. Each task has a green check.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image104.png "Successful build results")
 
-5.  Because we configured continuous deployment, the deployment to dev environment will then be triggered immediately. It will continue through on to the test and production environments. A successful release through all three environments will look like the screen shot below.
+5.  Because we configured continuous deployment, the deployment to the dev stage will then be triggered immediately. It will continue through on to the test and production stages. A successful release through all three stages will look like the screen shot below.
 
-    ![The screenshot depicts a successful release through all three environments for the TailspinToys build.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image105.png "Screenshot of a successful release")
+    ![On the screen, a successful release through all three stages of deployment.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image105.png "A successful release through all three stages")
 
 ## Exercise 6: Create a feature branch and submit a pull request
 
