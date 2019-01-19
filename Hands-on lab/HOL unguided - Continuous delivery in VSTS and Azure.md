@@ -1,7 +1,7 @@
 ﻿![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Continuous delivery in Azure DevOps and Azure
+Continuous delivery in Azure DevOps
 </div>
 
 <div class="MCWHeader2">
@@ -25,7 +25,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 <!-- TOC -->
 
-- [Continuous delivery in Azure DevOps and Azure hands-on lab unguided](#continuous-delivery-in-azure-devops-and-azure-hands-on-lab-unguided)
+- [Continuous delivery in Azure DevOps hands-on lab unguided](#continuous-delivery-in-azure-devops-hands-on-lab-unguided)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Overview](#overview)
   - [Solution architecture](#solution-architecture)
@@ -36,7 +36,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
   - [Exercise 2: Create an Azure DevOps team project and Git Repository](#exercise-2-create-an-azure-devops-team-project-and-git-repository)
       - [Tasks to complete](#tasks-to-complete-1)
       - [Exit criteria](#exit-criteria-1)
-  - [Exercise 3: Create Azure DevOps build definition](#exercise-3-create-azure-devops-build-definition)
+  - [Exercise 3: Create Azure DevOps build pipeline](#exercise-3-create-azure-devops-build-pipeline)
     - [Tasks to complete](#tasks-to-complete-2)
     - [Exit criteria](#exit-criteria-2)
   - [Exercise 4: Create Azure DevOps release pipeline](#exercise-4-create-azure-devops-release-pipeline)
@@ -53,7 +53,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 <!-- /TOC -->
 
-# Continuous delivery in Azure DevOps and Azure hands-on lab unguided
+# Continuous delivery in Azure DevOps hands-on lab unguided
 
 ## Abstract and learning objectives 
 
@@ -142,29 +142,27 @@ Tailspin Toys has asked you to create a continuous delivery process for their de
 
 -   Create an Azure DevOps account.
 
--   Add the Tailspin Toys source code repository to Azure DevOps.
+-   Add the Tailspin Toys source code repository to Azure Repos.
 
 #### Exit criteria
 
 -   You can connect Visual Studio to the Azure DevOps account, clone and view the web app repository from the master branch.
 
-## Exercise 3: Create Azure DevOps build definition
+## Exercise 3: Create Azure DevOps build pipeline
 
 Duration: 15 Minutes
 
-In this exercise, you will create a build definition in Azure DevOps that automatically builds the web application with every commit of source code. This will lay the groundwork for us to then create a release pipeline for publishing the code to our Azure environments.
+Implementing CI and CD pipelines helps to ensure consistent and quality code that's readily available to users. Azure Pipelines is a quick, easy, and safe way to automate building your projects and making them available to users,
+
+In this exercise, you will create a build definition using, Azure Pipelines, that will automatically build the web application with every commit of source code. This will lay the groundwork for us to then create a release pipeline for publishing the code to our Azure environments.
 
 ### Tasks to complete
 
--   Create a build definition.
+-   Create a build pipeline.
 
     -   Build the web app.
 
-    -   Execute unit tests.
-
     -   Publish artifacts.
-
--   Enable continuous integration.
 
 ### Exit criteria
 
@@ -174,7 +172,7 @@ In this exercise, you will create a build definition in Azure DevOps that automa
 
 Duration: 30 Minutes
 
-In this exercise you will create a release pipeline in Azure DevOps that performs automated deployment of build artifacts to Microsoft Azure. The release pipeline will deploy to three environments: dev, test, and production.
+In this exercise you will create a release pipeline in Azure DevOps that performs automated deployment of build artifacts to Microsoft Azure. The release pipeline will deploy to three stages: dev, test, and production.
 
 #### Tasks to complete
 
@@ -182,31 +180,31 @@ In this exercise you will create a release pipeline in Azure DevOps that perform
 
     -   Link the build artifacts to the release.
 
-    -   Sequential automated flow to three environments: dev, test, and production.
+    -   Sequential automated flow to three stages: dev, test, and production.
 
     -   Deploy to staging slot and then switch the slots after a successful deployment.
 
--   Add test and production environments to release definition.
+-   Add test and production stages to the release pipeline.
 
     -   Deploy to staging slot and then switch the slots after a successful deployment.
 
 #### Exit criteria
 
--   You have created a release pipeline that includes three sequential environments: dev, test, and production. The deployments to dev are automatically triggered upon a successful build. The deployment to test is automatically triggered upon a successful deployment to dev. The deployment to production is automatically triggered upon a successful deployment to production.
+-   You have created a release pipeline that includes three sequential stages: dev, test, and production. The deployments to dev are automatically triggered upon a successful build. The deployment to test is automatically triggered upon a successful deployment to dev. The deployment to production is automatically triggered upon a successful deployment to production.
 
 ## Exercise 5: Trigger a build and release
 
 Duration: 10 Minutes
 
-In this exercise you will trigger an automated build and release of the web application using the build definition and release pipeline you created in earlier exercises. The release pipeline will deploy to three environments: dev, test, and production.
+In this exercise you will trigger an automated build and release of the web application using the build pipeline and release pipeline you created in earlier exercises. The release pipeline will deploy to three stages: dev, test, and production.
 
 #### Tasks to complete
 
--   Manually queue a new build and follow it through the build and release pipeline.
+-   Manually queue a new build and follow it through the build and release pipelines.
 
 #### Exit criteria
 
--   You have successfully queued a new build and released it through the three environments: dev, test, and production.
+-   You have successfully queued a new build and released it through the three stages: dev, test, and production.
 
 ## Exercise 6: Create a feature branch and submit a pull request
 

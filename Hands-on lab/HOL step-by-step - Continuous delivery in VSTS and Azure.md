@@ -1,7 +1,7 @@
 ![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Continuous delivery in Azure DevOps and Azure
+Continuous delivery in Azure DevOps
 </div>
 
 <div class="MCWHeader2">
@@ -25,7 +25,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 **Contents**
 <!-- TOC -->
 
-- [Continuous delivery in Azure DevOps and Azure hands-on lab step-by-step](#continuous-delivery-in-azure-devops-and-azure-hands-on-lab-step-by-step)
+- [Continuous delivery in Azure DevOps hands-on lab step-by-step](#continuous-delivery-in-azure-devops-hands-on-lab-step-by-step)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Overview](#overview)
   - [Solution architecture](#solution-architecture)
@@ -45,8 +45,8 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
   - [Exercise 2: Create Azure DevOps team project and Git Repository](#exercise-2-create-azure-devops-team-project-and-git-repository)
     - [Task 1: Create Azure DevOps Account](#task-1-create-azure-devops-account)
     - [Task 2: Add the Tailspin Toys source code repository to Azure DevOps](#task-2-add-the-tailspin-toys-source-code-repository-to-azure-devops)
-  - [Exercise 3: Create Azure DevOps build definition](#exercise-3-create-azure-devops-build-definition)
-    - [Task 1: Create a build definition](#task-1-create-a-build-definition)
+  - [Exercise 3: Create Azure DevOps build pipeline](#exercise-3-create-azure-devops-build-pipeline)
+    - [Task 1: Create a build pipeline](#task-1-create-a-build-pipeline)
   - [Exercise 4: Create Azure DevOps release pipeline](#exercise-4-create-azure-devops-release-pipeline)
     - [Task 1: Create a release definition](#task-1-create-a-release-definition)
     - [Task 2: Add test and production environments to release pipeline](#task-2-add-test-and-production-environments-to-release-pipeline)
@@ -62,7 +62,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 <!-- /TOC -->
 
-# Continuous delivery in Azure DevOps and Azure hands-on lab step-by-step
+# Continuous delivery in Azure DevOps hands-on lab step-by-step
 
 ## Abstract and learning objectives 
 
@@ -434,7 +434,7 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
 
 6.  Leave that command prompt window open and switch back to the web browser window for Azure DevOps from the previous Task. Navigate to the Repos > Files page which shows the files in the repository. You may need to refresh the page to see the updated files. Your source code is now appearing in Azure DevOps.
 
-## Exercise 3: Create Azure DevOps build definition
+## Exercise 3: Create Azure DevOps build pipeline
 
 Duration: 15 Minutes
 
@@ -442,7 +442,7 @@ Implementing CI and CD pipelines helps to ensure consistent and quality code tha
 
 In this exercise, you will create a build definition using, Azure Pipelines, that will automatically build the web application with every commit of source code. This will lay the groundwork for us to then create a release pipeline for publishing the code to our Azure environments.
 
-### Task 1: Create a build definition
+### Task 1: Create a build pipeline
 
 1.  In your Azure DevOps project, select the Pipelines menu option from the left-hand navigation.
 
@@ -543,7 +543,7 @@ In this exercise, you will create a build definition using, Azure Pipelines, tha
 
 Duration: 30 Minutes
 
-In this exercise, you will create a release pipeline in Azure DevOps that performs automated deployment of build artifacts to Microsoft Azure. The release pipeline will deploy to three environments: dev, test, and production.
+In this exercise, you will create a release pipeline in Azure DevOps that performs automated deployment of build artifacts to Microsoft Azure. The release pipeline will deploy to three stages: dev, test, and production.
 
 ### Task 1: Create a release definition
 
@@ -797,7 +797,9 @@ Typically, the next few steps would be performed by another team member. This wo
 
 7.  Congratulations! You just created a branch, made a code change, submitted a pull request, approved the pull request, and merged the code.
 
-8.  Because we configured continuous integration and continuous deployment, an automated build will be triggered and deployment to dev environment will then begin immediately after a successful build. It will continue through on to the test and production environments.
+8.  Because we configured continuous integration and continuous deployment, an automated build will be triggered and deployment to dev stage will then begin immediately after a successful build. It will continue through on to the test and production stages.
+
+    ![On the screen, a new build has been automatically triggered.](images/Hands-onlabstep-by-step-ContinuousdeliverywithVSTSandAzureimages/media/image117.png "List of builds")
 
 ## After the hands-on lab
 
