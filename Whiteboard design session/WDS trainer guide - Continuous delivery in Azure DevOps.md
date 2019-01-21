@@ -32,7 +32,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
   - [Whiteboard design session flow](#whiteboard-design-session-flow)
   - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
   - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
-- [Continuous delivery in Azure DevOps and Azure whiteboard design session student guide](#continuous-delivery-in-azure-devops-and-azure-whiteboard-design-session-student-guide)
+- [Continuous delivery in Azure DevOps whiteboard design session student guide](#continuous-delivery-in-azure-devops-whiteboard-design-session-student-guide)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
     - [Customer situation](#customer-situation)
@@ -167,7 +167,7 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 **Wait for responses**. If you ask a question such as, "What's your experience with (fill in the blank)?" then wait. Do not be afraid of a little silence. If you leap into the silence, your participants will feel you are not serious about involving them and will become passive. Give participants a chance to think, and if no one answers, patiently ask again. You will usually get a response.
 
-# Continuous delivery in Azure DevOps and Azure whiteboard design session student guide
+# Continuous delivery in Azure DevOps whiteboard design session student guide
 
 ## Abstract and learning objectives 
 
@@ -215,7 +215,7 @@ Todd wants to improve the turnaround time for fixing these bugs, and he needs be
 
 **Existing solution architecture**
 
-![This is a diagram of Tailspin Toys existing solution architecture. On the left is a Visual Studio icon and the words "development," "test," and "master," which represents the development team hosting its source control in Azure DevOps with branches set up for development, test, and master environments. Three arrows point from these environments to a server and monitor icon on the right labeled Manual internal code review & QA on local developer machines. An arrow points from this icon to another Visual Studio icon on the right labeled Visual Studio/FTP, which represents developers manually deploying updates through Visual Studio or FTP. Two arrows point from this icon to two icons on the right: on the top, Azure App Service with Web App (S3 Instance), and on the bottom, Azure SQL Database (S1 Instance).](images/Whiteboarddesignsessiontrainerguide-ContinuousdeliverywithVSTSandAzureimages/media/image2.png "Existing solution architecture diagram")
+![This is a diagram of Tailspin Toys existing solution architecture. On the left is a Visual Studio icon and the words "development," "test," and "master," which represents the development team hosting its source control in Azure DevOps with branches set up for development, test, and master environments. Three arrows point from these environments to a server and monitor icon on the right labeled Manual internal code review & QA on local developer machines. An arrow points from this icon to another Visual Studio icon on the right labeled Visual Studio/FTP, which represents developers manually deploying updates through Visual Studio or FTP. Two arrows point from this icon to two icons on the right: on the top, Azure App Service with Web App (S3 Instance), and on the bottom, Azure SQL Database (S1 Instance).](images/trainerguide/media/image2.png "Existing solution architecture diagram")
 
 ### Customer needs 
 
@@ -495,7 +495,7 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
     Application Insights provide rich performance monitoring, alerting, and easy-to-consume dashboards. The service also allows us to quickly see if we have a problem and how many customers may be affected. The service provides for interactive queries and and full-text search for unlocking insights into our logs.
 
-    ![Application Insights provides a rich interactive dashboard and search feature over the logs that it collects from the application. In these screenshots, Search is highlighted in the menu, and a Search screen displays information about Trace, Request, Page View, Custom Event, and Exception Event Types, which are selected in a Filter submenu. At this time, we are unable to capture all of the information in the window. Future versions of this course should address this.](images/Whiteboarddesignsessiontrainerguide-ContinuousdeliverywithVSTSandAzureimages/media/image3.png "Open diagnostic search")
+    ![Application Insights provides a rich interactive dashboard and search feature over the logs that it collects from the application. In these screenshots, Search is highlighted in the menu, and a Search screen displays information about Trace, Request, Page View, Custom Event, and Exception Event Types, which are selected in a Filter submenu. At this time, we are unable to capture all of the information in the window. Future versions of this course should address this.](images/trainerguide/media/image3.png "Open diagnostic search")
 
 2.  Implement a solution to enhance the application logs to provide more useful performance and application behavior details, specifically around browser metrics and application dependencies. Discuss which visualization, or dashboard, options exist for the log results. Existing App Service logs already cover these topics:
 
@@ -519,7 +519,7 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
     To get custom information about our users, the Users panel in Application Insights, will allow us to understand important details in a variety of ways. We can use this panel to understand such information as where our users are connecting from, the browser type they are using, and what areas of the application they're accessing.
 
-    ![In these Application Insights screenshots, the Settings icon in the menu is selected, and an arrow points from it to a circled Investigate group (Failures, Exceptions, Browser, Usage, Operational events) in the Settings and Diagnostics pane, and an arrow points from this group to a Server responses pane, which displays various information. Below this, in the main window below Application health, BROWSER PAGE LOAD is circled, and an arrow points from the circle to a Browsers pane, which displays various information. At this time, we are unable to capture all of the information in the window. Future versions of this course should address this.](images/Whiteboarddesignsessiontrainerguide-ContinuousdeliverywithVSTSandAzureimages/media/image4.png "Major routes to view your telemetry")
+    ![In these Application Insights screenshots, the Settings icon in the menu is selected, and an arrow points from it to a circled Investigate group (Failures, Exceptions, Browser, Usage, Operational events) in the Settings and Diagnostics pane, and an arrow points from this group to a Server responses pane, which displays various information. Below this, in the main window below Application health, BROWSER PAGE LOAD is circled, and an arrow points from the circle to a Browsers pane, which displays various information. At this time, we are unable to capture all of the information in the window. Future versions of this course should address this.](images/trainerguide/media/image4.png "Major routes to view your telemetry")
 
 
 ## Checklist of preferred objection handling
