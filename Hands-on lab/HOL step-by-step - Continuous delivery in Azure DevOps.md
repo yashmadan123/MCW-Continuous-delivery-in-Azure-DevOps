@@ -42,7 +42,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Task 9: Create the dev environment and deploy the template to Azure](#task-9-create-the-dev-environment-and-deploy-the-template-to-azure)
     - [Task 10: Create the test environment and deploy the template to Azure](#task-10-create-the-test-environment-and-deploy-the-template-to-azure)
     - [Task 11: Create the production environment and deploy the template to Azure](#task-11-create-the-production-environment-and-deploy-the-template-to-azure)
-  - [Exercise 2: Create Azure DevOps team project and Git Repository](#exercise-2-create-azure-devops-team-project-and-git-repository)
+  - [Exercise 2: Create Azure DevOps project and Git Repository](#exercise-2-create-azure-devops-project-and-git-repository)
     - [Task 1: Create Azure DevOps Account](#task-1-create-azure-devops-account)
     - [Task 2: Add the Tailspin Toys source code repository to Azure DevOps](#task-2-add-the-tailspin-toys-source-code-repository-to-azure-devops)
   - [Exercise 3: Create Azure DevOps build pipeline](#exercise-3-create-azure-devops-build-pipeline)
@@ -366,11 +366,11 @@ The following steps are very similar to what was done in the previous task with 
 
     ![In this screenshot, TailspinToys-dev, TailspinToys-production, and TailspinToys-test appear under Resource groups in the Azure Portal.](images/stepbystep/media/image55.png "Resource groups screenshot")
 
-## Exercise 2: Create Azure DevOps team project and Git Repository
+## Exercise 2: Create Azure DevOps project and Git Repository
 
 Duration: 15 Minutes
 
-In this exercise, you will create and configure an Azure DevOps account along with an Agile team project.
+In this exercise, you will create and configure an Azure DevOps account along with an Agile project.
 
 ### Task 1: Create Azure DevOps Account
 

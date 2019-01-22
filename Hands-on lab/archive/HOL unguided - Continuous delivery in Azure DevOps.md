@@ -33,7 +33,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
   - [Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, SQL database, and deployment slots in a single automated process.](#exercise-1-create-an-azure-resource-manager-arm-template-that-can-provision-the-web-application-sql-database-and-deployment-slots-in-a-single-automated-process)
       - [Tasks to complete](#tasks-to-complete)
       - [Exit criteria](#exit-criteria)
-  - [Exercise 2: Create an Azure DevOps team project and Git Repository](#exercise-2-create-an-azure-devops-team-project-and-git-repository)
+  - [Exercise 2: Create an Azure DevOps project and Git Repository](#exercise-2-create-an-azure-devops-project-and-git-repository)
       - [Tasks to complete](#tasks-to-complete-1)
       - [Exit criteria](#exit-criteria-1)
   - [Exercise 3: Create Azure DevOps build pipeline](#exercise-3-create-azure-devops-build-pipeline)
@@ -132,11 +132,11 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
 -   You have deployed the completed template to Azure that creates the three environments: dev, test, and production.
 
-## Exercise 2: Create an Azure DevOps team project and Git Repository
+## Exercise 2: Create an Azure DevOps project and Git Repository
 
 Duration: 15 Minutes
 
-Tailspin Toys has asked you to create a continuous delivery process for their development team. To do that without disrupting their current production application, you are tasked with creating an environment in Azure where this new process and workflow can be proven. Your first task is to create an Azure DevOps Team Project with Git source control where their source code can be maintained.
+Tailspin Toys has asked you to create a continuous delivery process for their development team. To do that without disrupting their current production application, you are tasked with creating an environment in Azure where this new process and workflow can be proven. Your first task is to create an Azure DevOps Project with Git source control where their source code can be maintained.
 
 #### Tasks to complete
 
