@@ -533,11 +533,11 @@ In this exercise, you will create a build definition using, Azure Pipelines, tha
 
    ![A screen that shows the real-time output of the build process.](images/stepbystep/media/image76.png "Real-time output")   
 
-9.  After the build process completes, you should see a green check mark next to each of the build pipeline steps.
+12.  After the build process completes, you should see a green check mark next to each of the build pipeline steps.
 
     ![A screen that shows a successfully completed build pipeline.](images/stepbystep/media/image77.png "Success") 
 
-10. Congratulations! You have just created your first build pipeline. In the next exercise, we will create a release pipeline that deploys your successful builds.
+13. Congratulations! You have just created your first build pipeline. In the next exercise, we will create a release pipeline that deploys your successful builds.
 
 ## Exercise 4: Create Azure DevOps release pipeline
 
@@ -649,7 +649,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
     ![On the panel, Resource group and Slot are highlighted.](images/stepbystep/media/image98.png "Task configuration panel")
 
-8.  Now, select the "Swap Slots" task to bring up the task configuration panel. Fi*rst, locate the **Display name** field and simplify it to **Swap Slots**. Then, locate the **App Service name** and select the app service that starts with **TailspinToys-test-**. Next, locate the **Resource group** field and change the value to **TailspinToys-test**. Finally, locate the **Source Slot** field and set it to **staging**.
+8.  Now, select the "Swap Slots" task to bring up the task configuration panel. First, locate the **Display name** field and simplify it to **Swap Slots**. Then, locate the **App Service name** and select the app service that starts with **TailspinToys-test-**. Next, locate the **Resource group** field and change the value to **TailspinToys-test**. Finally, locate the **Source Slot** field and set it to **staging**.
 
     ![On the panel, Display name, App Service name, Resource group, and Source Slot are highlighted.](images/stepbystep/media/image99.png "Configure the Swap Slots task")
 
@@ -663,7 +663,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
     ![On the screen, all three stages are shown: dev, test, and production.](images/stepbystep/media/image100.png "The final release pipeline")
 
-13. Now you will enable the continuous deployment trigger so the release process automatically begins as soon as a build successfully completes. To do this, click on the lightning bolt icon in the Artifacts window.
+13. Now you will enable the continuous deployment trigger, so the release process automatically begins as soon as a build successfully completes. To do this, click on the lightning bolt icon in the Artifacts window.
 
 14. This will bring up the Continuous deployment trigger panel. Change the setting to "Enabled".
 
