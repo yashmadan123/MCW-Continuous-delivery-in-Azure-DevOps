@@ -1,7 +1,7 @@
 ![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Continuous delivery in VSTS and Azure
+Continuous delivery in Azure DevOps
 </div>
 
 <div class="MCWHeader2">
@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-August 2018
+January 2019
 </div>
 
 
@@ -19,7 +19,7 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2018 Microsoft Corporation. All rights reserved.
+© 2019 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
@@ -27,22 +27,22 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Continuous delivery in VSTS and Azure before the hands-on lab setup guide](#continuous-delivery-in-vsts-and-azure-before-the-hands-on-lab-setup-guide)
-    - [Requirements](#requirements)
-    - [Before the hands-on lab](#before-the-hands-on-lab)
-        - [Prerequisites](#prerequisites)
-        - [Task 1: Configure a development environment](#task-1-configure-a-development-environment)
-        - [Task 2: Disable IE enhanced security](#task-2-disable-ie-enhanced-security)
-        - [Task 3: Validate connectivity to Azure](#task-3-validate-connectivity-to-azure)
-        - [Task 4: Download and install Git](#task-4-download-and-install-git)
+- [Continuous delivery in Azure DevOps before the hands-on lab setup guide](#continuous-delivery-in-azure-devops-before-the-hands-on-lab-setup-guide)
+  - [Requirements](#requirements)
+  - [Before the hands-on lab](#before-the-hands-on-lab)
+    - [Prerequisites](#prerequisites)
+    - [Task 1: Configure a development environment](#task-1-configure-a-development-environment)
+    - [Task 2: Disable IE enhanced security](#task-2-disable-ie-enhanced-security)
+    - [Task 3: Validate connectivity to Azure](#task-3-validate-connectivity-to-azure)
+    - [Task 4: Download and install Git](#task-4-download-and-install-git)
 
 <!-- /TOC -->
 
-# Continuous delivery in VSTS and Azure before the hands-on lab setup guide
+# Continuous delivery in Azure DevOps before the hands-on lab setup guide
 
 ## Requirements
 
-1.  Microsoft Azure subscription.
+1.  Microsoft Azure subscription
 
 2.  Local machine or a virtual machine configured with:
 
@@ -58,9 +58,9 @@ In this lab, you will create a developer environment and download the required f
 
 ### Prerequisites
 
--   Microsoft Azure subscription <http://azure.microsoft.com/en-us/pricing/free-trial/>.
+-   Microsoft Azure subscription <http://azure.microsoft.com/en-us/pricing/free-trial/>
 
--   Client computer with Windows 7 or later with Visual Studio 2017.
+-   Client computer with Windows 7 or later with Visual Studio 2017
 
 ### Task 1: Configure a development environment
 
@@ -124,7 +124,7 @@ If you do not have a machine setup with Visual Studio 2017 Community, complete t
 
 3.  Find the computer screen icon on the left that says, "Latest source Release" and click "Downloads for Windows." 
 
->**Note: In this screenshot, it shows version 2.14.3 but you might see a more recent version. Use whatever version is listed on the site.**
+>**Note**: In this screenshot, it shows version 2.14.3 but you might see a more recent version. Use whatever version is listed on the site.
     
    ![Download 2.14.3 for Windows is highlighted on a computer screen icon.](images/Setup/image10.png "Downloads for Windows")
 
@@ -172,7 +172,7 @@ If you do not have a machine setup with Visual Studio 2017 Community, complete t
     
     ![In the Git 2.14.3 Setup wizard, on the Completing the Git Setup Wizard page, View Release Notes is selected, and Finish is highlighted at the bottom.](images/Setup/image21.png "Completing the Git Setup Wizard page")
 
-15. Open a **command prompt**, and type these commands on the command line.
+15. Open a **command prompt**, and type these commands on the command line:
 
     ```
     git config --global user.name "<your name>"

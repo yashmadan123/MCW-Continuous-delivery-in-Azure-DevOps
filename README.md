@@ -15,33 +15,33 @@ Tailspin wants to improve the turnaround time for fixing these bugs, and they ne
 
 ### Workshop
 
-In this workshop, you will learn how to setup and configure continuous delivery within Azure using a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS). You will do this throughout the use of a new VSTS project, Git repository for source control, and an Azure Resource Manager template for Azure resource deployment and configuration management.
+In this workshop, you will learn how to setup and configure continuous delivery within Azure using a combination of Azure Resource Manager templates and Azure DevOps. You will do this throughout the use of a new Azure DevOps project, Git repository for source control, and an Azure Resource Manager template for Azure resource deployment and configuration management.
 
-At the end of this workshop, you will be able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition,  you'll create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with Visual Studio Team Services (VSTS), configure Application Insights into an application, and create a Visual Studio Team Services project and Git repository.
+At the end of this workshop, you will be able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition,  you'll create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with Azure DevOps, configure Application Insights into an application, and create an Azure DevOps project and Git repository.
 
 ### Whiteboard design session
 
-In this whiteboard design session, you will learn how to design a solution with a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS) to enable continuous delivery with several Azure PaaS services.
+In this whiteboard design session, you will learn how to design a solution with a combination of Azure Resource Manager templates and Azure DevOps to enable continuous delivery with several Azure PaaS services.
 
-At the end of this workshop, you will be better able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition, you'll create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with VSTS, configure Application Insights into an application, and create a Visual Studio Team Services project and Git repository.
+At the end of this workshop, you will be better able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition, you'll create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with Azure DevOps, configure Application Insights into an application, and create an Azure DevOps project and Git repository.
 
 ### Hands-on Lab
 
-In this hands-on lab, you will learn how to implement a solution with a combination of Azure Resource Manager templates and Visual Studio Team Services (VSTS) to enable continuous delivery with several Azure PaaS services.
+In this hands-on lab, you will learn how to implement a solution with a combination of Azure Resource Manager templates and Azure DevOps to enable continuous delivery with several Azure PaaS services.
 
-At the end of this workshop, you will be better able to implement solutions for continuous delivery with VSTS in Azure, as well create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with VSTS, configure Application Insights into an application, and create a Visual Studio Team Services project and Git repository.
+At the end of this workshop, you will be better able to implement solutions for continuous delivery with Azure DevOps in Azure, as well create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with Azure DevOps, configure Application Insights into an application, and create an Azure DevOps project and Git repository.
 
 ## Azure services and related products
 - Azure App Service 
 - Azure SQL Database
 - Application Insights
 - Azure Resource Manager
-- Visual Studio Team Services 
+- Azure DevOps
 
 ## Azure solutions
 DevOps
 
 ## Related references
 - [MCW](https://github.com/Microsoft/MCW)
-- [DevOps Checklist](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/app-service-web-app/basic-web-app)
-- [Reference Architecture for Basic Web Application](https://docs.microsoft.com/en-us/azure/architecture/checklist/dev-ops)
+- [DevOps Checklist](https://docs.microsoft.com/en-us/azure/architecture/checklist/dev-ops)
+- [Reference Architecture for Basic Web Application](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/app-service-web-app/basic-web-app)
