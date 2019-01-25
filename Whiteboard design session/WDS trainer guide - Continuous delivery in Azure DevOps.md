@@ -283,7 +283,7 @@ Directions: With all participants at your table, respond to the following questi
 
 4.  Explain how you can test a new build simultaneously with an existing build, like an A/B test.
 
-5.  Why shouldn't we have multiple long lived branches in source control?
+5.  Why shouldn't we have multiple long-lived branches in source control?
 
 6.  Create a plan on how to switch the source control location from Azure DevOps to GitHub.
 
@@ -478,9 +478,9 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
 4.  Explain how you can test a new build simultaneously with an existing build, like an A/B test?
 
-    The most common technique to meet this requirement is to create a deployment slots where your App Service variation can be deployed to. Then, configure the release pipeline to deploy to the preferred deployment slot. Using the Azure Portal you can configure the Traffic Routing feature, specifying which percentage of users should go to the primary site and each deployment slot when they browse to your site's URL. Additionally, you could use Application Insights to measure the effectiveness of each version of the site.
+    The most common technique to meet this requirement is to create a deployment slots where your App Service variation can be deployed to. Then, configure the release pipeline to deploy to the preferred deployment slot. Using the Azure Portal, you can configure the Traffic Routing feature, specifying which percentage of users should go to the primary site and each deployment slot when they browse to your site's URL. Additionally, you could use Application Insights to measure the effectiveness of each version of the site.
 
-5.  Why shouldn't we have multiple long lived branches in source control?
+5.  Why shouldn't we have multiple long-lived branches in source control?
 
     If you think of your work as delta off of a master, the size of the delta increases as your branch incorporates more and more work. As the size of your team grows, the amount of work hidden from each other increases. And the chances that your assumptions about the state of the code hold true decreases the more you use long lived branches. If you merge your code back to master frequently, you demonstrate the direction you're taking the code. When you merge your code more frequently to master, the pain of integration happens at the beginning instead of the end of your work. This allows you to find issues faster and fix them at the earliest possible moment. Merging your code frequently also results in fewer merge conflicts. If you're developing a large feature, consider using feature flags so that you can continue to merge your code frequently.
 
@@ -493,7 +493,7 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
 1.  Implement a solution that will enable the logs to be searchable and visible in an online dashboard
 
-    Application Insights provide rich performance monitoring, alerting, and easy-to-consume dashboards. The service also allows us to quickly see if we have a problem and how many customers may be affected. The service provides for interactive queries and and full-text search for unlocking insights into our logs.
+    Application Insights provide rich performance monitoring, alerting, and easy-to-consume dashboards. The service also allows us to quickly see if we have a problem and how many customers may be affected. The service provides for interactive queries and full-text search for unlocking insights into our logs.
 
     ![Application Insights provides a rich interactive dashboard and search feature over the logs that it collects from the application. In these screenshots, Search is highlighted in the menu, and a Search screen displays information about Trace, Request, Page View, Custom Event, and Exception Event Types, which are selected in a Filter submenu. At this time, we are unable to capture all of the information in the window. Future versions of this course should address this.](images/trainerguide/media/image3.png "Open diagnostic search")
 
