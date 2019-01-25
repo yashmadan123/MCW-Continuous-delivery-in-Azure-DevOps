@@ -80,7 +80,7 @@ Tailspin Toys has asked you to automate their development process in two specifi
 
 ## Requirements
 
-1.  Microsoft Azure subscription.
+1.  Microsoft Azure subscription
 
 2.  Local machine or a virtual machine configured with:
 
@@ -270,7 +270,7 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
     ```
 2.  Now, save all your files.
 
-3.  Right-click the project in Solution Explorer and choose "Deploy" and then "New...."
+3.  Right-click the project in Solution Explorer and choose "Deploy" and then "New..."
 
     ![In Solution Explorer, TailspinToysAzureResourceTemplate is selected, a submenu has New selected and highlighted, and another submenu has Deploy highlighted.](images/stepbystep/media/image40.png "Choosing New and Deploy")
 
@@ -535,7 +535,7 @@ In this exercise, you will create a build definition using, Azure Pipelines, tha
 
 12.  After the build process completes, you should see a green check mark next to each of the build pipeline steps.
 
-    ![A screen that shows a successfully completed build pipeline.](images/stepbystep/media/image77.png "Success") 
+   ![A screen that shows a successfully completed build pipeline.](images/stepbystep/media/image77.png "Success") 
 
 13. Congratulations! You have just created your first build pipeline. In the next exercise, we will create a release pipeline that deploys your successful builds.
 
@@ -805,8 +805,8 @@ Typically, the next few steps would be performed by another team member. This wo
 
 Duration: 10 Minutes
 
-These steps should be followed only *after* completing the hands-on lab.
-
 ### Task 1: Delete resources
 
 1.  Now since the hands-on lab is complete, go ahead and delete all of the Resource Groups that were created for this hands-on lab. You will no longer need those resources and it will be beneficial to clean up your Azure Subscription.
+
+These steps should be followed only *after* completing the hands-on lab.
