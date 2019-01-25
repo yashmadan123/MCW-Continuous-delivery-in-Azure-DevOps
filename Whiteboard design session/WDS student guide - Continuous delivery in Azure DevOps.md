@@ -156,7 +156,7 @@ Directions: With all participants at your table, respond to the following questi
 
 4.  Explain how you can test a new build simultaneously with an existing build, like an A/B test.
 
-5.  Why shouldn't we have multiple long lived branches in source control?
+5.  Why shouldn't we have multiple long-lived branches in source control?
 
 6.  Create a plan on how to switch the source control location from Azure DevOps to GitHub.
 
