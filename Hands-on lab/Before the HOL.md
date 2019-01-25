@@ -42,7 +42,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 ## Requirements
 
-1.  Microsoft Azure subscription.
+1.  Microsoft Azure subscription
 
 2.  Local machine or a virtual machine configured with:
 
@@ -58,9 +58,9 @@ In this lab, you will create a developer environment and download the required f
 
 ### Prerequisites
 
--   Microsoft Azure subscription <http://azure.microsoft.com/en-us/pricing/free-trial/>.
+-   Microsoft Azure subscription <http://azure.microsoft.com/en-us/pricing/free-trial/>
 
--   Client computer with Windows 7 or later with Visual Studio 2017.
+-   Client computer with Windows 7 or later with Visual Studio 2017
 
 ### Task 1: Configure a development environment
 
@@ -124,7 +124,7 @@ If you do not have a machine setup with Visual Studio 2017 Community, complete t
 
 3.  Find the computer screen icon on the left that says, "Latest source Release" and click "Downloads for Windows." 
 
->**Note: In this screenshot, it shows version 2.14.3 but you might see a more recent version. Use whatever version is listed on the site.**
+>**Note**: In this screenshot, it shows version 2.14.3 but you might see a more recent version. Use whatever version is listed on the site.
     
    ![Download 2.14.3 for Windows is highlighted on a computer screen icon.](images/Setup/image10.png "Downloads for Windows")
 
@@ -172,7 +172,7 @@ If you do not have a machine setup with Visual Studio 2017 Community, complete t
     
     ![In the Git 2.14.3 Setup wizard, on the Completing the Git Setup Wizard page, View Release Notes is selected, and Finish is highlighted at the bottom.](images/Setup/image21.png "Completing the Git Setup Wizard page")
 
-15. Open a **command prompt**, and type these commands on the command line.
+15. Open a **command prompt**, and type these commands on the command line:
 
     ```
     git config --global user.name "<your name>"
