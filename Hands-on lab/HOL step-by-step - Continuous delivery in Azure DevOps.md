@@ -168,7 +168,7 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
     
     ![In the Add Resource window, Application Insights for Web App is highlighted on the left, TailspinToysWeb is highlighted next to that in the Name box, and Add is highlighted at the bottom.](images/stepbystep/media/image33.png "Add Resource window")
     
-    Notice that the json file has been modified. Navigate to the JSON Editor and change the "location": "East US", to "location": "[resourceGroup().location]".
+    Notice that the json file has been modified. Navigate to the JSON Editor and change the **"location": "East US"**, to **"location": "[resourceGroup().location]"**.
 
 2.  Next, you need to add the Application Insights extension to the App Service so that it will be running automatically once the site is deployed. This is going to require some manual code because there is not a wizard for this resource type. Click on the TailspinToysWeb web app resource to locate its JSON code. Then, just below the "properties" property, paste or type in this block of JSON code.
     ```
