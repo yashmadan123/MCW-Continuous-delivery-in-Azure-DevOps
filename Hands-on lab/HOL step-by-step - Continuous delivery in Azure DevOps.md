@@ -47,7 +47,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Task 2: Add the Tailspin Toys source code repository to Azure DevOps](#task-2-add-the-tailspin-toys-source-code-repository-to-azure-devops)
   - [Exercise 3: Create Azure DevOps build pipeline](#exercise-3-create-azure-devops-build-pipeline)
     - [Task 1: Turn on preview features](#task-1-turn-on-preview-features)
-    - [Task 1: Create a build pipeline](#task-1-create-a-build-pipeline)
+    - [Task 2: Create a build pipeline](#task-2-create-a-build-pipeline)
   - [Exercise 4: Create Azure DevOps release pipeline](#exercise-4-create-azure-devops-release-pipeline)
     - [Task 1: Create a release definition](#task-1-create-a-release-definition)
     - [Task 2: Add test and production environments to release pipeline](#task-2-add-test-and-production-environments-to-release-pipeline)
@@ -460,7 +460,7 @@ In this exercise, you will create a build definition using, Azure Pipelines, tha
 
 3.  Close the Preview features panel.
   
-### Task 1: Create a build pipeline
+### Task 2: Create a build pipeline
 
 1.  In your Azure DevOps project, select the Pipelines menu option from the left-hand navigation.
 
