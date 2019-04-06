@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-January 2019
+April 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -46,7 +46,8 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Task 1: Create Azure DevOps Account](#task-1-create-azure-devops-account)
     - [Task 2: Add the Tailspin Toys source code repository to Azure DevOps](#task-2-add-the-tailspin-toys-source-code-repository-to-azure-devops)
   - [Exercise 3: Create Azure DevOps build pipeline](#exercise-3-create-azure-devops-build-pipeline)
-    - [Task 1: Create a build pipeline](#task-1-create-a-build-pipeline)
+    - [Task 1: Turn on preview features](#task-1-turn-on-preview-features)
+    - [Task 2: Create a build pipeline](#task-2-create-a-build-pipeline)
   - [Exercise 4: Create Azure DevOps release pipeline](#exercise-4-create-azure-devops-release-pipeline)
     - [Task 1: Create a release definition](#task-1-create-a-release-definition)
     - [Task 2: Add test and production environments to release pipeline](#task-2-add-test-and-production-environments-to-release-pipeline)
@@ -444,7 +445,22 @@ Implementing CI and CD pipelines helps to ensure consistent and quality code tha
 
 In this exercise, you will create a build definition using, Azure Pipelines, that will automatically build the web application with every commit of source code. This will lay the groundwork for us to then create a release pipeline for publishing the code to our Azure environments.
 
-### Task 1: Create a build pipeline
+### Task 1: Turn on preview features
+
+1.  In order to complete the following tasks, you'll need to first enable a couple preview features in Azure DevOps. Start by clicking the profile link in the top right-hand side of the screen and then select **Preview features**.
+
+    ![In the Azure DevOps window, Preview features is highlighted.](images/stepbystep/media/image68a.png "Azure DevOps window")
+
+2.  In the Preview features panel, toggle **On** the following features:
+    - New release progress views
+    - New Releases Hub
+    - New YAML pipeline creation experience
+
+    ![In the Azure DevOps window, Preview features is highlighted.](images/stepbystep/media/image68b.png "Azure DevOps window")
+
+3.  Close the Preview features panel.
+  
+### Task 2: Create a build pipeline
 
 1.  In your Azure DevOps project, select the Pipelines menu option from the left-hand navigation.
 
@@ -454,7 +470,7 @@ In this exercise, you will create a build definition using, Azure Pipelines, tha
 
     ![In Builds, New pipeline is highlighted.](images/stepbystep/media/image69.png "Create a new pipeline")
 
-3.  This starts a wizard where you'll first need to select where your current code is located. In a previous step, you pushed code up to Azure Repos. Select the **Azure Repos** option.
+3.  This starts a wizard where you'll first need to select where your current code is located. In a previous step, you pushed code up to Azure Repos. Select the **Azure Repos Git** option.
 
     ![A screen that shows choosing the Azure Repos option for the TailspinToys project.](images/stepbystep/media/image70.png "Where is your code?")
 

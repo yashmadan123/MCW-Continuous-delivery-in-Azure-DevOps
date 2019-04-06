@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-January 2019
+April 2019
 </div>
 
 
@@ -34,7 +34,8 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 1: Configure a development environment](#task-1-configure-a-development-environment)
     - [Task 2: Disable IE enhanced security](#task-2-disable-ie-enhanced-security)
     - [Task 3: Validate connectivity to Azure](#task-3-validate-connectivity-to-azure)
-    - [Task 4: Download and install Git](#task-4-download-and-install-git)
+    - [Task 4: Download the exercise files](#task-4-download-the-exercise-files)
+    - [Task 5: Download and install Git](#task-5-download-and-install-git)
 
 <!-- /TOC -->
 
@@ -102,19 +103,17 @@ If you do not have a machine setup with Visual Studio 2017 Community, complete t
 
     ![In Visual Studio Server Explorer, the submenu for the Azure subscription displays with the following options: Refresh, Connect to Microsoft Azure Subscription, Manage and Filter Subscriptions, and Open Getting Started Page.](images/Setup/image8.png "Visual Studio Server Explorer")
 
-**Download the exercise files**
+### Task 4: Download the exercise files
 
-1.  Download the exercise files for the training (from within the virtual machine).
+1.  Download the exercise files for the training (from within the virtual machine). Start by creating a new folder on your computer named **C:\\Hackathon**.
 
-    -   Create a new folder on your computer named **C:\\Hackathon**.
+2.  Download the support files (.zip format), https://cloudworkshop.blob.core.windows.net/agile-continous-delivery/Agile-Continuous-Delivery-Student%20Files-6-2017.zip to the new folder.
 
-    -   Download the support files (.zip format), https://cloudworkshop.blob.core.windows.net/agile-continous-delivery/Agile-Continuous-Delivery-Student%20Files-6-2017.zip to the new folder.
-
-    -   Extract the contents to the **C:\\Hackathon** folder.
+3.  Extract the contents to the **C:\\Hackathon** folder.
 
 **Tip:** In the labs, when adding resources to the Azure Resource Manager template, ensure there are no spaces at the end of the resource names. Visual Studio will include the space in all of the code it generates.
 
-### Task 4: Download and install Git
+### Task 5: Download and install Git
 
 1.  Open a web browser, and navigate to <https://git-scm.com>.
 
