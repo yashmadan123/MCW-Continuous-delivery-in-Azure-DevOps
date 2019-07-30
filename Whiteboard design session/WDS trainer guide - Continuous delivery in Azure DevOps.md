@@ -9,7 +9,7 @@ Continuous delivery in Azure DevOps
 </div>
 
 <div class="MCWHeader3">
-April 2019
+August 2019
 </div>
 
 
