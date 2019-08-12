@@ -33,9 +33,10 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Prerequisites](#prerequisites)
     - [Task 1: Configure a development environment](#task-1-configure-a-development-environment)
     - [Task 2: Disable IE enhanced security](#task-2-disable-ie-enhanced-security)
-    - [Task 3: Validate connectivity to Azure](#task-3-validate-connectivity-to-azure)
-    - [Task 4: Download the exercise files](#task-4-download-the-exercise-files)
-    - [Task 5: Download and install Git](#task-5-download-and-install-git)
+    - [Task 3: Install Visual Studio Code](#task-3-install-visual-studio-code)
+    - [Task 4: Download and install Git](#task-4-download-and-install-git)
+    - [Task 5: Validate connectivity to Azure](#task-5-validate-connectivity-to-azure)
+    - [Task 6: Download the exercise files](#task-6-download-the-exercise-files)
 
 <!-- /TOC -->
 
@@ -47,7 +48,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 2.  Local machine or a virtual machine configured with:
 
-    -   Visual Studio Community 2017
+    -   Visual Studio Code
 
     -   Git command-line interface (CLI)
 
@@ -61,29 +62,58 @@ In this lab, you will create a developer environment and download the required f
 
 -   Microsoft Azure subscription <http://azure.microsoft.com/en-us/pricing/free-trial/>
 
--   Client computer with Windows 7 or later with Visual Studio 2017
+-   Client computer with Windows 7 or later with Visual Studio Code
 
 ### Task 1: Configure a development environment
 
-If you do not have a machine setup with Visual Studio 2017 Community, complete this task.
+If you do not have a machine setup with Visual Studio Code, complete this task.
 
-1.  At the Azure web portal, create a virtual machine in Azure using the Visual Studio Community 2017 on Windows Server 2016 image.
+1.  From the Azure web portal, launch the **Azure Cloud Shell**. It has common Azure tools preinstalled and configured to use with your account.
 
-    ![This is a screenshot of a results window of a search on visual studio community 2017. The results table has the following columns: Name, Publisher, and Category. The second result is highlighted and has the following values: Visual Studio Community 2017 on Windows Server 2016 (x64), Microsoft, and Compute.](images/Setup/image3.png "Virtual machine creation screenshot")
+    ![This is a screenshot of a icon used to launch the Azure Cloud Shell from the Azure Portal.](images/Setup/image3.png "Azure Cloud Shell launch icon")
 
-    > It is **highly** recommended to use a DS2_v2 or D2s_v3 instance size for this VM.
+2.  From the Azure Cloud Shell command prompt, create a resource group as a logical container into which you will deploy a Windows virtual machine. The following example creates a resource group named **myResourceGroup** in the **eastus** location, but you may replace those values as needed.
 
-    > You will also need to make sure to enable RDP (port 3389) inbound access to the VM.
+    ```bash
+    az group create --name myResourceGroup --location eastus
+    ```
+
+3.  Create the virtual machine with the **az vm create** command. The following example uses **azureuser** for an administrative user name. You must change the value for ```--admin-password``` or it will fail. Change it to a password that meets the password requirements for Azure virtual machines. The user name and password will be used later, when you connect to the virtual machine.
+
+    ```bash
+    az vm create \
+    --resource-group myResourceGroup \
+    --name myVM \
+    --image win2016datacenter \
+    --size Standard_DS3_v2 \
+    --admin-username azureuser \
+    --admin-password myPassword
+    ```
+
+    > It takes a few minutes to create the virtual machine and supporting resources. The following example output shows the virtual machine create option was successful.
+
+    ```json
+    {
+        "fqdns": "",
+        "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
+        "location": "eastus",
+        "macAddress": "00-0D-3A-23-9A-49",
+        "powerState": "VM running",
+        "privateIpAddress": "10.0.0.4",
+        "publicIpAddress": "52.174.34.95",
+        "resourceGroup": "myResourceGroup"
+    }
+    ```
+
+    > Note your own ```publicIpAddress``` in the output from your virtual machine. This address is used to access the virtual machine in the next steps.
+
+4.  On your local machine, launch a remote desktop connection tool to connect to your virtual machine. Use the public IP address from the step above.
 
 ### Task 2: Disable IE enhanced security
 
->**Note:** Sometimes this image has IE ESC disabled, and sometimes it does not.
+1.  Once connected to the new virtual machine, wait a few moments for the Server Manager window to launch and automatically display.
 
-1.  On the new VM, you just created click the Server Manager icon.
-
-    ![Server Manager icon is highlighted on the taskbar.](images/Setup/image4.png "Server Manager icon")
-
-    Click Local Server.
+    Click **Local Server**.
 
     ![Local Server is selected and highlighted in the Server Manager menu.](images/Setup/image5.png "Server Manager menu")
 
@@ -95,33 +125,23 @@ If you do not have a machine setup with Visual Studio 2017 Community, complete t
 
     ![In the Internet Explorer Enhanced Security Configuration dialog box, under Administrators, Off is selected and highlighted. At the bottom, the OK button is highlighted.](images/Setup/image7.png "Internet Explorer Enhanced Security Configuration dialog box")
 
-### Task 3: Validate connectivity to Azure
+4. You may now close the Server Manager window.
 
-1.  From within the virtual machine, Launch Visual Studio 2017 and validate that you can login with your Microsoft Account when prompted.
+### Task 3: Install Visual Studio Code
 
-2.  Validate connectivity to your Azure subscription. Launch Visual Studio, open Server Explorer from the View menu, and ensure you can connect to your Azure subscription.
+1.  TODO: Update this
 
-    ![In Visual Studio Server Explorer, the submenu for the Azure subscription displays with the following options: Refresh, Connect to Microsoft Azure Subscription, Manage and Filter Subscriptions, and Open Getting Started Page.](images/Setup/image8.png "Visual Studio Server Explorer")
+### Task 4: Download and install Git
 
-### Task 4: Download the exercise files
+1.  TODO: Update this
+   
+2.  Open a web browser, and navigate to <https://git-scm.com>.
 
-1.  Download the exercise files for the training (from within the virtual machine). Start by creating a new folder on your computer named **C:\\Hackathon**.
-
-2.  Download the support files (.zip format), https://cloudworkshop.blob.core.windows.net/agile-continous-delivery/Agile-Continuous-Delivery-Student%20Files-6-2017.zip to the new folder.
-
-3.  Extract the contents to the **C:\\Hackathon** folder.
-
-**Tip:** In the labs, when adding resources to the Azure Resource Manager template, ensure there are no spaces at the end of the resource names. Visual Studio will include the space in all of the code it generates.
-
-### Task 5: Download and install Git
-
-1.  Open a web browser, and navigate to <https://git-scm.com>.
-
-2.  If you get a prompt about Internet Explorer defaults, just click OK.
+3.  If you get a prompt about Internet Explorer defaults, just click OK.
     
     ![In the Set up Internet Explorer 11 dialog box, Use recommended security, privacy, and compatibility settings is selected, Send Do Not Track requests to tell sites you prefer not to be tracked is selected, and the OK button is highlighted.](images/Setup/image9.png "Set up Internet Explorer 11 dialog box")
 
-3.  Find the computer screen icon on the left that says, "Latest source Release" and click "Downloads for Windows." 
+4.  Find the computer screen icon on the left that says, "Latest source Release" and click "Downloads for Windows." 
 
 >**Note**: In this screenshot, it shows version 2.14.3 but you might see a more recent version. Use whatever version is listed on the site.
     
@@ -179,3 +199,19 @@ If you do not have a machine setup with Visual Studio 2017 Community, complete t
     ```
 
 You should follow all steps provided *before* attending the hands-on lab.
+
+### Task 5: Validate connectivity to Azure
+
+1.  TODO: Update this
+
+### Task 6: Download the exercise files
+
+1.  TODO: Update this
+
+2.  Download the exercise files for the training (from within the virtual machine). Start by creating a new folder on your computer named **C:\\Hackathon**.
+
+3.  Download the support files (.zip format), https://cloudworkshop.blob.core.windows.net/agile-continous-delivery/Agile-Continuous-Delivery-Student%20Files-6-2017.zip to the new folder.
+
+4.  Extract the contents to the **C:\\Hackathon** folder.
+
+**Tip:** In the labs, when adding resources to the Azure Resource Manager template, ensure there are no spaces at the end of the resource names. Visual Studio will include the space in all of the code it generates.
