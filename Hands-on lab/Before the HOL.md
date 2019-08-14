@@ -51,7 +51,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 Duration: 10 minutes
 
-In this lab, you will create a developer environment and download the required files for this course if you do not already have one that meets the requirements.
+In this lab, you will configure a developer environment and download the required files for this course if you do not already have one that meets the requirements.
 
 ### Prerequisites
 
@@ -93,3 +93,8 @@ In this lab, you will create a developer environment and download the required f
     ```
 
 4. When unzipped, there will be two new folders named **arm** and **tailspintoysweb**. The workshop will refer to these folders throughout the exercises.
+
+>NOTE: If you prefer to use the Azure Cloud Shell to complete this lab, you can load the integrated code editor at any time with the following command:
+```
+code
+```

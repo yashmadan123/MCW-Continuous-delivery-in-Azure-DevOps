@@ -84,8 +84,6 @@ Tailspin Toys has asked you to automate their development process in two specifi
 
     - Git command-line interface (CLI)
 
-    - TODO: more items
-
 ## Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, PostgreSQL database, and deployment slots in a single automated process
 
 Duration: 45 Minutes
@@ -206,8 +204,6 @@ Now that the template file has been uploaded, we'll deploy it several times to c
     ```
     
     > NOTE: This command is designed to prompt us to enter the resource group name and Azure region (location) we want to deploy our resources to. The script then takes our inputs and passes them as parameters to the Azure CLI command that calls our recently uploaded template file.
-
-    After submitting the command, it will prompt us to "Enter the Resource Group name".
 
     ![In the Azure Cloud Shell window, the command has been entered is we are prompted for the name of the resource group we want to deploy to.](images/stepbystep/media/image44.png "Azure Cloud Shell window")
 
@@ -554,7 +550,7 @@ In this exercise, you will create a build definition using, Azure Pipelines, tha
   
   ![A screen that shows a successfully completed build pipeline.](images/stepbystep/media/image77.png "Success") 
     
-13. Congratulations! You have just created your first build pipeline. In the next exercise, we will create a release pipeline that deploys your successful builds.
+  Congratulations! You have just created your first build pipeline. In the next exercise, we will create a release pipeline that deploys your successful builds.
 
 ## Exercise 4: Create Azure DevOps release pipeline
 
@@ -584,7 +580,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
     ![+ Add and + Add an artifact are highlighted in this step.](images/stepbystep/media/image87.png "New release pipeline")
 
-6.  The Add an artifact panel will display several configurations for linking to an artifact. In the **Source (build pipeline)** dropdown list, select **TailspinToys**. The panel fields will adjust to show additional details based on your selection. The default values will produce a new release when future builds successfully complete. Click the **Add** button.
+6.  The Add an artifact panel will display several configurations for linking to an artifact. In the **Source (build pipeline)** dropdown list, select **TailspinToys**. In the **Default version** field, select **Latest**. The panel fields will adjust to show additional details based on your selection. The default values will produce a new release when future builds successfully complete. Click the **Add** button.
 
     ![On the Add an artifact screen, TailspinToys is highlighted in the Source (build pipeline) field, and the Add button is highlighted at the bottom.](images/stepbystep/media/image88.png "Add an artifact")
 
@@ -642,7 +638,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
 ### Task 2: Add test and production environments to release pipeline
 
-1.  Move your mouse over the dev stage and a click the **Clone** button to create a copy of the tasks from the dev stage. We will use the same steps to deploy to test with a few configuration changes.
+1.  On the Pipeline tab, move your mouse over the dev stage and a click the **Clone** button to create a copy of the tasks from the dev stage. We will use the same steps to deploy to test with a few configuration changes.
 
     ![On the screen, the Clone button is highlighted.](images/stepbystep/media/image96.png "Copy the deployment tasks")
 
@@ -688,7 +684,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
 15. Click Save, and confirm your changes by clicking "OK". Then, close the panel.
 
-16. Congratulations! You have completed the creation of a release pipeline with three stages.
+Congratulations! You have completed the creation of a release pipeline with three stages.
 
 ## Exercise 5: Trigger a build and release
 
@@ -824,6 +820,6 @@ Duration: 10 Minutes
 
 ### Task 1: Delete resources
 
-1.  Now since the hands-on lab is complete, go ahead and delete all of the Resource Groups that were created for this hands-on lab. You will no longer need those resources and it will be beneficial to clean up your Azure Subscription.
+1.  Now since the hands-on lab is complete, go ahead and delete the resource group you created for the Tailspin Toys deployments along with the Azure DevOps project that were created for this hands-on lab. You will no longer need those resources and it will be beneficial to clean up your Azure Subscription.
 
 These steps should be followed only *after* completing the hands-on lab.
