@@ -31,13 +31,12 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
   - [Solution architecture](#solution-architecture)
   - [Requirements](#requirements)
   - [Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, PostgreSQL database, and deployment slots in a single automated process](#exercise-1-create-an-azure-resource-manager-arm-template-that-can-provision-the-web-application-postgresql-database-and-deployment-slots-in-a-single-automated-process)
-    - [Task 1: Create an Azure Resource Manager (ARM) template using Visual Studio Code](#task-1-create-an-azure-resource-manager-arm-template-using-visual-studio-code)
+    - [Task 1: Create an Azure Resource Manager (ARM) template using Azure Cloud Shell](#task-1-create-an-azure-resource-manager-arm-template-using-azure-cloud-shell)
     - [Task 2: Configure the list of release environments parameters](#task-2-configure-the-list-of-release-environments-parameters)
     - [Task 3: Add a deployment slot for the "staging" version of the site](#task-3-add-a-deployment-slot-for-the-%22staging%22-version-of-the-site)
-    - [Task 4: Upload the template using Azure Cloud Shell](#task-4-upload-the-template-using-azure-cloud-shell)
-    - [Task 5: Create the dev environment and deploy the template to Azure](#task-5-create-the-dev-environment-and-deploy-the-template-to-azure)
-    - [Task 6: Create the test environment and deploy the template to Azure](#task-6-create-the-test-environment-and-deploy-the-template-to-azure)
-    - [Task 7: Create the production environment and deploy the template to Azure](#task-7-create-the-production-environment-and-deploy-the-template-to-azure)
+    - [Task 4: Create the dev environment and deploy the template to Azure](#task-4-create-the-dev-environment-and-deploy-the-template-to-azure)
+    - [Task 5: Create the test environment and deploy the template to Azure](#task-5-create-the-test-environment-and-deploy-the-template-to-azure)
+    - [Task 6: Create the production environment and deploy the template to Azure](#task-6-create-the-production-environment-and-deploy-the-template-to-azure)
   - [Exercise 2: Create Azure DevOps project and Git Repository](#exercise-2-create-azure-devops-project-and-git-repository)
     - [Task 1: Create Azure DevOps Account](#task-1-create-azure-devops-account)
     - [Task 2: Add the Tailspin Toys source code repository to Azure DevOps](#task-2-add-the-tailspin-toys-source-code-repository-to-azure-devops)
@@ -78,12 +77,6 @@ Tailspin Toys has asked you to automate their development process in two specifi
 
 1.  Microsoft Azure subscription
 
-2.  Local machine or a virtual machine configured with:
-
-    - Visual Studio Code
-
-    - Git command-line interface (CLI)
-
 ## Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, PostgreSQL database, and deployment slots in a single automated process
 
 Duration: 45 Minutes
@@ -102,15 +95,19 @@ Tailspin Toys has requested three Azure environments (dev, test, production), ea
 
 Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, it should take advantage of that platform by utilizing automatic scale for the web app and the PostgreSQL Database PaaS service instead of running virtual machines.
 
-### Task 1: Create an Azure Resource Manager (ARM) template using Visual Studio Code
+### Task 1: Create an Azure Resource Manager (ARM) template using Azure Cloud Shell
 
-1.  From a command prompt or terminal window, locate the folder where you previously unzipped the Student Files. Open **Visual Studio Code** to this folder. It should also contain two sub-folders: **arm** and **tailspintoysweb**.
+1.  From within the **Azure Cloud Shell** locate the folder where you previously unzipped the Student Files. Open **Code** to this folder with the command below. It should also contain two sub-folders: **armtemplate** and **tailspintoysweb**.
 
-    ![In the Visual Studio Code window, the Explorer window is displayed and it shows the student files folder that contains two sub-folders.](images/stepbystep/media/image22.png "Visual Studio Code Explorer")
+    ```bash
+    code .
+    ```
+
+    ![In the Code window, the Explorer window is displayed and it shows the student files folder that contains two sub-folders.](images/stepbystep/media/image22.png "Code Explorer")
   
-2.  In the Visual Studio Code Explorer window, select the **arm** sub-folder and open the **azuredeploy.json** file by clicking on it.
+2.  In the Code Explorer window, select the **armtemplate** sub-folder and open the **azuredeploy.json** file by clicking on it.
 
-    ![In the Visual Studio Code Explorer window, azuredeploy.json is highlighted under the arm folder and the file is opened in the Editor window.](images/stepbystep/media/image23.png "Selecting the azuredeploy.json file")
+    ![In the Code Explorer window, azuredeploy.json is highlighted under the armtemplate folder and the file is opened in the Editor window.](images/stepbystep/media/image23.png "Selecting the azuredeploy.json file")
 
 3.  In the open editor window for the **azuredeploy.json**, scroll through the contents of the Azure Resource Manager Template. This template contains all the necessary code to deploy a Web App and a PostgreSQL database to Azure.
 
@@ -174,25 +171,11 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
     ![This is a screenshot of the code pasted just below the element for the application insights extension in the "resources" array.](images/stepbystep/media/image39.png "Pasted block of JSON code")
 
-### Task 4: Upload the template using Azure Cloud Shell
-
-1.  In a browser window, navigate to your Azure subscription and open an **Azure Cloud Shell** terminal window.
-
-    ![In the Azure Portal, the Azure Cloud Shell icon is shown.](images/stepbystep/media/image40.png "Azure Cloud Shell")
-
-2.  From the Azure Cloud Shell terminal, click the **Upload/Download** button and click **Upload**.
-  
-    ![In the Azure Cloud Shell terminal, the Upload link is selected.](images/stepbystep/media/image41.png "Upload")
-  
-3.  When prompted, locate the **azuredeploy.json** file you modified above and upload it.
-
-4.  You may now close Visual Studio Code.
-
-### Task 5: Create the dev environment and deploy the template to Azure
+### Task 4: Create the dev environment and deploy the template to Azure
 
 Now that the template file has been uploaded, we'll deploy it several times to create each of our desired environments: "dev", "test", and "production". Let's start with the "dev" environment.
 
-1.  In the Azure Cloud Shell terminal, enter the following command and press **Enter**:
+1.  In the **Azure Cloud Shell** terminal, enter the following command and press **Enter**:
 
     ```bash
     echo "Enter the Resource Group name:" &&
@@ -243,7 +226,7 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
   >NOTE: The above steps were used to provision the "dev" environment. Most of these same steps will be repeated for the "test" and "production" environments below.
 
-### Task 6: Create the test environment and deploy the template to Azure
+### Task 5: Create the test environment and deploy the template to Azure
 
 The following steps are very similar to what was done in the previous task with the exception that you are now creating the "test" environment.
 
@@ -284,7 +267,7 @@ The following steps are very similar to what was done in the previous task with 
 
    ![The Azure Cloud Shell has succeeded in executing the template based on the parameters we provided.](images/stepbystep/media/image50.png "Azure Cloud Shell")
 
-### Task 7: Create the production environment and deploy the template to Azure
+### Task 6: Create the production environment and deploy the template to Azure
 
 The following steps are very similar to what was done in the previous task with the exception that you are now creating the "production" environment.
 
@@ -365,20 +348,19 @@ In this exercise, you will create and configure an Azure DevOps account along wi
 
 In this Task, you will configure the Azure DevOps Git repository. You will configure the remote repository using Git and then push the source code up to Azure DevOps through the command line tools.
 
-1.  Open a command prompt in the folder where the Student Files were unzipped. Then, navigate to the **tailspintoysweb** folder which contains the source code for our web application.
+1.  Open the **Azure Cloud Shell** to the folder where the Student Files were unzipped (i.e. studentfiles). Then, navigate to the **tailspintoysweb** folder which contains the source code for our web application.
 
     > **Note**: If this folder doesn't exist ensure you followed the instructions in the Before the HOL.
 
-    ![The Azure Portal is showing all the deployed resources for the resource group we have been using.](images/stepbystep/media/image52.png "Azure Cloud Shell")    
-
-2. Open Visual Studio Code to this folder by typing: 
+2. Open Code to this folder by typing: 
+   
    ```
    code .
    ``` 
-   
+
    Then press **Enter**. 
    
-   >NOTE: Be sure to include the period after the code command as this is what opens Visual Studio Code to the current folder.
+   >NOTE: Be sure to include the period after the code command as this is what opens Code to the current folder.
    
 3.  In a command prompt window, initialize a local Git repository by running the following command:
 
@@ -720,7 +702,7 @@ Duration: 20 Minutes
 
 In this exercise, you will create a short-lived feature branch, make a small code change, commit the code, and submit a pull request. You'll then merge the pull request into the master branch which triggers an automated build and release of the application.
 
-In the tasks below, you will make changes directly through the Azure DevOps web interface. These steps could also be performed through the Visual Studio IDE.
+In the tasks below, you will make changes directly through the Azure DevOps web interface. These steps could also be performed through an IDE of your choosing or using the Azure Cloud Shell Code Editor.
 
 ### Task 1: Create a new branch
 
