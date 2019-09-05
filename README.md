@@ -2,7 +2,7 @@
 
 Tailspin Toys saw the positive potential of the cloud and moved its IT infrastructure, with no significant re-architecture, into Microsoft Azure around six months ago. Now that its business is running successfully in the cloud, it has started a series of process improvements to become a more agile company with a specific focus on delivering frequent feature updates and fixes to its public website. Alex Montgomery, VP of sales and the head of its online business team, says that, "Even though our products are better, our competitors are generating more online sales than we are. For every feature that we deliver to our website, they have delivered 2 or 3. Our development processes are too cumbersome and slow for us to build quality code at that pace."
 
-When it moved its existing systems into Microsoft Azure, Tailspin Toys decided to use the Azure App Service to host its public website which is written as an ASP.NET Model View Controller MVC application. For the database (back-end) tier, they chose the Azure SQL Database service for full Platform-as-a-Service agility.
+When it moved its existing systems into Microsoft Azure, Tailspin Toys decided to use the Azure App Service to host its public website which is written as an Angular front-end with an ASP.NET Core Web API. For the database (back-end) tier, they chose the Azure PostgreSQL Database service for full Platform-as-a-Service agility.
 
 Tailspin wants to improve the turnaround time for fixing these bugs, and they need better logs for the developers. Tailspin needs a solution to gather new types of logs including browser errors and application dependency errors such as timeouts. Ideally, they want to make the application logs searchable as well as implement an automated warning system that emails alerts when application behavior is unusually slow or problematic.
 
@@ -33,7 +33,7 @@ At the end of this workshop, you will be better able to implement solutions for 
 
 ## Azure services and related products
 - Azure App Service 
-- Azure SQL Database
+- Azure PostgreSQL Database
 - Application Insights
 - Azure Resource Manager
 - Azure DevOps
