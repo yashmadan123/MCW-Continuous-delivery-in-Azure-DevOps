@@ -41,12 +41,6 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 1.  Microsoft Azure subscription
 
-2.  Local machine or a virtual machine configured with:
-
-    -   Visual Studio Code
-
-    -   Git command-line interface (CLI)
-
 ## Before the hands-on lab
 
 Duration: 10 minutes
@@ -57,13 +51,11 @@ In this lab, you will configure a developer environment and download the require
 
 -   Microsoft Azure subscription <http://azure.microsoft.com/en-us/pricing/free-trial/>
 
--   Client computer with Windows 7 or later with Visual Studio Code and Git installed
-
 >**Note**: If you meet both of the above requirements, skip to Task 2 below.
 
 ### Task 1: Use Azure Shell as your development environment
 
->**Note**: This task is for students that do not have a client computer with Visual Studio Code and Git installed or would rather not put lab files on a personal device. This workshop can be completed using only the Azure Cloud Shell. Perform the steps below if you are limited to using the Azure Cloud Shell. If you do have a client computer with Visual Studio code and Git installed, skip to the next task.
+>**Note**: This workshop can be completed using only the Azure Cloud Shell.
 
 1.  From the Azure web portal, launch the **Azure Cloud Shell**. It has common Azure tools preinstalled and configured to use with your account.
 
@@ -78,29 +70,27 @@ In this lab, you will configure a developer environment and download the require
 
 ### Task 2: Download the exercise files
 
-1.  Download the exercise files for the training. Start by creating a new folder to place the files.
-
-2.  Download the support files (.zip format), https://cloudworkshop.blob.core.windows.net/agile-continous-delivery/studentfiles.zip to the new folder. If you are using the Azure Cloud Shell, you can download the file by executing the following command inside the Cloud Shell window (all on one line):
+1.  Using the Azure Cloud Shell, you can download the file by executing the following command inside the Cloud Shell window (all on one line):
 
     ```
     curl -o studentfiles.zip https://cloudworkshop.blob.core.windows.net/agile-continous-delivery/studentfiles.zip
     ```
 
-3.  Extract the contents of the file to the new folder. If you are using the Azure Cloud Shell, you can execute the following command inside the Cloud Shell window:
+2.  Extract the contents of the file to the new folder. Using the Azure Cloud Shell, you can execute the following command inside the Cloud Shell window:
 
     ```bash
     unzip studentfiles.zip
     ```
 
-4.  When unzipped, there will be a new folder named **studentfiles**. Navigate to the newly created **studentfiles** directory.
+3.  When unzipped, there will be a new folder named **studentfiles**. Navigate to the newly created **studentfiles** directory.
 
     ```bash
     cd studentfiles
     ```
    
-5.  Inside the **studentfiles** folder, there are two folders named **armtemplate** and **tailspintoysweb**. The workshop will refer to these folders throughout the exercises.
+4.  Inside the **studentfiles** folder, there are two folders named **armtemplate** and **tailspintoysweb**. The workshop will refer to these folders throughout the exercises.
 
->**Note**: If you prefer to use the Azure Cloud Shell to complete this lab, you can load the integrated code editor at any time with the following command:
+>**Note**: Using the Azure Cloud Shell, you can load the integrated code editor at any time with the following command:
 ```
 code .
 ```
