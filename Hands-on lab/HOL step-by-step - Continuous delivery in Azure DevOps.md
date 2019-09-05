@@ -1,4 +1,4 @@
-![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
 Continuous delivery in Azure DevOps
@@ -77,7 +77,7 @@ Tailspin Toys has asked you to automate their development process in two specifi
 
 1.  Microsoft Azure subscription
 
-  >NOTE: This entire lab can be completed using only the Azure Portal.
+  >**Note**: This entire lab can be completed using only the Azure Portal.
 
 ## Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, PostgreSQL database, and deployment slots in a single automated process
 
@@ -113,7 +113,7 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
 3.  In the open editor window for the **azuredeploy.json**, scroll through the contents of the Azure Resource Manager Template. This template contains all the necessary code to deploy a Web App and a PostgreSQL database to Azure.
 
-    > NOTE: If you would like to use this template in a future deployment of your own, it can be found in the [Azure Quickstart Templates repository on GitHub](https://github.com/Azure/azure-quickstart-templates). This specific file can be found [here](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-webapp-managed-postgresql/azuredeploy.json).
+    >**Note**: If you would like to use this template in a future deployment of your own, it can be found in the [Azure Quickstart Templates repository on GitHub](https://github.com/Azure/azure-quickstart-templates). This specific file can be found [here](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-webapp-managed-postgresql/azuredeploy.json).
 
 ### Task 2: Configure the list of release environments parameters
 
@@ -143,7 +143,7 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
     Save the file.
 
-    >NOTE: The **environment** parameter will be used to generate environment specific names for our web app.
+    >**Note**: The **environment** parameter will be used to generate environment specific names for our web app.
 
 ### Task 3: Add a deployment slot for the "staging" version of the site
 
@@ -188,7 +188,7 @@ Now that the template file has been uploaded, we'll deploy it several times to c
     az group deployment create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
     ```
     
-    > NOTE: This command is designed to prompt us to enter the resource group name and Azure region (location) we want to deploy our resources to. The script then takes our inputs and passes them as parameters to the Azure CLI command that calls our recently uploaded template file.
+    >**Note**: This command is designed to prompt us to enter the resource group name and Azure region (location) we want to deploy our resources to. The script then takes our inputs and passes them as parameters to the Azure CLI command that calls our recently uploaded template file.
 
     ![In the Azure Cloud Shell window, the command has been entered is we are prompted for the name of the resource group we want to deploy to.](images/stepbystep/media/image44.png "Azure Cloud Shell window")
 
@@ -226,7 +226,7 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
    ![The Azure Cloud Shell has succeeded in executing the template based on the parameters we provided.](images/stepbystep/media/image50.png "Azure Cloud Shell")
 
-  >NOTE: The above steps were used to provision the "dev" environment. Most of these same steps will be repeated for the "test" and "production" environments below.
+  >**Note**: The above steps were used to provision the "dev" environment. Most of these same steps will be repeated for the "test" and "production" environments below.
 
 ### Task 5: Create the test environment and deploy the template to Azure
 
@@ -312,7 +312,7 @@ The following steps are very similar to what was done in the previous task with 
 
 8.  In the Azure Portal, navigate to the resource group where all of the resources have been deployed. It should look similar to the screenshot below.
 
-    >NOTE: The specific names of the resources will be slightly different than what you see in the screenshot based on the unique identities assigned.
+    >**Note**: The specific names of the resources will be slightly different than what you see in the screenshot based on the unique identities assigned.
 
     ![The Azure Portal is showing all the deployed resources for the resource group we have been using.](images/stepbystep/media/image51.png "Azure Cloud Shell")
 
@@ -326,7 +326,7 @@ In this exercise, you will create and configure an Azure DevOps account along wi
 
 1.  Browse to the Azure DevOps site at <https://dev.azure.com>.
 
-2.  If you do not already have an account, click the **Start free** button.
+2.  If you do not already have an account, select the **Start free** button.
     
     ![In this screenshot, a Start free button is shown on the Azure DevOps home page.](images/stepbystep/media/image56.png "Azure DevOps screenshot")
 
@@ -362,7 +362,7 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
 
    Then press **Enter**. 
    
-   >NOTE: Be sure to include the period after the code command as this is what opens Code to the current folder.
+   >**Note**: Be sure to include the period after the code command as this is what opens Code to the current folder.
    
 3.  In a command prompt window, initialize a local Git repository by running the following command:
 
@@ -415,7 +415,7 @@ This hierarchy is reflected in the structure of a YAML file.
 
     ![In the Azure DevOps window, Pipelines is highlighted in the ribbon.](images/stepbystep/media/image68.png "Azure DevOps window")
 
-2.  Click the **New pipeline** button to create a new build pipeline.
+2.  Select the **New pipeline** button to create a new build pipeline.
 
     ![In Builds, New pipeline is highlighted.](images/stepbystep/media/image69.png "Create a new pipeline")
 
@@ -450,7 +450,7 @@ The "pool" section specifies which pool to use for a job of the pipeline. It als
       - vstest
     ```
 
-Steps are a linear sequence of operations that make up a job. Each step runs in its own process on an agent and has access to the pipeline workspace on disk. this means environment variables are not preserved between steps but file system changes are.
+Steps are a linear sequence of operations that make up a job. Each step runs in its own process on an agent and has access to the pipeline workspace on disk. This means environment variables are not preserved between steps but, file system changes are.
 
 9.  Select and replace the "steps" section with the following code:
     
@@ -466,7 +466,7 @@ Tasks are the building blocks of a pipeline. They describe the actions that are 
 
 10. Select and replace the entire "task" section with the following code:
     
-    >NOTE: The YAML below creates individual tasks for performing all the necessary steps to build and test our application along with publishing the artifacts inside Azure DevOps so they can be retrieved during the upcoming release pipeline process.
+    >**Note**: The YAML below creates individual tasks for performing all the necessary steps to build and test our application along with publishing the artifacts inside Azure DevOps so they can be retrieved during the upcoming release pipeline process.
 
     ```yaml
     - task: NuGetCommand@2
@@ -541,11 +541,11 @@ Tasks are the building blocks of a pipeline. They describe the actions that are 
       condition: succeededOrFailed()
     ```
 
-12. Click the **Save and run** button to save our new pipeline and also kick off the first build.
+12. Choose the **Save and run** button to save our new pipeline and also kick off the first build.
 
     ![A screen that shows the contents of azure-pipelines.yml. The Save and run button is highlighted.](images/stepbystep/media/image73.png "azure-pipelines.yml")    
 
-13. The new azure-pipelines.yml file will automatically be added to the root of your TailspinToys repository. This is done through a git commit that Azure DevOps facilitates. You are then asked to enter a commit description. By default, it will be populated for you. Once again, click the **Save and run** button at the bottom of the screen.
+13. The new azure-pipelines.yml file will automatically be added to the root of your TailspinToys repository. This is done through a git commit that Azure DevOps facilitates. You are then asked to enter a commit description. By default, it will be populated for you. Once again, select the **Save and run** button at the bottom of the screen.
 
     ![A screen that shows the commit of azure-pipelines.yml. The Save and run button is highlighted.](images/stepbystep/media/image74.png "Save and run")   
 
@@ -567,11 +567,11 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
 ### Task 1: Create a release definition
 
-1.  Click **Releases** on the left-hand navigation. This will bring up the Releases screen. 
+1.  Select **Releases** on the left-hand navigation. This will bring up the Releases screen. 
 
     ![A screen that shows the left-side navigation. Releases is highlighted.](images/stepbystep/media/image84.png "Releases")
 
-2.  Click on the **New pipeline** button to begin the creation of a new release pipeline.
+2.  Choose the **New pipeline** button to begin the creation of a new release pipeline.
 
     ![On the Releases screen, the New pipeline button is highlighted.](images/stepbystep/media/image85.png "Releases screen")
 
@@ -649,7 +649,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
     ![On the screen, the Clone button is highlighted.](images/stepbystep/media/image96.png "Copy the deployment tasks")
 
-2.  Click on the newly created stage titled "Copy of dev" to bring up the stage configuration panel.
+2.  Select the newly created stage titled "Copy of dev" to bring up the stage configuration panel.
 
 3.  Change the "Stage name" to **test** and then close the panel.
 
@@ -673,7 +673,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
     ![On the panel, Display name, App Service name, Resource group, and Source Slot are highlighted.](images/stepbystep/media/image99.png "Configure the Swap Slots task")
 
-9.  Click the "Save" button at the top of the screen, and confirm by clicking the "OK" button.
+9.  Select the "Save" button at the top of the screen, and confirm by choosing the "OK" button.
 
 10. Congratulations! You have just created a test stage and added it to your pipeline.
 
@@ -703,11 +703,11 @@ Any commit of new or modified code to the master branch will automatically trigg
 
 ### Task 1: Manually queue a new build and follow it through the release pipeline
 
-1.  Click on the "Pipelines" menu item from the left-hand navigation. Then, click the "Queue" button.
+1.  Select the "Pipelines" menu item from the left-hand navigation. Then, choose the "Queue" button.
 
     ![On the screen, the Pipelines button and the Queue button are highlighted.](images/stepbystep/media/image102.png "Queue a new build")
 
-2.  This will present a popup titled "Run pipeline". Click the "Run" button at the bottom of the popup.
+2.  This will present a popup titled "Run pipeline". Select the "Run" button at the bottom of the popup.
 
     ![On the popup, the Queue button is highlighted.](images/stepbystep/media/image103.png "Queue button")
 
@@ -731,11 +731,11 @@ In the tasks below, you will make changes directly through the Azure DevOps web 
 
 ### Task 1: Create a new branch
 
-1.  Select the "Repos" menu item from the left-hand navigation. Then, click on "Branches".
+1.  Select the "Repos" menu item from the left-hand navigation. Then, choose "Branches".
 
     ![On the screen, Repos and Branches are highlighted.](images/stepbystep/media/image106.png "Azure DevOps window")
 
-2.  Click the "New branch" button in the upper right corner of the page.
+2.  Select the "New branch" button in the upper right corner of the page.
 
     ![On the screen, New branch is highlighted.](images/stepbystep/media/image106a.png "Azure DevOps window")
 
@@ -743,27 +743,27 @@ In the tasks below, you will make changes directly through the Azure DevOps web 
 
     ![On the popup window, Name and Based on are highlighted along with the Create branch button.](images/stepbystep/media/image107.png "Create a branch popup")
 
-4.  Click "Create branch".
+4.  Select "Create branch".
 
 ### Task 2: Make a code change to the feature branch
 
-1.  Click on the name of the newly created branch. This will present the "Files" window showing all the files in the repository.
+1.  Choose the name of the newly created branch. This will present the "Files" window showing all the files in the repository.
 
     ![On the screen, the new-heading branch is highlighted.](images/stepbystep/media/image108.png "Branches window")
 
 2.  Next, you'll make a change to a page in the web application inside the web browser.
 
-3.  Click on the "ClientApp" folder.
+3.  Select the "ClientApp" folder.
 
-4.  Then, click on the "src" folder.
+4.  Then, choose the "src" folder.
 
-5.  Then, click on the "app" folder.
+5.  Then, the "app" folder.
 
-6.  Then, click on the "home" folder.
+6.  Then, the "home" folder.
 
-7.  Locate and click on the "home.component.html" file. It will display the contents of the file.
+7.  Locate and select the "home.component.html" file. It will display the contents of the file.
 
-8.  Click on the "Edit" button on the top right of the screen to begin editing the page.
+8.  Select the "Edit" button on the top right of the screen to begin editing the page.
 
     ![On the screen, Edit is highlighted.](images/stepbystep/media/image109.png "Files window")
 
@@ -773,11 +773,11 @@ In the tasks below, you will make changes directly through the Azure DevOps web 
     <h1>Welcome to Tailspin Toys v2!</h1>
     ```
     
-10.  Now that you've completed the code change, click on the "Commit..." button on the top right side of the screen.
+10.  Now that you've completed the code change, select the "Commit..." button on the top right side of the screen.
 
   ![On the screen, line 6 code change and the Commit button are highlighted.](images/stepbystep/media/image110.png "Completing the code change")
 
-11. This will present the Commit popup where you can enter a comment. Click the "Commit" button.
+11. This will present the Commit popup where you can enter a comment. Select the "Commit" button.
 
     ![On the popup, the Commit button is highlighted.](images/stepbystep/media/image111.png "Commit dialog popup")
 
@@ -791,7 +791,7 @@ In the tasks below, you will make changes directly through the Azure DevOps web 
 
     ![On the screen, Reviewers is highlighted.](images/stepbystep/media/image113.png "New Pull Request page")
 
-3.  Click the "Create" button to submit the pull request.
+3.  Select the "Create" button to submit the pull request.
 
 ### Task 4: Approve and complete a pull request
 
@@ -799,17 +799,17 @@ Typically, the next few steps would be performed by another team member. This wo
 
 1.  After submitting the pull request, you are presented with Pull Request review screen. Let's assume all the changes made were acceptable to the review team.
 
-2.  First, click the "Approve" button to approve of the code that was modified submitted as part of the pull request.
+2.  First, select the "Approve" button to approve of the code that was modified submitted as part of the pull request.
 
-3.  This will note that you approved the pull request. Then, click the "Complete" button to finish and merge the code from the pull request into the master branch.
+3.  This will note that you approved the pull request. Then, choose the "Complete" button to finish and merge the code from the pull request into the master branch.
 
     ![On the screen, Approve and Complete are highlighted.](images/stepbystep/media/image114.png "Approve and complete to merge the pull request")
 
-4.  After clicking the Complete button in the previous step, you will be presented with the Complete pull request popup. You can add additional comments for the merge activity. By selecting the "Delete new-heading after merging" option, our branch will be deleted after the merge has been completed. This keeps our repository clean of old and abandoned branches and eliminates the possibility of future confusion.
+4.  After choosing the Complete button in the previous step, you will be presented with the Complete pull request popup. You can add additional comments for the merge activity. By selecting the "Delete new-heading after merging" option, our branch will be deleted after the merge has been completed. This keeps our repository clean of old and abandoned branches and eliminates the possibility of future confusion.
 
     ![In the Complete pull request dialog box, Delete new-heading after merging is selected and highlighted, and Complete merge is highlighted at the bottom.](images/stepbystep/media/image115.png "Complete pull request dialog box")
 
-5.  Click the "Complete merge" button.
+5.  Select the "Complete merge" button.
 
 6.  You will then see a confirmation of the completed pull request.
 
