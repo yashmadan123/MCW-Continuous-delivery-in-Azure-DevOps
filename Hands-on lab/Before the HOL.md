@@ -1,4 +1,4 @@
-![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
 Continuous delivery in Azure DevOps
@@ -59,11 +59,11 @@ In this lab, you will configure a developer environment and download the require
 
 -   Client computer with Windows 7 or later with Visual Studio Code and Git installed
 
->NOTE: If you meet both of the above requirements, skip to Task 2 below.
+>**Note**: If you meet both of the above requirements, skip to Task 2 below.
 
 ### Task 1: Use Azure Shell as your development environment
 
->NOTE: This task is for students that do not have a client computer with Visual Studio Code and Git installed or would rather not put lab files on a personal device. This workshop can be completed using only the Azure Cloud Shell. Perform the steps below if you are limited to using the Azure Cloud Shell. If you do have a client computer with Visual Studio code and Git installed, skip to the next task.
+>**Note**: This task is for students that do not have a client computer with Visual Studio Code and Git installed or would rather not put lab files on a personal device. This workshop can be completed using only the Azure Cloud Shell. Perform the steps below if you are limited to using the Azure Cloud Shell. If you do have a client computer with Visual Studio code and Git installed, skip to the next task.
 
 1.  From the Azure web portal, launch the **Azure Cloud Shell**. It has common Azure tools preinstalled and configured to use with your account.
 
@@ -100,7 +100,9 @@ In this lab, you will configure a developer environment and download the require
    
 5.  Inside the **studentfiles** folder, there are two folders named **armtemplate** and **tailspintoysweb**. The workshop will refer to these folders throughout the exercises.
 
->NOTE: If you prefer to use the Azure Cloud Shell to complete this lab, you can load the integrated code editor at any time with the following command:
+>**Note**: If you prefer to use the Azure Cloud Shell to complete this lab, you can load the integrated code editor at any time with the following command:
 ```
 code .
 ```
+
+You should follow all steps provided *before* starting the Hands-on Lab.
