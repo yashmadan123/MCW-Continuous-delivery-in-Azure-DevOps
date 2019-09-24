@@ -42,6 +42,11 @@ At the end of this workshop, you will be better able to implement solutions for 
 ## Azure solutions
 DevOps
 
+## Related references
+- [MCW](https://github.com/Microsoft/MCW)
+- [DevOps Checklist](https://docs.microsoft.com/en-us/azure/architecture/checklist/dev-ops)
+- [Reference Architecture for Basic Web Application](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/app-service-web-app/basic-web-app)
+
 ## Help & Support
 
 We welcome feedback and comments from Microsoft SMEs & learning partners who deliver MCWs.  
@@ -54,8 +59,3 @@ We welcome feedback and comments from Microsoft SMEs & learning partners who del
 If you are planning to present a workshop, *review and test the materials early*! We recommend at least two weeks prior.
 
 ### Please allow 5 - 10 business days for review and resolution of issues.
-
-## Related references
-- [MCW](https://github.com/Microsoft/MCW)
-- [DevOps Checklist](https://docs.microsoft.com/en-us/azure/architecture/checklist/dev-ops)
-- [Reference Architecture for Basic Web Application](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/app-service-web-app/basic-web-app)
