@@ -6,12 +6,13 @@ When it moved its existing systems into Microsoft Azure, Tailspin Toys decided t
 
 Tailspin wants to improve the turnaround time for fixing these bugs, and they need better logs for the developers. Tailspin needs a solution to gather new types of logs including browser errors and application dependency errors such as timeouts. Ideally, they want to make the application logs searchable as well as implement an automated warning system that emails alerts when application behavior is unusually slow or problematic.
 
+August 2019
 
 ## Target audience
 
 - Application Developer
 
-## Abstract
+## Abstracts
 
 ### Workshop
 
@@ -40,6 +41,19 @@ At the end of this workshop, you will be better able to implement solutions for 
 
 ## Azure solutions
 DevOps
+
+## Help & Support
+
+We welcome feedback and comments from Microsoft SMEs & learning partners who deliver MCWs.  
+
+***Having trouble?***
+- First, verify you have followed all written lab instructions (including the Before the Hands-on lab document).
+- Next, submit an issue with a detailed description of the problem.
+- Please do not submit pull requests. Our authors will review open issues and submit pull requests, as needed, for approval.  
+
+If you are planning to present a workshop, *review and test the materials early*! We recommend at least two weeks prior.
+
+### Please allow 5 - 10 business days for review and resolution of issues.
 
 ## Related references
 - [MCW](https://github.com/Microsoft/MCW)
