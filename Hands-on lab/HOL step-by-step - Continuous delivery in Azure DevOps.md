@@ -426,7 +426,7 @@ Duration: 15 Minutes
 
 Implementing CI and CD pipelines helps to ensure consistent and quality code that's readily available to users. Azure Pipelines is a quick, easy, and safe way to automate building your projects and making them available to users.
 
-In this exercise, you will create a build definition using, Azure Pipelines, that will automatically build the web application with every commit of source code. This will lay the groundwork for us to then create a release pipeline for publishing the code to our Azure environments.
+In this exercise, you will create a build definition using Azure Pipelines, that will automatically build the web application with every commit of source code. This will lay the groundwork for us to then create a release pipeline for publishing the code to our Azure environments.
   
 ### Task 1: Create a build pipeline
 
@@ -442,9 +442,9 @@ This hierarchy is reflected in the structure of a YAML file.
 
     ![In the Azure DevOps window, Pipelines is highlighted in the ribbon.](images/stepbystep/media/image68.png "Azure DevOps window")
 
-2.  Select the **New pipeline** button to create a new build pipeline.
+2.  Select the **Create pipeline** button to create a new build pipeline.
 
-    ![In Builds, New pipeline is highlighted.](images/stepbystep/media/image69.png "Create a new pipeline")
+    ![In Builds, Create pipeline is highlighted.](images/stepbystep/media/image69.png "Create a new pipeline")
 
 3.  This starts a wizard where you'll first need to select where your current code is located. In a previous step, you pushed code up to Azure Repos. Select the **Azure Repos Git** option.
 
@@ -470,14 +470,14 @@ The "pool" section specifies which pool to use for a job of the pipeline. It als
 
     ```yml
     pool:
-      name: Hosted VS2017
+      vmImage: 'windows-latest'
       demands:
       - msbuild
       - visualstudio
       - vstest
     ```
 
-Steps are a linear sequence of operations that make up a job. Each step runs in its own process on an agent and has access to the pipeline workspace on disk. This means environment variables are not preserved between steps but, file system changes are.
+    Steps are a linear sequence of operations that make up a job. Each step runs in its own process on an agent and has access to the pipeline workspace on disk. This means environment variables are not preserved between steps but, file system changes are.
 
 9.  Select and replace the "steps" section with the following code:
     
@@ -489,13 +489,13 @@ Steps are a linear sequence of operations that make up a job. Each step runs in 
         versionSpec: 4.4.1
     ```
 
-Tasks are the building blocks of a pipeline. They describe the actions that are performed in sequence during an execution of the pipeline.
+    Tasks are the building blocks of a pipeline. They describe the actions that are performed in sequence during an execution of the pipeline.
 
-10. Select and replace the entire "task" section with the following code:
+10. Add additional tasks to your azure-pipelines.yml file by selecting and copying the following code. This should be pasted right after the NuGetToolInstaller@0 task which you pasted previously:
     
     >**Note**: The YAML below creates individual tasks for performing all the necessary steps to build and test our application along with publishing the artifacts inside Azure DevOps so they can be retrieved during the upcoming release pipeline process.
 
-    ```yaml
+    ```yml
     - task: NuGetCommand@2
       displayName: 'NuGet restore'
       inputs:
@@ -527,8 +527,11 @@ Tasks are the building blocks of a pipeline. They describe the actions that are 
 11. The final result will look like the following:
 
     ```yml
+    trigger:
+      - master
+
     pool:
-      name: Hosted VS2017
+      vmImage: 'windows-latest'
       demands:
       - msbuild
       - visualstudio
@@ -580,11 +583,11 @@ Tasks are the building blocks of a pipeline. They describe the actions that are 
 
     ![A screen that shows the real-time output of the build process.](images/stepbystep/media/image76.png "Real-time output")   
 
-15.  After the build process completes, you should see a green check mark next to each of the build pipeline steps.
+15. After the build process completes, you should see a green check mark next to each of the build pipeline steps.
   
-  ![A screen that shows a successfully completed build pipeline.](images/stepbystep/media/image77.png "Success") 
+    ![A screen that shows a successfully completed build pipeline.](images/stepbystep/media/image77.png "Success") 
     
-  Congratulations! You have just created your first build pipeline. In the next exercise, we will create a release pipeline that deploys your successful builds.
+    Congratulations! You have just created your first build pipeline. In the next exercise, we will create a release pipeline that deploys your successful builds.
 
 ## Exercise 4: Create Azure DevOps release pipeline
 
