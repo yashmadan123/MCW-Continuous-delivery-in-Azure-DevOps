@@ -337,7 +337,7 @@ In this exercise, you will create and configure an Azure DevOps account along wi
 
     ![In the TailspinToys project window, Repos is highlighted in the left-hand navigation.](images/stepbystep/media/image58.png "TailspinToys navigation window")
 
-7.  On the **Repos** page for the **TailspinToys** repository, locate the "or push an existing repository from command line" section. Click the Copy button to copy the contents of the panel. We're going to use these commands in an upcoming step.
+7.  On the **Repos** page for the **TailspinToys** repository and locate the "Push an existing repository from command line" section. Click the **Copy push commands to clipboard** button to copy the contents of the panel. We're going to use these commands in an upcoming step.
 
     ![In the "Add some code!" window, URLs appear to clone to your computer or push an existing repository from command line.](images/stepbystep/media/image59.png "TailspinToys is empty. Add some code! window")
 
