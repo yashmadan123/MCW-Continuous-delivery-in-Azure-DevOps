@@ -212,7 +212,7 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
    ![In the Azure Cloud Shell window, we are prompted for the administrative username for the PostgreSQL server and database we want to create.](images/stepbystep/media/image47.png "Azure Cloud Shell")
 
-8.  Enter a value for the "administratorLogin" and then press **Enter**.
+8.  Enter a value for the "administratorLogin" (e.g. azureuser) and then press **Enter**.
 
 9.  Next, we're asked to supply an administrator password for the PostgreSQL server and database. This will be the password credential you would need to enter to connect to your newly created database.
 
