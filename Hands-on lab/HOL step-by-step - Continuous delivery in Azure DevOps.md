@@ -345,54 +345,86 @@ In this exercise, you will create and configure an Azure DevOps account along wi
 
 In this Task, you will configure the Azure DevOps Git repository. You will configure the remote repository using Git and then push the source code up to Azure DevOps through the command line tools.
 
-1.  Open the **Azure Cloud Shell** to the folder where the Student Files were unzipped (i.e. studentfiles). Then, navigate to the **tailspintoysweb** folder which contains the source code for our web application.
+1.  Open the **Azure Cloud Shell** to the folder where the Student Files were unzipped (e.g. studentfiles). Then, navigate to the **tailspintoysweb** folder which contains the source code for our web application.
 
-    > **Note**: If this folder doesn't exist ensure you followed the instructions in the Before the HOL.
+    > **Note**: If this folder doesn't exist ensure you followed the instructions in the 'Before the hands-on lab'.
 
 2. Open Code to this folder by typing: 
    
-   ```
+   ```bash
    code .
    ``` 
 
    Then press **Enter**. 
    
-   >**Note**: Be sure to include the period after the code command as this is what opens Code to the current folder.
+   >**Note**: Be sure to include the period after the code command as this instructs Code to open the current directory context.
    
 3.  In a command prompt window, initialize a local Git repository by running the following command:
 
     > If a ".git" folder and local repository already exists in the folder, then you will need to delete the ".git" folder first before running the commands below to initialize the Git repository.
 
-    ```
+    ```bash
     git init
     ```
 
 4.  Paste the first command you copied from Azure DevOps. It will resemble the command below:
     
-    ```
+    ```bash
     git remote add origin https://<your-org>@dev.azure.com/<your-org>/TailspinToys/_git/TailspinToys
+    git push -u origin --all
     ```
 
-5.  Enter the following commands to commit the changes made locally to the new repository:
+5. In case the *Password for 'https://\<your-org>@dev.azure.com':* prompt appears, follow the next steps to generate a PAT (Personal Access Token) for your Azure DevOps organization. Otherwise, skip to step 13.
     
-    ```
+    > **Note**: These steps are also useful when using a multi-factored protected user account with Azure DevOps.
+    
+    > **Note**: **DO NOT CLOSE AZURE CLOUD SHELL**. Use a different tab for the steps for creating a new PAT token.
+
+6. In Azure DevOps, click on the second to last icon on the top menu in the left-hand side of the screen, representing a user and a small gear icon.
+
+7. From the context menu, choose **Personal access tokens**.
+
+    ![Selecting the player settings icon in the top menu bar](images/stepbystep/media/image132.png "Personal access tokens menu option")
+
+8. If the *Create a new personal access token* page has appeared, skip to the next step. Otherwise, click on the **+ New Token** button.
+
+    ![Forcing the 'Create a new personal access token' to appear](images/stepbystep/media/image133.png "Personal access tokens menu option")
+
+9. In the *Create a new personal access token* page, type in a descriptive name for the new token, and from the *Code* section, choose **Full** and **Status**.
+
+    ![Creating a new PAT (Personal Access Token) in Azure Devops](images/stepbystep/media/image134.png "Personal access tokens menu option")
+
+10. In the *Create a new personal access token* page, click the **Create** button.
+
+11. From the success confirmation page, click on the **Copy to clipboard** button to copy the newly created PAT token to clipboard.
+
+    ![Copying the newly created PAT token to the clipboard](images/stepbystep/media/image135.png "Success confirmation page")
+
+12. In Azure Cloud Shell, paste the PAT token and press **Enter**.
+
+13. Type in the following commands to commit the changes made locally to the new repository:
+    
+    ```bash
     git add *
     git commit -m "adding files"
     ```
 
-6.  Push the changes up to the Azure DevOps repository with the following command:
+14. Push the changes up to the Azure DevOps repository with the following command:
 
     ```
-    git push -u origin --all
+    git push --set-upstream origin master
     ```
 
-7.  Leave that command prompt window open and switch back to the web browser window for Azure DevOps from the previous Task. Navigate to the Repos > Files page which shows the files in the repository. You may need to refresh the page to see the updated files. Your source code is now appearing in Azure DevOps.
+15. Leave that command prompt window open and switch back to the web browser window for Azure DevOps from the previous Task. Navigate to the Repos > Files page which shows the files in the repository. You may need to refresh the page to see the updated files. Your source code is now appearing in Azure DevOps.
+
+    ![The newly created files show up in Repos > Files section.](images/stepbystep/media/image136.png "Success confirmation page")
+
 
 ## Exercise 3: Create Azure DevOps build pipeline
 
 Duration: 15 Minutes
 
-Implementing CI and CD pipelines helps to ensure consistent and quality code that's readily available to users. Azure Pipelines is a quick, easy, and safe way to automate building your projects and making them available to users,
+Implementing CI and CD pipelines helps to ensure consistent and quality code that's readily available to users. Azure Pipelines is a quick, easy, and safe way to automate building your projects and making them available to users.
 
 In this exercise, you will create a build definition using, Azure Pipelines, that will automatically build the web application with every commit of source code. This will lay the groundwork for us to then create a release pipeline for publishing the code to our Azure environments.
   
