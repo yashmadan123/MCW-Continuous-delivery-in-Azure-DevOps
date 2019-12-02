@@ -748,21 +748,25 @@ Any commit of new or modified code to the master branch will automatically trigg
 
 ### Task 1: Manually queue a new build and follow it through the release pipeline
 
-1.  Select the "Pipelines" menu item from the left-hand navigation. Then, choose the "Queue" button.
+1. Select the *Pipelines* menu item from the left-hand navigation. 
+
+2. In the *Pipelines* view, click on the *TailspinToys* pipeline recently created.
+
+3. In the *TailspinToys* pipeline runs page, click on the *Run pipeline* button in the upper right section of the page.
 
     ![On the screen, the Pipelines button and the Queue button are highlighted.](images/stepbystep/media/image102.png "Queue a new build")
 
-2.  This will present a popup titled "Run pipeline". Select the "Run" button at the bottom of the popup.
+4. This will present a modal window titled *Run pipeline*. Click the **Run** button at the bottom of the modal window.
 
     ![On the popup, the Queue button is highlighted.](images/stepbystep/media/image103.png "Queue button")
 
-3. The screen will refresh and begin to show details about the build process.
+5. The screen will refresh and begin to show details about the build process.
 
-4.  If the build is successful, it will resemble the screen shot below.
+6. Once the build completes, it will resemble the snippet below.
 
     ![On the screen, the build has successfully completed. Each task has a green check.](images/stepbystep/media/image104.png "Successful build results")
 
-5.  Because we configured continuous deployment, the deployment to the dev stage will then be triggered immediately. It will continue through on to the test and production stages. A successful release through all three stages will look like the screen shot below.
+7. Because we configured continuous deployment, the deployment to the dev stage will automatically be triggered. It will continue through on to the test and production stages. A successful release through all three stages will look like the screen shot below.
 
     ![On the screen, a successful release through all three stages of deployment.](images/stepbystep/media/image105.png "A successful release through all three stages")
 
@@ -776,15 +780,15 @@ In the tasks below, you will make changes directly through the Azure DevOps web 
 
 ### Task 1: Create a new branch
 
-1.  Select the "Repos" menu item from the left-hand navigation. Then, choose "Branches".
+1. Select the "Repos" menu item from the left-hand navigation. Then, choose "Branches".
 
     ![On the screen, Repos and Branches are highlighted.](images/stepbystep/media/image106.png "Azure DevOps window")
 
-2.  Select the "New branch" button in the upper right corner of the page.
+2. Select the "New branch" button in the upper right corner of the page.
 
     ![On the screen, New branch is highlighted.](images/stepbystep/media/image106a.png "Azure DevOps window")
 
-3.  In the "Create a branch" dialog, enter a name for the new branch. In this scenario, name it "new-heading". In the "Based on" field, be sure **master** is selected.
+3. In the "Create a branch" dialog, enter a name for the new branch. In this scenario, name it "new-heading". In the "Based on" field, be sure **master** is selected.
 
     ![On the popup window, Name and Based on are highlighted along with the Create branch button.](images/stepbystep/media/image107.png "Create a branch popup")
 
