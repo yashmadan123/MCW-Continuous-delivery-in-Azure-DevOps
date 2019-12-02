@@ -176,7 +176,7 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
 ### Task 4: Create the dev environment and deploy the template to Azure
 
-Now that the template file has been uploaded, we'll deploy it several times to create each of our desired environments: "dev", "test", and "production". Let's start with the "dev" environment.
+Now that the template file has been uploaded, we'll deploy it several times to create each of our desired environments: *dev*, *test*, and *production*. Let's start with the **dev** environment.
 
 1.  In the **Azure Cloud Shell** terminal, enter the following command and press **Enter**:
 
@@ -203,35 +203,35 @@ Now that the template file has been uploaded, we'll deploy it several times to c
    
 4.  Next, we're asked to enter a choice for environments we want to deploy to. The template will use our choice to concatenate the name of the environment with the name of the resource during provisioning. 
     
-    For this first run, select the "dev" environment by entering **1** and then pressing **Enter**.
+    For this first run, select the *dev* environment by entering **1** and then pressing **Enter**.
     
     ![In the Azure Cloud Shell window, we are prompted for the environment we want to deploy to.](images/stepbystep/media/image46.png "Azure Cloud Shell") 
 
 5.  Next, we're asked to supply an administrator login (username) for the PostgreSQL server and database. This will be the username credential you would need to enter to connect to your newly created database. 
     
-    Enter a value for the "administratorLogin" (e.g. azureuser) and then press **Enter**.
+    Enter a value for the *administratorLogin* (e.g. **azureuser**) and then press **Enter**.
 
     ![In the Azure Cloud Shell window, we are prompted for the administrative username for the PostgreSQL server and database we want to create.](images/stepbystep/media/image47.png "Azure Cloud Shell")
 
 6.  Next, we're asked to supply an administrator password for the PostgreSQL server and database. This will be the password credential you would need to enter to connect to your newly created database.
 
-    Enter a value for the "administratorLoginPassword" and then press **Enter**.
+    Enter a value for the *administratorLoginPassword* and then press **Enter**.
 
 7. This will kick off the provisioning process which takes a few minutes to create all the resources for the environment. This is indicated by the "Running" text displayed at the bottom of the Azure Cloud Shell while the command is executing.
 
     ![The Azure Cloud Shell is executing the template based on the parameters we provided.](images/stepbystep/media/image49.png "Azure Cloud Shell")
 
-8. After the template has completed, JSON is output to the Azure Cloud Shell window with a "Succeeded" message.
+8. After the template has completed, JSON is output to the Azure Cloud Shell window with a *Succeeded* message.
 
     ![The Azure Cloud Shell has succeeded in executing the template based on the parameters we provided.](images/stepbystep/media/image50.png "Azure Cloud Shell")
 
-    >**Note**: The above steps were used to provision the "dev" environment. Most of these same steps will be repeated for the "test" and "production" environments below.
+    >**Note**: The above steps were used to provision the *dev* environment. Most of these same steps will be repeated for the *test* and *production* environments below.
 
 ### Task 5: Create the test environment and deploy the template to Azure
 
-The following steps are very similar to what was done in the previous task with the exception that you are now creating the "test" environment.
+The following steps are very similar to what was done in the previous task with the exception that you are now creating the **test** environment.
 
-1.  In the Azure Cloud Shell terminal, enter the following command and press **Enter**:
+1. In the Azure Cloud Shell terminal, enter the following command and press **Enter**:
 
     ```bash
     echo "Enter the Resource Group name:" &&
@@ -244,33 +244,33 @@ The following steps are very similar to what was done in the previous task with 
     
     ![In the Azure Cloud Shell window, the command has been entered is we are prompted for the name of the resource group we want to deploy to.](images/stepbystep/media/image44.png "Azure Cloud Shell window")
 
-2.  Enter the name of the resource group created in earlier (in Task 4). This will force the test environment's resources to be deployed to the same resource group where you deployed the dev environment resources to earlier. Then, press **Enter**.
+2. Enter the name of the resource group created in earlier (in Task 4). This will force the test environment's resources to be deployed to the same resource group where you deployed the dev environment resources to earlier. Then, press **Enter**.
 
-3.  Enter the name of the Azure region you chose earlier and then press **Enter**.
+3. Enter the name of the Azure region you chose earlier and then press **Enter**.
 
-4.  For this next run, select the "test" environment by entering **2** and then pressing **Enter**. 
+4. For this next run, select the *test* environment by entering **2** and then pressing **Enter**. 
 
     ![In the Azure Cloud Shell window, we are prompted for the environment we want to deploy to.](images/stepbystep/media/image130.png "Azure Cloud Shell")
 
-5.  Enter the value for the "administratorLogin" (e.g. azureuser) and then press **Enter**.
+5. Enter a value for the *administratorLogin* (e.g. **azureuser**) and then press **Enter**.
 
     ![In the Azure Cloud Shell window, we are prompted for the administrative username for the PostgreSQL server and database we want to create.](images/stepbystep/media/image47.png "Azure Cloud Shell")
 
-6.  Enter a value for the "administratorLoginPassword" and then press **Enter**.
+6. Enter a value for the *administratorLoginPassword* and then press **Enter**.
 
-7. This will kick off the provisioning process which takes a few minutes to create all the resources for the environment. This is indicated by the "Running" text displayed at the bottom of the Azure Cloud Shell while the command is executing.
+7. This will kick off the provisioning process which takes a few minutes to create all the resources for the environment. This is indicated by the *Running* text displayed at the bottom of the Azure Cloud Shell while the command is executing.
 
     ![The Azure Cloud Shell is executing the template based on the parameters we provided.](images/stepbystep/media/image49.png "Azure Cloud Shell")
 
-8.  After the template has completed, JSON is output to the Azure Cloud Shell window with a "Succeeded" message.
+8. After the template has completed, JSON is output to the Azure Cloud Shell window with a *Succeeded* message.
 
     ![The Azure Cloud Shell has succeeded in executing the template based on the parameters we provided.](images/stepbystep/media/image50.png "Azure Cloud Shell")
 
 ### Task 6: Create the production environment and deploy the template to Azure
 
-The following steps are very similar to what was done in the previous task with the exception that you are now creating the "production" environment.
+The following steps are very similar to what was done in the previous task with the exception that you are now creating the **production** environment.
 
-1.  In the Azure Cloud Shell terminal, enter the following command and press **Enter**:
+1. In the Azure Cloud Shell terminal, enter the following command and press **Enter**:
 
     ```bash
     echo "Enter the Resource Group name:" &&
@@ -283,29 +283,29 @@ The following steps are very similar to what was done in the previous task with 
     
     ![In the Azure Cloud Shell window, the command has been entered is we are prompted for the name of the resource group we want to deploy to.](images/stepbystep/media/image44.png "Azure Cloud Shell window")
 
-2.  Enter the name of a resource group from earlier that you deployed the resources to (i.e. TailspinToysRG). Then, press **Enter**.
+2. Enter the name of a resource group from earlier that you deployed the resources to (i.e. TailspinToysRG). Then, press **Enter**.
     
-3.  Enter the name of the Azure region from earlier and then press **Enter**.
+3. Enter the name of the Azure region from earlier and then press **Enter**.
      
-4.  For this next run, select the "production" environment by entering **3** and then pressing **Enter**. 
+4. For this next run, select the *production* environment by entering **3** and then pressing **Enter**. 
 
     ![In the Azure Cloud Shell window, we are prompted for the environment we want to deploy to.](images/stepbystep/media/image131.png "Azure Cloud Shell")
 
-5.  Enter the value for the "administratorLogin" (e.g. azureuser) and then press **Enter**.
+5. Enter a value for the *administratorLogin* (e.g. **azureuser**) and then press **Enter**.
 
     ![In the Azure Cloud Shell window, we are prompted for the administrative username for the PostgreSQL server and database we want to create.](images/stepbystep/media/image47.png "Azure Cloud Shell")
 
-6.  Enter a value for the "administratorLoginPassword" and then press **Enter**.
+6. Enter a value for the *administratorLoginPassword* and then press **Enter**.
 
-7. This will kick off the provisioning process which takes a few minutes to create all the resources for the environment. This is indicated by the "Running" text displayed at the bottom of the Azure Cloud Shell while the command is executing.
+7. This will kick off the provisioning process which takes a few minutes to create all the resources for the environment. This is indicated by the *Running* text displayed at the bottom of the Azure Cloud Shell while the command is executing.
 
     ![The Azure Cloud Shell is executing the template based on the parameters we provided.](images/stepbystep/media/image49.png "Azure Cloud Shell")
 
-8.  After the template has completed, JSON is output to the Azure Cloud Shell window with a "Succeeded" message.
+8. After the template has completed, JSON is output to the Azure Cloud Shell window with a *Succeeded* message.
 
     ![The Azure Cloud Shell has succeeded in executing the template based on the parameters we provided.](images/stepbystep/media/image50.png "Azure Cloud Shell")
 
-9.  In the Azure Portal, navigate to the resource group where all of the resources have been deployed. It should look similar to the screenshot below.
+9. In the Azure Portal, navigate to the resource group where all of the resources have been deployed. It should look similar to the screenshot below.
 
     >**Note**: The specific names of the resources will be slightly different than what you see in the screenshot based on the unique identities assigned.
 
@@ -319,25 +319,25 @@ In this exercise, you will create and configure an Azure DevOps account along wi
 
 ### Task 1: Create Azure DevOps Account
 
-1.  Browse to the Azure DevOps site at <https://dev.azure.com>.
+1. Browse to the Azure DevOps site at <https://dev.azure.com>.
 
-2.  If you do not already have an account, select the **Start free** button.
+2. If you do not already have an account, select the **Start free** button.
     
     ![In this screenshot, a Start free button is shown on the Azure DevOps home page.](images/stepbystep/media/image56.png "Azure DevOps screenshot")
 
-3.  Authenticate with a Microsoft account.
+3. Authenticate with a Microsoft account.
 
-4.  Choose **Continue** to accept the Terms of Service, Privacy Statement, and Code of Conduct.
+4. Choose **Continue** to accept the Terms of Service, Privacy Statement, and Code of Conduct.
 
-5.  Choose a name for new your project. For the purposes of this scenario, we will use "TailspinToys". Choose **Private** in the Visibility section so that our project is only visible to those who we specifically grant access. Then, select **+ Create project**.
+5. Choose a name for new your project. For the purposes of this scenario, we will use *TailspinToys*. Choose **Private** in the Visibility section so that our project is only visible to those who we specifically grant access. Then, select **+ Create project**.
     
     ![In the Create a project to get started window, TailspinToys is highlighted in the Project name box, Private is highlighted in the Visibility box, and Create project is highlighted at the bottom.](images/stepbystep/media/image57.png "Create a project window")
 
-6.  Once the Project is created, click on the **Repos** menu option in the left-hand navigation.
+6. Once the Project is created, click on the **Repos** menu option in the left-hand navigation.
 
     ![In the TailspinToys project window, Repos is highlighted in the left-hand navigation.](images/stepbystep/media/image58.png "TailspinToys navigation window")
 
-7.  On the **Repos** page for the **TailspinToys** repository and locate the "Push an existing repository from command line" section. Click the **Copy push commands to clipboard** button to copy the contents of the panel. We're going to use these commands in an upcoming step.
+7. On the *Repos* page for the **TailspinToys** repository and locate the "Push an existing repository from command line" section. Click the **Copy push commands to clipboard** button to copy the contents of the panel. We're going to use these commands in an upcoming step.
 
     ![In the "Add some code!" window, URLs appear to clone to your computer or push an existing repository from command line.](images/stepbystep/media/image59.png "TailspinToys is empty. Add some code! window")
 
@@ -345,11 +345,11 @@ In this exercise, you will create and configure an Azure DevOps account along wi
 
 In this Task, you will configure the Azure DevOps Git repository. You will configure the remote repository using Git and then push the source code up to Azure DevOps through the command line tools.
 
-1.  Open the **Azure Cloud Shell** to the folder where the Student Files were unzipped (e.g. studentfiles). Then, navigate to the **tailspintoysweb** folder which contains the source code for our web application.
+1. Open the *Azure Cloud Shell* to the folder where the Student Files were unzipped (e.g. studentfiles). Then, navigate to the **tailspintoysweb** folder which contains the source code for our web application.
 
     > **Note**: If this folder doesn't exist ensure you followed the instructions in the 'Before the hands-on lab'.
 
-2. Open Code to this folder by typing: 
+2. Open *Cloud Shell Editor* to this folder by typing: 
    
    ```bash
    code .
@@ -359,7 +359,7 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
    
    >**Note**: Be sure to include the period after the code command as this instructs Code to open the current directory context.
    
-3.  In a command prompt window, initialize a local Git repository by running the following command:
+3. In *Azure Cloud Shell*, initialize a local Git repository by running the following command:
 
     > If a ".git" folder and local repository already exists in the folder, then you will need to delete the ".git" folder first before running the commands below to initialize the Git repository.
 
@@ -367,7 +367,7 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
     git init
     ```
 
-4.  Paste the first command you copied from Azure DevOps. It will resemble the command below:
+4. Paste the first command you copied from Azure DevOps. It will resemble the command below:
     
     ```bash
     git remote add origin https://<your-org>@dev.azure.com/<your-org>/TailspinToys/_git/TailspinToys
@@ -380,27 +380,27 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
     
     > **Note**: **DO NOT CLOSE AZURE CLOUD SHELL**. Use a different tab for the steps for creating a new PAT token.
 
-6. In Azure DevOps, click on the second to last icon on the top menu in the left-hand side of the screen, representing a user and a small gear icon.
+6. In *Azure DevOps*, click on the second to last icon on the top menu in the left-hand side of the screen, representing a user and a small gear icon.
 
 7. From the context menu, choose **Personal access tokens**.
 
     ![Selecting the player settings icon in the top menu bar](images/stepbystep/media/image132.png "Personal access tokens menu option")
 
-8. If the *Create a new personal access token* page has appeared, skip to the next step. Otherwise, click on the **+ New Token** button.
+8. If the *Create a new personal access token* dialog has appeared, skip to the next step. Otherwise, click on the **+ New Token** button.
 
     ![Forcing the 'Create a new personal access token' to appear](images/stepbystep/media/image133.png "Personal access tokens menu option")
 
-9. In the *Create a new personal access token* page, type in a descriptive name for the new token, and from the *Code* section, choose **Full** and **Status**.
+9. In the *Create a new personal access token* dialog, type in a descriptive name for the new token, and from the *Code* section, choose **Full** and **Status**.
 
     ![Creating a new PAT (Personal Access Token) in Azure Devops](images/stepbystep/media/image134.png "Personal access tokens menu option")
 
-10. In the *Create a new personal access token* page, click the **Create** button.
+10. In the *Create a new personal access token* dialog, click the **Create** button.
 
-11. From the success confirmation page, click on the **Copy to clipboard** button to copy the newly created PAT token to clipboard.
+11. From the success confirmation dialog, click on the **Copy to clipboard** button to copy the newly created PAT token to clipboard.
 
     ![Copying the newly created PAT token to the clipboard](images/stepbystep/media/image135.png "Success confirmation page")
 
-12. In Azure Cloud Shell, paste the PAT token and press **Enter**.
+12. In *Azure Cloud Shell*, paste the PAT token and press **Enter**.
 
 13. Type in the following commands to commit the changes made locally to the new repository:
     
@@ -419,17 +419,21 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
 
     ![The newly created files shows up in Repos > Files section.](images/stepbystep/media/image136.png "Success confirmation page")
 
-16. Expand the *ClientApp* directory. Hover the **package-lock.json** file and from the context menu, choose **Delete**.
+16. Expand the *ClientApp* directory. Click on the **package.json** file.
+
+17. On line 27, change the value representing the version of the *rxjs* dependency, from *^6.0.0* to **6.0.0** (without the '^' character).
+
+    ![The content of the package.json file is shown.](images/stepbystep/media/image138.png "Change rxjs dependency value to 6.0.0")
+
+18. Next, hover the **package-lock.json** file and from the context menu, choose **Delete**.
 
     ![The context menu shows up on the package-lock.json file, from the ClientApp directory.](images/stepbystep/media/image137.png "Choose 'Delete'")
 
-17. In the *Commit* modal window, choose **Commit**.
+19. Confirm the deletion.
 
-18. Also in the *ClientApp* directory, click on the **package.json** file.
+20. In the upper-right side of the page, click **Commit**.
 
-19. On line 27, change the value representing the version of the *rxjs* dependency, from *^6.0.0* to **6.0.0** (no '^').
-
-    ![The content of the package.json file is shown.](images/stepbystep/media/image138.png "Change rxjs dependency value to 6.0.0")
+21. In the *Commit* dialog, validate the commit message and choose **Commit**.
 
 ## Exercise 3: Create Azure DevOps build pipeline
 
@@ -449,35 +453,35 @@ Jobs consist of a linear series of steps. Steps can be tasks, scripts, or refere
 
 This hierarchy is reflected in the structure of a YAML file.
 
-1.  In your Azure DevOps project, select the Pipelines menu option from the left-hand navigation.
+1. In your Azure DevOps project, select the **Pipelines** menu option from the left-hand navigation.
 
     ![In the Azure DevOps window, Pipelines is highlighted in the ribbon.](images/stepbystep/media/image68.png "Azure DevOps window")
 
-2.  Select the **Create pipeline** button to create a new build pipeline.
+2. Select the **Create pipeline** button to create a new build pipeline.
 
     ![In Builds, Create pipeline is highlighted.](images/stepbystep/media/image69.png "Create a new pipeline")
 
-3.  This starts a wizard where you'll first need to select where your current code is located. In a previous step, you pushed code up to Azure Repos. Select the **Azure Repos Git** option.
+3. This starts a wizard where you'll first need to select where your current code is located. In a previous step, you pushed code up to Azure Repos. Select the **Azure Repos Git** option.
 
     ![A screen that shows choosing the Azure Repos option for the TailspinToys project.](images/stepbystep/media/image70.png "Where is your code?")
 
-4.  Next, you'll need to select the specific repository where your code was pushed. In a previous step, you pushed it to the **TailspinToys** repository. Select the **TailspinToys** git repository.
+4. Next, you'll need to select the specific repository where your code was pushed. In a previous step, you pushed it to the **TailspinToys** repository. Select the **TailspinToys** git repository.
 
     ![A screen that shows choosing the TailspinToys repository.](images/stepbystep/media/image71.png "Select a repository")
 
-5.  Then, you'll need to select the type of pipeline to configure. Although this pipeline contains a mix of technologies, select **ASP.NET Core** from the list of options.
+5. Then, you'll need to select the type of pipeline to configure. Although this pipeline contains a mix of technologies, select **ASP.NET Core** from the list of options.
 
     ![A screen that shows choosing ASP.NET Core pipeline.](images/stepbystep/media/image72.png "Configure your pipeline")
 
-6.  As a final step in the creation of a build pipeline, you are presented with a configured pipeline in the form of an azure-pipelines.yml file. 
+6. As a final step in the creation of a build pipeline, you are presented with a configured pipeline in the form of an azure-pipelines.yml file. 
    
-7.  This starter YAML file contains a few lines of instructions (shown below) for the pipeline. Let's begin by updating the YAML with more specific instructions to build our application. 
+7. This starter YAML file contains a few lines of instructions (shown below) for the pipeline. Let's begin by updating the YAML with more specific instructions to build our application. 
 
     ![A screen that shows the starter pipeline YAML.](images/stepbystep/media/image72a.png "Review your pipeline YAML")
 
-The "pool" section specifies which pool to use for a job of the pipeline. It also holds information about the job's strategy for running.
+The *pool* section specifies which pool to use for a job of the pipeline. It also holds information about the job's strategy for running.
 
-8.  Select and replace the "pool" section with the following code:
+8. Select and replace the *pool* section with the following code:
 
     ```yml
     pool:
@@ -490,7 +494,7 @@ The "pool" section specifies which pool to use for a job of the pipeline. It als
 
     Steps are a linear sequence of operations that make up a job. Each step runs in its own process on an agent and has access to the pipeline workspace on disk. This means environment variables are not preserved between steps but, file system changes are.
 
-9.  Select and replace the "steps" section with the following code:
+9. Select and replace the *steps* section with the following code:
     
     ```yml
     steps:
@@ -586,7 +590,7 @@ The "pool" section specifies which pool to use for a job of the pipeline. It als
 
     ![A screen that shows the contents of azure-pipelines.yml. The Save and run button is highlighted.](images/stepbystep/media/image73.png "azure-pipelines.yml")    
 
-13. The new azure-pipelines.yml file will automatically be added to the root of your TailspinToys repository. This is done through a git commit that Azure DevOps facilitates. You are then asked to enter a commit description. By default, it will be populated for you. Once again, select the **Save and run** button at the bottom of the screen.
+13. The new *azure-pipelines.yml* file will automatically be added to the root of your TailspinToys repository. This is done through a git commit that Azure DevOps facilitates. You are then asked to enter a commit description. By default, it will be populated for you. Once again, select the **Save and run** button at the bottom of the screen.
 
     ![A screen that shows the commit of azure-pipelines.yml. The Save and run button is highlighted.](images/stepbystep/media/image74.png "Save and run")   
 
@@ -608,73 +612,107 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
 ### Task 1: Create a release definition
 
-1.  Select **Releases** on the left-hand navigation. This will bring up the Releases screen. 
+1. Select **Releases** on the left-hand navigation. This will bring up the Releases screen. 
 
     ![A screen that shows the left-side navigation. Releases is highlighted.](images/stepbystep/media/image84.png "Releases")
 
-2.  Choose the **New pipeline** button to begin the creation of a new release pipeline.
+2. Choose the **New pipeline** button to begin the creation of a new release pipeline.
 
     ![On the Releases screen, the New pipeline button is highlighted.](images/stepbystep/media/image85.png "Releases screen")
 
-3.  Then, you'll need to select the template that matches the pipeline you are building. Since we are deploying an Azure App Service, select **Azure App Service deployment** from the list of templates and choose the **Apply** button.
+3. Then, you'll need to select the template that matches the pipeline you are building. Since we are deploying an Azure App Service, select **Azure App Service deployment** from the list of templates and choose the **Apply** button.
 
     ![A screen that shows choosing Azure App Service deployment.](images/stepbystep/media/image85a.png "Select a template")
 
-4.  This will present you with the New release pipeline editor which allows you to manage your release stages. A stage is a logical and independent concept that represents where you want to deploy a release generated from a release pipeline. Often times, this is considered an environment. Let's start by giving this stage a name. Change the value "Stage 1" in the editor to "dev" and then select the "X" in the top-right corner to close the panel and save the name change.
+4. This will present you with the New release pipeline editor which allows you to manage your release stages. A stage is a logical and independent concept that represents where you want to deploy a release generated from a release pipeline. Often times, this is considered an environment. Let's start by giving this stage a name. Change the value "Stage 1" in the editor to "dev" and then select the "X" in the top-right corner to close the panel and save the name change.
 
     ![A screen that shows Stage details. The Stage name is highlighted. The X is also highlighted.](images/stepbystep/media/image86.png "Stage")
 
-5.  A release consists of a collection of artifacts in your CD/CD process. An artifact is any deployable component of your application. When authoring a release pipeline, you link the appropriate artifact sources to your release pipeline. In this step, we will connect the artifacts from our previously created build pipeline to this newly created release pipeline. Select the "+ Add" button next to "Artifacts" or the "+ Add an artifact" icon inside the "Artifacts" box. Both buttons perform the same action.
+5. A release consists of a collection of artifacts in your CD/CD process. An artifact is any deployable component of your application. When authoring a release pipeline, you link the appropriate artifact sources to your release pipeline. In this step, we will connect the artifacts from our previously created build pipeline to this newly created release pipeline. Select the **+ Add** button next to *Artifacts* or the **+ Add an artifact** icon inside the *Artifacts* box. Both buttons perform the same action.
 
     ![+ Add and + Add an artifact are highlighted in this step.](images/stepbystep/media/image87.png "New release pipeline")
 
-6.  The *Add an artifact* panel will display several configurations for linking to an artifact. In the **Source (build pipeline)** dropdown list, select **TailspinToys**. In the **Default version** field, select **Latest**. The panel fields will adjust to show additional details based on your selection. The default values will produce a new release when future builds successfully complete. Select the **Add** button.
+6. The *Add an artifact* panel will display several configurations for linking to an artifact. 
+    
+    In the **Source (build pipeline)** dropdown list, select **TailspinToys**. 
+    
+    In the **Default version** field, select **Latest**. 
+    
+    The panel fields will adjust to show additional details based on your selection. The default values will produce a new release when future builds successfully complete. 
+    
+    Select the **Add** button.
 
     ![On the Add an artifact screen, TailspinToys is highlighted in the Source (build pipeline) field, and the Add button is highlighted at the bottom.](images/stepbystep/media/image88.png "Add an artifact")
 
-7.  Now, it is time to begin configuring specific tasks to perform our deployment during the dev stage. To navigate to the task editor, select the **Task** menu item.
+7. Now, it is time to begin configuring specific tasks to perform our deployment during the dev stage. 
+
+    To navigate to the task editor, select the **Task** menu item.
 
     ![In the menu, the Tasks item is highlighted.](images/stepbystep/media/image89.png "New release pipeline")
 
 8.  This brings up the task editor and opens a panel with configuration details for the dev stage we created earlier. The configuration items set here will be made available to the tasks in this stage.
 
-9.  On this panel, we first need to configure the necessary details to connect the task to Azure for deployment. Let's first start by connecting to our Azure subscription. Select your Azure subscription from the "Azure subscription" dropdown and then choose the **Authorize** button to login and authenticate to the selected subscription.
+9.  On this panel, we first need to configure the necessary details to connect the task to Azure for deployment. Let's first start by connecting to our Azure subscription. Select your Azure subscription from the *Azure subscription* dropdown and then choose the **Authorize** button to login and authenticate to the selected subscription.
 
-10. Then, in the "App service name field" select the one that begins with **tailspintoys-dev-**.
+10. Then, in the *App service name field* select the one that begins with **tailspintoys-dev-**.
 
     ![On the panel, App service name is highlighted.](images/stepbystep/media/image89c.png "Service connections")
 
-11. Now, let's configure the task specific details. Select the "Deploy Azure App Service" task to bring up the configuration panel for task.
+11. Now, let's configure the task specific details. Select the **Deploy Azure App Service** task to bring up the configuration panel for task.
 
     ![On the screen, Deploy Azure App Service is highlighted.](images/stepbystep/media/image89d.png "Deploy Azure App Service")
 
-12. In a previous exercise, we created a deployment slot for the web app. Deployment slots are actually live apps with their own hostnames. App content and configuration elements can be swapped between two deployment slots, including the production slot. In the *Azure App Service Deploy* panel, locate the **Deploy to Slot or App Service Environment** checkbox and set it to checked.
+12. In a previous exercise, we created a deployment slot for the web app. Deployment slots are actually live apps with their own hostnames. App content and configuration elements can be swapped between two deployment slots, including the production slot. 
+
+    In the *Azure App Service Deploy* panel, locate the **Deploy to Slot or App Service Environment** checkbox and set it to checked.
 
     ![On the panel, Deploy to slot is highlighted.](images/stepbystep/media/image89e.png "Azure App Service Deploy")
 
-13. The checkbox will trigger the panel to update with additional configuration items. In the **Resource group** dropdown, select the appropriate resource group you created in the previous exercise. In the **Slot** dropdown, select **staging**.
+13. The checkbox will trigger the panel to update with additional configuration items. 
+
+    In the **Resource group** dropdown, select the appropriate resource group you created in the previous exercise. 
+    
+    In the **Slot** dropdown, select **staging**.
 
     ![On the panel, Resource group and Slot are highlighted.](images/stepbystep/media/image89f.png "Deployment slot configuration")
 
-14. Now that we've completed the configuration for the "Deploy Azure App Service" task to deploy our application to Azure App Service deployment slot, we'll need a way to swap the staging slot with the production slot. To do that, we'll need to add an additional task to the dev stage. Select the **+** (plus sign) on the task list to create a new task.
+14. Now that we've completed the configuration for the "Deploy Azure App Service" task to deploy our application to Azure App Service deployment slot, we'll need a way to swap the staging slot with the production slot. To do that, we'll need to add an additional task to the dev stage. 
+
+    Select the **+** (plus sign) on the task list to create a new task.
 
     ![On the screen, the plus sign is highlighted.](images/stepbystep/media/image89g.png "Task list")
 
-15. This opens the "Add tasks" panel. Enter **App Service Manage** into the search box and press **Enter**. Then select the **Azure App Service Manage** task from the search results and select the **Add** button.
+15. This opens the *Add tasks* panel. 
+
+    Enter **App Service Manage** into the search box and press **Enter**. 
+    
+    Then select the **Azure App Service Manage** task from the search results and select the **Add** button.
 
     ![On the panel, App Service Manage is entered into the search textbox and Azure App Service Manage is highlighted.](images/stepbystep/media/image90.png "Add tasks")
 
-16. After adding the new task, we now have two tasks for the dev stage. The new task now needs to be configured. Select the **Swap Slots:** task to open the task configuration panel.
+16. After adding the new task, we now have two tasks for the dev stage. The new task now needs to be configured. 
+
+    Select the **Swap Slots:** task to open the task configuration panel.
 
     ![On the screen, the Swap Slots task is highlighted.](images/stepbystep/media/image91.png "Task list")
 
-17. In the *Azure App Service Manage* task panel there are a few configurations we need to set. First, locate the *Azure subscription* field and select the same subscription used in the *Deploy Azure App Service* task.
+17. In the *Azure App Service Manage* task panel there are a few configurations we need to set. 
 
-18. Locate the *App Service name* field, select the item that begins with **TailspinToysWeb-dev-** just like in the *Deploy Azure App Service* task. In the "Resource Group" field, select **TailspinToysRg**. In the *Source Slot* field, select **staging**.
+    First, locate the *Azure subscription* field and select the same subscription used in the *Deploy Azure App Service* task.
+
+18. Locate the *App Service name* field, select the item that begins with **TailspinToysWeb-dev-** just like in the *Deploy Azure App Service* task. 
+
+    In the *Resource Group* field, select **TailspinToysRg**. 
+    
+    In the *Source Slot* field, select **staging**.
 
     ![On the panel, App Service name, Resource group, and Source Slot are all highlighted.](images/stepbystep/media/image92.png "Swap Slots task configuration")
 
-19. Let's wrap up this activity by giving our release pipeline a new name. Choose the existing "New release pipeline" name to begin editing it. Change the name to "TailspinToys Release".
+19. Let's wrap up this activity by giving our release pipeline a new name. 
+
+    Choose the existing *New release pipeline* name to begin editing it. 
+    
+    Change the name to **TailspinToys Release**.
 
     ![On the screen, TailspinToys Release name is highlighted.](images/stepbystep/media/image92a.png "Release pipeline name change")
 
@@ -714,7 +752,13 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
     ![On the panel, Resource group and Slot are highlighted.](images/stepbystep/media/image98.png "Task configuration panel")
 
-11. Now, select the "Swap Slots" task to bring up the task configuration panel. First, locate the **Display name** field and simplify it to **Swap Slots**. Then, locate the **App Service name** and select the app service that starts with **tailspintoys-test-**. Next, locate the **Resource group** field and change the value to the resource group you created earlier. Finally, locate the **Source Slot** field and set it to **staging**.
+11. Now, select the *Swap Slots* task to bring up the task configuration panel. 
+
+    First, locate the **Display name** field and simplify it to **Swap Slots**. 
+    
+    Then, locate the **App Service name** and select the app service that starts with **tailspintoys-test-**. 
+    
+    Next, locate the **Resource group** field and change the value to the resource group you created earlier. Finally, locate the **Source Slot** field and set it to **staging**.
 
     ![On the panel, Display name, App Service name, Resource group, and Source Slot are highlighted.](images/stepbystep/media/image99.png "Configure the Swap Slots task")
 
@@ -722,7 +766,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
 10. Congratulations! You have just created a test stage and added it to your pipeline.
 
-11. Repeat all of the steps in Task 2 to create a production stage being careful to enter "production" as a replacement for "test" and selecting "tailspintoys-production" instead of "tailspintoys-test" where applicable. Do not forget to configure to individual steps in the newly cloned production environment.
+11. **Repeat all of the steps in Task 2 to create a production stage being careful to enter *production* as a replacement for *test* and selecting *tailspintoys-production* instead of *tailspintoys-test* where applicable. Do not forget to configure to individual steps in the newly cloned production environment.**
 
 12. The final release pipeline should look like the screen shot below:
 
