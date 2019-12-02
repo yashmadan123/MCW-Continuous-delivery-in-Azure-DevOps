@@ -417,7 +417,7 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
 
 15. Navigate to the Repos > Files page which shows the files in the repository. You may need to refresh the page to see the updated files. Your source code is now appearing in Azure DevOps.
 
-    ![The newly created files shows up in Repos > Files section.](images/stepbystep/media/image136.png "Success confirmation page")
+    ![The newly created files show up in Repos > Files section.](images/stepbystep/media/image136.png "Success confirmation page")
 
 16. Expand the *ClientApp* directory. Choose the **package.json** file.
 
