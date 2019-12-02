@@ -333,11 +333,11 @@ In this exercise, you will create and configure an Azure DevOps account along wi
     
     ![In the Create a project to get started window, TailspinToys is highlighted in the Project name box, Private is highlighted in the Visibility box, and Create project is highlighted at the bottom.](images/stepbystep/media/image57.png "Create a project window")
 
-6. Once the Project is created, click on the **Repos** menu option in the left-hand navigation.
+6. Once the Project is created, choose the **Repos** menu option in the left-hand navigation.
 
     ![In the TailspinToys project window, Repos is highlighted in the left-hand navigation.](images/stepbystep/media/image58.png "TailspinToys navigation window")
 
-7. On the *Repos* page for the **TailspinToys** repository and locate the "Push an existing repository from command line" section. Click the **Copy push commands to clipboard** button to copy the contents of the panel. We're going to use these commands in an upcoming step.
+7. On the *Repos* page for the **TailspinToys** repository and locate the "Push an existing repository from command line" section. Choose the **Copy push commands to clipboard** button to copy the contents of the panel. We're going to use these commands in an upcoming step.
 
     ![In the "Add some code!" window, URLs appear to clone to your computer or push an existing repository from command line.](images/stepbystep/media/image59.png "TailspinToys is empty. Add some code! window")
 
@@ -380,13 +380,13 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
     
     > **Note**: **DO NOT CLOSE AZURE CLOUD SHELL**. Use a different tab for the steps for creating a new PAT token.
 
-6. In *Azure DevOps*, click on the second to last icon on the top menu in the left-hand side of the screen, representing a user and a small gear icon.
+6. In *Azure DevOps*, choose on the second to last icon on the top menu in the left-hand side of the screen, representing a user and a small gear icon.
 
 7. From the context menu, choose **Personal access tokens**.
 
     ![Selecting the player settings icon in the top menu bar](images/stepbystep/media/image132.png "Personal access tokens menu option")
 
-8. If the *Create a new personal access token* dialog has appeared, skip to the next step. Otherwise, click on the **+ New Token** button.
+8. If the *Create a new personal access token* dialog has appeared, skip to the next step. Otherwise, select the **+ New Token** button.
 
     ![Forcing the 'Create a new personal access token' to appear](images/stepbystep/media/image133.png "Personal access tokens menu option")
 
@@ -394,9 +394,9 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
 
     ![Creating a new PAT (Personal Access Token) in Azure Devops](images/stepbystep/media/image134.png "Personal access tokens menu option")
 
-10. In the *Create a new personal access token* dialog, click the **Create** button.
+10. In the *Create a new personal access token* dialog, select the **Create** button.
 
-11. From the success confirmation dialog, click on the **Copy to clipboard** button to copy the newly created PAT token to clipboard.
+11. From the success confirmation dialog, select the **Copy to clipboard** button to copy the newly created PAT token to clipboard.
 
     ![Copying the newly created PAT token to the clipboard](images/stepbystep/media/image135.png "Success confirmation page")
 
@@ -419,7 +419,7 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
 
     ![The newly created files shows up in Repos > Files section.](images/stepbystep/media/image136.png "Success confirmation page")
 
-16. Expand the *ClientApp* directory. Click on the **package.json** file.
+16. Expand the *ClientApp* directory. Choose the **package.json** file.
 
 17. On line 27, change the value representing the version of the *rxjs* dependency, from *^6.0.0* to **6.0.0** (without the '^' character).
 
@@ -431,7 +431,7 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
 
 19. Confirm the deletion.
 
-20. In the upper-right side of the page, click **Commit**.
+20. In the upper-right side of the page, choose **Commit**.
 
 21. In the *Commit* dialog, validate the commit message and choose **Commit**.
 
@@ -736,11 +736,11 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
 5. This opens the configuration panel for the stage and includes several pre-populated fields. 
 
-6. On the *Tasks* tab header option, click the arrow pointing down, in order to validate that the *test* stage configuration menu is indeed shown.
+6. On the *Tasks* tab header option, choose the arrow pointing down, in order to validate that the *test* stage configuration menu is indeed shown.
 
     ![On the tab header, select Tasks and validate that the test stage is being edited.](images/stepbystep/media/image139.png "Tab header menu option 'Tasks'")
 
-7. In the *Tasks* section, click on the *test* deployment process to select its stage parameters.
+7. In the *Tasks* section, choose on the *test* deployment process to select its stage parameters.
 
 8. Locate the **App service name** parameter and change the value to the app service that starts with **tailspintoys-test-**.
 
@@ -778,7 +778,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
     ![On the screen, Continuous deployment artifact lightning bolt is highlighted and the Continuous deployment trigger is enabled.](images/stepbystep/media/image101.png "Enable the continuous deployment trigger")
 
-15. Select **Save**, and confirm your changes by clicking **OK**. Then, close the panel.
+15. Select **Save**, and confirm your changes by choosing **OK**. Then, close the panel.
 
 Congratulations! You have completed the creation of a release pipeline with three stages.
 
@@ -794,13 +794,13 @@ Any commit of new or modified code to the master branch will automatically trigg
 
 1. Select the *Pipelines* menu item from the left-hand navigation. 
 
-2. In the *Pipelines* view, click on the *TailspinToys* pipeline recently created.
+2. In the *Pipelines* view, choose the *TailspinToys* pipeline recently created.
 
-3. In the *TailspinToys* pipeline runs page, click on the *Run pipeline* button in the upper right section of the page.
+3. In the *TailspinToys* pipeline runs page, choose the *Run pipeline* button in the upper right section of the page.
 
     ![On the screen, the Pipelines button and the Queue button are highlighted.](images/stepbystep/media/image102.png "Queue a new build")
 
-4. This will present a modal window titled *Run pipeline*. Click the **Run** button at the bottom of the modal window.
+4. This will present a modal window titled *Run pipeline*. Choose the **Run** button at the bottom of the modal window.
 
     ![On the popup, the Queue button is highlighted.](images/stepbystep/media/image103.png "Queue button")
 
@@ -836,7 +836,7 @@ In the tasks below, you will make changes directly through the Azure DevOps web 
 
     ![On the popup window, Name and Based on are highlighted along with the Create branch button.](images/stepbystep/media/image107.png "Create a branch popup")
 
-4. Click the **Create** button.
+4. Select the **Create** button.
 
 ### Task 2: Make a code change to the feature branch
 
