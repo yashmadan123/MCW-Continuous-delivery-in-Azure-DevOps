@@ -415,10 +415,21 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
     git push --set-upstream origin master
     ```
 
-15. Leave that command prompt window open and switch back to the web browser window for Azure DevOps from the previous Task. Navigate to the Repos > Files page which shows the files in the repository. You may need to refresh the page to see the updated files. Your source code is now appearing in Azure DevOps.
+15. Navigate to the Repos > Files page which shows the files in the repository. You may need to refresh the page to see the updated files. Your source code is now appearing in Azure DevOps.
 
-    ![The newly created files show up in Repos > Files section.](images/stepbystep/media/image136.png "Success confirmation page")
+    ![The newly created files shows up in Repos > Files section.](images/stepbystep/media/image136.png "Success confirmation page")
 
+16. Expand the *ClientApp* directory. Hover the **package-lock.json** file and from the context menu, choose **Delete**.
+
+    ![The context menu shows up on the package-lock.json file, from the ClientApp directory.](images/stepbystep/media/image137.png "Choose 'Delete'")
+
+17. In the *Commit* modal window, choose **Commit**.
+
+18. Also in the *ClientApp* directory, click on the **package.json** file.
+
+19. On line 27, change the value representing the version of the *rxjs* dependency, from *^6.0.0* to **6.0.0** (no '^').
+
+    ![The content of the package.json file is shown.](images/stepbystep/media/image138.png "Change rxjs dependency value to 6.0.0")
 
 ## Exercise 3: Create Azure DevOps build pipeline
 
