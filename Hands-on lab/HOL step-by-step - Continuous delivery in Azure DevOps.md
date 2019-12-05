@@ -703,7 +703,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
 29. Select the application returned from the query, and choose **Save**. 
 
-30. In Azure DevOps, in the *Deployment process* parameters, click **+New** for the parameter called *Azure subscription*.
+30. In Azure DevOps, in the *Deployment process* parameters, select the **+New** button for the parameter called *Azure subscription*.
 
     ![In the pipeline editor, the Tasks tab is selected and the deployment process called dev is selected](images/stepbystep/media/image140.png "Service connections")
 
@@ -725,7 +725,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
 32. Choose the **Verify connection** button to validate the typed in information.
 
-33. If the verification is successful, choose the **OK** button. The newly added service connection should show up in the *Azure subscription* parameter; otherwise, click the **Refresh** button next to the parameter.
+33. If the verification is successful, choose the **OK** button. The newly added service connection should show up in the *Azure subscription* parameter; otherwise, select the **Refresh** button next to the parameter.
 
 34. Then, in the *App service name field* select the one that begins with **tailspintoys-dev-**.
 
@@ -789,7 +789,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
     ![On the screen, TailspinToys Release name is highlighted.](images/stepbystep/media/image92a.png "Release pipeline name change")
 
-44. Select **Save** button at the top of the screen and confirm by clicking the **OK** button.
+44. Select **Save** button at the top of the screen and confirm by selecting the **OK** button.
 
 45. Congratulations! You have just created your first release pipeline.
 
