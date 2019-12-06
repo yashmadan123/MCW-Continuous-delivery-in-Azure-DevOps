@@ -6,7 +6,7 @@ When it moved its existing systems into Microsoft Azure, Tailspin Toys decided t
 
 Tailspin wants to improve the turnaround time for fixing these bugs, and they need better logs for the developers. Tailspin needs a solution to gather new types of logs including browser errors and application dependency errors such as timeouts. Ideally, they want to make the application logs searchable as well as implement an automated warning system that emails alerts when application behavior is unusually slow or problematic.
 
-August 2019
+December 2019
 
 ## Target audience
 
