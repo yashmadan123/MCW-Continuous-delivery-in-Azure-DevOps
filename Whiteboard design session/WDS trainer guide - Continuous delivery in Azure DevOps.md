@@ -9,7 +9,7 @@ Continuous delivery in Azure DevOps
 </div>
 
 <div class="MCWHeader3">
-August 2019
+December 2019
 </div>
 
 
@@ -509,17 +509,27 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
     -  **Deployment Logs**
 
-    The website logs can be easily and significantly enhanced by enabling Application Insights in the project. To do this, you need to get the Application Insights Software Developer Kit SDK from NuGet, and configure it for use within the app. Application Insights is configured in the ApplicationInsights.config file in the solution, and this file should be added to the source control repository.
+    The website logs can be easily and significantly enhanced by enabling Application Insights in the project. Enabling monitoring on your ASP.NET and ASP.NET Core based web applications running on Azure App Services is now easier than ever. Whereas previously you needed to manually install a site extension, the latest extension/agent is now built into the app service image by default.
 
-    After Application Insights has been configured within the application, you need to create an App Insights service instance in the Azure Portal to collect the log data. Do not forget to configure the application with the correct Instrumentation Key and log settings to connect to the App Insights service where it sends its collected data.
+    There are two ways to enable application monitoring for Azure App Services hosted applications:
 
-    By using App Insights now, you need to adapt the App Service deployment slots by creating slot-bound settings for the App Insights Instrumentation Key. That way, staging and production can report independent log analytics even after a swap.
+    - _Agent-based application monitoring (ApplicationInsightsAgent)_
+        
+        This method is the easiest to enable, and no advanced configuration is required. It is often referred to as "runtime" monitoring. For Azure App Services we recommend at a minimum enabling this level of monitoring, and then based on your specific scenario you can evaluate whether more advanced monitoring through manual instrumentation is needed.
+
+    - _Manually instrumenting the application through code by installing the Application Insights SDK_
+    
+        This approach is much more customizable, but it requires adding a dependency on the Application Insights SDK NuGet packages. This method, also means you have to manage the updates to the latest version of the packages yourself.
+        
+        If you need to make custom API calls to track events/dependencies not captured by default with agent-based monitoring, you would need to use this method. Check out the API for custom events and metrics article to learn more.
+
+    By using Application Insights, you should adapt the App Service deployment slots by marking the app setting holding the instrumentation key for Application Insights to be slot-bound. That way, staging and production can report independent log analytics even after a swap.
 
     From the Application Insights Portal, we can see detailed metrics from our solution and get a visual layout of the dependency relationships between our application components using App map. Each component displays specific KPIs such as load, performance, failures, and alerts. By clicking on the App Analytics on one of the application components, we can open the Application Insights Analytics feature. This will provide a query language for analyzing all of the data collected by Application Insights.
 
     To get custom information about our users, the Users panel in Application Insights, will allow us to understand important details in a variety of ways. We can use this panel to understand such information as where our users are connecting from, the browser type they are using, and what areas of the application they're accessing.
 
-    ![In these Application Insights screenshots, the Settings icon in the menu is selected, and an arrow points from it to a circled Investigate group (Failures, Exceptions, Browser, Usage, Operational events) in the Settings and Diagnostics pane, and an arrow points from this group to a Server responses pane, which displays various information. Below this, in the main window below Application health, BROWSER PAGE LOAD is circled, and an arrow points from the circle to a Browsers pane, which displays various information. At this time, we are unable to capture all of the information in the window. Future versions of this course should address this.](images/trainerguide/media/image4.png "Major routes to view your telemetry")
+    ![In this Application Insights screenshot, the Application Map feature can be observed, which represents the availability of an application, the average client response time, the number of instances running the fabrikamprod application and all the underlying dependencies of the app, with their corresponding response times.](images/trainerguide/media/image4.png "Application Map")
 
 
 ## Checklist of preferred objection handling
