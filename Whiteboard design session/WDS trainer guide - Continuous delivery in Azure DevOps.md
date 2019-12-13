@@ -163,7 +163,7 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 **Ask questions** and get them to share to fully involve your group in the learning process.
 
-**Ask first**, whenever possible. Before launching into a topic, learn your audience's opinions about it and experiences with it. Asking first enables you to assess their level of knowledge and experience, and leaves them more open to what you are presenting.
+**Ask first**, whenever possible. Before launching into a topic, learn your audience's opinions about it and experiences with it. Asking first enables you to assess their level of knowledge and experience and leaves them more open to what you are presenting.
 
 **Wait for responses**. If you ask a question such as, "What's your experience with (fill in the blank)?" then wait. Do not be afraid of a little silence. If you leap into the silence, your participants will feel you are not serious about involving them and will become passive. Give participants a chance to think, and if no one answers, patiently ask again. You will usually get a response.
 
@@ -519,9 +519,9 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
     - _Manually instrumenting the application through code by installing the Application Insights SDK_
     
-        This approach is much more customizable, but it requires adding a dependency on the Application Insights SDK NuGet packages. This method, also means you have to manage the updates to the latest version of the packages yourself.
+        This approach is much more customizable, but it requires adding a dependency on the Application Insights SDK NuGet packages. This method also means you have to manage the updates to the latest version of the packages yourself.
         
-        If you need to make custom API calls to track events/dependencies not captured by default with agent-based monitoring, you would need to use this method. Check out the API for custom events and metrics article to learn more.
+        If you need to make custom API calls to track events/dependencies not captured by default with agent-based monitoring, you will need to use this method. Check out the API for custom events and metrics article to learn more.
 
     By using Application Insights, you should adapt the App Service deployment slots by marking the app setting holding the instrumentation key for Application Insights to be slot-bound. That way, staging and production can report independent log analytics even after a swap.
 
@@ -534,7 +534,7 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
 ## Checklist of preferred objection handling
 
-1.  We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Azure DevOps and need to be able to change between them without frustrating rework.
+1.  We do not want to be locked into a specific source control repository. We are evaluating GitHub and Azure DevOps and need to be able to change between them without frustrating rework.
     
     **Potential answer**
     
