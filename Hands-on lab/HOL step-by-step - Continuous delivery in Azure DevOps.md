@@ -701,7 +701,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
     ![In the Azure Portal at the Access control (IAM) page, for configuring RBAC permissions for the newly created application registration](images/stepbystep/media/image141.png "Access control (IAM)")
 
-29. Select the application returned from the query, and choose **Save**. 
+29. Select the application returned from the query and choose **Save**. 
 
 30. In Azure DevOps, in the *Deployment process* parameters, select the **+New** button for the parameter called *Azure subscription*.
 
@@ -719,7 +719,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
     ```
 
     - For *Subscription name*, type in the exact name of the Azure subscription. Again, this information can be retrieved by using the same Azure CLI command previously described
-    - For *Service pricipal client ID*, *Service principal key* and *Tenant ID*, type in the **Client ID**, **Client secret** and **Directory ID** values copied previously.
+    - For *Service principal client ID*, *Service principal key* and *Tenant ID*, type in the **Client ID**, **Client secret** and **Directory ID** values copied previously.
 
     ![The Add an Azure Resource Manager service connection dialog](images/stepbystep/media/image142.png "ARM connection dialog")
 
@@ -835,7 +835,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
     ![On the panel, Display name, App Service name, Resource group, and Source Slot are highlighted.](images/stepbystep/media/image99.png "Configure the Swap Slots task")
 
-9. Select the **Save** button at the top of the screen, and confirm by choosing the **OK** button.
+9. Select the **Save** button at the top of the screen and confirm by choosing the **OK** button.
 
 10. Congratulations! You have just created a test stage and added it to your pipeline.
 
@@ -851,7 +851,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
     ![On the screen, Continuous deployment artifact lightning bolt is highlighted and the Continuous deployment trigger is enabled.](images/stepbystep/media/image101.png "Enable the continuous deployment trigger")
 
-15. Select **Save**, and confirm your changes by choosing **OK**. Then, close the panel.
+15. Select **Save** and confirm your changes by choosing **OK**. Then, close the panel.
 
 Congratulations! You have completed the creation of a release pipeline with three stages.
 
