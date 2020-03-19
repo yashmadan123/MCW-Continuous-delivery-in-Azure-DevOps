@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-December 2019
+March 2020
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -18,7 +18,7 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2019 Microsoft Corporation. All rights reserved.
+© 2020 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
@@ -33,10 +33,11 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
   - [Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, PostgreSQL database, and deployment slots in a single automated process](#exercise-1-create-an-azure-resource-manager-arm-template-that-can-provision-the-web-application-postgresql-database-and-deployment-slots-in-a-single-automated-process)
     - [Task 1: Create an Azure Resource Manager (ARM) template using Azure Cloud Shell](#task-1-create-an-azure-resource-manager-arm-template-using-azure-cloud-shell)
     - [Task 2: Configure the list of release environments parameters](#task-2-configure-the-list-of-release-environments-parameters)
-    - [Task 3: Add a deployment slot for the "staging" version of the site](#task-3-add-a-deployment-slot-for-the-%22staging%22-version-of-the-site)
+    - [Task 3: Add a deployment slot for the "staging" version of the site](#task-3-add-a-deployment-slot-for-the-staging-version-of-the-site)
     - [Task 4: Create the dev environment and deploy the template to Azure](#task-4-create-the-dev-environment-and-deploy-the-template-to-azure)
     - [Task 5: Create the test environment and deploy the template to Azure](#task-5-create-the-test-environment-and-deploy-the-template-to-azure)
     - [Task 6: Create the production environment and deploy the template to Azure](#task-6-create-the-production-environment-and-deploy-the-template-to-azure)
+    - [Task 7: Review the resource groups](#task-7-review-the-resource-groups)
   - [Exercise 2: Create Azure DevOps project and Git Repository](#exercise-2-create-azure-devops-project-and-git-repository)
     - [Task 1: Create Azure DevOps Account](#task-1-create-azure-devops-account)
     - [Task 2: Add the Tailspin Toys source code repository to Azure DevOps](#task-2-add-the-tailspin-toys-source-code-repository-to-azure-devops)
@@ -174,11 +175,249 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
     ![This is a screenshot of the code pasted just below the element for the application insights extension in the "resources" array.](images/stepbystep/media/image39.png "Pasted block of JSON code")
 
+    The complete ARM template should look like the following:
+
+    ```json
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "environment": {
+                "type": "string",
+                "metadata": {
+                    "description": "Name of environment"
+                },
+                "allowedValues": [
+                    "dev",
+                    "test",
+                    "production"
+                ]
+            },
+            "siteName": {
+                "type": "string",
+                "defaultValue": "tailspintoys",
+                "metadata": {
+                    "description": "Name of azure web app"
+                }
+            },
+            "administratorLogin": {
+                "type": "string",
+                "minLength": 1,
+                "metadata": {
+                    "description": "Database administrator login name"
+                }
+            },
+            "administratorLoginPassword": {
+                "type": "securestring",
+                "minLength": 8,
+                "maxLength": 128,
+                "metadata": {
+                    "description": "Database administrator password"
+                }
+            },
+            "databaseSkuCapacity": {
+                "type": "int",
+                "defaultValue": 2,
+                "allowedValues": [
+                    2,
+                    4,
+                    8,
+                    16,
+                    32
+                ],
+                "metadata": {
+                    "description": "Azure database for PostgreSQL compute capacity in vCores (2,4,8,16,32)"
+                }
+            },
+            "databaseSkuName": {
+                "type": "string",
+                "defaultValue": "GP_Gen5_2",
+                "allowedValues": [
+                    "GP_Gen5_2",
+                    "GP_Gen5_4",
+                    "GP_Gen5_8",
+                    "GP_Gen5_16",
+                    "GP_Gen5_32",
+                    "MO_Gen5_2",
+                    "MO_Gen5_4",
+                    "MO_Gen5_8",
+                    "MO_Gen5_16",
+                    "MO_Gen5_32"
+                ],
+                "metadata": {
+                    "description": "Azure database for PostgreSQL sku name "
+                }
+            },
+            "databaseSkuSizeMB": {
+                "type": "int",
+                "allowedValues": [
+                    102400,
+                    51200
+                ],
+                "defaultValue": 51200,
+                "metadata": {
+                    "description": "Azure database for PostgreSQL Sku Size "
+                }
+            },
+            "databaseSkuTier": {
+                "type": "string",
+                "defaultValue": "GeneralPurpose",
+                "allowedValues": [
+                    "GeneralPurpose",
+                    "MemoryOptimized"
+                ],
+                "metadata": {
+                    "description": "Azure database for PostgreSQL pricing tier"
+                }
+            },
+            "postgresqlVersion": {
+                "type": "string",
+                "allowedValues": [
+                    "9.5",
+                    "9.6"
+                ],
+                "defaultValue": "9.6",
+                "metadata": {
+                    "description": "PostgreSQL version"
+                }
+            },
+            "location": {
+                "type": "string",
+                "defaultValue": "[resourceGroup().location]",
+                "metadata": {
+                    "description": "Location for all resources."
+                }
+            },
+            "databaseskuFamily": {
+                "type": "string",
+                "defaultValue": "Gen5",
+                "metadata": {
+                    "description": "Azure database for PostgreSQL sku family"
+                }
+            }
+        },
+        "variables": {
+            "webAppName": "[concat(parameters('siteName'), '-', parameters('environment'), '-', uniqueString(resourceGroup().id))]",
+            "databaseName": "[concat(parameters('siteName'), 'db', parameters('environment'), uniqueString(resourceGroup().id))]",
+            "serverName": "[concat(parameters('siteName'), 'pgserver', parameters('environment'), uniqueString(resourceGroup().id))]",
+            "hostingPlanName": "[concat(parameters('siteName'), 'serviceplan', uniqueString(resourceGroup().id))]"
+        },
+        "resources": [
+            {
+                "apiVersion": "2016-09-01",
+                "name": "[variables('hostingPlanName')]",
+                "type": "Microsoft.Web/serverfarms",
+                "location": "[parameters('location')]",
+                "properties": {
+                    "name": "[variables('hostingPlanName')]",
+                    "workerSize": "1",
+                    "hostingEnvironment": "",
+                    "numberOfWorkers": 0
+                },
+                "sku": {
+                    "Tier": "Standard",
+                    "Name": "S1"
+                }
+            },
+            {
+                "apiVersion": "2016-08-01",
+                "name": "[variables('webAppName')]",
+                "type": "Microsoft.Web/sites",
+                "location": "[parameters('location')]",
+                "dependsOn": [
+                    "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
+                ],
+                "properties": {
+                    "name": "[variables('webAppName')]",
+                    "serverFarmId": "[variables('hostingPlanName')]",
+                    "hostingEnvironment": ""
+                },
+                "resources": [
+                    {
+                        "apiVersion": "2016-08-01",
+                        "name": "staging",
+                        "type": "slots",
+                        "tags": {
+                            "displayName": "Deployment Slot: staging"
+                        },
+                        "location": "[resourceGroup().location]",
+                        "dependsOn": [
+                            "[resourceId('Microsoft.Web/Sites/', variables('webAppName'))]"
+                        ],
+                        "properties": {},
+                        "resources": []
+                    },
+                    {
+                        "apiVersion": "2016-08-01",
+                        "name": "connectionstrings",
+                        "type": "config",
+                        "dependsOn": [
+                            "[concat('Microsoft.Web/sites/', variables('webAppName'))]"
+                        ],
+                        "properties": {
+                            "defaultConnection": {
+                                "value": "[concat('Database=', variables('databaseName'), ';Server=', reference(resourceId('Microsoft.DBforPostgreSQL/servers',variables('serverName'))).fullyQualifiedDomainName, ';User Id=', parameters('administratorLogin'),'@', variables('serverName'),';Password=', parameters('administratorLoginPassword'))]",
+                                "type": "PostgreSQL"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "apiVersion": "2017-12-01",
+                "type": "Microsoft.DBforPostgreSQL/servers",
+                "location": "[parameters('location')]",
+                "name": "[variables('serverName')]",
+                "sku": {
+                    "name": "[parameters('databaseSkuName')]",
+                    "tier": "[parameters('databaseSkuTier')]",
+                    "capacity": "[parameters('databaseSkucapacity')]",
+                    "size": "[parameters('databaseSkuSizeMB')]",
+                    "family": "[parameters('databaseskuFamily')]"
+                },
+                "properties": {
+                    "version": "[parameters('postgresqlVersion')]",
+                    "administratorLogin": "[parameters('administratorLogin')]",
+                    "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+                    "storageMB": "[parameters('databaseSkuSizeMB')]"
+                },
+                "resources": [
+                    {
+                        "type": "firewallRules",
+                        "apiVersion": "2017-12-01",
+                        "dependsOn": [
+                            "[concat('Microsoft.DBforPostgreSQL/servers/', variables('serverName'))]"
+                        ],
+                        "location": "[parameters('location')]",
+                        "name": "[concat(variables('serverName'),'firewall')]",
+                        "properties": {
+                            "startIpAddress": "0.0.0.0",
+                            "endIpAddress": "255.255.255.255"
+                        }
+                    },
+                    {
+                        "name": "[variables('databaseName')]",
+                        "type": "databases",
+                        "apiVersion": "2017-12-01",
+                        "properties": {
+                            "charset": "utf8",
+                            "collation": "English_United States.1252"
+                        },
+                        "dependsOn": [
+                            "[concat('Microsoft.DBforPostgreSQL/servers/', variables('serverName'))]"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }    
+    ```
+
 ### Task 4: Create the dev environment and deploy the template to Azure
 
 Now that the template file has been uploaded, we'll deploy it several times to create each of our desired environments: *dev*, *test*, and *production*. Let's start with the **dev** environment.
 
-1.  In the **Azure Cloud Shell** terminal, enter the following command and press **Enter**:
+1.  In the **Azure Cloud Shell** terminal, from the same folder that your ARM template resides in, enter the following command and press **Enter**:
 
     ```bash
     echo "Enter the Resource Group name:" &&
@@ -195,7 +434,7 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
     ![In the Azure Cloud Shell window, the command has been entered is we are prompted for the name of the resource group we want to deploy to.](images/stepbystep/media/image44.png "Azure Cloud Shell window")
 
-2.  Enter the name of a resource group you want to deploy the resources to (i.e. TailspinToysRG). If it does not already exist, the template will create it. Then, press **Enter**.
+2.  Enter the name of a resource group you want to deploy the resources to (i.e. TailSpinToysRG). If it does not already exist, the template will create it. Then, press **Enter**.
 
 3.  Next, we're prompted to enter an Azure region (location) where we want to deploy our resources to (i.e. westus, centralus, eastus). 
     
@@ -215,6 +454,8 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
 6.  Next, we're asked to supply an administrator password for the PostgreSQL server and database. This will be the password credential you would need to enter to connect to your newly created database.
 
+    >**Note**: The password must meet complexity requirements of 8 or more characters, must contain upper and lower case characters, must contain at least one number and at least one special character, e.g. "Database2020!"
+
     Enter a value for the *administratorLoginPassword* and then press **Enter**.
 
 7. This will kick off the provisioning process which takes a few minutes to create all the resources for the environment. This is indicated by the "Running" text displayed at the bottom of the Azure Cloud Shell while the command is executing.
@@ -229,83 +470,15 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
 ### Task 5: Create the test environment and deploy the template to Azure
 
-The following steps are very similar to what was done in the previous task with the exception that you are now creating the **test** environment.
-
-1. In the Azure Cloud Shell terminal, enter the following command and press **Enter**:
-
-    ```bash
-    echo "Enter the Resource Group name:" &&
-    read resourceGroupName &&
-    echo "Enter the location (i.e. westus, centralus, eastus):" &&
-    read location &&
-    az group create --name $resourceGroupName --location "$location" &&
-    az group deployment create --resource-group $resourceGroupName --template-file "$HOME/studentfiles/armtemplate/azuredeploy.json"
-    ```
-    
-    ![In the Azure Cloud Shell window, the command has been entered is we are prompted for the name of the resource group we want to deploy to.](images/stepbystep/media/image44.png "Azure Cloud Shell window")
-
-2. Enter the name of the resource group created in earlier (in Task 4). This will force the test environment's resources to be deployed to the same resource group where you deployed the dev environment resources to earlier. Then, press **Enter**.
-
-3. Enter the name of the Azure region you chose earlier and then press **Enter**.
-
-4. For this next run, select the *test* environment by entering **2** and then pressing **Enter**. 
-
-    ![In the Azure Cloud Shell window, we are prompted for the environment we want to deploy to.](images/stepbystep/media/image130.png "Azure Cloud Shell")
-
-5. Enter a value for the *administratorLogin* (e.g. **azureuser**) and then press **Enter**.
-
-    ![In the Azure Cloud Shell window, we are prompted for the administrative username for the PostgreSQL server and database we want to create.](images/stepbystep/media/image47.png "Azure Cloud Shell")
-
-6. Enter a value for the *administratorLoginPassword* and then press **Enter**.
-
-7. This will kick off the provisioning process which takes a few minutes to create all the resources for the environment. This is indicated by the *Running* text displayed at the bottom of the Azure Cloud Shell while the command is executing.
-
-    ![The Azure Cloud Shell is executing the template based on the parameters we provided.](images/stepbystep/media/image49.png "Azure Cloud Shell")
-
-8. After the template has completed, JSON is output to the Azure Cloud Shell window with a *Succeeded* message.
-
-    ![The Azure Cloud Shell has succeeded in executing the template based on the parameters we provided.](images/stepbystep/media/image50.png "Azure Cloud Shell")
+The following steps are very similar to what was done in the previous task with the exception that you are now creating the **test** environment. Repeat the above steps and select to create the **2. test** environment. You can use the same values as used in the dev environment.
 
 ### Task 6: Create the production environment and deploy the template to Azure
 
-The following steps are very similar to what was done in the previous task with the exception that you are now creating the **production** environment.
+The following steps are very similar to what was done in the previous task with the exception that you are now creating the **production** environment. Repeat the above steps and select to create the **3. production** environment. You can use the same values as used in the dev environment.
 
-1. In the Azure Cloud Shell terminal, enter the following command and press **Enter**:
+### Task 7: Review the resource groups
 
-    ```bash
-    echo "Enter the Resource Group name:" &&
-    read resourceGroupName &&
-    echo "Enter the location (i.e. westus, centralus, eastus):" &&
-    read location &&
-    az group create --name $resourceGroupName --location "$location" &&
-    az group deployment create --resource-group $resourceGroupName --template-file "$HOME/studentfiles/armtemplate/azuredeploy.json"
-    ```
-    
-    ![In the Azure Cloud Shell window, the command has been entered is we are prompted for the name of the resource group we want to deploy to.](images/stepbystep/media/image44.png "Azure Cloud Shell window")
-
-2. Enter the name of a resource group from earlier that you deployed the resources to (i.e. TailspinToysRG). Then, press **Enter**.
-    
-3. Enter the name of the Azure region from earlier and then press **Enter**.
-     
-4. For this next run, select the *production* environment by entering **3** and then pressing **Enter**. 
-
-    ![In the Azure Cloud Shell window, we are prompted for the environment we want to deploy to.](images/stepbystep/media/image131.png "Azure Cloud Shell")
-
-5. Enter a value for the *administratorLogin* (e.g. **azureuser**) and then press **Enter**.
-
-    ![In the Azure Cloud Shell window, we are prompted for the administrative username for the PostgreSQL server and database we want to create.](images/stepbystep/media/image47.png "Azure Cloud Shell")
-
-6. Enter a value for the *administratorLoginPassword* and then press **Enter**.
-
-7. This will kick off the provisioning process which takes a few minutes to create all the resources for the environment. This is indicated by the *Running* text displayed at the bottom of the Azure Cloud Shell while the command is executing.
-
-    ![The Azure Cloud Shell is executing the template based on the parameters we provided.](images/stepbystep/media/image49.png "Azure Cloud Shell")
-
-8. After the template has completed, JSON is output to the Azure Cloud Shell window with a *Succeeded* message.
-
-    ![The Azure Cloud Shell has succeeded in executing the template based on the parameters we provided.](images/stepbystep/media/image50.png "Azure Cloud Shell")
-
-9. In the Azure Portal, navigate to the resource group where all of the resources have been deployed. It should look similar to the screenshot below.
+1. In the Azure Portal, navigate to the resource group where all of the resources have been deployed. It should look similar to the screenshot below.
 
     >**Note**: The specific names of the resources will be slightly different than what you see in the screenshot based on the unique identities assigned.
 
@@ -348,6 +521,8 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
 1. Open the *Azure Cloud Shell* to the folder where the Student Files were unzipped (e.g. studentfiles). Then, navigate to the **tailspintoysweb** folder which contains the source code for our web application.
 
     > **Note**: If this folder doesn't exist ensure you followed the instructions in the 'Before the hands-on lab'.
+
+    >**Note**: If you are using the Azure Cloud Shell you will be prompted for credentials when using Git. The best way to authenticate is to use a [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate), PAT, with a scope Code, Full permissions. Then use that PAT as password (leave user name empty) when prompted.    
 
 2. Open *Cloud Shell Editor* to this folder by typing: 
    
