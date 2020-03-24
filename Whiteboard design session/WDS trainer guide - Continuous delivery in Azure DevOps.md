@@ -9,7 +9,7 @@ Continuous delivery in Azure DevOps
 </div>
 
 <div class="MCWHeader3">
-December 2019
+March 2020
 </div>
 
 
@@ -19,7 +19,7 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2019 Microsoft Corporation. All rights reserved.
+© 2020 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
@@ -525,7 +525,7 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
     By using Application Insights, you should adapt the App Service deployment slots by marking the app setting holding the instrumentation key for Application Insights to be slot-bound. That way, staging and production can report independent log analytics even after a swap.
 
-    From the Application Insights Portal, we can see detailed metrics from our solution and get a visual layout of the dependency relationships between our application components using App map. Each component displays specific KPIs such as load, performance, failures, and alerts. By clicking on the App Analytics on one of the application components, we can open the Application Insights Analytics feature. This will provide a query language for analyzing all of the data collected by Application Insights.
+    From the Application Insights Portal, we can see detailed metrics from our solution and get a visual layout of the dependency relationships between our application components using App map. Each component displays specific KPIs such as load, performance, failures, and alerts. By selecting the App Analytics on one of the application components, we can open the Application Insights Analytics feature. This will provide a query language for analyzing all of the data collected by Application Insights.
 
     To get custom information about our users, the Users panel in Application Insights, will allow us to understand important details in a variety of ways. We can use this panel to understand such information as where our users are connecting from, the browser type they are using, and what areas of the application they're accessing.
 

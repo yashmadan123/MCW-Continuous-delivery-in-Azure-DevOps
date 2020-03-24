@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-December 2019
+March 2020
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -18,7 +18,7 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2019 Microsoft Corporation. All rights reserved.
+© 2020 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
@@ -33,10 +33,11 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
   - [Exercise 1: Create an Azure Resource Manager (ARM) template that can provision the web application, PostgreSQL database, and deployment slots in a single automated process](#exercise-1-create-an-azure-resource-manager-arm-template-that-can-provision-the-web-application-postgresql-database-and-deployment-slots-in-a-single-automated-process)
     - [Task 1: Create an Azure Resource Manager (ARM) template using Azure Cloud Shell](#task-1-create-an-azure-resource-manager-arm-template-using-azure-cloud-shell)
     - [Task 2: Configure the list of release environments parameters](#task-2-configure-the-list-of-release-environments-parameters)
-    - [Task 3: Add a deployment slot for the "staging" version of the site](#task-3-add-a-deployment-slot-for-the-%22staging%22-version-of-the-site)
+    - [Task 3: Add a deployment slot for the "staging" version of the site](#task-3-add-a-deployment-slot-for-the-staging-version-of-the-site)
     - [Task 4: Create the dev environment and deploy the template to Azure](#task-4-create-the-dev-environment-and-deploy-the-template-to-azure)
     - [Task 5: Create the test environment and deploy the template to Azure](#task-5-create-the-test-environment-and-deploy-the-template-to-azure)
     - [Task 6: Create the production environment and deploy the template to Azure](#task-6-create-the-production-environment-and-deploy-the-template-to-azure)
+    - [Task 7: Review the resource groups](#task-7-review-the-resource-groups)
   - [Exercise 2: Create Azure DevOps project and Git Repository](#exercise-2-create-azure-devops-project-and-git-repository)
     - [Task 1: Create Azure DevOps Account](#task-1-create-azure-devops-account)
     - [Task 2: Add the Tailspin Toys source code repository to Azure DevOps](#task-2-add-the-tailspin-toys-source-code-repository-to-azure-devops)
@@ -47,11 +48,12 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Task 2: Add test and production environments to release pipeline](#task-2-add-test-and-production-environments-to-release-pipeline)
   - [Exercise 5: Trigger a build and release](#exercise-5-trigger-a-build-and-release)
     - [Task 1: Manually queue a new build and follow it through the release pipeline](#task-1-manually-queue-a-new-build-and-follow-it-through-the-release-pipeline)
-  - [Exercise 6: Create a feature branch and submit a pull request](#exercise-6-create-a-feature-branch-and-submit-a-pull-request)
-    - [Task 1: Create a new branch](#task-1-create-a-new-branch)
-    - [Task 2: Make a code change to the feature branch](#task-2-make-a-code-change-to-the-feature-branch)
-    - [Task 3: Submit a pull request](#task-3-submit-a-pull-request)
-    - [Task 4: Approve and complete a pull request](#task-4-approve-and-complete-a-pull-request)
+  - [Exercise 6: Setup a pull request policy, create a task branch and submit a pull request](#exercise-6-setup-a-pull-request-policy-create-a-task-branch-and-submit-a-pull-request)
+    - [Task 1: Set up a pull request policy](#task-1-set-up-a-pull-request-policy)
+    - [Task 2: Create a new branch](#task-2-create-a-new-branch)
+    - [Task 3: Make a code change to the task branch](#task-3-make-a-code-change-to-the-task-branch)
+    - [Task 4: Submit a pull request](#task-4-submit-a-pull-request)
+    - [Task 5: Approve and complete a pull request](#task-5-approve-and-complete-a-pull-request)
   - [After the hands-on lab](#after-the-hands-on-lab)
     - [Task 1: Delete resources](#task-1-delete-resources)
 
@@ -174,11 +176,249 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
     ![This is a screenshot of the code pasted just below the element for the application insights extension in the "resources" array.](images/stepbystep/media/image39.png "Pasted block of JSON code")
 
+    The complete ARM template should look like the following:
+
+    ```json
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "environment": {
+                "type": "string",
+                "metadata": {
+                    "description": "Name of environment"
+                },
+                "allowedValues": [
+                    "dev",
+                    "test",
+                    "production"
+                ]
+            },
+            "siteName": {
+                "type": "string",
+                "defaultValue": "tailspintoys",
+                "metadata": {
+                    "description": "Name of azure web app"
+                }
+            },
+            "administratorLogin": {
+                "type": "string",
+                "minLength": 1,
+                "metadata": {
+                    "description": "Database administrator login name"
+                }
+            },
+            "administratorLoginPassword": {
+                "type": "securestring",
+                "minLength": 8,
+                "maxLength": 128,
+                "metadata": {
+                    "description": "Database administrator password"
+                }
+            },
+            "databaseSkuCapacity": {
+                "type": "int",
+                "defaultValue": 2,
+                "allowedValues": [
+                    2,
+                    4,
+                    8,
+                    16,
+                    32
+                ],
+                "metadata": {
+                    "description": "Azure database for PostgreSQL compute capacity in vCores (2,4,8,16,32)"
+                }
+            },
+            "databaseSkuName": {
+                "type": "string",
+                "defaultValue": "GP_Gen5_2",
+                "allowedValues": [
+                    "GP_Gen5_2",
+                    "GP_Gen5_4",
+                    "GP_Gen5_8",
+                    "GP_Gen5_16",
+                    "GP_Gen5_32",
+                    "MO_Gen5_2",
+                    "MO_Gen5_4",
+                    "MO_Gen5_8",
+                    "MO_Gen5_16",
+                    "MO_Gen5_32"
+                ],
+                "metadata": {
+                    "description": "Azure database for PostgreSQL sku name "
+                }
+            },
+            "databaseSkuSizeMB": {
+                "type": "int",
+                "allowedValues": [
+                    102400,
+                    51200
+                ],
+                "defaultValue": 51200,
+                "metadata": {
+                    "description": "Azure database for PostgreSQL Sku Size "
+                }
+            },
+            "databaseSkuTier": {
+                "type": "string",
+                "defaultValue": "GeneralPurpose",
+                "allowedValues": [
+                    "GeneralPurpose",
+                    "MemoryOptimized"
+                ],
+                "metadata": {
+                    "description": "Azure database for PostgreSQL pricing tier"
+                }
+            },
+            "postgresqlVersion": {
+                "type": "string",
+                "allowedValues": [
+                    "9.5",
+                    "9.6"
+                ],
+                "defaultValue": "9.6",
+                "metadata": {
+                    "description": "PostgreSQL version"
+                }
+            },
+            "location": {
+                "type": "string",
+                "defaultValue": "[resourceGroup().location]",
+                "metadata": {
+                    "description": "Location for all resources."
+                }
+            },
+            "databaseskuFamily": {
+                "type": "string",
+                "defaultValue": "Gen5",
+                "metadata": {
+                    "description": "Azure database for PostgreSQL sku family"
+                }
+            }
+        },
+        "variables": {
+            "webAppName": "[concat(parameters('siteName'), '-', parameters('environment'), '-', uniqueString(resourceGroup().id))]",
+            "databaseName": "[concat(parameters('siteName'), 'db', parameters('environment'), uniqueString(resourceGroup().id))]",
+            "serverName": "[concat(parameters('siteName'), 'pgserver', parameters('environment'), uniqueString(resourceGroup().id))]",
+            "hostingPlanName": "[concat(parameters('siteName'), 'serviceplan', uniqueString(resourceGroup().id))]"
+        },
+        "resources": [
+            {
+                "apiVersion": "2016-09-01",
+                "name": "[variables('hostingPlanName')]",
+                "type": "Microsoft.Web/serverfarms",
+                "location": "[parameters('location')]",
+                "properties": {
+                    "name": "[variables('hostingPlanName')]",
+                    "workerSize": "1",
+                    "hostingEnvironment": "",
+                    "numberOfWorkers": 0
+                },
+                "sku": {
+                    "Tier": "Standard",
+                    "Name": "S1"
+                }
+            },
+            {
+                "apiVersion": "2016-08-01",
+                "name": "[variables('webAppName')]",
+                "type": "Microsoft.Web/sites",
+                "location": "[parameters('location')]",
+                "dependsOn": [
+                    "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
+                ],
+                "properties": {
+                    "name": "[variables('webAppName')]",
+                    "serverFarmId": "[variables('hostingPlanName')]",
+                    "hostingEnvironment": ""
+                },
+                "resources": [
+                    {
+                        "apiVersion": "2016-08-01",
+                        "name": "staging",
+                        "type": "slots",
+                        "tags": {
+                            "displayName": "Deployment Slot: staging"
+                        },
+                        "location": "[resourceGroup().location]",
+                        "dependsOn": [
+                            "[resourceId('Microsoft.Web/Sites/', variables('webAppName'))]"
+                        ],
+                        "properties": {},
+                        "resources": []
+                    },
+                    {
+                        "apiVersion": "2016-08-01",
+                        "name": "connectionstrings",
+                        "type": "config",
+                        "dependsOn": [
+                            "[concat('Microsoft.Web/sites/', variables('webAppName'))]"
+                        ],
+                        "properties": {
+                            "defaultConnection": {
+                                "value": "[concat('Database=', variables('databaseName'), ';Server=', reference(resourceId('Microsoft.DBforPostgreSQL/servers',variables('serverName'))).fullyQualifiedDomainName, ';User Id=', parameters('administratorLogin'),'@', variables('serverName'),';Password=', parameters('administratorLoginPassword'))]",
+                                "type": "PostgreSQL"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "apiVersion": "2017-12-01",
+                "type": "Microsoft.DBforPostgreSQL/servers",
+                "location": "[parameters('location')]",
+                "name": "[variables('serverName')]",
+                "sku": {
+                    "name": "[parameters('databaseSkuName')]",
+                    "tier": "[parameters('databaseSkuTier')]",
+                    "capacity": "[parameters('databaseSkucapacity')]",
+                    "size": "[parameters('databaseSkuSizeMB')]",
+                    "family": "[parameters('databaseskuFamily')]"
+                },
+                "properties": {
+                    "version": "[parameters('postgresqlVersion')]",
+                    "administratorLogin": "[parameters('administratorLogin')]",
+                    "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+                    "storageMB": "[parameters('databaseSkuSizeMB')]"
+                },
+                "resources": [
+                    {
+                        "type": "firewallRules",
+                        "apiVersion": "2017-12-01",
+                        "dependsOn": [
+                            "[concat('Microsoft.DBforPostgreSQL/servers/', variables('serverName'))]"
+                        ],
+                        "location": "[parameters('location')]",
+                        "name": "[concat(variables('serverName'),'firewall')]",
+                        "properties": {
+                            "startIpAddress": "0.0.0.0",
+                            "endIpAddress": "255.255.255.255"
+                        }
+                    },
+                    {
+                        "name": "[variables('databaseName')]",
+                        "type": "databases",
+                        "apiVersion": "2017-12-01",
+                        "properties": {
+                            "charset": "utf8",
+                            "collation": "English_United States.1252"
+                        },
+                        "dependsOn": [
+                            "[concat('Microsoft.DBforPostgreSQL/servers/', variables('serverName'))]"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }    
+    ```
+
 ### Task 4: Create the dev environment and deploy the template to Azure
 
 Now that the template file has been uploaded, we'll deploy it several times to create each of our desired environments: *dev*, *test*, and *production*. Let's start with the **dev** environment.
 
-1.  In the **Azure Cloud Shell** terminal, enter the following command and press **Enter**:
+1.  In the **Azure Cloud Shell** terminal, from the same folder that your ARM template resides in, enter the following command and press **Enter**:
 
     ```bash
     echo "Enter the Resource Group name:" &&
@@ -195,7 +435,7 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
     ![In the Azure Cloud Shell window, the command has been entered is we are prompted for the name of the resource group we want to deploy to.](images/stepbystep/media/image44.png "Azure Cloud Shell window")
 
-2.  Enter the name of a resource group you want to deploy the resources to (i.e. TailspinToysRG). If it does not already exist, the template will create it. Then, press **Enter**.
+2.  Enter the name of a resource group you want to deploy the resources to (i.e. TailSpinToysRG). If it does not already exist, the template will create it. Then, press **Enter**.
 
 3.  Next, we're prompted to enter an Azure region (location) where we want to deploy our resources to (i.e. westus, centralus, eastus). 
     
@@ -215,6 +455,8 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
 6.  Next, we're asked to supply an administrator password for the PostgreSQL server and database. This will be the password credential you would need to enter to connect to your newly created database.
 
+    >**Note**: The password must meet complexity requirements of 8 or more characters, must contain upper and lower case characters, must contain at least one number and at least one special character, e.g. "Database2020!"
+
     Enter a value for the *administratorLoginPassword* and then press **Enter**.
 
 7. This will kick off the provisioning process which takes a few minutes to create all the resources for the environment. This is indicated by the "Running" text displayed at the bottom of the Azure Cloud Shell while the command is executing.
@@ -229,83 +471,15 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
 ### Task 5: Create the test environment and deploy the template to Azure
 
-The following steps are very similar to what was done in the previous task with the exception that you are now creating the **test** environment.
-
-1. In the Azure Cloud Shell terminal, enter the following command and press **Enter**:
-
-    ```bash
-    echo "Enter the Resource Group name:" &&
-    read resourceGroupName &&
-    echo "Enter the location (i.e. westus, centralus, eastus):" &&
-    read location &&
-    az group create --name $resourceGroupName --location "$location" &&
-    az group deployment create --resource-group $resourceGroupName --template-file "$HOME/studentfiles/armtemplate/azuredeploy.json"
-    ```
-    
-    ![In the Azure Cloud Shell window, the command has been entered is we are prompted for the name of the resource group we want to deploy to.](images/stepbystep/media/image44.png "Azure Cloud Shell window")
-
-2. Enter the name of the resource group created in earlier (in Task 4). This will force the test environment's resources to be deployed to the same resource group where you deployed the dev environment resources to earlier. Then, press **Enter**.
-
-3. Enter the name of the Azure region you chose earlier and then press **Enter**.
-
-4. For this next run, select the *test* environment by entering **2** and then pressing **Enter**. 
-
-    ![In the Azure Cloud Shell window, we are prompted for the environment we want to deploy to.](images/stepbystep/media/image130.png "Azure Cloud Shell")
-
-5. Enter a value for the *administratorLogin* (e.g. **azureuser**) and then press **Enter**.
-
-    ![In the Azure Cloud Shell window, we are prompted for the administrative username for the PostgreSQL server and database we want to create.](images/stepbystep/media/image47.png "Azure Cloud Shell")
-
-6. Enter a value for the *administratorLoginPassword* and then press **Enter**.
-
-7. This will kick off the provisioning process which takes a few minutes to create all the resources for the environment. This is indicated by the *Running* text displayed at the bottom of the Azure Cloud Shell while the command is executing.
-
-    ![The Azure Cloud Shell is executing the template based on the parameters we provided.](images/stepbystep/media/image49.png "Azure Cloud Shell")
-
-8. After the template has completed, JSON is output to the Azure Cloud Shell window with a *Succeeded* message.
-
-    ![The Azure Cloud Shell has succeeded in executing the template based on the parameters we provided.](images/stepbystep/media/image50.png "Azure Cloud Shell")
+The following steps are very similar to what was done in the previous task with the exception that you are now creating the **test** environment. Repeat the above steps and select to create the **2. test** environment. You can use the same values as used in the dev environment.
 
 ### Task 6: Create the production environment and deploy the template to Azure
 
-The following steps are very similar to what was done in the previous task with the exception that you are now creating the **production** environment.
+The following steps are very similar to what was done in the previous task with the exception that you are now creating the **production** environment. Repeat the above steps and select to create the **3. production** environment. You can use the same values as used in the dev environment.
 
-1. In the Azure Cloud Shell terminal, enter the following command and press **Enter**:
+### Task 7: Review the resource groups
 
-    ```bash
-    echo "Enter the Resource Group name:" &&
-    read resourceGroupName &&
-    echo "Enter the location (i.e. westus, centralus, eastus):" &&
-    read location &&
-    az group create --name $resourceGroupName --location "$location" &&
-    az group deployment create --resource-group $resourceGroupName --template-file "$HOME/studentfiles/armtemplate/azuredeploy.json"
-    ```
-    
-    ![In the Azure Cloud Shell window, the command has been entered is we are prompted for the name of the resource group we want to deploy to.](images/stepbystep/media/image44.png "Azure Cloud Shell window")
-
-2. Enter the name of a resource group from earlier that you deployed the resources to (i.e. TailspinToysRG). Then, press **Enter**.
-    
-3. Enter the name of the Azure region from earlier and then press **Enter**.
-     
-4. For this next run, select the *production* environment by entering **3** and then pressing **Enter**. 
-
-    ![In the Azure Cloud Shell window, we are prompted for the environment we want to deploy to.](images/stepbystep/media/image131.png "Azure Cloud Shell")
-
-5. Enter a value for the *administratorLogin* (e.g. **azureuser**) and then press **Enter**.
-
-    ![In the Azure Cloud Shell window, we are prompted for the administrative username for the PostgreSQL server and database we want to create.](images/stepbystep/media/image47.png "Azure Cloud Shell")
-
-6. Enter a value for the *administratorLoginPassword* and then press **Enter**.
-
-7. This will kick off the provisioning process which takes a few minutes to create all the resources for the environment. This is indicated by the *Running* text displayed at the bottom of the Azure Cloud Shell while the command is executing.
-
-    ![The Azure Cloud Shell is executing the template based on the parameters we provided.](images/stepbystep/media/image49.png "Azure Cloud Shell")
-
-8. After the template has completed, JSON is output to the Azure Cloud Shell window with a *Succeeded* message.
-
-    ![The Azure Cloud Shell has succeeded in executing the template based on the parameters we provided.](images/stepbystep/media/image50.png "Azure Cloud Shell")
-
-9. In the Azure Portal, navigate to the resource group where all of the resources have been deployed. It should look similar to the screenshot below.
+1. In the Azure Portal, navigate to the resource group where all of the resources have been deployed. It should look similar to the screenshot below.
 
     >**Note**: The specific names of the resources will be slightly different than what you see in the screenshot based on the unique identities assigned.
 
@@ -348,6 +522,8 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
 1. Open the *Azure Cloud Shell* to the folder where the Student Files were unzipped (e.g. studentfiles). Then, navigate to the **tailspintoysweb** folder which contains the source code for our web application.
 
     > **Note**: If this folder doesn't exist ensure you followed the instructions in the 'Before the hands-on lab'.
+
+    >**Note**: If you are using the Azure Cloud Shell you will be prompted for credentials when using Git. The best way to authenticate is to use a [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate), PAT, with a scope Code, Full permissions. Then use that PAT as password (leave user name empty) when prompted.    
 
 2. Open *Cloud Shell Editor* to this folder by typing: 
    
@@ -501,7 +677,7 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
     - task: NuGetToolInstaller@0
       displayName: 'Use NuGet 4.4.1'
       inputs:
-        versionSpec: 4.4.1
+        versionSpec: 4.4.1      
     ```
 
     Tasks are the building blocks of a pipeline. They describe the actions that are performed in sequence during an execution of the pipeline.
@@ -514,12 +690,18 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
     - task: NuGetCommand@2
       displayName: 'NuGet restore'
       inputs:
-        restoreSolution: 'tailspintoysweb.csproj'
+        restoreSolution: '**/tailspintoysweb.csproj'
+
+    # Node.js tool installer
+    # Finds or downloads and caches the specified version spec of Node.js and adds it to the PATH
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '10.x' 
 
     - task: VSBuild@1
       displayName: 'Build solution'
       inputs:
-        solution: 'tailspintoysweb.csproj'
+        solution: '**/tailspintoysweb.csproj'
         msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
         platform: 'any cpu'
         configuration: 'release'
@@ -558,15 +740,21 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
       inputs:
         versionSpec: 4.4.1
 
+    # Node.js tool installer
+    # Finds or downloads and caches the specified version spec of Node.js and adds it to the PATH
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '10.x' 
+
     - task: NuGetCommand@2
       displayName: 'NuGet restore'
       inputs:
-        restoreSolution: 'tailspintoysweb.csproj'
+        restoreSolution: '**/tailspintoysweb.csproj'
 
     - task: VSBuild@1
       displayName: 'Build solution'
       inputs:
-        solution: 'tailspintoysweb.csproj'
+        solution: '**/tailspintoysweb.csproj'
         msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
         platform: 'any cpu'
         configuration: 'release'
@@ -624,7 +812,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
     ![A screen that shows choosing Azure App Service deployment.](images/stepbystep/media/image85a.png "Select a template")
 
-4. This will present you with the New release pipeline editor which allows you to manage your release stages. A stage is a logical and independent concept that represents where you want to deploy a release generated from a release pipeline. Often times, this is considered an environment. Let's start by giving this stage a name. Change the value "Stage 1" in the editor to "dev" and then select the "X" in the top-right corner to close the panel and save the name change.
+4. This will present you with the New release pipeline editor which allows you to manage your release stages. A stage is a logical and independent concept that represents where you want to deploy a release generated from a release pipeline. Often times, this is considered an environment. Let's start by giving this stage a name. Change the value "Stage 1" in the editor to **"dev"** and then select the **"X"** in the top-right corner to close the panel and save the name change.
 
     ![A screen that shows Stage details. The Stage name is highlighted. The X is also highlighted.](images/stepbystep/media/image86.png "Stage")
 
@@ -656,7 +844,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
 10. In case a 'Service connection operation failed' dialog pops up, follow the next steps to manually create a service connection. You would also like to follow these steps in case you want to granularly configure permissions for Azure DevOps to a single resource group rather than the entire subscription.
 
-    Otherwise, you may skip to step ****.
+    **If you successfully authorized the Azure Subscription you may skip to step 34.**
 
     > **Note**: The following workaround steps must be performed by a Global Administrator of the tenant associated to the Azure subscription, or at least an individual who has access to a user account with either of these Azure Active Directory roles: Application administrator, Application developer, Cloud application administrator.
         
@@ -676,7 +864,7 @@ In this exercise, you will create a release pipeline in Azure DevOps that perfor
 
 18. In the application page, note down the **Directory (tenant) ID** - this will be used at a later step in this task and will be referred to as *Directory ID*.
 
-19. Choose **Certificates & secrets*.
+19. Choose **Certificates & secrets**.
 
 20. In the *Certificates & secrets* page, select **+ New client secret**.
 
@@ -887,15 +1075,34 @@ Any commit of new or modified code to the master branch will automatically trigg
 
     ![On the screen, a successful release through all three stages of deployment.](images/stepbystep/media/image105.png "A successful release through all three stages")
 
-## Exercise 6: Create a feature branch and submit a pull request
+## Exercise 6: Setup a pull request policy, create a task branch and submit a pull request
 
-Duration: 20 Minutes
+Duration: 30 Minutes
 
-In this exercise, you will create a short-lived feature branch, make a small code change, commit the code, and submit a pull request. You'll then merge the pull request into the master branch which triggers an automated build and release of the application.
+In this exercise, you will first set up a Pull request policy for your master branch, then you will create a short-lived task branch, make a small code change, commit and push the code, and submit a pull request. 
+You'll then merge the pull request into the master branch which triggers an automated build and release of the application.
 
-In the tasks below, you will make changes directly through the Azure DevOps web interface. These steps could also be performed through an IDE of your choosing or using the Azure Cloud Shell Code Editor.
+In the tasks below, you will make changes directly through the Azure DevOps web interface. These steps could also be performed locally through an IDE of your choosing or using the command line.
 
-### Task 1: Create a new branch
+### Task 1: Set up a pull request policy
+
+1.  Under the Repos menu on the left-hand navigation, choose **Branches**, select the ellipsis next to the master branch and choose **Branch policies** from the menu.
+
+    ![The Azure DevOps Branches screen indicating the selection of the Branches link on the far left, followed by selecting the ellipsis next to the master branch and choosing branch policies from the menu.](images/2020-03-19-14-01-18.png "Launching branch policies")
+
+2.  Enable the policy by checking **Check for linked work items** and **Check for comment resolution**, then select **+ Add build policy** to enable a build to run when the pull request is created.  In the *Add build policy* dialog, choose the correct **Build pipeline** and set the **Display name**.
+
+    The first check enables the build policy to require a work item to be included with the pull request.  It may be added with one of the commits, or added directly to the pull request.
+
+    >**Note**: If you *do* enable this, which is the recommended setup, then you also must add a work item in your process below with the code changes. Ignore this for the workshop if you don't want to add a work item.
+
+    The second check is to ensure that if anyone comments on this pull request during the peer review phase, then those comments have to be resolved.
+
+    ![The branch policies for master screen with Check for linked work items and check for comment resolution checked and the add build policy dialogue open with the build pipeline and displayname filled in with TailSpinToys.](images/2020-03-19-14-08-50.png "Add build policy")
+
+3.  Select **Save** on the *Add policy* dialogue and then select **Save changes** on the *Branch policies for master* screen. 
+
+### Task 2: Create a new branch
 
 1. Select the **Repos** menu item from the left-hand navigation. Then, choose **Branches**.
 
@@ -911,7 +1118,7 @@ In the tasks below, you will make changes directly through the Azure DevOps web 
 
 4. Select the **Create** button.
 
-### Task 2: Make a code change to the feature branch
+### Task 3: Make a code change to the task branch
 
 1.  Choose the name of the newly created branch. This will present the *Files* window showing all the files in the repository.
 
@@ -919,7 +1126,7 @@ In the tasks below, you will make changes directly through the Azure DevOps web 
 
 2. Next, you'll make a change to a page in the web application inside the web browser.
    
-    Select the **ClientApp** folder.
+    Under the *tailspintoysweb* folder, select the **ClientApp** folder.
 
 4. Then choose the **src** folder.
 
@@ -947,7 +1154,7 @@ In the tasks below, you will make changes directly through the Azure DevOps web 
 
     ![On the popup, the Commit button is highlighted.](images/stepbystep/media/image111.png "Commit dialog popup")
 
-### Task 3: Submit a pull request
+### Task 4: Submit a pull request
 
 1. Near the top of the screen, locate the **Create a pull request** button.
 
@@ -965,33 +1172,37 @@ In the tasks below, you will make changes directly through the Azure DevOps web 
 
 3. Select the **Create** button to submit the pull request.
 
-### Task 4: Approve and complete a pull request
+### Task 5: Approve and complete a pull request
 
 Typically, the next few steps would be performed by another team member. This would allow for the code to be peer reviewed. However, in this scenario, you will continue as if you are the only developer on the project.
 
-1. After submitting the pull request, you are presented with Pull Request review screen. Let's assume all the changes made were acceptable to the review team.
+1.  After submitting the pull request, you are presented with Pull Request review screen. Let's assume all the changes made were acceptable to the review team.
+Confirm that the build is green, it is shown on the same page. 
 
-2. First, select the **Approve** button to approve of the code that was modified submitted as part of the pull request.
+    >**Note**: If the build is not green, you cannot merge the Pull Request as in step 2-4 below. You are then blocked. If you chose the **Check for linked work items** policy in task 1, you will be blocked until you create and attach a work item to your pull request. You can create a new work item by selecting **Boards** and then **Work items**. Then navigate back here and you can choose the new work item from the dropdown on the right side of the page.
 
-3. This will note that you approved the pull request. Then, choose the **Complete** button to finish and merge the code from the pull request into the master branch.
+1. First, select the **Approve** button to approve of the code that was modified submitted as part of the pull request.
+
+2. This will note that you approved the pull request. Then, choose the **Complete** button to finish and merge the code from the pull request into the master branch.
 
     ![On the screen, Approve and Complete are highlighted.](images/stepbystep/media/image114.png "Approve and complete to merge the pull request")
 
-4.  After choosing the Complete button in the previous step, you will be presented with the Complete pull request popup. You can add additional comments for the merge activity. By selecting the *Delete new-heading after merging* option, our branch will be deleted after the merge has been completed. This keeps our repository clean of old and abandoned branches and eliminates the possibility of future confusion.
+3.  After choosing the Complete button in the previous step, you will be presented with the Complete pull request popup. You can add additional comments for the merge activity. By selecting the **Delete new-heading after merging** option, our branch will be deleted after the merge has been completed. This keeps our repository clean of old and abandoned branches and eliminates the possibility of future confusion.
 
     ![In the Complete pull request dialog box, Delete new-heading after merging is selected and highlighted, and Complete merge is highlighted at the bottom.](images/stepbystep/media/image115.png "Complete pull request dialog box")
 
-5.  Select the **Complete merge** button.
+4.  Select the **Complete merge** button.
 
-6.  You will then see a confirmation of the completed pull request.
+5.  You will then see a confirmation of the completed pull request.
 
     ![On the popup, Complete merge is highlighted.](images/stepbystep/media/image116.png "Complete pull request popup")
 
-7.  Congratulations! You just created a branch, made a code change, submitted a pull request, approved the pull request, and merged the code.
+6.  Congratulations! You just created a branch, made a code change, submitted a pull request, approved the pull request, and merged the code.
 
-8.  Because we configured continuous integration and continuous deployment, an automated build will be triggered and deployment to dev stage will then begin immediately after a successful build. It will continue through on to the test and production stages.
+7.  Because we configured continuous deployment, an automated build will be triggered and deployment to dev stage will then begin immediately after a successful build. It will continue through on to the test and production stages.
 
     ![On the screen, a new build has been automatically triggered.](images/stepbystep/media/image117.png "List of builds")
+
 
 ## After the hands-on lab
 
