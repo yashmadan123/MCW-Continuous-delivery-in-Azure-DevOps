@@ -525,7 +525,7 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
     By using Application Insights, you should adapt the App Service deployment slots by marking the app setting holding the instrumentation key for Application Insights to be slot-bound. That way, staging and production can report independent log analytics even after a swap.
 
-    From the Application Insights Portal, we can see detailed metrics from our solution and get a visual layout of the dependency relationships between our application components using App map. Each component displays specific KPIs such as load, performance, failures, and alerts. By selecting on the App Analytics on one of the application components, we can open the Application Insights Analytics feature. This will provide a query language for analyzing all of the data collected by Application Insights.
+    From the Application Insights Portal, we can see detailed metrics from our solution and get a visual layout of the dependency relationships between our application components using App map. Each component displays specific KPIs such as load, performance, failures, and alerts. By selecting the App Analytics on one of the application components, we can open the Application Insights Analytics feature. This will provide a query language for analyzing all of the data collected by Application Insights.
 
     To get custom information about our users, the Users panel in Application Insights, will allow us to understand important details in a variety of ways. We can use this panel to understand such information as where our users are connecting from, the browser type they are using, and what areas of the application they're accessing.
 
