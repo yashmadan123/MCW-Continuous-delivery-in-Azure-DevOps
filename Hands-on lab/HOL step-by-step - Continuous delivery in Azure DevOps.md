@@ -40,7 +40,8 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Task 7: Review the resource groups](#task-7-review-the-resource-groups)
   - [Exercise 2: Create Azure DevOps project and Git Repository](#exercise-2-create-azure-devops-project-and-git-repository)
     - [Task 1: Create Azure DevOps Account](#task-1-create-azure-devops-account)
-    - [Task 2: Add the Tailspin Toys source code repository to Azure DevOps](#task-2-add-the-tailspin-toys-source-code-repository-to-azure-devops)
+    - [Task 2: Create a Service Connection](#task-2-create-a-service-connection)
+    - [Task 3: Add the Tailspin Toys source code repository to Azure DevOps](#task-3-add-the-tailspin-toys-source-code-repository-to-azure-devops)
   - [Exercise 3: Create Azure DevOps build pipeline](#exercise-3-create-azure-devops-build-pipeline)
     - [Task 1: Create a build pipeline](#task-1-create-a-build-pipeline)
   - [Exercise 4: Create Azure DevOps Multi Stage Release Pipeline](#exercise-4-create-azure-devops-multi-stage-release-pipeline)
@@ -515,7 +516,70 @@ In this exercise, you will create and configure an Azure DevOps account along wi
 
     ![In the "Add some code!" window, URLs appear to clone to your computer or push an existing repository from command line.](images/stepbystep/media/image59.png "TailspinToys is empty. Add some code! window")
 
-### Task 2: Add the Tailspin Toys source code repository to Azure DevOps
+
+### Task 2: Create a Service Connection 
+
+In this Task, you will configure the Azure DevOps with a Service Connection that allows Azure Dev Ops to securely connect to the resource group you just created in Azure.   
+
+**Before continuing, make sure that you are signed in to both the Azure Portal and Azure DevOps using the same Microsoft account**!
+
+1. In Azure DevOps, ensure you are in the project that you just created, and from the bottom corner of the page, select **Project settings**..
+    
+    ![In the TailspinToys project window, Repos is highlighted in the 
+            left-hand navigation.](images/stepbystep/media/image988.png "988 review")
+
+2. Under Pipelines, select **Service connections**.
+
+    ![In the TailspinToys project window, Repos is highlighted in the 
+        left-hand navigation.](images/stepbystep/media/image989.png "989 review")
+
+
+3. If this is your first service connection, you will see the below image and you can select **Create service connection** button to create your first service connection.
+
+    ![In the TailspinToys project window, Repos is highlighted in the 
+    left-hand navigation.](images/stepbystep/media/image990.png "990 review")
+    
+    However, if there are existing service connections you will see a view like below, can add a new one by selecting **New Service connection**:
+
+    ![In the TailspinToys project window, Repos is highlighted in the 
+    left-hand navigation.](images/stepbystep/media/image991.png "991 review")
+
+    In either case, you will get a **New service connection** dialog showing common connection types.   **Select *Azure Resource Manager** and then select **Next**.
+    
+    ![In the TailspinToys project window, Repos is highlighted in the 
+    left-hand navigation.](images/stepbystep/media/image992.png "992 review")
+
+4. Select New service connection, then choose Azure Resource Manager, then select Next.
+
+    ![In the TailspinToys project window, Repos is highlighted in the 
+    left-hand navigation.](images/stepbystep/media/image993.png "993 review")
+   
+5. Near the top of the page, select **Service Principal (Automatic)** and select **Next** to view the **New Azure service connection** panel:
+    ![In the TailspinToys project window, Repos is highlighted in the 
+        left-hand navigation.](images/stepbystep/media/image994.png "994 review")
+
+    
+6. On this panel ensure the following settings:
+
+    **Scope level:**  Subscription
+
+    **Subscription:**	Choose your Azure subscription
+
+    **Resource Group:**	Choose the resource group you created earlier
+    
+    **Service Connection Name:**	 Enter a string value such as "LabConnection"  so you can find this later. 
+
+    Ensure **Grand access permissions to all pipelines** is checked
+
+    **NOTE**  During the process, you might be prompted to sign in to your Microsoft account.
+    
+7. And finally, select **Save**.   
+ 
+    Azure DevOps performs a test connection to verify that it can connect to your Azure subscription. If Azure DevOps can't connect, you have the chance to sign in a second time.
+
+    Now you have a valid service connection!   Azure DevOps will use this to perform deployments in the resource group you created earlier.   
+
+### Task 3: Add the Tailspin Toys source code repository to Azure DevOps
 
 In this Task, you will configure the Azure DevOps Git repository. You will configure the remote repository using Git and then push the source code up to Azure DevOps through the command line tools.
 
