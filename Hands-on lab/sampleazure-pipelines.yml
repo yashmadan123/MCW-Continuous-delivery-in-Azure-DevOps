@@ -20,6 +20,7 @@ stages:
       - vstest
         
     steps:
+    # Nuget Restore Task
     - task: NuGetToolInstaller@0
       displayName: 'Use NuGet 4.4.1'
       inputs:
@@ -28,15 +29,17 @@ stages:
     # Node.js tool installer
     # Finds or downloads and caches the specified version spec of Node.js and adds it to the PATH
     - task: NodeTool@0
-      displayName: 'Nodify'
+      displayName: 'Node Tool Installer'
       inputs:
         versionSpec: '10.x' 
 
+    # Nuget Restore Task
     - task: NuGetCommand@2
       displayName: 'NuGet restore'
       inputs:
         restoreSolution: '**/tailspintoysweb.csproj'
 
+    # Nuget Restore Task
     - task: VSBuild@1
       displayName: 'Build solution'
       inputs:
@@ -45,6 +48,7 @@ stages:
         platform: 'any cpu'
         configuration: 'release'
 
+    # Nuget Restore Task
     - task: PublishBuildArtifacts@1
       displayName: 'PublishArtifacts'
       inputs:
@@ -52,19 +56,21 @@ stages:
         ArtifactName: 'drop'
 
 - stage: 'DevDeploy'
-  displayName: 'Deploy Stage'
+  displayName: 'Dev Deploy Stage'
   jobs:
   - job: 'Deploy'
     displayName: 'Deploy Job'
     pool:
       name: Hosted VS2017
     steps:
+    # Download Build Artifact Task
     - task: DownloadBuildArtifacts@0
       inputs:
         buildType: 'current'
         downloadType: 'single'
         downloadPath: '$(Build.ArtifactStagingDirectory)'        
         ArtifactName: 'drop'
+    # Azure Resource Manager App Deployment Task
     - task: AzureRmWebAppDeployment@4
       inputs:
         ConnectionType: 'AzureRM'
@@ -84,12 +90,14 @@ stages:
     pool:
       name: Hosted VS2017
     steps:
+    # Download Build Artifact Task
     - task: DownloadBuildArtifacts@0
       inputs:
         buildType: 'current'
         downloadType: 'single'
         downloadPath: '$(Build.ArtifactStagingDirectory)'        
         ArtifactName: 'drop'
+    # Azure Resource Manager App Deployment Task
     - task: AzureRmWebAppDeployment@4
       inputs:
         ConnectionType: 'AzureRM'
@@ -102,19 +110,21 @@ stages:
         packageForLinux: '$(Build.ArtifactStagingDirectory)/drop/*.zip'
 
 - stage: 'ProductionDeploy'
-  displayName: 'Production Deploy Stage'
+  displayName: 'Production Deploy Stage  '
   jobs:
   - job: 'Deploy'
     displayName: 'Deploy Job'
     pool:
       name: Hosted VS2017
     steps:
+    # Download Build Artifact Task
     - task: DownloadBuildArtifacts@0
       inputs:
         buildType: 'current'
         downloadType: 'single'
         downloadPath: '$(Build.ArtifactStagingDirectory)'        
         ArtifactName: 'drop'
+    # Azure Resource Manager App Deployment Task
     - task: AzureRmWebAppDeployment@4
       inputs:
         ConnectionType: 'AzureRM'
@@ -125,7 +135,3 @@ stages:
         ResourceGroupName: 'rgcameltow'
         SlotName: 'staging'
         packageForLinux: '$(Build.ArtifactStagingDirectory)/drop/*.zip'
-
-
-
-
