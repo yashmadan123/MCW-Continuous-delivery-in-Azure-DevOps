@@ -444,13 +444,13 @@ Now that the template file has been uploaded, we'll deploy it several times to c
    
 4.  Next, we're asked to enter a choice for environments we want to deploy to. The template will use our choice to concatenate the name of the environment with the name of the resource during provisioning. 
     
-    For this first run, select the *dev* environment by entering **1** and then pressing **Enter**.
+    For this first run, select the **dev** environment by entering **1** and then pressing **Enter**.
     
     ![In the Azure Cloud Shell window, we are prompted for the environment we want to deploy to.](images/stepbystep/media/image46.png "Azure Cloud Shell") 
 
 5.  Next, we're asked to supply an administrator login (username) for the PostgreSQL server and database. This will be the username credential you would need to enter to connect to your newly created database. 
     
-    Enter a value for the *administratorLogin* (e.g. **azureuser**) and then press **Enter**.
+    For the **administratorLogin**, enter a username value (e.g. *azureuser*) and then press **Enter**.
 
     ![In the Azure Cloud Shell window, we are prompted for the administrative username for the PostgreSQL server and database we want to create.](images/stepbystep/media/image47.png "Azure Cloud Shell")
 
@@ -458,7 +458,7 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
     >**Note**: The password must meet complexity requirements of 8 or more characters, must contain upper and lower case characters, must contain at least one number and at least one special character, e.g. "Database2020!"
 
-    Enter a value for the *administratorLoginPassword* and then press **Enter**.
+    For the **administratorLoginPassword**, enter a value that meets the complexity requirements and then, press **Enter**.
 
 7. This will kick off the provisioning process which takes a few minutes to create all the resources for the environment. This is indicated by the "Running" text displayed at the bottom of the Azure Cloud Shell while the command is executing.
 
@@ -494,7 +494,7 @@ In this exercise, you will create and configure an Azure DevOps account along wi
 
 ### Task 1: Create Azure DevOps Account
 
-1. Browse to the Azure DevOps site at <https://dev.azure.com>.
+1. Browse to the **Azure DevOps** site at <https://dev.azure.com>.
 
 2. If you do not already have an account, select the **Start free** button.
     
@@ -533,7 +533,6 @@ In this Task, you will configure the Azure DevOps with a Service Connection that
     ![In the TailspinToys project window, Repos is highlighted in the 
         left-hand navigation.](images/stepbystep/media/image989.png "989 review")
 
-
 3. If this is your first service connection, you will see the below image and you can select **Create service connection** button to create your first service connection.
 
     ![In the TailspinToys project window, Repos is highlighted in the 
@@ -544,17 +543,18 @@ In this Task, you will configure the Azure DevOps with a Service Connection that
     ![In the TailspinToys project window, Repos is highlighted in the 
     left-hand navigation.](images/stepbystep/media/image991.png "991 review")
 
-    In either case, you will get a **New service connection** dialog showing common connection types.   **Select *Azure Resource Manager** and then select **Next**.
+    In either case, you will get a **New service connection** panel showing common connection types.   
     
     ![In the TailspinToys project window, Repos is highlighted in the 
     left-hand navigation.](images/stepbystep/media/image992.png "992 review")
 
-4. Select New service connection, then choose Azure Resource Manager, then select Next.
+4. On this panel, **Select *Azure Resource Manager** and then select **Next**.
 
     ![In the TailspinToys project window, Repos is highlighted in the 
     left-hand navigation.](images/stepbystep/media/image993.png "993 review")
    
 5. Near the top of the page, select **Service Principal (Automatic)** and select **Next** to view the **New Azure service connection** panel:
+
     ![In the TailspinToys project window, Repos is highlighted in the 
         left-hand navigation.](images/stepbystep/media/image994.png "994 review")
 
@@ -571,7 +571,7 @@ In this Task, you will configure the Azure DevOps with a Service Connection that
 
     Ensure **Grand access permissions to all pipelines** is checked
 
-    **NOTE**  During the process, you might be prompted to sign in to your Microsoft account.
+    >**Note**  During the Service Connection creation process, you might be prompted to sign in to your Microsoft account if Azure DevOps detects it requires authentication. 
     
 7. And finally, select **Save**.   
  
@@ -581,13 +581,15 @@ In this Task, you will configure the Azure DevOps with a Service Connection that
 
 ### Task 3: Add the Tailspin Toys source code repository to Azure DevOps
 
-In this Task, you will configure the Azure DevOps Git repository. You will configure the remote repository using Git and then push the source code up to Azure DevOps through the command line tools.
+In this Task, you will configure the Git repository for the Azure DevOps instance you just created. Using Git commandline tools from Azure Cloud Shell, you will configure the remote repository and then push your source code up to your Azure DevOps repository.
 
-1. Open the *Azure Cloud Shell* to the folder where the Student Files were unzipped (e.g. studentfiles). Then, navigate to the **tailspintoysweb** folder which contains the source code for our web application.
+1. Open the **Azure Cloud Shell** to the folder where the Student Files were unzipped (e.g. studentfiles). Then, navigate to the **tailspintoysweb** folder which contains the source code for our web application.
 
-    > **Note**: If this folder doesn't exist ensure you followed the instructions in the 'Before the hands-on lab'.
-
-    >**Note**: If you are using the Azure Cloud Shell you will be prompted for credentials when using Git. The best way to authenticate is to use a [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate), PAT, with a scope Code, Full permissions. Then use that PAT as password (leave user name empty) when prompted.    
+    > **Note**: If this folder doesn't exist ensure you followed the instructions in the 'Before the hands-on lab'.  
+    
+    If you are using the Azure Cloud Shell you will be prompted for credentials to connect to your Azure DevOps instance when using Git. 
+    
+    The best way to authenticate is to use a [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate), (or PAT), configured with scope *Code, Full permissions*. After this configuration, you can then use the PAT as a password (leaving the user name empty) when prompted by Git. 
 
 2. Open *Cloud Shell Editor* to this folder by typing: 
    
@@ -595,16 +597,16 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
    code .
    ``` 
 
-   Then press **Enter**. 
+   Be sure to include the period '.' after the code command as this instructs the Cloud Shell Editor window to open *in the current directory location*.   Then, press **Enter**. 
    
-   >**Note**: Be sure to include the period after the code command as this instructs Code to open the current directory context.
-   
-3. In *Azure Cloud Shell*, initialize a local Git repository by running the following command:
+3. In Azure Cloud Shell, initialize a local Git repository by running the following commands:
 
     > If a ".git" folder and local repository already exists in the folder, then you will need to delete the ".git" folder first before running the commands below to initialize the Git repository.
 
     ```bash
     git init
+    git add . 
+    git commit -m "initial checkin"
     ```
 
 4. Paste the first command you copied from Azure DevOps. It will resemble the command below:
@@ -616,94 +618,73 @@ In this Task, you will configure the Azure DevOps Git repository. You will confi
 
 5. In case the *Password for 'https://\<your-org>@dev.azure.com':* prompt appears, follow the next steps to generate a PAT (Personal Access Token) for your Azure DevOps organization. Otherwise, skip to step 13.
     
-    > **Note**: These steps are also useful when using a multi-factored protected user account with Azure DevOps.
-    
-    > **Note**: **DO NOT CLOSE AZURE CLOUD SHELL**. Use a different tab for the steps for creating a new PAT token.
+    > **Note**: **DO NOT CLOSE AZURE CLOUD SHELL**. Use a different browser tab for the steps for creating a new PAT token.  Also, these PAT configuration steps are also useful when using a multi-factored protected user account with Azure DevOps.
 
-6. In *Azure DevOps*, choose on the second to last icon on the top menu in the left-hand side of the screen, representing a user and a small gear icon.
+6. In Azure DevOps, choose on the second to last icon on the top menu in the left-hand side of the screen, representing a user and a small gear icon.
 
 7. From the context menu, choose **Personal access tokens**.
 
     ![Selecting the player settings icon in the top menu bar](images/stepbystep/media/image132.png "Personal access tokens menu option")
 
-8. If the *Create a new personal access token* dialog has appeared, skip to the next step. Otherwise, select the **+ New Token** button.
+8. If the *Create a new personal access token* panel has appeared, skip to the next step. Otherwise, select the **+ New Token** button.
 
     ![Forcing the 'Create a new personal access token' to appear](images/stepbystep/media/image133.png "Personal access tokens menu option")
 
-9. In the *Create a new personal access token* dialog, type in a descriptive name for the new token, and from the *Code* section, choose **Full** and **Status**.
+9. In the *Create a new personal access token* panel, type in a descriptive name for the new token, and from the *Code* section, choose **Full** and **Status**.
 
     ![Creating a new PAT (Personal Access Token) in Azure Devops](images/stepbystep/media/image134.png "Personal access tokens menu option")
 
-10. In the *Create a new personal access token* dialog, select the **Create** button.
+10. In the *Create a new personal access token* panel, select the **Create** button.
 
-11. From the success confirmation dialog, select the **Copy to clipboard** button to copy the newly created PAT token to clipboard.
+11. From the success confirmation panel, select the **Copy to clipboard** button to copy the newly created PAT token to clipboard.
 
     ![Copying the newly created PAT token to the clipboard](images/stepbystep/media/image135.png "Success confirmation page")
 
-12. In *Azure Cloud Shell*, paste the PAT token and press **Enter**.
+12. In Azure Cloud Shell, paste the PAT token and press **Enter**.   Git will push the contents of your local repository in Azure Cloud Shell to your new Azure DevOps project repository.  
 
-13. Type in the following commands to commit the changes made locally to the new repository:
-    
-    ```bash
-    git add *
-    git commit -m "adding files"
-    ```
-
-14. Push the changes up to the Azure DevOps repository with the following command:
-
-    ```
-    git push --set-upstream origin master
-    ```
-
-15. Navigate to the Repos > Files page which shows the files in the repository. You may need to refresh the page to see the updated files. Your source code is now appearing in Azure DevOps.
+13. Navigate to the Repos > Files page which shows the files in the repository. You may need to refresh the page to see the updated files. Your source code is now appearing in Azure DevOps.
 
     ![The newly created files show up in Repos > Files section.](images/stepbystep/media/image136.png "Success confirmation page")
 
-16. Expand the *ClientApp* directory. Choose the **package.json** file.
+14. Expand the **ClientApp** directory and select the **package.json** file.
 
-17. On line 27, change the value representing the version of the *rxjs* dependency, from *^6.0.0* to **6.0.0** (without the '^' character).
+15. On line 27, change the value representing the version of the *rxjs* dependency, from *^6.0.0* to **6.0.0** (removing the '^' character).
 
     ![The content of the package.json file is shown.](images/stepbystep/media/image138.png "Change rxjs dependency value to 6.0.0")
 
-18. Next, hover the **package-lock.json** file and from the context menu, choose **Delete**.
+16. Next, hover the **package-lock.json** file and from the context menu, choose **Delete**.
 
     ![The context menu shows up on the package-lock.json file, from the ClientApp directory.](images/stepbystep/media/image137.png "Choose 'Delete'")
 
-19. Confirm the deletion.
-
-20. In the upper-right side of the page, choose **Commit**.
-
-21. In the *Commit* dialog, validate the commit message and choose **Commit**.
+17. Confirm the deletion, and when the commit panel shows, validate the commit message and choose **Commit**.
 
 ## Exercise 3: Create Azure DevOps build pipeline
 
 Duration: 15 Minutes
 
-Implementing CI and CD pipelines helps to ensure a consistent, repeatable process is used to build, test, and release code.   This results in higher quality code that's readily available to users.
+**Azure DevOps Pipelines**
 
- **Azure DevOps Pipelines** provides an easy and extensible way to provide consistency when building and releasing your projects, while also making the configuration available to authorized users on your team.
+ Implementing CI and CD pipelines helps to ensure a consistent, repeatable process is used to build, test, and release code.   This results in higher quality code that's readily available to users.  Azure DevOps Pipelines provides an easy and extensible way to provide consistency when building and releasing your projects, while also making the configuration available to authorized users on your team.   Let's take a high-level look at the major components that make up an Azure DevOps Pipeline:  
 
-Pipelines are made of one or more stages describing a CI/CD process. Stages are the major divisions in a pipeline: "build this app", "run these tests", and "deploy to pre-production" are good examples of stages.
+**Stages** 
 
-Stages consist of one or more jobs, which are units of work assignable to a particular machine. Both stages and jobs may be arranged into dependency graphs: "run this stages before that one" or "this job depends on the output of that job".
+In essence, Azure Pipelines are made of one or more *stages* representing a given CI/CD process and are the major divisions of action in a pipeline.  Actions such as: "build this app", "run these tests", and "deploy to this environment" are good examples of stages.  Stages themselves, decompose to of one or more *Jobs*.  
 
-Jobs consist of a linear series of steps. Steps can be tasks, scripts, or references to external YAML templates.
+**Jobs**
 
-For Azure DevOps, this hierarchy is defined in the structure of a YAML (Yet Another Markup Language) file, which is a structured markup file that can be managed like any other source file.
+Jobs consist of a linear series of steps within a stage, where each step can be tasks, scripts, or references to external YAML templates that represent the tactial aspects of an action.  It is important to note that both stages and jobs can run in a simple linear fashion, or may be arranged into more complex *dependency graphs*, e.g. "run this stage before that one" or "this job depends on the output of that job".   
 
-This method enables a *Configuration As Code* scenario, declaratively defining the pipeline, and pipeline components such as stages, tasks, and conditions in detail.   Using YAML provides more visibility into pipeline structure and condition, and also provides integration and automation opportunities as well.
+From here you can see that this simple relationship can embody both simple and complex staged build and release processes through a defined execution hierarchy. For Azure DevOps, this hierarchy is defined in the structure of a YAML (Yet Another Markup Language) file, which is a structured markup file that can be managed like any other source file.
 
-In Azure DevOps, YAML defines both "Build" or "Continuous Integration" pipelines as well as "Release" or "Continuous Delivery" pipelines in one shot, and this is what is meant by the term *"Unified Pipeline"*.    
+**Configuration As Code**
 
-In this lab, a sample pipeline YAML definition - *"sampleazure-pipelines.yml"* is included, representing a simple multi-stage pipeline with a custom trigger and a Pull Request Policy configuration.   In the following exercises and steps, you will be building a real-time equivalent of this file.  
+This entire concept is based on a *Configuration As Code* methodology.   This means declaratively defining the pipeline, and pipeline components such as stages, tasks, and conditions in detail.   Using YAML provides more visibility into pipeline structure and condition in once concise place, and also provides integration and automation opportunities as well.  In Azure DevOps, YAML defines both "Build" or "Continuous Integration" pipelines as well as "Release" or "Continuous Delivery" pipelines in one shot, and this is what is meant by the term *"Unified YAML Pipeline"*.    
 
-While teams can use the Azure DevOps Pipeline visual designer to create multistage build and release pipelines to support a wide array of CI/CD scenarios, many teams prefer to define their build and release pipelines by editing the YAML configuration directly. 
-
-A YAML build definition can be added to a project by including the YAML source file at the repository root. Azure DevOps will reference this configuration, evaluate it, and execute the configuraation during build runs.  
+While teams can use the **Azure DevOps Pipeline visual designer** to create multistage build and release pipelines to support a wide array of CI/CD scenarios, many teams prefer to define their build and release pipelines by editing the YAML configuration directly. A YAML build definition can be added to a project by including the YAML source file at the repository root. Azure DevOps will reference this configuration, evaluate it, and execute the configuration during build runs.  
 
 Azure DevOps also provides default templates within the editing workflow, for popular project types, integration points, and common tasks, and this works alongside a simple YAML designer to streamline the process of defining build and release tasks.
 
-In this exercise, you will use the Azure DevOps Pipelines UI to create a build definition for the current project, but in subsequent steps, will be editing the YAML directly using the Unified YAML workflow.
+In this lab, you will build up a pipeline YAML definition - *"azure-pipelines.yml"* - representing a simple multi-stage pipeline with a custom trigger and a Pull Request Policy configuration.   In the the following exercise you will use the Azure DevOps Pipelines UI to create a build definition for the current project, but in subsequent exercises, you will be editing the YAML directly using the *Unified YAML* workflow. 
   
 ### Task 1: Create a build pipeline
 You will start with creating a basic build pipeline, tie it to the existing repository for to lay the groundwork for a basic CI scenario.   Then, you will expand the capability of the pipeline to include stages - transforming it into a multi-stage pipeline - representing basic CD characteristics wthin the same pipeline.  
@@ -852,20 +833,23 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
     At this point you have defined a simple, single stage pipeline, that will perform the following tasks:
     - execute on change commits to the master branch
     - install key tools required to build
-    - build
+    - build the code project, producing build artifacts
     - publish build artifacts to a known artifact location within Azure DevOps Pipelines.   
 
 12. Choose the **Save and run** button to save our new pipeline and also kick off the first build.
+
 
     ![A screen showing the contents of the YAML editor. The Save and run button is highlighted.](images/stepbystep/media/image73.png "Reivew your pipeline YAML")    
 
 13. When the editor process saves your YAML, Azure DevOps Pipelines creates a new source file called *azure-pipelines.yml* to the root of your TailspinToys repository. This is done through a git commit that Azure DevOps facilitates as part of the save process which also prompts you to enter a commit message. 
 
+
     ![A screen that shows the commit of azure-pipelines.yml. The Save and run button is highlighted.](images/stepbystep/media/image74.png "Save and run")
     
     By default, **Commit Message** will be populated for you but you may change this. Select the **Save and run** button at the bottom of the screen to commit the pipeline changes to your master branch.   
 
-14. The build process will immediately begin and run through the steps defined in the azure-pipelines.yml file. Your Azure DevOps screen will refresh to show you the build process executing, in real-time. 
+14. The build process will immediately begin and run through the steps defined in your new *azure-pipelines.yml* definition file, and the screen will refresh to show you the build process executing, in real-time. 
+
 
     ![A screen that shows the real-time output of the build process.](images/stepbystep/media/image76.png "Real-time output")   
 
@@ -873,7 +857,7 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
   
     ![A screen that shows a successfully completed build pipeline.](images/stepbystep/media/image77.png "Success") 
     
-    **Congratulations!** You have just created your first build pipeline. In the next exercise, we will create a release pipeline that deploys your successful builds.
+    **Congratulations**, you have just created your first build pipeline! In the next exercise, we will create a release pipeline that deploys your successful builds.
 
 ## Exercise 4: Create Azure DevOps Multi Stage Release Pipeline
 
@@ -893,7 +877,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     ![A screen showing pipeline YAML Editor.](images/stepbystep/media/image1001.png "1001 review!") 
     
-    On the left, is the YAML editor containing the pipeline definition and the Tasks Panel to the right, has common components that can be added to the pipeline.   
+    On the left, is the YAML editor containing the pipeline definition and the Tasks panel to the right, has common components that can be added to the pipeline.   
     
     Adding these components shows a property panel supporting enable custom configuration for your pipeline, allowing fast configuration.  The result is additional YAML is added to the pipeline definition with the configuration customization you provided. 
 
@@ -940,12 +924,12 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
 5. Now your pipeline definition file contains a build stage and a deploy stage.   For now, let's configure the deploy stage to deploy to the dev environment using deployment slots.   Then we can repeat this configuration to support test and production in a similar manner. perform the same action.  Set your cursor on a new line at the end of the YAML definition, and note that this will be the location where new tasks are added in the next step:
 
-    ![A screen showing preferred cursor location to add tasks using the YAML Editor Taks Panel.](images/stepbystep/media/image1005.png "1005 review!")
+    ![A screen showing preferred cursor location to add tasks using the YAML Editor Taks panel.](images/stepbystep/media/image1005.png "1005 review!")
 
 
-6. Using the Tasks Panel, select the *Azure App Service Deploy* Task:  
+6. Using the Tasks panel, select the *Azure App Service Deploy* Task:  
 
-    ![On the Pipeline Tasks Panel, Azure App Service Deploy Task is highlighted.](images/stepbystep/media/image1006.png "1006 review!")
+    ![On the Pipeline Tasks panel, Azure App Service Deploy Task is highlighted.](images/stepbystep/media/image1006.png "1006 review!")
     
 
     This will show a configuration panel to configure this deployment task with some fields containing default values:
@@ -966,7 +950,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     If the service connection is not authorized, you may be asked to authorize the service connection like this:
 
-    ![In the Pipeline Task Configuration, the image shows Authorization dialog.](images/stepbystep/media/image1009.png "1009 review!")
+    ![In the Pipeline Task Configuration, the image shows Authorization panel.](images/stepbystep/media/image1009.png "1009 review!")
 
     In this scenario, select Authorize to enable the integration with Azure DevOps. 
     
@@ -988,7 +972,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
     
     Search Tasks for *"download build"* and select the **Download Build Artifacts** task.   
     
-    ![Screen showing YAML Editor Task Panel Search for download build.  The Download Build Artifacts Template and Add button are highlighted.](images/stepbystep/media/image1013.png "1013 review!")
+    ![Screen showing YAML Editor Task panel Search for download build.  The Download Build Artifacts Template and Add button are highlighted.](images/stepbystep/media/image1013.png "1013 review!")
     
     As before, a configuration panel is shown so you can configure the task before adding.   
     
@@ -1014,7 +998,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
 10. Azure DevOps will prompt for the commit message and the commit goes directly to the master branch: 
 
-    ![Screen showing a commit dialog with Save button highlighted.](images/stepbystep/media/image1018.png "1018 review!")
+    ![Screen showing a commit panel with Save button highlighted.](images/stepbystep/media/image1018.png "1018 review!")
     
 11. Since this changes the master branch, and your pipeline is configured to trigger on master, the pipeline will immediately run.   Using the left menu, navigate to **Pipelines** select the new build:
 
@@ -1068,7 +1052,7 @@ You could repeat the process in **Task 1** to add stages for Test and Production
 
     Select **Save**.   
     
-    ![Screen showing Commit dialog with.](images/stepbystep/media/image1028.png "1028 review!")
+    ![Screen showing Commit panel with.](images/stepbystep/media/image1028.png "1028 review!")
 
     As before, add your commit message, and select **Save**.   This will save the YAML definition file contents, commit to the master branch and which will trigger a pipeline run.
 
@@ -1144,7 +1128,7 @@ Then, you will merge the pull request into the master branch, triggering an auto
 
     The second check. *Check for comment resolution* ensures comments applied to this pull request during the peer review phase require resolution.
 
-3.  Now select **+** (3) to add the build policy.  This will enable the build to run when a pull request is created.  In the *Add build policy* dialog, choose the correct **Build pipeline** and add a **Display name** and select **Save**.   
+3.  Now select **+** (3) to add the build policy.  This will enable the build to run when a pull request is created.  In the *Add build policy* panel, choose the correct **Build pipeline** and add a **Display name** and select **Save**.   
 
     ![Screen showing the Add Build Policy panel with the Build pipeline and Display Name values added, and Display Name and Save button highlighted.](images/stepbystep/media/image1038.png "1038 review!")
 
@@ -1158,7 +1142,7 @@ Then, you will merge the pull request into the master branch, triggering an auto
 
     ![Screen showing configured branches with New branch button highlighted.](images/stepbystep/media/image1040.png "1040 review!")
 
-2. In the **Create a branch** dialog, enter a name for the new branch (e.g. **new-heading**). In the *Based on* field, be sure **master** is selected.
+2. In the **Create a branch** panel, enter a name for the new branch (e.g. **new-heading**). In the *Based on* field, be sure **master** is selected.
 
     ![Screen showing, Name and Base highlighted along with the Create button.](images/stepbystep/media/image107.png "107 review!")
 
@@ -1190,9 +1174,9 @@ Then, you will merge the pull request into the master branch, triggering an auto
 
     ![Screen showing editor with line 6 code change and Commit button highlighted.](images/stepbystep/media/image110.png "Completing the code change")
 
-    This will present the Commit dialog where you can enter a comment; one will automatically be filled in for you. Select the **Commit** button.
+    This will present the Commit panel where you can enter a comment; one will automatically be filled in for you. Select the **Commit** button.
 
-    ![On the popup, the Commit button is highlighted.](images/stepbystep/media/image111.png "Commit dialog popup")
+    ![On the popup, the Commit button is highlighted.](images/stepbystep/media/image111.png "Commit panel popup")
 
 ### Task 4: Submit a pull request
 
@@ -1206,7 +1190,7 @@ Then, you will merge the pull request into the master branch, triggering an auto
     
     A member of this team must review the pull request before it can be merged and the details details for the code change are included in the middle of the view.
 
-    ![On the screen, New pull request dialog is shown with create button highlighted.](images/stepbystep/media/image1044.png "1044 review!")
+    ![On the screen, New pull request panel is shown with create button highlighted.](images/stepbystep/media/image1044.png "1044 review!")
 
 3. Select the **Create** to submit the pull request.
 
@@ -1230,9 +1214,9 @@ However, in this scenario, you will continue as if you are the only developer on
 
     ![Screen showing the updated wull request detail with the Complete button highlighted.](images/stepbystep/media/image1046.png "1046 review!")
 
-3.  On selecting **Complete** in the previous step, a **Complete pull request** dialog shows. Here you can add additional comments for the merge activity. 
+3.  On selecting **Complete** in the previous step, a **Complete pull request** panel shows. Here you can add additional comments for the merge activity. 
 
-    ![Screen showing the Complete pull request dialog box with Complete associated work items after merging and Delete new-heading after merging checked.  Customize merge commit message is unchecked.  Complete merge button is highlighted.](images/stepbystep/media/image1047.png "1047 review!")
+    ![Screen showing the Complete pull request panel box with Complete associated work items after merging and Delete new-heading after merging checked.  Customize merge commit message is unchecked.  Complete merge button is highlighted.](images/stepbystep/media/image1047.png "1047 review!")
 
     By selecting the **Delete new-heading after merging** option, our branch will be deleted after the merge has been completed and this feature keeps your repository clean of old branches help to eliminate the possibility of confusion.
 
