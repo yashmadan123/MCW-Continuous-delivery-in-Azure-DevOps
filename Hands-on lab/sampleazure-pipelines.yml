@@ -78,7 +78,7 @@ stages:
         appType: 'webApp'
         WebAppName: 'tailspintoys-dev-a6b3fy4kgxzli'
         deployToSlotOrASE: true
-        ResourceGroupName: 'rgcameltow'
+        ResourceGroupName: 'rgADVOTest'
         SlotName: 'staging'
         packageForLinux: '$(Build.ArtifactStagingDirectory)/drop/*.zip'
 
@@ -105,7 +105,7 @@ stages:
         appType: 'webApp'
         WebAppName: 'tailspintoys-test-a6b3fy4kgxzli'
         deployToSlotOrASE: true
-        ResourceGroupName: 'rgcameltow'
+        ResourceGroupName: 'rgADVOTest'
         SlotName: 'staging'
         packageForLinux: '$(Build.ArtifactStagingDirectory)/drop/*.zip'
 
@@ -132,6 +132,6 @@ stages:
         appType: 'webApp'
         WebAppName: 'tailspintoys-production-a6b3fy4kgxzli'
         deployToSlotOrASE: true
-        ResourceGroupName: 'rgcameltow'
+        ResourceGroupName: 'rgADVOTest'
         SlotName: 'staging'
         packageForLinux: '$(Build.ArtifactStagingDirectory)/drop/*.zip'
