@@ -869,29 +869,35 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
 ### Task 1: Modify YAML definition to create a multistage pipeline
 
-1. Now that we have a great build working, we can modify the YAML file to include stages.   At first, we will add one stage for Build and then run that so we can see the difference in output.   Navigate to the Pipeline definition and select Edit from the flyout menu:  
+1. Now that we have a great build working, we can modify the YAML file to include stages.   At first, we will add one stage for Build and then run that so we can see the difference in output.   
+
+    From left navigation, select **Pipelines** to view configured Pipelines.   From here, highlight your new pipeline definition and select Edit from the elipses to the right:  
 
     ![A screen showing pipeline instance edit menu.](images/stepbystep/media/image1000.png "1000 review!") 
 
-    This brings up the Azure Pipelines YAML Editor that you viewed before after building your initial pipeline: 
+    This action shows the **Azure Pipelines YAML Editor** that you viewed after building your initial pipeline.   You will be using this editor to make changes to your azure-pipelines.yml definition in the next steps. 
 
     ![A screen showing pipeline YAML Editor.](images/stepbystep/media/image1001.png "1001 review!") 
     
-    On the left, is the YAML editor containing the pipeline definition and the Tasks panel to the right, has common components that can be added to the pipeline.   
-    
-    Adding these components shows a property panel supporting enable custom configuration for your pipeline, allowing fast configuration.  The result is additional YAML is added to the pipeline definition with the configuration customization you provided. 
+    On the left, is the YAML editor containing the pipeline definition and the Tasks panel to the right, has common components that can be added to the pipeline.   Selecting from the task panel to add a component first shows a property panel supporting custom configuration for your pipeline, allowing fast configuration, and the result is additional formatted YAML added directly to the pipeline definition with the configuration customization you provided. 
 
 2. Let's transform this pipeline to a multi-stage configuration byt adding the following configuration right below the *trigger* section to define a **Build Stage** in your YAML pipeline. 
 
     ```yml
         stages:
         - stage: Build
-            jobs:
-            - job: Build
+          displayName: 'Build Stage'
+          jobs:
+          - job: Build
     ```
    This is the first step to a multi-stage pipeline!  
    
-   You can define whatever stages you want to reflect the true nature of your CI/CD process, and as an added benefit, users get better visibility to entire pipeline process.  After adding this structure, your result should look like this:  
+   You can define whatever stages you want to reflect the true nature of your CI/CD process, and as an added benefit, users get better visibility to entire pipeline process.  
+   
+   >**Note**: YAML is whitespace sensitive!   Indentation matters in a similar fashion as Python, so pay particular attention to formatting within this file.   The editor will highlight most formatting issues.  
+   
+   
+   After adding this structure, your result should look like this:  
 
     ![A screen showing adding YAML stage code.](images/stepbystep/media/image1002.png "1002 review!")
 
@@ -902,13 +908,14 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
 4. You now have a very simple multi-stage pipeline with a exactly one stage - a **Build Stage**.   
    
-   Running the pipeline now would execute the pipeline as a single stage, and it would build exactly like it did before.   For now, be aware that using simple stage definitions like this means the stages execute in the order they are defined in the file.   More advanced pipeline definitions can support conditionals that govern stage execution.  
+   Running the pipeline now would execute the pipeline as a single stage, and it would build exactly like it did before.   For now, be aware that using simple stage definitions like this means the stages execute in the order they are defined in the file.   More advanced pipeline definitions can support conditionals for dependency graphs that govern more complex stage execution.
 
    Now, let's add a **Deployment Stage** by adding the YAML below to the bottom of the pipeline definition:
 
 
     ```yml
-   - stage: Deploy
+   - stage: DevDeploy
+     displayName: 'Dev Deploy Stage'
       jobs:
       - job: Deploy
         pool:
@@ -922,7 +929,9 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     ![A screen showing simple Deploy Stage scaffolding.](images/stepbystep/media/image1004.png "1004 review!")
 
-5. Now your pipeline definition file contains a build stage and a deploy stage.   For now, let's configure the deploy stage to deploy to the dev environment using deployment slots.   Then we can repeat this configuration to support test and production in a similar manner. perform the same action.  Set your cursor on a new line at the end of the YAML definition, and note that this will be the location where new tasks are added in the next step:
+5. Now your pipeline definition file contains a *build stage and a deploy stage*.   For now, let's configure the deploy stage to deploy to the dev environment using deployment slots.   Then we can repeat this configuration to support test and production in a similar manner. perform the same action.  
+
+    Set your cursor on a new line at the end of your YAML definition, and note this will be the location where new YAML is added in the next step:
 
     ![A screen showing preferred cursor location to add tasks using the YAML Editor Taks panel.](images/stepbystep/media/image1005.png "1005 review!")
 
