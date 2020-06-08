@@ -975,7 +975,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     Your deploy stage needs to download the artifacts from the Build Stage published location in order to install them in the dev environment, and Azure Pipeliness has a task template for that.   
     
-    Place your cursor at this position in your YAML editor:
+    In the YAML editor, place your cursor at this position, right before the AzureRmWebAppDeployment task you just added:
 
     ![Screen showing preferred cursor position in the YAML Editor.](images/stepbystep/media/image1012.png "1012 review!")
     
@@ -983,11 +983,11 @@ In this exercise, you will modify the existing pipeline to include a basic relea
     
     ![Screen showing YAML Editor Task panel Search for download build.  The Download Build Artifacts Template and Add button are highlighted.](images/stepbystep/media/image1013.png "1013 review!")
     
-    As before, a configuration panel is shown so you can configure the task before adding.   
+    As before, a configuration panel is shown so you can configure the task before adding:
     
     ![Screen showing close up of the Download Build Artifacts template with Add button highlighted.](images/stepbystep/media/image1014.png "1014 review!")
     
-    In **Destination Directory** add the default path used by your publish task in the build stage and select **Add**.   
+    For now, let's use the default values, and select **Add**.   
     
     This will add the task as configured to your YAML.  As an alternative, you can select tasks and add them, and then edit their properties directly in the YAML editor.  
     
@@ -996,7 +996,15 @@ In this exercise, you will modify the existing pipeline to include a basic relea
     ![Screen showing YAML code highlighted for indent check in YAML Editor.](images/stepbystep/media/image1015.png "1015 review!")
     
     
-8.  The task you just added needs one additional property added in order to be able to execute properly.  Let's modify the taks by editing the YAML directly.  In the editor, add a property **artifactName* to the **DownloadBuildArtifact** task you just added, and set the value to *"drop"*:
+8.  The task you just added needs one additional property added in order to be able to execute properly.  We could have added this property using the UI, but let's modify the taks by editing the YAML directly.  
+    
+    In the editor, modify the following:
+    - change the **downloadPath** property to *'$(Build.ArtifactStagingDirectory)'*
+    - add a property *artifactName* to the task you just added, just under *downloadPath*, and set this new property to *"drop"*.   
+    
+    Your Download Task  now matches the artifact staging directory that the Publish task above uses during the build stage.   
+    
+    Your YAML should now look like this:
 
     ![Screen showing YAML code highlighted on artifactName property for value edit in the YAML Editor.](images/stepbystep/media/image1016.png "1016 review!")
 
@@ -1027,14 +1035,18 @@ In this exercise, you will modify the existing pipeline to include a basic relea
     ![Screen showing stage execution log view with AzureRmWebAppDeployment highlighted.](images/stepbystep/media/image1022.png "1022 review!")
 
     
-13. **Congratulations!** You have just created your first multistage pipeline!  Now, let's verify your deployment.   Using **Azure Portal**, navigate to the resource group you created earlier to view your app services in this resource group .   Sort by **Type** Select the development app service:
+13. **Congratulations!** You have just created your first multistage pipeline!  Now, let's verify your deployment.   
+
+    Using **Azure Portal**, navigate to the resource group you created earlier to view your app services in this resource group .   Sort by **Type** Select the development app service:
 
     ![Screen showing Azure Portal provisioned assets in lab resource group , the dev Web App Service and sorted type column header are highlighted.](images/stepbystep/media/image1023.png "1023 review!")
 
     On the App Service Overview, select **Browse**:
+
     ![Screen showing Azure Portal detail view of provisioned development web app service with Browse highlighted.](images/stepbystep/media/image1024.png "1024 review!")
 
     This will launch your default browser navigating to your development site:
+
 
     ![Screen showing Edge browser showing development application.](images/stepbystep/media/image1025.png "1025 review!")
 
@@ -1073,7 +1085,9 @@ You could repeat the process in **Task 1** to add stages for Test and Production
 
     ![Screen showing pipeline run details with multiple stages now added.](images/stepbystep/media/image1030.png "1030 review!")
 
-    In this view, you can see that your multistage pipeline now has 3 stages:  Build, Dev, Test.   Selecting Test Deploy Stage shows you the Jobs detail view with access to all the tasks that executed.   Note that on the **AzureRmWebAppDeployment** task, you can see navigable links for deployment history and the application URL:
+    In this view, you can see that your multistage pipeline now has 3 stages:  Build, Dev, Test.   
+    
+    Selecting the **Test Deploy Stage** flow box shows you the Jobs detail view with access to all the tasks that executed.   Note that on the **AzureRmWebAppDeployment** task, you can see navigable links for deployment history and the application URL:
 
     ![Screen showing Pipeline Job Detail View with AzureRmWebAppDeployment task selected.  Hightlighted are the deployment log and app URL.](images/stepbystep/media/image1031.png "1031 review!")
 
@@ -1083,7 +1097,7 @@ You could repeat the process in **Task 1** to add stages for Test and Production
 
     ![Screen showing Pipeline run.](images/stepbystep/media/image1032.png "1032 review!")
 
-Congratulations! You have completed the creation of a release pipeline with four stages.
+Congratulations! You have completed the creation of a release pipeline with four stages.   In the screen shot above you can see your progression in including new functionality by added each stage.
 
 ## Exercise 5: Trigger a build and release
 
@@ -1100,7 +1114,7 @@ Any commit to the master branch will automatically trigger a build, but you can 
     ![Screen showing pipeline runs with Run Pipeline button highlighted.](images/stepbystep/media/image1033.png "1033 review!")
 
 
-2. This action presents a modal window titled **Run pipeline**. Choose the **Run** button at the bottom of the modal window to queue a manual build. 
+2. This action shows the **Run pipeline** view. Select **Run** at the bottom of the modal window to queue a manual build. 
 
     ![Screen showing Run Pipeline panel with Run button highlighted.](images/stepbystep/media/image1034.png "1034 review!")
 
