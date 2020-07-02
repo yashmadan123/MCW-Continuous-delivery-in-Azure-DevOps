@@ -574,7 +574,7 @@ In this Task, you will configure the Azure DevOps with a Service Connection that
 
 ### Task 3: Add the Tailspin Toys source code repository to Azure DevOps
 
-In this Task, you will configure the Git repository for the Azure DevOps instance you just created. Using Git commandline tools from Azure Cloud Shell, you will configure the remote repository and then push your source code up to your Azure DevOps repository.
+In this Task, you will configure the Git repository for the Azure DevOps instance you just created. Using Git command line tools from Azure Cloud Shell, you will configure the remote repository and then push your source code up to your Azure DevOps repository.
 
 1. Open the **Azure Cloud Shell** to the folder where the Student Files were unzipped (e.g. studentfiles). Then, navigate to the **tailspintoysweb** folder which contains the source code for our web application.
 
@@ -665,7 +665,7 @@ In essence, Azure Pipelines are made of one or more *stages* representing a give
 
 **Jobs**
 
-Jobs consist of a linear series of steps within a stage, where each step can be tasks, scripts, or references to external YAML templates that represent the tactial aspects of an action.  It is important to note that both stages and jobs can run in a simple linear fashion, or may be arranged into more complex *dependency graphs*, e.g. "run this stage before that one" or "this job depends on the output of that job".   
+Jobs consist of a linear series of steps within a stage, where each step can be tasks, scripts, or references to external YAML templates that represent the tactical aspects of an action.  It is important to note that both stages and jobs can run in a simple linear fashion, or may be arranged into more complex *dependency graphs*, e.g. "run this stage before that one" or "this job depends on the output of that job".   
 
 From here you can see that this simple relationship can embody both simple and complex staged build and release processes through a defined execution hierarchy. For Azure DevOps, this hierarchy is defined in the structure of a YAML (Yet Another Markup Language) file, which is a structured markup file that can be managed like any other source file.
 
@@ -677,10 +677,10 @@ While teams can use the **Azure DevOps Pipeline visual designer** to create mult
 
 Azure DevOps also provides default templates within the editing workflow, for popular project types, integration points, and common tasks, and this works alongside a simple YAML designer to streamline the process of defining build and release tasks.
 
-In this lab, you will build up a pipeline YAML definition - *"azure-pipelines.yml"* - representing a simple multi-stage pipeline with a custom trigger and a Pull Request Policy configuration.   In the the following exercise you will use the Azure DevOps Pipelines UI to create a build definition for the current project, but in subsequent exercises, you will be editing the YAML directly using the *Unified YAML* workflow. 
+In this lab, you will build up a pipeline YAML definition - *"azure-pipelines.yml"* - representing a simple multi-stage pipeline with a custom trigger and a Pull Request Policy configuration.   In the following exercise you will use the Azure DevOps Pipelines UI to create a build definition for the current project, but in subsequent exercises, you will be editing the YAML directly using the *Unified YAML* workflow. 
   
 ### Task 1: Create a build pipeline
-You will start with creating a basic build pipeline, tie it to the existing repository for to lay the groundwork for a basic CI scenario.   Then, you will expand the capability of the pipeline to include stages - transforming it into a multi-stage pipeline - representing basic CD characteristics wthin the same pipeline.  
+You will start with creating a basic build pipeline, tie it to the existing repository for to lay the groundwork for a basic CI scenario.   Then, you will expand the capability of the pipeline to include stages - transforming it into a multi-stage pipeline - representing basic CD characteristics within the same pipeline.  
 
 build the web application with every commit of source code. This will lay the groundwork for us to then create a release pipeline for publishing the code to our Azure environments.
 
@@ -705,7 +705,7 @@ build the web application with every commit of source code. This will lay the gr
 
     ![A screen that shows choosing ASP.NET Core pipeline.](images/stepbystep/media/image72.png "Configure your pipeline")
 
-6. As a final step in the creation of a build pipeline, you are presented with a configured pipeline in the form of an azure-pipelines.yml file.   Azure DevOps has placed this file at the repository root and will reference the file as configuration during pipeliene runs.  
+6. As a final step in the creation of a build pipeline, you are presented with a configured pipeline in the form of an azure-pipelines.yml file.   Azure DevOps has placed this file at the repository root and will reference the file as configuration during pipeline runs.  
    
 7. The YAML file contains a few lines of instructions (shown below) for the pipeline. Let's begin by updating the YAML with more specific instructions to build our application. 
 
@@ -857,14 +857,14 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
 Duration: 30 Minutes
 
 In this exercise, you will modify the existing pipeline to include a basic release stage that performs the following tasks:
-- automated deployment of build artifacts to Azure Pipeline storage. 
-- deploy to the three stages created earlier (dev, test, and production)
+- Automated deployment of build artifacts to Azure Pipeline storage. 
+- Deploy to the three stages created earlier (dev, test, and production).
 
 ### Task 1: Modify YAML definition to create a multistage pipeline
 
 1. Now that we have a great build working, we can modify the YAML file to include stages.   At first, we will add one stage for Build and then run that so we can see the difference in output.   
 
-    From left navigation, select **Pipelines** to view configured Pipelines.   From here, highlight your new pipeline definition and select Edit from the elipses to the right:  
+    From left navigation, select **Pipelines** to view configured Pipelines.   From here, highlight your new pipeline definition and select Edit from the ellipses to the right:  
 
     ![A screen showing pipeline instance edit menu.](images/stepbystep/media/image1000.png "Pipeline runs") 
 
@@ -874,7 +874,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
     
     On the left, is the YAML editor containing the pipeline definition and the Tasks panel to the right, has common components that can be added to the pipeline.   Selecting from the task panel to add a component first shows a property panel supporting custom configuration for your pipeline, allowing fast configuration, and the result is additional formatted YAML added directly to the pipeline definition with the configuration customization you provided. 
 
-2. Let's transform this pipeline to a multi-stage configuration byt adding the following configuration right below the *trigger* section to define a **Build Stage** in your YAML pipeline. 
+2. Let's transform this pipeline to a multi-stage configuration by adding the following configuration right below the *trigger* section to define a **Build Stage** in your YAML pipeline. 
 
     ```yml
         stages:
@@ -962,11 +962,11 @@ In this exercise, you will modify the existing pipeline to include a basic relea
     
 7. At this point you now have a **Build Stage** that builds your project and publishes an artifact to a known location in Azure Pipelines.   You also have a **Deploy Stage** that will deploy the artifact to your dev environment, however, you need to make some additional adjustments to this stage to tie everything together. 
 
-    Looking at the last taks of your build stage you can see that the publish task places the build artifacts in a specific location: 
+    Looking at the last task of your build stage you can see that the publish task places the build artifacts in a specific location: 
 
     ![In the code editor, the Publish Build Artifacts Tasks definition is highlighted.](images/stepbystep/media/image1011.png "Pipeline YAML Properties")
 
-    Your deploy stage needs to download the artifacts from the Build Stage published location in order to install them in the dev environment, and Azure Pipeliness has a task template for that.   
+    Your deploy stage needs to download the artifacts from the Build Stage published location in order to install them in the dev environment, and Azure Pipelines has a task template for that.   
     
     In the YAML editor, place your cursor at this position, right before the AzureRmWebAppDeployment task you just added:
 
@@ -989,20 +989,20 @@ In this exercise, you will modify the existing pipeline to include a basic relea
     ![Screen showing YAML code highlighted for indent check in YAML Editor.](images/stepbystep/media/image1015.png "YAML formatting in Editor")
     
     
-8.  The task you just added needs one additional property added in order to be able to execute properly.  We could have added this property using the UI, but let's modify the taks by editing the YAML directly.  
+8.  The task you just added needs one additional property added in order to be able to execute properly.  We could have added this property using the UI, but let's modify the task by editing the YAML directly.  
     
     In the editor, modify the following:
-    - change the **downloadPath** property to *'$(Build.ArtifactStagingDirectory)'*
-    - add a property *artifactName* to the task you just added, just under *downloadPath*, and set this new property to *"drop"*.   
+    - Change the **downloadPath** property to *'$(Build.ArtifactStagingDirectory)'*.
+    - Add a property *artifactName* to the task you just added, just under *downloadPath*, and set this new property to *"drop"*.   
     
-    Your Download Task  now matches the artifact staging directory that the Publish task above uses during the build stage.   
+    Your Download Task now matches the artifact staging directory that the Publish task above uses during the build stage.   
     
     Your YAML should now look like this:
 
     ![Screen showing YAML code highlighted on artifactName property for value edit in the YAML Editor.](images/stepbystep/media/image1016.png "Download Path YAML Property Configuration")
 
     
-9.  At this point, the deployment stage can find and download the build artifacts during exection. Reivew your YAML file for proper indentation and then select **Save** to commit changes to the pipeline.  
+9.  At this point, the deployment stage can find and download the build artifacts during execution. Review your YAML file for proper indentation and then select **Save** to commit changes to the pipeline.  
 
     ![Screen showing highlighted Save button on the pipeline YAML Editor.](images/stepbystep/media/image1017.png "Save Pipeline")
 
@@ -1043,7 +1043,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     ![Screen showing Edge browser showing development application.](images/stepbystep/media/image1025.png "Application Home Page")
 
-    A successful deployment!   In the next task we will add stages for deploying to Test and Production.   Once you deploy, you can use the this step to verify those sites too. 
+    A successful deployment!   In the next task we will add stages for deploying to Test and Production.   Once you deploy, you can use this step to verify those sites too. 
 
 ### Task 2: Add Test and Production Environments as stages in the pipeline
 
@@ -1070,7 +1070,7 @@ You could repeat the process in **Task 1** to add stages for Test and Production
 
     As before, add your commit message, and select **Save**.   This will save the YAML definition file contents, commit to the master branch and which will trigger a pipeline run.
 
-5. Let's go take a look at the pipeline run. Navigate to Pipeline view to view recently run pipelines.   You can see the run triggered from your commited change here.   
+5. Let's go take a look at the pipeline run. Navigate to Pipeline view to view recently run pipelines.   You can see the run triggered from your committed change here.   
     
     ![Screen showing Pipeline run with run details highlighted.](images/stepbystep/media/image1029.png "Pipeline Run")
 
@@ -1086,7 +1086,7 @@ You could repeat the process in **Task 1** to add stages for Test and Production
 
 6. At this point you have configured a working multistage pipeline that builds, publishes and deploy to two of your provisioned environments (Dev and Test).   Repeat the steps 1-5 above, to add a Test deployment stage to create a **Production Deployment Stage**.  Take careful note of the properties you changed above to edit them for the production environment, and save the pipeline configuration.
 
-7. If your configuration was successfull, this should have triggered a pipeline run that looks like this:
+7. If your configuration was successful, this should have triggered a pipeline run that looks like this:
 
     ![Screen showing Pipeline run.](images/stepbystep/media/image1032.png "Pipeline Runs")
 
@@ -1123,7 +1123,7 @@ Duration: 30 Minutes
 
 In this exercise, you will first set up a pull request policy for the master branch, then create a short-lived task branch.  In this branch you will make a small code change, commit, push the code, and finally, submit a pull request. 
 
-Then, you will merge the pull request into the master branch, triggering an automated build and release of your application.  For this exercise, you will use Azure DevOps workflow to complete the tasks, but keep in mind this same procss could be performed locally using the Azure Command Line Interface (CLI), or an IDE of your choice.
+Then, you will merge the pull request into the master branch, triggering an automated build and release of your application.  For this exercise, you will use Azure DevOps workflow to complete the tasks, but keep in mind this same process could be performed locally using the Azure Command Line Interface (CLI), or an IDE of your choice.
 
 ### Task 1: Set up a pull request policy
 
@@ -1136,7 +1136,7 @@ Then, you will merge the pull request into the master branch, triggering an auto
 
     ![Screen showing the branch policies for master screen with Check for linked work items and check for comment resolution checked and the add button for branch policy highlighted.](images/stepbystep/media/image1037.png "Configuring Branch Policy")
     
-    Lets unpack what these configurations do:
+    Let's unpack what these configurations do:
 
     The first check, *Check for linked work items* enables the build policy to require a work item to be included with a pull request.  The work item may be added with one of the commits, or added directly to the pull request.
 
@@ -1204,7 +1204,7 @@ Then, you will merge the pull request into the master branch, triggering an auto
     
     For the **Reviewers** field, type **Tailspin** and select **[TailspinToys]\TailspinToys Team** from the search results to assign a review to the TailspinToys Team (which you are a member of).  
     
-    A member of this team must review the pull request before it can be merged and the details details for the code change are included in the middle of the view.
+    A member of this team must review the pull request before it can be merged and the details for the code change are included in the middle of the view.
 
     ![On the screen, New pull request panel is shown with create button highlighted.](images/stepbystep/media/image1044.png "New Pull Request")
 
