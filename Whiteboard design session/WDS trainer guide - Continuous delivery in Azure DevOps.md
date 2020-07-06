@@ -251,7 +251,7 @@ Todd wants to improve the turnaround time for fixing these bugs, and he needs be
 
 ### Infographic for common scenarios
 
-![Common Scenarios for building a continuous deployment pipeline with Azure DevOps. Images include the icon for Azure DevOps, a Git repo, and a pipeline](images/commonscenarios.png "Common Scenarios for building a continuous deployment pipeline with Azure DevOps")
+![Common Scenarios for building a continuous deployment pipeline with Azure DevOps. Images include the icon for Azure DevOps, a Git repo, and a pipeline.](images/commonscenarios.png "Common Scenarios for building a continuous deployment pipeline with Azure DevOps")
 
 ## Step 2: Design a proof of concept solution
 
