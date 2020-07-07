@@ -143,7 +143,7 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
     After adding the code, it will look like this:
 
-    ![This is a screenshot of the code pasted inside the of the "parameters" object.](images/stepbystep/media/image24.png "Pasted block of JSON code")
+    ![This is a screenshot of the code pasted inside the of the "parameters" object.](images/stepbystep/media/image24.png "Pasted block of JSON code adding environments")
 
     Save the file.
 
@@ -175,7 +175,7 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
     Save the file.
 
-    ![This is a screenshot of the code pasted just below the element for the application insights extension in the "resources" array.](images/stepbystep/media/image39.png "Pasted block of JSON code")
+    ![This is a screenshot of the code pasted just below the element for the application insights extension in the "resources" array.](images/stepbystep/media/image39.png "Pasted block of JSON code adding staging deployment slot")
 
     The complete ARM template should look like the following:
 
@@ -434,7 +434,7 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
     >**Note**: If you've extracted the student files in a different directory than the one indicated in 'Before the hands-on lab' Task 2.2, you will get an error similar to *'[Errno 2] No such file or directory: '/home/username/studentfiles/armtemplate/azuredeploy.json'*. In this case, you should replace $HOME/studentfiles/armtemplate with the path of the directory you chose.
 
-    ![In the Azure Cloud Shell window, the command has been entered is we are prompted for the name of the resource group we want to deploy to.](images/stepbystep/media/image44.png "Azure Cloud Shell window")
+    ![In the Azure Cloud Shell window, the command has been entered is we are prompted for the name of the resource group we want to deploy to.](images/stepbystep/media/image44.png "Azure Cloud Shell-Creating resource groups")
 
 2.  Enter the name of a resource group you want to deploy the resources to (i.e. TailSpinToysRG). If it does not already exist, the template will create it. Then, press **Enter**.
 
@@ -446,13 +446,13 @@ Now that the template file has been uploaded, we'll deploy it several times to c
     
     For this first run, select the **dev** environment by entering **1** and then pressing **Enter**.
     
-    ![In the Azure Cloud Shell window, we are prompted for the environment we want to deploy to.](images/stepbystep/media/image46.png "Azure Cloud Shell") 
+    ![In the Azure Cloud Shell window, we are prompted for the environment we want to deploy to.](images/stepbystep/media/image46.png "Azure Cloud Shell-provisioning dev environment") 
 
 5.  Next, we're asked to supply an administrator login (username) for the PostgreSQL server and database. This will be the username credential you would need to enter to connect to your newly created database. 
     
     For the **administratorLogin**, enter a username value (e.g. *azureuser*) and then press **Enter**.
 
-    ![In the Azure Cloud Shell window, we are prompted for the administrative username for the PostgreSQL server and database we want to create.](images/stepbystep/media/image47.png "Azure Cloud Shell")
+    ![In the Azure Cloud Shell window, we are prompted for the administrative username for the PostgreSQL server and database we want to create.](images/stepbystep/media/image47.png "Azure Cloud Shell-entering administrator credentials")
 
 6.  Next, we're asked to supply an administrator password for the PostgreSQL server and database. This will be the password credential you would need to enter to connect to your newly created database.
 
@@ -462,11 +462,11 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
 7. This will kick off the provisioning process which takes a few minutes to create all the resources for the environment. This is indicated by the "Running" text displayed at the bottom of the Azure Cloud Shell while the command is executing.
 
-    ![The Azure Cloud Shell is executing the template based on the parameters we provided.](images/stepbystep/media/image49.png "Azure Cloud Shell")
+    ![The Azure Cloud Shell is executing the template based on the parameters we provided.](images/stepbystep/media/image49.png "Azure Cloud Shell-Running")
 
 8. After the template has completed, JSON is output to the Azure Cloud Shell window with a *Succeeded* message.
 
-    ![The Azure Cloud Shell has succeeded in executing the template based on the parameters we provided.](images/stepbystep/media/image50.png "Azure Cloud Shell")
+    ![The Azure Cloud Shell has succeeded in executing the template based on the parameters we provided.](images/stepbystep/media/image50.png "Azure Cloud Shell-Succeeded Highlighted")
 
     >**Note**: The above steps were used to provision the *dev* environment. Most of these same steps will be repeated for the *test* and *production* environments below.
 
@@ -484,7 +484,7 @@ The following steps are very similar to what was done in the previous task with 
 
     >**Note**: The specific names of the resources will be slightly different than what you see in the screenshot based on the unique identities assigned.
 
-    ![The Azure Portal is showing all the deployed resources for the resource group we have been using.](images/stepbystep/media/image998.png "Azure Portal Resources")
+    ![The Azure Portal is showing all the deployed resources for the resource group we have been using.](images/stepbystep/media/image998.png "Listed Azure Portal Resources")
 
 ## Exercise 2: Create Azure DevOps project and Git Repository
 
@@ -621,17 +621,17 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
 
 8. If the *Create a new personal access token* panel has appeared, skip to the next step. Otherwise, select the **+ New Token** button.
 
-    ![Forcing the 'Create a new personal access token' to appear](images/stepbystep/media/image133.png "Personal access tokens menu option")
+    ![Forcing the 'Create a new personal access token' to appear](images/stepbystep/media/image133.png "New Personal Access Token")
 
 9. In the *Create a new personal access token* panel, type in a descriptive name for the new token, and from the *Code* section, choose **Full** and **Status**.
 
-    ![Creating a new PAT (Personal Access Token) in Azure Devops](images/stepbystep/media/image134.png "Personal access tokens menu option")
+    ![Creating a new PAT (Personal Access Token) in Azure Devops](images/stepbystep/media/image134.png "Create a Personal Access Token")
 
 10. In the *Create a new personal access token* panel, select the **Create** button.
 
 11. From the success confirmation panel, select the **Copy to clipboard** button to copy the newly created PAT token to clipboard.
 
-    ![Copying the newly created PAT token to the clipboard](images/stepbystep/media/image135.png "Success confirmation page")
+    ![Copying the newly created PAT token to the clipboard](images/stepbystep/media/image135.png "PAT Success confirmation page")
 
 12. In Azure Cloud Shell, paste the PAT token and press **Enter**.   Git will push the contents of your local repository in Azure Cloud Shell to your new Azure DevOps project repository.  
 
@@ -832,7 +832,7 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
 12. Choose the **Save and run** button to save our new pipeline and also kick off the first build.
 
 
-    ![A screen showing the contents of the YAML editor. The Save and run button is highlighted.](images/stepbystep/media/image73.png "Reivew your pipeline YAML")    
+    ![A screen showing the contents of the YAML editor. The Save and run button is highlighted.](images/stepbystep/media/image73.png "Reivew your pipeline YAML - save highlighted")    
 
 13. When the editor process saves your YAML, Azure DevOps Pipelines creates a new source file called *azure-pipelines.yml* to the root of your TailspinToys repository. This is done through a git commit that Azure DevOps facilitates as part of the save process which also prompts you to enter a commit message. 
 
@@ -926,7 +926,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     Set your cursor on a new line at the end of your YAML definition, and note this will be the location where new YAML is added in the next step:
 
-    ![A screen showing preferred cursor location to add tasks using the YAML Editor Taks panel.](images/stepbystep/media/image1005.png "YAML Editor Cursor EOF")
+    ![A screen showing preferred cursor location to add tasks using the YAML Editor Task panel.](images/stepbystep/media/image1005.png "YAML Editor Cursor EOF")
 
 
 6. Using the Tasks panel, select the *Azure App Service Deploy* Task:  
@@ -1021,7 +1021,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
 12. When the **Build** stage completes, select the **Deploy** stage to follow each task:
 
-    ![Screen showing the Build and Deploy Stage recently added.](images/stepbystep/media/image1021.png "Pipeline Run Detail!")
+    ![Screen showing the Build and Deploy Stage recently added.](images/stepbystep/media/image1021.png "Deploy Stage Pipeline Run Detail!")
 
     Expand the **AzureRmWebAppDeployment** task to review the steps performed during the Azure deployment. Once the task completes, your app is live on Azure.
 
@@ -1232,7 +1232,7 @@ However, in this scenario, you will continue as if you are the only developer on
 
 3.  On selecting **Complete** in the previous step, a **Complete pull request** panel shows. Here you can add additional comments for the merge activity. 
 
-    ![Screen showing the Complete pull request panel box with Complete associated work items after merging and Delete new-heading after merging checked.  Customize merge commit message is unchecked.  Complete merge button is highlighted.](images/stepbystep/media/image1047.png "Complete Pull Request")
+    ![Screen showing the Complete pull request panel box with Complete associated work items after merging and Delete new-heading after merging checked.  Customize merge commit message is unchecked.  Complete merge button is highlighted.](images/stepbystep/media/image1047.png "Complete Merge for Pull Request")
 
     By selecting the **Delete new-heading after merging** option, our branch will be deleted after the merge has been completed and this feature keeps your repository clean of old branches help to eliminate the possibility of confusion.
 
@@ -1246,11 +1246,11 @@ However, in this scenario, you will continue as if you are the only developer on
 
     Because you configured continuous deployment using Azure DevOps Pipelines, an automated build was triggered:
 
-    ![Screen showing recent pipeline runs.   The most recent is related to completion of the pull request.](images/stepbystep/media/image1049.png "Pipeline Runs")
+    ![Screen showing recent pipeline runs.   The most recent is related to completion of the pull request.](images/stepbystep/media/image1049.png "Merged Pipeline Runs")
 
     And deployment to all stages executed immediately after the successful build:
 
-    ![Screen showing most recent pipeline run detail including each of the properly configured stages.](images/stepbystep/media/image1050.png "Pipeline Run Detials")
+    ![Screen showing most recent pipeline run detail including each of the properly configured stages.](images/stepbystep/media/image1050.png "Merged Pipeline Run Details")
 
     All stages green!   Nice job!
 
