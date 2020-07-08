@@ -472,11 +472,15 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
 ### Task 5: Create the test environment and deploy the template to Azure
 
-The following steps are very similar to what was done in the previous task with the exception that you are now creating the **test** environment. Repeat the above steps and select to create the **2. test** environment. You can use the same values as used in the dev environment.
+The following steps are very similar to what was done in the previous task with the exception that you are now creating the **test** environment. 
+
+Repeat the above steps and select to create the **2. test** environment. You can use the same values as used in the dev environment.
 
 ### Task 6: Create the production environment and deploy the template to Azure
 
-The following steps are very similar to what was done in the previous task with the exception that you are now creating the **production** environment. Repeat the above steps and select to create the **3. production** environment. You can use the same values as used in the dev environment.
+The following steps are very similar to what was done in the previous task with the exception that you are now creating the **production** environment. 
+
+Repeat the above steps and select to create the **3. production** environment. You can use the same values as used in the dev environment.
 
 ### Task 7: Review the resource groups
 
@@ -564,7 +568,7 @@ In this Task, you will configure the Azure DevOps with a Service Connection that
 
     Ensure **Grand access permissions to all pipelines** is checked
 
-    >**Note**  During the Service Connection creation process, you might be prompted to sign in to your Microsoft account if Azure DevOps detects it requires authentication. 
+    >**Note**: During the Service Connection creation process, you might be prompted to sign in to your Microsoft account if Azure DevOps detects it requires authentication. 
     
 7. And finally, select **Save**.   
  
