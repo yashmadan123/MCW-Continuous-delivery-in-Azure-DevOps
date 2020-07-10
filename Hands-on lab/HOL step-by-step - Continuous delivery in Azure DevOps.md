@@ -1045,7 +1045,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
     This will launch your default browser navigating to your development site:
 
 
-    ![Screen showing Edge browser showing development application.](images/stepbystep/media/image1025.png "Application Home Page")
+    ![Screen showing Microsoft Edge browser showing development application.](images/stepbystep/media/image1025.png "Application Home Page")
 
     A successful deployment!   In the next task we will add stages for deploying to Test and Production.   Once you deploy, you can use this step to verify those sites too. 
 
