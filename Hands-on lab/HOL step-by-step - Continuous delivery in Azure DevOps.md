@@ -901,7 +901,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
 3. Next, simply highlight the remainder of the YAML file that defines your build jobs and indent it four spaces (two tabs), thus making this definition a child of the build stage *jobs* node.   Your YAML should look like this now:
 
-    ![A screen showing highlight of build code under stage definition.](images/stepbystep/media/image1003.png "Formatting Build Stage YAML")
+    ![A screen showing highlight of build code under stage definition.](images/stepbystep/media/Image1003.png "Formatting Build Stage YAML")
 
 4. You now have a very simple multi-stage pipeline with a exactly one stage - a **Build Stage**.   
    
@@ -930,7 +930,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     Set your cursor on a new line at the end of your YAML definition, and note this will be the location where new YAML is added in the next step:
 
-    ![A screen showing preferred cursor location to add tasks using the YAML Editor Task panel.](images/stepbystep/media/image1005.png "YAML Editor Cursor EOF")
+    ![A screen showing preferred cursor location to add tasks using the YAML Editor Task panel.](images/stepbystep/media/Image1005.png "YAML Editor Cursor EOF")
 
 
 6. Using the Tasks panel, select the *Azure App Service Deploy* Task:  
