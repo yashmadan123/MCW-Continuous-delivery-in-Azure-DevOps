@@ -874,7 +874,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     This action shows the **Azure Pipelines YAML Editor** that you viewed after building your initial pipeline.   You will be using this editor to make changes to your azure-pipelines.yml definition in the next steps. 
 
-    ![A screen showing pipeline YAML Editor.](images/stepbystep/media/image1001.png "Pipeline YAML Editor with Task Panel") 
+    ![A screen showing pipeline YAML Editor.](images/stepbystep/media/Image1001.png "Pipeline YAML Editor with Task Panel") 
     
     On the left, is the YAML editor containing the pipeline definition and the Tasks panel to the right, has common components that can be added to the pipeline.   Selecting from the task panel to add a component first shows a property panel supporting custom configuration for your pipeline, allowing fast configuration, and the result is additional formatted YAML added directly to the pipeline definition with the configuration customization you provided. 
 
