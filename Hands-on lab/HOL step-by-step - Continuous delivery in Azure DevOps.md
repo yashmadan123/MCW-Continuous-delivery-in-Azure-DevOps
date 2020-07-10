@@ -529,31 +529,31 @@ In this Task, you will configure the Azure DevOps with a Service Connection that
 
 1. In Azure DevOps, ensure you are in the project that you just created, and from the bottom corner of the page, select **Project settings**..
     
-    ![In the TailspinToys project window, Repos is highlighted in the left-hand navigation.](images/stepbystep/media/image988.png "Azure DevOps Project Settings")
+    ![In left-hand navigation Azure DevOps Project Settings is highlighted.](images/stepbystep/media/image988.png "Azure DevOps Project Settings")
 
 2. Under Pipelines, select **Service connections**.
 
-    ![In the TailspinToys project window, Repos is highlighted in the left-hand navigation.](images/stepbystep/media/image989.png "Azure DevOps Service Connections")
+    ![In the left-hand navigation Service Connections is highlighted.](images/stepbystep/media/image989.png "Azure DevOps Service Connections")
 
 3. If this is your first service connection, you will see the below image and you can select **Create service connection** button to create your first service connection.
 
-    ![In the TailspinToys project window, Repos is highlighted in the left-hand navigation.](images/stepbystep/media/image990.png "Create Service Connection")
+    ![In Create First Service Connection Dialog, Create Service Connection is highlighted.](images/stepbystep/media/image990.png "Create Service Connection")
     
     However, if there are existing service connections you will see a view like below, can add a new one by selecting **New Service connection**:
 
-    ![In the TailspinToys project window, Repos is highlighted in the left-hand navigation.](images/stepbystep/media/image991.png "Service Connections View")
+    ![In Service Connection View, New Service Connection is highlighted.](images/stepbystep/media/image991.png "Service Connections View")
 
     In either case, you will get a **New service connection** panel showing common connection types.   
     
-    ![In the TailspinToys project window, Repos is highlighted in the left-hand navigation.](images/stepbystep/media/image992.png "New Service Connection")
+    ![In New Service Connection Panel, Azure Resource Manager is highlighted.](images/stepbystep/media/image992.png "New Service Connection")
 
 4. On this panel, **Select *Azure Resource Manager** and then select **Next**.
 
-    ![In the TailspinToys project window, Repos is highlighted in the left-hand navigation.](images/stepbystep/media/image993.png "Selecting Service Principal")
+    ![In New Service Connection Panel, Service Principal(automatic) radio button is highlighted.](images/stepbystep/media/image993.png "Selecting Service Principal")
    
 5. Near the top of the page, select **Service Principal (Automatic)** and select **Next** to view the **New Azure service connection** panel:
 
-    ![In the TailspinToys project window, Repos is highlighted in the left-hand navigation.](images/stepbystep/media/image994.png "New Azure Service Connection")
+    ![In New Service Connection Panel, Subscription(automatic) radio button and Service Connection Text Value are highlighted.](images/stepbystep/media/image994.png "New Azure Service Connection")
 
     
 6. On this panel ensure the following settings:
