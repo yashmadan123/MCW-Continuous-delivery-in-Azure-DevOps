@@ -14,7 +14,7 @@ In this lab, you will configure a developer environment and download the require
    * Azure Usename/Email: <inject key="AzureAdUserEmail"></inject>
    * Azure Password: <inject key="AzureAdUserPassword"></inject>
 
-    ![This is a screenshot of an icon used to launch the Azure Cloud Shell from the Azure Portal.](images/Setup/image3.png "Azure Cloud Shell launch icon")
+   ![This is a screenshot of an icon used to launch the Azure Cloud Shell from the Azure Portal.](images/Setup/image3.png "Azure Cloud Shell launch icon")
 1. After log in to Azure Cloud Shell select the Bash option from the Welcome to Azure Cloud shell dialog box and now you will see a You have no storage mounted box and click the option for Show advanced settings.
    1. Select Create new under Storage account and provide values as below:
       - **Storage account** : **storage<Deployementid>**
