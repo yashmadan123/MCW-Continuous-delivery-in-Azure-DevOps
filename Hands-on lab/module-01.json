@@ -1,0 +1,10 @@
+[ {
+  "Name": "Continuous delivery in Azure DevOps",
+  "Language": "English",
+  "Files": [
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/Before%20the%20HOL_02.md",
+      "Order": 1
+    }
+  ]
+} ]
