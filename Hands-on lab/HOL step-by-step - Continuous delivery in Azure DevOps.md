@@ -1016,8 +1016,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     ![Screen showing YAML code highlighted on conditions property for value edit in the YAML Editor](images/stepbystep/media/image1052.png "Conditional processing YAML Property Configuration")
 
-10.  The deployment should now happen only to builds within the master branch of your deployment even if they're the validation of a pull request.  Review your YAML file for proper indentation and then select **Save** to commit changes to the pipeline.  
-
+10.  The deployment should now happen only to builds within the master branch of your deployment even if they're the validation of a pull request.  Review your YAML file for proper indentation and then select **Save** to commit changes to the pipeline.
     ![Screen showing highlighted Save button on the pipeline YAML Editor.](images/stepbystep/media/image1017.png "Save Pipeline")
 
 11. Azure DevOps will prompt for the commit message and the commit goes directly to the master branch: 
