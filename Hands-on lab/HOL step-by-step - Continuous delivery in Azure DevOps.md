@@ -1006,15 +1006,24 @@ In this exercise, you will modify the existing pipeline to include a basic relea
     ![Screen showing YAML code highlighted on artifactName property for value edit in the YAML Editor.](images/stepbystep/media/image1016.png "Download Path YAML Property Configuration")
 
     
-9.  At this point, the deployment stage can find and download the build artifacts during execution. Review your YAML file for proper indentation and then select **Save** to commit changes to the pipeline.  
+9.  At this point, the deployment stage can find and download the build artifacts during execution. However, the deployments and downloads will publish the files with successful build or commit regardless of what branch it comes from. You can add the following conditions to your tasks to ensure the environment matches only the ones you are expecting to ensure pull requests that are coming in do not trigger deployments:
 
+    ```yml
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    ```
+
+    Note that the "refs/heads/**master**" is the reference to the branch name.  Move your cursor to a line after the `job: Deploy` and paste the line above.
+
+    ![Screen showing YAML code highlighted on conditions property for value edit in the YAML Editor](images/stepbystep/media/image1052.png "Conditional processing YAML Property Configuration")
+
+10.  The deployment should now happen only to builds within the master branch of your deployment even if they're the validation of a pull request.  Review your YAML file for proper indentation and then select **Save** to commit changes to the pipeline.
     ![Screen showing highlighted Save button on the pipeline YAML Editor.](images/stepbystep/media/image1017.png "Save Pipeline")
 
-10. Azure DevOps will prompt for the commit message and the commit goes directly to the master branch: 
+11. Azure DevOps will prompt for the commit message and the commit goes directly to the master branch: 
 
     ![Screen showing a commit panel with Save button highlighted.](images/stepbystep/media/image1018.png "Commit Confirmation")
     
-11. Since this changes the master branch, and your pipeline is configured to trigger on master, the pipeline will immediately run.   Using the left menu, navigate to **Pipelines** select the new build:
+12. Since this changes the master branch, and your pipeline is configured to trigger on master, the pipeline will immediately run.   Using the left menu, navigate to **Pipelines** select the new build:
 
     ![Screen showing left navigation options with Pipelines highlighted.](images/stepbystep/media/image1019.png "Azure DevOps LeftNav - Pipelines")
     
@@ -1023,7 +1032,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
     ![Screen showing recent pipeline run from the previous commit task with the Runs tab, build name and the Tasks item is highlighted.](images/stepbystep/media/image1020.png "Pipeline Run")
 
 
-12. When the **Build** stage completes, select the **Deploy** stage to follow each task:
+13. When the **Build** stage completes, select the **Deploy** stage to follow each task:
 
     ![Screen showing the Build and Deploy Stage recently added.](images/stepbystep/media/image1021.png "Deploy Stage Pipeline Run Detail!")
 
@@ -1032,7 +1041,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
     ![Screen showing stage execution log view with AzureRmWebAppDeployment highlighted.](images/stepbystep/media/image1022.png "Deployment Task Detail")
 
     
-13. **Congratulations!** You have just created your first multistage pipeline!  Now, let's verify your deployment.   
+14. **Congratulations!** You have just created your first multistage pipeline!  Now, let's verify your deployment.   
 
     Using **Azure Portal**, navigate to the resource group you created earlier to view your app services in this resource group .   Sort by **Type** Select the development app service:
 
@@ -1125,7 +1134,7 @@ Any commit to the master branch will automatically trigger a build, but you can 
 
 Duration: 30 Minutes
 
-In this exercise, you will first set up a pull request policy for the master branch, then create a short-lived task branch.  In this branch you will make a small code change, commit, push the code, and finally, submit a pull request. 
+In this exercise, you will first set up a pull request policy for the master branch, then create a short-lived task branch.  In this branch you will make a small code change, commit, push the code, and finally, submit a pull request with validation builds. 
 
 Then, you will merge the pull request into the master branch, triggering an automated build and release of your application.  For this exercise, you will use Azure DevOps workflow to complete the tasks, but keep in mind this same process could be performed locally using the Azure Command Line Interface (CLI), or an IDE of your choice.
 
