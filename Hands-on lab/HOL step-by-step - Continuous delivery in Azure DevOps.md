@@ -891,7 +891,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
    
    You can define whatever stages you want to reflect the true nature of your CI/CD process, and as an added benefit, users get better visibility to entire pipeline process.  
    
-   >**Note**: YAML is whitespace sensitive!   Indentation matters in a similar fashion as Python, so pay particular attention to formatting within this file.   The editor will highlight most formatting issues.  If you are off on your spacing at all, the file will likely contain errors, such as `Unexpected value 'steps'`
+   >**Note**: YAML is whitespace sensitive!  Indentation matters in a similar fashion as Python, so pay particular attention to formatting within this file.  The editor will highlight most formatting issues.  If you are off on your spacing at all, the file will likely contain errors, such as `Unexpected value 'steps'`.
    
    After adding this structure, your result should look like this:  
 
@@ -901,18 +901,18 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     ![A screen showing highlight of build code under stage definition.](images/stepbystep/media/Image1003.png "Formatting Build Stage YAML")
 
-    **Take a moment now to triple-check your indentation is correct**  
+    **Take a moment now to triple-check your indentation is correct**:  
 
     * trigger is not indented
     * stages is not indented
-    * pool is indented four spaces and lines up with the 'j' in 'job' above it.
-    * everything else is also appropriately indented (you should be able to collapse the file at this point, so that all that shows is the stage)  Note that your line numbers may differ slightly from what is shown. 
+    * Pool is indented four spaces and lines up with the 'j' in 'job' above it.
+    * Everything else is also appropriately indented (you should be able to collapse the file at this point, so that all that shows is the stage)  Note that your line numbers may differ slightly from what is shown. 
 
     ![An image showing the yaml collapsed to prove indentation is correct.](images/stepbystep/media/image1003a.png "Collapsed Build Stage YAML")
 
-4. You now have a very simple multi-stage pipeline with a exactly one stage - a **Build Stage**.   
+4. You now have a very simple multi-stage pipeline with exactly one stage - a **Build Stage**.   
    
-   Running the pipeline now would execute the pipeline as a single stage, and it would build exactly like it did before.   For now, be aware that using simple stage definitions like this means the stages execute in the order they are defined in the file.   More advanced pipeline definitions can support conditionals for dependency graphs that govern more complex stage execution.
+   Running the pipeline now would execute the pipeline as a single stage, and it would build exactly like it did before.  For now, be aware that using simple stage definitions like this means the stages execute in the order they are defined in the file.  More advanced pipeline definitions can support conditionals for dependency graphs that govern more complex stage execution.
 
    Now, let's add a **Deployment Stage** by adding the YAML below to the bottom of the pipeline definition:
 
@@ -933,7 +933,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     ![A screen showing simple Deploy Stage scaffolding.](images/stepbystep/media/image1004.png "Deploy Stage YAML")
 
-5. Now your pipeline definition file contains a *build stage and a deploy stage*.   For now, let's configure the deploy stage to deploy to the dev environment using deployment slots.   Then we can repeat this configuration to support test and production in a similar manner. perform the same action.  
+5. Now your pipeline definition file contains a *build stage and a deploy stage*.  For now, let's configure the deploy stage to deploy to the dev environment using deployment slots.   Then we can repeat this configuration to support test and production in a similar manner. perform the same action.  
 
     Set your cursor on a new line at the end of your YAML definition, and note this will be the location where new YAML is added in the next step:
 
