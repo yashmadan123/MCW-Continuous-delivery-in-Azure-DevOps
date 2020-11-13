@@ -895,7 +895,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
    
    After adding this structure, your result should look like this:  
 
-    ![A screen showing adding YAML stage code.](images/stepbystep/media/image1002.png "Build Stage YAML")
+    ![A screen showing adding YAML stage code.](images/stepbystep/media/image1002.png "Build Stage YAML")  
 
 3. Next, simply **highlight the remainder of the YAML file** that defines your build jobs and indent it four spaces (two tabs), thus making this definition a child of the build stage *jobs* node.   Your YAML should look like this now:
 
@@ -908,7 +908,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
     * pool is indented four spaces and lines up with the 'j' in 'job' above it.
     * everything else is also appropriately indented (you should be able to collapse the file at this point, so that all that shows is the stage)  Note that your line numbers may differ slightly from what is shown. 
 
-    ![An image showing the yaml collapsed to prove indentation is correct.](images/stepbystep/media/Image1003a.png "Collapsed Build Stage YAML")
+    ![An image showing the yaml collapsed to prove indentation is correct.](images/stepbystep/media/image1003a.png "Collapsed Build Stage YAML")
 
 4. You now have a very simple multi-stage pipeline with a exactly one stage - a **Build Stage**.   
    
