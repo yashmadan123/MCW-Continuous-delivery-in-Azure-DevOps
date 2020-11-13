@@ -866,7 +866,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
 ### Task 1: Modify YAML definition to create a multistage pipeline
 
-1. Now that we have a great build working, we can modify the YAML file to include stages.   At first, we will add one stage for Build and then run that so we can see the difference in output.   
+1. Now that we have a great build working, we can modify the YAML file to include stages.  At first, we will add one stage for Build and then run that so we can see the difference in output.   
 
     From left navigation, select **Pipelines** to view configured Pipelines.   From here, highlight your new pipeline definition and select Edit from the ellipses to the right:  
 
@@ -891,17 +891,23 @@ In this exercise, you will modify the existing pipeline to include a basic relea
    
    You can define whatever stages you want to reflect the true nature of your CI/CD process, and as an added benefit, users get better visibility to entire pipeline process.  
    
-   >**Note**: YAML is whitespace sensitive!   Indentation matters in a similar fashion as Python, so pay particular attention to formatting within this file.   The editor will highlight most formatting issues.  
-   
+   >**Note**: YAML is whitespace sensitive!   Indentation matters in a similar fashion as Python, so pay particular attention to formatting within this file.   The editor will highlight most formatting issues.  If you are off on your spacing at all, the file will likely contain errors, such as `Unexpected value 'steps'`
    
    After adding this structure, your result should look like this:  
 
     ![A screen showing adding YAML stage code.](images/stepbystep/media/image1002.png "Build Stage YAML")
 
-
-3. Next, simply highlight the remainder of the YAML file that defines your build jobs and indent it four spaces (two tabs), thus making this definition a child of the build stage *jobs* node.   Your YAML should look like this now:
+    
+3. Next, simply **highlight the remainder of the YAML file** that defines your build jobs and indent it four spaces (two tabs), thus making this definition a child of the build stage *jobs* node.   Your YAML should look like this now:
 
     ![A screen showing highlight of build code under stage definition.](images/stepbystep/media/Image1003.png "Formatting Build Stage YAML")
+
+    **Take a moment now to triple-check your indentation is correct**  
+
+    * trigger is not indented
+    * stages is not indented
+    * pool is indented four spaces and lines up with the 'j' in 'job' above it.
+    * everything else is also appropriately indented 
 
 4. You now have a very simple multi-stage pipeline with a exactly one stage - a **Build Stage**.   
    
