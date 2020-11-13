@@ -897,7 +897,6 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     ![A screen showing adding YAML stage code.](images/stepbystep/media/image1002.png "Build Stage YAML")
 
-    
 3. Next, simply **highlight the remainder of the YAML file** that defines your build jobs and indent it four spaces (two tabs), thus making this definition a child of the build stage *jobs* node.   Your YAML should look like this now:
 
     ![A screen showing highlight of build code under stage definition.](images/stepbystep/media/Image1003.png "Formatting Build Stage YAML")
