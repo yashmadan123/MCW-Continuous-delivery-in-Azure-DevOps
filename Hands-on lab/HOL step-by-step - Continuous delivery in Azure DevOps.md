@@ -907,7 +907,9 @@ In this exercise, you will modify the existing pipeline to include a basic relea
     * trigger is not indented
     * stages is not indented
     * pool is indented four spaces and lines up with the 'j' in 'job' above it.
-    * everything else is also appropriately indented 
+    * everything else is also appropriately indented (you should be able to collapse the file at this point, so that all that shows is the stage)  Note that your line numbers may differ slightly from what is shown. 
+
+    ![An image showing the yaml collapsed to prove indentation is correct.](images/stepbystep/media/Image1003a.png "Collapsed Build Stage YAML")
 
 4. You now have a very simple multi-stage pipeline with a exactly one stage - a **Build Stage**.   
    
