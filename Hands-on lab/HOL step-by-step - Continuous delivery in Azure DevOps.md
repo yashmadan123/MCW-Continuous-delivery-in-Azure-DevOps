@@ -1153,9 +1153,9 @@ Then, you will merge the pull request into the master branch, triggering an auto
 
     On the left navigation, select **Boards**, then use the green plus symbol in the `New` column to add a new work item.  Make sure to create the new work item as a `Product Backlog Item`.  
 
-    >NOTE: Instead of `Product Backlog Item`, you may see `User Story` or `TODO`, depending on what methodology you chose when you setup your organization (such as Agile, Scrum, or CMMI).    
+    >**Note**: Instead of `Product Backlog Item`, you may see `User Story` or `TODO`, depending on what methodology you chose when you setup your organization (such as Agile, Scrum, or CMMI).    
 
-    ![Screen showing how to use the navigation to create a new work item in the Azure Boards](images/stepbystep/media/image1036_01.png "Creating a new work item for tracking developer work")    
+    ![Screen showing how to use the navigation to create a new work item in the Azure Boards.](images/stepbystep/media/image1036_01.png "Creating a new work item for tracking developer work")    
 
     In the dialog that appears, enter the following text:  
 
@@ -1165,15 +1165,15 @@ Then, you will merge the pull request into the master branch, triggering an auto
 
     Save the work item so that it will be assigned a valid number and be ready to assign to the next pull request (created in a future exercise).   
 
-    ![Screen showing the created work item](images/stepbystep/media/image1036_02.png "Screen that shows the created work item")  
+    ![Screen showing the created work item.](images/stepbystep/media/image1036_02.png "Screen that shows the created work item")  
 
-    >Note: Your number will almost certainly be different than mine.  
+    >**Note**: Your number will almost certainly be different than mine.  
 
 2.  On left navigation, select **Repos** and select **Branches** to view branches associated with your repo.  For now there is only the master branch.   Select the ellipsis for the master branch and select **Branch policies**.
 
     ![Screen showing the Azure DevOps Branches screen indicating the selection of the Branches link on the far left, followed by selecting the ellipsis next to the master branch and choosing branch policies from the menu.](images/stepbystep/media/image1036.png "Selecting Branch Policy")  
 
-3.  Enable the policy by checking **Check for linked work items** (1) and **Check for comment resolution** (2)
+3.  Enable the policy by checking **Check for linked work items** (1) and **Check for comment resolution** (2).
 
     ![Screen showing the branch policies for master screen with Check for linked work items and check for comment resolution checked and the add button for branch policy highlighted.](images/stepbystep/media/image1037.png "Configuring Branch Policy")
     
