@@ -643,17 +643,11 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
 
     ![The newly created files show up in Repos > Files section.](images/stepbystep/media/image136.png "Azure DevOps Repo File View")
 
-14. Expand the **ClientApp** directory and select the **package.json** file.
-
-15. On line 27, change the value representing the version of the *rxjs* dependency, from *^6.0.0* to **6.0.0** (removing the '^' character).
-
-    ![The content of the package.json file is shown.](images/stepbystep/media/image138.png "Change rxjs dependency value to 6.0.0")
-
-16. Next, hover the **package-lock.json** file and from the context menu, choose **Delete**.
+14. Next, hover the **package-lock.json** file and from the context menu, choose **Delete**.
 
     ![The context menu shows up on the package-lock.json file, from the ClientApp directory.](images/stepbystep/media/image137.png "Deleting package-lock.json")
 
-17. Confirm the deletion, and when the commit panel shows, validate the commit message and choose **Commit**.
+15. Confirm the deletion, and when the commit panel shows, validate the commit message and choose **Commit**.
 
 ## Exercise 3: Create Azure DevOps build pipeline
 
@@ -735,10 +729,10 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
     ```yml
     steps:
     # Nuget Tool Installer Task
-    - task: NuGetToolInstaller@0
-      displayName: 'Use NuGet 4.4.1'
+    - task: NuGetToolInstaller@1
+      displayName: 'Use NuGet 5.5.1'
       inputs:
-        versionSpec: 4.4.1      
+        versionSpec: 5.5.1      
     ```
 
     Tasks are the building blocks of a pipeline. They describe the actions that are performed in sequence during an execution of the pipeline.
@@ -758,16 +752,16 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
     # Finds or downloads and caches the specified version spec of Node.js and adds it to the PATH
     - task: NodeTool@0
       inputs:
-        versionSpec: '10.x' 
+        versionSpec: '12.x' 
 
     # Build Task  
-    - task: VSBuild@1
+    - task: CotNetCoreCLI@2
       displayName: 'Build solution'
       inputs:
-        solution: '**/tailspintoysweb.csproj'
-        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
-        platform: 'any cpu'
-        configuration: 'release'
+        command: publish
+        publishWebProjects: True
+        arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'  
+        zipAfterPublish: true
 
     # Publish Task
     - task: PublishBuildArtifacts@1
@@ -793,16 +787,16 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
 
     steps:
     # Nuget Tool Installer Task
-    - task: NuGetToolInstaller@0
-      displayName: 'Use NuGet 4.4.1'
+    - task: NuGetToolInstaller@1
+      displayName: 'Use NuGet 5.5.1'
       inputs:
-        versionSpec: 4.4.1
+        versionSpec: 5.5.1
 
     # Node.js Tool Installer Task
     # Finds or downloads and caches the specified version spec of Node.js and adds it to the PATH
     - task: NodeTool@0
       inputs:
-        versionSpec: '10.x' 
+        versionSpec: '12.x' 
     
     # Nuget Restore Task
     - task: NuGetCommand@2
@@ -811,13 +805,13 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
         restoreSolution: '**/tailspintoysweb.csproj'
 
     # Build Task  
-    - task: VSBuild@1
+    - task: DotNetCoreCLI@2
       displayName: 'Build solution'
       inputs:
-        solution: '**/tailspintoysweb.csproj'
-        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
-        platform: 'any cpu'
-        configuration: 'release'
+        command: publish
+        publishWebProjects: True
+        arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'  
+        zipAfterPublish: true
 
     # Publish Task
     - task: PublishBuildArtifacts@1
@@ -833,30 +827,27 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
     - build the code project, producing build artifacts
     - publish build artifacts to a known artifact location within Azure DevOps Pipelines.   
 
-12. Choose the **Save and run** button to save our new pipeline and also kick off the first build.
-
+12. Choose the **Save and run** button to save our new pipeline and also kick off the first build.  
 
     ![A screen showing the contents of the YAML editor. The Save and run button is highlighted.](images/stepbystep/media/image73.png "Reivew your pipeline YAML - save highlighted")    
 
-13. When the editor process saves your YAML, Azure DevOps Pipelines creates a new source file called *azure-pipelines.yml* to the root of your TailspinToys repository. This is done through a git commit that Azure DevOps facilitates as part of the save process which also prompts you to enter a commit message. 
+13. When the editor process saves your YAML, Azure DevOps Pipelines creates a new source file called *azure-pipelines.yml* to the root of your TailspinToys repository. This is done through a git commit that Azure DevOps facilitates as part of the save process which also prompts you to enter a commit message.  
 
-
-    ![A screen that shows the commit of azure-pipelines.yml. The Save and run button is highlighted.](images/stepbystep/media/image74.png "Save and run")
+    ![A screen that shows the commit of azure-pipelines.yml. The Save and run button is highlighted.](images/stepbystep/media/image74.png "Save and run")  
     
-    By default, **Commit Message** will be populated for you but you may change this. Select the **Save and run** button at the bottom of the screen to commit the pipeline changes to your master branch.   
+    By default, **Commit Message** will be populated for you but you may change this. Select the **Save and run** button at the bottom of the screen to commit the pipeline changes to your master branch.  
 
-14. The build process will immediately begin and run through the steps defined in your new *azure-pipelines.yml* definition file, and the screen will refresh to show you the build process executing, in real-time. 
+14. The build process will immediately begin and run through the steps defined in your new *azure-pipelines.yml* definition file, and the screen will refresh to show you the build process executing, in real-time.  
 
+    ![A screen that shows the real-time output of the build process.](images/stepbystep/media/image76.png "Real-time output")  
 
-    ![A screen that shows the real-time output of the build process.](images/stepbystep/media/image76.png "Real-time output")   
+15. After the build process completes, you should see a green check mark next to each of the build pipeline steps.  
 
-15. After the build process completes, you should see a green check mark next to each of the build pipeline steps.
-  
-    ![A screen that shows a successfully completed build pipeline.](images/stepbystep/media/image77.png "Success") 
+    ![A screen that shows a successfully completed build pipeline.](images/stepbystep/media/image77.png "Success")  
     
-    **Congratulations**, you have just created your first build pipeline! In the next exercise, we will create a release pipeline that deploys your successful builds.
+    **Congratulations**, you have just created your first build pipeline! In the next exercise, we will create a release pipeline that deploys your successful builds.  
 
-## Exercise 4: Create Azure DevOps Multi Stage Release Pipeline
+## Exercise 4: Create Azure DevOps Multi Stage Release Pipeline  
 
 Duration: 30 Minutes
 
@@ -864,29 +855,29 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 - Automated deployment of build artifacts to Azure Pipeline storage. 
 - Deploy to the three stages created earlier (dev, test, and production).
 
-### Task 1: Modify YAML definition to create a multistage pipeline
+### Task 1: Modify YAML definition to create a multistage pipeline  
 
-1. Now that we have a great build working, we can modify the YAML file to include stages.  At first, we will add one stage for Build and then run that so we can see the difference in output.   
+1. Now that we have a great build working, we can modify the YAML file to include stages.  At first, we will add one stage for Build and then run that so we can see the difference in output.  
 
     From left navigation, select **Pipelines** to view configured Pipelines.   From here, highlight your new pipeline definition and select Edit from the ellipses to the right:  
 
-    ![A screen showing pipeline instance edit menu.](images/stepbystep/media/image1000.png "Pipeline runs") 
+    ![A screen showing pipeline instance edit menu.](images/stepbystep/media/image1000.png "Pipeline runs")  
 
-    This action shows the **Azure Pipelines YAML Editor** that you viewed after building your initial pipeline.   You will be using this editor to make changes to your azure-pipelines.yml definition in the next steps. 
+    This action shows the **Azure Pipelines YAML Editor** that you viewed after building your initial pipeline.   You will be using this editor to make changes to your azure-pipelines.yml definition in the next steps.  
 
-    ![A screen showing pipeline YAML Editor.](images/stepbystep/media/Image1001.png "Pipeline YAML Editor with Task Panel") 
+    ![A screen showing pipeline YAML Editor.](images/stepbystep/media/Image1001.png "Pipeline YAML Editor with Task Panel")  
     
-    On the left, is the YAML editor containing the pipeline definition and the Tasks panel to the right, has common components that can be added to the pipeline.   Selecting from the task panel to add a component first shows a property panel supporting custom configuration for your pipeline, allowing fast configuration, and the result is additional formatted YAML added directly to the pipeline definition with the configuration customization you provided. 
+    On the left, is the YAML editor containing the pipeline definition and the Tasks panel to the right, has common components that can be added to the pipeline.   Selecting from the task panel to add a component first shows a property panel supporting custom configuration for your pipeline, allowing fast configuration, and the result is additional formatted YAML added directly to the pipeline definition with the configuration customization you provided.  
 
-2. Let's transform this pipeline to a multi-stage configuration by adding the following configuration right below the *trigger* section to define a **Build Stage** in your YAML pipeline. 
+2. Let's transform this pipeline to a multi-stage configuration by adding the following configuration right below the *trigger* section to define a **Build Stage** in your YAML pipeline.  
 
-    ```yml
+    ```yml  
         stages:
         - stage: Build
           displayName: 'Build Stage'
           jobs:
           - job: Build
-    ```
+    ```  
    This is the first step to a multi-stage pipeline!  
    
    You can define whatever stages you want to reflect the true nature of your CI/CD process, and as an added benefit, users get better visibility to entire pipeline process.  
@@ -1052,59 +1043,57 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     Using **Azure Portal**, navigate to the resource group you created earlier to view your app services in this resource group .   Sort by **Type** Select the development app service:
 
-    ![Screen showing Azure Portal provisioned assets in lab resource group , the dev Web App Service and sorted type column header are highlighted.](images/stepbystep/media/image1023.png "Azure Portal Resources")
+    ![Screen showing Azure Portal provisioned assets in lab resource group , the dev Web App Service and sorted type column header are highlighted.](images/stepbystep/media/image1023.png "Azure Portal Resources")  
 
-    On the App Service Overview, select **Browse**:
+    On the App Service Overview, select **Browse**:  
 
-    ![Screen showing Azure Portal detail view of provisioned development web app service with Browse highlighted.](images/stepbystep/media/image1024.png "Azure Portal - App Service Detail")
+    ![Screen showing Azure Portal detail view of provisioned development web app service with Browse highlighted.](images/stepbystep/media/image1024.png "Azure Portal - App Service Detail")  
 
-    This will launch your default browser navigating to your development site:
+    This will launch your default browser navigating to your development site:  
 
+    ![Screen showing Microsoft Edge browser showing development application.](images/stepbystep/media/image1025.png "Application Home Page")  
 
-    ![Screen showing Microsoft Edge browser showing development application.](images/stepbystep/media/image1025.png "Application Home Page")
+    A successful deployment!   In the next task we will add stages for deploying to Test and Production.   Once you deploy, you can use this step to verify those sites too.  
 
-    A successful deployment!   In the next task we will add stages for deploying to Test and Production.   Once you deploy, you can use this step to verify those sites too. 
+### Task 2: Add Test and Production Environments as stages in the pipeline  
 
-### Task 2: Add Test and Production Environments as stages in the pipeline
+You could repeat the process in **Task 1** to add stages for Test and Production by using the Tasks panel.  However, the beauty of the unified YAML pipeline definition is the speed at which you can "copy-paste" the Development Deploy Stage within the YAML editor, and then just change the particular values for your Test and Production environments.   Let's add a Test deployment stage now.  
 
-You could repeat the process in **Task 1** to add stages for Test and Production by using the Tasks panel.  However, the beauty of the unified YAML pipeline definition is the speed at which you can "copy-paste" the Development Deploy Stage within the YAML editor, and then just change the particular values for your Test and Production environments.   Let's add a Test deployment stage now. 
-
-    
 1. Return to Azure DevOps Pipeline view and select your new multistage pipeline and select **Edit** for the YAML editor.   
 
-    Scroll down to the Development Deploy Stage and highlight and copy the script for that entire stage:
+    Scroll down to the Development Deploy Stage and highlight and copy the script for that entire stage:  
 
-    ![Screen showing YAML Editor and Development Deployment Stage is highlighted for copy-paste operation.](images/stepbystep/media/image1026.png "Pipeline YAML Editor")
+    ![Screen showing YAML Editor and Development Deployment Stage is highlighted for copy-paste operation.](images/stepbystep/media/image1026.png "Pipeline YAML Editor")  
 
-2. Move your cursor to the very end of the YAML definition file and paste the copied development environment deployment stage code.  Now you can look though the newly pasted stage and change certain properties to match your Test environment.  Begin by changing the **stage:** string name property to *TestDeploy* and then, change the **DisplayName** property to *Test Deploy Stage*. 
+2. Move your cursor to the very end of the YAML definition file and paste the copied development environment deployment stage code.  Now you can look though the newly pasted stage and change certain properties to match your Test environment.  Begin by changing the **stage:** string name property to *TestDeploy* and then, change the **DisplayName** property to *Test Deploy Stage*.  
 
-3. Move to the nested Deployment Task, and change **WebAppName** to match the Web App Name for your test environment, in this case *tailspintoys-test-\<randomstring>* 
+3. Move to the nested Deployment Task, and change **WebAppName** to match the Web App Name for your test environment, in this case *tailspintoys-test-\<randomstring>*  
 
-4. Leave every other property the same.   Your YAML should now look like this: 
+4. Leave every other property the same.   Your YAML should now look like this:  
 
-    ![Screen showing YAML Editor with added Test Deployment Stage.](images/stepbystep/media/image1027.png "Pipeline YAML Test Deployment Stage")
+    ![Screen showing YAML Editor with added Test Deployment Stage.](images/stepbystep/media/image1027.png "Pipeline YAML Test Deployment Stage")  
 
     Select **Save**.   
     
-    ![Screen showing Commit panel with.](images/stepbystep/media/image1028.png "Commit Confirmation")
+    ![Screen showing Commit panel with.](images/stepbystep/media/image1028.png "Commit Confirmation")  
 
-    As before, add your commit message, and select **Save**.   This will save the YAML definition file contents, commit to the master branch and which will trigger a pipeline run.
+    As before, add your commit message, and select **Save**.   This will save the YAML definition file contents, commit to the master branch and which will trigger a pipeline run.  
 
-5. Let's go take a look at the pipeline run. Navigate to Pipeline view to view recently run pipelines.   You can see the run triggered from your committed change here.   
+5. Let's go take a look at the pipeline run. Navigate to Pipeline view to view recently run pipelines.   You can see the run triggered from your committed change here.  
     
-    ![Screen showing Pipeline run with run details highlighted.](images/stepbystep/media/image1029.png "Pipeline Run")
+    ![Screen showing Pipeline run with run details highlighted.](images/stepbystep/media/image1029.png "Pipeline Run")  
 
-    Select this newest run and let's dig deeper.
+    Select this newest run and let's dig deeper.  
 
-    ![Screen showing pipeline run details with multiple stages now added.](images/stepbystep/media/image1030.png "Pipeline Run Detail")
+    ![Screen showing pipeline run details with multiple stages now added.](images/stepbystep/media/image1030.png "Pipeline Run Detail")  
 
-    In this view, you can see that your multistage pipeline now has 3 stages:  Build, Dev, Test.   
+    In this view, you can see that your multistage pipeline now has 3 stages:  Build, Dev, Test.    
     
-    Selecting the **Test Deploy Stage** flow box shows you the Jobs detail view with access to all the tasks that executed.   Note that on the **AzureRmWebAppDeployment** task, you can see navigable links for deployment history and the application URL:
+    Selecting the **Test Deploy Stage** flow box shows you the Jobs detail view with access to all the tasks that executed.   Note that on the **AzureRmWebAppDeployment** task, you can see navigable links for deployment history and the application URL:  
 
-    ![Screen showing Pipeline Job Detail View with AzureRmWebAppDeployment task selected.  Hightlighted are the deployment log and app URL.](images/stepbystep/media/image1031.png "Deployement Taks Detail")
+    ![Screen showing Pipeline Job Detail View with AzureRmWebAppDeployment task selected.  Hightlighted are the deployment log and app URL.](images/stepbystep/media/image1031.png "Deployement Taks Detail")  
 
-6. At this point you have configured a working multistage pipeline that builds, publishes and deploy to two of your provisioned environments (Dev and Test).   Repeat the steps 1-5 above, to add a Test deployment stage to create a **Production Deployment Stage**.  Take careful note of the properties you changed above to edit them for the production environment, and save the pipeline configuration.
+6. At this point you have configured a working multistage pipeline that builds, publishes and deploy to two of your provisioned environments (Dev and Test).   Repeat the steps 1-5 above, to add a Test deployment stage to create a **Production Deployment Stage**.  Take careful note of the properties you changed above to edit them for the production environment, and save the pipeline configuration.  
 
 7. If your configuration was successful, this should have triggered a pipeline run that looks like this:
 
