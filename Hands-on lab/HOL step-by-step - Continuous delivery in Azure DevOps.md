@@ -36,8 +36,9 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Task 3: Add a deployment slot for the "staging" version of the site](#task-3-add-a-deployment-slot-for-the-staging-version-of-the-site)
     - [Task 4: Create the dev environment and deploy the template to Azure](#task-4-create-the-dev-environment-and-deploy-the-template-to-azure)
     - [Task 5: Create the test environment and deploy the template to Azure](#task-5-create-the-test-environment-and-deploy-the-template-to-azure)
-    - [Task 6: Create the production environment and deploy the template to Azure](#task-6-create-the-production-environment-and-deploy-the-template-to-azure)
-    - [Task 7: Review the resource groups](#task-7-review-the-resource-groups)
+    - [Task 6: Create the production environment and deploy the template to Azure](#task-6-create-the-production-environment-and-deploy-the-template-to-azure)  
+    - [Task 7: Update the deployed App Services and Slots to use .NET 5](#task-7-update-the-deployed-app-services-and-slots-to-use-net-5)  
+    - [Task 8: Review the resource groups](#task-8-review-the-resource-groups)
   - [Exercise 2: Create Azure DevOps project and Git Repository](#exercise-2-create-azure-devops-project-and-git-repository)
     - [Task 1: Create Azure DevOps Account](#task-1-create-azure-devops-account)
     - [Task 2: Create a Service Connection](#task-2-create-a-service-connection)
@@ -506,7 +507,7 @@ After all of your environments are deployed, navigate to the azure portal and up
 
     Lastly, **do not forget to do this for all six entries, especially the staging slots where your pipeline will deploy the solutions**.
 
-### Task 7: Review the resource groups
+### Task 8: Review the resource groups
 
 1. In the Azure Portal, navigate to the resource group where all of the resources have been deployed. It should look similar to the screenshot below.
 
