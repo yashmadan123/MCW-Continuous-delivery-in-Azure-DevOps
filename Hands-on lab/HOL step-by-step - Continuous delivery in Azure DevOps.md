@@ -429,13 +429,20 @@ Now that the template file has been uploaded, we'll deploy it several times to c
     echo "Enter the location (i.e. westus, centralus, eastus):" &&
     read location
     ```  
-    Next, create the resource group:
+
+    Enter the name of a resource group you want to deploy the resources to (i.e. TailSpinToysRG). If it does not already exist, the template will create it. Then, press **Enter**  
+
+    Next, you're prompted to enter an Azure region (location) where you want to deploy your resources to (i.e. westus, centralus, eastus). 
+    
+    Enter the name of an Azure region and then press **Enter**.
+
+2. Create the resource group:
 
     ```bash
     az group create --name $resourceGroupName --location "$location"
     ```  
 
-    Validate that you are in the correct directory. Run an `ls` command and you should see the output `azuredeploy.json`.  If you don't see that file, use `cd <directory>` to move to the correct folder.  
+3. Validate that you are in the correct directory. Run an `ls` command and you should see the output `azuredeploy.json`.  If you don't see that file, use `cd <directory>` to move to the correct folder.  
 
     ```bash  
     ls
@@ -450,32 +457,19 @@ Now that the template file has been uploaded, we'll deploy it several times to c
     ```bash  
     az deployment group create --resource-group $resourceGroupName --template-file "azuredeploy.json"
     ```  
-    
-    >**Note**: This command is designed to prompt us to enter the resource group name and Azure region (location) we want to deploy our resources to. The script then takes our inputs and passes them as parameters to the Azure CLI command that calls our recently uploaded template file.
-
-    >**Note**: If you've extracted the student files in a different directory than the one indicated in 'Before the hands-on lab' Task 2.2, you will get an error similar to *'[Errno 2] No such file or directory: '/home/username/studentfiles/armtemplate/azuredeploy.json'*. In this case, you should replace $HOME/studentfiles/armtemplate with the path of the directory you chose.
-
-    ![In the Azure Cloud Shell window, the command has been entered is we are prompted for the name of the resource group we want to deploy to.](images/stepbystep/media/image44.png "Azure Cloud Shell-Creating resource groups")
-
-2.  Enter the name of a resource group you want to deploy the resources to (i.e. TailSpinToysRG). If it does not already exist, the template will create it. Then, press **Enter**.
-
-3.  Next, we're prompted to enter an Azure region (location) where we want to deploy our resources to (i.e. westus, centralus, eastus). 
-    
-    Enter the name of an Azure region and then press **Enter**.
-   
-4.  Next, we're asked to enter a choice for environments we want to deploy to. The template will use our choice to concatenate the name of the environment with the name of the resource during provisioning. 
+4.  Next, you're asked to enter a choice for environments you want to deploy to. The template will use your choice to concatenate the name of the environment with the name of the resource during provisioning. 
     
     For this first run, select the **dev** environment by entering **1** and then pressing **Enter**.
     
     ![In the Azure Cloud Shell window, we are prompted for the environment we want to deploy to.](images/stepbystep/media/image46.png "Azure Cloud Shell-provisioning dev environment") 
 
-5.  Next, we're asked to supply an administrator login (username) for the PostgreSQL server and database. This will be the username credential you would need to enter to connect to your newly created database. 
+5.  Supply an administrator login (username) for the PostgreSQL server and database. This will be the username credential you would need to enter to connect to your newly created database. 
     
     For the **administratorLogin**, enter a username value (e.g. *azureuser*) and then press **Enter**.
 
     ![In the Azure Cloud Shell window, we are prompted for the administrative username for the PostgreSQL server and database we want to create.](images/stepbystep/media/image47.png "Azure Cloud Shell-entering administrator credentials")
 
-6.  Next, we're asked to supply an administrator password for the PostgreSQL server and database. This will be the password credential you would need to enter to connect to your newly created database.
+6.  Supply an administrator password for the PostgreSQL server and database. This will be the password credential you would need to enter to connect to your newly created database.
 
     >**Note**: The password must meet complexity requirements of 8 or more characters, must contain upper and lower case characters, must contain at least one number and at least one special character, e.g. "Database2020!"
 
