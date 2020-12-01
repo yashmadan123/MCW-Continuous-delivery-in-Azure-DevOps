@@ -76,13 +76,7 @@ In this lab, you will configure a developer environment and download the require
 1.  Using the Azure Cloud Shell, you can download the file by executing the following command inside the Cloud Shell window (all on one line):
 
     ```bash
-    curl -o studentfiles.zip https://cloudworkshop.blob.core.windows.net/agile-continous-delivery/studentfiles.zip
-    ```  
-
-    TODO: DO NOT MERGE THIS
-    INSTEAD: UPDATE The files at the storage location above and remove this:
-    ```bash  
-    curl -o studentfiles.zip https://github.com/opsgilitybrian/MCW-Continuous-delivery-in-Azure-DevOps/raw/dotnet-5-updates/Hands-on%20lab/support/studentfiles.zip
+    curl -o studentfiles.zip https://cloudworkshop.blob.core.windows.net/agile-continous-delivery/studentfiles_dn5.zip
     ```  
 
 2.  Extract the contents of the file to the new folder. Using the Azure Cloud Shell, you can execute the following command inside the Cloud Shell window:
