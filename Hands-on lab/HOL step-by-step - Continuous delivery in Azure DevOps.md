@@ -652,6 +652,8 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
     git push -u origin --all
     ```
 
+    ![Pushing code to Azure DevOps](images/stepbystep/media/image1064.png "The password is not shown when you paste it, but the PAT allows you to push the code to your Azure DevOps Repo")  
+
 5. In case the *Password for 'https://\<your-org>@dev.azure.com':* prompt appears, follow the next steps to generate a PAT (Personal Access Token) for your Azure DevOps organization. Otherwise, skip to step 13.
     
     > **Note**: **DO NOT CLOSE AZURE CLOUD SHELL**. Use a different browser tab for the steps for creating a new PAT token.  Also, these PAT configuration steps are also useful when using a multi-factored protected user account with Azure DevOps.
@@ -682,9 +684,11 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
 
     ![The newly created files show up in Repos > Files section.](images/stepbystep/media/image136.png "Azure DevOps Repo File View")
 
-14. Next, hover the **package-lock.json** file and from the context menu, choose **Delete**.
+14. In the files for your repo, navigate to the folder `Client App -> src`.  If there is a file named **package-lock.json**, hover on the file, and from the context menu, choose **Delete**.
 
-    ![The context menu shows up on the package-lock.json file, from the ClientApp directory.](images/stepbystep/media/image137.png "Deleting package-lock.json")
+    ![The context menu shows up on the package-lock.json file, from the ClientApp directory.](images/stepbystep/media/image137.png "Deleting package-lock.json")  
+
+    >Note: If there is no package.json file then you don't need to do anything else here.  You can skip to Exercise 3. 
 
 15. Confirm the deletion, and when the commit panel shows, validate the commit message and choose **Commit**.
 
@@ -824,6 +828,9 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
       - visualstudio
       - vstest
 
+    variables:
+      buildConfiguration: 'Release'
+
     steps:
     # Nuget Tool Installer Task
     - task: NuGetToolInstaller@1
@@ -948,8 +955,8 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
 
     ```yml
-   - stage: DevDeploy
-     displayName: 'Dev Deploy Stage'
+    - stage: DevDeploy  
+      displayName: 'Dev Deploy Stage'
       jobs:
       - job: Deploy
         pool:
