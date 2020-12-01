@@ -777,7 +777,7 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
         versionSpec: '12.x' 
 
     # Build Task  
-    - task: CotNetCoreCLI@2
+    - task: DotNetCoreCLI@2
       displayName: 'Build solution'
       inputs:
         command: publish
