@@ -37,8 +37,9 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Task 4: Create the dev environment and deploy the template to Azure](#task-4-create-the-dev-environment-and-deploy-the-template-to-azure)
     - [Task 5: Create the test environment and deploy the template to Azure](#task-5-create-the-test-environment-and-deploy-the-template-to-azure)
     - [Task 6: Create the production environment and deploy the template to Azure](#task-6-create-the-production-environment-and-deploy-the-template-to-azure)  
-    - [Task 7: Update the deployed App Services and Slots to use .NET 5](#task-7-update-the-deployed-app-services-and-slots-to-use-net-5)  
-    - [Task 8: Review the resource groups](#task-8-review-the-resource-groups)
+    - [Task 7: Review the resource groups](#task-7-review-the-resource-groups)
+    - [Task 8: Update the deployed App Services and Slots to use .NET 5](#task-8-update-the-deployed-app-services-and-slots-to-use-net-5)  
+
   - [Exercise 2: Create Azure DevOps project and Git Repository](#exercise-2-create-azure-devops-project-and-git-repository)
     - [Task 1: Create Azure DevOps Account](#task-1-create-azure-devops-account)
     - [Task 2: Create a Service Connection](#task-2-create-a-service-connection)
@@ -483,11 +484,19 @@ The following steps are very similar to what was done in the previous task with 
 
 Repeat the above steps and select to create the **3. production** environment. You can use the same values as used in the dev environment.
 
-### Task 7: Update the deployed App Services and Slots to use .NET 5   
+### Task 7: Review the resource groups
+
+1. In the Azure Portal, navigate to the resource group where all of the resources have been deployed. It should look similar to the screenshot below.
+
+    >**Note**: The specific names of the resources will be slightly different than what you see in the screenshot based on the unique identities assigned.
+
+    ![The Azure Portal is showing all the deployed resources for the resource group we have been using.](images/stepbystep/media/image998.png "Listed Azure Portal Resources")  
+
+### Task 8: Update the deployed App Services and Slots to use .NET 5   
 
 After all of your environments are deployed, navigate to the azure portal and update all 3 app services and their corresponding staging slots to use the .Net 5 framework.  
 
-1. Open your resource group and sort the objects by type  
+1. In the window opened from the previous step, sort the deployed resources by type to get the App Services and their slots listed as the first six items (remember that the unique names will be different for you).  
 
     ![Review your resources sorted by type.](images/stepbystep/media/image1060.png "All of the resource group resources are listed, sorted by type so that app service and slots are listed first.  All three app services and their slots are selected for emphasis")  
 
@@ -506,14 +515,6 @@ After all of your environments are deployed, navigate to the azure portal and up
     >NOTE: The `(Early Access)` will likely go away at some point. When it does, just select the `.NET 5` option.
 
     Lastly, **do not forget to do this for all six entries, especially the staging slots where your pipeline will deploy the solutions**.
-
-### Task 8: Review the resource groups
-
-1. In the Azure Portal, navigate to the resource group where all of the resources have been deployed. It should look similar to the screenshot below.
-
-    >**Note**: The specific names of the resources will be slightly different than what you see in the screenshot based on the unique identities assigned.
-
-    ![The Azure Portal is showing all the deployed resources for the resource group we have been using.](images/stepbystep/media/image998.png "Listed Azure Portal Resources")
 
 ## Exercise 2: Create Azure DevOps project and Git Repository
 
