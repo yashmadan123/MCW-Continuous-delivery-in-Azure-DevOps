@@ -470,28 +470,6 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
     >**Note**: The above steps were used to provision the *dev* environment. Most of these same steps will be repeated for the *test* and *production* environments below.  
 
-9. After all of your environments are deployed, navigate to the azure portal and update all 6 app services to use the .Net 5 framework.  
-
-    Open your resource group and sort the objects by type  
-
-    ![Review your resources sorted by type.](images/stepbystep/media/image1060.png "All of the resource group resources are listed, sorted by type so that app service and slots are listed first.  All three app services and their slots are selected for emphasis")  
-
-    For each of the three app services and their corresponding slots, you will do the following:  
-
-    * Right-click on the name and select 'open in new tab'  
-
-    ![Open the resource in a new tab.](images/stepbystep/media/image1061.png "the first link is selected to open in a new tab")  
-
-    * In the new tab, browse to configuration, then select `General Settings`.  On the General Settings tab, select the `.Net 5 (Early Access)` item from the dropdown for the .NET Framework Version.  
-
-    ![Update the .NET Framework version.](images/stepbystep/media/image1062.png "select the option for the .NET 5 framework in the dropdown")  
-
-    After making the change, don't forget to `Save` the changes at the top
-
-    >NOTE: The `(Early Access)` will likely go away at some point. When it does, just select the `.NET 5` option.
-
-    Lastly, **do not forget to do this for all six entries, especially the staging slots where your pipeline will deploy the solutions**.
-
 ### Task 5: Create the test environment and deploy the template to Azure
 
 The following steps are very similar to what was done in the previous task with the exception that you are now creating the **test** environment. 
@@ -503,6 +481,30 @@ Repeat the above steps and select to create the **2. test** environment. You can
 The following steps are very similar to what was done in the previous task with the exception that you are now creating the **production** environment. 
 
 Repeat the above steps and select to create the **3. production** environment. You can use the same values as used in the dev environment.
+
+### Task 7: Update the deployed App Services and Slots to use .NET 5   
+
+After all of your environments are deployed, navigate to the azure portal and update all 3 app services and their corresponding staging slots to use the .Net 5 framework.  
+
+1. Open your resource group and sort the objects by type  
+
+    ![Review your resources sorted by type.](images/stepbystep/media/image1060.png "All of the resource group resources are listed, sorted by type so that app service and slots are listed first.  All three app services and their slots are selected for emphasis")  
+
+2. For each of the three app services and their corresponding slots, you will do the following:  
+
+    * **Right-click on the name and select 'open in new tab'**  
+
+    ![Open the resource in a new tab.](images/stepbystep/media/image1061.png "the first link is selected to open in a new tab")  
+
+    * **In the new tab, browse to configuration, then select `General Settings`.  On the General Settings tab, select the `.Net 5 (Early Access)` item from the dropdown for the .NET Framework Version.**  
+
+    ![Update the .NET Framework version.](images/stepbystep/media/image1062.png "select the option for the .NET 5 framework in the dropdown")  
+
+    **After making the change, don't forget to `Save` the changes at the top**
+
+    >NOTE: The `(Early Access)` will likely go away at some point. When it does, just select the `.NET 5` option.
+
+    Lastly, **do not forget to do this for all six entries, especially the staging slots where your pipeline will deploy the solutions**.
 
 ### Task 7: Review the resource groups
 
