@@ -650,9 +650,7 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
     ```bash
     git remote add origin https://<your-org>@dev.azure.com/<your-org>/TailspinToys/_git/TailspinToys
     git push -u origin --all
-    ```
-
-    ![Pushing code to Azure DevOps](images/stepbystep/media/image1064.png "The password is not shown when you paste it, but the PAT allows you to push the code to your Azure DevOps Repo")  
+    ```  
 
 5. In case the *Password for 'https://\<your-org>@dev.azure.com':* prompt appears, follow the next steps to generate a PAT (Personal Access Token) for your Azure DevOps organization. Otherwise, skip to step 13.
     
@@ -679,6 +677,8 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
     ![Copying the newly created PAT token to the clipboard](images/stepbystep/media/image135.png "PAT Success confirmation page")
 
 12. In Azure Cloud Shell, paste the PAT token and press **Enter**.   Git will push the contents of your local repository in Azure Cloud Shell to your new Azure DevOps project repository.  
+
+    ![Pushing code to Azure DevOps](images/stepbystep/media/image1064.png "The password is not shown when you paste it, but the PAT allows you to push the code to your Azure DevOps Repo")  
 
 13. Navigate to the Repos > Files page which shows the files in the repository. You may need to refresh the page to see the updated files. Your source code is now appearing in Azure DevOps.
 
