@@ -427,10 +427,29 @@ Now that the template file has been uploaded, we'll deploy it several times to c
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
     echo "Enter the location (i.e. westus, centralus, eastus):" &&
-    read location &&
-    az group create --name $resourceGroupName --location "$location" &&
-    az group deployment create --resource-group $resourceGroupName --template-file "$HOME/studentfiles/armtemplate/azuredeploy.json"
-    ```
+    read location
+    ```  
+    Next, create the resource group:
+
+    ```bash
+    az group create --name $resourceGroupName --location "$location"
+    ```  
+
+    Validate that you are in the correct directory. Run an `ls` command and you should see the output `azuredeploy.json`.  If you don't see that file, use `cd <directory>` to move to the correct folder.  
+
+    ```bash  
+    ls
+    ```  
+
+    ![Running an ls command should prove the folder you are in contains the azuredeploy.json file](images/stepbystep/media/image1063.png "The output of the ls command shows the file azuredeploy.json")
+
+    >NOTE: Your path will likely be different than what is shown, as I put everything into a subfolder, which you likely did not do, and that is just fine.  
+
+    Once you are certain you are in the correct folder, run the following command:  
+
+    ```bash  
+    az deployment group create --resource-group $resourceGroupName --template-file "azuredeploy.json"
+    ```  
     
     >**Note**: This command is designed to prompt us to enter the resource group name and Azure region (location) we want to deploy our resources to. The script then takes our inputs and passes them as parameters to the Azure CLI command that calls our recently uploaded template file.
 
