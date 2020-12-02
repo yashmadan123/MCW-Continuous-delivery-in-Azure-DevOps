@@ -23,6 +23,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
 **Contents**
+
 <!-- TOC -->
 
 - [Continuous delivery in Azure DevOps hands-on lab step-by-step](#continuous-delivery-in-azure-devops-hands-on-lab-step-by-step)
@@ -39,7 +40,6 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Task 6: Create the production environment and deploy the template to Azure](#task-6-create-the-production-environment-and-deploy-the-template-to-azure)  
     - [Task 7: Review the resource groups](#task-7-review-the-resource-groups)
     - [Task 8: Update the deployed App Services and Slots to use .NET 5](#task-8-update-the-deployed-app-services-and-slots-to-use-net-5)  
-
   - [Exercise 2: Create Azure DevOps project and Git Repository](#exercise-2-create-azure-devops-project-and-git-repository)
     - [Task 1: Create Azure DevOps Account](#task-1-create-azure-devops-account)
     - [Task 2: Create a Service Connection](#task-2-create-a-service-connection)
