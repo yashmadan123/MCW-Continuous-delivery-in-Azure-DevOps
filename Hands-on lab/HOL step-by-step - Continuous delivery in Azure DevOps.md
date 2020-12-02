@@ -23,6 +23,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
 **Contents**
+
 <!-- TOC -->
 
 - [Continuous delivery in Azure DevOps hands-on lab step-by-step](#continuous-delivery-in-azure-devops-hands-on-lab-step-by-step)
@@ -38,6 +39,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Task 5: Create the test environment and deploy the template to Azure](#task-5-create-the-test-environment-and-deploy-the-template-to-azure)
     - [Task 6: Create the production environment and deploy the template to Azure](#task-6-create-the-production-environment-and-deploy-the-template-to-azure)
     - [Task 7: Review the resource groups](#task-7-review-the-resource-groups)
+    - [Task 8: Update the deployed App Services and Slots to use .NET 5](#task-8-update-the-deployed-app-services-and-slots-to-use-net-5) 
   - [Exercise 2: Create Azure DevOps project and Git Repository](#exercise-2-create-azure-devops-project-and-git-repository)
     - [Task 1: Create Azure DevOps Account](#task-1-create-azure-devops-account)
     - [Task 2: Create a Service Connection](#task-2-create-a-service-connection)
@@ -425,36 +427,49 @@ Now that the template file has been uploaded, we'll deploy it several times to c
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
     echo "Enter the location (i.e. westus, centralus, eastus):" &&
-    read location &&
-    az group create --name $resourceGroupName --location "$location" &&
-    az group deployment create --resource-group $resourceGroupName --template-file "$HOME/studentfiles/armtemplate/azuredeploy.json"
-    ```
-    
-    >**Note**: This command is designed to prompt us to enter the resource group name and Azure region (location) we want to deploy our resources to. The script then takes our inputs and passes them as parameters to the Azure CLI command that calls our recently uploaded template file.
+    read location
+    ```  
 
-    >**Note**: If you've extracted the student files in a different directory than the one indicated in 'Before the hands-on lab' Task 2.2, you will get an error similar to *'[Errno 2] No such file or directory: '/home/username/studentfiles/armtemplate/azuredeploy.json'*. In this case, you should replace $HOME/studentfiles/armtemplate with the path of the directory you chose.
+    Enter the name of a resource group you want to deploy the resources to (i.e. TailSpinToysRG). If it does not already exist, the template will create it. Then, select **Enter**.  
 
-    ![In the Azure Cloud Shell window, the command has been entered is we are prompted for the name of the resource group we want to deploy to.](images/stepbystep/media/image44.png "Azure Cloud Shell-Creating resource groups")
-
-2.  Enter the name of a resource group you want to deploy the resources to (i.e. TailSpinToysRG). If it does not already exist, the template will create it. Then, press **Enter**.
-
-3.  Next, we're prompted to enter an Azure region (location) where we want to deploy our resources to (i.e. westus, centralus, eastus). 
+    Next, you're prompted to enter an Azure region (location) where you want to deploy your resources to (i.e. westus, centralus, eastus). 
     
     Enter the name of an Azure region and then press **Enter**.
-   
-4.  Next, we're asked to enter a choice for environments we want to deploy to. The template will use our choice to concatenate the name of the environment with the name of the resource during provisioning. 
+
+2. Create the resource group:
+
+    ```bash
+    az group create --name $resourceGroupName --location "$location"
+    ```  
+
+3. Validate that you are in the correct directory. Run an `ls` command and you should see the output `azuredeploy.json`.  If you don't see that file, use `cd <directory>` to move to the correct folder.  
+
+    ```bash  
+    ls
+    ```  
+
+    ![Screen showing the output of the ls command, which lists the file azuredeploy.json](images/stepbystep/media/image1063.png "Running an ls command")
+
+    >**Note**: Your path will likely be different than what is shown, as I put everything into a subfolder, which you likely did not do, and that is just fine.  
+
+    Once you are certain you are in the correct folder, run the following command:  
+
+    ```bash  
+    az deployment group create --resource-group $resourceGroupName --template-file "azuredeploy.json"
+    ```  
+4.  Next, you're asked to enter a choice for environments you want to deploy to. The template will use your choice to concatenate the name of the environment with the name of the resource during provisioning. 
     
     For this first run, select the **dev** environment by entering **1** and then pressing **Enter**.
     
     ![In the Azure Cloud Shell window, we are prompted for the environment we want to deploy to.](images/stepbystep/media/image46.png "Azure Cloud Shell-provisioning dev environment") 
 
-5.  Next, we're asked to supply an administrator login (username) for the PostgreSQL server and database. This will be the username credential you would need to enter to connect to your newly created database. 
+5.  Supply an administrator login (username) for the PostgreSQL server and database. This will be the username credential you would need to enter to connect to your newly created database. 
     
     For the **administratorLogin**, enter a username value (e.g. *azureuser*) and then press **Enter**.
 
     ![In the Azure Cloud Shell window, we are prompted for the administrative username for the PostgreSQL server and database we want to create.](images/stepbystep/media/image47.png "Azure Cloud Shell-entering administrator credentials")
 
-6.  Next, we're asked to supply an administrator password for the PostgreSQL server and database. This will be the password credential you would need to enter to connect to your newly created database.
+6.  Supply an administrator password for the PostgreSQL server and database. This will be the password credential you would need to enter to connect to your newly created database.
 
     >**Note**: The password must meet complexity requirements of 8 or more characters, must contain upper and lower case characters, must contain at least one number and at least one special character, e.g. "Database2020!"
 
@@ -468,7 +483,7 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
     ![The Azure Cloud Shell has succeeded in executing the template based on the parameters we provided.](images/stepbystep/media/image50.png "Azure Cloud Shell-Succeeded Highlighted")
 
-    >**Note**: The above steps were used to provision the *dev* environment. Most of these same steps will be repeated for the *test* and *production* environments below.
+    >**Note**: The above steps were used to provision the *dev* environment. Most of these same steps will be repeated for the *test* and *production* environments below.  
 
 ### Task 5: Create the test environment and deploy the template to Azure
 
@@ -488,7 +503,31 @@ Repeat the above steps and select to create the **3. production** environment. Y
 
     >**Note**: The specific names of the resources will be slightly different than what you see in the screenshot based on the unique identities assigned.
 
-    ![The Azure Portal is showing all the deployed resources for the resource group we have been using.](images/stepbystep/media/image998.png "Listed Azure Portal Resources")
+    ![The Azure Portal is showing all the deployed resources for the resource group we have been using.](images/stepbystep/media/image998.png "Listed Azure Portal Resources")  
+
+### Task 8: Update the deployed App Services and Slots to use .NET 5   
+
+After all of your environments are deployed, navigate to the azure portal and update all three app services and their corresponding staging slots to use the .Net 5 framework.  
+
+1. In the window opened from the previous step, sort the deployed resources by type to get the App Services and their slots listed as the first six items (remember that the unique names will be different for you).  
+
+    ![Screen showing all of the resource group resources, which are listed and sorted by type such that app service and slots are listed first.  All three app services and their slots are selected to note that each needs to be modified.](images/stepbystep/media/image1060.png "Resources by Type")  
+
+2. For each of the three app services and their corresponding slots, you will do the following:  
+
+    **Right-click on the name and select 'open in new tab'**.  
+
+    ![Screen showing the first link in the list of resources is right-clicked and the option open in a new tab is selected.](images/stepbystep/media/image1061.png "Open in a new tab")  
+
+    * **In the new tab, browse to configuration, then select `General Settings`.  On the General Settings tab, select the `.Net 5 (Early Access)` item from the dropdown for the .NET Framework Version.**  
+
+    ![Screen showing selection of the option for the .Net 5 framework](images/stepbystep/media/image1062.png "Choosing the .Net 5 framework")  
+
+    **After making the change, don't forget to `Save` the changes at the top**.
+
+    >**Note**: The `(Early Access)` will likely go away at some point. When it does, just select the `.NET 5` option.
+
+    Lastly, **do not forget to do this for all six entries, especially the staging slots where your pipeline will deploy the solutions**.
 
 ## Exercise 2: Create Azure DevOps project and Git Repository
 
@@ -568,7 +607,7 @@ In this Task, you will configure the Azure DevOps with a Service Connection that
 
     Ensure **Grand access permissions to all pipelines** is checked
 
-    >**Note**: During the Service Connection creation process, you might be prompted to sign in to your Microsoft account if Azure DevOps detects it requires authentication. 
+    >**Note**: During the Service Connection creation process, you might be prompted to sign into your Microsoft account if Azure DevOps detects it requires authentication. 
     
 7. And finally, select **Save**.   
  
@@ -586,7 +625,7 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
     
     If you are using the Azure Cloud Shell you will be prompted for credentials to connect to your Azure DevOps instance when using Git. 
     
-    The best way to authenticate is to use a [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate), (or PAT), configured with scope *Code, Full permissions*. After this configuration, you can then use the PAT as a password (leaving the user name empty) when prompted by Git. 
+    The best way to authenticate is to use a [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate), (or PAT), configured with scope *Code, Full permissions*. After this configuration, you can then use the PAT as a password (leaving the username empty) when prompted by Git. 
 
 2. Open *Cloud Shell Editor* to this folder by typing: 
    
@@ -611,11 +650,11 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
     ```bash
     git remote add origin https://<your-org>@dev.azure.com/<your-org>/TailspinToys/_git/TailspinToys
     git push -u origin --all
-    ```
+    ```  
 
 5. In case the *Password for 'https://\<your-org>@dev.azure.com':* prompt appears, follow the next steps to generate a PAT (Personal Access Token) for your Azure DevOps organization. Otherwise, skip to step 13.
     
-    > **Note**: **DO NOT CLOSE AZURE CLOUD SHELL**. Use a different browser tab for the steps for creating a new PAT token.  Also, these PAT configuration steps are also useful when using a multi-factored protected user account with Azure DevOps.
+    > **Note**: **Do Not Close Azure Cloud Shell**. Use a different browser tab for the steps for creating a new PAT token.  Also, these PAT configuration steps are also useful when using a multi-factored protected user account with Azure DevOps.
 
 6. In Azure DevOps, choose on the second to last icon on the top menu in the left-hand side of the screen, representing a user and a small gear icon.
 
@@ -639,21 +678,19 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
 
 12. In Azure Cloud Shell, paste the PAT token and press **Enter**.   Git will push the contents of your local repository in Azure Cloud Shell to your new Azure DevOps project repository.  
 
+    ![The cloud terminal is shown in this screen to highlight that the PAT is not shown when you paste it in the cloud shell.  Even so, using the PAT as your password allows you to push the code to your Azure DevOps Repo](images/stepbystep/media/image1064.png "PAT is not shown after pasting, but the cloud shell does use it")  
+
 13. Navigate to the Repos > Files page which shows the files in the repository. You may need to refresh the page to see the updated files. Your source code is now appearing in Azure DevOps.
 
     ![The newly created files show up in Repos > Files section.](images/stepbystep/media/image136.png "Azure DevOps Repo File View")
 
-14. Expand the **ClientApp** directory and select the **package.json** file.
+14. In the files for your repo, navigate to the folder `Client App -> src`.  If there is a file named **package-lock.json**, hover on the file, and from the context menu, choose **Delete**.
 
-15. On line 27, change the value representing the version of the *rxjs* dependency, from *^6.0.0* to **6.0.0** (removing the '^' character).
+    ![The context menu shows up on the package-lock.json file, from the ClientApp directory.](images/stepbystep/media/image137.png "Deleting package-lock.json")  
 
-    ![The content of the package.json file is shown.](images/stepbystep/media/image138.png "Change rxjs dependency value to 6.0.0")
+    >**Note**: If there is no package.json file then you don't need to do anything else here.  You can skip to Exercise 3. 
 
-16. Next, hover the **package-lock.json** file and from the context menu, choose **Delete**.
-
-    ![The context menu shows up on the package-lock.json file, from the ClientApp directory.](images/stepbystep/media/image137.png "Deleting package-lock.json")
-
-17. Confirm the deletion, and when the commit panel shows, validate the commit message and choose **Commit**.
+15. Confirm the deletion, and when the commit panel shows, validate the commit message and choose **Commit**.
 
 ## Exercise 3: Create Azure DevOps build pipeline
 
@@ -735,10 +772,10 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
     ```yml
     steps:
     # Nuget Tool Installer Task
-    - task: NuGetToolInstaller@0
-      displayName: 'Use NuGet 4.4.1'
+    - task: NuGetToolInstaller@1
+      displayName: 'Use NuGet 5.5.1'
       inputs:
-        versionSpec: 4.4.1      
+        versionSpec: 5.5.1      
     ```
 
     Tasks are the building blocks of a pipeline. They describe the actions that are performed in sequence during an execution of the pipeline.
@@ -758,16 +795,16 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
     # Finds or downloads and caches the specified version spec of Node.js and adds it to the PATH
     - task: NodeTool@0
       inputs:
-        versionSpec: '10.x' 
+        versionSpec: '12.x' 
 
     # Build Task  
-    - task: VSBuild@1
+    - task: DotNetCoreCLI@2
       displayName: 'Build solution'
       inputs:
-        solution: '**/tailspintoysweb.csproj'
-        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
-        platform: 'any cpu'
-        configuration: 'release'
+        command: publish
+        publishWebProjects: True
+        arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'  
+        zipAfterPublish: true
 
     # Publish Task
     - task: PublishBuildArtifacts@1
@@ -791,18 +828,21 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
       - visualstudio
       - vstest
 
+    variables:
+      buildConfiguration: 'Release'
+
     steps:
     # Nuget Tool Installer Task
-    - task: NuGetToolInstaller@0
-      displayName: 'Use NuGet 4.4.1'
+    - task: NuGetToolInstaller@1
+      displayName: 'Use NuGet 5.5.1'
       inputs:
-        versionSpec: 4.4.1
+        versionSpec: 5.5.1
 
     # Node.js Tool Installer Task
     # Finds or downloads and caches the specified version spec of Node.js and adds it to the PATH
     - task: NodeTool@0
       inputs:
-        versionSpec: '10.x' 
+        versionSpec: '12.x' 
     
     # Nuget Restore Task
     - task: NuGetCommand@2
@@ -811,13 +851,13 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
         restoreSolution: '**/tailspintoysweb.csproj'
 
     # Build Task  
-    - task: VSBuild@1
+    - task: DotNetCoreCLI@2
       displayName: 'Build solution'
       inputs:
-        solution: '**/tailspintoysweb.csproj'
-        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
-        platform: 'any cpu'
-        configuration: 'release'
+        command: publish
+        publishWebProjects: True
+        arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'  
+        zipAfterPublish: true
 
     # Publish Task
     - task: PublishBuildArtifacts@1
@@ -833,30 +873,27 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
     - build the code project, producing build artifacts
     - publish build artifacts to a known artifact location within Azure DevOps Pipelines.   
 
-12. Choose the **Save and run** button to save our new pipeline and also kick off the first build.
-
+12. Choose the **Save and run** button to save our new pipeline and also kick off the first build.  
 
     ![A screen showing the contents of the YAML editor. The Save and run button is highlighted.](images/stepbystep/media/image73.png "Reivew your pipeline YAML - save highlighted")    
 
-13. When the editor process saves your YAML, Azure DevOps Pipelines creates a new source file called *azure-pipelines.yml* to the root of your TailspinToys repository. This is done through a git commit that Azure DevOps facilitates as part of the save process which also prompts you to enter a commit message. 
+13. When the editor process saves your YAML, Azure DevOps Pipelines creates a new source file called *azure-pipelines.yml* to the root of your TailspinToys repository. This is done through a git commit that Azure DevOps facilitates as part of the save process which also prompts you to enter a commit message.  
 
-
-    ![A screen that shows the commit of azure-pipelines.yml. The Save and run button is highlighted.](images/stepbystep/media/image74.png "Save and run")
+    ![A screen that shows the commit of azure-pipelines.yml. The Save and run button is highlighted.](images/stepbystep/media/image74.png "Save and run")  
     
-    By default, **Commit Message** will be populated for you but you may change this. Select the **Save and run** button at the bottom of the screen to commit the pipeline changes to your master branch.   
+    By default, **Commit Message** will be populated for you, but you may change this. Select the **Save and run** button at the bottom of the screen to commit the pipeline changes to your master branch.  
 
-14. The build process will immediately begin and run through the steps defined in your new *azure-pipelines.yml* definition file, and the screen will refresh to show you the build process executing, in real-time. 
+14. The build process will immediately begin and run through the steps defined in your new *azure-pipelines.yml* definition file, and the screen will refresh to show you the build process executing, in real-time.  
 
+    ![A screen that shows the real-time output of the build process.](images/stepbystep/media/image76.png "Real-time output")  
 
-    ![A screen that shows the real-time output of the build process.](images/stepbystep/media/image76.png "Real-time output")   
+15. After the build process completes, you should see a green check mark next to each of the build pipeline steps.  
 
-15. After the build process completes, you should see a green check mark next to each of the build pipeline steps.
-  
-    ![A screen that shows a successfully completed build pipeline.](images/stepbystep/media/image77.png "Success") 
+    ![A screen that shows a successfully completed build pipeline.](images/stepbystep/media/image77.png "Success")  
     
-    **Congratulations**, you have just created your first build pipeline! In the next exercise, we will create a release pipeline that deploys your successful builds.
+    **Congratulations**, you have just created your first build pipeline! In the next exercise, we will create a release pipeline that deploys your successful builds.  
 
-## Exercise 4: Create Azure DevOps Multi Stage Release Pipeline
+## Exercise 4: Create Azure DevOps Multi Stage Release Pipeline  
 
 Duration: 30 Minutes
 
@@ -864,29 +901,29 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 - Automated deployment of build artifacts to Azure Pipeline storage. 
 - Deploy to the three stages created earlier (dev, test, and production).
 
-### Task 1: Modify YAML definition to create a multistage pipeline
+### Task 1: Modify YAML definition to create a multistage pipeline  
 
-1. Now that we have a great build working, we can modify the YAML file to include stages.  At first, we will add one stage for Build and then run that so we can see the difference in output.   
+1. Now that we have a great build working, we can modify the YAML file to include stages.  At first, we will add one stage for Build and then run that so we can see the difference in output.  
 
     From left navigation, select **Pipelines** to view configured Pipelines.   From here, highlight your new pipeline definition and select Edit from the ellipses to the right:  
 
-    ![A screen showing pipeline instance edit menu.](images/stepbystep/media/image1000.png "Pipeline runs") 
+    ![A screen showing pipeline instance edit menu.](images/stepbystep/media/image1000.png "Pipeline runs")  
 
-    This action shows the **Azure Pipelines YAML Editor** that you viewed after building your initial pipeline.   You will be using this editor to make changes to your azure-pipelines.yml definition in the next steps. 
+    This action shows the **Azure Pipelines YAML Editor** that you viewed after building your initial pipeline.  You will be using this editor to make changes to your azure-pipelines.yml definition in the next steps.  
 
-    ![A screen showing pipeline YAML Editor.](images/stepbystep/media/Image1001.png "Pipeline YAML Editor with Task Panel") 
+    ![A screen showing pipeline YAML Editor.](images/stepbystep/media/Image1001.png "Pipeline YAML Editor with Task Panel")  
     
-    On the left, is the YAML editor containing the pipeline definition and the Tasks panel to the right, has common components that can be added to the pipeline.   Selecting from the task panel to add a component first shows a property panel supporting custom configuration for your pipeline, allowing fast configuration, and the result is additional formatted YAML added directly to the pipeline definition with the configuration customization you provided. 
+    On the left, is the YAML editor containing the pipeline definition and the Tasks panel to the right, has common components that can be added to the pipeline.   Selecting from the task panel to add a component first shows a property panel supporting custom configuration for your pipeline, allowing fast configuration, and the result is additional formatted YAML added directly to the pipeline definition with the configuration customization you provided.  
 
-2. Let's transform this pipeline to a multi-stage configuration by adding the following configuration right below the *trigger* section to define a **Build Stage** in your YAML pipeline. 
+2. Let's transform this pipeline to a multi-stage configuration by adding the following configuration right below the *trigger* section to define a **Build Stage** in your YAML pipeline.  
 
-    ```yml
+    ```yml  
         stages:
         - stage: Build
           displayName: 'Build Stage'
           jobs:
           - job: Build
-    ```
+    ```  
    This is the first step to a multi-stage pipeline!  
    
    You can define whatever stages you want to reflect the true nature of your CI/CD process, and as an added benefit, users get better visibility to entire pipeline process.  
@@ -918,8 +955,8 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
 
     ```yml
-   - stage: DevDeploy
-     displayName: 'Dev Deploy Stage'
+    - stage: DevDeploy  
+      displayName: 'Dev Deploy Stage'
       jobs:
       - job: Deploy
         pool:
@@ -1052,59 +1089,57 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     Using **Azure Portal**, navigate to the resource group you created earlier to view your app services in this resource group .   Sort by **Type** Select the development app service:
 
-    ![Screen showing Azure Portal provisioned assets in lab resource group , the dev Web App Service and sorted type column header are highlighted.](images/stepbystep/media/image1023.png "Azure Portal Resources")
+    ![Screen showing Azure Portal provisioned assets in lab resource group , the dev Web App Service and sorted type column header are highlighted.](images/stepbystep/media/image1023.png "Azure Portal Resources")  
 
-    On the App Service Overview, select **Browse**:
+    On the App Service Overview, select **Browse**.
 
-    ![Screen showing Azure Portal detail view of provisioned development web app service with Browse highlighted.](images/stepbystep/media/image1024.png "Azure Portal - App Service Detail")
+    ![Screen showing Azure Portal detail view of provisioned development web app service with Browse highlighted.](images/stepbystep/media/image1024.png "Azure Portal - App Service Detail")  
 
-    This will launch your default browser navigating to your development site:
+    This will launch your default browser navigating to your development site:  
 
+    ![Screen showing Microsoft Edge browser showing development application.](images/stepbystep/media/image1025.png "Application Home Page")  
 
-    ![Screen showing Microsoft Edge browser showing development application.](images/stepbystep/media/image1025.png "Application Home Page")
+    A successful deployment!  In the next task we will add stages for deploying to Test and Production.   Once you deploy, you can use this step to verify those sites too.  
 
-    A successful deployment!   In the next task we will add stages for deploying to Test and Production.   Once you deploy, you can use this step to verify those sites too. 
+### Task 2: Add Test and Production Environments as stages in the pipeline  
 
-### Task 2: Add Test and Production Environments as stages in the pipeline
+You could repeat the process in **Task 1** to add stages for Test and Production by using the Tasks panel.  However, the beauty of the unified YAML pipeline definition is the speed at which you can "copy-paste" the Development Deploy Stage within the YAML editor, and then just change the particular values for your Test and Production environments.   Let's add a Test deployment stage now.  
 
-You could repeat the process in **Task 1** to add stages for Test and Production by using the Tasks panel.  However, the beauty of the unified YAML pipeline definition is the speed at which you can "copy-paste" the Development Deploy Stage within the YAML editor, and then just change the particular values for your Test and Production environments.   Let's add a Test deployment stage now. 
-
-    
 1. Return to Azure DevOps Pipeline view and select your new multistage pipeline and select **Edit** for the YAML editor.   
 
-    Scroll down to the Development Deploy Stage and highlight and copy the script for that entire stage:
+    Scroll down to the Development Deploy Stage and highlight and copy the script for that entire stage:  
 
-    ![Screen showing YAML Editor and Development Deployment Stage is highlighted for copy-paste operation.](images/stepbystep/media/image1026.png "Pipeline YAML Editor")
+    ![Screen showing YAML Editor and Development Deployment Stage is highlighted for copy-paste operation.](images/stepbystep/media/image1026.png "Pipeline YAML Editor")  
 
-2. Move your cursor to the very end of the YAML definition file and paste the copied development environment deployment stage code.  Now you can look though the newly pasted stage and change certain properties to match your Test environment.  Begin by changing the **stage:** string name property to *TestDeploy* and then, change the **DisplayName** property to *Test Deploy Stage*. 
+2. Move your cursor to the very end of the YAML definition file and paste the copied development environment deployment stage code.  Now you can look though the newly pasted stage and change certain properties to match your Test environment.  Begin by changing the **stage:** string name property to *TestDeploy* and then, change the **DisplayName** property to *Test Deploy Stage*.  
 
-3. Move to the nested Deployment Task, and change **WebAppName** to match the Web App Name for your test environment, in this case *tailspintoys-test-\<randomstring>* 
+3. Move to the nested Deployment Task, and change **WebAppName** to match the Web App Name for your test environment, in this case *tailspintoys-test-\<randomstring>*  
 
-4. Leave every other property the same.   Your YAML should now look like this: 
+4. Leave every other property the same.  Your YAML should now look like this:  
 
-    ![Screen showing YAML Editor with added Test Deployment Stage.](images/stepbystep/media/image1027.png "Pipeline YAML Test Deployment Stage")
+    ![Screen showing YAML Editor with added Test Deployment Stage.](images/stepbystep/media/image1027.png "Pipeline YAML Test Deployment Stage")  
 
     Select **Save**.   
     
-    ![Screen showing Commit panel with.](images/stepbystep/media/image1028.png "Commit Confirmation")
+    ![Screen showing Commit panel with.](images/stepbystep/media/image1028.png "Commit Confirmation")  
 
-    As before, add your commit message, and select **Save**.   This will save the YAML definition file contents, commit to the master branch and which will trigger a pipeline run.
+    As before, add your commit message, and select **Save**.  This will save the YAML definition file contents, commit to the master branch and which will trigger a pipeline run.  
 
-5. Let's go take a look at the pipeline run. Navigate to Pipeline view to view recently run pipelines.   You can see the run triggered from your committed change here.   
+5. Let's go take a look at the pipeline run. Navigate to Pipeline view to view recently run pipelines.  You can see the run triggered from your committed change here.  
     
-    ![Screen showing Pipeline run with run details highlighted.](images/stepbystep/media/image1029.png "Pipeline Run")
+    ![Screen showing Pipeline run with run details highlighted.](images/stepbystep/media/image1029.png "Pipeline Run")  
 
-    Select this newest run and let's dig deeper.
+    Select this newest run and let's dig deeper.  
 
-    ![Screen showing pipeline run details with multiple stages now added.](images/stepbystep/media/image1030.png "Pipeline Run Detail")
+    ![Screen showing pipeline run details with multiple stages now added.](images/stepbystep/media/image1030.png "Pipeline Run Detail")  
 
-    In this view, you can see that your multistage pipeline now has 3 stages:  Build, Dev, Test.   
+    In this view, you can see that your multistage pipeline now has 3 stages:  Build, Dev, Test.    
     
-    Selecting the **Test Deploy Stage** flow box shows you the Jobs detail view with access to all the tasks that executed.   Note that on the **AzureRmWebAppDeployment** task, you can see navigable links for deployment history and the application URL:
+    Selecting the **Test Deploy Stage** flow box shows you the Jobs detail view with access to all the tasks that executed.   Note that on the **AzureRmWebAppDeployment** task, you can see navigable links for deployment history and the application URL:  
 
-    ![Screen showing Pipeline Job Detail View with AzureRmWebAppDeployment task selected.  Hightlighted are the deployment log and app URL.](images/stepbystep/media/image1031.png "Deployement Taks Detail")
+    ![Screen showing Pipeline Job Detail View with AzureRmWebAppDeployment task selected.  Hightlighted are the deployment log and app URL.](images/stepbystep/media/image1031.png "Deployement Taks Detail")  
 
-6. At this point you have configured a working multistage pipeline that builds, publishes and deploy to two of your provisioned environments (Dev and Test).   Repeat the steps 1-5 above, to add a Test deployment stage to create a **Production Deployment Stage**.  Take careful note of the properties you changed above to edit them for the production environment, and save the pipeline configuration.
+6. At this point you have configured a working multistage pipeline that builds, publishes and deploy to two of your provisioned environments (Dev and Test).  Repeat the steps 1-5 above, to add a Test deployment stage to create a **Production Deployment Stage**.  Take careful note of the properties you changed above to edit them for the production environment, and save the pipeline configuration.  
 
 7. If your configuration was successful, this should have triggered a pipeline run that looks like this:
 
