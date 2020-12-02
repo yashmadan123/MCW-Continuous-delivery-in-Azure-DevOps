@@ -430,7 +430,7 @@ Now that the template file has been uploaded, we'll deploy it several times to c
     read location
     ```  
 
-    Enter the name of a resource group you want to deploy the resources to (i.e. TailSpinToysRG). If it does not already exist, the template will create it. Then, press **Enter**  
+    Enter the name of a resource group you want to deploy the resources to (i.e. TailSpinToysRG). If it does not already exist, the template will create it. Then, select **Enter**.  
 
     Next, you're prompted to enter an Azure region (location) where you want to deploy your resources to (i.e. westus, centralus, eastus). 
     
@@ -450,7 +450,7 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
     ![Screen showing the output of the ls command, which lists the file azuredeploy.json](images/stepbystep/media/image1063.png "Running an ls command")
 
-    >** Note **: Your path will likely be different than what is shown, as I put everything into a subfolder, which you likely did not do, and that is just fine.  
+    >**Note**: Your path will likely be different than what is shown, as I put everything into a subfolder, which you likely did not do, and that is just fine.  
 
     Once you are certain you are in the correct folder, run the following command:  
 
@@ -507,15 +507,15 @@ Repeat the above steps and select to create the **3. production** environment. Y
 
 ### Task 8: Update the deployed App Services and Slots to use .NET 5   
 
-After all of your environments are deployed, navigate to the azure portal and update all 3 app services and their corresponding staging slots to use the .Net 5 framework.  
+After all of your environments are deployed, navigate to the azure portal and update all three app services and their corresponding staging slots to use the .Net 5 framework.  
 
 1. In the window opened from the previous step, sort the deployed resources by type to get the App Services and their slots listed as the first six items (remember that the unique names will be different for you).  
 
-    ![Screen showing all of the resource group resources, which are listed and sorted by type such that app service and slots are listed first.  All three app services and their slots are selected to note that each needs to be modified](images/stepbystep/media/image1060.png "Resources by Type")  
+    ![Screen showing all of the resource group resources, which are listed and sorted by type such that app service and slots are listed first.  All three app services and their slots are selected to note that each needs to be modified.](images/stepbystep/media/image1060.png "Resources by Type")  
 
 2. For each of the three app services and their corresponding slots, you will do the following:  
 
-    * **Right-click on the name and select 'open in new tab'**  
+    **Right-click on the name and select 'open in new tab'**.  
 
     ![Screen showing the first link in the list of resources is right-clicked and the option open in a new tab is selected.](images/stepbystep/media/image1061.png "Open in a new tab")  
 
@@ -523,9 +523,9 @@ After all of your environments are deployed, navigate to the azure portal and up
 
     ![Screen showing selection of the option for the .Net 5 framework](images/stepbystep/media/image1062.png "Choosing the .Net 5 framework")  
 
-    **After making the change, don't forget to `Save` the changes at the top**
+    **After making the change, don't forget to `Save` the changes at the top**.
 
-    >** Note **: The `(Early Access)` will likely go away at some point. When it does, just select the `.NET 5` option.
+    >**Note**: The `(Early Access)` will likely go away at some point. When it does, just select the `.NET 5` option.
 
     Lastly, **do not forget to do this for all six entries, especially the staging slots where your pipeline will deploy the solutions**.
 
@@ -688,7 +688,7 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
 
     ![The context menu shows up on the package-lock.json file, from the ClientApp directory.](images/stepbystep/media/image137.png "Deleting package-lock.json")  
 
-    >Note: If there is no package.json file then you don't need to do anything else here.  You can skip to Exercise 3. 
+    >**Note**: If there is no package.json file then you don't need to do anything else here.  You can skip to Exercise 3. 
 
 15. Confirm the deletion, and when the commit panel shows, validate the commit message and choose **Commit**.
 
@@ -909,7 +909,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     ![A screen showing pipeline instance edit menu.](images/stepbystep/media/image1000.png "Pipeline runs")  
 
-    This action shows the **Azure Pipelines YAML Editor** that you viewed after building your initial pipeline.   You will be using this editor to make changes to your azure-pipelines.yml definition in the next steps.  
+    This action shows the **Azure Pipelines YAML Editor** that you viewed after building your initial pipeline.  You will be using this editor to make changes to your azure-pipelines.yml definition in the next steps.  
 
     ![A screen showing pipeline YAML Editor.](images/stepbystep/media/Image1001.png "Pipeline YAML Editor with Task Panel")  
     
@@ -1091,7 +1091,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     ![Screen showing Azure Portal provisioned assets in lab resource group , the dev Web App Service and sorted type column header are highlighted.](images/stepbystep/media/image1023.png "Azure Portal Resources")  
 
-    On the App Service Overview, select **Browse**:  
+    On the App Service Overview, select **Browse**.
 
     ![Screen showing Azure Portal detail view of provisioned development web app service with Browse highlighted.](images/stepbystep/media/image1024.png "Azure Portal - App Service Detail")  
 
@@ -1099,7 +1099,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     ![Screen showing Microsoft Edge browser showing development application.](images/stepbystep/media/image1025.png "Application Home Page")  
 
-    A successful deployment!   In the next task we will add stages for deploying to Test and Production.   Once you deploy, you can use this step to verify those sites too.  
+    A successful deployment!  In the next task we will add stages for deploying to Test and Production.   Once you deploy, you can use this step to verify those sites too.  
 
 ### Task 2: Add Test and Production Environments as stages in the pipeline  
 
@@ -1115,7 +1115,7 @@ You could repeat the process in **Task 1** to add stages for Test and Production
 
 3. Move to the nested Deployment Task, and change **WebAppName** to match the Web App Name for your test environment, in this case *tailspintoys-test-\<randomstring>*  
 
-4. Leave every other property the same.   Your YAML should now look like this:  
+4. Leave every other property the same.  Your YAML should now look like this:  
 
     ![Screen showing YAML Editor with added Test Deployment Stage.](images/stepbystep/media/image1027.png "Pipeline YAML Test Deployment Stage")  
 
@@ -1123,9 +1123,9 @@ You could repeat the process in **Task 1** to add stages for Test and Production
     
     ![Screen showing Commit panel with.](images/stepbystep/media/image1028.png "Commit Confirmation")  
 
-    As before, add your commit message, and select **Save**.   This will save the YAML definition file contents, commit to the master branch and which will trigger a pipeline run.  
+    As before, add your commit message, and select **Save**.  This will save the YAML definition file contents, commit to the master branch and which will trigger a pipeline run.  
 
-5. Let's go take a look at the pipeline run. Navigate to Pipeline view to view recently run pipelines.   You can see the run triggered from your committed change here.  
+5. Let's go take a look at the pipeline run. Navigate to Pipeline view to view recently run pipelines.  You can see the run triggered from your committed change here.  
     
     ![Screen showing Pipeline run with run details highlighted.](images/stepbystep/media/image1029.png "Pipeline Run")  
 
@@ -1139,7 +1139,7 @@ You could repeat the process in **Task 1** to add stages for Test and Production
 
     ![Screen showing Pipeline Job Detail View with AzureRmWebAppDeployment task selected.  Hightlighted are the deployment log and app URL.](images/stepbystep/media/image1031.png "Deployement Taks Detail")  
 
-6. At this point you have configured a working multistage pipeline that builds, publishes and deploy to two of your provisioned environments (Dev and Test).   Repeat the steps 1-5 above, to add a Test deployment stage to create a **Production Deployment Stage**.  Take careful note of the properties you changed above to edit them for the production environment, and save the pipeline configuration.  
+6. At this point you have configured a working multistage pipeline that builds, publishes and deploy to two of your provisioned environments (Dev and Test).  Repeat the steps 1-5 above, to add a Test deployment stage to create a **Production Deployment Stage**.  Take careful note of the properties you changed above to edit them for the production environment, and save the pipeline configuration.  
 
 7. If your configuration was successful, this should have triggered a pipeline run that looks like this:
 
