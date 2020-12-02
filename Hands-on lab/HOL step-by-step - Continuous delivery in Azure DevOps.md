@@ -37,9 +37,9 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Task 3: Add a deployment slot for the "staging" version of the site](#task-3-add-a-deployment-slot-for-the-staging-version-of-the-site)
     - [Task 4: Create the dev environment and deploy the template to Azure](#task-4-create-the-dev-environment-and-deploy-the-template-to-azure)
     - [Task 5: Create the test environment and deploy the template to Azure](#task-5-create-the-test-environment-and-deploy-the-template-to-azure)
-    - [Task 6: Create the production environment and deploy the template to Azure](#task-6-create-the-production-environment-and-deploy-the-template-to-azure)  
+    - [Task 6: Create the production environment and deploy the template to Azure](#task-6-create-the-production-environment-and-deploy-the-template-to-azure)
     - [Task 7: Review the resource groups](#task-7-review-the-resource-groups)
-    - [Task 8: Update the deployed App Services and Slots to use .NET 5](#task-8-update-the-deployed-app-services-and-slots-to-use-net-5)  
+    - [Task 8: Update the deployed App Services and Slots to use .NET 5](#task-8-update-the-deployed-app-services-and-slots-to-use-net-5) 
   - [Exercise 2: Create Azure DevOps project and Git Repository](#exercise-2-create-azure-devops-project-and-git-repository)
     - [Task 1: Create Azure DevOps Account](#task-1-create-azure-devops-account)
     - [Task 2: Create a Service Connection](#task-2-create-a-service-connection)
@@ -607,7 +607,7 @@ In this Task, you will configure the Azure DevOps with a Service Connection that
 
     Ensure **Grand access permissions to all pipelines** is checked
 
-    >**Note**: During the Service Connection creation process, you might be prompted to sign in to your Microsoft account if Azure DevOps detects it requires authentication. 
+    >**Note**: During the Service Connection creation process, you might be prompted to sign into your Microsoft account if Azure DevOps detects it requires authentication. 
     
 7. And finally, select **Save**.   
  
@@ -625,7 +625,7 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
     
     If you are using the Azure Cloud Shell you will be prompted for credentials to connect to your Azure DevOps instance when using Git. 
     
-    The best way to authenticate is to use a [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate), (or PAT), configured with scope *Code, Full permissions*. After this configuration, you can then use the PAT as a password (leaving the user name empty) when prompted by Git. 
+    The best way to authenticate is to use a [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate), (or PAT), configured with scope *Code, Full permissions*. After this configuration, you can then use the PAT as a password (leaving the username empty) when prompted by Git. 
 
 2. Open *Cloud Shell Editor* to this folder by typing: 
    
@@ -881,7 +881,7 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
 
     ![A screen that shows the commit of azure-pipelines.yml. The Save and run button is highlighted.](images/stepbystep/media/image74.png "Save and run")  
     
-    By default, **Commit Message** will be populated for you but you may change this. Select the **Save and run** button at the bottom of the screen to commit the pipeline changes to your master branch.  
+    By default, **Commit Message** will be populated for you, but you may change this. Select the **Save and run** button at the bottom of the screen to commit the pipeline changes to your master branch.  
 
 14. The build process will immediately begin and run through the steps defined in your new *azure-pipelines.yml* definition file, and the screen will refresh to show you the build process executing, in real-time.  
 
