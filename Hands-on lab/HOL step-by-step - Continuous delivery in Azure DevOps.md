@@ -448,9 +448,9 @@ Now that the template file has been uploaded, we'll deploy it several times to c
     ls
     ```  
 
-    ![Running an ls command should prove the folder you are in contains the azuredeploy.json file](images/stepbystep/media/image1063.png "The output of the ls command shows the file azuredeploy.json")
+    ![Screen showing the output of the ls command, which lists the file azuredeploy.json](images/stepbystep/media/image1063.png "Running an ls command")
 
-    >NOTE: Your path will likely be different than what is shown, as I put everything into a subfolder, which you likely did not do, and that is just fine.  
+    >** Note **: Your path will likely be different than what is shown, as I put everything into a subfolder, which you likely did not do, and that is just fine.  
 
     Once you are certain you are in the correct folder, run the following command:  
 
@@ -511,21 +511,21 @@ After all of your environments are deployed, navigate to the azure portal and up
 
 1. In the window opened from the previous step, sort the deployed resources by type to get the App Services and their slots listed as the first six items (remember that the unique names will be different for you).  
 
-    ![Review your resources sorted by type.](images/stepbystep/media/image1060.png "All of the resource group resources are listed, sorted by type so that app service and slots are listed first.  All three app services and their slots are selected for emphasis")  
+    ![Screen showing all of the resource group resources, which are listed and sorted by type such that app service and slots are listed first.  All three app services and their slots are selected to note that each needs to be modified](images/stepbystep/media/image1060.png "Resources by Type")  
 
 2. For each of the three app services and their corresponding slots, you will do the following:  
 
     * **Right-click on the name and select 'open in new tab'**  
 
-    ![Open the resource in a new tab.](images/stepbystep/media/image1061.png "the first link is selected to open in a new tab")  
+    ![Screen showing the first link in the list of resources is right-clicked and the option open in a new tab is selected.](images/stepbystep/media/image1061.png "Open in a new tab")  
 
     * **In the new tab, browse to configuration, then select `General Settings`.  On the General Settings tab, select the `.Net 5 (Early Access)` item from the dropdown for the .NET Framework Version.**  
 
-    ![Update the .NET Framework version.](images/stepbystep/media/image1062.png "select the option for the .NET 5 framework in the dropdown")  
+    ![Screen showing selection of the option for the .Net 5 framework](images/stepbystep/media/image1062.png "Choosing the .Net 5 framework")  
 
     **After making the change, don't forget to `Save` the changes at the top**
 
-    >NOTE: The `(Early Access)` will likely go away at some point. When it does, just select the `.NET 5` option.
+    >** Note **: The `(Early Access)` will likely go away at some point. When it does, just select the `.NET 5` option.
 
     Lastly, **do not forget to do this for all six entries, especially the staging slots where your pipeline will deploy the solutions**.
 
@@ -654,7 +654,7 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
 
 5. In case the *Password for 'https://\<your-org>@dev.azure.com':* prompt appears, follow the next steps to generate a PAT (Personal Access Token) for your Azure DevOps organization. Otherwise, skip to step 13.
     
-    > **Note**: **DO NOT CLOSE AZURE CLOUD SHELL**. Use a different browser tab for the steps for creating a new PAT token.  Also, these PAT configuration steps are also useful when using a multi-factored protected user account with Azure DevOps.
+    > **Note**: **Do Not Close Azure Cloud Shell**. Use a different browser tab for the steps for creating a new PAT token.  Also, these PAT configuration steps are also useful when using a multi-factored protected user account with Azure DevOps.
 
 6. In Azure DevOps, choose on the second to last icon on the top menu in the left-hand side of the screen, representing a user and a small gear icon.
 
@@ -678,7 +678,7 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
 
 12. In Azure Cloud Shell, paste the PAT token and press **Enter**.   Git will push the contents of your local repository in Azure Cloud Shell to your new Azure DevOps project repository.  
 
-    ![Pushing code to Azure DevOps](images/stepbystep/media/image1064.png "The password is not shown when you paste it, but the PAT allows you to push the code to your Azure DevOps Repo")  
+    ![The cloud terminal is shown in this screen to highlight that the PAT is not shown when you paste it in the cloud shell.  Even so, using the PAT as your password allows you to push the code to your Azure DevOps Repo](images/stepbystep/media/image1064.png "PAT is not shown after pasting, but the cloud shell does use it")  
 
 13. Navigate to the Repos > Files page which shows the files in the repository. You may need to refresh the page to see the updated files. Your source code is now appearing in Azure DevOps.
 
