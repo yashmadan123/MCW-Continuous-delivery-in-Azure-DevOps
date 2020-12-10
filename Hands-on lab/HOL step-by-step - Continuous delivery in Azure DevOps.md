@@ -981,7 +981,6 @@ In this exercise, you will modify the existing pipeline to include a basic relea
 
     ![On the Pipeline Tasks panel, Azure App Service Deploy Task is highlighted.](images/stepbystep/media/image1006.png "Select Task")
     
-
     This will show a configuration panel to configure this deployment task with some fields containing default values:
 
     ![A screen showing the App Service Deploy Task configuration options.](images/stepbystep/media/image1007.png "Default Task Configuration Panel")
@@ -1006,7 +1005,13 @@ In this exercise, you will modify the existing pipeline to include a basic relea
     
     Select **Add** to add this task as configured to your pipeline definition file, and on completion, you can see that the following YAML has been added in the YAML editor:
 
-    ![In the Pipeline YAML editor, the image shows the YAML result from adding the Azure App Service deploy Task.](images/stepbystep/media/image1010.png "Pipeline YAML Editor")
+    ![In the Pipeline YAML editor, the image shows the YAML result from adding the Azure App Service deploy Task.](images/stepbystep/media/image1010.png "Pipeline YAML Editor")  
+
+    > **Note:** Pay close attention to the final line `packageForLinux`.  It is highly likely you will need to update this line to match the image above to use the correct drop location:    
+
+    ```  
+    '$(Build.ArtifactStagingDirectory)/drop/*.zip'
+    ```  
     
 7. At this point you now have a **Build Stage** that builds your project and publishes an artifact to a known location in Azure Pipelines.   You also have a **Deploy Stage** that will deploy the artifact to your dev environment, however, you need to make some additional adjustments to this stage to tie everything together. 
 
