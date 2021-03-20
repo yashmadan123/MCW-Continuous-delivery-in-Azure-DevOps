@@ -419,7 +419,7 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
 ### Task 4: Create the dev environment and deploy the template to Azure
 
-Now that the template file has been uploaded, we'll deploy it several times to create each of our desired environments: *dev*, *test*, and *production*. Let's start with the **dev** environment.
+Now that the template file has been updated, we'll deploy it several times to create each of our desired environments: *dev*, *test*, and *production*. Let's start with the **dev** environment.
 
 1.  In the **Azure Cloud Shell** terminal, from the same folder that your ARM template resides in, enter the following command and press **Enter**:
 
