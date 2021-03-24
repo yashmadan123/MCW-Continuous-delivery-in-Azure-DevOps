@@ -1092,7 +1092,7 @@ In this exercise, you will modify the existing pipeline to include a basic relea
     
 14. **Congratulations!** You have just created your first multistage pipeline!  Now, let's verify your deployment.   
 
-    Using **Azure Portal**, navigate to the resource group you created earlier to view your app services in this resource group .   Sort by **Type** Select the development app service:
+    Using **Azure Portal**, navigate to the resource group you created earlier to view your app services in this resource group .   Sort by **Type** Select the development app service staging slot:
 
     ![Screen showing Azure Portal provisioned assets in lab resource group , the dev Web App Service and sorted type column header are highlighted.](images/stepbystep/media/image1023.png "Azure Portal Resources")  
 
