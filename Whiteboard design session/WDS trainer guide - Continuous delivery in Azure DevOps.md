@@ -173,7 +173,7 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 In this whiteboard design session, you will learn how to design a solution with a combination of Azure Resource Manager templates and Azure DevOps to enable continuous delivery with several Azure PaaS services.
 
-At the end of this workshop, you will be better able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition, you'll create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with Azure DevOps, configure Application Insights into an application, and create an Azure DevOps project and Git repository.
+At the end of this workshop, you will be better able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition, you'll learn how to design a deployment and monitoring architecture using Azure Resource Manager templates to provision Azure resources, Application Insights for deep application monitoring, and Azure DevOps as a source code repository and build/deploy pipeline.
 
 ## Step 1: Review the customer case study 
 
