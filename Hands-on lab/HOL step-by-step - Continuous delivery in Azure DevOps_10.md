@@ -2,18 +2,39 @@
 
 Duration: 30 Minutes
 
-In this exercise, you will first set up a pull request policy for the master branch, then create a short-lived task branch.  In this branch you will make a small code change, commit, push the code, and finally, submit a pull request. 
+In this exercise, you will first set up a pull request policy for the master branch, then create a short-lived task branch.  In this branch you will make a small code change, commit, push the code, and finally, submit a pull request with validation builds. 
 
 Then, you will merge the pull request into the master branch, triggering an automated build and release of your application.  For this exercise, you will use Azure DevOps workflow to complete the tasks, but keep in mind this same process could be performed locally using the Azure Command Line Interface (CLI), or an IDE of your choice.
 
 ### Task 1: Set up a pull request policy
 
-1.  On left navigation, select **Repos** and select **Branches** to view branches associated with your repo.  For now there is only the master branch.   Select the ellipsis for the master branch and select **Branch policies**.
+1.  Create a work item to associate to a pull request.
 
-    ![Screen showing the Azure DevOps Branches screen indicating the selection of the Branches link on the far left, followed by selecting the ellipsis next to the master branch and choosing branch policies from the menu.](images/stepbystep/media/image1036.png "Selecting Branch Policy")
+    For this task, you will be creating a new work item that simulates having a task for the developer to complete that will be eventually be associated to a pull request.  
 
+    On the left navigation, select **Boards**, then use the green plus symbol in the `New` column to add a new work item.  Make sure to create the new work item as a `Product Backlog Item`.  
 
-2.  Enable the policy by checking **Check for linked work items** (1) and **Check for comment resolution** (2)
+    >**Note**: Instead of `Product Backlog Item`, you may see `User Story` or `TODO`, depending on what methodology you chose when you setup your organization (such as Agile, Scrum, or CMMI).    
+
+    ![Screen showing how to use the navigation to create a new work item in the Azure Boards.](images/stepbystep/media/image1036_01.png "Creating a new work item for tracking developer work")    
+
+    In the dialog that appears, enter the following text:  
+
+    ```  
+    Fix the navigation on the main page home link.  Currently redirects to Privacy.
+    ```  
+
+    Save the work item so that it will be assigned a valid number and be ready to assign to the next pull request (created in a future exercise).   
+
+    ![Screen showing the created work item.](images/stepbystep/media/image1036_02.png "Screen that shows the created work item")  
+
+    >**Note**: Your number will almost certainly be different than mine.  
+
+2.  On left navigation, select **Repos** and select **Branches** to view branches associated with your repo.  For now there is only the master branch.   Select the ellipsis for the master branch and select **Branch policies**.
+
+    ![Screen showing the Azure DevOps Branches screen indicating the selection of the Branches link on the far left, followed by selecting the ellipsis next to the master branch and choosing branch policies from the menu.](images/stepbystep/media/image1036.png "Selecting Branch Policy")  
+
+3.  Enable the policy by checking **Check for linked work items** (1) and **Check for comment resolution** (2).
 
     ![Screen showing the branch policies for master screen with Check for linked work items and check for comment resolution checked and the add button for branch policy highlighted.](images/stepbystep/media/image1037.png "Configuring Branch Policy")
     
@@ -25,7 +46,7 @@ Then, you will merge the pull request into the master branch, triggering an auto
 
     The second check. *Check for comment resolution* ensures comments applied to this pull request during the peer review phase require resolution.
 
-3.  Now select **+** (3) to add the build policy.  This will enable the build to run when a pull request is created.  In the *Add build policy* panel, choose the correct **Build pipeline** and add a **Display name** and select **Save**.   
+4.  Now select **+** (3) to add the build policy.  This will enable the build to run when a pull request is created.  In the *Add build policy* panel, choose the correct **Build pipeline** and add a **Display name** and select **Save**.   
 
     ![Screen showing the Add Build Policy panel with the Build pipeline and Display Name values added, and Display Name and Save button highlighted.](images/stepbystep/media/image1038.png "Add Build Policy")
 

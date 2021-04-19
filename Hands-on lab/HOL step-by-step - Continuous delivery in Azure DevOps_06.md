@@ -76,7 +76,7 @@ In this Task, you will configure the Azure DevOps with a Service Connection that
 
     Ensure **Grand access permissions to all pipelines** is checked
 
-    >**Note**: During the Service Connection creation process, you might be prompted to sign in to your Microsoft account if Azure DevOps detects it requires authentication. 
+    >**Note**: During the Service Connection creation process, you might be prompted to sign into your Microsoft account if Azure DevOps detects it requires authentication. 
     
 7. And finally, select **Save**.   
  
@@ -94,7 +94,7 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
     
     If you are using the Azure Cloud Shell you will be prompted for credentials to connect to your Azure DevOps instance when using Git. 
     
-    The best way to authenticate is to use a personal access token, (or PAT), configured with scope *Code, Full permissions*. After this configuration, you can then use the PAT as a password (leaving the user name empty) when prompted by Git. 
+    The best way to authenticate is to use a personal access token, (or PAT), configured with scope *Code, Full permissions*. After this configuration, you can then use the PAT as a password (leaving the username empty) when prompted by Git. 
 
 2. Open *Cloud Shell Editor* to this folder by typing: 
    
@@ -119,11 +119,11 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
     ```bash
     git remote add origin https://<your-org>@dev.azure.com/<your-org>/TailspinToys/_git/TailspinToys
     git push -u origin --all
-    ```
+    ```  
 
 5. In case the *Password for 'https://\<your-org>@dev.azure.com':* prompt appears, follow the next steps to generate a PAT (Personal Access Token) for your Azure DevOps organization. Otherwise, skip to step 13.
     
-    > **Note**: **DO NOT CLOSE AZURE CLOUD SHELL**. Use a different browser tab for the steps for creating a new PAT token.  Also, these PAT configuration steps are also useful when using a multi-factored protected user account with Azure DevOps.
+    > **Note**: **Do Not Close Azure Cloud Shell**. Use a different browser tab for the steps for creating a new PAT token.  Also, these PAT configuration steps are also useful when using a multi-factored protected user account with Azure DevOps.
 
 6. In Azure DevOps, choose on the second to last icon on the top menu in the left-hand side of the screen, representing a user and a small gear icon.
 
@@ -147,19 +147,17 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
 
 12. In Azure Cloud Shell, paste the PAT token and press **Enter**.   Git will push the contents of your local repository in Azure Cloud Shell to your new Azure DevOps project repository.  
 
+    ![The cloud terminal is shown in this screen to highlight that the PAT is not shown when you paste it in the cloud shell.  Even so, using the PAT as your password allows you to push the code to your Azure DevOps Repo](images/stepbystep/media/image1064.png "PAT is not shown after pasting, but the cloud shell does use it")  
+
 13. Navigate to the Repos > Files page which shows the files in the repository. You may need to refresh the page to see the updated files. Your source code is now appearing in Azure DevOps.
 
     ![The newly created files show up in Repos > Files section.](images/stepbystep/media/image136.png "Azure DevOps Repo File View")
 
-14. Expand the **ClientApp** directory and select the **package.json** file.
+14. In the files for your repo, navigate to the folder `Client App -> src`.  If there is a file named **package-lock.json**, hover on the file, and from the context menu, choose **Delete**.
 
-15. On line 27, change the value representing the version of the *rxjs* dependency, from *^6.0.0* to **6.0.0** (removing the '^' character).
+    ![The context menu shows up on the package-lock.json file, from the ClientApp directory.](images/stepbystep/media/image137.png "Deleting package-lock.json")  
 
-    ![The content of the package.json file is shown.](images/stepbystep/media/image138.png "Change rxjs dependency value to 6.0.0")
+    >**Note**: If there is no package.json file then you don't need to do anything else here.  You can skip to Exercise 3. 
 
-16. Next, hover the **package-lock.json** file and from the context menu, choose **Delete**.
-
-    ![The context menu shows up on the package-lock.json file, from the ClientApp directory.](images/stepbystep/media/image137.png "Deleting package-lock.json")
-
-17. Confirm the deletion, and when the commit panel shows, validate the commit message and choose **Commit**.
+15. Confirm the deletion, and when the commit panel shows, validate the commit message and choose **Commit**.
 

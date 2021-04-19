@@ -78,10 +78,10 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
     ```yml
     steps:
     # Nuget Tool Installer Task
-    - task: NuGetToolInstaller@0
-      displayName: 'Use NuGet 4.4.1'
+    - task: NuGetToolInstaller@1
+      displayName: 'Use NuGet 5.5.1'
       inputs:
-        versionSpec: 4.4.1      
+        versionSpec: 5.5.1      
     ```
 
     Tasks are the building blocks of a pipeline. They describe the actions that are performed in sequence during an execution of the pipeline.
@@ -101,16 +101,16 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
     # Finds or downloads and caches the specified version spec of Node.js and adds it to the PATH
     - task: NodeTool@0
       inputs:
-        versionSpec: '10.x' 
+        versionSpec: '12.x' 
 
     # Build Task  
-    - task: VSBuild@1
+    - task: DotNetCoreCLI@2
       displayName: 'Build solution'
       inputs:
-        solution: '**/tailspintoysweb.csproj'
-        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
-        platform: 'any cpu'
-        configuration: 'release'
+        command: publish
+        publishWebProjects: True
+        arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'  
+        zipAfterPublish: true
 
     # Publish Task
     - task: PublishBuildArtifacts@1
@@ -134,18 +134,21 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
       - visualstudio
       - vstest
 
+    variables:
+      buildConfiguration: 'Release'
+
     steps:
     # Nuget Tool Installer Task
-    - task: NuGetToolInstaller@0
-      displayName: 'Use NuGet 4.4.1'
+    - task: NuGetToolInstaller@1
+      displayName: 'Use NuGet 5.5.1'
       inputs:
-        versionSpec: 4.4.1
+        versionSpec: 5.5.1
 
     # Node.js Tool Installer Task
     # Finds or downloads and caches the specified version spec of Node.js and adds it to the PATH
     - task: NodeTool@0
       inputs:
-        versionSpec: '10.x' 
+        versionSpec: '12.x' 
     
     # Nuget Restore Task
     - task: NuGetCommand@2
@@ -154,13 +157,13 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
         restoreSolution: '**/tailspintoysweb.csproj'
 
     # Build Task  
-    - task: VSBuild@1
+    - task: DotNetCoreCLI@2
       displayName: 'Build solution'
       inputs:
-        solution: '**/tailspintoysweb.csproj'
-        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
-        platform: 'any cpu'
-        configuration: 'release'
+        command: publish
+        publishWebProjects: True
+        arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'  
+        zipAfterPublish: true
 
     # Publish Task
     - task: PublishBuildArtifacts@1
@@ -176,26 +179,23 @@ The *pool* section specifies which pool to use for a job of the pipeline. It als
     - build the code project, producing build artifacts
     - publish build artifacts to a known artifact location within Azure DevOps Pipelines.   
 
-12. Choose the **Save and run** button to save our new pipeline and also kick off the first build.
-
+12. Choose the **Save and run** button to save our new pipeline and also kick off the first build.  
 
     ![A screen showing the contents of the YAML editor. The Save and run button is highlighted.](images/stepbystep/media/image73.png "Reivew your pipeline YAML - save highlighted")    
 
-13. When the editor process saves your YAML, Azure DevOps Pipelines creates a new source file called *azure-pipelines.yml* to the root of your TailspinToys repository. This is done through a git commit that Azure DevOps facilitates as part of the save process which also prompts you to enter a commit message. 
+13. When the editor process saves your YAML, Azure DevOps Pipelines creates a new source file called *azure-pipelines.yml* to the root of your TailspinToys repository. This is done through a git commit that Azure DevOps facilitates as part of the save process which also prompts you to enter a commit message.  
 
-
-    ![A screen that shows the commit of azure-pipelines.yml. The Save and run button is highlighted.](images/stepbystep/media/image74.png "Save and run")
+    ![A screen that shows the commit of azure-pipelines.yml. The Save and run button is highlighted.](images/stepbystep/media/image74.png "Save and run")  
     
-    By default, **Commit Message** will be populated for you but you may change this. Select the **Save and run** button at the bottom of the screen to commit the pipeline changes to your master branch.   
+    By default, **Commit Message** will be populated for you, but you may change this. Select the **Save and run** button at the bottom of the screen to commit the pipeline changes to your master branch.  
 
-14. The build process will immediately begin and run through the steps defined in your new *azure-pipelines.yml* definition file, and the screen will refresh to show you the build process executing, in real-time. 
+14. The build process will immediately begin and run through the steps defined in your new *azure-pipelines.yml* definition file, and the screen will refresh to show you the build process executing, in real-time.  
 
+    ![A screen that shows the real-time output of the build process.](images/stepbystep/media/image76.png "Real-time output")  
 
-    ![A screen that shows the real-time output of the build process.](images/stepbystep/media/image76.png "Real-time output")   
+15. After the build process completes, you should see a green check mark next to each of the build pipeline steps.  
 
-15. After the build process completes, you should see a green check mark next to each of the build pipeline steps.
-  
-    ![A screen that shows a successfully completed build pipeline.](images/stepbystep/media/image77.png "Success") 
+    ![A screen that shows a successfully completed build pipeline.](images/stepbystep/media/image77.png "Success")  
     
-    **Congratulations**, you have just created your first build pipeline! In the next exercise, we will create a release pipeline that deploys your successful builds.
+    **Congratulations**, you have just created your first build pipeline! In the next exercise, we will create a release pipeline that deploys your successful builds.  
 

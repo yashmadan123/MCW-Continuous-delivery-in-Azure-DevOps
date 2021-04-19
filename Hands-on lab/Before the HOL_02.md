@@ -11,10 +11,10 @@ In this lab, you will configure a developer environment and download the require
 >**Note**: This workshop can be completed using only the Azure Cloud Shell.
 
 1.  In a web browser, navigate to https:<span></span>//shell.azure.com. Alternatively, from the Azure web portal, launch the **Azure Cloud Shell**. It has common Azure tools preinstalled and configured to use with your account. Login with following Azure credentials
-       * Azure Usename/Email: <inject key="AzureAdUserEmail"></inject>
-       * Azure Password: <inject key="AzureAdUserPassword"></inject>
+      * Azure Usename/Email: <inject key="AzureAdUserEmail"></inject>
+      * Azure Password: <inject key="AzureAdUserPassword"></inject>
 
-     ![This is a screenshot of an icon used to launch the Azure Cloud Shell from the Azure Portal.](images/Setup/image3.png "Azure Cloud Shell launch icon")
+    ![This is a screenshot of an icon used to launch the Azure Cloud Shell from the Azure Portal.](images/Setup/image3.png "Azure Cloud Shell launch icon")
 1. After log in to Azure Cloud Shell select the Bash option from the Welcome to Azure Cloud shell dialog box and now you will see a You have no storage mounted box and click the option for Show advanced settings.
    1. Select Create new under Storage account and provide values as below:
       - **Storage account** : **storage<Deployementid>**
@@ -37,8 +37,8 @@ In this lab, you will configure a developer environment and download the require
 1.  Using the Azure Cloud Shell, you can download the file by executing the following command inside the Cloud Shell window (all on one line):
 
     ```bash
-    curl -o studentfiles.zip https://cloudworkshop.blob.core.windows.net/agile-continous-delivery/studentfiles.zip
-    ```
+    curl -o studentfiles.zip https://cloudworkshop.blob.core.windows.net/agile-continous-delivery/studentfiles_dn5.zip
+    ```  
 
 2.  Extract the contents of the file to the new folder. Using the Azure Cloud Shell, you can execute the following command inside the Cloud Shell window:
 

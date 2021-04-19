@@ -55,9 +55,6 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
           "production"
         ]
     },
-    "DeploymentID": {
-        "type": "string"
-    },
     ```
 
     After adding the code, it will look like this:
@@ -120,9 +117,6 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
                     "test",
                     "production"
                 ]
-            },
-            "DeploymentID": {
-                "type": "string"
             },
             "siteName": {
                 "type": "string",
@@ -346,7 +340,7 @@ Since this solution is based on Azure Platform-as-a-Service (PaaS) technology, i
 
 ### Task 4: Create the dev environment and deploy the template to Azure
 
-Now that the template file has been uploaded, we'll deploy it several times to create each of our desired environments: *dev*, *test*, and *production*. Let's start with the **dev** environment.
+Now that the template file has been updated, we'll deploy it several times to create each of our desired environments: *dev*, *test*, and *production*. Let's start with the **dev** environment.
 
 1.  In the **Azure Cloud Shell** terminal, from the same folder that your ARM template resides in, enter the following command and press **Enter**:
 
@@ -354,38 +348,52 @@ Now that the template file has been uploaded, we'll deploy it several times to c
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
     echo "Enter the location (i.e. westus, centralus, eastus):" &&
-    read location &&
-    az group deployment create --resource-group $resourceGroupName --template-file "$HOME/studentfiles/armtemplate/azuredeploy.json"
-    ```
+    read location
+    ```  
 
     >**Note**: The value for **Resource Group name** can be obtained from the **Environment details** tab
-    
-    >**Note**: This command is designed to prompt us to enter the resource group name and Azure region (location) we want to deploy our resources to. The script then takes our inputs and passes them as parameters to the Azure CLI command that calls our recently uploaded template file.
 
-    >**Note**: If you've extracted the student files in a different directory than the one indicated in 'Before the hands-on lab' Task 2.2, you will get an error similar to *'[Errno 2] No such file or directory: '/home/username/studentfiles/armtemplate/azuredeploy.json'*. In this case, you should replace $HOME/studentfiles/armtemplate with the path of the directory you chose.
+    Enter the name of a resource group you want to deploy the resources to (i.e. TailSpinToysRG). If it does not already exist, the template will create it. Then, select **Enter**.  
 
-    ![In the Azure Cloud Shell window, the command has been entered is we are prompted for the name of the resource group we want to deploy to.](images/stepbystep/media/image44.png "Azure Cloud Shell-Creating resource groups")
-
-2.  Enter the name of a resource group you want to deploy the resources to (i.e. TailSpinToysRG). If it does not already exist, the template will create it. Then, press **Enter**.
-
-3.  Next, we're prompted to enter an Azure region (location) where we want to deploy our resources to (i.e. westus, centralus, eastus). 
+    Next, you're prompted to enter an Azure region (location) where you want to deploy your resources to (i.e. westus, centralus, eastus). 
     
     Enter the name of an Azure region and then press **Enter**.
-   
-4.  Next, we're asked to enter a choice for environments we want to deploy to. The template will use our choice to concatenate the name of the environment with the name of the resource during provisioning. 
+
+2. Create the resource group:
+
+    ```bash
+    az group create --name $resourceGroupName --location "$location"
+    ```  
+
+3. Validate that you are in the correct directory. Run an `ls` command and you should see the output `azuredeploy.json`.  If you don't see that file, use `cd <directory>` to move to the correct folder.  
+
+    ```bash  
+    ls
+    ```  
+
+    ![Screen showing the output of the ls command, which lists the file azuredeploy.json](images/stepbystep/media/image1063.png "Running an ls command")
+
+    >**Note**: Your path will likely be different than what is shown, as I put everything into a subfolder, which you likely did not do, and that is just fine.  
+
+    Once you are certain you are in the correct folder, run the following command:  
+
+    ```bash  
+    az deployment group create --resource-group $resourceGroupName --template-file "azuredeploy.json"
+    ```  
+4.  Next, you're asked to enter a choice for environments you want to deploy to. The template will use your choice to concatenate the name of the environment with the name of the resource during provisioning. 
     
     For this first run, select the **dev** environment by entering **1** and then pressing **Enter**.
     
     ![In the Azure Cloud Shell window, we are prompted for the environment we want to deploy to.](images/stepbystep/media/image46.png "Azure Cloud Shell-provisioning dev environment") 
  5.  Then it will ask for the string value for the **DeployementID** and give the value of the DeploymentID from the **Environmet details** Tab.
 
-5.  Next, we're asked to supply an administrator login (username) for the PostgreSQL server and database. This will be the username credential you would need to enter to connect to your newly created database. 
+5.  Supply an administrator login (username) for the PostgreSQL server and database. This will be the username credential you would need to enter to connect to your newly created database. 
     
     For the **administratorLogin**, enter a username value (e.g. *azureuser*) and then press **Enter**.
 
     ![In the Azure Cloud Shell window, we are prompted for the administrative username for the PostgreSQL server and database we want to create.](images/stepbystep/media/image47.png "Azure Cloud Shell-entering administrator credentials")
 
-6.  Next, we're asked to supply an administrator password for the PostgreSQL server and database. This will be the password credential you would need to enter to connect to your newly created database.
+6.  Supply an administrator password for the PostgreSQL server and database. This will be the password credential you would need to enter to connect to your newly created database.
 
     >**Note**: The password must meet complexity requirements of 8 or more characters, must contain upper and lower case characters, must contain at least one number and at least one special character, e.g. "Database2020!"
 
@@ -399,7 +407,7 @@ Now that the template file has been uploaded, we'll deploy it several times to c
 
     ![The Azure Cloud Shell has succeeded in executing the template based on the parameters we provided.](images/stepbystep/media/image50.png "Azure Cloud Shell-Succeeded Highlighted")
 
-    >**Note**: The above steps were used to provision the *dev* environment. Most of these same steps will be repeated for the *test* and *production* environments below.
+    >**Note**: The above steps were used to provision the *dev* environment. Most of these same steps will be repeated for the *test* and *production* environments below.  
 
 ### Task 5: Create the test environment and deploy the template to Azure
 
@@ -419,5 +427,29 @@ Repeat the above steps and select to create the **3. production** environment. Y
 
     >**Note**: The specific names of the resources will be slightly different than what you see in the screenshot based on the unique identities assigned.
 
-    ![The Azure Portal is showing all the deployed resources for the resource group we have been using.](images/stepbystep/media/image998.png "Listed Azure Portal Resources")
+    ![The Azure Portal is showing all the deployed resources for the resource group we have been using.](images/stepbystep/media/image998.png "Listed Azure Portal Resources")  
+
+### Task 8: Update the deployed App Services and Slots to use .NET 5   
+
+After all of your environments are deployed, navigate to the azure portal and update all three app services and their corresponding staging slots to use the .Net 5 framework.  
+
+1. In the window opened from the previous step, sort the deployed resources by type to get the App Services and their slots listed as the first six items (remember that the unique names will be different for you).  
+
+    ![Screen showing all of the resource group resources, which are listed and sorted by type such that app service and slots are listed first.  All three app services and their slots are selected to note that each needs to be modified.](images/stepbystep/media/image1060.png "Resources by Type")  
+
+2. For each of the three app services and their corresponding slots, you will do the following:  
+
+    **Right-click on the name and select 'open in new tab'**.  
+
+    ![Screen showing the first link in the list of resources is right-clicked and the option open in a new tab is selected.](images/stepbystep/media/image1061.png "Open in a new tab")  
+
+    * **In the new tab, browse to configuration, then select `General Settings`.  On the General Settings tab, select the `.Net 5 (Early Access)` item from the dropdown for the .NET Framework Version.**  
+
+    ![Screen showing selection of the option for the .Net 5 framework](images/stepbystep/media/image1062.png "Choosing the .Net 5 framework")  
+
+    **After making the change, don't forget to `Save` the changes at the top**.
+
+    >**Note**: The `(Early Access)` will likely go away at some point. When it does, just select the `.NET 5` option.
+
+    Lastly, **do not forget to do this for all six entries, especially the staging slots where your pipeline will deploy the solutions**.
 
