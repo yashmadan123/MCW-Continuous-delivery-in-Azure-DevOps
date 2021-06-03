@@ -605,7 +605,7 @@ In this Task, you will configure the Azure DevOps with a Service Connection that
     
     **Service Connection Name:**	 Enter a string value such as "LabConnection"  so you can find this later. 
 
-    Ensure **Grand access permissions to all pipelines** is checked
+    Ensure **Grant access permissions to all pipelines** is checked
 
     >**Note**: During the Service Connection creation process, you might be prompted to sign into your Microsoft account if Azure DevOps detects it requires authentication. 
     
