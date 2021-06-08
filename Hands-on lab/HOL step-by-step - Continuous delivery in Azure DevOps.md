@@ -688,7 +688,7 @@ In this Task, you will configure the Git repository for the Azure DevOps instanc
 
     ![The context menu shows up on the package-lock.json file, from the ClientApp directory.](images/stepbystep/media/image137.png "Deleting package-lock.json")  
 
-    >**Note**: If there is no package.json file then you don't need to do anything else here.  You can skip to Exercise 3. 
+    >**Note**: If there is no package-lock.json file then you don't need to do anything else here.  You can skip to Exercise 3. 
 
 15. Confirm the deletion, and when the commit panel shows, validate the commit message and choose **Commit**.
 
