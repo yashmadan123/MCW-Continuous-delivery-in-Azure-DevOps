@@ -112,10 +112,6 @@ In the current situation, the conference sites are hosted on-premises with the f
 
 5.  Our developers are already having a challenge learning how to use Git; will adding a continuous deployment system on top of that slow them down and confuse them even more?  
 
-### Infographic for common scenarios
-
-![Common Scenarios for building a continuous deployment pipeline with Azure DevOps. Images include the icon for Azure DevOps, a Git repo, and a pipeline.](images/commonscenarios.png "Common Scenarios for building a continuous deployment pipeline with Azure DevOps")
-
 ## Step 2: Design a proof of concept solution
 
 **Outcome**

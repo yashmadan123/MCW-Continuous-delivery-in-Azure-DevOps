@@ -239,10 +239,6 @@ In the current situation, the conference sites are hosted on-premises with the f
 
 5.  Our developers are already having a challenge learning how to use Git; will adding a continuous deployment system on top of that slow them down and confuse them even more? 
 
-### Infographic for common scenarios
-
-![Common Scenarios for building a continuous deployment pipeline with Azure DevOps. Images include the icon for Azure DevOps, a Git repo, and a pipeline.](images/commonscenarios.png "Common Scenarios for building a continuous deployment pipeline with Azure DevOps")
-
 ## Step 2: Design a proof of concept solution
 
 **Outcome**
@@ -485,8 +481,6 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
     Application Insights provide rich performance monitoring, alerting, and easy-to-consume dashboards. The service also allows us to quickly see if we have a problem and how many customers may be affected. The service provides for interactive queries and full-text search for unlocking insights into our logs.
 
-    ![Application Insights provides a rich interactive dashboard and search feature over the logs that it collects from the application. In these screenshots, Search is highlighted in the menu, and a Search screen displays information about Trace, Request, Page View, Custom Event, and Exception Event Types, which are selected in a Filter submenu. At this time, we are unable to capture all of the information in the window. Future versions of this course should address this.](images/trainerguide/media/image3.png "Open diagnostic search")
-
 2.  Implement a solution to enhance the application logs to provide more useful performance and application behavior details, specifically around browser metrics and application dependencies. Discuss which visualization, or dashboard, options exist for the log results. Existing App Service logs already cover these topics:
 
     -  **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater).
@@ -518,9 +512,6 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
     From the Application Insights Portal, we can see detailed metrics from our solution and get a visual layout of the dependency relationships between our application components using App map. Each component displays specific KPIs such as load, performance, failures, and alerts. By selecting the App Analytics on one of the application components, we can open the Application Insights Analytics feature. This will provide a query language for analyzing all of the data collected by Application Insights.
 
     To get custom information about our users, the Users panel in Application Insights, will allow us to understand important details in a variety of ways. We can use this panel to understand such information as where our users are connecting from, the browser type they are using, and what areas of the application they're accessing.
-
-    ![In this Application Insights screenshot, the Application Map feature can be observed, which represents the availability of an application, the average client response time, the number of instances running the fabrikamprod application and all the underlying dependencies of the app, with their corresponding response times.](images/trainerguide/media/image4.png "Application Map")
-
 
 ## Checklist of preferred objection handling
 
