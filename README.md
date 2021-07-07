@@ -21,11 +21,11 @@ Customers are considered "tenants", and each tenant is treated as a unique deplo
 
 The conference owners have access to the admin site to enter event details and they will continue to use this admin site each conference, every year. They have the ability to add new events and isolate speakers, sessions, workshops, and other details.
 
-Susan is painfully aware that this small business, which evolved into something bigger, has organically grown into an unmanageable monolith. After some research and discussions with the lead architect, she comes to the conclusion that the currentsetup of the conference code base should be transformed into a fully, multi-tenanted application suite for conferences. However, with the high pace of change and the tight budgets, there is simply no have time to stop current business and restructure the core code base to support all the flexibility customers require.
+Susan is painfully aware that this small business, which evolved into something bigger, has organically grown into an unmanageable monolith. After some research and discussions with the lead architect, she comes to the conclusion that the current setup of the conference code base should be transformed into a fully, multi-tenanted application suite for conferences. However, with the high pace of change and the tight budgets, there is simply no have time to stop current business and restructure the core code base to support all the flexibility customers require.
 
 Susan is looking to take a step in this direction with the following goals in mind:
 - Improve the overall architecture
-  - While multi-tenancy is a goal for the code base, even with this in place, Susan believes there will always be the need for custom copies of code for a particular tenant who requires a one-off custom implementation. Susan feels that Docker containers may be a good solution to support their short-term DevOps and development agility needs, while also being the right direction once they reach a majority multi-tenant application solution.
+  - Even with multi-tenancy for the code base, Susan believes they will always need custom copies of code to support a tenant who requires one-off custom implementation. Docker containers may be a good option to both support short-term DevOps and agility needs and applicable for their long-term multi-tenant application solution.
   - One of the issues with the code base is that it has many dependencies across features. Seemingly simple changes to an area of code introduce issues with layout, responsiveness, registration functionality, content refresh, and more. To avoid this, she would like to rework the core code base so that registration, email notifications and templates, content and configuration are cleanly separated from each other and from the front end.
   - Move towards a cloud native implementation of their conference solution, without a lot of rework, to ensure more cost efficiency and scalability.
 - Improve the Development workflow 
@@ -68,21 +68,21 @@ May 2021
 
 ### Workshop
 
-In this workshop, you will learn how to setup and configure continuous delivery within Github. You will do this through the use of a new Azure DevOps project, Github repository for source control, Github actions for continuous delivery and deployment automation, and an Azure Resource Manager template for Azure resource deployment and configuration management.
+In this workshop, you will learn how to setup and configure continuous delivery within Azure and GitHub. You will do this through the use of a new Azure DevOps project, Github repository for source control, Github actions for continuous delivery and deployment automation, and an Azure Resource Manager (ARM) template for Azure resource deployment and configuration management.
 
-At the end of this workshop, you will be able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition,  you'll create an Azure Resource Manager (ARM) template to provision Azure resources, configure continuous delivery with Azure DevOps, and create an Azure DevOps project and Git repository.
+At the end of this workshop, you will be able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition,  you'll create an ARM template to provision Azure resources, configure continuous delivery with Azure DevOps, and create an Azure DevOps project and Git repository.
 
 
 ### Whiteboard design session *(this will go in the readme and in the WDS document)*
-In this whiteboard design session, you will learn how to design a solution with a combination of Azure Resource Manager templates, Azure DevOps, and Github actions to enable continuous delivery with several Azure PaaS services.
+In this whiteboard design session, you will learn how to design a solution with a combination of ARM templates, Azure DevOps, and Github actions to enable continuous delivery with several Azure PaaS services.
 
-At the end of this workshop, you will be better able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition, you'll learn how to design a deployment and monitoring architecture using Azure Resource Manager templates to provision Azure resources, Application Insights for deep application monitoring, and Github as a source code repository and build/deploy pipeline.
+At the end of this workshop, you will be better able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition, you'll learn how to design a deployment and monitoring architecture using ARM templates to provision Azure resources, Application Insights for deep application monitoring, and Github as a source code repository and build/deploy pipeline.
 
 
 ### Hands-on lab *(this will go in the readme and in the HOL document)*
-In this hands-on lab, you will learn how to implement a solution with a combination of Azure Resource Manager templates and Azure DevOps to enable continuous delivery with several Azure PaaS services.
+In this hands-on lab, you will learn how to implement a solution with a combination of ARM templates and Azure DevOps to enable continuous delivery with several Azure PaaS services.
 
-At the end of this workshop, you will be better able to implement solutions for continuous delivery with Github in Azure, as well create an Azure Resource Manager (ARM) template to provision Azure resources, create an Azure DevOps project with a Github repository, and configure continuous delivery with Github.
+At the end of this workshop, you will be better able to implement solutions for continuous delivery with Github in Azure, as well create an ARM (ARM) template to provision Azure resources, create an Azure DevOps project with a Github repository, and configure continuous delivery with Github.
 
 ## Azure services and related products
 - Azure App Service 
