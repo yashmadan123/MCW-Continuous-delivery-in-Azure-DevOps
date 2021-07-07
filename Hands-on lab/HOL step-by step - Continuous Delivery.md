@@ -86,7 +86,7 @@ Medical conferences typically have between 100 and 1500 attendees; as such, they
 
 4. Git for Windows
 
-5. Powershell
+5. PowerShell
 
 6. Docker Desktop for Windows
 
@@ -279,7 +279,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
 ### Task 1: Set up Cloud Infrastructure
 
-1.  Open the `deploy-infrastructure.ps1` Powershell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three letter abbreviation for the `$studentprefix` variable on the first line.
+1.  Open the `deploy-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three letter abbreviation for the `$studentprefix` variable on the first line.
 
     ```pswh
     $studentprefix = "hbs"                                  # <-- Modify this value
@@ -343,7 +343,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
     az account set --subscription <your subscription guid>
     ```
 
-4. Run the `deploy-infrastructure.ps1` Powershell script.
+4. Run the `deploy-infrastructure.ps1` PowerShell script.
 
     ```pwsh
     cd ./infrastructure
@@ -354,7 +354,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
     ![Screenshot of Azure Resource Group](../Media/hol-ex2-task1-step5-1.png "Azure Resource Group")
 
-6. Open the `seed-cosmosdb.ps1` Powershell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.  Also update the `$githubAccount` and `$githubRepo` variables with your GitHub account name and GitHub lab files repository name, respectively.
+6. Open the `seed-cosmosdb.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.  Also update the `$githubAccount` and `$githubRepo` variables with your GitHub account name and GitHub lab files repository name, respectively.
 
     ```pwsh
     $studentprefix = "hbs"
@@ -385,11 +385,11 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
         docker.pkg.github.com/$githubAccount/$githubRepo/fabrikam-init
     ```
 
-9. Run the `seed-cosmosdb.ps1` Powershell script. Browse to the Azure Portal and verify that the CosmosDB instance has been seeded.
+9. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and verify that the CosmosDB instance has been seeded.
 
     ![Screenshot of Azure Resource Group](../Media/hol-ex2-task1-step9-1.png "Azure Resource Group")
 
-10. Open the `configure-webapp.ps1` Powershell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three letter abbreviation for the `$studentprefix` variable on the first line.
+10. Open the `configure-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three letter abbreviation for the `$studentprefix` variable on the first line.
 
     ```pswh
     $studentprefix = "hbs"                                  # <-- Modify this value
@@ -407,11 +407,11 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
         --settings MONGODB_CONNECTION=$mongodbConnectionString
     ```
 
-12. Run the `configure-webapp.ps1` Powershell script. Browse to the Azure Portal and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
+12. Run the `configure-webapp.ps1` PowerShell script. Browse to the Azure Portal and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
 
     ![Screenshot of Azure Web Application settings](../Media/hol-ex2-task1-step12-1.png "Azure Web Application settings")
 
-13. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `GITHUB_TOKEN` environment variable in Powershell. We will need this environment variable for the `deploy-webapp.ps1` Powershell script, but we don't want to add it to any files that may get committed to the repository since it is a secret value.
+13. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `GITHUB_TOKEN` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we don't want to add it to any files that may get committed to the repository since it is a secret value.
 
     ```pwsh
     $env:GITHUB_TOKEN="<GitHub Personal Access Token>"
@@ -419,7 +419,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
 ### Task 2: Deployment Automation to Azure Web App
 
-1. Open the `deploy-webapp.ps1` Powershell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line, and add your GitHub account name for the `$githubAccount` variable on the second line.
+1. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line, and add your GitHub account name for the `$githubAccount` variable on the second line.
 
     ```pwsh
     $studentprefix = "hbs"                                  # <-- Modify this value
@@ -442,7 +442,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
         --resource-group $resourcegroupName
     ```
 
-3. Run the `deploy-webapp.ps1` Powershell script.
+3. Run the `deploy-webapp.ps1` PowerShell script.
 
     > **Note**: Make sure to run the `deploy-webapp.ps1` script from the `infrastructure` folder
 
@@ -464,7 +464,7 @@ Fabrikam Medical Conferences has their first website for a customer running in t
 
 ### Task 1: Set up Application Insights
 
-1.  Open the `deploy-appinsights.ps1` Powershell script in the `infrastrucutre` folder of your lab files GitHub repository and add the same custom lowercase three letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.
+1.  Open the `deploy-appinsights.ps1` PowerShell script in the `infrastructre` folder of your lab files GitHub repository and add the same custom lowercase three letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.
 
     ```pwsh
     $studentsuffix = "hbs"                                  # <-- Modify this
@@ -473,7 +473,7 @@ Fabrikam Medical Conferences has their first website for a customer running in t
     $appInsights = "fabmedicalai-" + $studentsuffix
     ```
 
-2. Run the `deploy-appinsights.ps1` Powershell script from a Powershell terminal and save the `AI Instrumentation Key` specified in the output - we will need it for a later step.
+2. Run the `deploy-appinsights.ps1` PowerShell script from a PowerShell terminal and save the `AI Instrumentation Key` specified in the output - we will need it for a later step.
 
     ```bash
     The installed extension 'application-insights' is in preview.
@@ -516,13 +516,13 @@ Fabrikam Medical Conferences has their first website for a customer running in t
 
 6. Wait for the GitHub Actions for your lab files repository to complete before executing the next step.
 
-7. Redeploy the web application by running the `deploy-webapp.ps1` Powershell script from the `infrastructure` folder.
+7. Redeploy the web application by running the `deploy-webapp.ps1` PowerShell script from the `infrastructure` folder.
 
 8. Visit the deployed website and check Application Insights in the Azure Portal to see instrumentation data.
         
 ### Task 2: Continuous Deployment with GitHub Actions
 
-1. Open the `deploy-sp.ps1` Powershell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line. Note the call to create a Service Principal.
+1. Open the `deploy-sp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line. Note the call to create a Service Principal.
 
     ```pwsh
     $studentprefix ="hbs"
@@ -539,7 +539,7 @@ Fabrikam Medical Conferences has their first website for a customer running in t
         --scopes $id
     ```
 
-2. Execute the `deploy-sp.ps1` Powershell script. Copy the resulting JSON output for use in the next step.
+2. Execute the `deploy-sp.ps1` PowerShell script. Copy the resulting JSON output for use in the next step.
 
     ```pwsh
     {
@@ -717,7 +717,7 @@ Fabrikam Medical Conferences has their first website for a customer running in t
 
 14. Choose your target subscription and resource group and set the `Service Connection` name to `Fabrikam-Azure`. Save the service connection - we will reference it in a later step.
 
-15. Open the build pipeline in `Edit` mode, and then click on the `Variables` button on the top-right corner of the pipeline editor. Add a secret variable `CR_PAT`, check the `Keep this value secret` checkbox, and copy the GitHub Personal Access Token from the Before the Hands-on lab guided instruciton into the `Value` field. Save the pipeline variable - we will reference it in a later step.
+15. Open the build pipeline in `Edit` mode, and then click on the `Variables` button on the top-right corner of the pipeline editor. Add a secret variable `CR_PAT`, check the `Keep this value secret` checkbox, and copy the GitHub Personal Access Token from the Before the Hands-on lab guided instruction into the `Value` field. Save the pipeline variable - we will reference it in a later step.
 
     ![Screenshot of New Pipeline Variable](../Media/hol-ex3-task3-step15-1.png "New Pipeline Variable")
 
@@ -809,7 +809,7 @@ Now that the lab is complete, we need to tear down our Azure resources that we c
 
 ### Task 1: Tear down Azure Resources
 
-1.  Open the `teardown-infrastructure.ps1` Powershell script in the `infrastructure` folder of your GitHub lab files repository and add the same custom lowercase three letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line.
+1.  Open the `teardown-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your GitHub lab files repository and add the same custom lowercase three letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line.
 
     ```pwsh
     $studentprefix ="hbs"
@@ -819,7 +819,7 @@ Now that the lab is complete, we need to tear down our Azure resources that we c
     az group delete --name $resourceGroupName
     ```
 
-2. Execute the `teardown-infrastructure.ps1` Powershell script to tear down the Azure resources for this lab.
+2. Execute the `teardown-infrastructure.ps1` PowerShell script to tear down the Azure resources for this lab.
 
 
 You should follow all steps provided *after* attending the Hands-on lab.

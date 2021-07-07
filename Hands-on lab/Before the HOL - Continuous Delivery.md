@@ -59,7 +59,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 4. Git for Windows
 
-5. Powershell
+5. PowerShell
 
 ## Before the hands-on lab
 
@@ -94,7 +94,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
 2. Clone the lab repository.
 
-  - Create an appropriate workspace folder and navigate to it in a Powershell terminal.
+  - Create an appropriate workspace folder and navigate to it in a PowerShell terminal.
 
     > **Note**: Suggested name for the workspace folder is `C:\Workspaces\lab`, for example.
 
@@ -112,7 +112,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
     git clone https://github.com/solliancenet/microsoft-mcw-continuous-delivery.git
     ```
 
-  - Create a folder for the GitHub repository created in Step 1 and navigate to it in Powershell.
+  - Create a folder for the GitHub repository created in Step 1 and navigate to it in PowerShell.
 
     ```pwsh
     mkdir mcw-continuous-delivery-lab-files
