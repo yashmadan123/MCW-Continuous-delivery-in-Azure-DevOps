@@ -70,7 +70,7 @@ Medical conferences typically have between 100 and 1500 attendees; as such, they
 
 1.  Microsoft Azure subscription must be pay-as-you-go or MSDN.
 
-  - Trial subscriptions will _not_ work
+  - Trial subscriptions will _not_ work.
 
   - To complete this lab setup, ensure your account includes the following:
 
@@ -207,7 +207,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 ### Task 4: Build Automation with GitHub Registry
 
-1. Select the `Settings` tab from your lab files repository in GitHub
+1. Select the `Settings` tab from your lab files repository in GitHub.
 
 2. Select the `Secrets` blade from the left navigation bar.
 
@@ -225,7 +225,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ![Screenshot of Publish Docker Container workflow](../Media/hol-ex1-task4-step5-1.png "Publish Docker Container workflow")
 
-6. Rename the file to `fabrikam-web.yml`
+6. Rename the file to `fabrikam-web.yml`.
 
 7. Change the image name to `fabrikam-web` and the registry to `docker.pkg.github.com/<githubaccountname>/<githubreponame>`. This is the name of the container image that will be pushed to the GitHub Container Registry.
 
@@ -242,7 +242,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This will ensure that the correct `Dockerfile` file can be found.
 
     ```yaml
-    # Build and push Docker image with Buildx (don't push on PR)
+    # Build and push Docker image with Build (do not push on PR)
     # https://github.com/docker/build-push-action
     - name: Build and push Docker image
       working-directory: content-web
@@ -263,7 +263,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ![Screenshot of GitHub Actions](../Media/hol-ex1-task4-step10-2.png "GitHub Actions")
 
-11. Set up workflows for `content-api` and `content-init` in the same manner. Call them `fabrikam-api.yml` and `fabrikam-init.yml` respectively, and change the container names to `fabrikam-api` and `fabrikam-init` respectively.
+11. Set up workflows for `content-api` and `content-init` in the same manner. Call them `fabrikam-api.yml` and `fabrikam-init.yml` respectively and change the container names to `fabrikam-api` and `fabrikam-init`, respectively.
 
 12. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
 
@@ -336,7 +336,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
             --deployment-container-image-name nginx
         ```
 
-3. Log in to Azure using `azcli`
+3. Log in to Azure using `azcli`.
 
     ```pwsh
     az login
@@ -411,7 +411,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
     ![Screenshot of Azure Web Application settings](../Media/hol-ex2-task1-step12-1.png "Azure Web Application settings")
 
-13. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `GITHUB_TOKEN` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we don't want to add it to any files that may get committed to the repository since it is a secret value.
+13. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `GITHUB_TOKEN` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
 
     ```pwsh
     $env:GITHUB_TOKEN="<GitHub Personal Access Token>"
@@ -419,7 +419,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
 ### Task 2: Deployment Automation to Azure Web App
 
-1. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line, and add your GitHub account name for the `$githubAccount` variable on the second line.
+1. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line and add your GitHub account name for the `$githubAccount` variable on the second line.
 
     ```pwsh
     $studentprefix = "hbs"                                  # <-- Modify this value
@@ -460,7 +460,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
 Duration: 40 minutes
 
-Fabrikam Medical Conferences has their first website for a customer running in the cloud, but deployment is still a largely manual process and we have no insight into the behavior of the application in the cloud.
+Fabrikam Medical Conferences has their first website for a customer running in the cloud, but deployment is still a largely manual process, and we have no insight into the behavior of the application in the cloud.
 
 ### Task 1: Set up Application Insights
 
