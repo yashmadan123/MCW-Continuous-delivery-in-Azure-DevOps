@@ -57,7 +57,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 # Trainer information
 
-Thank you for taking time to support the whiteboard design sessions as a trainer!
+Thank you for taking the time to support the whiteboard design sessions as a trainer!
 
 ## Role of the trainer
 
@@ -93,11 +93,11 @@ Each whiteboard design session uses the following flow:
 
 Analyze your customer's needs.
 
--   Customer's background, situation, needs and technical requirements
+-   Customer's background, situation, needs, and technical requirements
 
 -   Current customer infrastructure and architecture
 
--   Potential issues, objectives and blockers
+-   Potential issues, objectives, and blockers
 
 **Step 2: Design a proof of concept solution (60 minutes)**
 
@@ -137,9 +137,9 @@ Before conducting your first whiteboard design session:
 
 -   Become familiar with all key points and activities.
 
--   Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions.
+-   Plan the point you want to stress, which questions you want to drive, transition, and be ready to answer questions.
 
--   Prior to the whiteboard design session, discuss the case study to pick up more ideas.
+-   Before the whiteboard design session, discuss the case study to pick up more ideas.
 
 -   Make notes for later.
 
@@ -351,7 +351,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 ## Step 1: Review the customer case study
 
--   Check in with your table participants to introduce yourself as the trainer.
+-   Check-in with your table participants to introduce yourself as the trainer.
 
 -   Ask, "What questions do you have about the customer case study?"
 
@@ -361,7 +361,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 ## Step 2: Design a proof of concept solution
 
--   Check in with your tables to ensure that they are transitioning from step to step on time.
+-   Check-in with your tables to ensure that they are transitioning from step to step on time.
 
 -   Provide some feedback on their responses to the business needs and design.
 
@@ -399,13 +399,13 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 ## Preferred solution
 
-The solution for the Tailspin Toys scenario involves several technologies, including:
+The solution for the Fabrikam Medical scenario involves several technologies, including:
 
--   Creating a local, short lived branch for feature work.
+-   Creating a local, short-lived branch for feature work.
 
 -   Committing to the local branch and pushing to a central repository.
 
--   Using pull requests to merge to a single, long lived master branch after peer review.
+-   Using pull requests to merge to a single, long-lived master branch after peer review.
 
 -   Creating a build definition that is automatically triggered with each commit.
 
@@ -415,11 +415,11 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
     -   Provisioning of Azure resources using Azure Resource Management (ARM) Templates.
 
-    -   Automated deployment of solution to development environment.
+    -   Automated deployment of the solution to the development environment.
 
     -   Execution of automated tests.
 
-    -   Manual approval process for promoting solution to test and ultimately production environments using deployment slots.
+    -   The manual approval process for promoting solutions to test and ultimately production environments using deployment slots.
 
     -   Automatic switching of deployment slots upon successful deployment conditions.
 
@@ -430,33 +430,33 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
 1.  What available system should you use to automate software builds and deployments of the application?
 
-    Azure DevOps' build and release management features are a complete end to end solution for automating builds deployment for the solutions. From there, you can customize the gates your solution needs to promote the solution from environment to environment. You're in complete control of how the CI/CD process is implemented.
+    Azure DevOps' build and release management features are a complete end-to-end solution for automating builds deployment for the solutions. From there, you can customize the gates your solution needs to promote the solution from environment to environment. You're in complete control of how the CI/CD process is implemented.
 
     Once we have the build definition producing build artifacts, we create a release pipeline using the Release Management features of Azure DevOps.
 
-    The release pipeline is like the build definition in that it is a series to steps or tasks that we put together to produce an outcome. In this case...we produce the deployment of a release to one or more environments and perform some level of validation and verification of each release.
+    The release pipeline is like the build definition in that it is a series of steps or tasks that we put together to produce an outcome. In this case...we produce the deployment of a release to one or more environments and perform some level of validation and verification of each release.
 
     We can then configure approval steps between each environment as quality stage gates. This allows us to control the flow of releases as they proceed through the environments.
 
     The pipeline for development would simply deploy upon a successful build from the build pipeline.
 
-    Then, before we deploy to test, we may want the QA team to decide when to deploy the release into the environment. If that were the case, we would configure a manual approval and the deployment, although still automated, would not occur until a member of the QA team approved it to be deployed. This is useful when a QA team may be reviewing an existing release (previously deployed) and does not want the current release to be overwritten in their test environment.
+    Then, before we deploy to test, we may want the QA team to decide when to deploy the release into the environment. If that were the case, we would configure a manual approval, and the deployment, although still automated, would not occur until a member of the QA team approved it to be deployed. This is useful when a QA team may be reviewing an existing release (previously deployed) and does not want the current release to be overwritten in their test environment.
 
     Once the deployment to test occurs, we would likely have additional acceptance tests executed.
 
     If these acceptance tests pass, we could then trigger the deployment to production.
 
-    It is important to note that each environment can have its own set of tasks as often times, the deployment and validation steps vary by environment.
+    It is important to note that each environment can have its own set of tasks as oftentimes, the deployment and validation steps vary by environment.
 
 2.  Explain how you can continuously deploy new builds directly to the cloud without interfering with the production site.
 
     For a production deployment, the customer wants to maintain the uptime of the application. Thus, when we are deploying a new release, we want the application to remain available.
 
-    Azure App Services have a deployment slot feature specifically to enable this scenario. Each App Service has, by default, a production deployment slot. This is not to be confused with a production environment. For the purposes of this case study, we could add a new deployment slot named "staging."
+    Azure App Services have a deployment slot feature specifically to enable this scenario. Each App Service has, by default, a production deployment slot. This is not to be confused with a production environment. For this case study, we could add a new deployment slot named "staging."
 
-    To do this, we add an additional deployment slot to the Azure App Service and configure the release pipeline to deploy to the newly created deployment slot.
+    To do this, we add a deployment slot to the Azure App Service and configure the release pipeline to deploy to the newly created deployment slot.
 
-    Assuming a successful deployment and verification to the staging slot, we add an additional task to the deployment that switches the staging deployment slot with the production deployment slot and all new requests will be directed to the newly deployed application. All of this is done with no downtime to the application.
+    Assuming a successful deployment and verification to the staging slot, we add a task to the deployment that switches the staging deployment slot with the production deployment slot and all new requests will be directed to the newly deployed application. All of this is done with no downtime to the application.
 
 3.  Document how to integrate unit tests into the continuous delivery process such that when a test fails to pass, the deployment process is flagged and stopped.
 
@@ -464,11 +464,11 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
 4.  Explain how you can test a new build simultaneously with an existing build, like an A/B test?
 
-    The most common technique to meet this requirement is to create a deployment slots where your App Service variation can be deployed to. Then, configure the release pipeline to deploy to the preferred deployment slot. Using the Azure Portal, you can configure the Traffic Routing feature, specifying which percentage of users should go to the primary site and each deployment slot when they browse to your site's URL. Additionally, you could use Application Insights to measure the effectiveness of each version of the site.
+    The most common technique to meet this requirement is to create deployment slots where your App Service variation can be deployed to. Then, configure the release pipeline to deploy to the preferred deployment slot. Using the Azure Portal, you can configure the Traffic Routing feature, specifying which percentage of users should go to the primary site and each deployment slot when they browse to your site's URL. Additionally, you could use Application Insights to measure the effectiveness of each version of the site.
 
 5.  Why shouldn't we have multiple long-lived branches in source control?
 
-    If you think of your work as delta off of a master, the size of the delta increases as your branch incorporates more and more work. As the size of your team grows, the amount of work hidden from each other increases. And the chances that your assumptions about the state of the code hold true decreases the more you use long lived branches. If you merge your code back to master frequently, you demonstrate the direction you're taking the code. When you merge your code more frequently to master, the pain of integration happens at the beginning instead of the end of your work. This allows you to find issues faster and fix them at the earliest possible moment. Merging your code frequently also results in fewer merge conflicts. If you're developing a large feature, consider using feature flags so that you can continue to merge your code frequently.
+    If you think of your work as a delta off of a master, the size of the delta increases as your branch incorporates more and more work. As the size of your team grows, the amount of work hidden from each other increases. And the chances that your assumptions about the state of the code hold decreases the more you use long-lived branches. If you merge your code back to master frequently, you demonstrate the direction you're taking the code. When you merge your code more frequently to master, the pain of integration happens at the beginning instead of the end of your work. This allows you to find issues faster and fix them at the earliest possible moment. Merging your code frequently also results in fewer merge conflicts. If you're developing a large feature, consider using feature flags so that you can continue to merge your code frequently.
 
 6.  Create a plan on how to switch the source control location from Azure DevOps to GitHub.
 
@@ -479,7 +479,7 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
 1.  Implement a solution that will enable the logs to be searchable and visible in an online dashboard
 
-    Application Insights provide rich performance monitoring, alerting, and easy-to-consume dashboards. The service also allows us to quickly see if we have a problem and how many customers may be affected. The service provides for interactive queries and full-text search for unlocking insights into our logs.
+    Application Insights provide rich performance monitoring, alerting, and easy-to-consume dashboards. The service also allows us to quickly see if we have a problem and how many customers may be affected. The service provides for interactive queries and full-text searches for unlocking insights into our logs.
 
 2.  Implement a solution to enhance the application logs to provide more useful performance and application behavior details, specifically around browser metrics and application dependencies. Discuss which visualization, or dashboard, options exist for the log results. Existing App Service logs already cover these topics:
 
@@ -499,7 +499,7 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
     - _Agent-based application monitoring (ApplicationInsightsAgent)_
         
-        This method is the easiest to enable, and no advanced configuration is required. It is often referred to as "runtime" monitoring. For Azure App Services we recommend at a minimum enabling this level of monitoring, and then based on your specific scenario you can evaluate whether more advanced monitoring through manual instrumentation is needed.
+        This method is the easiest to enable, and no advanced configuration is required. It is often referred to as "runtime" monitoring. For Azure App Services we recommend at a minimum enabling this level of monitoring and then based on your specific scenario you can evaluate whether more advanced monitoring through manual instrumentation is needed.
 
     - _Manually instrumenting the application through code by installing the Application Insights SDK_
     
@@ -509,9 +509,9 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
 
     By using Application Insights, you should adapt the App Service deployment slots by marking the app setting holding the instrumentation key for Application Insights to be slot-bound. That way, staging and production can report independent log analytics even after a swap.
 
-    From the Application Insights Portal, we can see detailed metrics from our solution and get a visual layout of the dependency relationships between our application components using App map. Each component displays specific KPIs such as load, performance, failures, and alerts. By selecting the App Analytics on one of the application components, we can open the Application Insights Analytics feature. This will provide a query language for analyzing all of the data collected by Application Insights.
+    From the Application Insights Portal, we can see detailed metrics from our solution and get a visual layout of the dependency relationships between our application components using App map. Each component displays specific KPIs such as load, performance, failures, and alerts. By selecting App Analytics on one of the application components, we can open the Application Insights Analytics feature. This will provide a query language for analyzing all of the data collected by Application Insights.
 
-    To get custom information about our users, the Users panel in Application Insights, will allow us to understand important details in a variety of ways. We can use this panel to understand such information as where our users are connecting from, the browser type they are using, and what areas of the application they're accessing.
+    To get custom information about our users, the Users panel in Application Insights will allow us to understand important details in a variety of ways. We can use this panel to understand such information as to where our users are connecting from, the browser type they are using, and what areas of the application they're accessing.
 
 ## Checklist of preferred objection handling
 
@@ -519,13 +519,13 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
     
     **Potential answer**
     
-    Azure DevOps allows you to use GitHub as an alternate repository for source control. The code can still be built, tested, packaged and deployed using Visual Studio Team Services.
+    Azure DevOps allows you to use GitHub as an alternate repository for source control. The code can still be built, tested, packaged, and deployed using Visual Studio Team Services.
 
 2.  We do not want the developers to be able to make changes to the Azure resources even though they have access to the source code
     
     **Potential answer**
 
-    By using the Azure Pipelines features of Azure DevOps, a developer never needs to touch Azure resources. Once the code is checked into the source code repository, the CI/CD activities automate the building, testing and deployment of that code without developer intervention.
+    By using the Azure Pipelines features of Azure DevOps, a developer never needs to touch Azure resources. Once the code is checked into the source code repository, the CI/CD activities automate the building, testing, and deployment of that code without developer intervention.
 
 3.  If developers can deploy directly to the cloud, will that expose us to the same problems we had before when untested code was promoted to production?
     
@@ -543,11 +543,5 @@ The solution for the Tailspin Toys scenario involves several technologies, inclu
     
     **Potential answer**
 
-    There is a learning curve with every quality gate added. Developers will need to do more automated testing locally to ensure code will pass the CI process. Working from master (or trunk) requires that developers really own the state of the build process. When the build is broken, fixing the build becomes the priority. This is another area where we slow down to go faster for a higher quality deliverable.
-
-## Customer quote (to be read back to the attendees at the end)
-
-"By implementing continuous integration, configuration management, and better logging, we are able to decrease the time between new feature releases and bug fixes in production. We are finally able to compete online in the way that we have dreamed of for a long time."
-
----Alex Montgomery, VP of Sales, Tailspin Toys
+    There is a learning curve with every quality gate added. Developers will need to do more automated testing locally to ensure code will pass the CI process. Working from master (or trunk) requires that developers own the state of the build process. When the build is broken, fixing the build becomes the priority. This is another area where we slow down to go faster for a higher quality deliverable.
 

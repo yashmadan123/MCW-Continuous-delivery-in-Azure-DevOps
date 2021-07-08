@@ -12,7 +12,7 @@ Whiteboard design session student guide
 June 2021
 </div>
 
-Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
+Information in this document, including URL and other Internet website references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
 Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
 
@@ -66,18 +66,18 @@ Directions: With all participants in the session, the facilitator/SME presents a
 
 ### Customer situation
 
-Fabrikam Medical Conferences provides conference web site services tailored to the medical community. They started out 10 years ago building a few conference sites for a small conference organizer. Since then, word of mouth has spread, and Fabrikam Medical Conferences is now a well-known industry brand. They currently handle over 100 conferences per year and growing.
+Fabrikam Medical Conferences provides conference website services tailored to the medical community. They started 10 years ago building a few conference sites for a small conference organizer. Since then, word of mouth has spread, and Fabrikam Medical Conferences is now a well-known industry brand. They currently handle over 100 conferences per year and growing.
 
-Websites for medical conferences are typically low budget web sites because the conferences usually have between 100 to 1500 attendees. At the same time, the conference owners have significant customization and change demands that require turnaround on a dime to the live sites. These changes can impact various aspects of the system from UI through to the back end, including conference registration and payment terms.
+Websites for medical conferences are typically low-budget websites because the conferences usually have between 100 to 1500 attendees. At the same time, the conference owners have significant customization and change demands that require turnaround on a dime to the live sites. These changes can impact various aspects of the system from UI through to the back end, including conference registration and payment terms.
 
 **Public website and data layer**
 
-The VP of Engineering at Fabrikam, Susan Withers, has a team of 12 developers who handle all aspects of development, testing, deployment, and operational management of their customer sites. Due to customer demands, they have issues with the efficiency and reliability the conference websites. This mainly caused by an inefficient development and operations workflow.
+The VP of Engineering at Fabrikam, Susan Withers, has a team of 12 developers who handle all aspects of development, testing, deployment, and operational management of their customer sites. Due to customer demands, they have issues with the efficiency and reliability of the conference websites. This is mainly caused by an inefficient development and operations workflow.
 
 In the current situation, the conference sites are hosted on-premises with the following topology and platform implementation:
 
-- The conference web sites are built with the MEAN stack (Mongo, Express, Angular, Node.js).
-- Web sites and APIs are hosted on Linux machines.
+- The conference websites are built with the MEAN stack (Mongo, Express, Angular, Node.js).
+- websites and APIs are hosted on Linux machines.
 - MongoDB is also running on a separate cluster of Linux machines.
 
 ### Customer needs 
@@ -102,7 +102,7 @@ In the current situation, the conference sites are hosted on-premises with the f
 
 ### Customer objections 
 
-1.  We do not want to be locked in to a specific source control repository. We are evaluating GitHub and Azure DevOps and need to be able to change between them without frustrating rework.
+1.  We do not want to be locked into a specific source control repository. We are evaluating GitHub and Azure DevOps and need to be able to change between them without frustrating rework.
 
 2.  We do not want the developers to be able to make changes to the Azure resources even though they will have access to make source code changes.
 
@@ -124,7 +124,7 @@ Timeframe: 60 minutes
 
 Directions:  With all participants at your table, answer the following questions and list the answers on a flip chart:
 
-1.  Who should you present this solution to? Who is your target customer audience? Who are the decision makers?
+1.  Who should you present this solution to? Who is your target customer audience? Who are the decision-makers?
 
 2.  What customer business needs do you need to address with your solution?
 
@@ -190,7 +190,7 @@ Directions:
 
 2.  One table is the Microsoft team and the other table is the customer.
 
-3.  The Microsoft team presents their proposed solution to the customer.
+3.  The Microsoft team presents its proposed solution to the customer.
 
 4.  The customer makes one of the objections from the list of objections.
 

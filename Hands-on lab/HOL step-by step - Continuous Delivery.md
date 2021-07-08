@@ -13,11 +13,11 @@ June 2021
 </div>
 
 
-Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
+Information in this document, including URL and other Internet website references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
 Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
 
-The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
+The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third-party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
 © 2019 Microsoft Corporation. All rights reserved.
 
@@ -54,13 +54,13 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 ## Abstract and learning objectives 
 
-This workshop is targeted for students in an instructor-led training session.  
+This workshop is targeted at students in an instructor-led training session.  
 
 ## Overview
 
-Fabirkam Medical Conferences provide conference website services tailored to the medical community. Over the course of ten years, they have built conference sites for a small conference organizer. Through word of mouth, Fabrikam Medical Conferences has become a well-known industry brand handling over 100 conferences per year and growing.
+Fabirkam Medical Conferences provide conference website services tailored to the medical community. Over ten years, they have built conference sites for a small conference organizer. Through word of mouth, Fabrikam Medical Conferences has become a well-known industry brand handling over 100 conferences per year and growing.
 
-Medical conferences typically have between 100 and 1500 attendees; as such, they typically have relatively low budgets allocated for web site development and hosting.  At the same time, the customization ands of live sites. Such demands can impact aspects of live sites from end to end, ranging from UI to backend concerns as well as concerns around conference registration and payment functionality.
+Websites for medical conferences are typically low-budget websites because the conferences usually have between 100 to 1500 attendees. At the same time, the conference owners have significant customization and change demands that require turnaround on a dime to the live sites. These changes can impact various aspects of the system from UI through to the back end, including conference registration and payment terms.
 
 ## Solution architecture
 
@@ -98,7 +98,7 @@ Refer to the Before the hands-on lab setup guide manual before continuing to the
 
 Duration: 40 minutes
 
-After a requirements gathering effort, we find that Fabrikam Medical Conferences has many areas of potential improvement in their development workflow.  Specifically, we conclude that there are a lot of manual tasks that can be automated, potentially mitigating many of the recurring quality and security issues as well as reducing the dependencies between Fabrikam's developers and their work and productivity. We will begin to address some of these efforts in this exercise with the objective of improving developer flow and establishing continuous integration practices.
+After a requirements gathering effort, we find that Fabrikam Medical Conferences has many areas of potential improvement in their development workflow.  Specifically, we conclude that there are a lot of manual tasks that can be automated, potentially mitigating many of the recurring quality and security issues as well as reducing the dependencies between Fabrikam's developers and their work and productivity. We will begin to address some of these efforts in this exercise to improve developer flow and establish continuous integration practices.
 
 ### Task 1: Connect Azure Board with GitHub
 
@@ -275,11 +275,11 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 Duration: 40 minutes
 
-Fabrikam Medical Conferences developer workflow has been improved, we are ready to consider migrating from running on-premises to a cloud implementation in order to reduce maintenance costs and facilitate scaling when necessary. We will take steps to run the containerized application in the cloud as well as automate its deployment.
+Fabrikam Medical Conferences developer workflow has been improved, we are ready to consider migrating from running on-premises to a cloud implementation to reduce maintenance costs and facilitate scaling when necessary. We will take steps to run the containerized application in the cloud as well as automate its deployment.
 
 ### Task 1: Set up Cloud Infrastructure
 
-1.  Open the `deploy-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three letter abbreviation for the `$studentprefix` variable on the first line.
+1.  Open the `deploy-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
 
     ```pswh
     $studentprefix = "hbs"                                  # <-- Modify this value
@@ -354,7 +354,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
     ![Screenshot of Azure Resource Group](../Media/hol-ex2-task1-step5-1.png "Azure Resource Group")
 
-6. Open the `seed-cosmosdb.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.  Also update the `$githubAccount` and `$githubRepo` variables with your GitHub account name and GitHub lab files repository name, respectively.
+6. Open the `seed-cosmosdb.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.  Also update the `$githubAccount` and `$githubRepo` variables with your GitHub account name and GitHub lab files repository name, respectively.
 
     ```pwsh
     $studentprefix = "hbs"
@@ -389,7 +389,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
     ![Screenshot of Azure Resource Group](../Media/hol-ex2-task1-step9-1.png "Azure Resource Group")
 
-10. Open the `configure-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three letter abbreviation for the `$studentprefix` variable on the first line.
+10. Open the `configure-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
 
     ```pswh
     $studentprefix = "hbs"                                  # <-- Modify this value
@@ -419,7 +419,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
 ### Task 2: Deployment Automation to Azure Web App
 
-1. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line and add your GitHub account name for the `$githubAccount` variable on the second line.
+1. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line and add your GitHub account name for the `$githubAccount` variable on the second line.
 
     ```pwsh
     $studentprefix = "hbs"                                  # <-- Modify this value
@@ -460,11 +460,11 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
 Duration: 40 minutes
 
-Fabrikam Medical Conferences has their first website for a customer running in the cloud, but deployment is still a largely manual process, and we have no insight into the behavior of the application in the cloud.
+Fabrikam Medical Conferences has its first website for a customer running in the cloud, but deployment is still a largely manual process, and we have no insight into the behavior of the application in the cloud.
 
 ### Task 1: Set up Application Insights
 
-1.  Open the `deploy-appinsights.ps1` PowerShell script in the `infrastructre` folder of your lab files GitHub repository and add the same custom lowercase three letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.
+1.  Open the `deploy-appinsights.ps1` PowerShell script in the `infrastructre` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.
 
     ```pwsh
     $studentsuffix = "hbs"                                  # <-- Modify this
@@ -486,7 +486,7 @@ Fabrikam Medical Conferences has their first website for a customer running in t
     npm install applicationinsights --save
     ```
 
-4. Modify the file `./content-web/app.js` to reflect the following in order to add and configure Application Insights for the web application frontend.
+4. Modify the file `./content-web/app.js` to reflect the following to add and configure Application Insights for the web application frontend.
 
     ```js
     const express = require('express');
@@ -522,7 +522,7 @@ Fabrikam Medical Conferences has their first website for a customer running in t
         
 ### Task 2: Continuous Deployment with GitHub Actions
 
-1. Open the `deploy-sp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line. Note the call to create a Service Principal.
+1. Open the `deploy-sp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line. Note the call to create a Service Principal.
 
     ```pwsh
     $studentprefix ="hbs"
@@ -805,11 +805,11 @@ Fabrikam Medical Conferences has their first website for a customer running in t
 
 Duration: 15 minutes
 
-Now that the lab is complete, we need to tear down our Azure resources that we created.
+Now that the lab is complete, we need to tear down the Azure resources that we created.
 
 ### Task 1: Tear down Azure Resources
 
-1.  Open the `teardown-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your GitHub lab files repository and add the same custom lowercase three letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line.
+1.  Open the `teardown-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your GitHub lab files repository and add the same custom lowercase three-letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line.
 
     ```pwsh
     $studentprefix ="hbs"
