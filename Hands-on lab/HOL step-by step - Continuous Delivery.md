@@ -104,7 +104,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 1.  On the GitHub Marketplace, find the [Azure Boards Integration App](https://github.com/marketplace/azure-boards)
 
-    ![Screenshot of Azure Boards Integration App on GitHub Marketplace](../Media/hol-ex1-task1-step1-1.png "Azure Boards Integration App on GitHub Marketplace")
+    ![The Azure Boards Integration App on GitHub Marketplace that will provide a link between Azure DevOps Boards and GitHub issues.](../Media/hol-ex1-task1-step1-1.png "Azure Boards Integration App on GitHub Marketplace")
 
 2. Scroll to the bottom of the page and select `Install it for Free`.
 
@@ -112,17 +112,17 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 4. Select the lab files repository created in [Task 1 of the Before the HOL Instructions] and click `Install & Authorize`.
 
-    ![Screenshot of GitHub Application Authorization page](../Media/hol-ex1-task1-step4-1.png "GitHub Application Authorization")
+    ![The GitHub Application Authorization page.](../Media/hol-ex1-task1-step4-1.png "GitHub Application Authorization")
 
 5. Select the Azure DevOps organization you signed into or created in the Before Hands-On Lab setup guide and select the Fabrikam project.
 
-    ![Screenshot of Azure DevOps Integration Configuration](../Media/hol-ex1-task1-step5-1.png "Azure DevOps Integration Configuration")
+    ![The Azure DevOps Integration Configuration form.](../Media/hol-ex1-task1-step5-1.png "Azure DevOps Integration Configuration")
 
 6. When the integration succeeds, you will be taken to the Azure DevOps Board. Select `Skip` in the lower right of the onboarding tutorial for Azure DevOps Boards.
 
 7. In the Azure DevOps Board for the Fabrikam project, create an issue called `Test`. Note the `Work Item ID` that is assigned when you save the work item.
 
-    ![Screenshot of new work item](../Media/hol-ex1-task1-step7-1.png "New Work Item")
+    ![A new work item in Azure DevOps Board.](../Media/hol-ex1-task1-step7-1.png "New Work Item")
 
 8. In the root folder of the lab files repository, create a `README.md` file with the following contents.
 
@@ -142,39 +142,39 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 10. In Azure DevOps Boards, find the work item and observe that the code commit has been linked to the work item.
 
-    ![Screenshot of a work item with a linked GitHub commit](../Media/hol-ex1-task1-step10-1.png "Work Item with a Linked GitHub Commit")
+    ![A work item with a linked GitHub commit illustrating the link between Azure DevOps Boards and GitHub issues.](../Media/hol-ex1-task1-step10-1.png "Work Item with a Linked GitHub Commit")
 
 ### Task 2: Using Dependabot
 
 1.  In your lab files GitHub repository, navigate to the `Security` tab.  Click on the `Enable Dependabot alerts` button.
 
-    ![Screenshot of GitHub Repository Security Overview](../Media/hol-ex1-task2-step1-1.png "GitHub Repository Security Overview")
+    ![The GitHub Repository Security Overview tab.](../Media/hol-ex1-task2-step1-1.png "GitHub Repository Security Overview")
 
 2. You should arrive at the `Security & analysis` blade under the `Settings` tab. Enable `Dependabot alerts` and `Dependabot security updates`.
 
     > **Note**: Enabling `Dependabot alerts` will also automatically enable `Dependency graph`.
 
-    ![Screenshot of GitHub Repository Security and Analysis](../Media/hol-ex1-task2-step2-1.png "GitHub Security & Analysis Settings")
+    ![The GitHub Repository Security and Analysis blade under the GitHub repository Settings tab. We enable Dependabot alerts and security updates here.](../Media/hol-ex1-task2-step2-1.png "GitHub Security & Analysis Settings")
 
 3. To observe Dependabot issues, navigate to the `Security` tab and select the `View Dependabot alerts` link. You should arrive at the `Dependabot alerts` blade in the `Security` tab.
 
-    ![Screenshot of GitHub Dependabot alerts](../Media/hol-ex1-task2-step3-1.png "GitHub Dependabot alerts")
+    ![GitHub Dependabot alerts in the Security tab.](../Media/hol-ex1-task2-step3-1.png "GitHub Dependabot alerts")
 
 4. Scroll through the list of Dependabot alerts until you find the `handlebars` vulnerability.  
 
-    ![Screenshot of `handlebars` Dependabot alert](../Media/hol-ex1-task2-step4-1.png "`handlebars` Dependabot alert")
+    ![Summary of the `handlebars` Dependabot alert in the list of Dependabot alerts.](../Media/hol-ex1-task2-step4-1.png "`handlebars` Dependabot alert")
 
 5. Click on the `handlebars` Dependabot alert title to see the alert detail. After reviewing the alert, click on the `Create Dependabot security update` button and wait a few moments for GitHub to create the security update.
 
-    ![Screenshot of Dependabot alert detail](../Media/hol-ex1-task2-step5-1.png "Dependabot alert detail")
+    ![The `handlebars` Dependabot alert detail.](../Media/hol-ex1-task2-step5-1.png "Dependabot alert detail")
 
-    ![Screenshot of Dependabot security update message](../Media/hol-ex1-task2-step5-2.png "Dependabot security update message")
+    ![The Dependabot security update message observed when creating a Dependabot security update.](../Media/hol-ex1-task2-step5-2.png "Dependabot security update message")
 
 6. In the `Pull Requests` tab, find the Dependabot security patch pull request and merge it to your main branch.
 
-    ![Screenshot of Pull Requests](../Media/hol-ex1-task2-step6-1.png "Pull Requests")
+    ![List of Pull Requests.](../Media/hol-ex1-task2-step6-1.png "Pull Requests")
 
-    ![Screenshot of Pull Request Merge Button](../Media/hol-ex1-task2-step6-2.png "Pull Request Merge Button")
+    ![The Pull Request Merge Button in the Pull Request detail.](../Media/hol-ex1-task2-step6-2.png "Pull Request Merge Button")
 
 7. Pull the latest changes from your GitHub repository to your local GitHub folder.
 
@@ -199,9 +199,9 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 3. Verify that you can browse to http://localhost:3000 in a browser and arrive at the Fabrikam conference website.
 
-    ![Screenshot of Contoso conference site](../Media/hol-ex1-task3-step3-1.png "Contoso conference site")
+    ![Fabrikam Medical's Contoso conference site.](../Media/hol-ex1-task3-step3-1.png "Contoso conference site")
 
-    ![Screenshot of docker-compose log output](../Media/hol-ex1-task3-step3-2.png "docker-compose log output")
+    ![The docker-compose log output observed when running `docker-compose up` on our docker-compose harness.](../Media/hol-ex1-task3-step3-2.png "docker-compose log output")
 
 4. Commit and push your changes to your GitHub repository.
 
@@ -211,19 +211,19 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 2. Select the `Secrets` blade from the left navigation bar.
 
-    ![Screenshot of GitHub Repository Settings](../Media/hol-ex1-task4-step2-1.png "GitHub Repository Settings")
+    ![The GitHub Repository Settings tab.](../Media/hol-ex1-task4-step2-1.png "GitHub Repository Settings")
 
 3. Select the `New repository secret` button.
 
-    ![Screenshot of GitHub Repository Secrets](../Media/hol-ex1-task4-step3-1.png "GitHub Repository Secrets")
+    ![The GitHub Repository Secrets we will create a new repository secret here used in a later step.](../Media/hol-ex1-task4-step3-1.png "GitHub Repository Secrets")
 
 4. Enter the name `CR_PAT` in the `New secret` form and set the GitHub Personal Access Token we created in the Before the Hands-On Lab instructions.
 
-    ![Screenshot of New secret form](../Media/hol-ex1-task4-step4-1.png "New secret form")
+    ![The New secret form where we create the `CR_PAT` secret.](../Media/hol-ex1-task4-step4-1.png "New secret form")
 
 5. Select the `Actions` tab in your GitHub repository, find the `Publish Docker Container` workflow and select `Set up this workflow`.
 
-    ![Screenshot of Publish Docker Container workflow](../Media/hol-ex1-task4-step5-1.png "Publish Docker Container workflow")
+    ![The Publish Docker Container workflow that defines the series of GitHub actions used to build and push a docker container to a GitHub Container Registry.](../Media/hol-ex1-task4-step5-1.png "Publish Docker Container workflow")
 
 6. Rename the file to `fabrikam-web.yml`.
 
@@ -259,15 +259,15 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 10. The GitHub Action is now running and will automatically build and push the container to GitHub registry.
 
-    ![Screenshot of GitHub Actions](../Media/hol-ex1-task4-step10-1.png "GitHub Actions")
+    ![Summary of running Docker workflow executing in GitHub Actions tab of repository.](../Media/hol-ex1-task4-step10-1.png "GitHub Actions")
 
-    ![Screenshot of GitHub Actions](../Media/hol-ex1-task4-step10-2.png "GitHub Actions")
+    ![Detail of running Docker workflow.](../Media/hol-ex1-task4-step10-2.png "GitHub Action Detail")
 
 11. Set up workflows for `content-api` and `content-init` in the same manner. Call them `fabrikam-api.yml` and `fabrikam-init.yml` respectively and change the container names to `fabrikam-api` and `fabrikam-init`, respectively.
 
 12. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
 
-    ![Screenshot of GitHub Packages](../Media/hol-ex1-task4-step12-1.png "GitHub Packages")
+    ![GitHub Packages tab listing summary of container images that have been pushed to the container registry.](../Media/hol-ex1-task4-step12-1.png "GitHub Packages")
 
 13. Pull the latest changes from your GitHub repository.
 
@@ -352,7 +352,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
 5. Browse to the Azure Portal and verify creation of the resource group, CosmosDB instance, the App Service Plan, and the Web App.
 
-    ![Screenshot of Azure Resource Group](../Media/hol-ex2-task1-step5-1.png "Azure Resource Group")
+    ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](../Media/hol-ex2-task1-step5-1.png "Azure Resource Group")
 
 6. Open the `seed-cosmosdb.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.  Also update the `$githubAccount` and `$githubRepo` variables with your GitHub account name and GitHub lab files repository name, respectively.
 
@@ -387,7 +387,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
 9. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and verify that the CosmosDB instance has been seeded.
 
-    ![Screenshot of Azure Resource Group](../Media/hol-ex2-task1-step9-1.png "Azure Resource Group")
+    ![Azure CosmosDB contents displayed via the CosmosDB explorer in the Azure CosmosDB resource detail.](../Media/hol-ex2-task1-step9-1.png "Azure CosmosDB Seeded Contents")
 
 10. Open the `configure-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
 
@@ -409,7 +409,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
 12. Run the `configure-webapp.ps1` PowerShell script. Browse to the Azure Portal and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
 
-    ![Screenshot of Azure Web Application settings](../Media/hol-ex2-task1-step12-1.png "Azure Web Application settings")
+    ![Azure Web Application settings reflecting the `MONGODB_CONNECTION` environment variable configured via PowerShell.](../Media/hol-ex2-task1-step12-1.png "Azure Web Application settings")
 
 13. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `GITHUB_TOKEN` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
 
@@ -448,13 +448,13 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
 4. Browse to the Azure Portal and verify that the Azure Web Application is running by checking the `Log stream` blade of the Azure Web Application detail page.
 
-    ![Screenshot of Azure Web Application Log Stream](../Media/hol-ex2-task2-step4-1.png "Azure Web Application Log Stream")
+    ![Azure Web Application Log Stream displaying the STDOUT and STDERR output of the running container.](../Media/hol-ex2-task2-step4-1.png "Azure Web Application Log Stream")
 
 5. Browse to the `Overview` blade of the Azure Web Application detail page and find the web application URL. Browse to that URL to verify deployment of the web application.
 
-    ![Screenshot of the Azure Web Application Overview](../Media/hol-ex2-task2-step5-1.png "Azure Web Application Overview")
+    ![The Azure Web Application Overview detail in Azure Portal.](../Media/hol-ex2-task2-step5-1.png "Azure Web Application Overview")
 
-    ![Screenshot of Azure hosted Web Application](../Media/hol-ex2-task2-step5-2.png "Azure hosted Web Application")
+    ![The Contoso Conference website hosted in Azure.](../Media/hol-ex2-task2-step5-2.png "Azure hosted Web Application")
 
 ## Exercise 3: Monitoring and Logging in Azure
 
@@ -560,7 +560,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 4.  Add a new GitHub Action workflow in your GitHub lab files repository by selecting the `Actions` tab and selecting `New workflow`. 
 
-    ![Screenshot of GitHub Actions](../Media/hol-ex3-task2-step1-1.png "GitHub Actions")  
+    ![The `New workflow` button in the repository GitHub Actions tab.](../Media/hol-ex3-task2-step1-1.png "GitHub Actions")  
 
 5. Select the `Simple workflow` and call the new YAML file `docker-publish.yml`.
 
@@ -630,7 +630,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 8. Observe that the action builds the docker images, pushes them to the container registry, and deploys them to the Azure web application.
 
-    ![Screenshot of GitHub Action detail](../Media/hol-ex3-task2-step8-1.png "GitHub Action detail")
+    ![GitHub Action detail reflecting Docker ](../Media/hol-ex3-task2-step8-1.png "GitHub Action detail")
 
 9. Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
 
@@ -654,15 +654,15 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     - Docker Password: <GitHub Personal Access Token>
     - Service connection name: GitHub Container Registry
 
-    ![Screenshot of Azure DevOps Project Service Connection Configuration](../Media/hol-ex3-task3-step3-1.png "Azure DevOps Project Service Connection Configuration")
+    ![Azure DevOps Project Service Connection Configuration that establishes the credentials necessary for Azure DevOps to push to the GitHub Container Registry.](../Media/hol-ex3-task3-step3-1.png "Azure DevOps Project Service Connection Configuration")
 
 4. Navigate to your Azure DevOps `Fabrikam` project, select the `Pipelines` blade, and create a new pipeline.
 
-    ![Screenshot of Azure DevOps Pipelines](../Media/hol-ex3-task3-step4-1.png "Azure DevOps Pipelines")
+    ![Initial creation page for a new Azure DevOps Pipeline.](../Media/hol-ex3-task3-step4-1.png "Azure DevOps Pipelines")
 
 5. In the `Connect` tab, choose the `GitHub` selection.
 
-    ![Screenshot of Azure DevOps Pipeline Connections](../Media/hol-ex3-task3-step5-1.png "Azure DevOps Pipeline Connections")
+    ![Azure DevOps Pipeline Connections page where we associate the GitHub repository with this pipeline.](../Media/hol-ex3-task3-step5-1.png "Azure DevOps Pipeline Connections")
 
 6. Select your GitHub lab files repository.  Azure DevOps will redirect you to authorize yourself with GitHub. Log in and select the repository that you want to allow Azure DevOps to access.
 
@@ -696,7 +696,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     - Action: Build Service Images
     - Additional Image Tags = $(Build.BuildNumber)
 
-    ![Screenshot of Docker Compose Task](../Media/hol-ex3-task3-step9-1.png "Docker Compose Task")
+    ![Docker Compose Task definition in the AzureDevOps pipeline.](../Media/hol-ex3-task3-step9-1.png "Docker Compose Task")
 
 10. Repeat step 9 and add another `Docker Compose` task and configure it with the following fields:
 
@@ -709,7 +709,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 11. Save and run the build. New docker images will be built and pushed to the GitHub package registry.
 
-    ![Screenshot of Build Pipeline Run detail](../Media/hol-ex3-task3-step11-1.png "Build Pipeline Run detail")
+    ![Run detail of the Azure DevOps pipeline previously created.](../Media/hol-ex3-task3-step11-1.png "Build Pipeline Run detail")
 
 12. Navigate to your `Fabrikam` project in Azure DevOps and select the `Project Settings` blade. From there, select the `Service Connections` tab.
 
@@ -719,7 +719,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 15. Open the build pipeline in `Edit` mode, and then click on the `Variables` button on the top-right corner of the pipeline editor. Add a secret variable `CR_PAT`, check the `Keep this value secret` checkbox, and copy the GitHub Personal Access Token from the Before the Hands-on lab guided instruction into the `Value` field. Save the pipeline variable - we will reference it in a later step.
 
-    ![Screenshot of New Pipeline Variable](../Media/hol-ex3-task3-step15-1.png "New Pipeline Variable")
+    ![Adding a new Pipeline Variable to an existing Azure DevOps pipeline.](../Media/hol-ex3-task3-step15-1.png "New Pipeline Variable")
 
 16. Modify the build pipeline YAML to split into a build stage and a deploy stage, as follows.
 
@@ -793,11 +793,11 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 18. From the vertical ellipsis menu button in the top-right corner, select `Approvals and checks`.
 
-    ![Screenshot of Approvals and checks selection](../Media/hol-ex3-task3-step18-1.png "Approvals and checks selection")
+    ![Approvals and checks selection in the vertical ellipsis menu in the top right corner of the Azure DevOps pipeline editor interface.](../Media/hol-ex3-task3-step18-1.png "Approvals and checks selection")
 
 19. Add an `Approvals` check.  Add your account as an `Approver` and create the check.
 
-    ![Screenshot of Checks selection](../Media/hol-ex3-task3-step19-1.png "Checks selection")
+    ![Adding an account as an `Approver` for an Approvals check.](../Media/hol-ex3-task3-step19-1.png "Checks selection")
 
 20. Run the build pipeline and note how the pipeline waits before moving to the `DeployProd` stage`
 

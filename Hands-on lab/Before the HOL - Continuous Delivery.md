@@ -79,18 +79,18 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
       - Click on the `New` button.
 
-        ![Screenshot of the `New Repository` button in a GitHub profile](../Media/b4-task1-step1-1.png "New Repository Button")
+        ![The `New Repository` button in a GitHub profile.](../Media/b4-task1-step1-1.png "New Repository Button")
 
     
       - Provide a name and description for your new repository.
 
         > **Note**: Suggested name for the repository is `mcw-continuous-delivery-lab-files`.
 
-        ![Screenshot of the `New Repository` creation form in GitHub](../Media/b4-task1-step1-2.png "New Repository Creation Form")
+        ![The `New Repository` creation form in GitHub.](../Media/b4-task1-step1-2.png "New Repository Creation Form")
 
       - Click on the `Create Repository` button to create the new repository.
 
-        ![Screenshot of the created repository in GitHub](../Media/b4-task1-step1-3.png "Created Repository Page")
+        ![The created repository in GitHub. This should reflect the repository that was created.](../Media/b4-task1-step1-3.png "Created Repository Page")
 
 2. Clone the lab repository.
 
@@ -150,27 +150,27 @@ In this task, you will create an account in [GitHub](https://github.com) and use
     - `delete:packages` - Delete packages from GitHub Package Registry
     - `read:org` - Read org and team membership, read org projects
 
-    ![Screenshot of configured scopes for a GitHub Personal Access Token](../Media/b4-task2-step2-1.png "GitHub Personal Access Token Scope Configuration")
+    ![The configured scopes for a GitHub Personal Access Token.](../Media/b4-task2-step2-1.png "GitHub Personal Access Token Scope Configuration")
 
 3. Copy the GitHub Personal Access Token somewhere safe and accessible for later use during the lab. **DO NOT COMMIT THIS VALUE TO YOUR REPO!**
 
-    ![Screenshot of created GitHub Personal Access Token](../Media/b4-task2-step3-1.png "Created GitHub Personal Access Token")
+    ![The GitHub Personal Access Token. This is a secret value that should be stored somewhere safe and accessible.](../Media/b4-task2-step3-1.png "Created GitHub Personal Access Token")
 
 ### Task 3: Create Azure DevOps Personal Access Token
 
 1.  Log in to your existing Azure DevOps account or create a new account on https://dev.azure.com.
 
-    ![Screenshot of Azure DevOps Portal](../Media/b4-task3-step1-1.png "Azure DevOps Portal")
+    ![The Azure DevOps Portal.](../Media/b4-task3-step1-1.png "Azure DevOps Portal")
 
 2. Create an Azure DevOps Personal Access Token as [described here](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page).  For this lab, please ensure your Azure DevOps Personal Access Token is configured with a `Full access` scope.
 
     > **Note**: A `Full access` scope is not recommended for Azure DevOps Personal Access Tokens in live development and production environments. We are only using this scope for this lab.
 
-    ![Screenshot of Azure DevOps Create Personal Access Token Form](../Media/b4-task3-step2-1.png "Create Azure DevOps Personal Access Token")
+    ![The Azure DevOps Create Personal Access Token Form.](../Media/b4-task3-step2-1.png "Create Azure DevOps Personal Access Token")
 
 3. Copy the Azure DevOps Personal Access Token somewhere safe and accessible to you for later use during the lab. **DO NOT COMMIT THIS VALUE TO YOUR REPO!**
 
-    ![Screenshot of created Azure DevOps Personal Access Token](../Media/b4-task3-step3-1.png "Created Azure DevOps Personal Access Token")
+    ![The Azure DevOps Personal Access Token created in the previous step.](../Media/b4-task3-step3-1.png "Created Azure DevOps Personal Access Token")
 
 4. Create a `Fabrikam` project in Azure DevOps for use in the lab.
 
