@@ -41,6 +41,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Exercise 2: Continuous Delivery](#exercise-2-continuous-delivery)
         - [Task 1: Set up Cloud Infrastructure](#task-1-set-up-cloud-infrastructure)
         - [Task 2: Deployment Automation to Azure Web App](#task-2-deployment-automation-to-azure-web-app)
+        - [Task 3: Branch Policies in GitHub](#task-3-branch-policies-in-github)
     - [Exercise 3: Monitoring and Logging in Azure](#exercise-3-monitoring-and-logging-in-azure)
         - [Task 1: Set up Application Insights](#task-1-set-up-application-insights)
         - [Task 2: Continuous Deployment with GitHub Actions](#task-2-continuous-deployment-with-github-actions)
@@ -449,6 +450,70 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
     ![The Azure Web Application Overview detail in Azure Portal.](../Media/hol-ex2-task2-step5-1.png "Azure Web Application Overview")
 
     ![The Contoso Conference website hosted in Azure.](../Media/hol-ex2-task2-step5-2.png "Azure hosted Web Application")
+
+### Task 3: Branch Policies in GitHub
+
+1. In your lab files GitHub repository, navigate to the `Settings` tab and click on the `Branches` blade.
+
+    ![GitHub Branch settings for the repository](../Media/hol-ex2-task3-step1-1.png "Branch Protection Rules")
+
+2. Click on the `Add rule` button to add a new branch protection rule for the `main` branch. Be sure to specify `main` in the branch name pattern field - enable the following options and click on the `Create` button to create the branch protection rule.
+
+        - Require pull request reviews before merging
+        - Require status checks to pass before merging
+            - Require branches to be up to date before merging
+
+    ![Branch protection rule creation form](../Media/hol-ex2-task3-step2-1.png "Create a new branch protection rule in GitHub")
+
+3. With the branch protection rule in place, direct commits and pushes to the `main` branch will be disabled. Verify this by making a small change to your README.md and attempt to commit it to `main` in your local repository and attempt to push it to the remote repository.
+
+    ```pwsh
+    PS D:\Workspaces\lab\mcw-continuous-delivery-lab-files> git add .
+
+    PS D:\Workspaces\lab\mcw-continuous-delivery-lab-files> git commit -m "Updating README.md"
+
+    [main cafa839] Updating README.md
+    1 file changed, 2 insertions(+)
+    PS D:\Workspaces\lab\mcw-continuous-delivery-lab-files> git push  
+
+    Enumerating objects: 5, done.
+    Counting objects: 100% (5/5), done.
+    Delta compression using up to 32 threads
+    Compressing objects: 100% (3/3), done.
+    Writing objects: 100% (3/3), 315 bytes | 315.00 KiB/s, done.
+    Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+    remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+    remote: error: GH006: Protected branch update failed for refs/heads/main.
+    remote: error: At least 1 approving review is required by reviewers with write access.
+    To https://github.com/hatboyzero/mcw-continuous-delivery-lab-files.git
+    ! [remote rejected] main -> main (protected branch hook declined)
+    error: failed to push some refs to 'https://github.com/hatboyzero/mcw-continuous-delivery-lab-files.git'
+    ```
+
+4. Create a new issue for modifying the README.md in Azure Boards
+
+    !["New issue for updating README.md added to Azure Boards"](../Media/hol-ex2-task3-step4-1.png "Azure Boards")
+
+5. Create a branch from `main` and name it `feature/update-readme`.  Push the changes to the README.md to the remote repository.
+
+    ```pwsh
+    git checkout main
+    git checkout -b feature/update-readme  # <- This creates the branch and checks it out
+    git push --set-upstream origin feature/update-readme
+    ```
+
+> Note: Because the changes had already been committed locally to the `main` branch in step 3, the changes already exist in the `feature/update-readme` branch - this is why we issue a `git push` immediately after branching from the local `main` branch.
+
+6. Create a pull request to merge `feature/update-readme` into `main` in GitHub. Add the annotation `AB#2` in the description of the pull request to link it with the new Azure Boards issue in step 4. Note that the `Docker` build workflow executes as part of the status checks. Click on the `Merge pull request` button after the build completes successfully to merge the Pull Request into `main`
+
+    !["Pull request for merging the feature/update-main branch into main"](../Media/hol-ex2-task3-step6-1.png "Create pull request")
+
+> Note: Under normal circumstances, this pull request would be reviewed by someone other than the author of the pull request. For now, use your administrator privileges to force merge of the pull request.
+
+7. Observe in Azure Boards that the Issue is appropriately linked to the GitHub comment.
+
+    !["The Update README.md issue with the comment from the pull request created in step 6 linked"](../Media/hol-ex2-task3-step7-1.png "Azure Boards Issue")
+
 
 ## Exercise 3: Monitoring and Logging in Azure
 
