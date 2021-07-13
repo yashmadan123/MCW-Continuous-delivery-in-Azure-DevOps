@@ -118,29 +118,23 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ![The Azure DevOps Integration Configuration form.](../Media/hol-ex1-task1-step5-1.png "Azure DevOps Integration Configuration")
 
-6. When the integration succeeds, you will be taken to the Azure DevOps Board. Select `Skip` in the lower right of the onboarding tutorial for Azure DevOps Boards.
+6. When the integration succeeds, you will be taken to the Azure DevOps Board. Follow the directions in the onboarding tutorial to create an initial Issue in the `To Do` Column and create a pull request associated with your issue.
 
-7. In the Azure DevOps Board for the Fabrikam project, create an issue called `Test`. Note the `Work Item ID` that is assigned when you save the work item.
+    ![After completion of the onboarding tutorial.](../Media/hol-ex1-task1-step6-1.png)
 
-    ![A new work item in Azure DevOps Board.](../Media/hol-ex1-task1-step7-1.png "New Work Item")
+7. Open the new issue that the onboarding tutorial creates and observe the GitHub pull request and comment that are linked to the Azure DevOps board issue.
 
-8. In the root folder of the lab files repository, create a `README.md` file with the following contents.
+    ![Linked GitHub items in an Azure DevOps issue in Boards.](../Media/hol-ex1-task1-step7-1.png "GitHub Pull Request and Comment")
 
-    ```
-    # Fabrikam
-    ```
+8. In GitHub, browse to the `Pull Requests` tab of the lab files repository created in [Task 1 of the Before the HOL Instructions] and open the pull request that was created in the onboarding tutorial for the Azure Boards Integration App. Note the `AB#1` annotation in the pull request comments - this annotation signals to Azure DevOps that this pull request comment should be linked to Issue #1 in Azure Boards.
 
-9. Add the `README.md` file to the Git repository and commit and push the change with a message that contains the Azure DevOps Boards work item ID we retrieved in step 7, in the following format AB#WorkItemID.
+    ![Pull request detail in GitHub created by onboarding tutorial in previous steps.](../Media/hol-ex1-task1-step8-1.png "Pull Request detail")
 
-    ```pwsh
-    cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files  # This path may vary depending on how
-                                                            # you set up your lab files repository
-    git add README.md
-    git commit -m "Link to work item AB#2"
-    git push
-    ```
+9. Select the `Files changed` tab within the pull request detail and observe the change to the README.md associated with this pull request. After reviewing the changes, go back to the `Conversation` tab and click on the `Merge pull request` button and confirm the following prompt to merge the pull request into the `main` branch.
 
-10. In Azure DevOps Boards, find the work item and observe that the code commit has been linked to the work item.
+    ![The file changes associated with the pull request.](../Media/hol-ex1-task1-step9-1.png "Pull Request Files Changed tab")
+
+10. In Azure DevOps Boards, find the work item and observe that the issue has been moved to the `Done` column on completion of the pull request.
 
     ![A work item with a linked GitHub commit illustrating the link between Azure DevOps Boards and GitHub issues.](../Media/hol-ex1-task1-step10-1.png "Work Item with a Linked GitHub Commit")
 
