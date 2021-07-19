@@ -783,69 +783,69 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 16. Modify the build pipeline YAML to split into a build stage and a deploy stage, as follows.
 
     ```yaml
-	# Starter pipeline
-	# Start with a minimal pipeline that you can customize to build and deploy your code.
-	# Add steps that build, run tests, deploy, and more:
-	# https://aka.ms/yaml
+    # Starter pipeline
+    # Start with a minimal pipeline that you can customize to build and deploy your code.
+    # Add steps that build, run tests, deploy, and more:
+    # https://aka.ms/yaml
 
-	trigger:
-	- main
+    trigger:
+    - main
 
-	pool:
-	vmImage: ubuntu-latest
+    pool:
+    vmImage: ubuntu-latest
 
-	stages:
-	- stage: build
-	  jobs:
-	  - job: 'BuildAndPublish'
-		displayName: 'Build and Publish'
-		steps:
-		- task: DockerCompose@0
-		  inputs:
-			containerregistrytype: 'Container Registry'
-			dockerRegistryEndpoint: 'GitHub Container Registry'
-			dockerComposeFile: '**/docker-compose.yml'
-			additionalDockerComposeFiles: 'build.docker-compose.yml'
-			action: 'Build services'
-			additionalImageTags: '$(Build.BuildNumber)'
-		- task: DockerCompose@0
-		  inputs:
-			containerregistrytype: 'Container Registry'
-			dockerRegistryEndpoint: 'GitHub Container Registry'
-			dockerComposeFile: '**/docker-compose.yml'
-			additionalDockerComposeFiles: 'build.docker-compose.yml'
-			action: 'Push services'
-			additionalImageTags: '$(Build.BuildNumber)'    
+    stages:
+    - stage: build
+      jobs:
+      - job: 'BuildAndPublish'
+        displayName: 'Build and Publish'
+        steps:
+        - task: DockerCompose@0
+          inputs:
+            containerregistrytype: 'Container Registry'
+            dockerRegistryEndpoint: 'GitHub Container Registry'
+            dockerComposeFile: '**/docker-compose.yml'
+            additionalDockerComposeFiles: 'build.docker-compose.yml'
+            action: 'Build services'
+            additionalImageTags: '$(Build.BuildNumber)'
+        - task: DockerCompose@0
+          inputs:
+            containerregistrytype: 'Container Registry'
+            dockerRegistryEndpoint: 'GitHub Container Registry'
+            dockerComposeFile: '**/docker-compose.yml'
+            additionalDockerComposeFiles: 'build.docker-compose.yml'
+            action: 'Push services'
+            additionalImageTags: '$(Build.BuildNumber)'    
 
-	- stage: DeployProd
-	  dependsOn: build
-	  jobs:
-	  - deployment: webapp
-		environment: production
-		strategy:
-		  runOnce:
-			deploy:
-			  steps:
-			  - checkout: self
+    - stage: DeployProd
+      dependsOn: build
+      jobs:
+      - deployment: webapp
+        environment: production
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+              - checkout: self
 
               - powershell: |
                   (gc .\docker-compose.yml) `
                     -replace ':latest',':$(Build.BuildNumber)' | `
                     set-content .\docker-compose.yml
                     
-			  - task: AzureCLI@2
-				inputs:
-				  azureSubscription: 'Fabrikam-Azure' # <-- The service
-				  scriptType: 'pscore'                # connection from step 14
-				  scriptLocation: 'scriptPath'
-				  scriptPath: './infrastructure/deploy-webapp.ps1'
+              - task: AzureCLI@2
+                inputs:
+                  azureSubscription: 'Fabrikam-Azure' # <-- The service
+                  scriptType: 'pscore'                # connection from step 14
+                  scriptLocation: 'scriptPath'
+                  scriptPath: './infrastructure/deploy-webapp.ps1'
                   workingDirectory: ./infrastructure
-				  arguments: 'hbs'         # <-- This should be your custom
-				env:                       # lowercase three character 
-				  GITHUB_TOKEN: $(CR_PAT)  # prefix from an earlier exercise.
-				                # ^^^^^^
-				                # ||||||
-				                # The pipeline variable from step 15
+                  arguments: 'hbs'         # <-- This should be your custom
+                env:                       # lowercase three character 
+                  GITHUB_TOKEN: $(CR_PAT)  # prefix from an earlier exercise.
+                                # ^^^^^^
+                                # ||||||
+                                # The pipeline variable from step 15
     ```
 
 17. Navigate to the `Environments` category with the `Pipelines` blade in the `Fabrikam` project and select the `production` environment.
