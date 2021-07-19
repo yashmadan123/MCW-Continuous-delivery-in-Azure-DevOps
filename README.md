@@ -12,6 +12,10 @@ The VP of Engineering at Fabrikam, Susan Withers, has a team of 12 developers wh
 
 June 2021
 
+## Target audience
+
+- Application Developer
+
 ## Abstracts
 
 ### Workshop

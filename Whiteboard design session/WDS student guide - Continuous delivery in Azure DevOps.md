@@ -1,7 +1,7 @@
 ![Microsoft Cloud Workshops](../Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
-Continuous Delivery
+Continuous delivery in Azure DevOps
 </div>
 
 <div class="MCWHeader2">
