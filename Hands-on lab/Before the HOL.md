@@ -172,7 +172,13 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
     ![The Azure DevOps Personal Access Token created in the previous step.](../Media/b4-task3-step3-1.png "Created Azure DevOps Personal Access Token")
 
-4. Create a `Fabrikam` project in Azure DevOps for use in the lab.
+### Task  4: Create Azure DevOps Project
+
+1. Create a `Fabrikam` project in Azure DevOps for use in the lab.
+
+2. (Optional) To complete Exercise 3: Task 3 in the Hands on Lab, the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request). More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/)
+
+
 
 You should follow all steps provided *before* performing the Hands-on lab.
 

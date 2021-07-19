@@ -45,7 +45,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Exercise 3: Monitoring and Logging in Azure](#exercise-3-monitoring-and-logging-in-azure)
         - [Task 1: Set up Application Insights](#task-1-set-up-application-insights)
         - [Task 2: Continuous Deployment with GitHub Actions](#task-2-continuous-deployment-with-github-actions)
-        - [Task 3: Continuous Deployment with Azure DevOps Pipelines](#task-3-continuous-deployment-with-azure-devops-pipelines)
+        - [Task 3: Continuous Deployment with Azure DevOps Pipelines (Optional)](#task-3-continuous-deployment-with-azure-devops-pipelines)
     - [After the hands-on lab](#after-the-hands-on-lab)
         - [Task 1: Tear down Azure Resources](#task-1-tear-down-azure-resources)
 
@@ -694,6 +694,8 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 9. Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
 
 ### Task 3: Continuous Deployment with Azure DevOps Pipelines
+
+> Note: To complete [Exercise 3: Task 3](#task-3-continuous-deployment-with-azure-devops-pipelines), the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request). More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/)
 
 1. Disable your GitHub Actions by adding the `branches-ignore` property to the existing workflows in your lab files repository (located under the `.github/workflows` folder).
 
