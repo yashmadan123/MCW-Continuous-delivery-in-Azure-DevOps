@@ -32,10 +32,17 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Customer situation](#customer-situation)
     - [Customer needs](#customer-needs)
     - [Customer objections](#customer-objections)
-    - [Infographic for common scenarios](#infographic-for-common-scenarios)
   - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
   - [Step 3: Present the solution](#step-3-present-the-solution)
   - [Wrap-up](#wrap-up)
+  - [Additional references](#additional-references)
+[Wrap-up](#wrap-up)
+  - [Additional references](#additional-references)
+[Customer needs](#customer-needs)
+    - [Customer objections](#customer-objections)
+  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
+  - [Step 3: Present the solution](#step-3-present-the-solution)
+[Wrap-up](#wrap-up)
   - [Additional references](#additional-references)
 
 <!-- /TOC -->
@@ -58,11 +65,11 @@ Timeframe: 15 minutes
 
 Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
 
-1.  Meet your table participants and trainer.
+1. Meet your table participants and trainer.
 
-2.  Read all of the directions for steps 1-3 in the student guide.
+2. Read all of the directions for steps 1-3 in the student guide.
 
-3.  As a table team, review the following customer case study.
+3. As a table team, review the following customer case study.
 
 ### Customer situation
 
@@ -80,37 +87,37 @@ In the current situation, the conference sites are hosted on-premises with the f
 - websites and APIs are hosted on Linux machines.
 - MongoDB is also running on a separate cluster of Linux machines.
 
-### Customer needs 
+### Customer needs
 
-1.  Be able to automatically and continuously deploy new software builds to the Azure App Service web app.
+1. Be able to automatically and continuously deploy new software builds to the Azure App Service web app.
 
-2.  Ensure that continuously deployed builds to the cloud do not interfere with the production copy of the solution.
+2. Ensure that continuously deployed builds to the cloud do not interfere with the production copy of the solution.
 
-3.  Identify an automated way of deploying to different environments for "development," "test," and "production" so that changes or deployments to one environment do not affect the others.
+3. Identify an automated way of deploying to different environments for "development," "test," and "production" so that changes or deployments to one environment do not affect the others.
 
-4.  Configure the automated builds to first require that a full series of unit tests pass before a deployment is started.
+4. Configure the automated builds to first require that a full series of unit tests pass before a deployment is started.
 
-5.  Provide a search feature and visual dashboard for the application logs so the developers can more quickly resolve help desk tickets.
+5. Provide a search feature and visual dashboard for the application logs so the developers can more quickly resolve help desk tickets.
 
-6.  Enhance the logged data from the front-end website to give the developers a more complete picture of the application's performance and behavior.
+6. Enhance the logged data from the front-end website to give the developers a more complete picture of the application's performance and behavior.
 
     - Browser information such as browser page load time and user activity per page.
 
     - Application dependency metrics such as request times and request failures for communication with the database or other services.
 
-7.  Implement proactive diagnostics to generate automatic alerts for unusual application behavior including aberrant request response time, dependency response time, and page load time.
+7. Implement proactive diagnostics to generate automatic alerts for unusual application behavior including aberrant request response time, dependency response time, and page load time.
 
 ### Customer objections 
 
-1.  We do not want to be locked into a specific source control repository. We are evaluating GitHub and Azure DevOps and need to be able to change between them without frustrating rework.
+1. We do not want to be locked into a specific source control repository. We are evaluating GitHub and Azure DevOps and need to be able to change between them without frustrating rework.
 
-2.  We do not want the developers to be able to make changes to the Azure resources even though they will have access to make source code changes.
+2. We do not want the developers to be able to make changes to the Azure resources even though they will have access to make source code changes.
 
-3.  If developers can deploy directly to the cloud, will that expose us to the same quality problems we had before when untested code was promoted to production?
+3. If developers can deploy directly to the cloud, will that expose us to the same quality problems we had before when untested code was promoted to production?
 
-4.  How much of an impact will these process changes have on our development cadence? Will learning this place a new burden on the developers?
+4. How much of an impact will these process changes have on our development cadence? Will learning this place a new burden on the developers?
 
-5.  Our developers are already having a challenge learning how to use Git; will adding a continuous deployment system on top of that slow them down and confuse them even more?  
+5. Our developers are already having a challenge learning how to use Git; will adding a continuous deployment system on top of that slow them down and confuse them even more?  
 
 ## Step 2: Design a proof of concept solution
 
@@ -124,9 +131,9 @@ Timeframe: 60 minutes
 
 Directions:  With all participants at your table, answer the following questions and list the answers on a flip chart:
 
-1.  Who should you present this solution to? Who is your target customer audience? Who are the decision-makers?
+1. Who should you present this solution to? Who is your target customer audience? Who are the decision-makers?
 
-2.  What customer business needs do you need to address with your solution?
+2. What customer business needs do you need to address with your solution?
 
 **Design**
 
@@ -134,43 +141,43 @@ Directions: With all participants at your table, respond to the following questi
 
 *Continuous Integration and Deployment*
 
-1.  What available system should you use to automate software builds and deployments of the application?
+1. What available system should you use to automate software builds and deployments of the application?
 
-2.  Explain how you can continuously deploy new builds directly to the cloud without interfering with the production site.
+2. Explain how you can continuously deploy new builds directly to the cloud without interfering with the production site.
 
-3.  Document how to integrate unit tests into the continuous delivery process so that when a test fails to pass, the deployment process is flagged and stopped.
+3. Document how to integrate unit tests into the continuous delivery process so that when a test fails to pass, the deployment process is flagged and stopped.
 
-4.  Explain how you can test a new build simultaneously with an existing build, like an A/B test.
+4. Explain how you can test a new build simultaneously with an existing build, like an A/B test.
 
-5.  Why shouldn't we have multiple long-lived branches in source control?
+5. Why shouldn't we have multiple long-lived branches in source control?
 
-6.  Create a plan on how to switch the source control location from Azure DevOps to GitHub.
+6. Create a plan on how to switch the source control location from Azure DevOps to GitHub.
 
 *Enhance system logging functionality*
 
-1.  Implement a solution that will enable the logs to be searchable and visible in an online dashboard.
+1. Implement a solution that will enable the logs to be searchable and visible in an online dashboard.
 
-2.  Implement a solution to enhance the application logs to provide more useful performance and application behavior details, specifically around browser metrics and application dependencies. Discuss which visualization, or dashboard, options exist for the log results. Existing App Service logs already cover these topics:
+2. Implement a solution to enhance the application logs to provide more useful performance and application behavior details, specifically around browser metrics and application dependencies. Discuss which visualization, or dashboard, options exist for the log results. Existing App Service logs already cover these topics:
 
-    -  **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater).
+    - **Detailed Error Logging**---detailed error information for HTTP status codes that indicate a failure (status code 400 or greater).
 
-    -  **Failed Request Tracing**---detailed information on failed requests, including a trace of the Internet Information Server IIS components used to process the request and the time taken in each component.
+    - **Failed Request Tracing**---detailed information on failed requests, including a trace of the Internet Information Server IIS components used to process the request and the time taken in each component.
 
-    -  **Web Server Logging**---information about HTTP transactions using the W3C extended log file format.
+    - **Web Server Logging**---information about HTTP transactions using the W3C extended log file format.
 
-    -  **Application Diagnostics**---trace messages as defined in the source code.
+    - **Application Diagnostics**---trace messages as defined in the source code.
 
-    -  **Deployment Logs**
+    - **Deployment Logs**
 
 **Prepare**
 
 Directions: With all participants at your table:
 
-1.  Identify any customer needs that are not addressed with the proposed solution.
+1. Identify any customer needs that are not addressed with the proposed solution.
 
-2.  Identify the benefits of your solution.
+2. Identify the benefits of your solution.
 
-3.  Determine how you will respond to the customer's objections.
+3. Determine how you will respond to the customer's objections.
 
 Prepare a 15-minute chalk-talk style presentation to the customer.
 
@@ -186,21 +193,21 @@ Timeframe: 30 minutes
 
 Directions:
 
-1.  Pair with another table.
+1. Pair with another table.
 
-2.  One table is the Microsoft team and the other table is the customer.
+2. One table is the Microsoft team and the other table is the customer.
 
-3.  The Microsoft team presents its proposed solution to the customer.
+3. The Microsoft team presents its proposed solution to the customer.
 
-4.  The customer makes one of the objections from the list of objections.
+4. The customer makes one of the objections from the list of objections.
 
-5.  The Microsoft team responds to the objection.
+5. The Microsoft team responds to the objection.
 
-6.  The customer team gives feedback to the Microsoft team.
+6. The customer team gives feedback to the Microsoft team.
 
-7.  Tables switch roles and repeat Steps 2-6.
+7. Tables switch roles and repeat Steps 2-6.
 
-##  Wrap-up 
+## Wrap-up
 
 Timeframe:  15 minutes
 
@@ -219,4 +226,3 @@ Directions:  Tables reconvene with the larger group to hear the facilitator/SME 
 | App service continuous deployment | <https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment> |
 | App service staging environments | <https://azure.microsoft.com/en-us/documentation/articles/web-sites-staged-publishing/> |
 | Application Insights | <https://azure.microsoft.com/en-us/documentation/services/application-insights/> |
-

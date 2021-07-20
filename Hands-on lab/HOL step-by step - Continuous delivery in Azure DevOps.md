@@ -27,27 +27,27 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Continuous Delivery - hands-on lab step-by-step](#continuous-delivery-hands-on-lab-step-by-step)
-    - [Abstract and learning objectives](#abstract-and-learning-objectives)
-    - [Overview](#overview)
-    - [Solution architecture](#solution-architecture)
-    - [Requirements](#requirements)
-    - [Before the hands-on lab](#before-the-hands-on-lab)
-    - [Exercise 1: Continuous Integration](#exercise-1-continuous-integration)
-        - [Task 1: Connect Azure Board with GitHub](#task-1-connect-azure-board-with-github)
-        - [Task 2: Using Dependabot](#task-2-using-dependabot)
-        - [Task 3: Set up Local Infrastructure](#task-3-set-up-local-infrastructure)
-        - [Task 4: Build Automation with GitHub Registry](#task-4-build-automation-with-github-registry)
-    - [Exercise 2: Continuous Delivery](#exercise-2-continuous-delivery)
-        - [Task 1: Set up Cloud Infrastructure](#task-1-set-up-cloud-infrastructure)
-        - [Task 2: Deployment Automation to Azure Web App](#task-2-deployment-automation-to-azure-web-app)
-        - [Task 3: Branch Policies in GitHub](#task-3-branch-policies-in-github)
-    - [Exercise 3: Monitoring and Logging in Azure](#exercise-3-monitoring-and-logging-in-azure)
-        - [Task 1: Set up Application Insights](#task-1-set-up-application-insights)
-        - [Task 2: Continuous Deployment with GitHub Actions](#task-2-continuous-deployment-with-github-actions)
-        - [Task 3: Continuous Deployment with Azure DevOps Pipelines (Optional)](#task-3-continuous-deployment-with-azure-devops-pipelines)
-    - [After the hands-on lab](#after-the-hands-on-lab)
-        - [Task 1: Tear down Azure Resources](#task-1-tear-down-azure-resources)
+- [Continuous Delivery - hands-on lab step-by-step](#continuous-delivery---hands-on-lab-step-by-step)
+  - [Abstract and learning objectives](#abstract-and-learning-objectives)
+  - [Overview](#overview)
+  - [Solution architecture](#solution-architecture)
+  - [Requirements](#requirements)
+  - [Before the hands-on lab](#before-the-hands-on-lab)
+  - [Exercise 1: Continuous Integration](#exercise-1-continuous-integration)
+    - [Task 1: Connect Azure Board with GitHub](#task-1-connect-azure-board-with-github)
+    - [Task 2: Using Dependabot](#task-2-using-dependabot)
+    - [Task 3: Set up Local Infrastructure](#task-3-set-up-local-infrastructure)
+    - [Task 4: Build Automation with GitHub Registry](#task-4-build-automation-with-github-registry)
+  - [Exercise 2: Continuous Delivery](#exercise-2-continuous-delivery)
+    - [Task 1: Set up Cloud Infrastructure](#task-1-set-up-cloud-infrastructure)
+    - [Task 2: Deployment Automation to Azure Web App](#task-2-deployment-automation-to-azure-web-app)
+    - [Task 3: Branch Policies in GitHub](#task-3-branch-policies-in-github)
+  - [Exercise 3: Monitoring and Logging in Azure](#exercise-3-monitoring-and-logging-in-azure)
+    - [Task 1: Set up Application Insights](#task-1-set-up-application-insights)
+    - [Task 2: Continuous Deployment with GitHub Actions](#task-2-continuous-deployment-with-github-actions)
+    - [Task 3: Continuous Deployment with Azure DevOps Pipelines](#task-3-continuous-deployment-with-azure-devops-pipelines)
+  - [After the hands-on lab](#after-the-hands-on-lab)
+    - [Task 1: Tear down Azure Resources](#task-1-tear-down-azure-resources)
 
 <!-- /TOC -->
 
@@ -121,7 +121,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 6. When the integration succeeds, you will be taken to the Azure DevOps Board. Follow the directions in the onboarding tutorial to create an initial Issue in the `To Do` Column and create a pull request associated with your issue.
 
-    ![After completion of the onboarding tutorial.](../Media/hol-ex1-task1-step6-1.png)
+    ![After completion of the onboarding tutorial. Two todo confirmation messages displayed.](../Media/hol-ex1-task1-step6-1.png "Get started and quick tip")
 
 7. Open the new issue that the onboarding tutorial creates and observe the GitHub pull request and comment that are linked to the Azure DevOps board issue.
 
@@ -502,18 +502,17 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
     git push --set-upstream origin feature/update-readme
     ```
 
-> Note: Because the changes had already been committed locally to the `main` branch in step 3, the changes already exist in the `feature/update-readme` branch - this is why we issue a `git push` immediately after branching from the local `main` branch.
+    > **Note**: Because the changes had already been committed locally to the `main` branch in step 3, the changes already exist in the `feature/update-readme` branch - this is why we issue a `git push` immediately after branching from the local `main` branch.
 
 6. Create a pull request to merge `feature/update-readme` into `main` in GitHub. Add the annotation `AB#2` in the description of the pull request to link it with the new Azure Boards issue in step 4. Note that the `Docker` build workflow executes as part of the status checks. Click on the `Merge pull request` button after the build completes successfully to merge the Pull Request into `main`
 
     !["Pull request for merging the feature/update-main branch into main"](../Media/hol-ex2-task3-step6-1.png "Create pull request")
 
-> Note: Under normal circumstances, this pull request would be reviewed by someone other than the author of the pull request. For now, use your administrator privileges to force merge of the pull request.
+    > **Note**: Under normal circumstances, this pull request would be reviewed by someone other than the author of the pull request. For now, use your administrator privileges to force merge of the pull request.
 
 7. Observe in Azure Boards that the Issue is appropriately linked to the GitHub comment.
 
     !["The Update README.md issue with the comment from the pull request created in step 6 linked"](../Media/hol-ex2-task3-step7-1.png "Azure Boards Issue")
-
 
 ## Exercise 3: Monitoring and Logging in Azure
 
@@ -523,7 +522,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 ### Task 1: Set up Application Insights
 
-1.  Open the `deploy-appinsights.ps1` PowerShell script in the `infrastructre` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.
+1. Open the `deploy-appinsights.ps1` PowerShell script in the `infrastructre` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.
 
     ```pwsh
     $studentsuffix = "hbs"                                  # <-- Modify this
@@ -578,7 +577,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 7. Redeploy the web application by running the `deploy-webapp.ps1` PowerShell script from the `infrastructure` folder.
 
 8. Visit the deployed website and check Application Insights in the Azure Portal to see instrumentation data.
-        
+
 ### Task 2: Continuous Deployment with GitHub Actions
 
 1. Open the `deploy-sp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line. Note the call to create a Service Principal.
@@ -617,7 +616,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 3. In your GitHub lab files repository, navigate to the `Secrets` blade in the `Settings` tag and create a new repository secret named `AZURE_CREDENTIALS`. Paste the JSON output copied in the previous step to the secret value and save it.
 
-4.  Add a new GitHub Action workflow in your GitHub lab files repository by selecting the `Actions` tab and selecting `New workflow`. 
+4. Add a new GitHub Action workflow in your GitHub lab files repository by selecting the `Actions` tab and selecting `New workflow`. 
 
     ![The `New workflow` button in the repository GitHub Actions tab.](../Media/hol-ex3-task2-step1-1.png "GitHub Actions")  
 
@@ -695,7 +694,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 ### Task 3: Continuous Deployment with Azure DevOps Pipelines
 
-> Note: To complete [Exercise 3: Task 3](#task-3-continuous-deployment-with-azure-devops-pipelines), the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request). More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/)
+> **Note**: To complete [Exercise 3: Task 3](#task-3-continuous-deployment-with-azure-devops-pipelines), the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request). More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/)
 
 1. Disable your GitHub Actions by adding the `branches-ignore` property to the existing workflows in your lab files repository (located under the `.github/workflows` folder).
 
@@ -728,8 +727,6 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 6. Select your GitHub lab files repository.  Azure DevOps will redirect you to authorize yourself with GitHub. Log in and select the repository that you want to allow Azure DevOps to access.
 
 7. In the `Configure` tab, choose the `Starter Pipeline`.
-
-
 
 8. Remove all the steps from the YAML. The empty pipeline should look like the following:
 
@@ -870,7 +867,7 @@ Now that the lab is complete, we need to tear down the Azure resources that we c
 
 ### Task 1: Tear down Azure Resources
 
-1.  Open the `teardown-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your GitHub lab files repository and add the same custom lowercase three-letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line.
+1. Open the `teardown-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your GitHub lab files repository and add the same custom lowercase three-letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line.
 
     ```pwsh
     $studentprefix ="hbs"
@@ -882,6 +879,4 @@ Now that the lab is complete, we need to tear down the Azure resources that we c
 
 2. Execute the `teardown-infrastructure.ps1` PowerShell script to tear down the Azure resources for this lab.
 
-
 You should follow all steps provided *after* attending the Hands-on lab.
-

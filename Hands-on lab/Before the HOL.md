@@ -28,12 +28,12 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 <!-- TOC -->
 
 - [Continuous Delivery - before the hands-on lab setup guide](#continuous-delivery---before-the-hands-on-lab-setup-guide)
-    - [Requirements](#requirements)
-    - [Before the hands-on lab](#before-the-hands-on-lab)
-        - [Task 1: Create the Project Repo](#task-1-create-the-project-repo)
-        - [Task 2: Create GitHub Personal Access Token](#task-2-create-github-personal-access-token)
-        - [Task 3: Create Azure DevOps Personal Access Token](#task-3-create-azure-devops-personal-access-token)
-        - [Task 4: Create Azure DevOps Project](#task-4-create-azure-devops-project)
+  - [Requirements](#requirements)
+  - [Before the hands-on lab](#before-the-hands-on-lab)
+    - [Task 1: Create the Project Repo](#task-1-create-the-project-repo)
+    - [Task 2: Create GitHub Personal Access Token](#task-2-create-github-personal-access-token)
+    - [Task 3: Create Azure DevOps Personal Access Token](#task-3-create-azure-devops-personal-access-token)
+    - [Task  4: Create Azure DevOps Project](#task--4-create-azure-devops-project)
 
 <!-- /TOC -->
 
@@ -41,9 +41,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 ## Requirements
 
-1.  Microsoft Azure subscription must be pay-as-you-go or MSDN.
+1. Microsoft Azure subscription must be pay-as-you-go or MSDN.
 
-  - Trial subscriptions will _not_ work
+- Trial subscriptions will _not_ work
 
   - To complete this lab setup, ensure your account includes the following:
 
@@ -81,7 +81,6 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
         ![The `New Repository` button in a GitHub profile.](../Media/b4-task1-step1-1.png "New Repository Button")
 
-    
       - Provide a name and description for your new repository.
 
         > **Note**: Suggested name for the repository is `mcw-continuous-delivery-lab-files`.
@@ -94,49 +93,49 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
 2. Clone the lab repository.
 
-  - Create an appropriate workspace folder and navigate to it in a PowerShell terminal.
+- Create an appropriate workspace folder and navigate to it in a PowerShell terminal.
 
-    > **Note**: Suggested name for the workspace folder is `C:\Workspaces\lab`, for example.
+ > **Note**: Suggested name for the workspace folder is `C:\Workspaces\lab`, for example.
 
-    ```pwsh
-    C:
-    mkdir C:\Workspaces
-    cd C:\Workspaces
-    mkdir lab
-    cd lab
-    ```
+ ```pwsh
+ C:
+ mkdir C:\Workspaces
+ cd C:\Workspaces
+ mkdir lab
+ cd lab
+ ```
 
-  - Type the following command and press `<ENTER>`:
+- Type the following command and press `<ENTER>`:
 
-    ```pwsh
-    git clone https://github.com/solliancenet/microsoft-mcw-continuous-delivery.git
-    ```
+ ```pwsh
+ git clone https://github.com/solliancenet/microsoft-mcw-continuous-delivery.git
+ ```
 
-  - Create a folder for the GitHub repository created in Step 1 and navigate to it in PowerShell.
+- Create a folder for the GitHub repository created in Step 1 and navigate to it in PowerShell.
 
-    ```pwsh
-    mkdir mcw-continuous-delivery-lab-files
-    cd mcw-continuous-delivery-lab-files
-    ```
+ ```pwsh
+ mkdir mcw-continuous-delivery-lab-files
+ cd mcw-continuous-delivery-lab-files
+ ```
 
-  - Copy lab files from the MCW lab repository to the new folder.
+- Copy lab files from the MCW lab repository to the new folder.
 
-    ```pwsh
-    Copy-Item '..\microsoft-mcw-continuous-delivery\Hands-on lab\lab-files\*' -Destination ./ -Recurse
-    ```
+ ```pwsh
+ Copy-Item '..\microsoft-mcw-continuous-delivery\Hands-on lab\lab-files\*' -Destination ./ -Recurse
+ ```
 
-  - Initialize folder as a git repository, commit, and submit contents to remote GitHub branch `main` in the lab files repository created in Step 1.
+- Initialize folder as a git repository, commit, and submit contents to remote GitHub branch `main` in the lab files repository created in Step 1.
 
-    > **Note**: The URI of the lab files GitHub repository created in Step 1 will differ from that in the example below.
+ > **Note**: The URI of the lab files GitHub repository created in Step 1 will differ from that in the example below.
 
-    ```pwsh
-    git init
-    git add .
-    git commit -m "Initial commit"
-    git branch -M main
-    git remote add origin https://github.com/hatboyzero/mcw-continuous-delivery-lab-files.git
-    git push -u origin main
-    ```
+ ```pwsh
+ git init
+ git add .
+ git commit -m "Initial commit"
+ git branch -M main
+ git remote add origin https://github.com/hatboyzero/mcw-continuous-delivery-lab-files.git
+ git push -u origin main
+ ```
 
 ### Task 2: Create GitHub Personal Access Token
 
@@ -158,7 +157,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
 ### Task 3: Create Azure DevOps Personal Access Token
 
-1.  Log in to your existing Azure DevOps account or create a new account on https://dev.azure.com.
+1. Log in to your existing Azure DevOps account or create a new account on https://dev.azure.com.
 
     ![The Azure DevOps Portal.](../Media/b4-task3-step1-1.png "Azure DevOps Portal")
 
@@ -178,7 +177,4 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
 2. (Optional) To complete Exercise 3: Task 3 in the Hands on Lab, the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request). More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/)
 
-
-
 You should follow all steps provided *before* performing the Hands-on lab.
-
