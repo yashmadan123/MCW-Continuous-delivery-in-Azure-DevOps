@@ -48,6 +48,8 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 3: Continuous Deployment with Azure DevOps Pipelines](#task-3-continuous-deployment-with-azure-devops-pipelines)
   - [After the hands-on lab](#after-the-hands-on-lab)
     - [Task 1: Tear down Azure Resources](#task-1-tear-down-azure-resources)
+[After the hands-on lab](#after-the-hands-on-lab)
+    - [Task 1: Tear down Azure Resources](#task-1-tear-down-azure-resources)
 
 <!-- /TOC -->
 
@@ -69,7 +71,7 @@ Websites for medical conferences are typically low-budget websites because the c
 
 ## Requirements
 
-1.  Microsoft Azure subscription must be pay-as-you-go or MSDN.
+1. Microsoft Azure subscription must be pay-as-you-go or MSDN.
 
   - Trial subscriptions will _not_ work.
 
@@ -83,7 +85,7 @@ Websites for medical conferences are typically low-budget websites because the c
 
 3. Local machine or a virtual machine configured with:
 
-    - A browser, preferably Chrome for consistency with the lab implementation tests.
+    - A browser, preferably Chrome, to be consistent with the lab implementation tests.
 
 4. Git for Windows
 
@@ -99,11 +101,11 @@ Refer to the Before the hands-on lab setup guide manual before continuing to the
 
 Duration: 40 minutes
 
-After a requirements gathering effort, we find that Fabrikam Medical Conferences has many areas of potential improvement in their development workflow.  Specifically, we conclude that there are a lot of manual tasks that can be automated, potentially mitigating many of the recurring quality and security issues as well as reducing the dependencies between Fabrikam's developers and their work and productivity. We will begin to address some of these efforts in this exercise to improve developer flow and establish continuous integration practices.
+After a requirements gathering effort, we find that Fabrikam Medical Conferences has many areas of potential improvement in their development workflow.  Specifically, we conclude that there are a lot of manual tasks that can be automated. Automation potentially mitigates many of the recurring quality and security issues. Also, the dependencies between Fabrikam's developers' work and productivity are reduced. We will begin to address some of these efforts in this exercise to improve developer flow and establish continuous integration practices.
 
 ### Task 1: Connect Azure Board with GitHub
 
-1.  On the GitHub Marketplace, find the [Azure Boards Integration App](https://github.com/marketplace/azure-boards)
+1. On the GitHub Marketplace, find the [Azure Boards Integration App](https://github.com/marketplace/azure-boards).
 
     ![The Azure Boards Integration App on GitHub Marketplace that will provide a link between Azure DevOps Boards and GitHub issues.](../Media/hol-ex1-task1-step1-1.png "Azure Boards Integration App on GitHub Marketplace")
 
@@ -119,11 +121,11 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ![The Azure DevOps Integration Configuration form.](../Media/hol-ex1-task1-step5-1.png "Azure DevOps Integration Configuration")
 
-6. When the integration succeeds, you will be taken to the Azure DevOps Board. Follow the directions in the onboarding tutorial to create an initial Issue in the `To Do` Column and create a pull request associated with your issue.
+6. When the integration succeeds, you will be taken to the Azure DevOps Board. Follow the directions in the onboarding tutorial to create an initial Issue in the `To Do` Column and create a pull request associated with your Issue.
 
     ![After completion of the onboarding tutorial. Two todo confirmation messages displayed.](../Media/hol-ex1-task1-step6-1.png "Get started and quick tip")
 
-7. Open the new issue that the onboarding tutorial creates and observe the GitHub pull request and comment that are linked to the Azure DevOps board issue.
+7. Open the new Issue that the onboarding tutorial creates and observe the GitHub pull request and comment that are linked to the Azure DevOps board Issue.
 
     ![Linked GitHub items in an Azure DevOps issue in Boards.](../Media/hol-ex1-task1-step7-1.png "GitHub Pull Request and Comment")
 
@@ -141,13 +143,13 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 ### Task 2: Using Dependabot
 
-1.  In your lab files GitHub repository, navigate to the `Security` tab.  Click on the `Enable Dependabot alerts` button.
+1. In your lab files GitHub repository, navigate to the `Security` tab.  Click on the `Enable Dependabot alerts` button.
 
     ![The GitHub Repository Security Overview tab.](../Media/hol-ex1-task2-step1-1.png "GitHub Repository Security Overview")
 
 2. You should arrive at the `Security & analysis` blade under the `Settings` tab. Enable `Dependabot alerts` and `Dependabot security updates`.
 
-    > **Note**: Enabling `Dependabot alerts` will also automatically enable `Dependency graph`.
+    > **Note**: Enabling the `Dependabot alerts` will also automatically enable `Dependency graph`.
 
     ![The GitHub Repository Security and Analysis blade under the GitHub repository Settings tab. We enable Dependabot alerts and security updates here.](../Media/hol-ex1-task2-step2-1.png "GitHub Security & Analysis Settings")
 
@@ -226,7 +228,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ```yaml
     env:
-      # Use docker.io for Docker Hub if empty
+      # Use docker.io for Docker Hub if empty.
       REGISTRY: docker.pkg.github.com/<githubaccountname>/<githubreponame>
       # github.repository as <account>/<repo>
       IMAGE_NAME: fabrikam-web
@@ -270,11 +272,11 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 Duration: 40 minutes
 
-Fabrikam Medical Conferences developer workflow has been improved, we are ready to consider migrating from running on-premises to a cloud implementation to reduce maintenance costs and facilitate scaling when necessary. We will take steps to run the containerized application in the cloud as well as automate its deployment.
+The Fabrikam Medical Conferences developer workflow has been improved. We are ready to consider migrating from running on-premises to a cloud implementation to reduce maintenance costs and facilitate scaling when necessary. We will take steps to run the containerized application in the cloud as well as automate its deployment.
 
 ### Task 1: Set up Cloud Infrastructure
 
-1.  Open the `deploy-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
+1. Open the `deploy-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
 
     ```pswh
     $studentprefix = "hbs"                                  # <-- Modify this value
@@ -359,7 +361,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
     ```
 
-7. Note the call to fetch the MongoDB connection string for the CosmosDB database.
+7. Observe the call to fetch the MongoDB connection string for the CosmosDB database.
 
     ```pwsh
     # Fetch CosmosDB Mongo connection string
@@ -392,7 +394,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
     ```
 
-11. Note the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
+11. Observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
 
     ```pwsh
     # Configure Web App
@@ -457,7 +459,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
     ![GitHub Branch settings for the repository](../Media/hol-ex2-task3-step1-1.png "Branch Protection Rules")
 
-2. Click on the `Add rule` button to add a new branch protection rule for the `main` branch. Be sure to specify `main` in the branch name pattern field - enable the following options and click on the `Create` button to create the branch protection rule.
+2. Click on the `Add rule` button to add a new branch protection rule for the `main` branch. Be sure to specify `main` in the branch name pattern field. Enable the following options and click on the `Create` button to create the branch protection rules:
 
         - Require pull request reviews before merging
         - Require status checks to pass before merging
@@ -504,13 +506,17 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
     > **Note**: Because the changes had already been committed locally to the `main` branch in step 3, the changes already exist in the `feature/update-readme` branch - this is why we issue a `git push` immediately after branching from the local `main` branch.
 
-6. Create a pull request to merge `feature/update-readme` into `main` in GitHub. Add the annotation `AB#2` in the description of the pull request to link it with the new Azure Boards issue in step 4. Note that the `Docker` build workflow executes as part of the status checks. Click on the `Merge pull request` button after the build completes successfully to merge the Pull Request into `main`
+6. Create a pull request to merge `feature/update-readme` into `main` in GitHub. Add the annotation `AB#2` in the description of the pull request to link it with the new Azure Boards issue in step 4.
+
+    > **Note**: The `Docker` build workflow executes as part of the status checks.
+
+7. Click on the `Merge pull request` button after the build completes successfully to merge the Pull Request into `main`.
 
     !["Pull request for merging the feature/update-main branch into main"](../Media/hol-ex2-task3-step6-1.png "Create pull request")
 
     > **Note**: Under normal circumstances, this pull request would be reviewed by someone other than the author of the pull request. For now, use your administrator privileges to force merge of the pull request.
 
-7. Observe in Azure Boards that the Issue is appropriately linked to the GitHub comment.
+8. Observe in Azure Boards the Issue is appropriately linked to the GitHub comment.
 
     !["The Update README.md issue with the comment from the pull request created in step 6 linked"](../Media/hol-ex2-task3-step7-1.png "Azure Boards Issue")
 
@@ -859,7 +865,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 20. Run the build pipeline and note how the pipeline waits before moving to the `DeployProd` stage`
 
-## After the hands-on lab 
+## After the hands-on lab
 
 Duration: 15 minutes
 
