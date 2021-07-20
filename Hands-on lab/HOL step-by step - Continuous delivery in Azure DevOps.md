@@ -95,7 +95,7 @@ Websites for medical conferences are typically low-budget websites because the c
 
 ## Before the hands-on lab
 
-Refer to the Before the hands-on lab setup guide manual before continuing to the lab exercises.
+Refer to the [Before the hands-on lab](./Before%20the%20HOL.md) setup guide manual before continuing to the lab exercises.
 
 ## Exercise 1: Continuous Integration
 
@@ -113,7 +113,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 3. On the next page, select `Complete order and begin installation`.
 
-4. Select the lab files repository created in [Task 1 of the Before the HOL Instructions] and click `Install & Authorize`.
+4. Select the lab files repository created in [Task 1 of the Before the HOL Instructions](./Before%20the%20HOL.md#task-1-create-the-project-repo) and click `Install & Authorize`.
 
     ![The GitHub Application Authorization page.](../Media/hol-ex1-task1-step4-1.png "GitHub Application Authorization")
 
@@ -699,6 +699,8 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 9. Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
 
 ### Task 3: Continuous Deployment with Azure DevOps Pipelines
+
+> **Note**: This section demonstrates Continuous Deployment via ADO pipelines, which is equivalent to the Continuous Deployment via GitHub Actions demonstrated in Task 2. For this reason, disabling GitHub action here is critical so that both pipelines (ADO & GitHub Actions) don't interfere with each other.
 
 > **Note**: To complete [Exercise 3: Task 3](#task-3-continuous-deployment-with-azure-devops-pipelines), the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request). More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/)
 
