@@ -9,9 +9,8 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-June 2021
+July 2021
 </div>
-
 
 Information in this document, including URL and other Internet website references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -27,7 +26,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Continuous Delivery - hands-on lab step-by-step](#continuous-delivery---hands-on-lab-step-by-step)
+- [Continuous Delivery in Azure DevOps hands-on lab step-by-step](#continuous-delivery-in-azure-devops-hands-on-lab-step-by-step)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Overview](#overview)
   - [Solution architecture](#solution-architecture)
@@ -48,16 +47,16 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 3: Continuous Deployment with Azure DevOps Pipelines](#task-3-continuous-deployment-with-azure-devops-pipelines)
   - [After the hands-on lab](#after-the-hands-on-lab)
     - [Task 1: Tear down Azure Resources](#task-1-tear-down-azure-resources)
-[After the hands-on lab](#after-the-hands-on-lab)
-    - [Task 1: Tear down Azure Resources](#task-1-tear-down-azure-resources)
 
 <!-- /TOC -->
 
-# Continuous Delivery - hands-on lab step-by-step 
+# Continuous Delivery in Azure DevOps hands-on lab step-by-step 
 
 ## Abstract and learning objectives 
 
-This workshop is targeted at students in an instructor-led training session.  
+In this hands-on lab, you will learn how to implement a solution with a combination of ARM templates and Azure DevOps to enable continuous delivery with several Azure PaaS services.
+
+At the end of this workshop, you will be better able to implement solutions for continuous delivery with GitHub in Azure, as well create an ARM (ARM) template to provision Azure resources, create an Azure DevOps project with a GitHub repository, and configure continuous delivery with GitHub.
 
 ## Overview
 
@@ -67,7 +66,7 @@ Websites for medical conferences are typically low-budget websites because the c
 
 ## Solution architecture
 
-!["Solution architecture diagram illustrating the use of GitHub and Azure DevOps"](../Media/diagram.png "Desired solution architecture")
+![Solution architecture diagram illustrating the use of GitHub and Azure DevOps.](../Media/diagram.png "Desired solution architecture")
 
 ## Requirements
 
@@ -113,7 +112,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 3. On the next page, select `Complete order and begin installation`.
 
-4. Select the lab files repository created in [Task 1 of the Before the HOL Instructions](./Before%20the%20HOL.md#task-1-create-the-project-repo) and click `Install & Authorize`.
+4. Select the lab files repository created in [Task 1 of the Before the HOL Instructions](./Before%20the%20HOL.md#task-1-create-the-project-repo) and select `Install & Authorize`.
 
     ![The GitHub Application Authorization page.](../Media/hol-ex1-task1-step4-1.png "GitHub Application Authorization")
 
@@ -133,7 +132,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ![Pull request detail in GitHub created by onboarding tutorial in previous steps.](../Media/hol-ex1-task1-step8-1.png "Pull Request detail")
 
-9. Select the `Files changed` tab within the pull request detail and observe the change to the README.md associated with this pull request. After reviewing the changes, go back to the `Conversation` tab and click on the `Merge pull request` button and confirm the following prompt to merge the pull request into the `main` branch.
+9. Select the `Files changed` tab within the pull request detail and observe the change to the README.md associated with this pull request. After reviewing the changes, go back to the `Conversation` tab and select the `Merge pull request` button and confirm the following prompt to merge the pull request into the `main` branch.
 
     ![The file changes associated with the pull request.](../Media/hol-ex1-task1-step9-1.png "Pull Request Files Changed tab")
 
@@ -143,7 +142,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 ### Task 2: Using Dependabot
 
-1. In your lab files GitHub repository, navigate to the `Security` tab.  Click on the `Enable Dependabot alerts` button.
+1. In your lab files GitHub repository, navigate to the `Security` tab.  Seclet the `Enable Dependabot alerts` button.
 
     ![The GitHub Repository Security Overview tab.](../Media/hol-ex1-task2-step1-1.png "GitHub Repository Security Overview")
 
@@ -161,7 +160,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ![Summary of the `handlebars` Dependabot alert in the list of Dependabot alerts.](../Media/hol-ex1-task2-step4-1.png "`handlebars` Dependabot alert")
 
-5. Click on the `handlebars` Dependabot alert title to see the alert detail. After reviewing the alert, click on the `Create Dependabot security update` button and wait a few moments for GitHub to create the security update.
+5. Select the `handlebars` Dependabot alert title to see the alert detail. After reviewing the alert, select `Create Dependabot security update` and wait a few moments for GitHub to create the security update.
 
     ![The `handlebars` Dependabot alert detail.](../Media/hol-ex1-task2-step5-1.png "Dependabot alert detail")
 
@@ -455,11 +454,11 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
 ### Task 3: Branch Policies in GitHub
 
-1. In your lab files GitHub repository, navigate to the `Settings` tab and click on the `Branches` blade.
+1. In your lab files GitHub repository, navigate to the `Settings` tab and select the `Branches` blade.
 
     ![GitHub Branch settings for the repository](../Media/hol-ex2-task3-step1-1.png "Branch Protection Rules")
 
-2. Click on the `Add rule` button to add a new branch protection rule for the `main` branch. Be sure to specify `main` in the branch name pattern field. Enable the following options and click on the `Create` button to create the branch protection rules:
+2. Select the `Add rule` button to add a new branch protection rule for the `main` branch. Be sure to specify `main` in the branch name pattern field. Enable the following options and choose the `Create` button to create the branch protection rules:
 
         - Require pull request reviews before merging
         - Require status checks to pass before merging
@@ -510,7 +509,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
     > **Note**: The `Docker` build workflow executes as part of the status checks.
 
-7. Click on the `Merge pull request` button after the build completes successfully to merge the Pull Request into `main`.
+7. Select the `Merge pull request` button after the build completes successfully to merge the Pull Request into `main`.
 
     !["Pull request for merging the feature/update-main branch into main"](../Media/hol-ex2-task3-step6-1.png "Create pull request")
 
@@ -528,7 +527,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 ### Task 1: Set up Application Insights
 
-1. Open the `deploy-appinsights.ps1` PowerShell script in the `infrastructre` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.
+1. Open the `deploy-appinsights.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.
 
     ```pwsh
     $studentsuffix = "hbs"                                  # <-- Modify this
@@ -544,7 +543,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     AI Instrumentation Key="55cade0c-197e-4489-961c-51e2e6423ea2"
     ```
 
-3. Navigate to the `./content-web` folder in your GitHub lab files repository and execute the following to install Javascript support for Application Insights via NPM to the web application frontend.
+3. Navigate to the `./content-web` folder in your GitHub lab files repository and execute the following to install JavaScript support for Application Insights via NPM to the web application frontend.
 
     ```bash
     npm install applicationinsights --save
@@ -783,7 +782,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 14. Choose your target subscription and resource group and set the `Service Connection` name to `Fabrikam-Azure`. Save the service connection - we will reference it in a later step.
 
-15. Open the build pipeline in `Edit` mode, and then click on the `Variables` button on the top-right corner of the pipeline editor. Add a secret variable `CR_PAT`, check the `Keep this value secret` checkbox, and copy the GitHub Personal Access Token from the Before the Hands-on lab guided instruction into the `Value` field. Save the pipeline variable - we will reference it in a later step.
+15. Open the build pipeline in `Edit` mode, and then select the `Variables` button on the top-right corner of the pipeline editor. Add a secret variable `CR_PAT`, check the `Keep this value secret` checkbox, and copy the GitHub Personal Access Token from the Before the Hands-on lab guided instruction into the `Value` field. Save the pipeline variable - we will reference it in a later step.
 
     ![Adding a new Pipeline Variable to an existing Azure DevOps pipeline.](../Media/hol-ex3-task3-step15-1.png "New Pipeline Variable")
 
