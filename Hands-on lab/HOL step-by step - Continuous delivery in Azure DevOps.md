@@ -41,7 +41,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 1: Set up Cloud Infrastructure](#task-1-set-up-cloud-infrastructure)
     - [Task 2: Deployment Automation to Azure Web App](#task-2-deployment-automation-to-azure-web-app)
     - [Task 3: Branch Policies in GitHub](#task-3-branch-policies-in-github)
-  - [Exercise 3: Monitoring and Logging in Azure](#exercise-3-monitoring-and-logging-in-azure)
+  - [Exercise 3: Monitoring and logging in Azure](#exercise-3-monitoring-and-logging-in-azure)
     - [Task 1: Set up Application Insights](#task-1-set-up-application-insights)
     - [Task 2: Continuous Deployment with GitHub Actions](#task-2-continuous-deployment-with-github-actions)
     - [Task 3: Continuous Deployment with Azure DevOps Pipelines](#task-3-continuous-deployment-with-azure-devops-pipelines)
@@ -287,7 +287,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     $location2 = "northeurope"
     ```
 
-2. Note the individual calls to the `azcli` for
+2. Note the individual calls to the `azcli` for the following:
     - Creating a Resource Group
 
         ```pwsh
@@ -519,7 +519,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
     !["The Update README.md issue with the comment from the pull request created in step 6 linked"](../Media/hol-ex2-task3-step7-1.png "Azure Boards Issue")
 
-## Exercise 3: Monitoring and Logging in Azure
+## Exercise 3: Monitoring and logging in Azure
 
 Duration: 40 minutes
 
