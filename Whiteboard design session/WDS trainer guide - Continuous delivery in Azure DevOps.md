@@ -36,8 +36,8 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
     - [Customer situation](#customer-situation)
     - [Customer needs](#customer-needs)
-    - [Customer objections](#customer-objections)
     - [Infographic for common scenarios](#infographic-for-common-scenarios)
+    - [Customer objections](#customer-objections)
   - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
   - [Step 3: Present the solution](#step-3-present-the-solution)
   - [Wrap-up](#wrap-up)
@@ -228,7 +228,7 @@ In the current situation, the conference sites are hosted on-premises with the f
 
 ### Infographic for common scenarios
 
-![Common Scenarios for building a continuous deployment pipeline with Azure DevOps. Images include the icon for Azure DevOps, a Git repo, and a pipeline.](Media/commonscenarios.png "Common Scenarios for building a continuous deployment pipeline with Azure DevOps")
+![Common Scenarios for building a continuous deployment pipeline with Azure DevOps. Images include the icon for Azure DevOps, a Git repo, and a pipeline.](media//commonscenarios.png "Common Scenarios for building a continuous deployment pipeline with Azure DevOps")
 
 ### Customer objections
 
