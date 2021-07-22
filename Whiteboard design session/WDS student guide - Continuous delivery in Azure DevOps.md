@@ -114,7 +114,7 @@ In the current situation, the conference sites are hosted on-premises with the f
 
 ### Infographic for common scenarios
 
-![Common Scenarios for building a continuous deployment pipeline with Azure DevOps. Images include the icon for Azure DevOps, a Git repo, and a pipeline.](../Media/commonscenarios.png "Common Scenarios for building a continuous deployment pipeline with Azure DevOps")
+![Common Scenarios for building a continuous deployment pipeline with Azure DevOps. Images include the icon for Azure DevOps, a Git repo, and a pipeline.](./Media/commonscenarios.png "Common Scenarios for building a continuous deployment pipeline with Azure DevOps")
 
 ## Step 2: Design a proof of concept solution
 
