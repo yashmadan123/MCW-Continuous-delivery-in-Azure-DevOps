@@ -106,7 +106,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 1. On the GitHub Marketplace, find the [Azure Boards Integration App](https://github.com/marketplace/azure-boards).
 
-    ![The Azure Boards Integration App on GitHub Marketplace that will provide a link between Azure DevOps Boards and GitHub issues.](media/hol-ex1-task1-step1-1.png "Azure Boards Integration App on GitHub Marketplace")
+    ![The Azure Boards Integration App on GitHub Marketplace that will provide a link between Azure DevOps Boards and GitHub issues.](media/hol-ex1-task1-step1.png "Azure Boards Integration App on GitHub Marketplace")
 
 2. Scroll to the bottom of the page and select `Install it for Free`.
 
