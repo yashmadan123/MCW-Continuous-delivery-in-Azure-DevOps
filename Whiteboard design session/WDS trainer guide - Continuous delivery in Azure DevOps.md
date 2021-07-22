@@ -37,6 +37,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Customer situation](#customer-situation)
     - [Customer needs](#customer-needs)
     - [Customer objections](#customer-objections)
+    - [Infographic for common scenarios](#infographic-for-common-scenarios)
   - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
   - [Step 3: Present the solution](#step-3-present-the-solution)
   - [Wrap-up](#wrap-up)
@@ -140,6 +141,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 [Preferred target audience](#preferred-target-audience)
   - [Preferred solution](#preferred-solution)
   - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
+  - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
 
 <!-- /TOC -->
 
@@ -314,6 +316,10 @@ In the current situation, the conference sites are hosted on-premises with the f
     - Application dependency metrics such as request times and request failures for communication with the database or other services.
 
 7. Implement proactive diagnostics to generate automatic alerts for unusual application behavior including aberrant request response time, dependency response time, and page load time.
+
+### Infographic for common scenarios
+
+![Common Scenarios for building a continuous deployment pipeline with Azure DevOps. Images include the icon for Azure DevOps, a Git repo, and a pipeline.](../Media/commonscenarios.png "Common Scenarios for building a continuous deployment pipeline with Azure DevOps")
 
 ### Customer objections
 
@@ -630,3 +636,9 @@ The solution for the Fabrikam Medical scenario involves several technologies, in
     **Potential answer**
 
     There is a learning curve with every quality gate added. Developers will need to do more automated testing locally to ensure code will pass the CI process. Working from master (or trunk) requires that developers own the state of the build process. When the build is broken, fixing the build becomes the priority. This is another area where we slow down to go faster for a higher quality deliverable.
+
+## Customer quote (to be read back to the attendees at the end)
+
+"With continuous deployment and automation of our software delivery processes we feel confident we can rapidly iterate on development of cloud-native, container-based services with the right DevOps support in place to be successful with a small team."
+
+- Arthur Block, VP of Engineering at Fabrikam Medical Conferences
