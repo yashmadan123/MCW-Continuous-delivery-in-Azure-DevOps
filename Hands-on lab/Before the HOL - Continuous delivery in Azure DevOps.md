@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-June 2021
+July 2021
 </div>
 
 
@@ -27,17 +27,17 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Continuous Delivery - before the hands-on lab setup guide](#continuous-delivery---before-the-hands-on-lab-setup-guide)
+- [Continuous delivery in Azure DevOps before the hands-on lab setup guide](#continuous-delivery-in-azure-devops-before-the-hands-on-lab-setup-guide)
   - [Requirements](#requirements)
   - [Before the hands-on lab](#before-the-hands-on-lab)
     - [Task 1: Create the Project Repo](#task-1-create-the-project-repo)
     - [Task 2: Create GitHub Personal Access Token](#task-2-create-github-personal-access-token)
     - [Task 3: Create Azure DevOps Personal Access Token](#task-3-create-azure-devops-personal-access-token)
-    - [Task  4: Create Azure DevOps Project](#task--4-create-azure-devops-project)
+    - [Task 4: Create Azure DevOps Project](#task-4-create-azure-devops-project)
 
 <!-- /TOC -->
 
-# Continuous Delivery - before the hands-on lab setup guide 
+# Continuous Delivery in Azure DevOps before the hands-on lab setup guide 
 
 ## Requirements
 
@@ -77,7 +77,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
     - Create a new repository.
 
-      - Click on the `New` button.
+      - Select the `New` button.
 
         ![The `New Repository` button in a GitHub profile.](../Media/b4-task1-step1-1.png "New Repository Button")
 
@@ -87,7 +87,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
         ![The `New Repository` creation form in GitHub.](../Media/b4-task1-step1-2.png "New Repository Creation Form")
 
-      - Click on the `Create Repository` button to create the new repository.
+      - Seclect the `Create Repository` button to create the new repository.
 
         ![The created repository in GitHub. This should reflect the repository that was created.](../Media/b4-task1-step1-3.png "Created Repository Page")
 
@@ -95,7 +95,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
 - Create an appropriate workspace folder and navigate to it in a PowerShell terminal.
 
- > **Note**: Suggested name for the workspace folder is `C:\Workspaces\lab`, for example.
+ > **Note**: Suggested name for the workspace folder is `C:\Workspaces\lab`, for example:
 
  ```pwsh
  C:
@@ -141,7 +141,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
 1. Log in to your GitHub account.
 
-2. Create a Personal Access Token as [described here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token).  Ensure that the following scopes are checked when configuring your GitHub Personal Access Token.
+2. Create a Personal Access Token as [described here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token).  Ensure the following scopes are checked when configuring your GitHub Personal Access Token:
 
     - `repo` - Full control of private repositories
     - `workflow` - Update GitHub Action workflows
@@ -175,6 +175,6 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
 1. Create a `Fabrikam` project in Azure DevOps for use in the lab.
 
-2. (Optional) To complete Exercise 3: Task 3 in the Hands on Lab, the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request). More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/)
+2. (Optional) To complete Exercise 3: Task 3 in the Hands on Lab, the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request). More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/).
 
 You should follow all steps provided *before* performing the Hands-on lab.

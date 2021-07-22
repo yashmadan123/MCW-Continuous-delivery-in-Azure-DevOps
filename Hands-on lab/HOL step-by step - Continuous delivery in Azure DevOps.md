@@ -9,9 +9,8 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-June 2021
+July 2021
 </div>
-
 
 Information in this document, including URL and other Internet website references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -27,7 +26,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Continuous Delivery - hands-on lab step-by-step](#continuous-delivery---hands-on-lab-step-by-step)
+- [Continuous Delivery in Azure DevOps hands-on lab step-by-step](#continuous-delivery-in-azure-devops-hands-on-lab-step-by-step)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Overview](#overview)
   - [Solution architecture](#solution-architecture)
@@ -42,7 +41,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 1: Set up Cloud Infrastructure](#task-1-set-up-cloud-infrastructure)
     - [Task 2: Deployment Automation to Azure Web App](#task-2-deployment-automation-to-azure-web-app)
     - [Task 3: Branch Policies in GitHub](#task-3-branch-policies-in-github)
-  - [Exercise 3: Monitoring and Logging in Azure](#exercise-3-monitoring-and-logging-in-azure)
+  - [Exercise 3: Monitoring and logging in Azure](#exercise-3-monitoring-and-logging-in-azure)
     - [Task 1: Set up Application Insights](#task-1-set-up-application-insights)
     - [Task 2: Continuous Deployment with GitHub Actions](#task-2-continuous-deployment-with-github-actions)
     - [Task 3: Continuous Deployment with Azure DevOps Pipelines](#task-3-continuous-deployment-with-azure-devops-pipelines)
@@ -51,11 +50,13 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- /TOC -->
 
-# Continuous Delivery - hands-on lab step-by-step 
+# Continuous Delivery in Azure DevOps hands-on lab step-by-step 
 
 ## Abstract and learning objectives 
 
-This workshop is targeted at students in an instructor-led training session.  
+In this hands-on lab, you will learn how to implement a solution with a combination of ARM templates and Azure DevOps to enable continuous delivery with several Azure PaaS services.
+
+At the end of this workshop, you will be better able to implement solutions for continuous delivery with GitHub in Azure, as well create an ARM (ARM) template to provision Azure resources, create an Azure DevOps project with a GitHub repository, and configure continuous delivery with GitHub.
 
 ## Overview
 
@@ -65,11 +66,11 @@ Websites for medical conferences are typically low-budget websites because the c
 
 ## Solution architecture
 
-!["Solution architecture diagram illustrating the use of GitHub and Azure DevOps"](../Media/diagram.png "Desired solution architecture")
+![Solution architecture diagram illustrating the use of GitHub and Azure DevOps.](../Media/diagram.png "Desired solution architecture")
 
 ## Requirements
 
-1.  Microsoft Azure subscription must be pay-as-you-go or MSDN.
+1. Microsoft Azure subscription must be pay-as-you-go or MSDN.
 
   - Trial subscriptions will _not_ work.
 
@@ -83,7 +84,7 @@ Websites for medical conferences are typically low-budget websites because the c
 
 3. Local machine or a virtual machine configured with:
 
-    - A browser, preferably Chrome for consistency with the lab implementation tests.
+    - A browser, preferably Chrome, to be consistent with the lab implementation tests.
 
 4. Git for Windows
 
@@ -99,11 +100,11 @@ Refer to the [Before the hands-on lab](./Before%20the%20HOL.md) setup guide manu
 
 Duration: 40 minutes
 
-After a requirements gathering effort, we find that Fabrikam Medical Conferences has many areas of potential improvement in their development workflow.  Specifically, we conclude that there are a lot of manual tasks that can be automated, potentially mitigating many of the recurring quality and security issues as well as reducing the dependencies between Fabrikam's developers and their work and productivity. We will begin to address some of these efforts in this exercise to improve developer flow and establish continuous integration practices.
+After a requirements gathering effort, we find that Fabrikam Medical Conferences has many areas of potential improvement in their development workflow.  Specifically, we conclude that there are a lot of manual tasks that can be automated. Automation potentially mitigates many of the recurring quality and security issues. Also, the dependencies between Fabrikam's developers' work and productivity are reduced. We will begin to address some of these efforts in this exercise to improve developer flow and establish continuous integration practices.
 
 ### Task 1: Connect Azure Board with GitHub
 
-1.  On the GitHub Marketplace, find the [Azure Boards Integration App](https://github.com/marketplace/azure-boards)
+1. On the GitHub Marketplace, find the [Azure Boards Integration App](https://github.com/marketplace/azure-boards).
 
     ![The Azure Boards Integration App on GitHub Marketplace that will provide a link between Azure DevOps Boards and GitHub issues.](../Media/hol-ex1-task1-step1-1.png "Azure Boards Integration App on GitHub Marketplace")
 
@@ -111,7 +112,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 3. On the next page, select `Complete order and begin installation`.
 
-4. Select the lab files repository created in [Task 1 of the Before the HOL Instructions](./Before%20the%20HOL.md#task-1-create-the-project-repo) and click `Install & Authorize`.
+4. Select the lab files repository created in [Task 1 of the Before the HOL Instructions](./Before%20the%20HOL.md#task-1-create-the-project-repo) and select `Install & Authorize`.
 
     ![The GitHub Application Authorization page.](../Media/hol-ex1-task1-step4-1.png "GitHub Application Authorization")
 
@@ -119,11 +120,11 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ![The Azure DevOps Integration Configuration form.](../Media/hol-ex1-task1-step5-1.png "Azure DevOps Integration Configuration")
 
-6. When the integration succeeds, you will be taken to the Azure DevOps Board. Follow the directions in the onboarding tutorial to create an initial Issue in the `To Do` Column and create a pull request associated with your issue.
+6. When the integration succeeds, you will be taken to the Azure DevOps Board. Follow the directions in the onboarding tutorial to create an initial Issue in the `To Do` Column and create a pull request associated with your Issue.
 
     ![After completion of the onboarding tutorial. Two todo confirmation messages displayed.](../Media/hol-ex1-task1-step6-1.png "Get started and quick tip")
 
-7. Open the new issue that the onboarding tutorial creates and observe the GitHub pull request and comment that are linked to the Azure DevOps board issue.
+7. Open the new Issue that the onboarding tutorial creates and observe the GitHub pull request and comment that are linked to the Azure DevOps board Issue.
 
     ![Linked GitHub items in an Azure DevOps issue in Boards.](../Media/hol-ex1-task1-step7-1.png "GitHub Pull Request and Comment")
 
@@ -131,7 +132,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ![Pull request detail in GitHub created by onboarding tutorial in previous steps.](../Media/hol-ex1-task1-step8-1.png "Pull Request detail")
 
-9. Select the `Files changed` tab within the pull request detail and observe the change to the README.md associated with this pull request. After reviewing the changes, go back to the `Conversation` tab and click on the `Merge pull request` button and confirm the following prompt to merge the pull request into the `main` branch.
+9. Select the `Files changed` tab within the pull request detail and observe the change to the README.md associated with this pull request. After reviewing the changes, go back to the `Conversation` tab and select the `Merge pull request` button and confirm the following prompt to merge the pull request into the `main` branch.
 
     ![The file changes associated with the pull request.](../Media/hol-ex1-task1-step9-1.png "Pull Request Files Changed tab")
 
@@ -141,13 +142,13 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 ### Task 2: Using Dependabot
 
-1.  In your lab files GitHub repository, navigate to the `Security` tab.  Click on the `Enable Dependabot alerts` button.
+1. In your lab files GitHub repository, navigate to the `Security` tab.  Seclet the `Enable Dependabot alerts` button.
 
     ![The GitHub Repository Security Overview tab.](../Media/hol-ex1-task2-step1-1.png "GitHub Repository Security Overview")
 
 2. You should arrive at the `Security & analysis` blade under the `Settings` tab. Enable `Dependabot alerts` and `Dependabot security updates`.
 
-    > **Note**: Enabling `Dependabot alerts` will also automatically enable `Dependency graph`.
+    > **Note**: Enabling the `Dependabot alerts` will also automatically enable `Dependency graph`.
 
     ![The GitHub Repository Security and Analysis blade under the GitHub repository Settings tab. We enable Dependabot alerts and security updates here.](../Media/hol-ex1-task2-step2-1.png "GitHub Security & Analysis Settings")
 
@@ -159,7 +160,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ![Summary of the `handlebars` Dependabot alert in the list of Dependabot alerts.](../Media/hol-ex1-task2-step4-1.png "`handlebars` Dependabot alert")
 
-5. Click on the `handlebars` Dependabot alert title to see the alert detail. After reviewing the alert, click on the `Create Dependabot security update` button and wait a few moments for GitHub to create the security update.
+5. Select the `handlebars` Dependabot alert title to see the alert detail. After reviewing the alert, select `Create Dependabot security update` and wait a few moments for GitHub to create the security update.
 
     ![The `handlebars` Dependabot alert detail.](../Media/hol-ex1-task2-step5-1.png "Dependabot alert detail")
 
@@ -226,7 +227,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ```yaml
     env:
-      # Use docker.io for Docker Hub if empty
+      # Use docker.io for Docker Hub if empty.
       REGISTRY: docker.pkg.github.com/<githubaccountname>/<githubreponame>
       # github.repository as <account>/<repo>
       IMAGE_NAME: fabrikam-web
@@ -270,11 +271,11 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 Duration: 40 minutes
 
-Fabrikam Medical Conferences developer workflow has been improved, we are ready to consider migrating from running on-premises to a cloud implementation to reduce maintenance costs and facilitate scaling when necessary. We will take steps to run the containerized application in the cloud as well as automate its deployment.
+The Fabrikam Medical Conferences developer workflow has been improved. We are ready to consider migrating from running on-premises to a cloud implementation to reduce maintenance costs and facilitate scaling when necessary. We will take steps to run the containerized application in the cloud as well as automate its deployment.
 
 ### Task 1: Set up Cloud Infrastructure
 
-1.  Open the `deploy-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
+1. Open the `deploy-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
 
     ```pswh
     $studentprefix = "hbs"                                  # <-- Modify this value
@@ -286,7 +287,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
     $location2 = "northeurope"
     ```
 
-2. Note the individual calls to the `azcli` for
+2. Note the individual calls to the `azcli` for the following:
     - Creating a Resource Group
 
         ```pwsh
@@ -359,7 +360,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
     ```
 
-7. Note the call to fetch the MongoDB connection string for the CosmosDB database.
+7. Observe the call to fetch the MongoDB connection string for the CosmosDB database.
 
     ```pwsh
     # Fetch CosmosDB Mongo connection string
@@ -392,7 +393,7 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
     ```
 
-11. Note the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
+11. Observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
 
     ```pwsh
     # Configure Web App
@@ -453,11 +454,11 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
 ### Task 3: Branch Policies in GitHub
 
-1. In your lab files GitHub repository, navigate to the `Settings` tab and click on the `Branches` blade.
+1. In your lab files GitHub repository, navigate to the `Settings` tab and select the `Branches` blade.
 
     ![GitHub Branch settings for the repository](../Media/hol-ex2-task3-step1-1.png "Branch Protection Rules")
 
-2. Click on the `Add rule` button to add a new branch protection rule for the `main` branch. Be sure to specify `main` in the branch name pattern field - enable the following options and click on the `Create` button to create the branch protection rule.
+2. Select the `Add rule` button to add a new branch protection rule for the `main` branch. Be sure to specify `main` in the branch name pattern field. Enable the following options and choose the `Create` button to create the branch protection rules:
 
         - Require pull request reviews before merging
         - Require status checks to pass before merging
@@ -504,17 +505,21 @@ Fabrikam Medical Conferences developer workflow has been improved, we are ready 
 
     > **Note**: Because the changes had already been committed locally to the `main` branch in step 3, the changes already exist in the `feature/update-readme` branch - this is why we issue a `git push` immediately after branching from the local `main` branch.
 
-6. Create a pull request to merge `feature/update-readme` into `main` in GitHub. Add the annotation `AB#2` in the description of the pull request to link it with the new Azure Boards issue in step 4. Note that the `Docker` build workflow executes as part of the status checks. Click on the `Merge pull request` button after the build completes successfully to merge the Pull Request into `main`
+6. Create a pull request to merge `feature/update-readme` into `main` in GitHub. Add the annotation `AB#2` in the description of the pull request to link it with the new Azure Boards issue in step 4.
+
+    > **Note**: The `Docker` build workflow executes as part of the status checks.
+
+7. Select the `Merge pull request` button after the build completes successfully to merge the Pull Request into `main`.
 
     !["Pull request for merging the feature/update-main branch into main"](../Media/hol-ex2-task3-step6-1.png "Create pull request")
 
     > **Note**: Under normal circumstances, this pull request would be reviewed by someone other than the author of the pull request. For now, use your administrator privileges to force merge of the pull request.
 
-7. Observe in Azure Boards that the Issue is appropriately linked to the GitHub comment.
+8. Observe in Azure Boards the Issue is appropriately linked to the GitHub comment.
 
     !["The Update README.md issue with the comment from the pull request created in step 6 linked"](../Media/hol-ex2-task3-step7-1.png "Azure Boards Issue")
 
-## Exercise 3: Monitoring and Logging in Azure
+## Exercise 3: Monitoring and logging in Azure
 
 Duration: 40 minutes
 
@@ -522,7 +527,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 ### Task 1: Set up Application Insights
 
-1. Open the `deploy-appinsights.ps1` PowerShell script in the `infrastructre` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.
+1. Open the `deploy-appinsights.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.
 
     ```pwsh
     $studentsuffix = "hbs"                                  # <-- Modify this
@@ -538,7 +543,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     AI Instrumentation Key="55cade0c-197e-4489-961c-51e2e6423ea2"
     ```
 
-3. Navigate to the `./content-web` folder in your GitHub lab files repository and execute the following to install Javascript support for Application Insights via NPM to the web application frontend.
+3. Navigate to the `./content-web` folder in your GitHub lab files repository and execute the following to install JavaScript support for Application Insights via NPM to the web application frontend.
 
     ```bash
     npm install applicationinsights --save
@@ -777,7 +782,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 14. Choose your target subscription and resource group and set the `Service Connection` name to `Fabrikam-Azure`. Save the service connection - we will reference it in a later step.
 
-15. Open the build pipeline in `Edit` mode, and then click on the `Variables` button on the top-right corner of the pipeline editor. Add a secret variable `CR_PAT`, check the `Keep this value secret` checkbox, and copy the GitHub Personal Access Token from the Before the Hands-on lab guided instruction into the `Value` field. Save the pipeline variable - we will reference it in a later step.
+15. Open the build pipeline in `Edit` mode, and then select the `Variables` button on the top-right corner of the pipeline editor. Add a secret variable `CR_PAT`, check the `Keep this value secret` checkbox, and copy the GitHub Personal Access Token from the Before the Hands-on lab guided instruction into the `Value` field. Save the pipeline variable - we will reference it in a later step.
 
     ![Adding a new Pipeline Variable to an existing Azure DevOps pipeline.](../Media/hol-ex3-task3-step15-1.png "New Pipeline Variable")
 
@@ -861,7 +866,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 20. Run the build pipeline and note how the pipeline waits before moving to the `DeployProd` stage`
 
-## After the hands-on lab 
+## After the hands-on lab
 
 Duration: 15 minutes
 
