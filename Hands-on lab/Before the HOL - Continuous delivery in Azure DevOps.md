@@ -108,7 +108,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 - Type the following command and press `<ENTER>`:
 
  ```pwsh
- git clone https://github.com/solliancenet/microsoft-mcw-continuous-delivery.git
+ git clone https://github.com/microsoft/MCW-Continuous-delivery-in-Azure-DevOps.git
  ```
 
 - Create a folder for the GitHub repository created in Step 1 and navigate to it in PowerShell.
@@ -121,7 +121,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 - Copy lab files from the MCW lab repository to the new folder.
 
  ```pwsh
- Copy-Item '..\microsoft-mcw-continuous-delivery\Hands-on lab\lab-files\*' -Destination ./ -Recurse
+ Copy-Item '..\mcw-continuous-delivery-in-azure-devops\Hands-on lab\lab-files\*' -Destination ./ -Recurse
  ```
 
 - Initialize folder as a git repository, commit, and submit contents to remote GitHub branch `main` in the lab files repository created in Step 1.
