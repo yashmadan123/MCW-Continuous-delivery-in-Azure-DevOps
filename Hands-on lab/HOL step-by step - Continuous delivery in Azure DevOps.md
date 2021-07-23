@@ -154,9 +154,9 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 3. To observe Dependabot issues, navigate to the `Security` tab and select the `View Dependabot alerts` link. You should arrive at the `Dependabot alerts` blade in the `Security` tab.
 
-    ![GitHub Dependabot alerts in the Security tab.]f/hol-ex1-task2-step3-1.png "GitHub Dependabot alerts")
+    ![GitHub Dependabot alerts in the Security tab.](media/hol-ex1-task2-step3-1.png "GitHub Dependabot alerts")
 
-4. Scroll through the list of Dependabot alerts until you find the `handlebars` vulnerability.  
+4. Scroll through the list of Dependabot alerts until you find the `handlebars` vulnerability. Note that it may be on the second or third page of results. 
 
     ![Summary of the `handlebars` Dependabot alert in the list of Dependabot alerts.](media/hol-ex1-task2-step4-1.png "`handlebars` Dependabot alert")
 
