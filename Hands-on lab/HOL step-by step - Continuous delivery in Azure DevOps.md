@@ -40,7 +40,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Exercise 2: Continuous Delivery](#exercise-2-continuous-delivery)
     - [Task 1: Set up Cloud Infrastructure](#task-1-set-up-cloud-infrastructure)
     - [Task 2: Deployment Automation to Azure Web App](#task-2-deployment-automation-to-azure-web-app)
-    - [Task 3: Branch Policies in GitHub](#task-3-branch-policies-in-github)
+    - [(Optional) Task 3: Branch Policies in GitHub](#optional-task-3-branch-policies-in-github)
   - [Exercise 3: Monitoring and logging in Azure](#exercise-3-monitoring-and-logging-in-azure)
     - [Task 1: Set up Application Insights](#task-1-set-up-application-insights)
     - [Task 2: Continuous Deployment with GitHub Actions](#task-2-continuous-deployment-with-github-actions)
@@ -346,6 +346,8 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     ./deploy-infrastructure.ps1
     ```
 
+    >**Note**: Depending on your system, you may need to change the PowerShell Execution Policy. You can read more about this process [here.](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies)
+
 5. Browse to the Azure Portal and verify creation of the resource group, CosmosDB instance, the App Service Plan, and the Web App.
 
     ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step5-1.png "Azure Resource Group")
@@ -379,6 +381,12 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     docker run -ti `
         -e MONGODB_CONNECTION="$mongodbConnectionString" `
         docker.pkg.github.com/$githubAccount/$githubRepo/fabrikam-init
+    ```
+
+    >**Note**: Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholders appropriately.
+
+    ```powershell
+    docker login docker.pkg.github.com -u [USERNAME] -p [PERSONAL ACCESS TOKEN] 
     ```
 
 9. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and verify that the CosmosDB instance has been seeded.
@@ -452,7 +460,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
     ![The Contoso Conference website hosted in Azure.](media/hol-ex2-task2-step5-2.png "Azure hosted Web Application")
 
-### Task 3: Branch Policies in GitHub
+### (Optional) Task 3: Branch Policies in GitHub
 
 1. In your lab files GitHub repository, navigate to the `Settings` tab and select the `Branches` blade.
 
