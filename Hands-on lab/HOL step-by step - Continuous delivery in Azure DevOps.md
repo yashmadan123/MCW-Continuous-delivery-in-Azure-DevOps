@@ -393,7 +393,15 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
     ![Azure CosmosDB contents displayed via the CosmosDB explorer in the Azure CosmosDB resource detail.](media/hol-ex2-task1-step9-1.png "Azure CosmosDB Seeded Contents")
 
-10. Open the `configure-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
+10. Below the `sessions` collection, select **Scale & Settings (1)** and **Indexing Policy (2)**.
+
+    ![Opening indexing policy for the sessions collection.](./media/sessions-collection-indexing-policy.png "Indexing policy configuration")
+
+11. Create a Single Field indexing policy for the `startTime` field (1). Then, select **Save** (2).
+
+    ![Creating an indexing policy for the startTime field.](./media/start-time-indexing-mongo.png "startTine field indexing")
+
+12. Open the `configure-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
 
     ```pswh
     $studentprefix = "hbs"                                  # <-- Modify this value
@@ -401,7 +409,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
     ```
 
-11. Observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
+13. Observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
 
     ```pwsh
     # Configure Web App
@@ -411,11 +419,11 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
         --settings MONGODB_CONNECTION=$mongodbConnectionString
     ```
 
-12. Run the `configure-webapp.ps1` PowerShell script. Browse to the Azure Portal and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
+14. Run the `configure-webapp.ps1` PowerShell script. Browse to the Azure Portal and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
 
     ![Azure Web Application settings reflecting the `MONGODB_CONNECTION` environment variable configured via PowerShell.](media/hol-ex2-task1-step12-1.png "Azure Web Application settings")
 
-13. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `GITHUB_TOKEN` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
+15. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `GITHUB_TOKEN` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
 
     ```pwsh
     $env:GITHUB_TOKEN="<GitHub Personal Access Token>"
