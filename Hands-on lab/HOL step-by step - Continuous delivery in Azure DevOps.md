@@ -643,12 +643,15 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 5. Select the `Simple workflow` and call the new YAML file `docker-publish.yml`.
 
-6. Change the `name` property to `Docker Compose Build and Deploy`. Modify the YAML to reflect the following:
+6. Change the `name` property to `Docker Compose Build and Deploy`. Modify the YAML to reflect the following. Make sure to change the student prefix for the last action in the `build` job.
 
     ```yaml
     # This is a basic workflow to help you get started with Actions
 
     name: Docker Compose Build and Deploy
+
+    env:
+      REGISTRY: docker.pkg.github.com
 
     # Controls when the action will run. 
     on:
@@ -676,7 +679,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
         # Login against a Docker registry except on PR
         # https://github.com/docker/login-action
         - name: Log into registry ${{ env.REGISTRY }}
-        if: github.event_name != 'pull_request'
+          if: github.event_name != 'pull_request'
           uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
           with:
             registry: ${{ env.REGISTRY }}
@@ -706,6 +709,10 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     ```
 
 7. Commit the YAML file to your `main` branch. A GitHub action should begin to execute for the new workflow.
+
+    >**Note**: Make sure that your Actions workflow file does not contain any syntax errors, which may appear when you copy and paste. They are highlighted in the editor or when the Action tries to run, as shown below.
+
+    ![GitHub Actions workflow file syntax error.](./media/github-actions-workflow-file-error.png "Syntax error in Actions workflow file")
 
 8. Observe that the action builds the docker images, pushes them to the container registry, and deploys them to the Azure web application.
 
