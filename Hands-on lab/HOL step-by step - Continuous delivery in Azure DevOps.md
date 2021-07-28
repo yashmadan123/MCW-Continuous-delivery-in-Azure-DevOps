@@ -740,8 +740,8 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 3. Create a new `Docker Registry` service connection and set the values to:
 
     - Docker Registry: https://docker.pkg.github.com
-    - Docker ID: <GitHub account name>
-    - Docker Password: <GitHub Personal Access Token>
+    - Docker ID: [GitHub account name]
+    - Docker Password: [GitHub Personal Access Token]
     - Service connection name: GitHub Container Registry
 
     ![Azure DevOps Project Service Connection Configuration that establishes the credentials necessary for Azure DevOps to push to the GitHub Container Registry.](media/hol-ex3-task3-step3-1.png "Azure DevOps Project Service Connection Configuration")
@@ -770,7 +770,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     - main
 
     pool:
-    vmImage: ubuntu-latest
+      vmImage: ubuntu-latest
 
     steps:
     ```
@@ -821,7 +821,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     - main
 
     pool:
-    vmImage: ubuntu-latest
+      vmImage: ubuntu-latest
 
     stages:
     - stage: build
@@ -887,7 +887,9 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
     ![Adding an account as an `Approver` for an Approvals check.](media/hol-ex3-task3-step19-1.png "Checks selection")
 
-20. Run the build pipeline and note how the pipeline waits before moving to the `DeployProd` stage`
+20. Run the build pipeline and note how the pipeline waits before moving to the `DeployProd` stage. You will need to approve the request before the `DeployProd` stage runs.
+
+    ![Reviewing DeployProd stage transition request during a pipeline execution.](./media/review-deploy-to-app-service.png "Reviewing pipeline request")
 
 ## After the hands-on lab
 
