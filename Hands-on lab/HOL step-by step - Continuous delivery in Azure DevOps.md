@@ -40,7 +40,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Exercise 2: Continuous Delivery](#exercise-2-continuous-delivery)
     - [Task 1: Set up Cloud Infrastructure](#task-1-set-up-cloud-infrastructure)
     - [Task 2: Deployment Automation to Azure Web App](#task-2-deployment-automation-to-azure-web-app)
-    - [Task 3: Branch Policies in GitHub](#task-3-branch-policies-in-github)
+    - [(Optional) Task 3: Branch Policies in GitHub](#optional-task-3-branch-policies-in-github)
   - [Exercise 3: Monitoring and logging in Azure](#exercise-3-monitoring-and-logging-in-azure)
     - [Task 1: Set up Application Insights](#task-1-set-up-application-insights)
     - [Task 2: Continuous Deployment with GitHub Actions](#task-2-continuous-deployment-with-github-actions)
@@ -154,9 +154,9 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 3. To observe Dependabot issues, navigate to the `Security` tab and select the `View Dependabot alerts` link. You should arrive at the `Dependabot alerts` blade in the `Security` tab.
 
-    ![GitHub Dependabot alerts in the Security tab.]f/hol-ex1-task2-step3-1.png "GitHub Dependabot alerts")
+    ![GitHub Dependabot alerts in the Security tab.](media/hol-ex1-task2-step3-1.png "GitHub Dependabot alerts")
 
-4. Scroll through the list of Dependabot alerts until you find the `handlebars` vulnerability.  
+4. Scroll through the list of Dependabot alerts until you find the `handlebars` vulnerability. Note that it may be on the second or third page of results. 
 
     ![Summary of the `handlebars` Dependabot alert in the list of Dependabot alerts.](media/hol-ex1-task2-step4-1.png "`handlebars` Dependabot alert")
 
@@ -346,6 +346,8 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     ./deploy-infrastructure.ps1
     ```
 
+    >**Note**: Depending on your system, you may need to change the PowerShell Execution Policy. You can read more about this process [here.](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies)
+
 5. Browse to the Azure Portal and verify creation of the resource group, CosmosDB instance, the App Service Plan, and the Web App.
 
     ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step5-1.png "Azure Resource Group")
@@ -381,11 +383,25 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
         docker.pkg.github.com/$githubAccount/$githubRepo/fabrikam-init
     ```
 
+    >**Note**: Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholders appropriately.
+
+    ```powershell
+    docker login docker.pkg.github.com -u [USERNAME] -p [PERSONAL ACCESS TOKEN] 
+    ```
+
 9. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and verify that the CosmosDB instance has been seeded.
 
     ![Azure CosmosDB contents displayed via the CosmosDB explorer in the Azure CosmosDB resource detail.](media/hol-ex2-task1-step9-1.png "Azure CosmosDB Seeded Contents")
 
-10. Open the `configure-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
+10. Below the `sessions` collection, select **Scale & Settings (1)** and **Indexing Policy (2)**.
+
+    ![Opening indexing policy for the sessions collection.](./media/sessions-collection-indexing-policy.png "Indexing policy configuration")
+
+11. Create a Single Field indexing policy for the `startTime` field (1). Then, select **Save** (2).
+
+    ![Creating an indexing policy for the startTime field.](./media/start-time-indexing-mongo.png "startTine field indexing")
+
+12. Open the `configure-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
 
     ```pswh
     $studentprefix = "hbs"                                  # <-- Modify this value
@@ -393,7 +409,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
     ```
 
-11. Observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
+13. Observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
 
     ```pwsh
     # Configure Web App
@@ -403,11 +419,11 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
         --settings MONGODB_CONNECTION=$mongodbConnectionString
     ```
 
-12. Run the `configure-webapp.ps1` PowerShell script. Browse to the Azure Portal and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
+14. Run the `configure-webapp.ps1` PowerShell script. Browse to the Azure Portal and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
 
     ![Azure Web Application settings reflecting the `MONGODB_CONNECTION` environment variable configured via PowerShell.](media/hol-ex2-task1-step12-1.png "Azure Web Application settings")
 
-13. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `GITHUB_TOKEN` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
+15. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `GITHUB_TOKEN` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
 
     ```pwsh
     $env:GITHUB_TOKEN="<GitHub Personal Access Token>"
@@ -452,7 +468,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
     ![The Contoso Conference website hosted in Azure.](media/hol-ex2-task2-step5-2.png "Azure hosted Web Application")
 
-### Task 3: Branch Policies in GitHub
+### (Optional) Task 3: Branch Policies in GitHub
 
 1. In your lab files GitHub repository, navigate to the `Settings` tab and select the `Branches` blade.
 
@@ -627,12 +643,15 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 5. Select the `Simple workflow` and call the new YAML file `docker-publish.yml`.
 
-6. Change the `name` property to `Docker Compose Build and Deploy`. Modify the YAML to reflect the following:
+6. Change the `name` property to `Docker Compose Build and Deploy`. Modify the YAML to reflect the following. Make sure to change the student prefix for the last action in the `build` job.
 
     ```yaml
     # This is a basic workflow to help you get started with Actions
 
     name: Docker Compose Build and Deploy
+
+    env:
+      REGISTRY: docker.pkg.github.com
 
     # Controls when the action will run. 
     on:
@@ -660,7 +679,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
         # Login against a Docker registry except on PR
         # https://github.com/docker/login-action
         - name: Log into registry ${{ env.REGISTRY }}
-        if: github.event_name != 'pull_request'
+          if: github.event_name != 'pull_request'
           uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
           with:
             registry: ${{ env.REGISTRY }}
@@ -691,6 +710,10 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 7. Commit the YAML file to your `main` branch. A GitHub action should begin to execute for the new workflow.
 
+    >**Note**: Make sure that your Actions workflow file does not contain any syntax errors, which may appear when you copy and paste. They are highlighted in the editor or when the Action tries to run, as shown below.
+
+    ![GitHub Actions workflow file syntax error.](./media/github-actions-workflow-file-error.png "Syntax error in Actions workflow file")
+
 8. Observe that the action builds the docker images, pushes them to the container registry, and deploys them to the Azure web application.
 
     ![GitHub Action detail reflecting Docker ](media/hol-ex3-task2-step8-1.png "GitHub Action detail")
@@ -717,8 +740,8 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 3. Create a new `Docker Registry` service connection and set the values to:
 
     - Docker Registry: https://docker.pkg.github.com
-    - Docker ID: <GitHub account name>
-    - Docker Password: <GitHub Personal Access Token>
+    - Docker ID: [GitHub account name]
+    - Docker Password: [GitHub Personal Access Token]
     - Service connection name: GitHub Container Registry
 
     ![Azure DevOps Project Service Connection Configuration that establishes the credentials necessary for Azure DevOps to push to the GitHub Container Registry.](media/hol-ex3-task3-step3-1.png "Azure DevOps Project Service Connection Configuration")
@@ -747,7 +770,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     - main
 
     pool:
-    vmImage: ubuntu-latest
+      vmImage: ubuntu-latest
 
     steps:
     ```
@@ -798,7 +821,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     - main
 
     pool:
-    vmImage: ubuntu-latest
+      vmImage: ubuntu-latest
 
     stages:
     - stage: build
@@ -864,7 +887,9 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
     ![Adding an account as an `Approver` for an Approvals check.](media/hol-ex3-task3-step19-1.png "Checks selection")
 
-20. Run the build pipeline and note how the pipeline waits before moving to the `DeployProd` stage`
+20. Run the build pipeline and note how the pipeline waits before moving to the `DeployProd` stage. You will need to approve the request before the `DeployProd` stage runs.
+
+    ![Reviewing DeployProd stage transition request during a pipeline execution.](./media/review-deploy-to-app-service.png "Reviewing pipeline request")
 
 ## After the hands-on lab
 
