@@ -33,7 +33,7 @@
    
 1. Now you will see Azure Portal Dashboard, click on **Resource groups** from the Navigate panel to see the resource groups.
 
-    ![](images/local/select-rg.png "Resource groups")
+    ![](https://github.com/CloudLabs-MCW/MCW-Line-of-business-application-migration/raw/fix/Hands-on%20lab/images/local/select-rg.png "Resource groups")
    
 1. Confirm you have all resource group are present as shown below.
 
