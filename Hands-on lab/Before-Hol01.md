@@ -11,25 +11,25 @@ You should follow all of the steps provided in this section _before_ taking part
 
 In this task, you will create an account in [GitHub](https://github.com) and use `git` to add lab files to a new repository.
 
-1. Create a new repository in GitHub for the lab files.
+1. In a new browser tab open ```https://www.github.com``` and Log in with your personal GitHub account.
 
-    - Browse to [GitHub](https://github.com) in your browser and log into your account.
+    > **Note** : You have to use your own GitHub account. If you don't have a GitHub account then navigate to the following link ```https://github.com/join ``` and create one.
+    
+1. In the upper-right corner, expand the user drop down menu and select **Your repositories**.
 
-    - Create a new repository.
+    ![The user menu is expanded with the Your repositories item selected.](https://github.com/CloudLabs-MCW/MCW-Cloud-native-applications/blob/prod-1/Hands-on%20lab/media/2020-08-23-18-03-40.png "User menu, your repositories")
 
-      - Select the `New` button.
+1. Next to the search criteria, locate and select the **New** button.
 
-        ![The `New Repository` button in a GitHub profile.](media/b4-task1-step1-1.png "New Repository Button")
+    ![The GitHub Find a repository search criteria is shown with the New button selected.](https://github.com/CloudLabs-MCW/MCW-Cloud-native-applications/blob/prod-1/Hands-on%20lab/media/2020-08-23-18-08-02.png "New repository button")
 
-      - Provide a name and description for your new repository.
+1. On the **Create a new repository** screen, name the repository ```mcw-continuous-delivery-lab-files``` and select the **Create repository** button.
 
-        > **Note**: Suggested name for the repository is `mcw-continuous-delivery-lab-files`.
+   ![The `New Repository` creation form in GitHub.](media/b4-task1-step1-2.png "New Repository Creation Form")
 
-        ![The `New Repository` creation form in GitHub.](media/b4-task1-step1-2.png "New Repository Creation Form")
+1. On the **Quick setup** screen, copy the **HTTPS** GitHub URL for your new repository, paste this in notepad for future use.
 
-      - Seclect the `Create Repository` button to create the new repository.
-
-        ![The created repository in GitHub. This should reflect the repository that was created.](media/b4-task1-step1-3.png "Created Repository Page")
+    ![Quick setup screen is displayed with the copy button next to the GitHub URL textbox selected.](media/2020-08-23-18-15-45.png "Quick setup screen")
 
 2. Clone the lab repository.
 
