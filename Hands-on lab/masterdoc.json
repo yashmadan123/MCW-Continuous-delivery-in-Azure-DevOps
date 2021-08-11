@@ -3,24 +3,28 @@
   "Language": "English",
   "Files": [
     {
-      "RawFilePath": "https://raw.githubusercontent.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/abstract.md",
+      "RawFilePath": "https://raw.githubusercontent.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/getting-started.md",
       "Order": 1
     },
-     {
-      "RawFilePath": "https://raw.githubusercontent.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/00.md",
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/abstract.md",
       "Order": 2
     },
      {
-      "RawFilePath": "https://raw.githubusercontent.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/01.md",
+      "RawFilePath": "https://raw.githubusercontent.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/00.md",
       "Order": 3
     },
      {
-      "RawFilePath": "https://raw.githubusercontent.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/02.md",
+      "RawFilePath": "https://raw.githubusercontent.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/01.md",
       "Order": 4
+    },
+     {
+      "RawFilePath": "https://raw.githubusercontent.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/02.md",
+      "Order": 5
     },
     {
       "RawFilePath": "https://raw.githubusercontent.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/03.md",
-      "Order": 5
+      "Order": 6
     },
   ]
 } ]
