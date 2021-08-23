@@ -1,3 +1,4 @@
+
 ## Abstract and learning objectives 
 
 In this hands-on lab, you will learn how to implement a solution with a combination of ARM templates and Azure DevOps to enable continuous delivery with several Azure PaaS services.
@@ -13,3 +14,4 @@ Websites for medical conferences are typically low-budget websites because the c
 ## Solution architecture
 
 ![Solution architecture diagram illustrating the use of GitHub and Azure DevOps.](media/diagram.png "Desired solution architecture")
+
