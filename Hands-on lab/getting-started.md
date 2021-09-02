@@ -5,6 +5,8 @@
 
    ![](https://github.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/media/image01.png?raw=true "Lab Environment")
    
+   >Note: If you see any powershell windows is running in your VM, please do not close that as it's setting up some configurations inside the environment.
+   
 1. In the environment click on **ok** if you recevie a prompt regarding windows deprecation.
 
    ![](https://github.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/media/imgdepre.png?raw=true "Lab Environment")     
