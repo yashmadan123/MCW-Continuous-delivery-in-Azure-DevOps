@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-July 2021
+October 2021
 </div>
 
 
@@ -87,7 +87,9 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
         ![The `New Repository` creation form in GitHub.](media/b4-task1-step1-2.png "New Repository Creation Form")
 
-      - Seclect the `Create Repository` button to create the new repository.
+      - Select `Private` to make this a private repository.
+
+      - Select the `Create Repository` button to create the new repository.
 
         ![The created repository in GitHub. This should reflect the repository that was created.](media/b4-task1-step1-3.png "Created Repository Page")
 
@@ -111,7 +113,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
  git clone https://github.com/microsoft/MCW-Continuous-delivery-in-Azure-DevOps.git
  ```
 
-- Create a folder for the GitHub repository created in Step 1 and navigate to it in PowerShell.
+- Within the `lab` folder, create a folder for the GitHub repository created in Step 1 and navigate to it in PowerShell.
 
  ```pwsh
  mkdir mcw-continuous-delivery-lab-files
@@ -124,7 +126,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
  Copy-Item '..\mcw-continuous-delivery-in-azure-devops\Hands-on lab\lab-files\*' -Destination ./ -Recurse
  ```
 
-- Initialize folder as a git repository, commit, and submit contents to remote GitHub branch `main` in the lab files repository created in Step 1.
+- Initialize the `mcw-continuous-delivery-lab-files` folder as a git repository, commit, and submit contents to remote GitHub branch `main` in the lab files repository created in Step 1.
 
  > **Note**: The URI of the lab files GitHub repository created in Step 1 will differ from that in the example below.
 
@@ -133,7 +135,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
  git add .
  git commit -m "Initial commit"
  git branch -M main
- git remote add origin https://github.com/hatboyzero/mcw-continuous-delivery-lab-files.git
+ git remote add origin https://github.com/YOUR_GITHUB_ACCOUNT/mcw-continuous-delivery-lab-files.git
  git push -u origin main
  ```
 
