@@ -9,7 +9,7 @@ Whiteboard design session student guide
 </div>
 
 <div class="MCWHeader3">
-July 2021
+October 2021
 </div>
 
 Information in this document, including URL and other Internet website references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -218,8 +218,7 @@ Directions:  Tables reconvene with the larger group to hear the facilitator/SME 
 | Enable diagnostics logging for web apps | <https://azure.microsoft.com/en-us/documentation/articles/web-sites-enable-diagnostic-log/> |
 | Monitor web app performance  | <https://azure.microsoft.com/en-us/documentation/articles/insights-perf-analytics/> |
 | Azure Pipelines | <https://azure.microsoft.com/en-us/services/devops/pipelines/> |
-| Azure Pipelines examples | <https://docs.microsoft.com/en-us/azure/devops/pipelines/index?view=vsts#azure> |
 | Switch deployment slots in Azure web apps | <https://blogs.msdn.microsoft.com/devops/2017/04/10/considerations-on-using-deployment-slots-in-your-devops-pipeline/> |
-| App service continuous deployment | <https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment> |
+| App service continuous deployment | <https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment/> |
 | App service staging environments | <https://azure.microsoft.com/en-us/documentation/articles/web-sites-staged-publishing/> |
-| Application Insights | <https://azure.microsoft.com/en-us/documentation/services/application-insights/> |
+| Application Insights | <https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview/> |
