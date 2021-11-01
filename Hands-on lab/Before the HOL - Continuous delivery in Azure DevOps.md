@@ -9,9 +9,8 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-October 2021
+November 2021
 </div>
-
 
 Information in this document, including URL and other Internet website references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -21,7 +20,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 © 2021 Microsoft Corporation. All rights reserved.
 
-Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
+Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
 **Contents**
 
@@ -37,19 +36,21 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- /TOC -->
 
-# Continuous Delivery in Azure DevOps before the hands-on lab setup guide 
+# Continuous Delivery in Azure DevOps before the hands-on lab setup guide
+
+You should follow all steps in this document *before* performing the Hands-on lab.  Pay close attention to product versions, as the version numbers called out in the lab have been tested and shown successful for the lab.
 
 ## Requirements
 
 1. Microsoft Azure subscription must be pay-as-you-go or MSDN.
 
-- Trial subscriptions will _not_ work
+   - Trial subscriptions will _not_ work
 
-  - To complete this lab setup, ensure your account includes the following:
+      - To complete this lab setup, ensure your account includes the following:
 
-    - Has the [Owner](https://docs.microsoft.com/azure/role-based-access-control/build-in-roles#owner) built-in role for the subscription you use.
+      - Has the [Owner](https://docs.microsoft.com/azure/role-based-access-control/build-in-roles#owner) built-in role for the subscription you use.
 
-    - Is a [Member](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions#member-and-guest-users) user in the Azure AD tenant you use. (Guest users will not have the necessary permissions.)
+      - Is a [Member](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions#member-and-guest-users) user in the Azure AD tenant you use. (Guest users will not have the necessary permissions.)
 
 2. A Microsoft [GitHub](https://github.com) account.
 
@@ -83,15 +84,17 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
       - Provide a name and description for your new repository.
 
-        > **Note**: Suggested name for the repository is `mcw-continuous-delivery-lab-files`.
-
-        ![The `New Repository` creation form in GitHub.](media/b4-task1-step1-2.png "New Repository Creation Form")
+        > **Note**: The suggested name for the repository is `mcw-continuous-delivery-lab-files`.
 
       - Select `Private` to make this a private repository.
 
-      - Select the `Create Repository` button to create the new repository.
+        ![The `New Repository` creation form in GitHub.](media/b4-task1-step1-2.png "New Repository Creation Form")
+
+      - Select the `Create Repository` button to create the new repository. Once the repository is created, you should see the quick setup notes.
 
         ![The created repository in GitHub. This should reflect the repository that was created.](media/b4-task1-step1-3.png "Created Repository Page")
+
+        > **Note:** Copy the URL for this repository, as you need it for the next step.
 
 2. Clone the lab repository.
 
@@ -107,7 +110,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
  cd lab
  ```
 
-- Type the following command and press `<ENTER>`:
+- You should now be in `C:\Workspaces\lab`. Type the following command and press `<ENTER>`:
 
  ```pwsh
  git clone https://github.com/microsoft/MCW-Continuous-delivery-in-Azure-DevOps.git
@@ -120,7 +123,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
  cd mcw-continuous-delivery-lab-files
  ```
 
-- Copy lab files from the MCW lab repository to the new folder.
+- You should now be in `C:\Workspaces\lab\mcw-continuous-delivery-lab-files`.  The lab files cloned from the Microsoft MCW lab repository repository should be in `C:\workspaces\lab\mcw-continuous\delivery-in-azure-devops`. Copy the lab files from the Microsoft MCW lab repository to the new folder.
 
  ```pwsh
  Copy-Item '..\mcw-continuous-delivery-in-azure-devops\Hands-on lab\lab-files\*' -Destination ./ -Recurse
@@ -143,13 +146,13 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
 1. Log in to your GitHub account.
 
-2. Create a Personal Access Token as [described here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token).  Ensure the following scopes are checked when configuring your GitHub Personal Access Token:
+2. Create a Personal Access Token as [described here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).  Ensure the following scopes are checked when configuring your GitHub Personal Access Token:
 
-    - `repo` - Full control of private repositories
-    - `workflow` - Update GitHub Action workflows
-    - `write:packages` - Upload packages to GitHub Package Registry
-    - `delete:packages` - Delete packages from GitHub Package Registry
-    - `read:org` - Read org and team membership, read org projects
+    - `repo` - Full control of private repositories.
+    - `workflow` - Update GitHub Action workflows.
+    - `write:packages` - Upload packages to GitHub Package Registry.
+    - `delete:packages` - Delete packages from GitHub Package Registry.
+    - `read:org` - Read org and team membership, read org projects. This is under the `admin:org` section of scopes.
 
     ![The configured scopes for a GitHub Personal Access Token.](media/b4-task2-step2-1.png "GitHub Personal Access Token Scope Configuration")
 
@@ -159,7 +162,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
 ### Task 3: Create Azure DevOps Personal Access Token
 
-1. Log in to your existing Azure DevOps account or create a new account on https://dev.azure.com.
+1. Log in to your existing Azure DevOps account or create a new account on <https://dev.azure.com/>.
 
     ![The Azure DevOps Portal.](media/b4-task3-step1-1.png "Azure DevOps Portal")
 
@@ -175,8 +178,21 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
 ### Task  4: Create Azure DevOps Project
 
-1. Create a `Fabrikam` project in Azure DevOps for use in the lab.
+1. Create a `Fabrikam` project in Azure DevOps for use in the lab with the following settings:
 
-2. (Optional) To complete Exercise 3: Task 3 in the Hands on Lab, the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request). More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/).
+   - **Project name**: `Fabrikam`
+   - **Visibility**: `Private`
+
+   ![Create a project to get started.](media/b4-task4-step1.png "Created an Azure DevOps project")
+
+  - Under the **Advanced** settings, be sure to select the following values:
+    - **Version control**: `Git`
+    - **Work item process**: `Basic`
+
+  - Select the **Create project** button.
+
+2. (Optional) To complete Exercise 3: Task 3 in the Hands on Lab, the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request).  More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/).
+
+**Note**: The Azure DevOps Parallelism Request can take 2-3 business days to process the request.
 
 You should follow all steps provided *before* performing the Hands-on lab.
