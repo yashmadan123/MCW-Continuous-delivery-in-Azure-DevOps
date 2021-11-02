@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-July 2021
+November 2021
 </div>
 
 Information in this document, including URL and other Internet website references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -20,9 +20,9 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 © 2021 Microsoft Corporation. All rights reserved.
 
-Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
+Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-**Contents** 
+**Contents**
 
 <!-- TOC -->
 
@@ -50,9 +50,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- /TOC -->
 
-# Continuous Delivery in Azure DevOps hands-on lab step-by-step 
+# Continuous Delivery in Azure DevOps hands-on lab step-by-step
 
-## Abstract and learning objectives 
+## Abstract and learning objectives
 
 In this hands-on lab, you will learn how to implement a solution with a combination of ARM templates and Azure DevOps to enable continuous delivery with several Azure PaaS services.
 
@@ -60,7 +60,7 @@ At the end of this workshop, you will be better able to implement solutions for 
 
 ## Overview
 
-Fabirkam Medical Conferences provide conference website services tailored to the medical community. Over ten years, they have built conference sites for a small conference organizer. Through word of mouth, Fabrikam Medical Conferences has become a well-known industry brand handling over 100 conferences per year and growing.
+Fabrikam Medical Conferences provide conference website services tailored to the medical community. Over ten years, they have built conference sites for a small conference organizer. Through word of mouth, Fabrikam Medical Conferences has become a well-known industry brand handling over 100 conferences per year and growing.
 
 Websites for medical conferences are typically low-budget websites because the conferences usually have between 100 to 1500 attendees. At the same time, the conference owners have significant customization and change demands that require turnaround on a dime to the live sites. These changes can impact various aspects of the system from UI through to the back end, including conference registration and payment terms.
 
@@ -71,14 +71,10 @@ Websites for medical conferences are typically low-budget websites because the c
 ## Requirements
 
 1. Microsoft Azure subscription must be pay-as-you-go or MSDN.
-
-  - Trial subscriptions will _not_ work.
-
-  - To complete this lab setup, ensure your account includes the following:
-
-    - Has the [Owner](https://docs.microsoft.com/azure/role-based-access-control/build-in-roles#owner) built-in role for the subscription you use.
-
-    - Is a [Member](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions#member-and-guest-users) user in the Azure AD tenant you use. (Guest users will not have the necessary permissions.)
+   - Trial subscriptions will _not_ work.
+   - To complete this lab setup, ensure your account includes the following:
+     - Has the [Owner](https://docs.microsoft.com/azure/role-based-access-control/build-in-roles#owner) built-in role for the subscription you use.
+     - Is a [Member](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions#member-and-guest-users) user in the Azure AD tenant you use. (Guest users will not have the necessary permissions.)
 
 2. A Microsoft [GitHub](https://github.com) account.
 
@@ -90,11 +86,15 @@ Websites for medical conferences are typically low-budget websites because the c
 
 5. PowerShell
 
+    - As you will be running PowerShell scripts, make sure that the ExecutionPolicy is set properly.  Consult [the Microsoft PowerShell documentation on execution policies](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies) for more details.
+
 6. Docker Desktop for Windows
+
+7. [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/)
 
 ## Before the hands-on lab
 
-Refer to the [Before the hands-on lab](./Before%20the%20HOL.md) setup guide manual before continuing to the lab exercises.
+You should follow all steps in the [Before the hands-on lab setup guide](Before%20the%20HOL%20-%20Continuous%20delivery%20in%20Azure%20DevOps.md) *before* performing the Hands-on lab.  Pay close attention to product versions, as the version numbers called out in the lab have been tested and shown successful for the lab.
 
 ## Exercise 1: Continuous Integration
 
@@ -104,6 +104,8 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 ### Task 1: Connect Azure Board with GitHub
 
+We can automate our project tracking with the Azure Board integration for GitHub.
+
 1. On the GitHub Marketplace, find the [Azure Boards Integration App](https://github.com/marketplace/azure-boards).
 
     ![The Azure Boards Integration App on GitHub Marketplace that will provide a link between Azure DevOps Boards and GitHub issues.](media/hol-ex1-task1-step1.png "Azure Boards Integration App on GitHub Marketplace")
@@ -112,7 +114,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 3. On the next page, select `Complete order and begin installation`.
 
-4. Select the lab files repository created in [Task 1 of the Before the HOL Instructions](./Before%20the%20HOL.md#task-1-create-the-project-repo) and select `Install & Authorize`.
+4. Select the lab files repository created in [Task 1 of the Before the HOL Instructions](Before%20the%20HOL%20-%20Continuous%20delivery%20in%20Azure%20DevOps.md#task-1-create-the-project-repo) and select `Install & Authorize`.
 
     ![The GitHub Application Authorization page.](media/hol-ex1-task1-step4-1.png "GitHub Application Authorization")
 
@@ -124,11 +126,11 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ![After completion of the onboarding tutorial. Two todo confirmation messages displayed.](media/hol-ex1-task1-step6-1.png "Get started and quick tip")
 
-7. Open the new Issue that the onboarding tutorial creates and observe the GitHub pull request and comment that are linked to the Azure DevOps board Issue.
+7. Open the new Issue that the onboarding tutorial creates within Azure DevOps and observe the GitHub pull request and comment that are linked to the Azure DevOps board Issue.
 
     ![Linked GitHub items in an Azure DevOps issue in Boards.](media/hol-ex1-task1-step7-1.png "GitHub Pull Request and Comment")
 
-8. In GitHub, browse to the `Pull Requests` tab of the lab files repository created in [Task 1 of the Before the HOL Instructions] and open the pull request that was created in the onboarding tutorial for the Azure Boards Integration App. Note the `AB#1` annotation in the pull request comments - this annotation signals to Azure DevOps that this pull request comment should be linked to Issue #1 in Azure Boards.
+8. In GitHub, browse to the `Pull Requests` tab of the lab files repository created in [Task 1 of the Before the HOL Instructions](Before%20the%20HOL%20-%20Continuous%20delivery%20in%20Azure%20DevOps.md#task-1-create-the-project-repo) and open the pull request that was created in the onboarding tutorial for the Azure Boards Integration App. Note the `AB#1` annotation in the pull request comments - this annotation signals to Azure DevOps that this pull request comment should be linked to Issue #1 in Azure Boards.
 
     ![Pull request detail in GitHub created by onboarding tutorial in previous steps.](media/hol-ex1-task1-step8-1.png "Pull Request detail")
 
@@ -142,13 +144,15 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 ### Task 2: Using Dependabot
 
-1. In your lab files GitHub repository, navigate to the `Security` tab.  Seclet the `Enable Dependabot alerts` button.
+We can use Dependabot to track the versions of the packages we use in our GitHub repository.
+
+1. In your lab files GitHub repository, navigate to the `Security` tab.  Select the `Enable Dependabot alerts` button.
 
     ![The GitHub Repository Security Overview tab.](media/hol-ex1-task2-step1-1.png "GitHub Repository Security Overview")
 
-2. You should arrive at the `Security & analysis` blade under the `Settings` tab. Enable `Dependabot alerts` and `Dependabot security updates`.
+2. You should arrive at the `Security & analysis` blade under the `Settings` tab. Enable `Dependabot security updates`.
 
-    > **Note**: Enabling the `Dependabot alerts` will also automatically enable `Dependency graph`.
+    > **Note**: Enabling the `Dependabot security updates` will also automatically enable `Dependency graph` and `Dependabot alerts`.
 
     ![The GitHub Repository Security and Analysis blade under the GitHub repository Settings tab. We enable Dependabot alerts and security updates here.](media/hol-ex1-task2-step2-1.png "GitHub Security & Analysis Settings")
 
@@ -156,9 +160,9 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ![GitHub Dependabot alerts in the Security tab.](media/hol-ex1-task2-step3-1.png "GitHub Dependabot alerts")
 
-4. Scroll through the list of Dependabot alerts until you find the `handlebars` vulnerability. Note that it may be on the second or third page of results. 
+4. Sort the Dependabot alerts by `Package name`.  Locate the `handlebars` vulnerability.
 
-    ![Summary of the `handlebars` Dependabot alert in the list of Dependabot alerts.](media/hol-ex1-task2-step4-1.png "`handlebars` Dependabot alert")
+    ![Summary of the `handlebars` Dependabot alert in the list of Dependabot alerts.](media/git  "`handlebars` Dependabot alert")
 
 5. Select the `handlebars` Dependabot alert title to see the alert detail. After reviewing the alert, select `Create Dependabot security update` and wait a few moments for GitHub to create the security update.
 
@@ -182,26 +186,40 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 ### Task 3: Set up Local Infrastructure
 
-1. Replace instances of `<yourgithubaccount>` with your GitHub account name in the following files located in the root of your lab files repository.
+We are going to set up the local infrastructure using Docker containers.  There are three images we will be working with:
+  
+- `fabrikam-init`
+- `fabrikam-api`
+- `fabrikam-web`
+
+You will need to make some edits to files before running these locally.
+
+1. Open your local GitHub folder for your `mcw-continuous-delivery-lab-files` repository.
+
+2. Replace instances of `<yourgithubaccount>` with your GitHub account name in the following files located in the root of your lab files repository.
     - `docker-compose.init.yml`
     - `docker-compose.yml`
 
-2. Build and run the docker-compose YAML files edited in the previous step.
+   > **Note**: You should replace three instances of `<yourgithubaccount>` - one instance in `docker-compose.init.yml` and two instances in `docker-compose.yml`.
+
+3. Build and run the docker-compose YAML files edited in the previous step.
 
     ```pwsh
     docker-compose -f .\docker-compose.yml -f .\local.docker-compose.yml -f .\docker-compose.init.yml build
     docker-compose -f .\docker-compose.yml -f .\local.docker-compose.yml -f .\docker-compose.init.yml up
     ```
 
-3. Verify that you can browse to http://localhost:3000 in a browser and arrive at the Fabrikam conference website.
+4. Verify that you can browse to <http://localhost:3000> in a browser and arrive at the Fabrikam conference website.
 
-    ![Fabrikam Medical's Contoso conference site.](media/hol-ex1-task3-step3-1.png "Contoso conference site")
+    ![Fabrikam Medical's Contoso conference site.](media/hol-ex1-task3-step4-1.png "Contoso conference site")
 
-    ![The docker-compose log output observed when running `docker-compose up` on our docker-compose harness.](media/hol-ex1-task3-step3-2.png "docker-compose log output")
+    ![The docker-compose log output observed when running `docker-compose up` on our docker-compose harness.](media/hol-ex1-task3-step4-2.png "docker-compose log output")
 
-4. Commit and push your changes to your GitHub repository.
+5. Commit and push your changes to your GitHub repository.
 
 ### Task 4: Build Automation with GitHub Registry
+
+Now that we have Docker images working locally, we can now work on the automation.
 
 1. Select the `Settings` tab from your lab files repository in GitHub.
 
@@ -233,7 +251,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
       IMAGE_NAME: fabrikam-web
     ```
 
-    > **Note**: Make sure to replace `<githubaccountname>` with your GitHub account name and `<githubreponame>` with the name of your GitHub lab files repository. (`docker.pkg.github.com/hatboyzero/mcw-continuous-delivery-lab-files` for example)
+    > **Note**: Make sure to replace `<githubaccountname>` with your GitHub account name and `<githubreponame>` with the name of your GitHub lab files repository. (`docker.pkg.github.com/YOUR_GITHUB_ACCOUNT/mcw-continuous-delivery-lab-files` for example)
 
 8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This will ensure that the correct `Dockerfile` file can be found.
 
@@ -259,7 +277,10 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ![Detail of running Docker workflow.](media/hol-ex1-task4-step10-2.png "GitHub Action Detail")
 
-11. Set up workflows for `content-api` and `content-init` in the same manner. Call them `fabrikam-api.yml` and `fabrikam-init.yml` respectively and change the container names to `fabrikam-api` and `fabrikam-init`, respectively.
+11. Set up workflows for `content-api` and `content-init` in the same manner.
+    - In the `env:` section, update the **IMAGE_NAME** to `fabrikam-api` or `fabrikam-init`.
+    - In the `jobs:` section, in the `Build and push Docker image` step, set the **file** and **context** paths to the respective `content-api` or `content-init` folders.
+    - Save the YAML files as `fabrikam-api.yml` and `fabrikam-init.yml` respectively.
 
 12. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
 
@@ -277,7 +298,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
 1. Open the `deploy-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
 
-    ```pswh
+    ```pwsh
     $studentprefix = "hbs"                                  # <-- Modify this value
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
@@ -356,7 +377,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
     ```pwsh
     $studentprefix = "hbs"
-    $githubAccount = "hatboyzero"
+    $githubAccount = "YOUR_GITHUB_ACCOUNT"
     $githubRepo = "mcw-continuous-delivery-lab-files"
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
@@ -395,15 +416,15 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
 10. Below the `sessions` collection, select **Scale & Settings (1)** and **Indexing Policy (2)**.
 
-    ![Opening indexing policy for the sessions collection.](./media/sessions-collection-indexing-policy.png "Indexing policy configuration")
+    ![Opening indexing policy for the sessions collection.](media/sessions-collection-indexing-policy.png "Indexing policy configuration")
 
 11. Create a Single Field indexing policy for the `startTime` field (1). Then, select **Save** (2).
 
-    ![Creating an indexing policy for the startTime field.](./media/start-time-indexing-mongo.png "startTine field indexing")
+    ![Creating an indexing policy for the startTime field.](media/start-time-indexing-mongo.png "startTine field indexing")
 
 12. Open the `configure-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
 
-    ```pswh
+    ```pwsh
     $studentprefix = "hbs"                                  # <-- Modify this value
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
@@ -435,7 +456,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
     ```pwsh
     $studentprefix = "hbs"                                  # <-- Modify this value
-    $githubAccount = "hatboyzero"                           # <-- Modify this value
+    $githubAccount = "YOUR_GITHUB_ACCOUNT"                           # <-- Modify this value
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $webappName = "fabmedical-web-" + $studentprefix
     ```
@@ -502,9 +523,9 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
     remote: error: GH006: Protected branch update failed for refs/heads/main.
     remote: error: At least 1 approving review is required by reviewers with write access.
-    To https://github.com/hatboyzero/mcw-continuous-delivery-lab-files.git
+    To https://github.com/YOUR_GITHUB_ACCOUNT/mcw-continuous-delivery-lab-files.git
     ! [remote rejected] main -> main (protected branch hook declined)
-    error: failed to push some refs to 'https://github.com/hatboyzero/mcw-continuous-delivery-lab-files.git'
+    error: failed to push some refs to 'https://github.com/YOUR_GITHUB_ACCOUNT/mcw-continuous-delivery-lab-files.git'
     ```
 
 4. Create a new issue for modifying the README.md in Azure Boards
@@ -637,7 +658,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 3. In your GitHub lab files repository, navigate to the `Secrets` blade in the `Settings` tag and create a new repository secret named `AZURE_CREDENTIALS`. Paste the JSON output copied in the previous step to the secret value and save it.
 
-4. Add a new GitHub Action workflow in your GitHub lab files repository by selecting the `Actions` tab and selecting `New workflow`. 
+4. Add a new GitHub Action workflow in your GitHub lab files repository by selecting the `Actions` tab and selecting `New workflow`.
 
     ![The `New workflow` button in the repository GitHub Actions tab.](media/hol-ex3-task2-step1-1.png "GitHub Actions")  
 
@@ -712,7 +733,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
     >**Note**: Make sure that your Actions workflow file does not contain any syntax errors, which may appear when you copy and paste. They are highlighted in the editor or when the Action tries to run, as shown below.
 
-    ![GitHub Actions workflow file syntax error.](./media/github-actions-workflow-file-error.png "Syntax error in Actions workflow file")
+    ![GitHub Actions workflow file syntax error.](media/github-actions-workflow-file-error.png "Syntax error in Actions workflow file")
 
 8. Observe that the action builds the docker images, pushes them to the container registry, and deploys them to the Azure web application.
 
@@ -723,7 +744,6 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 ### Task 3: Continuous Deployment with Azure DevOps Pipelines
 
 > **Note**: This section demonstrates Continuous Deployment via ADO pipelines, which is equivalent to the Continuous Deployment via GitHub Actions demonstrated in Task 2. For this reason, disabling GitHub action here is critical so that both pipelines (ADO & GitHub Actions) don't interfere with each other.
-
 > **Note**: To complete [Exercise 3: Task 3](#task-3-continuous-deployment-with-azure-devops-pipelines), the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request). More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/)
 
 1. Disable your GitHub Actions by adding the `branches-ignore` property to the existing workflows in your lab files repository (located under the `.github/workflows` folder).
@@ -739,7 +759,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 3. Create a new `Docker Registry` service connection and set the values to:
 
-    - Docker Registry: https://docker.pkg.github.com
+    - Docker Registry: <https://docker.pkg.github.com>
     - Docker ID: [GitHub account name]
     - Docker Password: [GitHub Personal Access Token]
     - Service connection name: GitHub Container Registry
@@ -889,7 +909,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 20. Run the build pipeline and note how the pipeline waits before moving to the `DeployProd` stage. You will need to approve the request before the `DeployProd` stage runs.
 
-    ![Reviewing DeployProd stage transition request during a pipeline execution.](./media/review-deploy-to-app-service.png "Reviewing pipeline request")
+    ![Reviewing DeployProd stage transition request during a pipeline execution.](media/review-deploy-to-app-service.png "Reviewing pipeline request")
 
 ## After the hands-on lab
 
