@@ -193,6 +193,6 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
 2. (Optional) To complete Exercise 3: Task 3 in the Hands on Lab, the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request).  More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/).
 
-**Note**: The Azure DevOps Parallelism Request can take 2-3 business days to process the request.
+    > **Note**: The Azure DevOps Parallelism Request can take 2-3 business days to process the request.
 
 You should follow all steps provided *before* performing the Hands-on lab.
