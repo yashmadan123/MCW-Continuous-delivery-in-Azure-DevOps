@@ -185,11 +185,11 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
    ![Create a project to get started.](media/b4-task4-step1.png "Created an Azure DevOps project")
 
-  - Under the **Advanced** settings, be sure to select the following values:
-    - **Version control**: `Git`
-    - **Work item process**: `Basic`
+   - Under the **Advanced** settings, be sure to select the following values:
+     - **Version control**: `Git`
+     - **Work item process**: `Basic`
 
-  - Select the **Create project** button.
+   - Select the **Create project** button.
 
 2. (Optional) To complete Exercise 3: Task 3 in the Hands on Lab, the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request).  More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/).
 
