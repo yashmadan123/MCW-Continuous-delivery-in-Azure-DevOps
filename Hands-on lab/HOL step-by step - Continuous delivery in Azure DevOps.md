@@ -92,6 +92,12 @@ Websites for medical conferences are typically low-budget websites because the c
 
 7. [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/)
 
+8. Angular - minimum 8.3.4.
+
+    - Angular depends on Node.js and npm.
+    - Consult [Setting up the local environment and workspace](https://angular.io/guide/setup-local) on the Angular site for guidance.
+    - This lab has been tested with [Node.js](https://nodejs.org/en/download/) version 16.13.0, which includes npm 8.1.0.
+
 ## Before the hands-on lab
 
 You should follow all steps in the [Before the hands-on lab setup guide](Before%20the%20HOL%20-%20Continuous%20delivery%20in%20Azure%20DevOps.md) *before* performing the Hands-on lab.  Pay close attention to product versions, as the version numbers called out in the lab have been tested and shown successful for the lab.
