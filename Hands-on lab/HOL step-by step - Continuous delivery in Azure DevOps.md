@@ -296,10 +296,14 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
 ### Task 1: Set up Cloud Infrastructure
 
-1. Open the `deploy-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
+First, we need to set up the cloud infrastructure.  We will use PowerShell scripts and the Azure Command Line Interface (CLI) to set this up.
+
+1. Open your local GitHub folder for your `mcw-continuous-delivery-lab-files` repository.
+
+2. Open the `deploy-infrastructure.ps1` PowerShell script in the `infrastructure` folder. Add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
 
     ```pwsh
-    $studentprefix = "hbs"                                  # <-- Modify this value
+    $studentprefix = "Your 3 letter abbreviation here"  # <-- Modify this value
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
     $webappName = "fabmedical-web-" + $studentprefix
@@ -308,7 +312,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     $location2 = "northeurope"
     ```
 
-2. Note the individual calls to the `azcli` for the following:
+3. Note the individual calls to the `azcli` for the following:
     - Creating a Resource Group
 
         ```pwsh
@@ -353,14 +357,32 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
             --deployment-container-image-name nginx
         ```
 
-3. Log in to Azure using `azcli`.
+4. Log in to Azure using `azcli`.
 
     ```pwsh
     az login
     az account set --subscription <your subscription guid>
     ```
 
-4. Run the `deploy-infrastructure.ps1` PowerShell script.
+    **Note**: Your subscription plan guid is the `id` field that comes back in the response JSON.  In the following example, the subscription guid is `726da029-91f0-4dc1-a728-f25664374559`.
+
+    ```json
+      {
+    "cloudName": "AzureCloud",
+    "homeTenantId": "8f4781a5-82b9-4181-a022-4e9e91028be4",
+    "id": "726da029-91f0-4dc1-a728-f25664374559",
+    "isDefault": true,
+    "managedByTenants": [],
+    "name": "Your Azure Subscription Name",
+    "state": "Enabled",
+    "tenantId": "8f4781a5-82b9-4181-a022-4e9e91028be4",
+    "user": {
+      "name": "your-name@your-domain.com",
+      "type": "user"
+    }
+    ```
+
+5. Run the `deploy-infrastructure.ps1` PowerShell script.
 
     ```pwsh
     cd ./infrastructure
@@ -369,21 +391,21 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
     >**Note**: Depending on your system, you may need to change the PowerShell Execution Policy. You can read more about this process [here.](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies)
 
-5. Browse to the Azure Portal and verify creation of the resource group, CosmosDB instance, the App Service Plan, and the Web App.
+6. Browse to the Azure Portal and verify creation of the resource group, CosmosDB instance, the App Service Plan, and the Web App.
 
-    ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step5-1.png "Azure Resource Group")
+    ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step6-1.png "Azure Resource Group")
 
-6. Open the `seed-cosmosdb.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.  Also update the `$githubAccount` and `$githubRepo` variables with your GitHub account name and GitHub lab files repository name, respectively.
+7. Open the `seed-cosmosdb.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.  Also update the `$githubAccount` and `$githubRepo` variables with your GitHub account name and GitHub lab files repository name, respectively.
 
     ```pwsh
-    $studentprefix = "hbs"
-    $githubAccount = "YOUR_GITHUB_ACCOUNT"
+    $studentprefix = "Your 3 letter abbreviation here"  
+    $githubAccount = "Your github account name here"
     $githubRepo = "mcw-continuous-delivery-lab-files"
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
     ```
 
-7. Observe the call to fetch the MongoDB connection string for the CosmosDB database.
+8. Observe the call to fetch the MongoDB connection string for the CosmosDB database.
 
     ```pwsh
     # Fetch CosmosDB Mongo connection string
@@ -395,13 +417,13 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
             --query 'connectionStrings[0].connectionString')
     ```
 
-8. Note the call to seed the CosmosDB database using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the `fabrikam-init` docker image we built in the previous exercise using `docker-compose`.
+9. Note the call to seed the CosmosDB database using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the `fabrikam-init` docker image we built in the previous exercise using `docker-compose`.
 
     ```pwsh
     # Seed CosmosDB database
     docker run -ti `
         -e MONGODB_CONNECTION="$mongodbConnectionString" `
-        docker.pkg.github.com/$githubAccount/$githubRepo/fabrikam-init
+        docker.pkg.github.com/$githubAccount/$githubRepo/fabrikam-init:main
     ```
 
     >**Note**: Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholders appropriately.
@@ -410,27 +432,32 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     docker login docker.pkg.github.com -u [USERNAME] -p [PERSONAL ACCESS TOKEN] 
     ```
 
-9. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and verify that the CosmosDB instance has been seeded.
+10. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and verify that the CosmosDB instance has been seeded.
 
-    ![Azure CosmosDB contents displayed via the CosmosDB explorer in the Azure CosmosDB resource detail.](media/hol-ex2-task1-step9-1.png "Azure CosmosDB Seeded Contents")
+    ![Azure CosmosDB contents displayed via the CosmosDB explorer in the Azure CosmosDB resource detail.](media/hol-ex2-task1-step10-1.png "Azure CosmosDB Seeded Contents")
 
-10. Below the `sessions` collection, select **Scale & Settings (1)** and **Indexing Policy (2)**.
+     >**Note**: If the `seed-cosmosdb.ps1` script cannot find the `fabrikam-init` image, you may need to check the possible versions by looking at the `fabrikam-init` package page in your `mcw-continuous-delivery-lab-files` repository in GitHub.
 
-    ![Opening indexing policy for the sessions collection.](media/sessions-collection-indexing-policy.png "Indexing policy configuration")
+    ![fabrikam-init package details displayed in the mcw-continuous-delivery-lab-files repository in GitHub.](media/hol-ex2-task1-step10-2.png "fabrikam-init package details in GitHub")
 
-11. Create a Single Field indexing policy for the `startTime` field (1). Then, select **Save** (2).
+11. Below the `sessions` collection, select **Scale & Settings**  (1) and **Indexing Policy** (2).
 
-    ![Creating an indexing policy for the startTime field.](media/start-time-indexing-mongo.png "startTine field indexing")
+    ![Opening indexing policy for the sessions collection.](media/hol-ex2-task1-step11.png "Indexing policy configuration")
 
-12. Open the `configure-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
+12. Create a Single Field indexing policy for the `startTime` field (1). Then, select **Save** (2).
+
+    ![Creating an indexing policy for the startTime field.](media/hol-ex2-task1-step12.png "startTime field indexing")
+
+13. Open the `configure-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the custom lowercase three-letter abbreviation you have been using for the `$studentprefix` variable on the first line.
 
     ```pwsh
-    $studentprefix = "hbs"                                  # <-- Modify this value
+    $studentprefix = "Your 3 letter abbreviation here"
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
+    $webappName = "fabmedical-web-" + $studentprefix
     ```
 
-13. Observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
+14. Observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
 
     ```pwsh
     # Configure Web App
@@ -440,28 +467,28 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
         --settings MONGODB_CONNECTION=$mongodbConnectionString
     ```
 
-14. Run the `configure-webapp.ps1` PowerShell script. Browse to the Azure Portal and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
+15. Run the `configure-webapp.ps1` PowerShell script. Browse to the Azure Portal and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
 
-    ![Azure Web Application settings reflecting the `MONGODB_CONNECTION` environment variable configured via PowerShell.](media/hol-ex2-task1-step12-1.png "Azure Web Application settings")
+    ![Azure Web Application settings reflecting the `MONGODB_CONNECTION` environment variable configured via PowerShell.](media/hol-ex2-task1-step15-1.png "Azure Web Application settings")
 
-15. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `GITHUB_TOKEN` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
+### Task 2: Deployment Automation to Azure Web App
+
+1. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `GITHUB_TOKEN` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
 
     ```pwsh
     $env:GITHUB_TOKEN="<GitHub Personal Access Token>"
     ```
 
-### Task 2: Deployment Automation to Azure Web App
-
-1. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line and add your GitHub account name for the `$githubAccount` variable on the second line.
+2. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line and add your GitHub account name for the `$githubAccount` variable on the second line.
 
     ```pwsh
-    $studentprefix = "hbs"                                  # <-- Modify this value
-    $githubAccount = "YOUR_GITHUB_ACCOUNT"                           # <-- Modify this value
+    $studentprefix = "Your 3 letter abbreviation here"
+    $githubAccount = "Your github account name here"
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $webappName = "fabmedical-web-" + $studentprefix
     ```
 
-2. Note the call to deploy the Azure Web Application using the `docker-compose.yml` file we modified in the previous exercise.
+3. Note the call to deploy the Azure Web Application using the `docker-compose.yml` file we modified in the previous exercise.
 
     ```pwsh
     # Deploy Azure Web App
@@ -475,21 +502,25 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
         --resource-group $resourcegroupName
     ```
 
-3. Run the `deploy-webapp.ps1` PowerShell script.
+4. Run the `deploy-webapp.ps1` PowerShell script.
 
     > **Note**: Make sure to run the `deploy-webapp.ps1` script from the `infrastructure` folder
 
-4. Browse to the Azure Portal and verify that the Azure Web Application is running by checking the `Log stream` blade of the Azure Web Application detail page.
+5. Browse to the Azure Portal and verify that the Azure Web Application is running by checking the `Log stream` blade of the Azure Web Application detail page.
 
-    ![Azure Web Application Log Stream displaying the STDOUT and STDERR output of the running container.](media/hol-ex2-task2-step4-1.png "Azure Web Application Log Stream")
+    ![Azure Web Application Log Stream displaying the STDOUT and STDERR output of the running container.](media/hol-ex2-task2-step5-1.png "Azure Web Application Log Stream")
 
-5. Browse to the `Overview` blade of the Azure Web Application detail page and find the web application URL. Browse to that URL to verify deployment of the web application.
+6. Browse to the `Overview` blade of the Azure Web Application detail page and find the web application URL. Browse to that URL to verify deployment of the web application.
 
-    ![The Azure Web Application Overview detail in Azure Portal.](media/hol-ex2-task2-step5-1.png "Azure Web Application Overview")
+    ![The Azure Web Application Overview detail in Azure Portal.](media/hol-ex2-task2-step6-1.png "Azure Web Application Overview")
 
-    ![The Contoso Conference website hosted in Azure.](media/hol-ex2-task2-step5-2.png "Azure hosted Web Application")
+    ![The Contoso Conference website hosted in Azure.](media/hol-ex2-task2-step6-2.png "Azure hosted Web Application")
 
 ### (Optional) Task 3: Branch Policies in GitHub
+
+In many enterprises, committing to `main` is restricted.  Branch policies are used to control how code gets to `main`.
+
+>**Note**: Branch protection rules apply to Pro, Team, and Enterprise GitHub users.
 
 1. In your lab files GitHub repository, navigate to the `Settings` tab and select the `Branches` blade.
 
@@ -497,22 +528,22 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
 2. Select the `Add rule` button to add a new branch protection rule for the `main` branch. Be sure to specify `main` in the branch name pattern field. Enable the following options and choose the `Create` button to create the branch protection rules:
 
-        - Require pull request reviews before merging
-        - Require status checks to pass before merging
-            - Require branches to be up to date before merging
+   - Require pull request reviews before merging
+   - Require status checks to pass before merging
+   - Require branches to be up to date before merging
 
     ![Branch protection rule creation form](media/hol-ex2-task3-step2-1.png "Create a new branch protection rule in GitHub")
 
 3. With the branch protection rule in place, direct commits and pushes to the `main` branch will be disabled. Verify this by making a small change to your README.md and attempt to commit it to `main` in your local repository and attempt to push it to the remote repository.
 
     ```pwsh
-    PS D:\Workspaces\lab\mcw-continuous-delivery-lab-files> git add .
+    PS C:\Workspaces\lab\mcw-continuous-delivery-lab-files> git add .
 
-    PS D:\Workspaces\lab\mcw-continuous-delivery-lab-files> git commit -m "Updating README.md"
+    PS C:\Workspaces\lab\mcw-continuous-delivery-lab-files> git commit -m "Updating README.md"
 
     [main cafa839] Updating README.md
     1 file changed, 2 insertions(+)
-    PS D:\Workspaces\lab\mcw-continuous-delivery-lab-files> git push  
+    PS C:\Workspaces\lab\mcw-continuous-delivery-lab-files> git push  
 
     Enumerating objects: 5, done.
     Counting objects: 100% (5/5), done.
@@ -548,13 +579,13 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
 7. Select the `Merge pull request` button after the build completes successfully to merge the Pull Request into `main`.
 
-    !["Pull request for merging the feature/update-main branch into main"](media/hol-ex2-task3-step6-1.png "Create pull request")
+    !["Pull request for merging the feature/update-main branch into main"](media/hol-ex2-task3-step7-1.png "Create pull request")
 
     > **Note**: Under normal circumstances, this pull request would be reviewed by someone other than the author of the pull request. For now, use your administrator privileges to force merge of the pull request.
 
 8. Observe in Azure Boards the Issue is appropriately linked to the GitHub comment.
 
-    !["The Update README.md issue with the comment from the pull request created in step 6 linked"](media/hol-ex2-task3-step7-1.png "Azure Boards Issue")
+    !["The Update README.md issue with the comment from the pull request created in step 6 linked"](media/hol-ex2-task3-step8-1.png "Azure Boards Issue")
 
 ## Exercise 3: Monitoring and logging in Azure
 
@@ -564,10 +595,12 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 ### Task 1: Set up Application Insights
 
-1. Open the `deploy-appinsights.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.
+Now we want to set up Application Insights to gain some insights on how our site is being used.
+
+1. Open the `deploy-appinsights.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentsuffix` variable on the first line.
 
     ```pwsh
-    $studentsuffix = "hbs"                                  # <-- Modify this
+    $studentsuffix = "Your 3 letter abbreviation here"
     $resourcegroupName = "fabmedical-rg-" + $studentsuffix
     $location1 = "westeurope"
     $appInsights = "fabmedicalai-" + $studentsuffix
