@@ -664,7 +664,7 @@ Now we want to set up Application Insights to gain some insights on how our site
 1. Open the `deploy-sp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line. Note the call to create a Service Principal.
 
     ```pwsh
-    $studentprefix ="hbs"
+    $studentprefix ="your abbreviation here"
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
 
     $id = $(az group show `
@@ -817,6 +817,8 @@ Now we want to set up Application Insights to gain some insights on how our site
 
 7. In the `Configure` tab, choose the `Starter Pipeline`.
 
+    ![Selecting the Starter pipeline on the Configure your pipeline step in Azure DevOps.](media/hol-ex3-task3-step7-1.png "Selecting the Starter pipeline")
+
 8. Remove all the steps from the YAML. The empty pipeline should look like the following:
 
     ```yaml
@@ -834,7 +836,7 @@ Now we want to set up Application Insights to gain some insights on how our site
     steps:
     ```
 
-9. In the side bar, find the `Docker Compose` task and configure it with the following fields:
+9. In the side bar, find the `Docker Compose` task and configure it with the following fields, then select the **Add** button:
 
     - Container Registry Type: Container Registry
     - Docker Registry Service Connection: GitHub Container Registry (created in step 3)
@@ -844,6 +846,9 @@ Now we want to set up Application Insights to gain some insights on how our site
     - Additional Image Tags = $(Build.BuildNumber)
 
     ![Docker Compose Task definition in the AzureDevOps pipeline.](media/hol-ex3-task3-step9-1.png "Docker Compose Task")
+    ![Docker Compose Task Values in the AzureDevOps pipeline.](media/hol-ex3-task3-step9-2.png "Docker Compose Task Values")
+
+    >**Note**: If the side bar doesn't appear, you may need to select `Show assistant`.
 
 10. Repeat step 9 and add another `Docker Compose` task and configure it with the following fields:
 
@@ -854,9 +859,54 @@ Now we want to set up Application Insights to gain some insights on how our site
     - Action: Push Service Images
     - Additional Image Tags = $(Build.BuildNumber)
 
+    >**Note**: Pay close attention to the **Action** in Step 10.  This is where it differs from Step 9.
+
+    The YAML should be:
+
+    ```yaml
+    # Starter pipeline
+    # Start with a minimal pipeline that you can customize to build and deploy your code.
+    # Add steps that build, run tests, deploy, and more:
+    # https://aka.ms/yaml
+
+    trigger:
+    - main
+
+    pool:
+    vmImage: ubuntu-latest
+
+    steps:
+    - task: DockerCompose@0
+    inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'GitHub Container Registry'
+        dockerComposeFile: '**/docker-compose.yml'
+        additionalDockerComposeFiles: 'build.docker-compose.yml'
+        action: 'Push services'
+        additionalImageTags: '$(Build.BuildNumber)'
+    - task: DockerCompose@0
+    inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'GitHub Container Registry'
+        dockerComposeFile: '**/docker-compose.yml'
+        additionalDockerComposeFiles: 'build.docker-compose.yml'
+        action: 'Push services'
+        additionalImageTags: '$(Build.BuildNumber)'
+    ```
+
 11. Save and run the build. New docker images will be built and pushed to the GitHub package registry.
 
+    >**Note**: You may need to grant permission for the pipeline to use the service connection before the run happens.
+
     ![Run detail of the Azure DevOps pipeline previously created.](media/hol-ex3-task3-step11-1.png "Build Pipeline Run detail")
+
+    If you haven't been granted the parallelism, your job will fail with the following message:
+
+    ```text
+    ##[error]No hosted parallelism has been purchased or granted. To request a free parallelism grant, please fill out the following form https://aka.ms/azpipelines-parallelism-request
+    ```
+
+    Once parallelism is granted, then your pipeline can run.
 
 12. Navigate to your `Fabrikam` project in Azure DevOps and select the `Project Settings` blade. From there, select the `Service Connections` tab.
 
@@ -868,7 +918,9 @@ Now we want to set up Application Insights to gain some insights on how our site
 
     ![Adding a new Pipeline Variable to an existing Azure DevOps pipeline.](media/hol-ex3-task3-step15-1.png "New Pipeline Variable")
 
-16. Modify the build pipeline YAML to split into a build stage and a deploy stage, as follows.
+16. Modify the build pipeline YAML to split into a build stage and a deploy stage, as follows.  
+
+    >**Note**: Pay close attention to the `DeployProd` stage, as you need to add your abbreviation to the `arguments` section.
 
     ```yaml
     # Starter pipeline
@@ -928,7 +980,7 @@ Now we want to set up Application Insights to gain some insights on how our site
                   scriptLocation: 'scriptPath'
                   scriptPath: './infrastructure/deploy-webapp.ps1'
                   workingDirectory: ./infrastructure
-                  arguments: 'hbs'         # <-- This should be your custom
+                  arguments: 'YOUR ABBREVIATION HERE'         # <-- This should be your custom
                 env:                       # lowercase three character 
                   GITHUB_TOKEN: $(CR_PAT)  # prefix from an earlier exercise.
                                 # ^^^^^^
@@ -937,6 +989,8 @@ Now we want to set up Application Insights to gain some insights on how our site
     ```
 
 17. Navigate to the `Environments` category with the `Pipelines` blade in the `Fabrikam` project and select the `production` environment.
+
+    ![Select Environments under the Pipelines section. Then select the production environment.](media/hol-ex3-task3-step17-1.png "production environment selection in the Environments section")
 
 18. From the vertical ellipsis menu button in the top-right corner, select `Approvals and checks`.
 
@@ -958,10 +1012,12 @@ Now that the lab is complete, we need to tear down the Azure resources that we c
 
 ### Task 1: Tear down Azure Resources
 
+Now that the lab is done, we are done with our Azure resources.  It is good practice to tear down the resources and avoid incurring costs for unnecessary resources.
+
 1. Open the `teardown-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your GitHub lab files repository and add the same custom lowercase three-letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line.
 
     ```pwsh
-    $studentprefix ="hbs"
+    $studentprefix ="your abbreviation here"
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
 
     az ad sp delete --id "fabmedical-$studentprefix"
