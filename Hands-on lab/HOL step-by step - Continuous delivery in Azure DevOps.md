@@ -432,10 +432,10 @@ First, we need to set up the cloud infrastructure.  We will use PowerShell scrip
         docker.pkg.github.com/$githubAccount/$githubRepo/fabrikam-init:main
     ```
 
-    >**Note**: Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholders appropriately.
+    >**Note**: Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholder appropriately.  Use your PAT when it prompts for the password.
 
     ```powershell
-    docker login docker.pkg.github.com -u [USERNAME] -p [PERSONAL ACCESS TOKEN] 
+    docker login docker.pkg.github.com -u [USERNAME]
     ```
 
 10. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and verify that the CosmosDB instance has been seeded.
