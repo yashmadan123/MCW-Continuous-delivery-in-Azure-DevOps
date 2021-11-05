@@ -35,7 +35,7 @@ At the end of this workshop, you will be better able to implement solutions for 
 ## Azure services and related products
 
 - Azure App Service
-- Azure PostgreSQL Database
+- Azure Cosmos DB API for MongoDB
 - Application Insights
 - Azure Resource Manager
 - Azure DevOps
