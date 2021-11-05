@@ -664,7 +664,7 @@ Now we want to set up Application Insights to gain some insights on how our site
 1. Open the `deploy-sp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line. Note the call to create a Service Principal.
 
     ```pwsh
-    $studentprefix ="your abbreviation here"
+    $studentprefix ="Your 3 letter abbreviation here"
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
 
     $id = $(az group show `
@@ -703,7 +703,9 @@ Now we want to set up Application Insights to gain some insights on how our site
 
 5. Select the `Simple workflow` and call the new YAML file `docker-publish.yml`.
 
-6. Change the `name` property to `Docker Compose Build and Deploy`. Modify the YAML to reflect the following. Make sure to change the student prefix for the last action in the `build` job.
+6. Change the `name` property to `Docker Compose Build and Deploy`. Modify the YAML to reflect the following. 
+
+    >**Note**: Make sure to change the student prefix for the last action in the `build` job.
 
     ```yaml
     # This is a basic workflow to help you get started with Actions
@@ -774,11 +776,11 @@ Now we want to set up Application Insights to gain some insights on how our site
 
     ![GitHub Actions workflow file syntax error.](media/github-actions-workflow-file-error.png "Syntax error in Actions workflow file")
 
-8. Observe that the action builds the docker images, pushes them to the container registry, and deploys them to the Azure web application.
+8.  Observe that the action builds the docker images, pushes them to the container registry, and deploys them to the Azure web application.
 
     ![GitHub Action detail reflecting Docker ](media/hol-ex3-task2-step8-1.png "GitHub Action detail")
 
-9. Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
+9.  Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
 
 ### Task 3: Continuous Deployment with Azure DevOps Pipelines
 
@@ -980,7 +982,7 @@ Now we want to set up Application Insights to gain some insights on how our site
                   scriptLocation: 'scriptPath'
                   scriptPath: './infrastructure/deploy-webapp.ps1'
                   workingDirectory: ./infrastructure
-                  arguments: 'YOUR ABBREVIATION HERE'         # <-- This should be your custom
+                  arguments: 'Your 3 letter abbreviation here'         # <-- This should be your custom
                 env:                       # lowercase three character 
                   GITHUB_TOKEN: $(CR_PAT)  # prefix from an earlier exercise.
                                 # ^^^^^^
@@ -1017,7 +1019,7 @@ Now that the lab is done, we are done with our Azure resources.  It is good prac
 1. Open the `teardown-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your GitHub lab files repository and add the same custom lowercase three-letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line.
 
     ```pwsh
-    $studentprefix ="your abbreviation here"
+    $studentprefix ="Your 3 letter abbreviation here"
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
 
     az ad sp delete --id "fabmedical-$studentprefix"
