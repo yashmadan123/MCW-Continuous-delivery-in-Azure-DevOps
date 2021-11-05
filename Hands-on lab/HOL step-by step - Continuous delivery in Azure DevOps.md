@@ -73,7 +73,7 @@ Websites for medical conferences are typically low-budget websites because the c
 1. Microsoft Azure subscription must be pay-as-you-go or MSDN.
    - Trial subscriptions will _not_ work.
    - To complete this lab setup, ensure your account includes the following:
-     - Has the [Owner](https://docs.microsoft.com/azure/role-based-access-control/build-in-roles#owner) built-in role for the subscription you use.
+     - Has the [Owner](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#owner) built-in role for the subscription you use.
      - Is a [Member](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions#member-and-guest-users) user in the Azure AD tenant you use. (Guest users will not have the necessary permissions.)
 
 2. A Microsoft [GitHub](https://github.com) account.
@@ -168,7 +168,7 @@ We can use Dependabot to track the versions of the packages we use in our GitHub
 
 4. Sort the Dependabot alerts by `Package name`.  Locate the `handlebars` vulnerability.
 
-    ![Summary of the `handlebars` Dependabot alert in the list of Dependabot alerts.](media/git  "`handlebars` Dependabot alert")
+    ![Summary of the `handlebars` Dependabot alert in the list of Dependabot alerts.](media/hol-ex1-task2-step4-1.png  "`handlebars` Dependabot alert")
 
 5. Select the `handlebars` Dependabot alert title to see the alert detail. After reviewing the alert, select `Create Dependabot security update` and wait a few moments for GitHub to create the security update.
 
