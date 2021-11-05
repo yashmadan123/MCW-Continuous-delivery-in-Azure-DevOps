@@ -479,6 +479,8 @@ First, we need to set up the cloud infrastructure.  We will use PowerShell scrip
 
 ### Task 2: Deployment Automation to Azure Web App
 
+Once the infrastructure is in place, then we can set up the automation.
+
 1. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `GITHUB_TOKEN` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
 
     ```pwsh
@@ -660,6 +662,8 @@ Now we want to set up Application Insights to gain some insights on how our site
 8. Visit the deployed website and check Application Insights in the Azure Portal to see instrumentation data.
 
 ### Task 2: Continuous Deployment with GitHub Actions
+
+Now that the infrastructure is in place, we can set up continuous deployment with GitHub Actions.
 
 1. Open the `deploy-sp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line. Note the call to create a Service Principal.
 
