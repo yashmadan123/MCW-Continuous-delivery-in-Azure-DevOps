@@ -703,7 +703,7 @@ Now we want to set up Application Insights to gain some insights on how our site
 
 5. Select the `Simple workflow` and call the new YAML file `docker-publish.yml`.
 
-6. Change the `name` property to `Docker Compose Build and Deploy`. Modify the YAML to reflect the following. 
+6. Change the `name` property to `Docker Compose Build and Deploy`. Modify the YAML to reflect the following.
 
     >**Note**: Make sure to change the student prefix for the last action in the `build` job.
 
@@ -776,11 +776,11 @@ Now we want to set up Application Insights to gain some insights on how our site
 
     ![GitHub Actions workflow file syntax error.](media/github-actions-workflow-file-error.png "Syntax error in Actions workflow file")
 
-8.  Observe that the action builds the docker images, pushes them to the container registry, and deploys them to the Azure web application.
+8. Observe that the action builds the docker images, pushes them to the container registry, and deploys them to the Azure web application.
 
     ![GitHub Action detail reflecting Docker ](media/hol-ex3-task2-step8-1.png "GitHub Action detail")
 
-9.  Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
+9. Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
 
 ### Task 3: Continuous Deployment with Azure DevOps Pipelines
 

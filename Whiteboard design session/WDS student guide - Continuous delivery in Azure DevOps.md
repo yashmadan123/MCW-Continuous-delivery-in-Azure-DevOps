@@ -20,7 +20,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 © 2021 Microsoft Corporation. All rights reserved.
 
-Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
+Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
 **Contents**
 
@@ -42,13 +42,13 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 # Continuous delivery in Azure DevOps whiteboard design session student guide
 
-## Abstract and learning objectives 
+## Abstract and learning objectives
 
 In this whiteboard design session, you will learn how to design a solution with a combination of ARM templates, Azure DevOps, and GitHub actions to enable continuous delivery with several Azure PaaS services.
 
 At the end of this workshop, you will be better able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition, you'll learn how to design a deployment and monitoring architecture using ARM templates to provision Azure resources, Application Insights for deep application monitoring, and GitHub as a source code repository and build/deploy pipeline.
 
-## Step 1: Review the customer case study 
+## Step 1: Review the customer case study
 
 **Outcome**
 
@@ -100,7 +100,7 @@ In the current situation, the conference sites are hosted on-premises with the f
 
 7. Implement proactive diagnostics to generate automatic alerts for unusual application behavior including aberrant request response time, dependency response time, and page load time.
 
-### Customer objections 
+### Customer objections
 
 1. We do not want to be locked into a specific source control repository. We are evaluating GitHub and Azure DevOps and need to be able to change between them without frustrating rework.
 
@@ -204,7 +204,7 @@ Directions:
 
 7. Switch roles and repeat Steps 2-6.
 
-##  Wrap-up 
+## Wrap-up
 
 Timeframe: 15 minutes
 
