@@ -40,6 +40,8 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 You should follow all steps in this document *before* performing the Hands-on lab.  Pay close attention to product versions, as the version numbers called out in the lab have been tested and shown successful for the lab.
 
+> **Note**: If the students need to use Microsoft-hosted Azure Pipelines Agents, [Task  4: Create Azure DevOps Project](#task--4-create-azure-devops-project) will need to be completed at least **2-3 business days** before the lab in order to run parallel jobs in Azure DevOps.  The other option is to use self-hosted agents.  If you need to go the self-hosted route, refer to the [Azure Pipelines Agents documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/agents?view=azure-devops&tabs=browser).
+
 ## Requirements
 
 1. Microsoft Azure subscription must be pay-as-you-go or MSDN.
@@ -191,7 +193,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
    - Select the **Create project** button.
 
-2. (Optional) To complete Exercise 3: Task 3 in the Hands on Lab, the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request).  More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/).
+2. To complete Exercise 3: Task 3 in the Hands on Lab, the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request).  More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/).
 
     > **Note**: The Azure DevOps Parallelism Request can take 2-3 business days to process the request.
 
