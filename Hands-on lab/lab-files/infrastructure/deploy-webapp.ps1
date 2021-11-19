@@ -1,4 +1,4 @@
-$studentprefix = "hbs"
+$studentprefix = "Your 3 letter abbreviation here"
 $githubAccount = "Your github account name here"
 $resourcegroupName = "fabmedical-rg-" + $studentprefix
 $webappName = "fabmedical-web-" + $studentprefix

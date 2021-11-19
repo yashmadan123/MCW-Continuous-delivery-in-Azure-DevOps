@@ -9,7 +9,7 @@ Continuous delivery in Azure DevOps
 </div>
 
 <div class="MCWHeader3">
-July 2021
+November 2021
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -20,7 +20,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 © 2021 Microsoft Corporation. All rights reserved.
 
-Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
+Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
 **Contents**
 
@@ -82,7 +82,7 @@ An amazing trainer:
 
 - Effectively leads the feedback process.
 
-## Whiteboard design session flow 
+## Whiteboard design session flow
 
 Each whiteboard design session uses the following flow:
 
@@ -163,15 +163,16 @@ When participants are doing activities, you can **look ahead to refresh your mem
 **Ask first**, whenever possible. Before launching into a topic, learn your audience's opinions about it and experiences with it. Asking first enables you to assess their level of knowledge and experience, and leaves them more open to what you are presenting.
 
 **Wait for responses**. If you ask a question such as, "What's your experience with (fill in the blank)?" then wait. Do not be afraid of a little silence. If you leap into the silence, your participants will feel you are not serious about involving them and will become passive. Give participants a chance to think, and if no one answers, patiently ask again. You will usually get a response.
+
 # Continuous delivery in Azure DevOps whiteboard design session student guide
 
-## Abstract and learning objectives 
+## Abstract and learning objectives
 
 In this whiteboard design session, you will learn how to design a solution with a combination of ARM templates, Azure DevOps, and GitHub actions to enable continuous delivery with several Azure PaaS services.
 
 At the end of this workshop, you will be better able to build templates to automate cloud infrastructure and reduce error-prone manual processes. In addition, you'll learn how to design a deployment and monitoring architecture using ARM templates to provision Azure resources, Application Insights for deep application monitoring, and GitHub as a source code repository and build/deploy pipeline.
 
-## Step 1: Review the customer case study 
+## Step 1: Review the customer case study
 
 **Outcome**
 
@@ -237,7 +238,7 @@ In the current situation, the conference sites are hosted on-premises with the f
 
 4. How much of an impact will these process changes have on our development cadence? Will learning this place a new burden on the developers?
 
-5. Our developers are already having a challenge learning how to use Git; will adding a continuous deployment system on top of that slow them down and confuse them even more? 
+5. Our developers are already having a challenge learning how to use Git; will adding a continuous deployment system on top of that slow them down and confuse them even more?
 
 ## Step 2: Design a proof of concept solution
 
@@ -327,12 +328,12 @@ Directions:
 
 7. Switch roles and repeat Steps 2-6.
 
-##  Wrap-up 
+## Wrap-up
 
 Timeframe: 15 minutes
 
 Directions: Reconvene with the larger group to hear the facilitator/SME share the preferred solution for the case study.
- 
+
 ## Additional references
 
 |    |            |
@@ -341,11 +342,10 @@ Directions: Reconvene with the larger group to hear the facilitator/SME share th
 | Enable diagnostics logging for web apps | <https://azure.microsoft.com/en-us/documentation/articles/web-sites-enable-diagnostic-log/> |
 | Monitor web app performance  | <https://azure.microsoft.com/en-us/documentation/articles/insights-perf-analytics/> |
 | Azure Pipelines | <https://azure.microsoft.com/en-us/services/devops/pipelines/> |
-| Azure Pipelines examples | <https://docs.microsoft.com/en-us/azure/devops/pipelines/index?view=vsts#azure> |
 | Switch deployment slots in Azure web apps | <https://blogs.msdn.microsoft.com/devops/2017/04/10/considerations-on-using-deployment-slots-in-your-devops-pipeline/> |
 | App service continuous deployment | <https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment> |
 | App service staging environments | <https://azure.microsoft.com/en-us/documentation/articles/web-sites-staged-publishing/> |
-| Application Insights | <https://azure.microsoft.com/en-us/documentation/services/application-insights/> |
+| Application Insights | <https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview/> |
 
 # Continuous delivery in Azure DevOps whiteboard design session trainer guide
 
@@ -413,15 +413,15 @@ The solution for the Fabrikam Medical scenario involves several technologies, in
 
 - Creating a release pipeline that relies upon several Azure DevOps Release Management features:
 
-    - Provisioning of Azure resources using Azure Resource Management (ARM) Templates.
+  - Provisioning of Azure resources using Azure Resource Management (ARM) Templates.
 
-    - Automated deployment of the solution to the development environment.
+  - Automated deployment of the solution to the development environment.
 
-    - Execution of automated tests.
+  - Execution of automated tests.
 
-    - The manual approval process for promoting solutions to test and ultimately production environments using deployment slots.
+  - The manual approval process for promoting solutions to test and ultimately production environments using deployment slots.
 
-    - Automatic switching of deployment slots upon successful deployment conditions.
+  - Automatic switching of deployment slots upon successful deployment conditions.
 
 - Creating an Application Insights account to gather more detailed analytics on the application's performance and health.
 
