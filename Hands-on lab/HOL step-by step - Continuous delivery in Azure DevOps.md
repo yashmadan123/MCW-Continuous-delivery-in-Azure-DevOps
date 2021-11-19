@@ -40,7 +40,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Exercise 2: Continuous Delivery](#exercise-2-continuous-delivery)
     - [Task 1: Set up Cloud Infrastructure](#task-1-set-up-cloud-infrastructure)
     - [Task 2: Deployment Automation to Azure Web App](#task-2-deployment-automation-to-azure-web-app)
-    - [(Optional) Task 3: Branch Policies in GitHub](#optional-task-3-branch-policies-in-github)
+    - [Task 3: Branch Policies in GitHub (Optional)](#task-3-branch-policies-in-github-optional)
   - [Exercise 3: Monitoring and logging in Azure](#exercise-3-monitoring-and-logging-in-azure)
     - [Task 1: Set up Application Insights](#task-1-set-up-application-insights)
     - [Task 2: Continuous Deployment with GitHub Actions](#task-2-continuous-deployment-with-github-actions)
@@ -524,7 +524,7 @@ Once the infrastructure is in place, then we can set up the automation.
 
     ![The Contoso Conference website hosted in Azure.](media/hol-ex2-task2-step6-2.png "Azure hosted Web Application")
 
-### (Optional) Task 3: Branch Policies in GitHub
+### Task 3: Branch Policies in GitHub (Optional)
 
 In many enterprises, committing to `main` is restricted. Branch policies are used to control how code gets to `main`.
 
