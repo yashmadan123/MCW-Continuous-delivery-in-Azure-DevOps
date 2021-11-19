@@ -32,15 +32,15 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 1: Create the Project Repo](#task-1-create-the-project-repo)
     - [Task 2: Create GitHub Personal Access Token](#task-2-create-github-personal-access-token)
     - [Task 3: Create Azure DevOps Personal Access Token](#task-3-create-azure-devops-personal-access-token)
-    - [Task  4: Create Azure DevOps Project](#task--4-create-azure-devops-project)
+    - [Task 4: Create Azure DevOps Project](#task-4-create-azure-devops-project)
 
 <!-- /TOC -->
 
 # Continuous Delivery in Azure DevOps before the hands-on lab setup guide
 
-You should follow all steps in this document *before* performing the Hands-on lab.  Pay close attention to product versions, as the version numbers called out in the lab have been tested and shown successful for the lab.
+You should follow all steps in this document *before* performing the Hands-on lab. Pay close attention to product versions, as the version numbers called out in the lab have been tested and shown successful for the lab.
 
-> **Note**: If the students need to use Microsoft-hosted Azure Pipelines Agents, [Task  4: Create Azure DevOps Project](#task--4-create-azure-devops-project) will need to be completed at least **2-3 business days** before the lab in order to run parallel jobs in Azure DevOps.  The other option is to use self-hosted agents.  If you need to go the self-hosted route, refer to the [Azure Pipelines Agents documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/agents?view=azure-devops&tabs=browser).
+> **Note**: If the students need to use Microsoft-hosted Azure Pipelines Agents, [Task 4: Create Azure DevOps Project](#task--4-create-azure-devops-project) will need to be completed at least **2-3 business days** before the lab in order to run parallel jobs in Azure DevOps. The other option is to use self-hosted agents. If you need to go the self-hosted route, refer to the [Azure Pipelines Agents documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/agents?view=azure-devops&tabs=browser).
 
 ## Requirements
 
@@ -125,7 +125,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
  cd mcw-continuous-delivery-lab-files
  ```
 
-- You should now be in `C:\Workspaces\lab\mcw-continuous-delivery-lab-files`.  The lab files cloned from the Microsoft MCW lab repository should be in `C:\workspaces\lab\mcw-continuous\delivery-in-azure-devops`. Copy the lab files from the Microsoft MCW lab repository to the new folder.
+- You should now be in `C:\Workspaces\lab\mcw-continuous-delivery-lab-files`. The lab files cloned from the Microsoft MCW lab repository should be in `C:\workspaces\lab\mcw-continuous\delivery-in-azure-devops`. Copy the lab files from the Microsoft MCW lab repository to the new folder.
 
  ```pwsh
  Copy-Item '..\mcw-continuous-delivery-in-azure-devops\Hands-on lab\lab-files\*' -Destination ./ -Recurse
@@ -148,7 +148,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
 1. Log in to your GitHub account.
 
-2. Create a Personal Access Token as [described here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).  Ensure the following scopes are checked when configuring your GitHub Personal Access Token:
+2. Create a Personal Access Token as [described here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). Ensure the following scopes are checked when configuring your GitHub Personal Access Token:
 
     - `repo` - Full control of private repositories.
     - `workflow` - Update GitHub Action workflows.
@@ -168,7 +168,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
     ![The Azure DevOps Portal.](media/b4-task3-step1-1.png "Azure DevOps Portal")
 
-2. Create an Azure DevOps Personal Access Token as [described here](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page).  For this lab, please ensure your Azure DevOps Personal Access Token is configured with a `Full access` scope.
+2. Create an Azure DevOps Personal Access Token as [described here](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page). For this lab, please ensure your Azure DevOps Personal Access Token is configured with a `Full access` scope.
 
     > **Note**: A `Full access` scope is not recommended for Azure DevOps Personal Access Tokens in live development and production environments. We are only using this scope for this lab.
 
@@ -178,7 +178,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
     ![The Azure DevOps Personal Access Token created in the previous step.](media/b4-task3-step3-1.png "Created Azure DevOps Personal Access Token")
 
-### Task  4: Create Azure DevOps Project
+### Task 4: Create Azure DevOps Project
 
 1. Create a `Fabrikam` project in Azure DevOps for use in the lab with the following settings:
 
@@ -193,7 +193,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
    - Select the **Create project** button.
 
-2. To complete Exercise 3: Task 3 in the Hands on Lab, the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request).  More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/).
+2. To complete Exercise 3: Task 3 in the Hands on Lab, the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request). More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/).
 
     > **Note**: The Azure DevOps Parallelism Request can take 2-3 business days to process the request.
 

@@ -86,7 +86,7 @@ Websites for medical conferences are typically low-budget websites because the c
 
 5. PowerShell
 
-    - As you will be running PowerShell scripts, make sure that the ExecutionPolicy is set properly.  Consult [the Microsoft PowerShell documentation on execution policies](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies) for more details.
+    - As you will be running PowerShell scripts, make sure that the ExecutionPolicy is set properly. Consult [the Microsoft PowerShell documentation on execution policies](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies) for more details.
 
 6. Docker Desktop for Windows
 
@@ -106,7 +106,7 @@ You should follow all steps in the [Before the hands-on lab setup guide](Before%
 
 Duration: 40 minutes
 
-After a requirements gathering effort, we find that Fabrikam Medical Conferences has many areas of potential improvement in their development workflow.  Specifically, we conclude that there are a lot of manual tasks that can be automated. Automation potentially mitigates many of the recurring quality and security issues. Also, the dependencies between Fabrikam's developers' work and productivity are reduced. We will begin to address some of these efforts in this exercise to improve developer flow and establish continuous integration practices.
+After a requirements gathering effort, we find that Fabrikam Medical Conferences has many areas of potential improvement in their development workflow. Specifically, we conclude that there are a lot of manual tasks that can be automated. Automation potentially mitigates many of the recurring quality and security issues. Also, the dependencies between Fabrikam's developers' work and productivity are reduced. We will begin to address some of these efforts in this exercise to improve developer flow and establish continuous integration practices.
 
 ### Task 1: Connect Azure Board with GitHub
 
@@ -152,7 +152,7 @@ We can automate our project tracking with the Azure Board integration for GitHub
 
 We can use Dependabot to track the versions of the packages we use in our GitHub repository.
 
-1. In your lab files GitHub repository, navigate to the `Security` tab.  Select the `Enable Dependabot alerts` button.
+1. In your lab files GitHub repository, navigate to the `Security` tab. Select the `Enable Dependabot alerts` button.
 
     ![The GitHub Repository Security Overview tab.](media/hol-ex1-task2-step1-1.png "GitHub Repository Security Overview")
 
@@ -166,9 +166,9 @@ We can use Dependabot to track the versions of the packages we use in our GitHub
 
     ![GitHub Dependabot alerts in the Security tab.](media/hol-ex1-task2-step3-1.png "GitHub Dependabot alerts")
 
-4. Sort the Dependabot alerts by `Package name`.  Locate the `handlebars` vulnerability.
+4. Sort the Dependabot alerts by `Package name`. Locate the `handlebars` vulnerability.
 
-    ![Summary of the `handlebars` Dependabot alert in the list of Dependabot alerts.](media/hol-ex1-task2-step4-1.png  "`handlebars` Dependabot alert")
+    ![Summary of the `handlebars` Dependabot alert in the list of Dependabot alerts.](media/hol-ex1-task2-step4-1.png "`handlebars` Dependabot alert")
 
 5. Select the `handlebars` Dependabot alert title to see the alert detail. After reviewing the alert, select `Create Dependabot security update` and wait a few moments for GitHub to create the security update.
 
@@ -192,8 +192,8 @@ We can use Dependabot to track the versions of the packages we use in our GitHub
 
 ### Task 3: Set up Local Infrastructure
 
-We are going to set up the local infrastructure using Docker containers.  There are three images we will be working with:
-  
+We are going to set up the local infrastructure using Docker containers. There are three images we will be working with:
+
 - `fabrikam-init`
 - `fabrikam-api`
 - `fabrikam-web`
@@ -259,7 +259,7 @@ Now that we have Docker images working locally, we can now work on the automatio
 
     > **Note**: Make sure to replace `<githubaccountname>` with your GitHub account name and `<githubreponame>` with the name of your GitHub lab files repository. (`docker.pkg.github.com/YOUR_GITHUB_ACCOUNT/mcw-continuous-delivery-lab-files` for example)
 
-8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure  the correct `Dockerfile` file can be found.
+8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure the correct `Dockerfile` file can be found.
 
     ```yaml
     # Build and push Docker image with Build (do not push on PR)
@@ -302,7 +302,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
 ### Task 1: Set up Cloud Infrastructure
 
-First, we need to set up the cloud infrastructure.  We will use PowerShell scripts and the Azure Command Line Interface (CLI) to set this up.
+First, we need to set up the cloud infrastructure. We will use PowerShell scripts and the Azure Command Line Interface (CLI) to set this up.
 
 1. Open your local GitHub folder for your `mcw-continuous-delivery-lab-files` repository.
 
@@ -370,7 +370,7 @@ First, we need to set up the cloud infrastructure.  We will use PowerShell scrip
     az account set --subscription <your subscription guid>
     ```
 
-    **Note**: Your subscription plan guid is the `id` field that comes back in the response JSON.  In the following example, the subscription guid is `726da029-91f0-4dc1-a728-f25664374559`.
+    **Note**: Your subscription plan guid is the `id` field that comes back in the response JSON. In the following example, the subscription guid is `726da029-91f0-4dc1-a728-f25664374559`.
 
     ```json
       {
@@ -401,10 +401,10 @@ First, we need to set up the cloud infrastructure.  We will use PowerShell scrip
 
     ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step6-1.png "Azure Resource Group")
 
-7. Open the `seed-cosmosdb.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line.  Also update the `$githubAccount` and `$githubRepo` variables with your GitHub account name and GitHub lab files repository name, respectively.
+7. Open the `seed-cosmosdb.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line. Also update the `$githubAccount` and `$githubRepo` variables with your GitHub account name and GitHub lab files repository name, respectively.
 
     ```pwsh
-    $studentprefix = "Your 3 letter abbreviation here"  
+    $studentprefix = "Your 3 letter abbreviation here"
     $githubAccount = "Your github account name here"
     $githubRepo = "mcw-continuous-delivery-lab-files"
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
@@ -432,7 +432,7 @@ First, we need to set up the cloud infrastructure.  We will use PowerShell scrip
         docker.pkg.github.com/$githubAccount/$githubRepo/fabrikam-init:main
     ```
 
-    >**Note**: Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholder appropriately.  Use your PAT when it prompts for the password.
+    >**Note**: Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholder appropriately. Use your PAT when it prompts for the password.
 
     ```pwsh
     docker login docker.pkg.github.com -u [USERNAME]
@@ -446,7 +446,7 @@ First, we need to set up the cloud infrastructure.  We will use PowerShell scrip
 
     ![fabrikam-init package details displayed in the mcw-continuous-delivery-lab-files repository in GitHub.](media/hol-ex2-task1-step10-2.png "fabrikam-init package details in GitHub")
 
-11. Below the `sessions` collection, select **Scale & Settings**  (1) and **Indexing Policy** (2).
+11. Below the `sessions` collection, select **Scale & Settings** (1) and **Indexing Policy** (2).
 
     ![Opening indexing policy for the sessions collection.](media/hol-ex2-task1-step11.png "Indexing policy configuration")
 
@@ -518,7 +518,7 @@ Once the infrastructure is in place, then we can set up the automation.
 
     ![Azure Web Application Log Stream displaying the STDOUT and STDERR output of the running container.](media/hol-ex2-task2-step5-1.png "Azure Web Application Log Stream")
 
-6. Browse to the `Overview` blade of the Azure Web Application detail page and find the web application URL. Browse to that URL to verify the  deployment of the web application.
+6. Browse to the `Overview` blade of the Azure Web Application detail page and find the web application URL. Browse to that URL to verify the deployment of the web application.
 
     ![The Azure Web Application Overview detail in Azure Portal.](media/hol-ex2-task2-step6-1.png "Azure Web Application Overview")
 
@@ -526,7 +526,7 @@ Once the infrastructure is in place, then we can set up the automation.
 
 ### (Optional) Task 3: Branch Policies in GitHub
 
-In many enterprises, committing to `main` is restricted.  Branch policies are used to control how code gets to `main`.
+In many enterprises, committing to `main` is restricted. Branch policies are used to control how code gets to `main`.
 
 >**Note**: Branch protection rules apply to Pro, Team, and Enterprise GitHub users.
 
@@ -551,7 +551,7 @@ In many enterprises, committing to `main` is restricted.  Branch policies are us
 
     [main cafa839] Updating README.md
     1 file changed, 2 insertions(+)
-    PS C:\Workspaces\lab\mcw-continuous-delivery-lab-files> git push  
+    PS C:\Workspaces\lab\mcw-continuous-delivery-lab-files> git push
 
     Enumerating objects: 5, done.
     Counting objects: 100% (5/5), done.
@@ -571,7 +571,7 @@ In many enterprises, committing to `main` is restricted.  Branch policies are us
 
     !["New issue for updating README.md added to Azure Boards"](media/hol-ex2-task3-step4-1.png "Azure Boards")
 
-5. Create a branch from `main` and name it `feature/update-readme`.  Push the changes to the README.md to the remote repository.
+5. Create a branch from `main` and name it `feature/update-readme`. Push the changes to the README.md to the remote repository.
 
     ```pwsh
     git checkout main
@@ -703,7 +703,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
 
 4. Add a new GitHub Action workflow in your GitHub lab files repository by selecting the `Actions` tab and selecting `New workflow`.
 
-    ![The `New workflow` button in the repository GitHub Actions tab.](media/hol-ex3-task2-step1-1.png "GitHub Actions")  
+    ![The `New workflow` button in the repository GitHub Actions tab.](media/hol-ex3-task2-step1-1.png "GitHub Actions")
 
 5. Select the `Simple workflow` and call the new YAML file `docker-publish.yml`.
 
@@ -819,7 +819,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
 
     ![Azure DevOps Pipeline Connections page where we associate the GitHub repository with this pipeline.](media/hol-ex3-task3-step5-1.png "Azure DevOps Pipeline Connections")
 
-6. Select your GitHub lab files repository.  Azure DevOps will redirect you to authorize yourself with GitHub. Log in and select the repository that you want to allow Azure DevOps to access.
+6. Select your GitHub lab files repository. Azure DevOps will redirect you to authorize yourself with GitHub. Log in and select the repository that you want to allow Azure DevOps to access.
 
 7. In the `Configure` tab, choose the `Starter Pipeline`.
 
@@ -865,7 +865,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
     - Action: Push Service Images
     - Additional Image Tags = $(Build.BuildNumber)
 
-    >**Note**: Pay close attention to the **Action** in Step 10.  This is where it differs from Step 9.
+    >**Note**: Pay close attention to the **Action** in Step 10. This is where it differs from Step 9.
 
     The YAML should be:
 
@@ -924,7 +924,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
 
     ![Adding a new Pipeline Variable to an existing Azure DevOps pipeline.](media/hol-ex3-task3-step15-1.png "New Pipeline Variable")
 
-16. Modify the build pipeline YAML to split into a build stage and a deploy stage, as follows.  
+16. Modify the build pipeline YAML to split into a build stage and a deploy stage, as follows.
 
     >**Note**: Pay close attention to the `DeployProd` stage, as you need to add your abbreviation to the `arguments` section.
 
@@ -961,7 +961,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
             dockerComposeFile: '**/docker-compose.yml'
             additionalDockerComposeFiles: 'build.docker-compose.yml'
             action: 'Push services'
-            additionalImageTags: '$(Build.BuildNumber)'    
+            additionalImageTags: '$(Build.BuildNumber)'
 
     - stage: DeployProd
       dependsOn: build
@@ -1002,7 +1002,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
 
     ![Approvals and checks selection in the vertical ellipsis menu in the top right corner of the Azure DevOps pipeline editor interface.](media/hol-ex3-task3-step18-1.png "Approvals and checks selection")
 
-19. Add an `Approvals` check.  Add your account as an `Approver` and create the check.
+19. Add an `Approvals` check. Add your account as an `Approver` and create the check.
 
     ![Adding an account as an `Approver` for an Approvals check.](media/hol-ex3-task3-step19-1.png "Checks selection")
 
@@ -1018,7 +1018,7 @@ Now that the lab is complete, we need to tear down the Azure resources that we c
 
 ### Task 1: Tear down Azure Resources
 
-Now that the lab is done, we are done with our Azure resources.  It is good practice to tear down the resources and avoid incurring costs for unnecessary resources.
+Now that the lab is done, we are done with our Azure resources. It is good practice to tear down the resources and avoid incurring costs for unnecessary resources.
 
 1. Open the `teardown-infrastructure.ps1` PowerShell script in the `infrastructure` folder of your GitHub lab files repository and add the same custom lowercase three-letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line.
 
