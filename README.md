@@ -42,7 +42,7 @@ At the end of this workshop, you will be better able to implement solutions for 
 
 ## Related references
 
-- [MCW](https://github.com/Microsoft/MCW)
+- [MCW](https://microsoftcloudworkshop.com)
 - [DevOps Checklist](https://docs.microsoft.com/en-us/azure/architecture/checklist/dev-ops)
 - [Reference Architecture for Basic Web Application](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/app-service-web-app/basic-web-app)
 
