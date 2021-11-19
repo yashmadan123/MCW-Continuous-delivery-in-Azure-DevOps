@@ -125,7 +125,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
  cd mcw-continuous-delivery-lab-files
  ```
 
-- You should now be in `C:\Workspaces\lab\mcw-continuous-delivery-lab-files`.  The lab files cloned from the Microsoft MCW lab repository repository should be in `C:\workspaces\lab\mcw-continuous\delivery-in-azure-devops`. Copy the lab files from the Microsoft MCW lab repository to the new folder.
+- You should now be in `C:\Workspaces\lab\mcw-continuous-delivery-lab-files`.  The lab files cloned from the Microsoft MCW lab repository should be in `C:\workspaces\lab\mcw-continuous\delivery-in-azure-devops`. Copy the lab files from the Microsoft MCW lab repository to the new folder.
 
  ```pwsh
  Copy-Item '..\mcw-continuous-delivery-in-azure-devops\Hands-on lab\lab-files\*' -Destination ./ -Recurse

@@ -140,7 +140,7 @@ We can automate our project tracking with the Azure Board integration for GitHub
 
     ![Pull request detail in GitHub created by onboarding tutorial in previous steps.](media/hol-ex1-task1-step8-1.png "Pull Request detail")
 
-9. Select the `Files changed` tab within the pull request detail and observe the change to the README.md associated with this pull request. After reviewing the changes, go back to the `Conversation` tab and select the `Merge pull request` button and confirm the following prompt to merge the pull request into the `main` branch.
+9. Select the `Files changed` tab within the pull request detail and observe the change to the README.md associated with this pull request. After reviewing the changes, go back to the `Conversation` tab. Select the `Merge pull request` button and confirm the following prompt to merge the pull request into the `main` branch.
 
     ![The file changes associated with the pull request.](media/hol-ex1-task1-step9-1.png "Pull Request Files Changed tab")
 
@@ -259,7 +259,7 @@ Now that we have Docker images working locally, we can now work on the automatio
 
     > **Note**: Make sure to replace `<githubaccountname>` with your GitHub account name and `<githubreponame>` with the name of your GitHub lab files repository. (`docker.pkg.github.com/YOUR_GITHUB_ACCOUNT/mcw-continuous-delivery-lab-files` for example)
 
-8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This will ensure that the correct `Dockerfile` file can be found.
+8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure  the correct `Dockerfile` file can be found.
 
     ```yaml
     # Build and push Docker image with Build (do not push on PR)
@@ -286,7 +286,7 @@ Now that we have Docker images working locally, we can now work on the automatio
 11. Set up workflows for `content-api` and `content-init` in the same manner.
     - In the `env:` section, update the **IMAGE_NAME** to `fabrikam-api` or `fabrikam-init`.
     - In the `jobs:` section, in the `Build and push Docker image` step, set the **file** and **context** paths to the respective `content-api` or `content-init` folders.
-    - Save the YAML files as `fabrikam-api.yml` and `fabrikam-init.yml` respectively.
+    - Save the YAML files as `fabrikam-api.yml` and `fabrikam-init.yml`, respectively.
 
 12. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
 
@@ -423,7 +423,7 @@ First, we need to set up the cloud infrastructure.  We will use PowerShell scrip
             --query 'connectionStrings[0].connectionString')
     ```
 
-9. Note the call to seed the CosmosDB database using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the `fabrikam-init` docker image we built in the previous exercise using `docker-compose`.
+9. The call to seed the CosmosDB database is using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the `fabrikam-init` docker image we built in the previous exercise using `docker-compose`.
 
     ```pwsh
     # Seed CosmosDB database
@@ -434,7 +434,7 @@ First, we need to set up the cloud infrastructure.  We will use PowerShell scrip
 
     >**Note**: Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholder appropriately.  Use your PAT when it prompts for the password.
 
-    ```powershell
+    ```pwsh
     docker login docker.pkg.github.com -u [USERNAME]
     ```
 
@@ -496,7 +496,7 @@ Once the infrastructure is in place, then we can set up the automation.
     $webappName = "fabmedical-web-" + $studentprefix
     ```
 
-3. Note the call to deploy the Azure Web Application using the `docker-compose.yml` file we modified in the previous exercise.
+3. The call to deploy the Azure Web Application is using the `docker-compose.yml` file we modified in the previous exercise.
 
     ```pwsh
     # Deploy Azure Web App
@@ -518,7 +518,7 @@ Once the infrastructure is in place, then we can set up the automation.
 
     ![Azure Web Application Log Stream displaying the STDOUT and STDERR output of the running container.](media/hol-ex2-task2-step5-1.png "Azure Web Application Log Stream")
 
-6. Browse to the `Overview` blade of the Azure Web Application detail page and find the web application URL. Browse to that URL to verify deployment of the web application.
+6. Browse to the `Overview` blade of the Azure Web Application detail page and find the web application URL. Browse to that URL to verify the  deployment of the web application.
 
     ![The Azure Web Application Overview detail in Azure Portal.](media/hol-ex2-task2-step6-1.png "Azure Web Application Overview")
 
@@ -542,7 +542,7 @@ In many enterprises, committing to `main` is restricted.  Branch policies are us
 
     ![Branch protection rule creation form](media/hol-ex2-task3-step2-1.png "Create a new branch protection rule in GitHub")
 
-3. With the branch protection rule in place, direct commits and pushes to the `main` branch will be disabled. Verify this by making a small change to your README.md and attempt to commit it to `main` in your local repository and attempt to push it to the remote repository.
+3. With the branch protection rule in place, direct commits and pushes to the `main` branch will be disabled. Verify this rule by making a small change to your README.md file. Attempt to commit the change to the `main` branch in your local repository followed by a push to the remote repository.
 
     ```pwsh
     PS C:\Workspaces\lab\mcw-continuous-delivery-lab-files> git add .
@@ -842,7 +842,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
     steps:
     ```
 
-9. In the side bar, find the `Docker Compose` task and configure it with the following fields, then select the **Add** button:
+9. In the sidebar, find the `Docker Compose` task and configure it with the following fields, then select the **Add** button:
 
     - Container Registry Type: Container Registry
     - Docker Registry Service Connection: GitHub Container Registry (created in step 3)
@@ -854,7 +854,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
     ![Docker Compose Task definition in the AzureDevOps pipeline.](media/hol-ex3-task3-step9-1.png "Docker Compose Task")
     ![Docker Compose Task Values in the AzureDevOps pipeline.](media/hol-ex3-task3-step9-2.png "Docker Compose Task Values")
 
-    >**Note**: If the side bar doesn't appear, you may need to select `Show assistant`.
+    >**Note**: If the sidebar doesn't appear, you may need to select `Show assistant`.
 
 10. Repeat step 9 and add another `Docker Compose` task and configure it with the following fields:
 
@@ -996,7 +996,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
 
 17. Navigate to the `Environments` category with the `Pipelines` blade in the `Fabrikam` project and select the `production` environment.
 
-    ![Select Environments under the Pipelines section. Then select the production environment.](media/hol-ex3-task3-step17-1.png "production environment selection in the Environments section")
+    ![Select Environments under the Pipelines section. Then select the production environment.](media/hol-ex3-task3-step17-1.png "Production environment selection in the Environments section")
 
 18. From the vertical ellipsis menu button in the top-right corner, select `Approvals and checks`.
 
