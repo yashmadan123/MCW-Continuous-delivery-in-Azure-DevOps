@@ -247,17 +247,15 @@ Now that we have Docker images working locally, we can now work on the automatio
 
 6. Rename the file to `fabrikam-web.yml`.
 
-7. Change the image name to `fabrikam-web` and the registry to `docker.pkg.github.com/<githubaccountname>/<githubreponame>`. This is the name of the container image that will be pushed to the GitHub Container Registry.
+7. Change the image name to `fabrikam-web` and the registry to `ghcr.io/${{ github.actor }}`. This is the name of the container image that will be pushed to the GitHub Container Registry.
 
     ```yaml
     env:
       # Use docker.io for Docker Hub if empty.
-      REGISTRY: docker.pkg.github.com/<githubaccountname>/<githubreponame>
+      REGISTRY: ghcr.io/${{ github.actor }}
       # github.repository as <account>/<repo>
       IMAGE_NAME: fabrikam-web
     ```
-
-    > **Note**: Make sure to replace `<githubaccountname>` with your GitHub account name and `<githubreponame>` with the name of your GitHub lab files repository. (`docker.pkg.github.com/YOUR_GITHUB_ACCOUNT/mcw-continuous-delivery-lab-files` for example)
 
 8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure the correct `Dockerfile` file can be found.
 
@@ -284,9 +282,13 @@ Now that we have Docker images working locally, we can now work on the automatio
     ![Detail of running Docker workflow.](media/hol-ex1-task4-step10-2.png "GitHub Action Detail")
 
 11. Set up workflows for `content-api` and `content-init` in the same manner.
-    - In the `env:` section, update the **IMAGE_NAME** to `fabrikam-api` or `fabrikam-init`.
+    - In the `env:` section, update the **IMAGE_NAME** to `fabrikam-api` or `fabrikam-init` and set **REGISTRY** to `ghcr.io/${{ github.actor }}`.
     - In the `jobs:` section, in the `Build and push Docker image` step, set the **file** and **context** paths to the respective `content-api` or `content-init` folders.
     - Save the YAML files as `fabrikam-api.yml` and `fabrikam-init.yml`, respectively.
+
+    > **Note**: You can optionally add `workflow_dispatch:` in the `on:` trigger section to set a manual trigger for the GitHub Actions workflow.
+
+    > **Note**: If you encounter any errors due to `cosign`, feel free to remove the image signing section from the workflow, as it is not needed to complete the lab. You could alternatively add a manual trigger (see above) and try running the workflow again, to determine if the error is transient.
 
 12. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
 
