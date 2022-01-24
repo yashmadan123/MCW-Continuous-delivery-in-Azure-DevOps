@@ -403,12 +403,11 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
 
     ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step6-1.png "Azure Resource Group")
 
-7. Open the `seed-cosmosdb.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line. Also update the `$githubAccount` and `$githubRepo` variables with your GitHub account name and GitHub lab files repository name, respectively.
+7. Open the `seed-cosmosdb.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line. Also update the `$githubAccount` variable with your GitHub account name.
 
     ```pwsh
     $studentprefix = "Your 3 letter abbreviation here"
     $githubAccount = "Your github account name here"
-    $githubRepo = "mcw-continuous-delivery-lab-files"
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
     ```
@@ -431,13 +430,13 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
     # Seed CosmosDB database
     docker run -ti `
         -e MONGODB_CONNECTION="$mongodbConnectionString" `
-        docker.pkg.github.com/$githubAccount/$githubRepo/fabrikam-init:main
+        ghcr.io/$githubAccount/fabrikam-init:main
     ```
 
     >**Note**: Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholder appropriately. Use your PAT when it prompts for the password.
 
     ```pwsh
-    docker login docker.pkg.github.com -u [USERNAME]
+    docker login ghcr.io -u [USERNAME]
     ```
 
 10. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and verify that the CosmosDB instance has been seeded.
@@ -483,10 +482,10 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
 
 Once the infrastructure is in place, then we can set up the automation.
 
-1. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `GITHUB_TOKEN` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
+1. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `CR_PAT` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
 
     ```pwsh
-    $env:GITHUB_TOKEN="<GitHub Personal Access Token>"
+    $env:CR_PAT="<GitHub Personal Access Token>"
     ```
 
 2. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line and add your GitHub account name for the `$githubAccount` variable on the second line.
@@ -503,8 +502,8 @@ Once the infrastructure is in place, then we can set up the automation.
     ```pwsh
     # Deploy Azure Web App
     az webapp config container set `
-        --docker-registry-server-password $env:GITHUB_TOKEN `
-        --docker-registry-server-url https://docker.pkg.github.com `
+        --docker-registry-server-password $env:CR_PAT `
+        --docker-registry-server-url https://ghcr.io `
         --docker-registry-server-user $githubAccount `
         --multicontainer-config-file ./../docker-compose.yml `
         --multicontainer-config-type COMPOSE `
@@ -719,7 +718,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
     name: Docker Compose Build and Deploy
 
     env:
-      REGISTRY: docker.pkg.github.com
+      REGISTRY: ghcr.io
 
     # Controls when the action will run. 
     on:
@@ -806,7 +805,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
 
 3. Create a new `Docker Registry` service connection and set the values to:
 
-    - Docker Registry: <https://docker.pkg.github.com>
+    - Docker Registry: <https://ghcr.io>
     - Docker ID: [GitHub account name]
     - Docker Password: [GitHub Personal Access Token]
     - Service connection name: GitHub Container Registry
@@ -990,7 +989,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
                   workingDirectory: ./infrastructure
                   arguments: 'Your 3 letter abbreviation here'         # <-- This should be your custom
                 env:                       # lowercase three character 
-                  GITHUB_TOKEN: $(CR_PAT)  # prefix from an earlier exercise.
+                  CR_PAT: $(CR_PAT)  # prefix from an earlier exercise.
                                 # ^^^^^^
                                 # ||||||
                                 # The pipeline variable from step 15
