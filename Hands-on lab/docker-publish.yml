@@ -54,7 +54,7 @@ jobs:
         CR_PAT: ${{ secrets.CR_PAT }}
       run: |
         cd ./infrastructure
-        ./deploy-webapp.ps1 -studentprefix 536675  # <-- This needs to
+        ./deploy-webapp.ps1 -studentprefix hbs  # <-- This needs to
                                                 # match the student
                                                 # prefix we use in
                                                 # previous steps.
