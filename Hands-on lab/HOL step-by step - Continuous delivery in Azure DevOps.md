@@ -706,7 +706,9 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
 
     ![The `New workflow` button in the repository GitHub Actions tab.](media/hol-ex3-task2-step1-1.png "GitHub Actions")
 
-5. Select the `Simple workflow` and call the new YAML file `docker-publish.yml`.
+5. Select the `Set up a workflow yourself` link. Name the new YAML file `docker-publish.yml`.  
+
+    ![The Choose a workflow options are listed and the link to set up a workflow yourself is highlighted for emphasis.](media/hol-ex3-task2-step5-1.png "GitHub Actions")
 
 6. Change the `name` property to `Docker Compose Build and Deploy`. Modify the YAML to reflect the following.
 
@@ -751,7 +753,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
           with:
             registry: ${{ env.REGISTRY }}
             username: ${{ github.actor }}
-            password: ${{ secrets.GITHUB_TOKEN }}
+            password: ${{ secrets.CR_PAT }}
 
         - name: Build and Push image
           run: |
@@ -766,7 +768,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
         - name: Deploy WebApp
           shell: pwsh
           env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            CR_PAT: ${{ secrets.CR_PAT }}
           run: |
             cd ./infrastructure
             ./deploy-webapp.ps1 -studentprefix hbs  # <-- This needs to
@@ -785,7 +787,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
 
     ![GitHub Action detail reflecting Docker ](media/hol-ex3-task2-step8-1.png "GitHub Action detail")
 
-9. Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
+9.  Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
 
 ### Task 3: Continuous Deployment with Azure DevOps Pipelines
 
