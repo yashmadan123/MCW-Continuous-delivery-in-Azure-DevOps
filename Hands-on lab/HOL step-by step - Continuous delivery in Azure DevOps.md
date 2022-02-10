@@ -787,7 +787,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
 
     ![GitHub Action detail reflecting Docker ](media/hol-ex3-task2-step8-1.png "GitHub Action detail")
 
-9.  Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
+9. Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
 
 ### Task 3: Continuous Deployment with Azure DevOps Pipelines
 
