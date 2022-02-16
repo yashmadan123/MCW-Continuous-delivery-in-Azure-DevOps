@@ -260,10 +260,10 @@ Now that we have Docker images working locally, we can now work on the automatio
 8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure the correct `Dockerfile` file can be found.
 
     ```yaml
-    # Build and push Docker image with Build (do not push on PR)
+    # Build and push Docker image with Buildx (don't push on PR)
     # https://github.com/docker/build-push-action
     - name: Build and push Docker image
-      working-directory: content-web
+      id: build-and-push
       uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
       with:
         file: ./content-web/Dockerfile                      # <-- Add these
