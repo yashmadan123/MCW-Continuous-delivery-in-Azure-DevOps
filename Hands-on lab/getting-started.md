@@ -17,6 +17,16 @@
  
     > You will see SUFFIX value on **Environment Details** tab, use it whereever you see SUFFIX or DeploymentID in lab steps.
  
+1. If a **Welcome to Microsoft Azure** popup window appears, click **Maybe Later** to skip the tour.
+
+1. Change the default Browser to Edge using the default apps setting option in Windows.
+![In this screenshot of the selection of Edge browser is set as the default browser using the "Default apps' item in settings .](media/edge-default-app.png "Make Edge the default browser using 'Default Apps' ")  
+
+1. Next, update the region + language settings of the Lab VM to region that is appropriate to your setting.
+![Change the Region in settings to match current.](media/RegionChange.png "Change Region ")  
+
+![Change the Language in settings to match current.](media/LanguageChange.png "Change Region ")  
+
 ## Login to Azure Portal
 1. In the JumpVM, click on Azure portal shortcut of Microsoft Edge browser which is created on desktop.
 
