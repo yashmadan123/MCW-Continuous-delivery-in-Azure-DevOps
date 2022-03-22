@@ -3,7 +3,7 @@
 name: Docker Compose Build and Deploy
 
 env:
-  REGISTRY: docker.pkg.github.com
+  REGISTRY: ghcr.io
 
 # Controls when the action will run. 
 on:
