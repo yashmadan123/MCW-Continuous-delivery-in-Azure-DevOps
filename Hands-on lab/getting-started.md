@@ -42,7 +42,7 @@
 1. Now enter the following password and click on **Sign in**.
    * Password: <inject key="AzureAdUserPassword"></inject>
    
-     ![](https://github.com/CloudLabs-MCW/MCW-Line-of-business-application-migration/raw/fix/Hands-on%20lab/images/local/image8.png "Enter Password")
+     ![](media/image8.png "Enter Password")
      
 1. If you see the pop-up **Stay Signed in?**, click No
 
@@ -52,7 +52,7 @@
    
 1. Now you will see Azure Portal Dashboard, click on **Resource groups** from the Navigate panel to see the resource groups.
 
-    ![](https://github.com/CloudLabs-MCW/MCW-Line-of-business-application-migration/raw/fix/Hands-on%20lab/images/local/select-rg.png "Resource groups")
+    ![](media/select-rg.png "Resource groups")
    
 1. Confirm you have all resource group are present as shown below.
 
