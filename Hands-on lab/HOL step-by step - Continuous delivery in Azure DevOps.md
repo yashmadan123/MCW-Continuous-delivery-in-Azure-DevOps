@@ -241,7 +241,7 @@ Now that we have Docker images working locally, we can now work on the automatio
 
     ![The New secret form where we create the `CR_PAT` secret.](media/hol-ex1-task4-step4-1.png "New secret form")
 
-5. Select the `Actions` tab in your GitHub repository, find the `Publish Docker Container` workflow and select `Set up this workflow`.
+5. Select the `Actions` tab in your GitHub repository, find the `Publish Docker Container` workflow and select `Configure`.
 
     ![The Publish Docker Container workflow that defines the series of GitHub actions used to build and push a docker container to a GitHub Container Registry.](media/hol-ex1-task4-step5-1.png "Publish Docker Container workflow")
 
