@@ -227,27 +227,13 @@ You will need to make some edits to files before running these locally.
 
 Now that we have Docker images working locally, we can now work on the automation.
 
-1. Select the `Settings` tab from your lab files repository in GitHub.
-
-2. Select the `Secrets` blade from the left navigation bar.
-
-    ![The GitHub Repository Settings tab.](media/hol-ex1-task4-step2-1.png "GitHub Repository Settings")
-
-3. Select the `New repository secret` button.
-
-    ![The GitHub Repository Secrets we will create a new repository secret here used in a later step.](media/hol-ex1-task4-step3-1.png "GitHub Repository Secrets")
-
-4. Enter the name `CR_PAT` in the `New secret` form and set the GitHub Personal Access Token we created in the Before the Hands-On Lab instructions.
-
-    ![The New secret form where we create the `CR_PAT` secret.](media/hol-ex1-task4-step4-1.png "New secret form")
-
-5. Select the `Actions` tab in your GitHub repository, find the `Publish Docker Container` workflow and select `Set up this workflow`.
+1. Select the `Actions` tab in your GitHub repository, find the `Publish Docker Container` workflow and select `Configure`.
 
     ![The Publish Docker Container workflow that defines the series of GitHub actions used to build and push a docker container to a GitHub Container Registry.](media/hol-ex1-task4-step5-1.png "Publish Docker Container workflow")
 
-6. Rename the file to `fabrikam-web.yml`.
+2. Rename the file to `fabrikam-web.yml`.
 
-7. Change the image name to `fabrikam-web` and the registry to `ghcr.io/${{ github.actor }}`. This is the name of the container image that will be pushed to the GitHub Container Registry.
+3. Change the image name to `fabrikam-web` and the registry to `ghcr.io/${{ github.actor }}`. This is the name of the container image that will be pushed to the GitHub Container Registry.
 
     ```yaml
     env:
@@ -257,10 +243,10 @@ Now that we have Docker images working locally, we can now work on the automatio
       IMAGE_NAME: fabrikam-web
     ```
 
-8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure the correct `Dockerfile` file can be found.
+4. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure the correct `Dockerfile` file can be found.
 
     ```yaml
-    # Build and push Docker image with Buildx (don't push on PR)
+    # Build and push Docker image with Build (don't push on PR)
     # https://github.com/docker/build-push-action
     - name: Build and push Docker image
       id: build-and-push
@@ -273,15 +259,15 @@ Now that we have Docker images working locally, we can now work on the automatio
         labels: ${{ steps.meta.outputs.labels }}
     ```
 
-9. Commit the file to the repository.
+5. Commit the file to the repository.
 
-10. The GitHub Action is now running and will automatically build and push the container to GitHub registry.
+6. The GitHub Action is now running and will automatically build and push the container to GitHub registry.
 
     ![Summary of running Docker workflow executing in GitHub Actions tab of repository.](media/hol-ex1-task4-step10-1.png "GitHub Actions")
 
     ![Detail of running Docker workflow.](media/hol-ex1-task4-step10-2.png "GitHub Action Detail")
 
-11. Set up workflows for `content-api` and `content-init` in the same manner.
+7. Set up workflows for `content-api` and `content-init` in the same manner.
     - In the `env:` section, update the **IMAGE_NAME** to `fabrikam-api` or `fabrikam-init` and set **REGISTRY** to `ghcr.io/${{ github.actor }}`.
     - In the `jobs:` section, in the `Build and push Docker image` step, set the **file** and **context** paths to the respective `content-api` or `content-init` folders.
     - Save the YAML files as `fabrikam-api.yml` and `fabrikam-init.yml`, respectively.
@@ -290,11 +276,11 @@ Now that we have Docker images working locally, we can now work on the automatio
 
     > **Note**: If you encounter any errors due to `cosign`, feel free to remove the image signing section from the workflow, as it is not needed to complete the lab. You could alternatively add a manual trigger (see above) and try running the workflow again, to determine if the error is transient.
 
-12. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
+8. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
 
     ![GitHub Packages tab listing summary of container images that have been pushed to the container registry.](media/hol-ex1-task4-step12-1.png "GitHub Packages")
 
-13. Pull the latest changes from your GitHub repository.
+9. Pull the latest changes from your GitHub repository.
 
 ## Exercise 2: Continuous Delivery
 
@@ -700,17 +686,31 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
     }
     ```
 
-3. In your GitHub lab files repository, navigate to the `Secrets` blade in the `Settings` tag and create a new repository secret named `AZURE_CREDENTIALS`. Paste the JSON output copied in the previous step to the secret value and save it.
+3. In your GitHub lab files repository, select the `Settings` tab.
 
-4. Add a new GitHub Action workflow in your GitHub lab files repository by selecting the `Actions` tab and selecting `New workflow`.
+4. Select the `Secrets` blade from the left navigation bar.
+
+    ![The GitHub Repository Settings tab.](media/hol-ex1-task4-step2-1.png "GitHub Repository Settings")
+
+5. Select the `New repository secret` button.
+
+    ![The GitHub Repository Secrets we will create a new repository secret here used in a later step.](media/hol-ex1-task4-step3-1.png "GitHub Repository Secrets")
+
+6. Enter the name `CR_PAT` in the `New secret` form and set the GitHub Personal Access Token we created in the Before the Hands-On Lab instructions.
+
+    ![The New secret form where we create the `CR_PAT` secret.](media/hol-ex1-task4-step4-1.png "New secret form")
+
+7. Create a new repository secret named `AZURE_CREDENTIALS`. Paste the JSON output copied from Step 2 to the secret value and save it.
+
+8. Add a new GitHub Action workflow in your GitHub lab files repository by selecting the `Actions` tab and selecting `New workflow`.
 
     ![The `New workflow` button in the repository GitHub Actions tab.](media/hol-ex3-task2-step1-1.png "GitHub Actions")
 
-5. Select the `Set up a workflow yourself` link. Name the new YAML file `docker-publish.yml`.  
+9. Select the `Set up a workflow yourself` link. Name the new YAML file `docker-publish.yml`.  
 
     ![The Choose a workflow options are listed and the link to set up a workflow yourself is highlighted for emphasis.](media/hol-ex3-task2-step5-1.png "GitHub Actions")
 
-6. Change the `name` property to `Docker Compose Build and Deploy`. Modify the YAML to reflect the following.
+10. Change the `name` property to `Docker Compose Build and Deploy`. Modify the YAML to reflect the following.
 
     >**Note**: Make sure to change the student prefix for the last action in the `build` job.
 
@@ -777,17 +777,17 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
                                                     # previous steps.
     ```
 
-7. Commit the YAML file to your `main` branch. A GitHub action should begin to execute for the new workflow.
+11. Commit the YAML file to your `main` branch. A GitHub action should begin to execute for the new workflow.
 
     >**Note**: Make sure that your Actions workflow file does not contain any syntax errors, which may appear when you copy and paste. They are highlighted in the editor or when the Action tries to run, as shown below.
 
     ![GitHub Actions workflow file syntax error.](media/github-actions-workflow-file-error.png "Syntax error in Actions workflow file")
 
-8. Observe that the action builds the docker images, pushes them to the container registry, and deploys them to the Azure web application.
+12. Observe that the action builds the docker images, pushes them to the container registry, and deploys them to the Azure web application.
 
     ![GitHub Action detail reflecting Docker ](media/hol-ex3-task2-step8-1.png "GitHub Action detail")
 
-9. Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
+13. Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
 
 ### Task 3: Continuous Deployment with Azure DevOps Pipelines
 
