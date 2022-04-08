@@ -225,13 +225,27 @@ You will need to make some edits to files before running these locally.
 
 ### Task 4: Build Automation with GitHub Registry
 
-Now that we have Docker images working locally, we can now work on the automation. First, we will create a workflow file using the GitHub interface.  Then, we will use a YAML file with a more appropriate workflow for the structure of our repository. This task will end with a file named `docker-publish.yml` that will rebuild and publish Docker images as their respective code is updated.
+Now that we have Docker images working locally, we can now work on the automation in GitHub. First, we will create a workflow file using the GitHub interface and its GitHub Actions workflow editor.  Then, we will use a YAML file with a more appropriate workflow for the structure of our repository. This task will end with a file named `docker-publish.yml` that will rebuild and publish Docker images as their respective code is updated.
 
-1. Select the `Actions` tab in your GitHub repository, find the `Publish Docker Container` workflow and select `Configure`.
+1. In your GitHub lab files repository, select the `Settings` tab.
+
+2. Select the `Secrets` blade from the left navigation bar.
+
+    ![The GitHub Repository Settings tab.](media/hol-ex1-task4-step2-1.png "GitHub Repository Settings")
+
+3. Select the `New repository secret` button.
+
+    ![The GitHub Repository Secrets we will create a new repository secret here used in a later step.](media/hol-ex1-task4-step3-1.png "GitHub Repository Secrets")
+
+4. Enter the name `CR_PAT` in the `New secret` form and set the GitHub Personal Access Token we created in the Before the Hands-On Lab instructions.
+
+    ![The New secret form where we create the `CR_PAT` secret.](media/hol-ex1-task4-step4-1.png "New secret form")
+
+5. Select the `Actions` tab in your GitHub repository, find the `Publish Docker Container` workflow and select `Configure`.
 
     ![The Publish Docker Container workflow that defines the series of GitHub actions used to build and push a docker container to a GitHub Container Registry.](media/hol-ex1-task4-step5-1.png "Publish Docker Container workflow")
 
-2. Change the registry to `ghcr.io/${{ github.actor }}`. Replace the IMAGE_NAME line with `fabrikam-web`:
+6. Change the registry to `ghcr.io/${{ github.actor }}`. Replace the IMAGE_NAME line with `fabrikam-web`:
 
     ```yaml
     env:
@@ -241,7 +255,7 @@ Now that we have Docker images working locally, we can now work on the automatio
       IMAGE_NAME: fabrikam-web
     ```
 
-3. The login step needs to be adjusted to use our `CR_PAT` secret value for the `password`:
+7. The login step needs to be adjusted to use our `CR_PAT` secret value for the `password`:
 
     ```yaml
         # Login against a Docker registry except on PR
@@ -255,7 +269,7 @@ Now that we have Docker images working locally, we can now work on the automatio
             password: ${{ secrets.CR_PAT }}
     ```
 
-4. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure the correct `Dockerfile` file can be found.
+8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure the correct `Dockerfile` file can be found.
 
     ```yaml
       # Build and push Docker image with Buildx (don't push on PR)
@@ -271,17 +285,17 @@ Now that we have Docker images working locally, we can now work on the automatio
           labels: ${{ steps.meta.outputs.labels }}
     ```
 
-5. Commit the file to the repository. Select `Start commit`. Be sure that **Commit directly to the `main`branch** is selected. Finally, select `Commit new file`.
+9. Commit the file to the repository. Select `Start commit`. Be sure that **Commit directly to the `main`branch** is selected. Finally, select `Commit new file`.
 
-6. The GitHub Action is now running and will automatically build and push the container to GitHub registry.
+10. The GitHub Action is now running and will automatically build and push the container to GitHub registry.
 
     ![Summary of running Docker workflow executing in GitHub Actions tab of repository.](media/hol-ex1-task4-step10-1.png "GitHub Actions")
 
     ![Detail of running Docker workflow.](media/hol-ex1-task4-step10-2.png "GitHub Action Detail")
 
-7. Pull the changes from your repository to your copy of the code.
+11. Pull the changes from your repository to your copy of the code.
 
-8. Copy `docker-publish.yml` from the `Hands-on lab\lab-files` folder to the `.github\workflows` folder, overwriting what you created in steps 1-5.
+12. Copy `docker-publish.yml` from the `Hands-on lab\lab-files` folder to the `.github\workflows` folder, overwriting what you created in steps 1-5.
 
     - This file builds the following workflow:
   ![GitHub workflow with 4 jobs - Check modified files, Update the API Docker image, Update the Init Docker image, Update the Web Docker image. This example shows a commit updating the Init and Web APIs. The workflow shows Update the API Docker image skipped, while Update the Init Docker image and Update the Web Docker image are in progress.](media/github-actions-workflow-with-skip.png)
@@ -294,13 +308,13 @@ Now that we have Docker images working locally, we can now work on the automatio
   
     - Each of the `build-` jobs are marked with `needs` to depend on the `git diff` check.  The `if` indicates the condition that will trigger that job to run.
 
-9. Commit this change to your repo, then push the change to GitHub.
+13. Commit this change to your repo, then push the change to GitHub.
 
     > **Note**: You can optionally add `workflow_dispatch:` in the `on:` trigger section to set a manual trigger for the GitHub Actions workflow.
 
     > **Note**: If you encounter any errors due to `cosign`, feel free to remove the image signing section from the workflow, as it is not needed to complete the lab. You could alternatively add a manual trigger (see above) and try running the workflow again, to determine if the error is transient.
 
-10. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
+14. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
 
     ![GitHub Packages tab listing summary of container images that have been pushed to the container registry.](media/hol-ex1-task4-step12-1.png "GitHub Packages")
 
@@ -328,7 +342,7 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
     $location2 = "northeurope"
     ```
 
-3. Note the individual calls to the `azcli` for the following:
+3. Note the individual calls to the Azure CLI for the following:
     - Creating a Resource Group
 
         ```pwsh
@@ -338,10 +352,10 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
             --name $resourcegroupName
         ```
 
-    - Creating a CosmosDB Database
+    - Creating an Azure Cosmos DB Database
 
         ```pwsh
-        # Create CosmosDB database
+        # Create Azure Cosmos DB database
         az cosmosdb create `
             --name $cosmosDBName `
             --resource-group $resourcegroupName `
@@ -373,7 +387,7 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
             --deployment-container-image-name nginx
         ```
 
-4. Log in to Azure using `azcli`.
+4. Log in to Azure using the Azure CLI.
 
     ```pwsh
     az login
@@ -407,7 +421,7 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
 
     >**Note**: Depending on your system, you may need to change the PowerShell Execution Policy. You can read more about this process [here.](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies)
 
-6. Browse to the Azure Portal and verify creation of the resource group, CosmosDB instance, the App Service Plan, and the Web App.
+6. Browse to the Azure Portal and verify creation of the resource group, Cosmos DB instance, the App Service Plan, and the Web App.
 
     ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step6-1.png "Azure Resource Group")
 
@@ -420,10 +434,10 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
     ```
 
-8. Observe the call to fetch the MongoDB connection string for the CosmosDB database.
+8. Observe the call to fetch the MongoDB connection string for the Azure Cosmos DB database.
 
     ```pwsh
-    # Fetch CosmosDB Mongo connection string
+    # Fetch Azure Cosmos DB Mongo connection string
     $mongodbConnectionString = `
         $(az cosmosdb keys list `
             --name $cosmosDBName `
@@ -432,10 +446,10 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
             --query 'connectionStrings[0].connectionString')
     ```
 
-9. The call to seed the CosmosDB database is using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the `fabrikam-init` docker image we built in the previous exercise using `docker-compose`.
+9. The call to seed the Azure Cosmos DB database is using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the `fabrikam-init` docker image we built in the previous exercise using `docker-compose`.
 
     ```pwsh
-    # Seed CosmosDB database
+    # Seed Azure Cosmos DB database
     docker run -ti `
         -e MONGODB_CONNECTION="$mongodbConnectionString" `
         ghcr.io/$githubAccount/fabrikam-init:main
@@ -447,9 +461,9 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
     docker login ghcr.io -u [USERNAME]
     ```
 
-10. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and verify that the CosmosDB instance has been seeded.
+10. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and verify that the Azure Cosmos DB instance has been seeded.
 
-    ![Azure CosmosDB contents displayed via the CosmosDB explorer in the Azure CosmosDB resource detail.](media/hol-ex2-task1-step10-1.png "Azure CosmosDB Seeded Contents")
+    ![Azure Cosmos DB contents displayed via the Azure Cosmos DB explorer in the Azure Cosmos DB resource detail.](media/hol-ex2-task1-step10-1.png "Azure Cosmos DB Seeded Contents")
 
      >**Note**: If the `seed-cosmosdb.ps1` script cannot find the `fabrikam-init` image, you may need to check the possible versions by looking at the `fabrikam-init` package page in your `mcw-continuous-delivery-lab-files` repository in GitHub.
 
@@ -707,20 +721,6 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
         "managementEndpointUrl": "https://management.core.windows.net/"
     }
     ```
-
-3. In your GitHub lab files repository, select the `Settings` tab.
-
-4. Select the `Secrets` blade from the left navigation bar.
-
-    ![The GitHub Repository Settings tab.](media/hol-ex1-task4-step2-1.png "GitHub Repository Settings")
-
-5. Select the `New repository secret` button.
-
-    ![The GitHub Repository Secrets we will create a new repository secret here used in a later step.](media/hol-ex1-task4-step3-1.png "GitHub Repository Secrets")
-
-6. Enter the name `CR_PAT` in the `New secret` form and set the GitHub Personal Access Token we created in the Before the Hands-On Lab instructions.
-
-    ![The New secret form where we create the `CR_PAT` secret.](media/hol-ex1-task4-step4-1.png "New secret form")
 
 7. Create a new repository secret named `AZURE_CREDENTIALS`. Paste the JSON output copied from Step 2 to the secret value and save it.
 
