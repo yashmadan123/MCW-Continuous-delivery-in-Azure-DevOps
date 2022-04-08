@@ -37,14 +37,14 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 2: Build Automation with GitHub Registry](#task-2-build-automation-with-github-registry)
     - [Task 3: Editing the GitHub Workflow File Locally](#task-3-editing-the-github-workflow-file-locally)
     - [Task 4: Using Dependabot](#task-4-using-dependabot)
-  - [Exercise 2: Continuous Delivery](#exercise-2-continuous-delivery)
+  - [Exercise 2: Continuous Delivery / Continuous Deployment](#exercise-2-continuous-delivery--continuous-deployment)
     - [Task 1: Set up Cloud Infrastructure](#task-1-set-up-cloud-infrastructure)
-    - [Task 2: Deployment Automation to Azure Web Application](#task-2-deployment-automation-to-azure-web-application)
-    - [Task 3: Linking Git commits to Azure DevOps issues](#task-3-linking-git-commits-to-azure-devops-issues)
+    - [Task 2: Deploy to Azure Web Application](#task-2-deploy-to-azure-web-application)
+    - [Task 3: Continuous Deployment with GitHub Actions](#task-3-continuous-deployment-with-github-actions)
     - [Task 4: Branch Policies in GitHub (Optional)](#task-4-branch-policies-in-github-optional)
-  - [Exercise 3: Monitoring and logging in Azure](#exercise-3-monitoring-and-logging-in-azure)
+  - [Exercise 3: Monitoring, Logging, and Continuous Deployment with Azure](#exercise-3-monitoring-logging-and-continuous-deployment-with-azure)
     - [Task 1: Set up Application Insights](#task-1-set-up-application-insights)
-    - [Task 2: Continuous Deployment with GitHub Actions](#task-2-continuous-deployment-with-github-actions)
+    - [Task 2: Linking Git commits to Azure DevOps issues](#task-2-linking-git-commits-to-azure-devops-issues)
     - [Task 3: Continuous Deployment with Azure DevOps Pipelines](#task-3-continuous-deployment-with-azure-devops-pipelines)
   - [After the hands-on lab](#after-the-hands-on-lab)
     - [Task 1: Tear down Azure Resources](#task-1-tear-down-azure-resources)
@@ -298,7 +298,7 @@ Another part of continuous integration is having a bot help track versions of th
     git pull
     ```
 
-## Exercise 2: Continuous Delivery
+## Exercise 2: Continuous Delivery / Continuous Deployment
 
 Duration: 40 minutes
 
@@ -490,7 +490,7 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
 
     ![Azure Web Application settings reflecting the `MONGODB_CONNECTION` environment variable configured via PowerShell.](media/hol-ex2-task1-step15-1.png "Azure Web Application settings")
 
-### Task 2: Deployment Automation to Azure Web Application
+### Task 2: Deploy to Azure Web Application
 
 Once the infrastructure is in place, then we can deploy the code to Azure. In this task, you will deploy the application to an Azure Web Application using a PowerShell script that makes calls with the Azure CLI.
 
@@ -537,154 +537,9 @@ Once the infrastructure is in place, then we can deploy the code to Azure. In th
 
     ![The Contoso Conference website hosted in Azure.](media/hol-ex2-task2-step6-2.png "Azure hosted Web Application")
 
-### Task 3: Linking Git commits to Azure DevOps issues
+### Task 3: Continuous Deployment with GitHub Actions
 
-In this task, you will create an issue in Azure DevOps and link a Git pull request from GitHub to the Azure DevOps issue. This uses the Azure Boards integration that was set up in the Before Hands on Lab.
-
-1. Create a new issue for modifying the README.md in Azure Boards
-
-    !["New issue for updating README.md added to Azure Boards"](media/hol-ex2-task3-step4-1.png "Azure Boards")
-
-    > **Note**: Make note of the issue number, as you will need it for a later step.
-
-2. Create a branch from `main` and name it `feature/update-readme`.
-
-    ```pwsh
-    git checkout main
-    git checkout -b feature/update-readme  # <- This creates the branch and checks it out    
-    ```    
-
-3. Make a small change to README.md. Commit the change, and push it to GitHub.
-
-    ```pwsh
-    git commit -m "README.md update"
-    git push --set-upstream origin feature/update-readme
-    ```
-
-4. Create a pull request to merge `feature/update-readme` into `main` in GitHub. Add the annotation `AB#YOUR_ISSUE_NUMBER_FROM_STEP_4` in the description of the pull request to link the GitHub pull request with the new Azure Boards issue in step 4. For example, if your issue number is 2, then your annotation in the pull request description should include `AB#2`.
-
-    > **Note**: The `Docker` build workflow executes as part of the status checks.
-
-5. Select the `Merge pull request` button after the build completes successfully to merge the Pull Request into `main`.
-
-    !["Pull request for merging the feature/update-main branch into main"](media/hol-ex2-task3-step7-1.png "Create pull request")
-
-    > **Note**: Under normal circumstances, this pull request would be reviewed by someone other than the author of the pull request. For now, use your administrator privileges to force the merge of the pull request.
-
-6. Observe in Azure Boards that the Issue is appropriately linked to the GitHub comment.
-
-    !["The Update README.md issue with the comment from the pull request created in step 6 linked"](media/hol-ex2-task3-step8-1.png "Azure Boards Issue")
-
-### Task 4: Branch Policies in GitHub (Optional)
-
-In many enterprises, committing to `main` is restricted. Branch policies are used to control how code gets to `main`. This allows you to set up gates on delivery, such as requiring code reviews and status checks. In this task, you will create a branch protection rule and see it in action.
-
->**Note**: Branch protection rules apply to Pro, Team, and Enterprise GitHub users.
-
-1. In your lab files GitHub repository, navigate to the `Settings` tab and select the `Branches` blade.
-
-    ![GitHub Branch settings for the repository](media/hol-ex2-task3-step1-1.png "Branch Protection Rules")
-
-2. Select the `Add rule` button to add a new branch protection rule for the `main` branch. Be sure to specify `main` in the branch name pattern field. Enable the following options and choose the `Create` button to create the branch protection rules:
-
-   - Require pull request reviews before merging
-   - Require status checks to pass before merging
-   - Require branches to be up to date before merging
-
-    ![Branch protection rule creation form](media/hol-ex2-task3-step2-1.png "Create a new branch protection rule in GitHub")
-
-3. With the branch protection rule in place, direct commits and pushes to the `main` branch will be disabled. Verify this rule by making a small change to your README.md file. Attempt to commit the change to the `main` branch in your local repository followed by a push to the remote repository.
-
-    ```pwsh
-    PS C:\Workspaces\lab\mcw-continuous-delivery-lab-files> git add .
-
-    PS C:\Workspaces\lab\mcw-continuous-delivery-lab-files> git commit -m "Updating README.md"
-
-    [main cafa839] Updating README.md
-    1 file changed, 2 insertions(+)
-    PS C:\Workspaces\lab\mcw-continuous-delivery-lab-files> git push
-
-    Enumerating objects: 5, done.
-    Counting objects: 100% (5/5), done.
-    Delta compression using up to 32 threads
-    Compressing objects: 100% (3/3), done.
-    Writing objects: 100% (3/3), 315 bytes | 315.00 KiB/s, done.
-    Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
-    remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
-    remote: error: GH006: Protected branch update failed for refs/heads/main.
-    remote: error: At least 1 approving review is required by reviewers with write access.
-    To https://github.com/YOUR_GITHUB_ACCOUNT/mcw-continuous-delivery-lab-files.git
-    ! [remote rejected] main -> main (protected branch hook declined)
-    error: failed to push some refs to 'https://github.com/YOUR_GITHUB_ACCOUNT/mcw-continuous-delivery-lab-files.git'
-    ```
-
-## Exercise 3: Monitoring and logging in Azure
-
-Duration: 40 minutes
-
-Fabrikam Medical Conferences has its first website for a customer running in the cloud, but deployment is still a largely manual process, and we have no insight into the behavior of the application in the cloud. In this exercise, we will add monitoring and logging to gain insight on the application usage in the cloud.
-
-### Task 1: Set up Application Insights
-
-In this task, we will set up Application Insights to gain some insights on how our site is being used.
-
-1. Open the `deploy-appinsights.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentsuffix` variable on the first line.
-
-    ```pwsh
-    $studentsuffix = "Your 3 letter abbreviation here"
-    $resourcegroupName = "fabmedical-rg-" + $studentsuffix
-    $location1 = "westeurope"
-    $appInsights = "fabmedicalai-" + $studentsuffix
-    ```
-
-2. Run the `deploy-appinsights.ps1` PowerShell script from a PowerShell terminal and save the `AI Instrumentation Key` specified in the output - we will need it for a later step.
-
-    ```bash
-    The installed extension 'application-insights' is in preview.
-    AI Instrumentation Key="55cade0c-197e-4489-961c-51e2e6423ea2"
-    ```
-
-3. Navigate to the `./content-web` folder in your GitHub lab files repository and execute the following to install JavaScript support for Application Insights via NPM to the web application frontend.
-
-    ```bash
-    npm install applicationinsights --save
-    ```
-
-4. Modify the file `./content-web/app.js` to reflect the following to add and configure Application Insights for the web application frontend.
-
-    ```js
-    const express = require('express');
-    const http = require('http');
-    const path = require('path');
-    const request = require('request');
-
-    const app = express();
-
-    const appInsights = require("applicationinsights");         # <-- Add these lines here
-    appInsights.setup("55cade0c-197e-4489-961c-51e2e6423ea2");  # <-- Make sure AI Inst. Key matches
-    appInsights.start();                                        # <-- key from step 2.
-
-    app.use(express.static(path.join(__dirname, 'dist/content-web')));
-    const contentApiUrl = process.env.CONTENT_API_URL || "http://localhost:3001";
-    ```
-
-5. Add and commit changes to your GitHub lab-files repository. From the root of the repository, execute the following:
-
-    ```pwsh
-    git add .
-    git commit -m "Added Application Insights"
-    git push
-    ```
-
-6. Wait for the GitHub Actions for your lab files repository to complete before executing the next step.
-
-7. Redeploy the web application by running the `deploy-webapp.ps1` PowerShell script from the `infrastructure` folder.
-
-8. Visit the deployed website and check Application Insights in [the Azure portal](https://portal.azure.com) to see instrumentation data.
-
-### Task 2: Continuous Deployment with GitHub Actions
-
-With the infrastructure and logging in place, we can set up continuous deployment with GitHub Actions.
+With the infrastructure in place, we can set up continuous deployment with GitHub Actions.
 
 1. Open the `deploy-sp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line. Note the call to create a Service Principal.
 
@@ -764,6 +619,151 @@ With the infrastructure and logging in place, we can set up continuous deploymen
     ![GitHub Action detail reflecting Docker ](media/hol-ex3-task2-step8-1.png "GitHub Action detail")
 
 7. Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
+
+### Task 4: Branch Policies in GitHub (Optional)
+
+In many enterprises, committing to `main` is restricted. Branch policies are used to control how code gets to `main`. This allows you to set up gates on delivery, such as requiring code reviews and status checks. In this task, you will create a branch protection rule and see it in action.
+
+>**Note**: Branch protection rules apply to Pro, Team, and Enterprise GitHub users.
+
+1. In your lab files GitHub repository, navigate to the `Settings` tab and select the `Branches` blade.
+
+    ![GitHub Branch settings for the repository](media/hol-ex2-task3-step1-1.png "Branch Protection Rules")
+
+2. Select the `Add rule` button to add a new branch protection rule for the `main` branch. Be sure to specify `main` in the branch name pattern field. Enable the following options and choose the `Create` button to create the branch protection rules:
+
+   - Require pull request reviews before merging
+   - Require status checks to pass before merging
+   - Require branches to be up to date before merging
+
+    ![Branch protection rule creation form](media/hol-ex2-task3-step2-1.png "Create a new branch protection rule in GitHub")
+
+3. With the branch protection rule in place, direct commits and pushes to the `main` branch will be disabled. Verify this rule by making a small change to your README.md file. Attempt to commit the change to the `main` branch in your local repository followed by a push to the remote repository.
+
+    ```pwsh
+    PS C:\Workspaces\lab\mcw-continuous-delivery-lab-files> git add .
+
+    PS C:\Workspaces\lab\mcw-continuous-delivery-lab-files> git commit -m "Updating README.md"
+
+    [main cafa839] Updating README.md
+    1 file changed, 2 insertions(+)
+    PS C:\Workspaces\lab\mcw-continuous-delivery-lab-files> git push
+
+    Enumerating objects: 5, done.
+    Counting objects: 100% (5/5), done.
+    Delta compression using up to 32 threads
+    Compressing objects: 100% (3/3), done.
+    Writing objects: 100% (3/3), 315 bytes | 315.00 KiB/s, done.
+    Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+    remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+    remote: error: GH006: Protected branch update failed for refs/heads/main.
+    remote: error: At least 1 approving review is required by reviewers with write access.
+    To https://github.com/YOUR_GITHUB_ACCOUNT/mcw-continuous-delivery-lab-files.git
+    ! [remote rejected] main -> main (protected branch hook declined)
+    error: failed to push some refs to 'https://github.com/YOUR_GITHUB_ACCOUNT/mcw-continuous-delivery-lab-files.git'
+    ```
+
+## Exercise 3: Monitoring, Logging, and Continuous Deployment with Azure
+
+Duration: 40 minutes
+
+Fabrikam Medical Conferences has its first website for a customer running in the cloud, but deployment is still a largely manual process, and we have no insight into the behavior of the application in the cloud. In this exercise, we will add monitoring and logging to gain insight on the application usage in the cloud. Then, we will disable the GitHub pipeline and show how to build a deployment pipeline in Azure DevOps.
+
+### Task 1: Set up Application Insights
+
+In this task, we will set up Application Insights to gain some insights on how our site is being used and assist in debugging if we run into issues.
+
+1. Open the `deploy-appinsights.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentsuffix` variable on the first line.
+
+    ```pwsh
+    $studentsuffix = "Your 3 letter abbreviation here"
+    $resourcegroupName = "fabmedical-rg-" + $studentsuffix
+    $location1 = "westeurope"
+    $appInsights = "fabmedicalai-" + $studentsuffix
+    ```
+
+2. Run the `deploy-appinsights.ps1` PowerShell script from a PowerShell terminal and save the `AI Instrumentation Key` specified in the output - we will need it for a later step.
+
+    ```bash
+    The installed extension 'application-insights' is in preview.
+    AI Instrumentation Key="55cade0c-197e-4489-961c-51e2e6423ea2"
+    ```
+
+3. Navigate to the `./content-web` folder in your GitHub lab files repository and execute the following to install JavaScript support for Application Insights via NPM to the web application frontend.
+
+    ```bash
+    npm install applicationinsights --save
+    ```
+
+4. Modify the file `./content-web/app.js` to reflect the following to add and configure Application Insights for the web application frontend.
+
+    ```js
+    const express = require('express');
+    const http = require('http');
+    const path = require('path');
+    const request = require('request');
+
+    const app = express();
+
+    const appInsights = require("applicationinsights");         # <-- Add these lines here
+    appInsights.setup("55cade0c-197e-4489-961c-51e2e6423ea2");  # <-- Make sure AI Inst. Key matches
+    appInsights.start();                                        # <-- key from step 2.
+
+    app.use(express.static(path.join(__dirname, 'dist/content-web')));
+    const contentApiUrl = process.env.CONTENT_API_URL || "http://localhost:3001";
+    ```
+
+5. Add and commit changes to your GitHub lab-files repository. From the root of the repository, execute the following:
+
+    ```pwsh
+    git add .
+    git commit -m "Added Application Insights"
+    git push
+    ```
+
+6. Wait for the GitHub Actions for your lab files repository to complete before executing the next step.
+
+7. Redeploy the web application by running the `deploy-webapp.ps1` PowerShell script from the `infrastructure` folder.
+
+8. Visit the deployed website and check Application Insights in [the Azure portal](https://portal.azure.com) to see instrumentation data.
+
+### Task 2: Linking Git commits to Azure DevOps issues
+
+In this task, you will create an issue in Azure DevOps and link a Git pull request from GitHub to the Azure DevOps issue. This uses the Azure Boards integration that was set up in the Before Hands on Lab.
+
+1. Create a new issue for modifying the README.md in Azure Boards
+
+    !["New issue for updating README.md added to Azure Boards"](media/hol-ex2-task3-step4-1.png "Azure Boards")
+
+    > **Note**: Make note of the issue number, as you will need it for a later step.
+
+2. Create a branch from `main` and name it `feature/update-readme`.
+
+    ```pwsh
+    git checkout main
+    git checkout -b feature/update-readme  # <- This creates the branch and checks it out    
+    ```    
+
+3. Make a small change to README.md. Commit the change, and push it to GitHub.
+
+    ```pwsh
+    git commit -m "README.md update"
+    git push --set-upstream origin feature/update-readme
+    ```
+
+4. Create a pull request to merge `feature/update-readme` into `main` in GitHub. Add the annotation `AB#YOUR_ISSUE_NUMBER_FROM_STEP_4` in the description of the pull request to link the GitHub pull request with the new Azure Boards issue in step 4. For example, if your issue number is 2, then your annotation in the pull request description should include `AB#2`.
+
+    > **Note**: The `Docker` build workflow executes as part of the status checks.
+
+5. Select the `Merge pull request` button after the build completes successfully to merge the Pull Request into `main`.
+
+    !["Pull request for merging the feature/update-main branch into main"](media/hol-ex2-task3-step7-1.png "Create pull request")
+
+    > **Note**: Under normal circumstances, this pull request would be reviewed by someone other than the author of the pull request. For now, use your administrator privileges to force the merge of the pull request.
+
+6. Observe in Azure Boards that the Issue is appropriately linked to the GitHub comment.
+
+    !["The Update README.md issue with the comment from the pull request created in step 6 linked"](media/hol-ex2-task3-step8-1.png "Azure Boards Issue")
 
 ### Task 3: Continuous Deployment with Azure DevOps Pipelines
 
