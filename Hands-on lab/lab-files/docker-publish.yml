@@ -61,6 +61,7 @@ jobs:
             done < files.txt
   build-api:
     runs-on: ubuntu-latest
+    name: Update the API Docker image
     needs: check_changed_folders
     if: needs.check_changed_folders.outputs.run_api_job == 'true'
     permissions:
@@ -132,6 +133,7 @@ jobs:
       
   build-init:
     runs-on: ubuntu-latest
+    name: Update the Init Docker image
     needs: check_changed_folders
     if: needs.check_changed_folders.outputs.run_init_job == 'true'
     permissions:
@@ -203,6 +205,7 @@ jobs:
     
   build-web:
     runs-on: ubuntu-latest
+    name: Update the Web Docker image
     needs: check_changed_folders
     if: needs.check_changed_folders.outputs.run_web_job == 'true'
     permissions:

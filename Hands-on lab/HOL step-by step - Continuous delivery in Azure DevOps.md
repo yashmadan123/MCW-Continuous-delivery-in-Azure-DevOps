@@ -225,15 +225,13 @@ You will need to make some edits to files before running these locally.
 
 ### Task 4: Build Automation with GitHub Registry
 
-Now that we have Docker images working locally, we can now work on the automation.
+Now that we have Docker images working locally, we can now work on the automation. First, we will create a workflow file using the GitHub interface.  Then, we will use a YAML file with a more appropriate workflow for the structure of our repository. This task will end with a file named `docker-publish.yml` that will rebuild and publish Docker images as their respective code is updated.
 
 1. Select the `Actions` tab in your GitHub repository, find the `Publish Docker Container` workflow and select `Configure`.
 
     ![The Publish Docker Container workflow that defines the series of GitHub actions used to build and push a docker container to a GitHub Container Registry.](media/hol-ex1-task4-step5-1.png "Publish Docker Container workflow")
 
-2. Rename the file to `fabrikam-web.yml`.
-
-3. Change the image name to `fabrikam-web` and the registry to `ghcr.io/${{ github.actor }}`. This is the name of the container image that will be pushed to the GitHub Container Registry.
+2. Change the registry to `ghcr.io/${{ github.actor }}`. Replace the IMAGE_NAME line with `fabrikam-web`:
 
     ```yaml
     env:
@@ -243,23 +241,37 @@ Now that we have Docker images working locally, we can now work on the automatio
       IMAGE_NAME: fabrikam-web
     ```
 
+3. The login step needs to be adjusted to use our `CR_PAT` secret value for the `password`:
+
+    ```yaml
+        # Login against a Docker registry except on PR
+        # https://github.com/docker/login-action
+        - name: Log into registry ${{ env.REGISTRY }}
+            if: github.event_name != 'pull_request'
+            uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
+            with:
+            registry: ${{ env.REGISTRY }}
+            username: ${{ github.actor }}
+            password: ${{ secrets.CR_PAT }}
+    ```
+
 4. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure the correct `Dockerfile` file can be found.
 
     ```yaml
-    # Build and push Docker image with Build (don't push on PR)
-    # https://github.com/docker/build-push-action
-    - name: Build and push Docker image
-      id: build-and-push
-      uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-      with:
-        file: ./content-web/Dockerfile                      # <-- Add these
-        context: ./content-web                              # <-- two lines
-        push: ${{ github.event_name != 'pull_request' }}
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
+      # Build and push Docker image with Buildx (don't push on PR)
+      # https://github.com/docker/build-push-action
+      - name: Build and push Docker image for ${{ env.API_IMAGE_NAME }}
+        id: build-and-push
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          file: ./content-web/Dockerfile                      
+          context: ./content-web                              
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
     ```
 
-5. Commit the file to the repository.
+5. Commit the file to the repository. Select `Start commit`. Be sure that **Commit directly to the `main`branch** is selected. Finally, select `Commit new file`.
 
 6. The GitHub Action is now running and will automatically build and push the container to GitHub registry.
 
@@ -267,20 +279,31 @@ Now that we have Docker images working locally, we can now work on the automatio
 
     ![Detail of running Docker workflow.](media/hol-ex1-task4-step10-2.png "GitHub Action Detail")
 
-7. Set up workflows for `content-api` and `content-init` in the same manner.
-    - In the `env:` section, update the **IMAGE_NAME** to `fabrikam-api` or `fabrikam-init` and set **REGISTRY** to `ghcr.io/${{ github.actor }}`.
-    - In the `jobs:` section, in the `Build and push Docker image` step, set the **file** and **context** paths to the respective `content-api` or `content-init` folders.
-    - Save the YAML files as `fabrikam-api.yml` and `fabrikam-init.yml`, respectively.
+7. Pull the changes from your repository to your copy of the code.
+
+8. From the command-line, copy `docker-publish.yml` from the `Hands-on lab\lab-files` folder to the `.github\workflows` folder, overwriting what you created in steps 1-5.
+
+    - This file builds the following workflow:
+  ![GitHub workflow with 4 jobs - Check modified files, Update the API Docker image, Update the Init Docker image, Update the Web Docker image. This example shows a commit updating the Init and Web APIs. The workflow shows Update the API Docker image skipped, while Update the Init Docker image and Update the Web Docker image are in progress.](media/github-actions-workflow-with-skip.png)
+    - The `check_changed_folders` job takes the following steps:
+
+      1. Look through all files in the `git diff`.
+      2. If there are files changed in `content-api`, set a flag to update the API Docker Image.
+      3. If there are files changed in `content-web`, set a flag to update the Web Docker Image.
+      4. If there are files changed in `content-init`, set a flag to update the Init Docker Image.
+  
+    - Each of the `build-` jobs are marked with `needs` to depend on the `git diff` check.  The `if` indicates the condition that will trigger that job to run.
+
+9. Commit this change to your repo, then push the change to GitHub.
 
     > **Note**: You can optionally add `workflow_dispatch:` in the `on:` trigger section to set a manual trigger for the GitHub Actions workflow.
 
     > **Note**: If you encounter any errors due to `cosign`, feel free to remove the image signing section from the workflow, as it is not needed to complete the lab. You could alternatively add a manual trigger (see above) and try running the workflow again, to determine if the error is transient.
 
-8. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
+10. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
 
     ![GitHub Packages tab listing summary of container images that have been pushed to the container registry.](media/hol-ex1-task4-step12-1.png "GitHub Packages")
 
-9. Pull the latest changes from your GitHub repository.
 
 ## Exercise 2: Continuous Delivery
 
