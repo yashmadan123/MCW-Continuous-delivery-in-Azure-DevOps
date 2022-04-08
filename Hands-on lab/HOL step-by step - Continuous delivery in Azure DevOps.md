@@ -73,7 +73,7 @@ Websites for medical conferences are typically low-budget websites because the c
 1. Microsoft Azure subscription must be pay-as-you-go or MSDN.
    - Trial subscriptions will _not_ work.
    - To complete this lab setup, ensure your account includes the following:
-     - Has the [Owner](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#owner) built-in role for the subscription you use.
+     - Has the [Owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) built-in role for the subscription you use.
      - Is a [Member](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions#member-and-guest-users) user in the Azure AD tenant you use. (Guest users will not have the necessary permissions.)
 
 2. A Microsoft [GitHub](https://github.com) account.
@@ -86,11 +86,11 @@ Websites for medical conferences are typically low-budget websites because the c
 
 5. PowerShell
 
-    - As you will be running PowerShell scripts, make sure that the ExecutionPolicy is set properly. Consult [the Microsoft PowerShell documentation on execution policies](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies) for more details.
+    - As you will be running PowerShell scripts, make sure that the ExecutionPolicy is set properly. Consult [the Microsoft PowerShell documentation on execution policies](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies) for more details.
 
 6. Docker Desktop for Windows
 
-7. [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/)
+7. [Azure CLI](https://docs.microsoft.com/cli/azure/)
 
 8. Angular - minimum 8.3.4.
 
@@ -304,7 +304,6 @@ Now that we have Docker images working locally, we can now work on the automatio
 
     ![GitHub Packages tab listing summary of container images that have been pushed to the container registry.](media/hol-ex1-task4-step12-1.png "GitHub Packages")
 
-
 ## Exercise 2: Continuous Delivery
 
 Duration: 40 minutes
@@ -406,7 +405,7 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
     ./deploy-infrastructure.ps1
     ```
 
-    >**Note**: Depending on your system, you may need to change the PowerShell Execution Policy. You can read more about this process [here.](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies)
+    >**Note**: Depending on your system, you may need to change the PowerShell Execution Policy. You can read more about this process [here.](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies)
 
 6. Browse to the Azure Portal and verify creation of the resource group, CosmosDB instance, the App Service Plan, and the Web App.
 
