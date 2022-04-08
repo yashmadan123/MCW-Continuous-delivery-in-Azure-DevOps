@@ -35,7 +35,8 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Exercise 1: Continuous Integration](#exercise-1-continuous-integration)
     - [Task 1: Set up Local Infrastructure](#task-1-set-up-local-infrastructure)
     - [Task 2: Build Automation with GitHub Registry](#task-2-build-automation-with-github-registry)
-    - [Task 3: Using Dependabot](#task-3-using-dependabot)
+    - [Task 3: Editing the GitHub Workflow File Locally](#task-3-editing-the-github-workflow-file-locally)
+    - [Task 4: Using Dependabot](#task-4-using-dependabot)
   - [Exercise 2: Continuous Delivery](#exercise-2-continuous-delivery)
     - [Task 1: Set up Cloud Infrastructure](#task-1-set-up-cloud-infrastructure)
     - [Task 2: Deployment Automation to Azure Web App](#task-2-deployment-automation-to-azure-web-app)
@@ -99,7 +100,7 @@ Websites for medical conferences are typically low-budget websites because the c
 
 ## Before the hands-on lab
 
-You should follow all steps in the [Before the hands-on lab setup guide](Before%20the%20HOL%20-%20Continuous%20delivery%20in%20Azure%20DevOps.md) *before* performing the Hands-on lab.  Pay close attention to product versions, as the version numbers called out in the lab have been tested and shown successful for the lab.
+You should follow all steps in the [Before the hands-on lab setup guide](Before%20the%20HOL%20-%20Continuous%20delivery%20in%20Azure%20DevOps.md) *before* performing the Hands-on lab. Pay close attention to product versions, as the version numbers called out in the lab have been tested and shown successful for the lab.
 
 ## Exercise 1: Continuous Integration
 
@@ -120,13 +121,13 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 ### Task 1: Set up Local Infrastructure
 
-We are going to set up the local infrastructure using Docker containers. There are three images we will be working with:
+You are going to set up the local infrastructure using Docker containers. There are three images you will be working with:
 
 - `fabrikam-init`
 - `fabrikam-api`
 - `fabrikam-web`
 
-You will need to make some edits to files before running these locally.
+You will need to make some edits to files before running these locally. In this task, you will confirm that the Docker infrastructure works locally.
 
 1. Open your local GitHub folder for your `mcw-continuous-delivery-lab-files` repository.
 
@@ -153,7 +154,7 @@ You will need to make some edits to files before running these locally.
 
 ### Task 2: Build Automation with GitHub Registry
 
-Now that we have Docker images working locally, we can now work on the automation in GitHub. First, we will create a workflow file using the GitHub interface and its GitHub Actions workflow editor.  Then, we will use a YAML file with a more appropriate workflow for the structure of our repository. This task will end with a file named `docker-publish.yml` that will rebuild and publish Docker images as their respective code is updated.
+Now that we have Docker images working locally, we can build automation in GitHub for updating and republishing our Docker images when the code changes. In this task, we will create a workflow file using the GitHub interface and its GitHub Actions workflow editor. This will get you familiar with how to create and edit an action through the GitHub website.
 
 1. In your GitHub lab files repository, select the `Settings` tab.
 
@@ -169,21 +170,23 @@ Now that we have Docker images working locally, we can now work on the automatio
 
     ![The New secret form where we create the `CR_PAT` secret.](media/hol-ex1-task4-step4-1.png "New secret form")
 
+    > **Note**: CR_PAT is short for Container Registry Personal Authentication Token.
+
 5. Select the `Actions` tab in your GitHub repository, find the `Publish Docker Container` workflow and select `Configure`.
 
     ![The Publish Docker Container workflow that defines the series of GitHub actions used to build and push a docker container to a GitHub Container Registry.](media/hol-ex1-task4-step5-1.png "Publish Docker Container workflow")
 
-6. Change the registry to `ghcr.io/${{ github.actor }}`. Replace the IMAGE_NAME line with `fabrikam-web`:
+6. Change the registry to `ghcr.io/${{ github.actor }}`. Replace the IMAGE_NAME line with `fabrikam-web`. The `env` section of this file should look like this YAML:
 
     ```yaml
-    env:
-      # Use docker.io for Docker Hub if empty.
-      REGISTRY: ghcr.io/${{ github.actor }}
-      # github.repository as <account>/<repo>
-      IMAGE_NAME: fabrikam-web
+        env:
+        # Use docker.io for Docker Hub if empty.
+        REGISTRY: ghcr.io/${{ github.actor }}
+        # github.repository as <account>/<repo>
+        IMAGE_NAME: fabrikam-web
     ```
 
-7. The login step needs to be adjusted to use our `CR_PAT` secret value for the `password`:
+7. The login step needs to be adjusted to use our `CR_PAT` secret value for the `password`. The login step should look like this:
 
     ```yaml
         # Login against a Docker registry except on PR
@@ -194,10 +197,10 @@ Now that we have Docker images working locally, we can now work on the automatio
             with:
             registry: ${{ env.REGISTRY }}
             username: ${{ github.actor }}
-            password: ${{ secrets.CR_PAT }}
+            password: ${{ secrets.CR_PAT }} # <-- Change this from GITHUB_TOKEN
     ```
 
-8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure the correct `Dockerfile` file can be found.
+8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure the correct `Dockerfile` file can be found. The Build and push step should look like this:
 
     ```yaml
       # Build and push Docker image with Buildx (don't push on PR)
@@ -221,9 +224,13 @@ Now that we have Docker images working locally, we can now work on the automatio
 
     ![Detail of running Docker workflow.](media/hol-ex1-task4-step10-2.png "GitHub Action Detail")
 
-11. Pull the changes from your repository to your copy of the code.
+### Task 3: Editing the GitHub Workflow File Locally
 
-12. Copy `docker-publish.yml` from the `Hands-on lab\lab-files` folder to the `.github\workflows` folder, overwriting what you created in steps 1-5.
+The last task automated building and updating only one of the Docker images. In this task, we will update the workflow file with a more appropriate workflow for the structure of our repository. This task will end with a file named `docker-publish.yml` that will rebuild and publish Docker images as their respective code is updated.
+
+1. Pull the changes from your repository to your copy of the code.
+
+2. Copy `docker-publish.yml` from the `Hands-on lab\lab-files` folder to the `.github\workflows` folder, overwriting what you created in steps 1-5.
 
     - This file builds the following workflow:
   ![GitHub workflow with 4 jobs - Check modified files, Update the API Docker image, Update the Init Docker image, Update the Web Docker image. This example shows a commit updating the Init and Web APIs. The workflow shows Update the API Docker image skipped, while Update the Init Docker image and Update the Web Docker image are in progress.](media/github-actions-workflow-with-skip.png)
@@ -234,21 +241,21 @@ Now that we have Docker images working locally, we can now work on the automatio
       3. If there are files changed in `content-web`, set a flag to update the Web Docker Image.
       4. If there are files changed in `content-init`, set a flag to update the Init Docker Image.
   
-    - Each of the `build-` jobs are marked with `needs` to depend on the `git diff` check.  The `if` indicates the condition that will trigger that job to run.
+    - Each of the `build-` jobs are marked with `needs` to depend on the `git diff` check. The `if` indicates the condition that will trigger that job to run.
 
-13. Commit this change to your repo, then push the change to GitHub.
+3. Commit this change to your repo, then push the change to GitHub.
 
     > **Note**: You can optionally add `workflow_dispatch:` in the `on:` trigger section to set a manual trigger for the GitHub Actions workflow.
 
     > **Note**: If you encounter any errors due to `cosign`, feel free to remove the image signing section from the workflow, as it is not needed to complete the lab. You could alternatively add a manual trigger (see above) and try running the workflow again, to determine if the error is transient.
 
-14. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
+4. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
 
     ![GitHub Packages tab listing summary of container images that have been pushed to the container registry.](media/hol-ex1-task4-step12-1.png "GitHub Packages")
 
-### Task 3: Using Dependabot
+### Task 4: Using Dependabot
 
-We can use Dependabot to track the versions of the packages we use in our GitHub repository.
+Another part of continuous integration is having a bot help track versions of the packages used in the application and notify us when there are newer versions.  In this task, we will use Dependabot to track the versions of the packages we use in our GitHub repository and create pull requests to update packages for us.
 
 1. In your lab files GitHub repository, navigate to the `Security` tab. Select the `Enable Dependabot alerts` button.
 
@@ -259,6 +266,8 @@ We can use Dependabot to track the versions of the packages we use in our GitHub
     > **Note**: Enabling the `Dependabot security updates` will also automatically enable `Dependency graph` and `Dependabot alerts`.
 
     ![The GitHub Repository Security and Analysis blade under the GitHub repository Settings tab. We enable Dependabot alerts and security updates here.](media/hol-ex1-task2-step2-1.png "GitHub Security & Analysis Settings")
+
+    > **Note**: The alerts for the repository may take some time to appear. The rest of the steps for this task rely on the alerts to be present.
 
 3. To observe Dependabot issues, navigate to the `Security` tab and select the `View Dependabot alerts` link. You should arrive at the `Dependabot alerts` blade in the `Security` tab.
 
@@ -707,7 +716,7 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
 
     ![The `New workflow` button in the repository GitHub Actions tab.](media/hol-ex3-task2-step1-1.png "GitHub Actions")
 
-9. Select the `Set up a workflow yourself` link. Name the new YAML file `docker-publish.yml`.  
+9. Select the `Set up a workflow yourself` link. Name the new YAML file `docker-publish.yml`. 
 
     ![The Choose a workflow options are listed and the link to set up a workflow yourself is highlighted for emphasis.](media/hol-ex3-task2-step5-1.png "GitHub Actions")
 
