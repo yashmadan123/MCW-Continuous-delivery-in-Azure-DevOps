@@ -281,7 +281,7 @@ Now that we have Docker images working locally, we can now work on the automatio
 
 7. Pull the changes from your repository to your copy of the code.
 
-8. From the command-line, copy `docker-publish.yml` from the `Hands-on lab\lab-files` folder to the `.github\workflows` folder, overwriting what you created in steps 1-5.
+8. Copy `docker-publish.yml` from the `Hands-on lab\lab-files` folder to the `.github\workflows` folder, overwriting what you created in steps 1-5.
 
     - This file builds the following workflow:
   ![GitHub workflow with 4 jobs - Check modified files, Update the API Docker image, Update the Init Docker image, Update the Web Docker image. This example shows a commit updating the Init and Web APIs. The workflow shows Update the API Docker image skipped, while Update the Init Docker image and Update the Web Docker image are in progress.](media/github-actions-workflow-with-skip.png)
