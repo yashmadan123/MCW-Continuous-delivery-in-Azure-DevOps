@@ -55,7 +55,7 @@ You should follow all steps in this document *before* performing the Hands-on la
 
       - Is a [Member](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions#member-and-guest-users) user in the Azure AD tenant you use. (Guest users will not have the necessary permissions.)
 
-2. A Microsoft [GitHub](https://github.com) account.
+2. A [GitHub](https://github.com) account.
 
 3. Local machine or a virtual machine configured with:
 
