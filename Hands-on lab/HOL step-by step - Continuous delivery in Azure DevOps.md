@@ -666,8 +666,6 @@ In this task, we will set up Application Insights to gain some insights on how o
 
     app.use(express.static(path.join(__dirname, 'dist/content-web')));
     const contentApiUrl = process.env.CONTENT_API_URL || "http://localhost:3001";
-
-    ...
     ```
 
 5. Add and commit changes to your GitHub lab-files repository. From the root of the repository, execute the following:
@@ -686,7 +684,7 @@ In this task, we will set up Application Insights to gain some insights on how o
 
 ### Task 2: Continuous Deployment with GitHub Actions
 
-Now that the infrastructure is in place, we can set up continuous deployment with GitHub Actions.
+With the infrastructure and logging in place, we can set up continuous deployment with GitHub Actions.
 
 1. Open the `deploy-sp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line. Note the call to create a Service Principal.
 
@@ -722,65 +720,21 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
     }
     ```
 
-7. Create a new repository secret named `AZURE_CREDENTIALS`. Paste the JSON output copied from Step 2 to the secret value and save it.
+3. Create a new repository secret named `AZURE_CREDENTIALS`. Paste the JSON output copied from Step 2 to the secret value and save it.
 
-8. Add a new GitHub Action workflow in your GitHub lab files repository by selecting the `Actions` tab and selecting `New workflow`.
+4. Edit the `docker-publish.yml` file in the `.github\workflows` folder. Add the following job to the end of this file:
 
-    ![The `New workflow` button in the repository GitHub Actions tab.](media/hol-ex3-task2-step1-1.png "GitHub Actions")
-
-9. Select the `Set up a workflow yourself` link. Name the new YAML file `docker-publish.yml`. 
-
-    ![The Choose a workflow options are listed and the link to set up a workflow yourself is highlighted for emphasis.](media/hol-ex3-task2-step5-1.png "GitHub Actions")
-
-10. Change the `name` property to `Docker Compose Build and Deploy`. Modify the YAML to reflect the following.
-
-    >**Note**: Make sure to change the student prefix for the last action in the `build` job.
+    > **Note**: Make sure to change the student prefix for the last action in the `deploy` job.
 
     ```yaml
-    # This is a basic workflow to help you get started with Actions
-
-    name: Docker Compose Build and Deploy
-
-    env:
-      REGISTRY: ghcr.io
-
-    # Controls when the action will run. 
-    on:
-      # Triggers the workflow on push or pull request events but only for the main branch
-      push:
-        branches: [ main ]
-      pull_request:
-        branches: [ main ]
-
-      # Allows you to run this workflow manually from the Actions tab
-      workflow_dispatch:
-
-    # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-    jobs:
-      # This workflow contains a single job called "build"
-      build:
+      deploy:
         # The type of runner that the job will run on
         runs-on: ubuntu-latest
 
         # Steps represent a sequence of tasks that will be executed as part of the job
         steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-        - uses: actions/checkout@v2
-
-        # Login against a Docker registry except on PR
-        # https://github.com/docker/login-action
-        - name: Log into registry ${{ env.REGISTRY }}
-          if: github.event_name != 'pull_request'
-          uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
-          with:
-            registry: ${{ env.REGISTRY }}
-            username: ${{ github.actor }}
-            password: ${{ secrets.CR_PAT }}
-
-        - name: Build and Push image
-          run: |
-            docker-compose -f docker-compose.yml -f build.docker-compose.yml build
-            docker-compose -f docker-compose.yml -f build.docker-compose.yml push
+        - uses: actions/checkout@v2                
 
         - name: Login on Azure CLI
           uses: azure/login@v1.1
@@ -799,17 +753,17 @@ Now that the infrastructure is in place, we can set up continuous deployment wit
                                                     # previous steps.
     ```
 
-11. Commit the YAML file to your `main` branch. A GitHub action should begin to execute for the new workflow.
+5. Commit the YAML file to your `main` branch. A GitHub action should begin to execute for the updated workflow.
 
-    >**Note**: Make sure that your Actions workflow file does not contain any syntax errors, which may appear when you copy and paste. They are highlighted in the editor or when the Action tries to run, as shown below.
+    > **Note**: Make sure that your Actions workflow file does not contain any syntax errors, which may appear when you copy and paste. They are highlighted in the editor or when the Action tries to run, as shown below.
 
     ![GitHub Actions workflow file syntax error.](media/github-actions-workflow-file-error.png "Syntax error in Actions workflow file")
 
-12. Observe that the action builds the docker images, pushes them to the container registry, and deploys them to the Azure web application.
+6. Observe that the action builds the docker images, pushes them to the container registry, and deploys them to the Azure web application.
 
     ![GitHub Action detail reflecting Docker ](media/hol-ex3-task2-step8-1.png "GitHub Action detail")
 
-13. Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
+7. Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
 
 ### Task 3: Continuous Deployment with Azure DevOps Pipelines
 
