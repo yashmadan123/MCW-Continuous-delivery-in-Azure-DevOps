@@ -11,7 +11,7 @@ az group create `
     --location $location1 `
     --name $resourcegroupName
 
-# Create CosmosDB database
+# Create Azure Cosmos DB database
 az cosmosdb create `
     --name $cosmosDBName `
     --resource-group $resourcegroupName `
@@ -34,7 +34,7 @@ az webapp create `
     --name $webappName `
     --deployment-container-image-name nginx
 
-# Fetch CosmosDB Mongo connection string
+# Fetch Azure Cosmos DB Mongo connection string
 $mongodbConnectionString = `
     $(az cosmosdb keys list `
         --name $cosmosDBName `

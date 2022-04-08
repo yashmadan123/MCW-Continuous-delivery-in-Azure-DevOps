@@ -39,8 +39,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 4: Using Dependabot](#task-4-using-dependabot)
   - [Exercise 2: Continuous Delivery](#exercise-2-continuous-delivery)
     - [Task 1: Set up Cloud Infrastructure](#task-1-set-up-cloud-infrastructure)
-    - [Task 2: Deployment Automation to Azure Web App](#task-2-deployment-automation-to-azure-web-app)
-    - [Task 3: Branch Policies in GitHub (Optional)](#task-3-branch-policies-in-github-optional)
+    - [Task 2: Deployment Automation to Azure Web Application](#task-2-deployment-automation-to-azure-web-application)
+    - [Task 3: Linking Git commits to Azure DevOps issues](#task-3-linking-git-commits-to-azure-devops-issues)
+    - [Task 4: Branch Policies in GitHub (Optional)](#task-4-branch-policies-in-github-optional)
   - [Exercise 3: Monitoring and logging in Azure](#exercise-3-monitoring-and-logging-in-azure)
     - [Task 1: Set up Application Insights](#task-1-set-up-application-insights)
     - [Task 2: Continuous Deployment with GitHub Actions](#task-2-continuous-deployment-with-github-actions)
@@ -176,14 +177,14 @@ Now that we have Docker images working locally, we can build automation in GitHu
 
     ![The Publish Docker Container workflow that defines the series of GitHub actions used to build and push a docker container to a GitHub Container Registry.](media/hol-ex1-task4-step5-1.png "Publish Docker Container workflow")
 
-6. Change the registry to `ghcr.io/${{ github.actor }}`. Replace the IMAGE_NAME line with `fabrikam-web`. The `env` section of this file should look like this YAML:
+6. Change the registry to `ghcr.io/${{ github.actor }}`. Replace the IMAGE_NAME line with `fabrikam-init`. The `env` section of this file should look like this YAML:
 
     ```yaml
         env:
         # Use docker.io for Docker Hub if empty.
         REGISTRY: ghcr.io/${{ github.actor }}
         # github.repository as <account>/<repo>
-        IMAGE_NAME: fabrikam-web
+        IMAGE_NAME: fabrikam-init
     ```
 
 7. The login step needs to be adjusted to use our `CR_PAT` secret value for the `password`. The login step should look like this:
@@ -209,8 +210,8 @@ Now that we have Docker images working locally, we can build automation in GitHu
         id: build-and-push
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          file: ./content-web/Dockerfile                      
-          context: ./content-web                              
+          file: ./content-init/Dockerfile                      
+          context: ./content-init                              
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -255,7 +256,7 @@ The last task automated building and updating only one of the Docker images. In 
 
 ### Task 4: Using Dependabot
 
-Another part of continuous integration is having a bot help track versions of the packages used in the application and notify us when there are newer versions.  In this task, we will use Dependabot to track the versions of the packages we use in our GitHub repository and create pull requests to update packages for us.
+Another part of continuous integration is having a bot help track versions of the packages used in the application and notify us when there are newer versions. In this task, we will use Dependabot to track the versions of the packages we use in our GitHub repository and create pull requests to update packages for us.
 
 1. In your lab files GitHub repository, navigate to the `Security` tab. Select the `Enable Dependabot alerts` button.
 
@@ -309,6 +310,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 | ------------------------------------- | ---------------------------------------------------------------------- |
 | **Description**                       | **Link**                                                              |
 | What is Continuous Delivery? | <https://docs.microsoft.com/devops/deliver/what-is-continuous-delivery> |
+| Continuous delivery vs. continuous deployment | <https://azure.microsoft.com/overview/continuous-delivery-vs-continuous-deployment/> |
 | Microsoft Learn - Introduction to continuous delivery | <https://docs.microsoft.com/learn/modules/introduction-to-continuous-delivery> |
 | Microsoft Learn - Explain DevOps Continuous Delivery and Continuous Quality | <https://docs.microsoft.com/learn/modules/explain-devops-continous-delivery-quality/> |
 
@@ -375,7 +377,7 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
             --deployment-container-image-name nginx
         ```
 
-4. Log in to Azure using the Azure CLI.
+4. Log into Azure using the Azure CLI.
 
     ```pwsh
     az login
@@ -409,11 +411,11 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
 
     >**Note**: Depending on your system, you may need to change the PowerShell Execution Policy. You can read more about this process [here.](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies)
 
-6. Browse to the Azure Portal and verify creation of the resource group, Cosmos DB instance, the App Service Plan, and the Web App.
+6. Browse to [the Azure portal](https://portal.azure.com) and verify creation of the resource group, Azure Cosmos DB instance, the App Service Plan, and the Web App.
 
     ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step6-1.png "Azure Resource Group")
 
-7. Open the `seed-cosmosdb.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line. Also update the `$githubAccount` variable with your GitHub account name.
+7. Open the `seed-cosmosdb.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 2 for the `$studentprefix` variable on the first line. Also update the `$githubAccount` variable with your GitHub account name.
 
     ```pwsh
     $studentprefix = "Your 3 letter abbreviation here"
@@ -449,7 +451,7 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
     docker login ghcr.io -u [USERNAME]
     ```
 
-10. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and verify that the Azure Cosmos DB instance has been seeded.
+10. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to [the Azure portal](https://portal.azure.com) and verify that the Azure Cosmos DB instance has been seeded.
 
     ![Azure Cosmos DB contents displayed via the Azure Cosmos DB explorer in the Azure Cosmos DB resource detail.](media/hol-ex2-task1-step10-1.png "Azure Cosmos DB Seeded Contents")
 
@@ -484,13 +486,13 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
         --settings MONGODB_CONNECTION=$mongodbConnectionString
     ```
 
-15. Run the `configure-webapp.ps1` PowerShell script. Browse to the Azure Portal and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
+15. Run the `configure-webapp.ps1` PowerShell script. Browse to [the Azure portal](https://portal.azure.com) and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
 
     ![Azure Web Application settings reflecting the `MONGODB_CONNECTION` environment variable configured via PowerShell.](media/hol-ex2-task1-step15-1.png "Azure Web Application settings")
 
-### Task 2: Deployment Automation to Azure Web App
+### Task 2: Deployment Automation to Azure Web Application
 
-Once the infrastructure is in place, then we can set up the automation.
+Once the infrastructure is in place, then we can deploy the code to Azure. In this task, you will deploy the application to an Azure Web Application using a PowerShell script that makes calls with the Azure CLI.
 
 1. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `CR_PAT` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
 
@@ -525,19 +527,57 @@ Once the infrastructure is in place, then we can set up the automation.
 
     > **Note**: Make sure to run the `deploy-webapp.ps1` script from the `infrastructure` folder
 
-5. Browse to the Azure Portal and verify that the Azure Web Application is running by checking the `Log stream` blade of the Azure Web Application detail page.
+5. Browse to [the Azure portal](https://portal.azure.com) and verify that the Azure Web Application is running by checking the `Log stream` blade of the Azure Web Application detail page.
 
     ![Azure Web Application Log Stream displaying the STDOUT and STDERR output of the running container.](media/hol-ex2-task2-step5-1.png "Azure Web Application Log Stream")
 
 6. Browse to the `Overview` blade of the Azure Web Application detail page and find the web application URL. Browse to that URL to verify the deployment of the web application.
 
-    ![The Azure Web Application Overview detail in Azure Portal.](media/hol-ex2-task2-step6-1.png "Azure Web Application Overview")
+    ![The Azure Web Application Overview detail in Azure portal.](media/hol-ex2-task2-step6-1.png "Azure Web Application Overview")
 
     ![The Contoso Conference website hosted in Azure.](media/hol-ex2-task2-step6-2.png "Azure hosted Web Application")
 
-### Task 3: Branch Policies in GitHub (Optional)
+### Task 3: Linking Git commits to Azure DevOps issues
 
-In many enterprises, committing to `main` is restricted. Branch policies are used to control how code gets to `main`.
+In this task, you will create an issue in Azure DevOps and link a Git pull request from GitHub to the Azure DevOps issue. This uses the Azure Boards integration that was set up in the Before Hands on Lab.
+
+1. Create a new issue for modifying the README.md in Azure Boards
+
+    !["New issue for updating README.md added to Azure Boards"](media/hol-ex2-task3-step4-1.png "Azure Boards")
+
+    > **Note**: Make note of the issue number, as you will need it for a later step.
+
+2. Create a branch from `main` and name it `feature/update-readme`.
+
+    ```pwsh
+    git checkout main
+    git checkout -b feature/update-readme  # <- This creates the branch and checks it out    
+    ```    
+
+3. Make a small change to README.md. Commit the change, and push it to GitHub.
+
+    ```pwsh
+    git commit -m "README.md update"
+    git push --set-upstream origin feature/update-readme
+    ```
+
+4. Create a pull request to merge `feature/update-readme` into `main` in GitHub. Add the annotation `AB#YOUR_ISSUE_NUMBER_FROM_STEP_4` in the description of the pull request to link the GitHub pull request with the new Azure Boards issue in step 4. For example, if your issue number is 2, then your annotation in the pull request description should include `AB#2`.
+
+    > **Note**: The `Docker` build workflow executes as part of the status checks.
+
+5. Select the `Merge pull request` button after the build completes successfully to merge the Pull Request into `main`.
+
+    !["Pull request for merging the feature/update-main branch into main"](media/hol-ex2-task3-step7-1.png "Create pull request")
+
+    > **Note**: Under normal circumstances, this pull request would be reviewed by someone other than the author of the pull request. For now, use your administrator privileges to force the merge of the pull request.
+
+6. Observe in Azure Boards that the Issue is appropriately linked to the GitHub comment.
+
+    !["The Update README.md issue with the comment from the pull request created in step 6 linked"](media/hol-ex2-task3-step8-1.png "Azure Boards Issue")
+
+### Task 4: Branch Policies in GitHub (Optional)
+
+In many enterprises, committing to `main` is restricted. Branch policies are used to control how code gets to `main`. This allows you to set up gates on delivery, such as requiring code reviews and status checks. In this task, you will create a branch protection rule and see it in action.
 
 >**Note**: Branch protection rules apply to Pro, Team, and Enterprise GitHub users.
 
@@ -578,43 +618,15 @@ In many enterprises, committing to `main` is restricted. Branch policies are use
     error: failed to push some refs to 'https://github.com/YOUR_GITHUB_ACCOUNT/mcw-continuous-delivery-lab-files.git'
     ```
 
-4. Create a new issue for modifying the README.md in Azure Boards
-
-    !["New issue for updating README.md added to Azure Boards"](media/hol-ex2-task3-step4-1.png "Azure Boards")
-
-5. Create a branch from `main` and name it `feature/update-readme`. Push the changes to the README.md to the remote repository.
-
-    ```pwsh
-    git checkout main
-    git checkout -b feature/update-readme  # <- This creates the branch and checks it out
-    git push --set-upstream origin feature/update-readme
-    ```
-
-    > **Note**: Because the changes had already been committed locally to the `main` branch in step 3, the changes already exist in the `feature/update-readme` branch - this is why we issue a `git push` immediately after branching from the local `main` branch.
-
-6. Create a pull request to merge `feature/update-readme` into `main` in GitHub. Add the annotation `AB#2` in the description of the pull request to link it with the new Azure Boards issue in step 4.
-
-    > **Note**: The `Docker` build workflow executes as part of the status checks.
-
-7. Select the `Merge pull request` button after the build completes successfully to merge the Pull Request into `main`.
-
-    !["Pull request for merging the feature/update-main branch into main"](media/hol-ex2-task3-step7-1.png "Create pull request")
-
-    > **Note**: Under normal circumstances, this pull request would be reviewed by someone other than the author of the pull request. For now, use your administrator privileges to force merge of the pull request.
-
-8. Observe in Azure Boards the Issue is appropriately linked to the GitHub comment.
-
-    !["The Update README.md issue with the comment from the pull request created in step 6 linked"](media/hol-ex2-task3-step8-1.png "Azure Boards Issue")
-
 ## Exercise 3: Monitoring and logging in Azure
 
 Duration: 40 minutes
 
-Fabrikam Medical Conferences has its first website for a customer running in the cloud, but deployment is still a largely manual process, and we have no insight into the behavior of the application in the cloud.
+Fabrikam Medical Conferences has its first website for a customer running in the cloud, but deployment is still a largely manual process, and we have no insight into the behavior of the application in the cloud. In this exercise, we will add monitoring and logging to gain insight on the application usage in the cloud.
 
 ### Task 1: Set up Application Insights
 
-Now we want to set up Application Insights to gain some insights on how our site is being used.
+In this task, we will set up Application Insights to gain some insights on how our site is being used.
 
 1. Open the `deploy-appinsights.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentsuffix` variable on the first line.
 
@@ -670,7 +682,7 @@ Now we want to set up Application Insights to gain some insights on how our site
 
 7. Redeploy the web application by running the `deploy-webapp.ps1` PowerShell script from the `infrastructure` folder.
 
-8. Visit the deployed website and check Application Insights in the Azure Portal to see instrumentation data.
+8. Visit the deployed website and check Application Insights in [the Azure portal](https://portal.azure.com) to see instrumentation data.
 
 ### Task 2: Continuous Deployment with GitHub Actions
 
