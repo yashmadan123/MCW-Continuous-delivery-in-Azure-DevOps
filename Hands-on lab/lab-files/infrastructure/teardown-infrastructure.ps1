@@ -1,4 +1,4 @@
-$studentprefix ="your abbreviation here"
+$studentprefix ="Your 3 letter abbreviation here"
 $resourcegroupName = "fabmedical-rg-" + $studentprefix
 
 az ad sp delete --id "fabmedical-$studentprefix"
