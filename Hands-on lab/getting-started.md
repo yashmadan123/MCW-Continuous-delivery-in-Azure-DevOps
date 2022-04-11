@@ -11,11 +11,23 @@
 
    ![](https://github.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/media/imgdepre.png?raw=true "Lab Environment")     
 
-1. To get the lab environment details, you can select **Environment Details** tab. Additionally, the credentials will also be emailed to your email address provided at registration. You can also open the Lab Guide on separate and full window by selecting the **Split Window** from lower right corner. Also, you can start, stop and restart virtual machines from **Virtual Machines** tab.
+1. To get the lab environment details, you can select **Environment Details** tab. Additionally, the credentials will also be emailed to your email address provided at registration. You can also open the Lab Guide on separate and full window by selecting the **Split Window** from lower right corner. Also, you can start, stop and restart virtual machines from **Resources** tab.
 
    ![](https://github.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/media/image02.png?raw=true "Lab Environment")
  
     > You will see SUFFIX value on **Environment Details** tab, use it whereever you see SUFFIX or DeploymentID in lab steps.
+
+## Set default browser
+
+1. Within the LabVM, search for the **Deafult apps**.
+
+    ![](media/default%20apps.png)
+    
+2. Scroll down to the web browser option at the bottom and select **Microsoft Edge** as the default browser.
+
+    ![](media/MSedge.png)
+    
+ 3. Close the setting tab by clicking on **X** from the top right corner.
  
 1. If a **Welcome to Microsoft Azure** popup window appears, click **Maybe Later** to skip the tour.
 
@@ -42,7 +54,7 @@
 1. Now enter the following password and click on **Sign in**.
    * Password: <inject key="AzureAdUserPassword"></inject>
    
-     ![](https://github.com/CloudLabs-MCW/MCW-Line-of-business-application-migration/raw/fix/Hands-on%20lab/images/local/image8.png "Enter Password")
+     ![](media/image8.png "Enter Password")
      
 1. If you see the pop-up **Stay Signed in?**, click No
 
@@ -52,7 +64,7 @@
    
 1. Now you will see Azure Portal Dashboard, click on **Resource groups** from the Navigate panel to see the resource groups.
 
-    ![](https://github.com/CloudLabs-MCW/MCW-Line-of-business-application-migration/raw/fix/Hands-on%20lab/images/local/select-rg.png "Resource groups")
+    ![](media/select-rg.png "Resource groups")
    
 1. Confirm you have all resource group are present as shown below.
 
