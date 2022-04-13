@@ -1,6 +1,6 @@
 # Dockerfile for content-api
 # This is the base image that can be used
-FROM node:argon  
+FROM node:fermium  
 #This is the environment variable with connection to the MongoDB. Can be overriden in the docker run command with the -e switch
 ENV MONGODB_CONNECTION=mongodb://mongo:27017/contentdb
 # This is the directory within the container where commands will be executed
