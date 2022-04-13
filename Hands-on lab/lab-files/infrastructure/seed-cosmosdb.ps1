@@ -15,5 +15,5 @@ $mongodbConnectionString = `
 # Seed CosmosDB database
 docker run -ti `
     -e MONGODB_CONNECTION="$mongodbConnectionString" `
-    docker.pkg.github.com/$githubAccount/$githubRepo/fabrikam-init
+    ghcr.io/$githubAccount/fabrikam-init:main
 
