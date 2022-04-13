@@ -235,24 +235,80 @@ Now that we have Docker images working locally, we can build automation in GitHu
 
 The last task automated building and updating only one of the Docker images. In this task, we will update the workflow file with a more appropriate workflow for the structure of our repository. This task will end with a file named `docker-publish.yml` that will rebuild and publish Docker images as their respective code is updated.
 
-1. Pull the changes from your repository to your copy of the code.
-
-2. Copy `docker-publish.yml` from the `Hands-on lab\lab-files` folder to the `.github\workflows` folder, overwriting what you created in steps 1-5.
-
-    - This file builds the following workflow:
+The file copied in this task builds the following workflow:
   ![GitHub workflow with 4 jobs - Check modified files, Update the API Docker image, Update the Init Docker image, Update the Web Docker image. This example shows a commit updating the Init and Web APIs. The workflow shows Update the API Docker image skipped, while Update the Init Docker image and Update the Web Docker image are in progress.](media/github-actions-workflow-with-skip.png)
-    - The `check_changed_folders` job takes the following steps:
 
-      1. Look through all files in the `git diff`.
-      2. If there are files changed in `content-api`, set a flag to update the API Docker Image.
-      3. If there are files changed in `content-web`, set a flag to update the Web Docker Image.
-      4. If there are files changed in `content-init`, set a flag to update the Init Docker Image.
+The `check_changed_folders` job takes the following steps:
+
+1. Look through all files in the `git diff`.
+2. If there are files changed in `content-api`, set a flag to update the API Docker Image.
+3. If there are files changed in `content-web`, set a flag to update the Web Docker Image.
+4. If there are files changed in `content-init`, set a flag to update the Init Docker Image.
   
-    - Each of the `build-` jobs are marked with `needs` to depend on the `git diff` check. The `if` indicates the condition that will trigger that job to run.
+Each of the `build-` jobs are marked with `needs` to depend on the `git diff` check. The `if` indicates the condition that will trigger that job to run.
+
+Now let's make this change in our repository.
+
+1. In case there are changes on the server that you don't have locally, pull the changes from GitHub into your local copy of the code.
+
+    ```pwsh
+    git pull
+    ```
+
+2. From your `mcw-continuous-delivery-lab-files` folder, copy `docker-publish.yml` from the `Hands-on lab\lab-files` folder to the `.github\workflows` folder, overwriting what you created in steps 1-5.
+
+    ```pwsh
+    cp .\docker-publish.yml .github\workflows
+    ```
+
+    > **Note**: This command updates the workflow file created in the previous task and contains jobs as described at the beginning of this task.
 
 3. Commit this change to your repo, then push the change to GitHub.
 
-4. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
+    ```pwsh
+    git commit -m "Updating workflow to update Docker images only when there are changes"
+    git push
+    ```
+
+    > **Note**: This will update the workflow and will **not** run the "Update the ... Docker image" jobs.
+
+4. In the `content-api` folder, add a comment to the top of `Dockerfile`:
+
+    ```yaml
+    # Testing
+    ```
+
+5. Commit this change to your repo, then push the change to GitHub.
+
+    ```pwsh
+    git commit -m "Making a change to the API content"
+    git push
+    ```
+
+    > **Note**: The workflow will run the "Update the API Docker image" job and skip the other 2 "Update the ... Docker image" jobs.
+
+6. In the `content-web` folder, add a comment to the top of `Dockerfile`:
+
+    ```yaml
+    # Testing
+    ```
+
+7. In the `content-init` folder, add a comment to the top of `Dockerfile`:
+
+    ```yaml
+    # Testing
+    ```
+
+8. Commit these changes, then push the changes to GitHub.
+
+    ```pwsh
+    git commit -m "Updating Web and Init content"
+    git push
+    ```
+
+    > **Note**: The workflow will run the "Update the Web Docker image" and "Update the Init Docker image" jobs. It will skip the "Update the API Docker image" job.
+
+9. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
 
     ![GitHub Packages tab listing summary of container images that have been pushed to the container registry.](media/hol-ex1-task4-step12-1.png "GitHub Packages")
 
