@@ -153,6 +153,11 @@ You will need to make some edits to files before running these locally. In this 
 
 5. Commit and push your changes to your GitHub repository.
 
+    ```pwsh
+    git commit -m "Updating Docker compose files"
+    git push
+    ```
+
 ### Task 2: Build Automation with GitHub Registry
 
 Now that we have Docker images working locally, we can build automation in GitHub for updating and republishing our Docker images when the code changes. In this task, we will create a workflow file using the GitHub interface and its GitHub Actions workflow editor. This will get you familiar with how to create and edit an action through the GitHub website.
