@@ -225,6 +225,10 @@ Now that we have Docker images working locally, we can build automation in GitHu
 
     ![Detail of running Docker workflow.](media/hol-ex1-task4-step10-2.png "GitHub Action Detail")
 
+    > **Note**: If you encounter any errors due to `cosign`, remove the image signing section from the workflow, as it is not needed to complete the lab. You could alternatively add a manual trigger (see below) and try running the workflow again, to determine if the error is transient.
+
+    > **Note**: You can optionally add `workflow_dispatch:` in the `on:` trigger section to set a manual trigger for the GitHub Actions workflow.
+
 ### Task 3: Editing the GitHub Workflow File Locally
 
 The last task automated building and updating only one of the Docker images. In this task, we will update the workflow file with a more appropriate workflow for the structure of our repository. This task will end with a file named `docker-publish.yml` that will rebuild and publish Docker images as their respective code is updated.
@@ -245,10 +249,6 @@ The last task automated building and updating only one of the Docker images. In 
     - Each of the `build-` jobs are marked with `needs` to depend on the `git diff` check. The `if` indicates the condition that will trigger that job to run.
 
 3. Commit this change to your repo, then push the change to GitHub.
-
-    > **Note**: You can optionally add `workflow_dispatch:` in the `on:` trigger section to set a manual trigger for the GitHub Actions workflow.
-
-    > **Note**: If you encounter any errors due to `cosign`, feel free to remove the image signing section from the workflow, as it is not needed to complete the lab. You could alternatively add a manual trigger (see above) and try running the workflow again, to determine if the error is transient.
 
 4. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
 
