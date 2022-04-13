@@ -173,9 +173,11 @@ Now that we have Docker images working locally, we can build automation in GitHu
 
     > **Note**: CR_PAT is short for Container Registry Personal Authentication Token.
 
-5. Select the `Actions` tab in your GitHub repository, find the `Publish Docker Container` workflow and select `Configure`.
+5. Select the `Actions` tab in your GitHub repository, find the `Publish Docker Container` workflow and select `Configure`. This will create a file named `docker-publish.yml`.
 
     ![The Publish Docker Container workflow that defines the series of GitHub actions used to build and push a docker container to a GitHub Container Registry.](media/hol-ex1-task4-step5-1.png "Publish Docker Container workflow")
+
+    > **Note**: If you have gone through this MCW in the past, note that this step has changed. Do not rename this file. Leave this file named `docker-publish.yml`.
 
 6. Change the registry to `ghcr.io/${{ github.actor }}`. Replace the IMAGE_NAME line with `fabrikam-init`. The `env` section of this file should look like this YAML:
 
