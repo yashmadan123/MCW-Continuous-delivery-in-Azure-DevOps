@@ -46,7 +46,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
    - Type the following command and press `<ENTER>`:
 
      ```pwsh
-     git clone https://github.com/microsoft/MCW-Continuous-delivery-in-Azure-DevOps.git
+     git clone https://github.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps.git
      ```
 
    - Create a folder for the GitHub repository created in Step 1 and navigate to it in PowerShell.
@@ -54,12 +54,15 @@ In this task, you will create an account in [GitHub](https://github.com) and use
      ```pwsh
      mkdir mcw-continuous-delivery-lab-files
      cd mcw-continuous-delivery-lab-files
+     
      ```
 
    - Copy lab files from the MCW lab repository to the new folder.
 
      ```pwsh
      Copy-Item '..\mcw-continuous-delivery-in-azure-devops\Hands-on lab\lab-files\*' -Destination ./ -Recurse
+     $path = "C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure"
+     (Get-Content -Path "$path\deploy-webapp.ps1") | ForEach-Object {$_ -Replace "deploymentidvalue", "$deploymentid"} | Set-Content -Path "$path\deploy-webapp.ps1"
      ```
      
    - Set your username and email, which git uses for commits. Make sure to replace your email and username.
