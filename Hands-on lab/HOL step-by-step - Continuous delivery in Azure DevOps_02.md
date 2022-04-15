@@ -16,14 +16,10 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
 ### Task 1: Set up Cloud Infrastructure
 
-First, we need to set up the cloud infrastructure. We will use PowerShell scripts and the Azure Command Line Interface (CLI) to set this up.
+1. In your Labvm open file explorer,  navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` and open the `deploy-infrastructure.ps1` PowerShell script. In `deploy-infrastructure.ps1` replace studentprefix value with **<inject key="Deploymentid" />**. After updating the student prefix save the file using CTRL+S. 
 
-1. Open your local GitHub folder for your `mcw-continuous-delivery-lab-files` repository.
-
-2. Open the `deploy-infrastructure.ps1` PowerShell script in the `infrastructure` folder. Add a custom lowercase three-letter abbreviation for the `$studentprefix` variable on the first line.
-
-    ```pwsh
-    $studentprefix = "Your 3 letter abbreviation here"  # <-- Modify this value
+    ```pswh
+    $studentprefix = "Your 3 letter abbreviation here"                                  # <-- Modify this value
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
     $webappName = "fabmedical-web-" + $studentprefix
@@ -32,20 +28,18 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
     $location2 = "northeurope"
     ```
 
-3. Note the individual calls to the Azure CLI for the following:
-    - Creating a Resource Group
+   ![](media/notepad1.png)
+ 
+2. Remove **Create resource group** commands in the file `deploy-infrastructure.ps1`. As we already have a pre-created resource group **fabmedical-rg-<inject key="DeploymentID" enableCopy="false"/>**
+
+   ![](media/remove-create-rg.png) 
+
+3. Note the individual calls to the `azcli` for the following:
+    
+    - Creating a CosmosDB Database
 
         ```pwsh
-        # Create resource group
-        az group create `
-            --location $location1 `
-            --name $resourcegroupName
-        ```
-
-    - Creating an Azure Cosmos DB Database
-
-        ```pwsh
-        # Create Azure Cosmos DB database
+        # Create CosmosDB database
         az cosmosdb create `
             --name $cosmosDBName `
             --resource-group $resourcegroupName `
@@ -77,29 +71,10 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
             --deployment-container-image-name nginx
         ```
 
-4. Log into Azure using the Azure CLI.
+4. In your Powershell Terminal log in to Azure by running the following command:
 
     ```pwsh
     az login
-    az account set --subscription <your subscription guid>
-    ```
-
-    **Note**: Your subscription plan guid is the `id` field that comes back in the response JSON. In the following example, the subscription guid is `726da029-91f0-4dc1-a728-f25664374559`.
-
-    ```json
-      {
-    "cloudName": "AzureCloud",
-    "homeTenantId": "8f4781a5-82b9-4181-a022-4e9e91028be4",
-    "id": "726da029-91f0-4dc1-a728-f25664374559",
-    "isDefault": true,
-    "managedByTenants": [],
-    "name": "Your Azure Subscription Name",
-    "state": "Enabled",
-    "tenantId": "8f4781a5-82b9-4181-a022-4e9e91028be4",
-    "user": {
-      "name": "your-name@your-domain.com",
-      "type": "user"
-    }
     ```
 
 5. Run the `deploy-infrastructure.ps1` PowerShell script.
@@ -108,26 +83,27 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
     cd ./infrastructure
     ./deploy-infrastructure.ps1
     ```
+   
+6. Browse to the Azure Portal and verify the creation of the resource group, CosmosDB instance, the App Service Plan, and the Web App.
 
-    >**Note**: Depending on your system, you may need to change the PowerShell Execution Policy. You can read more about this process [here.](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies)
+    ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step5-1.png "Azure Resource Group")
 
-6. Browse to [the Azure portal](https://portal.azure.com) and verify creation of the resource group, Azure Cosmos DB instance, the App Service Plan, and the Web App.
-
-    ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step6-1.png "Azure Resource Group")
-
-7. Open the `seed-cosmosdb.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 2 for the `$studentprefix` variable on the first line. Also update the `$githubAccount` variable with your GitHub account name.
+7. Open the `seed-cosmosdb.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace `$studentprefix` variable value with **<inject key="Deploymentid" />**, add `$githubRepo = "Your gihub repository name here"` variable.
 
     ```pwsh
     $studentprefix = "Your 3 letter abbreviation here"
-    $githubAccount = "Your github account name here"
+    $githubAccount = "hatboyzero"
+    $githubRepo = "mcw-continuous-delivery-lab-files"
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
     ```
+   
+   ![](media/seedcosmos.png)
 
-8. Observe the call to fetch the MongoDB connection string for the Azure Cosmos DB database.
+8. Observe the call to fetch the MongoDB connection string for the CosmosDB database.
 
     ```pwsh
-    # Fetch Azure Cosmos DB Mongo connection string
+    # Fetch CosmosDB Mongo connection string
     $mongodbConnectionString = `
         $(az cosmosdb keys list `
             --name $cosmosDBName `
@@ -136,47 +112,50 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
             --query 'connectionStrings[0].connectionString')
     ```
 
-9. The call to seed the Azure Cosmos DB database is using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the `fabrikam-init` docker image we built in the previous exercise using `docker-compose`.
+9. Note the call to seed the CosmosDB database using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the `fabrikam-init` docker image we built in the previous exercise using `docker-compose`.
 
     ```pwsh
-    # Seed Azure Cosmos DB database
+    # Seed CosmosDB database
     docker run -ti `
         -e MONGODB_CONNECTION="$mongodbConnectionString" `
-        ghcr.io/$githubAccount/fabrikam-init:main
+        docker.pkg.github.com/$githubAccount/$githubRepo/fabrikam-init
     ```
+    
+10.  Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholders appropriately. 
 
-    >**Note**: Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholder appropriately. Use your PAT when it prompts for the password.
+     >**Note**: **Username is case sensitive make sure you enter the exact username and personal access token.**
 
-    ```pwsh
-    docker login ghcr.io -u [USERNAME]
-    ```
+       ```pwsh
+       docker login ghcr.io -u USERNAME -p PERSONAL ACCESS TOKEN 
+       ```
 
-10. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to [the Azure portal](https://portal.azure.com) and verify that the Azure Cosmos DB instance has been seeded.
+11. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and navigate to **fabmedical-cdb-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and  and verify that the CosmosDB instance has been seeded.
 
-    ![Azure Cosmos DB contents displayed via the Azure Cosmos DB explorer in the Azure Cosmos DB resource detail.](media/hol-ex2-task1-step10-1.png "Azure Cosmos DB Seeded Contents")
+     ```pwsh
+     ./seed-cosmosdb.ps1
+     ```
+       
+12. Once the script execution is completed, Browse to the Azure Portal and navigate to **fabmedical-cdb-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and select **Data Explorer** from the left menu  and verify that the CosmosDB instance has been seeded.
 
-     >**Note**: If the `seed-cosmosdb.ps1` script cannot find the `fabrikam-init` image, you may need to check the possible versions by looking at the `fabrikam-init` package page in your `mcw-continuous-delivery-lab-files` repository in GitHub.
+    ![Azure CosmosDB contents displayed via the CosmosDB explorer in the Azure CosmosDB resource detail.](media/hol-ex2-task1-step9-1.png "Azure CosmosDB Seeded Contents")
 
-    ![fabrikam-init package details displayed in the mcw-continuous-delivery-lab-files repository in GitHub.](media/hol-ex2-task1-step10-2.png "fabrikam-init package details in GitHub")
+13. Below the `sessions` collection, select **Scale & Settings (1)** and **Indexing Policy (2)**.
 
-11. Below the `sessions` collection, select **Scale & Settings** (1) and **Indexing Policy** (2).
+    ![Opening indexing policy for the sessions collection.](./media/sessions-collection-indexing-policy.png "Indexing policy configuration")
 
-    ![Opening indexing policy for the sessions collection.](media/hol-ex2-task1-step11.png "Indexing policy configuration")
+14. Create a Single Field indexing policy for the `startTime` field (1). Then, select **Save** (2).
 
-12. Create a Single Field indexing policy for the `startTime` field (1). Then, select **Save** (2).
+    ![Creating an indexing policy for the startTime field.](./media/start-time-indexing-mongo.png "startTine field indexing")
 
-    ![Creating an indexing policy for the startTime field.](media/hol-ex2-task1-step12.png "startTime field indexing")
+15. Open the `configure-webapp.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace `$studentprefix` variable value with **<inject key="Deploymentid" />** on the first line. Once the changes is done, make sure to save the file.
 
-13. Open the `configure-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the custom lowercase three-letter abbreviation you have been using for the `$studentprefix` variable on the first line.
-
-    ```pwsh
-    $studentprefix = "Your 3 letter abbreviation here"
+    ```pswh
+    $studentprefix = "hbs"                                  # <-- Modify this value
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
-    $webappName = "fabmedical-web-" + $studentprefix
     ```
 
-14. Observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
+16. Observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
 
     ```pwsh
     # Configure Web App
@@ -186,36 +165,41 @@ First, we need to set up the cloud infrastructure. We will use PowerShell script
         --settings MONGODB_CONNECTION=$mongodbConnectionString
     ```
 
-15. Run the `configure-webapp.ps1` PowerShell script. Browse to [the Azure portal](https://portal.azure.com) and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
+17. Run the `configure-webapp.ps1` PowerShell script.
 
-    ![Azure Web Application settings reflecting the `MONGODB_CONNECTION` environment variable configured via PowerShell.](media/hol-ex2-task1-step15-1.png "Azure Web Application settings")
+    ```pwsh
+    cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
+    ./configure-webapp.ps1
+    ```
 
-### Task 2: Deploy to Azure Web Application
+18. Once the script execution is completed, Browse to the Azure Portal and search for **fabmedical-web-<inject key="DeploymentID" enableCopy="false" />** App service and select **Configuration** from left side menu and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
 
-Once the infrastructure is in place, then we can deploy the code to Azure. In this task, you will deploy the application to an Azure Web Application using a PowerShell script that makes calls with the Azure CLI.
+    ![Azure Web Application settings reflecting the `MONGODB_CONNECTION` environment variable configured via PowerShell.](media/hol-ex2-task1-step12-1.png "Azure Web Application settings")
 
-1. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `CR_PAT` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
+
+### Task 2: Deployment Automation to Azure Web App
+
+1. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `GITHUB_TOKEN` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
 
     ```pwsh
     $env:CR_PAT="<GitHub Personal Access Token>"
     ```
-
-2. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentprefix` variable on the first line and add your GitHub account name for the `$githubAccount` variable on the second line.
+2. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and replace `$studentprefix` variable value with **<inject key="Deploymentid" />** on the first line and add your GitHub account name for the `$githubAccount` variable on the second line. Once the changes is done make sure to save the file. 
 
     ```pwsh
-    $studentprefix = "Your 3 letter abbreviation here"
-    $githubAccount = "Your github account name here"
+    $studentprefix = "Your 3 letter abbreviation here"                                  # <-- Modify this value
+    $githubAccount = "hatboyzero"                           # <-- Modify this value
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $webappName = "fabmedical-web-" + $studentprefix
     ```
 
-3. The call to deploy the Azure Web Application is using the `docker-compose.yml` file we modified in the previous exercise.
+2. Note the call to deploy the Azure Web Application using the `docker-compose.yml` file we modified in the previous exercise.
 
     ```pwsh
     # Deploy Azure Web App
     az webapp config container set `
         --docker-registry-server-password $env:CR_PAT `
-        --docker-registry-server-url https://ghcr.io `
+        --docker-registry-server-url https://docker.pkg.github.com `
         --docker-registry-server-user $githubAccount `
         --multicontainer-config-file ./../docker-compose.yml `
         --multicontainer-config-type COMPOSE `
@@ -223,43 +207,36 @@ Once the infrastructure is in place, then we can deploy the code to Azure. In th
         --resource-group $resourcegroupName
     ```
 
-4. Run the `deploy-webapp.ps1` PowerShell script.
+3. Run the `deploy-webapp.ps1` PowerShell script.
+
+     ```pwsh
+    ./deploy-webapp.ps1
+    ```
 
     > **Note**: Make sure to run the `deploy-webapp.ps1` script from the `infrastructure` folder
 
-5. Browse to [the Azure portal](https://portal.azure.com) and verify that the Azure Web Application is running by checking the `Log stream` blade of the Azure Web Application detail page.
+4. Browse to the Azure Portal and verify that the Azure Web Application is running by checking the `Log stream` blade of the Azure Web Application detail page.
 
-    ![Azure Web Application Log Stream displaying the STDOUT and STDERR output of the running container.](media/hol-ex2-task2-step5-1.png "Azure Web Application Log Stream")
+    ![Azure Web Application Log Stream displaying the STDOUT and STDERR output of the running container.](media/hol-ex2-task2-step4-1.png "Azure Web Application Log Stream")
 
-6. Browse to the `Overview` blade of the Azure Web Application detail page and find the web application URL. Browse to that URL to verify the deployment of the web application.
+5. Browse to the `Overview` blade of the Azure Web Application detail page and find the web application URL. Browse to that URL to verify the deployment of the web application. It might take few minutes for the web application to reflect new changes.
 
-    ![The Azure Web Application Overview detail in Azure portal.](media/hol-ex2-task2-step6-1.png "Azure Web Application Overview")
+    ![The Azure Web Application Overview detail in Azure Portal.](media/hol-ex2-task2-step5-1.png "Azure Web Application Overview")
 
-    ![The Contoso Conference website hosted in Azure.](media/hol-ex2-task2-step6-2.png "Azure hosted Web Application")
+    >Note: If you see any nginx error while browsing the App URL, that's fine as it will take a few minutes to reflect the changes.
+    
+    ![The Contoso Conference website hosted in Azure.](media/hol-ex2-task2-step5-2.png "Azure hosted Web Application")
+    
 
 ### Task 3: Continuous Deployment with GitHub Actions
 
 With the infrastructure in place, we can set up continuous deployment with GitHub Actions.
 
-1. Open the `deploy-sp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in a previous exercise for `$studentprefix` variable on the first line. Note the call to create a Service Principal.
-
-    ```pwsh
-    $studentprefix ="Your 3 letter abbreviation here"
-    $resourcegroupName = "fabmedical-rg-" + $studentprefix
-
-    $id = $(az group show `
-        --name $resourcegroupName `
-        --query id)
-
-    az ad sp create-for-rbac `
-        --name "fabmedical-$studentprefix" `
-        --sdk-auth `
-        --role contributor `
-        --scopes $id
-    ```
-
-2. Execute the `deploy-sp.ps1` PowerShell script. Copy the resulting JSON output for use in the next step.
-
+1. Go to Environment details click on **Service principle Credentials** copy **Application id(clientId)** , **clientSecret** , **subscriptionId** and **tenantId** 
+    
+    ![](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/sp-creds-auth.png)
+    
+    Replace the values that you copied in below Json.
     ```pwsh
     {
         "clientId": "...",
@@ -274,10 +251,13 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
         "managementEndpointUrl": "https://management.core.windows.net/"
     }
     ```
+    Copy the complete JSON output to your clipboard.
 
-3. Create a new repository secret named `AZURE_CREDENTIALS`. Paste the JSON output copied from Step 2 to the secret value and save it.
+2. In your GitHub lab files repository, navigate to the `Secrets` > `Actions` blade in the `Settings` tag and create a new repository secret named `AZURE_CREDENTIALS`. Paste the JSON output copied in the previous step to the secret value and click on `Add secret`.
 
-4. Edit the `docker-publish.yml` file in the `.github\workflows` folder. Add the following job to the end of this file:
+    ![](media/azurecred.png)
+   
+3. Edit the `docker-publish.yml` file in the `.github\workflows` folder. Add the following job to the end of this file:
 
     > **Note**: Make sure to change the student prefix for the last action in the `deploy` job.
 
@@ -308,17 +288,17 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
                                                     # previous steps.
     ```
 
-5. Commit the YAML file to your `main` branch. A GitHub action should begin to execute for the updated workflow.
+4. Commit the YAML file to your `main` branch. A GitHub action should begin to execute for the updated workflow.
 
     > **Note**: Make sure that your Actions workflow file does not contain any syntax errors, which may appear when you copy and paste. They are highlighted in the editor or when the Action tries to run, as shown below.
 
     ![GitHub Actions workflow file syntax error.](media/github-actions-workflow-file-error.png "Syntax error in Actions workflow file")
 
-6. Observe that the action builds the docker images, pushes them to the container registry, and deploys them to the Azure web application.
+5. Observe that the action builds the docker images, pushes them to the container registry, and deploys them to the Azure web application.
 
     ![GitHub Action detail reflecting Docker ](media/hol-ex3-task2-step8-1.png "GitHub Action detail")
 
-7. Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
+6. Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
 
 ### Task 4: Branch Policies in GitHub (Optional)
 
