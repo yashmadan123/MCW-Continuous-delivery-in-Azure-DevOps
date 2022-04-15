@@ -236,7 +236,7 @@ We can automate our project tracking with the Azure Board integration for GitHub
    
    - On the Azure Boards page click on **Configure access** and select **Configure**.
       
-     ![The GitHub Application Authorization page.](media/azureboards.png "GitHub Application Authorization")
+     ![The GitHub Application Authorization page.](media/azureboards (1).png "GitHub Application Authorization")
     
    - In Applications tab, select **Configure** next to **Azure Boards** under Installed GitHub Apps.
 
