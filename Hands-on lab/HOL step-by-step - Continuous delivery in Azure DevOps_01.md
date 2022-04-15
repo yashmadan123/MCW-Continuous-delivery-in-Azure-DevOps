@@ -185,7 +185,8 @@ Now let's make this change in our repository.
     git commit -m "Updating workflow to update Docker images only when there are changes"
     git push
     ```
-
+    ![](media/dockerrun1.png)
+    
     > **Note**: This will update the workflow and will **not** run the "Update the ... Docker image" jobs.
 
 4. Navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-api` folder and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file. 
@@ -201,6 +202,7 @@ Now let's make this change in our repository.
     git commit -m "Making a change to the API content"
     git push
     ```
+   ![](media/dockerrun2.png)
 
     > **Note**: The workflow will run the "Update the API Docker image" job and skip the other 2 "Update the ... Docker image" jobs.
     
@@ -221,7 +223,8 @@ Now let's make this change in our repository.
     git commit -m "Updating Web and Init content"
     git push
     ```
-
+    ![](media/dockerrun3.png)
+    
     > **Note**: The workflow will run the "Update the Web Docker image" and "Update the Init Docker image" jobs. It will skip the "Update the API Docker image" job.
 
 9. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
