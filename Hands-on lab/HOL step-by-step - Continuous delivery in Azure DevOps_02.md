@@ -283,10 +283,8 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
             CR_PAT: ${{ secrets.CR_PAT }}
           run: |
             cd ./infrastructure
-            ./deploy-webapp.ps1 -studentprefix hbs  # <-- This needs to
-                                                    # match the student
-                                                    # prefix we use in
-                                                    # previous steps.
+            ./deploy-webapp.ps1 
+            
     ```
 
 4. Commit the YAML file to your `main` branch. A GitHub action should begin to execute for the updated workflow.
