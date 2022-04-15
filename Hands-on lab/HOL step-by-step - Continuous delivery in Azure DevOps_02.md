@@ -80,6 +80,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 5. Run the `deploy-infrastructure.ps1` PowerShell script.
 
     ```pwsh
+    cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
     cd ./infrastructure
     ./deploy-infrastructure.ps1
     ```
