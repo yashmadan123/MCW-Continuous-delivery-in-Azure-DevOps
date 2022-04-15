@@ -25,9 +25,8 @@ You are going to set up the local infrastructure using Docker containers. There 
 
 You will need to make some edits to files before running these locally. In this task, you will confirm that the Docker infrastructure works locally.
 
-1. Open your local GitHub folder for your `mcw-continuous-delivery-lab-files` repository.
-
-2. Replace instances of `<yourgithubaccount>` with your GitHub account name in the following files located in the root of your lab files repository.
+1. In your Labvm open file explorer,  navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` to open your local GitHub repository.
+2. Replace `<yourgithubaccount>` value with your GitHub account name in the following files located in the root of your lab files repository. After updating save the files using CTRL+S.
     - `docker-compose.init.yml`
     - `docker-compose.yml`
 
@@ -46,9 +45,16 @@ You will need to make some edits to files before running these locally. In this 
 
     ![The docker-compose log output observed when running `docker-compose up` on our docker-compose harness.](media/hol-ex1-task3-step4-2.png "docker-compose log output")
 
-5. Commit and push your changes to your GitHub repository.
+5. Leave this PowerShell session in running and open a new session. Paste the following command and hit `<ENTER>`.
 
     ```pwsh
+    cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files
+    ```
+6. Commit and push your changes to your GitHub repository.
+
+    ```pwsh
+    git pull
+    git add .
     git commit -m "Updating Docker compose files"
     git push
     ```
@@ -57,29 +63,37 @@ You will need to make some edits to files before running these locally. In this 
 
 Now that we have Docker images working locally, we can build automation in GitHub for updating and republishing our Docker images when the code changes. In this task, we will create a workflow file using the GitHub interface and its GitHub Actions workflow editor. This will get you familiar with how to create and edit an action through the GitHub website.
 
-1. In your GitHub lab files repository, select the `Settings` tab.
+1. In your GitHub lab files repository, select the `Settings` tab from lab files repository.
 
-2. Select the `Secrets` blade from the left navigation bar.
+   ![](media/click%20settings.png)
 
-    ![The GitHub Repository Settings tab.](media/hol-ex1-task4-step2-1.png "GitHub Repository Settings")
+2. Under **Security**, expand **Secrets(1)** by clicking the drop-down and select **Actions(2)** blade from the left navigation bar.
+
+    ![The GitHub Repository Settings tab.](media/seret.png "GitHub Repository Settings")
 
 3. Select the `New repository secret` button.
 
-    ![The GitHub Repository Secrets we will create a new repository secret here used in a later step.](media/hol-ex1-task4-step3-1.png "GitHub Repository Secrets")
+    ![The GitHub Repository Secrets we will create a new repository secret here used in a later step.](media/newreposecret.png "GitHub Repository Secrets")
 
-4. Enter the name `CR_PAT` in the `New secret` form and set the GitHub Personal Access Token we created in the Before the Hands-On Lab instructions.
+4. Under **Actions Secrets/New secret** page, enter the below mentioned details:
 
-    ![The New secret form where we create the `CR_PAT` secret.](media/hol-ex1-task4-step4-1.png "New secret form")
+     - **Name** : Enter **CR_PAT** (1)
+
+     - **Value** : Enter the **GitHub Personal Access Token** (2) you created in the Before the Hands-On Lab instructions.
+
+     - Click on **Add secret** (3)
+     
+    ![The New secret form where we create the `CR_PAT` secret.](media/add-secret-new.png "New secret form")
 
     > **Note**: CR_PAT is short for Container Registry Personal Authentication Token.
 
-5. Select the `Actions` tab in your GitHub repository, find the `Publish Docker Container` workflow and select `Configure`. This will create a file named `docker-publish.yml`.
+5. Select the `Actions` tab in your GitHub repository, under the **Continuous Integration Workflows** find the `Publish Docker Container` workflow and select `Configure`. This will create a file named `docker-publish.yml`.
 
     ![The Publish Docker Container workflow that defines the series of GitHub actions used to build and push a docker container to a GitHub Container Registry.](media/hol-ex1-task4-step5-1.png "Publish Docker Container workflow")
 
     > **Note**: If you have gone through this MCW in the past, note that this step has changed. Do not rename this file. Leave this file named `docker-publish.yml`.
 
-6. Change the registry to `ghcr.io/${{ github.actor }}`. Replace the IMAGE_NAME line with `fabrikam-init`. The `env` section of this file should look like this YAML:
+6. Change the registry to `ghcr.io/${{ github.actor }}` in line 20. Replace the **IMAGE_NAME** line with `fabrikam-init` in line 22. The `env` section of this file should look like this YAML:
 
     ```yaml
         env:
@@ -89,7 +103,7 @@ Now that we have Docker images working locally, we can build automation in GitHu
         IMAGE_NAME: fabrikam-init
     ```
 
-7. The login step needs to be adjusted to use our `CR_PAT` secret value for the `password`. The login step should look like this:
+7. The login step needs to be adjusted to use our `CR_PAT` secret value for the `password`, replace **GITHUB_TOKEN** with **CR_PAT** in line 68. The login step should look like this:
 
     ```yaml
         # Login against a Docker registry except on PR
@@ -118,16 +132,17 @@ Now that we have Docker images working locally, we can build automation in GitHu
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
     ```
-
+    ![](media/dockerfile1.png)
+    
 9. Commit the file to the repository. Select `Start commit`. Be sure that **Commit directly to the `main` branch** is selected. Finally, select `Commit new file`.
 
 10. The GitHub Action is now running and will automatically build and push the container to GitHub registry.
 
-    ![Summary of running Docker workflow executing in GitHub Actions tab of repository.](media/hol-ex1-task4-step10-1.png "GitHub Actions")
+    ![Summary of running Docker workflow executing in GitHub Actions tab of repository.](media/action1.png "GitHub Actions")
 
     ![Detail of running Docker workflow.](media/hol-ex1-task4-step10-2.png "GitHub Action Detail")
 
-    > **Note**: If you encounter any errors due to `cosign`, remove the image signing section from the workflow, as it is not needed to complete the lab. You could alternatively add a manual trigger (see below) and try running the workflow again, to determine if the error is transient.
+    > **Note**: If you encounter any errors due to `cosign`, remove the image signing section from line 82 to 93 in the workflow, as it is not needed to complete the lab. You could alternatively add a manual trigger (see below) and try running the workflow again, to determine if the error is transient.
 
     > **Note**: You can optionally add `workflow_dispatch:` in the `on:` trigger section to set a manual trigger for the GitHub Actions workflow.
 
@@ -166,13 +181,15 @@ Now let's make this change in our repository.
 3. Commit this change to your repo, then push the change to GitHub.
 
     ```pwsh
+    git add .
     git commit -m "Updating workflow to update Docker images only when there are changes"
     git push
     ```
-
+    ![](media/dockerrun1.png)
+    
     > **Note**: This will update the workflow and will **not** run the "Update the ... Docker image" jobs.
 
-4. In the `content-api` folder, add a comment to the top of `Dockerfile`:
+4. Navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-api` folder and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file. 
 
     ```yaml
     # Testing
@@ -181,31 +198,33 @@ Now let's make this change in our repository.
 5. Commit this change to your repo, then push the change to GitHub.
 
     ```pwsh
+    git add .
     git commit -m "Making a change to the API content"
     git push
     ```
+   ![](media/dockerrun2.png)
 
     > **Note**: The workflow will run the "Update the API Docker image" job and skip the other 2 "Update the ... Docker image" jobs.
-
-6. In the `content-web` folder, add a comment to the top of `Dockerfile`:
-
+    
+6.  Navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web` folder and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file.
+    
     ```yaml
     # Testing
     ```
-
-7. In the `content-init` folder, add a comment to the top of `Dockerfile`:
-
+7. Navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-init` folder and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file.
+    
     ```yaml
     # Testing
     ```
-
 8. Commit these changes, then push the changes to GitHub.
 
     ```pwsh
+    git add .
     git commit -m "Updating Web and Init content"
     git push
     ```
-
+    ![](media/dockerrun3.png)
+    
     > **Note**: The workflow will run the "Update the Web Docker image" and "Update the Init Docker image" jobs. It will skip the "Update the API Docker image" job.
 
 9. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
