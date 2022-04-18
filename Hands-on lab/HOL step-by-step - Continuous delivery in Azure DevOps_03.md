@@ -6,31 +6,43 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 ### Task 1: Set up Application Insights
 
-In this task, we will set up Application Insights to gain some insights on how our site is being used and assist in debugging if we run into issues.
-
-1. Open the `deploy-appinsights.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add the same custom lowercase three-letter abbreviation we used in step 1 for the `$studentsuffix` variable on the first line.
+1. Open the `deploy-appinsights.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace studentprefix value with **<inject key="Deploymentid" />** on the first line.
 
     ```pwsh
-    $studentsuffix = "Your 3 letter abbreviation here"
+    $studentsuffix = "Your 3 letter abbreviation here"                                  # <-- Modify this
     $resourcegroupName = "fabmedical-rg-" + $studentsuffix
     $location1 = "westeurope"
     $appInsights = "fabmedicalai-" + $studentsuffix
     ```
 
-2. Run the `deploy-appinsights.ps1` PowerShell script from a PowerShell terminal and save the `AI Instrumentation Key` specified in the output - we will need it for a later step.
+2. Navigate back to the PowerShell terminal and run the below mentioned command:
+
+    ```
+    ./deploy-appinsights.ps1
+    ```
+    
+3. Now save the `AI Instrumentation Key` specified in the output - we will need it for a later step.
 
     ```bash
     The installed extension 'application-insights' is in preview.
     AI Instrumentation Key="55cade0c-197e-4489-961c-51e2e6423ea2"
     ```
 
-3. Navigate to the `./content-web` folder in your GitHub lab files repository and execute the following to install JavaScript support for Application Insights via NPM to the web application frontend.
+4. Navigate to the `./content-web` folder in your GitHub lab files repository by running the below mentioned command.
+
+   ```
+   cd ..
+   cd .\content-web
+   
+   ```
+   
+5. Now execute the following command to install JavaScript support for Application Insights via NPM to the web application frontend.
 
     ```bash
     npm install applicationinsights --save
     ```
 
-4. Modify the file `./content-web/app.js` to reflect the following to add and configure Application Insights for the web application frontend.
+6. Modify the file `./content-web/app.js` to reflect the following to add and configure Application Insights for the web application frontend in the local folder.
 
     ```js
     const express = require('express');
@@ -40,15 +52,17 @@ In this task, we will set up Application Insights to gain some insights on how o
 
     const app = express();
 
-    const appInsights = require("applicationinsights");         # <-- Add these lines here
-    appInsights.setup("55cade0c-197e-4489-961c-51e2e6423ea2");  # <-- Make sure AI Inst. Key matches
-    appInsights.start();                                        # <-- key from step 2.
+    const appInsights = require("applicationinsights");         // <-- Add these lines here
+    appInsights.setup("55cade0c-197e-4489-961c-51e2e6423ea2");  // <-- Make sure AI Inst. Key matches
+    appInsights.start();                                        // <-- key from step 2.
 
     app.use(express.static(path.join(__dirname, 'dist/content-web')));
     const contentApiUrl = process.env.CONTENT_API_URL || "http://localhost:3001";
+
+    ...
     ```
 
-5. Add and commit changes to your GitHub lab-files repository. From the root of the repository, execute the following:
+7. Add and commit changes to your GitHub lab-files repository. From the root of the repository, execute the following:
 
     ```pwsh
     git add .
@@ -56,11 +70,16 @@ In this task, we will set up Application Insights to gain some insights on how o
     git push
     ```
 
-6. Wait for the GitHub Actions for your lab files repository to complete before executing the next step.
+8. Wait for the GitHub Actions for your lab files repository to complete before executing the next step.
 
-7. Redeploy the web application by running the `deploy-webapp.ps1` PowerShell script from the `infrastructure` folder.
+9. Redeploy the web application by running the below commands:
 
-8. Visit the deployed website and check Application Insights in [the Azure portal](https://portal.azure.com) to see instrumentation data.
+    ```
+    cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
+    ./deploy-webapp.ps1
+    ```
+    
+10. Visit the deployed website and check Application Insights in the Azure Portal to see instrumentation data.
 
 ### Task 2: Linking Git commits to Azure DevOps issues
 
