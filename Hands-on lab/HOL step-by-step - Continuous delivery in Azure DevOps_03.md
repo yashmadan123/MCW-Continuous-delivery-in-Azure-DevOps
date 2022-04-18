@@ -85,11 +85,14 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 In this task, you will create an issue in Azure DevOps and link a Git pull request from GitHub to the Azure DevOps issue. This uses the Azure Boards integration that was set up in the Before Hands on Lab.
 
-1. Create a new issue for modifying the README.md in Azure Boards
+1. Navigate to 'dev.azure.com' and select boards under **Boards** and click on **New item**.
 
-    !["New issue for updating README.md added to Azure Boards"](media/hol-ex2-task3-step4-1.png "Azure Boards")
+   !["New issue for updating README.md added to Azure Boards"](media/continous1.png "Azure Boards")
 
-    > **Note**: Make note of the issue number, as you will need it for a later step.
+
+4. Update the value as **Update README.md** in Azure Boards.
+
+    !["New issue for updating README.md added to Azure Boards"](media/continous2.png "Azure Boards")
 
 2. Create a branch from `main` and name it `feature/update-readme`.
 
@@ -105,13 +108,15 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
     git push --set-upstream origin feature/update-readme
     ```
 
-4. Create a pull request to merge `feature/update-readme` into `main` in GitHub. Add the annotation `AB#YOUR_ISSUE_NUMBER_FROM_STEP_4` in the description of the pull request to link the GitHub pull request with the new Azure Boards issue in step 4. For example, if your issue number is 2, then your annotation in the pull request description should include `AB#2`.
+4. Create a pull request to merge `feature/update-readme` into `main` in GitHub. Add the annotation `AB#YOUR_ISSUE_NUMBER_FROM_STEP_4` in the description of the pull request to link the GitHub pull request with the new Azure Boards issue in step 4. For example, if your issue number is 2, then your annotation in the pull request description should include `AB#2`. 
 
     > **Note**: The `Docker` build workflow executes as part of the status checks.
 
+     !["Pull request for merging the feature/update-main branch into main"](media/createpr.png "Create pull request")
+
 5. Select the `Merge pull request` button after the build completes successfully to merge the Pull Request into `main`.
 
-    !["Pull request for merging the feature/update-main branch into main"](media/hol-ex2-task3-step7-1.png "Create pull request")
+    !["Pull request for merging the feature/update-main branch into main"](media/mergepr.png "Create pull request")
 
     > **Note**: Under normal circumstances, this pull request would be reviewed by someone other than the author of the pull request. For now, use your administrator privileges to force the merge of the pull request.
 
