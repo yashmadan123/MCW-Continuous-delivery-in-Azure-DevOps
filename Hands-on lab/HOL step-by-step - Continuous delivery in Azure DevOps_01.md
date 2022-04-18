@@ -33,6 +33,8 @@ You will need to make some edits to files before running these locally. In this 
    > **Note**: You should replace three instances of `<yourgithubaccount>` - one instance in `docker-compose.init.yml` and two instances in `docker-compose.yml`.
 
 3. Build and run the docker-compose YAML files edited in the previous step.
+    
+     > **Note**: Make sure that you are in `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` dir.
 
     ```pwsh
     docker-compose -f .\docker-compose.yml -f .\local.docker-compose.yml -f .\docker-compose.init.yml build
