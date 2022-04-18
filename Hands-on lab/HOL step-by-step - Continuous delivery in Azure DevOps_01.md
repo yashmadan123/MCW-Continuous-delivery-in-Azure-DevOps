@@ -121,9 +121,6 @@ Now that we have Docker images working locally, we can build automation in GitHu
 
 8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure the correct `Dockerfile` file can be found. The Build and push step should look like this:
 
-   ```file: ./content-init/Dockerfile                      
-      context: ./content-init 
-   ```
 
     ```yaml
       # Build and push Docker image with Buildx (don't push on PR)
