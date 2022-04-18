@@ -138,32 +138,45 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
           - '**'            # <-- with '**' to disable all branches
     ```
 
-2. Navigate to your Azure DevOps `Fabrikam` project, select the `Project Settings` blade, and open the `Service Connections` tab.
+1. Navigate to your Azure DevOps `Fabrikam` project, select the `Project Settings` blade, and open the `Service Connections` tab.
 
-3. Create a new `Docker Registry` service connection and set the values to:
+   ![Initial creation page for a new Azure DevOps Pipeline.](media/image20.png "Azure DevOps Pipelines")
+   
+1. Click on **Create Service Connection**.
 
-    - Docker Registry: <https://ghcr.io>
+   ![](media/createserviceconnection.png)
+   
+1. On the New Service Connection tab, search for Docker and select **Docker Registry**, then click on **Next**.
+
+   ![](media/docker.png)
+
+1. Create a new `Docker Registry` service connection and set the values to:
+
+    - Docker Registry: `https://ghcr.io`
     - Docker ID: [GitHub account name]
     - Docker Password: [GitHub Personal Access Token]
     - Service connection name: GitHub Container Registry
+    - Click on **Save**
 
-    ![Azure DevOps Project Service Connection Configuration that establishes the credentials necessary for Azure DevOps to push to the GitHub Container Registry.](media/hol-ex3-task3-step3-1.png "Azure DevOps Project Service Connection Configuration")
+    ![Azure DevOps Project Service Connection Configuration that establishes the credentials necessary for Azure DevOps to push to the GitHub Container Registry.](media/newdocker.png "Azure DevOps Project Service Connection Configuration")
 
-4. Navigate to your Azure DevOps `Fabrikam` project, select the `Pipelines` blade, and create a new pipeline.
+1. Navigate to your Azure DevOps `Fabrikam` project, select the `Pipelines` blade, and click on **Create pipeline**.
 
     ![Initial creation page for a new Azure DevOps Pipeline.](media/hol-ex3-task3-step4-1.png "Azure DevOps Pipelines")
 
-5. In the `Connect` tab, choose the `GitHub` selection.
+1. In the `Connect` tab, choose the `GitHub` selection.
 
     ![Azure DevOps Pipeline Connections page where we associate the GitHub repository with this pipeline.](media/hol-ex3-task3-step5-1.png "Azure DevOps Pipeline Connections")
 
-6. Select your GitHub lab files repository. Azure DevOps will redirect you to authorize yourself with GitHub. Log in and select the repository that you want to allow Azure DevOps to access.
+1. Select your GitHub lab files repository.  Azure DevOps will redirect you to authorize yourself with GitHub. Log in and select the repository that you want to allow Azure DevOps to access.
 
-7. In the `Configure` tab, choose the `Starter Pipeline`.
+     ![Azure DevOps Pipeline Connections page where we associate the GitHub repository with this pipeline.](media/repo.png "Azure DevOps Pipeline Connections")
 
-    ![Selecting the Starter pipeline on the Configure your pipeline step in Azure DevOps.](media/hol-ex3-task3-step7-1.png "Selecting the Starter pipeline")
+1. In the `Configure` tab, choose the `Starter Pipeline`.
 
-8. Remove all the steps from the YAML. The empty pipeline should look like the following:
+    ![Initial creation page for a new Azure DevOps Pipeline.](media/starter.png "Azure DevOps Pipelines")
+
+1. Remove all the steps from the YAML. The empty pipeline should look like the following:
 
     ```yaml
     # Starter pipeline
@@ -180,7 +193,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
     steps:
     ```
 
-9. In the sidebar, find the `Docker Compose` task and configure it with the following fields, then select the **Add** button:
+1. Click on **Show assistant** to view the side bar, find the `Docker Compose` task, and configure it with the following fields:
 
     - Container Registry Type: Container Registry
     - Docker Registry Service Connection: GitHub Container Registry (created in step 3)
@@ -188,13 +201,13 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
     - Additional Docker Compose Files: build.docker-compose.yml
     - Action: Build Service Images
     - Additional Image Tags = $(Build.BuildNumber)
+    - Click on **Add**
 
     ![Docker Compose Task definition in the AzureDevOps pipeline.](media/hol-ex3-task3-step9-1.png "Docker Compose Task")
-    ![Docker Compose Task Values in the AzureDevOps pipeline.](media/hol-ex3-task3-step9-2.png "Docker Compose Task Values")
+    
+    ![](media/docker%20compose.png)
 
-    >**Note**: If the sidebar doesn't appear, you may need to select `Show assistant`.
-
-10. Repeat step 9 and add another `Docker Compose` task and configure it with the following fields:
+1. Repeat step 9 and add another `Docker Compose` task and configure it with the following fields:
 
     - Container Registry Type: Container Registry
     - Docker Registry Service Connection: GitHub Container Registry (created in step 3)
@@ -202,67 +215,41 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
     - Additional Docker Compose Files: build.docker-compose.yml
     - Action: Push Service Images
     - Additional Image Tags = $(Build.BuildNumber)
+    - Click on **Add**
 
-    >**Note**: Pay close attention to the **Action** in Step 10. This is where it differs from Step 9.
+    ![](media/docker-composer-registry.png)
+    
+1. The final file should be similar like the below:
+    
+    ![Docker Compose Task definition in the AzureDevOps pipeline.](media/final1.png "Docker Compose Task")
 
-    The YAML should be:
+1. Now click on Save and run from the right corner to run the build. New docker images will be built and pushed to the GitHub package registry.
 
-    ```yaml
-    # Starter pipeline
-    # Start with a minimal pipeline that you can customize to build and deploy your code.
-    # Add steps that build, run tests, deploy, and more:
-    # https://aka.ms/yaml
+    ![Run detail of the Azure DevOps pipeline previously created.](media/save%20and%20run.png "Build Pipeline Run detail")
+    
+1. On Save and run page, leave everything as default and click on **Save and run**.
 
-    trigger:
-    - main
+     ![](media/save%20and%20run1.png)
+     
+1. You will be prompted with a Warning to grant permissions for the pipeline, click on **View**.
 
-    pool:
-    vmImage: ubuntu-latest
+     ![](media/view.png)
+     
+1. On Waiting for review page, click on **Permit** to grant permissions.
 
-    steps:
-    - task: DockerCompose@0
-    inputs:
-        containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'GitHub Container Registry'
-        dockerComposeFile: '**/docker-compose.yml'
-        additionalDockerComposeFiles: 'build.docker-compose.yml'
-        action: 'Push services'
-        additionalImageTags: '$(Build.BuildNumber)'
-    - task: DockerCompose@0
-    inputs:
-        containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'GitHub Container Registry'
-        dockerComposeFile: '**/docker-compose.yml'
-        additionalDockerComposeFiles: 'build.docker-compose.yml'
-        action: 'Push services'
-        additionalImageTags: '$(Build.BuildNumber)'
-    ```
+     ![](media/permit.png)
 
-11. Save and run the build. New docker images will be built and pushed to the GitHub package registry.
+1. Navigate to your `Fabrikam` project in Azure DevOps and select the `Project Settings` blade. From there, select the `Service Connections` tab.
 
-    >**Note**: You may need to grant permission for the pipeline to use the service connection before the run happens.
+1. Create a new `Azure Resource Manager` service connection and choose `Service Principal (automatic)`.
 
-    ![Run detail of the Azure DevOps pipeline previously created.](media/hol-ex3-task3-step11-1.png "Build Pipeline Run detail")
+1. Choose your target subscription and resource group and set the `Service Connection` name to `Fabrikam-Azure`. Save the service connection - we will reference it in a later step.
 
-    If you haven't been granted the parallelism, your job will fail with the following message:
-
-    ```text
-    ##[error]No hosted parallelism has been purchased or granted. To request a free parallelism grant, please fill out the following form https://aka.ms/azpipelines-parallelism-request
-    ```
-
-    Once parallelism is granted, then your pipeline can run.
-
-12. Navigate to your `Fabrikam` project in Azure DevOps and select the `Project Settings` blade. From there, select the `Service Connections` tab.
-
-13. Create a new `Azure Resource Manager` service connection and choose `Service Principal (automatic)`.
-
-14. Choose your target subscription and resource group and set the `Service Connection` name to `Fabrikam-Azure`. Save the service connection - we will reference it in a later step.
-
-15. Open the build pipeline in `Edit` mode, and then select the `Variables` button on the top-right corner of the pipeline editor. Add a secret variable `CR_PAT`, check the `Keep this value secret` checkbox, and copy the GitHub Personal Access Token from the Before the Hands-on lab guided instruction into the `Value` field. Save the pipeline variable - we will reference it in a later step.
+1. Open the build pipeline in `Edit` mode, and then select the `Variables` button on the top-right corner of the pipeline editor. Add a secret variable `CR_PAT`, check the `Keep this value secret` checkbox, and copy the GitHub Personal Access Token from the Before the Hands-on lab guided instruction into the `Value` field. Save the pipeline variable - we will reference it in a later step.
 
     ![Adding a new Pipeline Variable to an existing Azure DevOps pipeline.](media/hol-ex3-task3-step15-1.png "New Pipeline Variable")
 
-16. Modify the build pipeline YAML to split into a build stage and a deploy stage, as follows.
+1. Modify the build pipeline YAML to split into a build stage and a deploy stage, as follows.
 
     >**Note**: Pay close attention to the `DeployProd` stage, as you need to add your abbreviation to the `arguments` section.
 
@@ -332,19 +319,19 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
                                 # The pipeline variable from step 15
     ```
 
-17. Navigate to the `Environments` category with the `Pipelines` blade in the `Fabrikam` project and select the `production` environment.
+1. Navigate to the `Environments` category with the `Pipelines` blade in the `Fabrikam` project and select the `production` environment.
 
     ![Select Environments under the Pipelines section. Then select the production environment.](media/hol-ex3-task3-step17-1.png "Production environment selection in the Environments section")
 
-18. From the vertical ellipsis menu button in the top-right corner, select `Approvals and checks`.
+1. From the vertical ellipsis menu button in the top-right corner, select `Approvals and checks`.
 
     ![Approvals and checks selection in the vertical ellipsis menu in the top right corner of the Azure DevOps pipeline editor interface.](media/hol-ex3-task3-step18-1.png "Approvals and checks selection")
 
-19. Add an `Approvals` check. Add your account as an `Approver` and create the check.
+1. Add an `Approvals` check. Add your account as an `Approver` and create the check.
 
     ![Adding an account as an `Approver` for an Approvals check.](media/hol-ex3-task3-step19-1.png "Checks selection")
 
-20. Run the build pipeline and note how the pipeline waits before moving to the `DeployProd` stage. You will need to approve the request before the `DeployProd` stage runs.
+1. Run the build pipeline and note how the pipeline waits before moving to the `DeployProd` stage. You will need to approve the request before the `DeployProd` stage runs.
 
     ![Reviewing DeployProd stage transition request during a pipeline execution.](media/review-deploy-to-app-service.png "Reviewing pipeline request")
     
