@@ -105,7 +105,7 @@ Now that we have Docker images working locally, we can build automation in GitHu
         IMAGE_NAME: fabrikam-init
     ```
 
-7. The login step needs to be adjusted to use our `CR_PAT` secret value for the `password`, replace **GITHUB_TOKEN** with **CR_PAT** in line 68. The login step should look like this:
+7. The login step needs to be adjusted to use our `CR_PAT` secret value for the `password`, replace **GITHUB_TOKEN** with **CR_PAT** in line 61. The login step should look like this:
 
     ```yaml
         # Login against a Docker registry except on PR
@@ -120,6 +120,10 @@ Now that we have Docker images working locally, we can build automation in GitHu
     ```
 
 8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure the correct `Dockerfile` file can be found. The Build and push step should look like this:
+
+   ```file: ./content-init/Dockerfile                      
+      context: ./content-init 
+   ```
 
     ```yaml
       # Build and push Docker image with Buildx (don't push on PR)
