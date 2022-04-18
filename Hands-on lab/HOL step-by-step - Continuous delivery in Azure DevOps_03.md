@@ -239,19 +239,33 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
 
      ![](media/permit.png)
 
-1. Navigate to your `Fabrikam` project in Azure DevOps and select the `Project Settings` blade. From there, select the `Service Connections` tab.
+1. On **Service Conenctions** page, click on **New service connection**.
 
-1. Create a new `Azure Resource Manager` service connection and choose `Service Principal (automatic)`.
+     ![](media/new%20service%20conenctions.png)
+    
+1. Select  `Azure Resource Manager` and click on **Next**.
 
-1. Choose your target subscription and resource group and set the `Service Connection` name to `Fabrikam-Azure`. Save the service connection - we will reference it in a later step.
+1. On new service connection tab choose **Service Principal (manual)** and select **Next**
 
-1. Open the build pipeline in `Edit` mode, and then select the `Variables` button on the top-right corner of the pipeline editor. Add a secret variable `CR_PAT`, check the `Keep this value secret` checkbox, and copy the GitHub Personal Access Token from the Before the Hands-on lab guided instruction into the `Value` field. Save the pipeline variable - we will reference it in a later step.
+    ![Run detail of the Azure DevOps pipeline previously created.](media/image22.png "Build Pipeline Run detail")
+
+1. Enter your subscription ID, Name and get the Service Principal details from **Environment Details -> Service Principal** details tab and then Service Connection name to **Fabrikam-Azure**. Value of Service Principal Id is the same as Application Id and Service Principal Key value is same as Secret key.Once done click on verify and the Save.
+ 
+    >  **Note**: You can get subscription name from Azure portal -> Subscriptions
+
+
+1. Navigate to Pipelines and select the pipeline you create in last step and click `Edit` mode, and then select the `Variables` button on the top-right corner of the pipeline editor. 
+
+    ![Run detail of the Azure DevOps pipeline previously created.](media/image23.png "Build Pipeline Run detail")
+    
+    ![Run detail of the Azure DevOps pipeline previously created.](media/image24.png "Build Pipeline Run detail")
+
+1. Add a secret variable `CR_PAT`, check the `Keep this value secret` checkbox, and copy the GitHub Personal Access Token from the Before the Hands-on lab guided instruction into the `Value` field. Save the pipeline variable - we will reference it in a later step.
 
     ![Adding a new Pipeline Variable to an existing Azure DevOps pipeline.](media/hol-ex3-task3-step15-1.png "New Pipeline Variable")
 
-1. Modify the build pipeline YAML to split into a build stage and a deploy stage, as follows.
-
-    >**Note**: Pay close attention to the `DeployProd` stage, as you need to add your abbreviation to the `arguments` section.
+1. Modify the build pipeline YAML to split into a build stage and a deploy stage, as follows. Make sure to replace **arguments** value with **<inject key="Deploymentid" />**, once done save the pipeline.
+ 
 
     ```yaml
     # Starter pipeline
@@ -286,7 +300,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
             dockerComposeFile: '**/docker-compose.yml'
             additionalDockerComposeFiles: 'build.docker-compose.yml'
             action: 'Push services'
-            additionalImageTags: '$(Build.BuildNumber)'
+            additionalImageTags: '$(Build.BuildNumber)'    
 
     - stage: DeployProd
       dependsOn: build
@@ -311,7 +325,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
                   scriptLocation: 'scriptPath'
                   scriptPath: './infrastructure/deploy-webapp.ps1'
                   workingDirectory: ./infrastructure
-                  arguments: 'Your 3 letter abbreviation here'         # <-- This should be your custom
+                  arguments: 'hbs'         # <-- This should be your custom
                 env:                       # lowercase three character 
                   CR_PAT: $(CR_PAT)  # prefix from an earlier exercise.
                                 # ^^^^^^
@@ -321,17 +335,38 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
 
 1. Navigate to the `Environments` category with the `Pipelines` blade in the `Fabrikam` project and select the `production` environment.
 
-    ![Select Environments under the Pipelines section. Then select the production environment.](media/hol-ex3-task3-step17-1.png "Production environment selection in the Environments section")
+    ![Approvals and checks selection in the vertical ellipsis menu in the top right corner of the Azure DevOps pipeline editor interface.](media/image25.png "Approvals and checks selection")
 
-1. From the vertical ellipsis menu button in the top-right corner, select `Approvals and checks`.
+1. From the vertical ellipsis menu button in the top-right corner, select `Approvals`.
 
     ![Approvals and checks selection in the vertical ellipsis menu in the top right corner of the Azure DevOps pipeline editor interface.](media/hol-ex3-task3-step18-1.png "Approvals and checks selection")
 
-1. Add an `Approvals` check. Add your account as an `Approver` and create the check.
+1. Add an `Approvals` check.  Add your account as an `approvals` and create the check.
 
-    ![Adding an account as an `Approver` for an Approvals check.](media/hol-ex3-task3-step19-1.png "Checks selection")
+    ![Adding an account as an `Approver` for an Approvals check.](media/approve.png "Checks selection")
+    
+    ![Adding an account as an `Approver` for an Approvals check.](media/create.png "Checks selection")
+    
+1. Now go back to the Pipiline and run the build pipeline.
 
 1. Run the build pipeline and note how the pipeline waits before moving to the `DeployProd` stage. You will need to approve the request before the `DeployProd` stage runs.
 
-    ![Reviewing DeployProd stage transition request during a pipeline execution.](media/review-deploy-to-app-service.png "Reviewing pipeline request")
+    ![Reviewing DeployProd stage transition request during a pipeline execution.](./media/wait.png "Reviewing pipeline request")
+    
+1. You will be prompted with a Warning to grant permissions for the pipeline, click on **View**.
+
+     ![](media/view.png)
+     
+1. On Waiting for review page, click on **Permit** for both **Service Connection** and **Environment**.
+
+     ![](media/permit2.png)
+  
+1. Now click on Review button and click **Approve** button to start the DeployProd stage in the pipeline
+
+     ![Reviewing DeployProd stage transition request during a pipeline execution.](./media/1.png "Reviewing pipeline request")
+     
+     ![Reviewing DeployProd stage transition request during a pipeline execution.](./media/2.png "Reviewing pipeline request")
+
+Congratulation, You have completed this workshop.
+-------
     
