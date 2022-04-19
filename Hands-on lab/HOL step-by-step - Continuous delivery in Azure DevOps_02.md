@@ -69,7 +69,13 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
             --deployment-container-image-name nginx
         ```
 
-4. In your Powershell Terminal log in to Azure by running the following command:
+4. In your Powershell Terminal log in to Azure by running the following command. this will open edge browser, you need to enter the login details as below:
+   
+    
+     * Azure Usename/Email: <inject key="AzureAdUserEmail"></inject> 
+ 
+     * Azure Password: <inject key="AzureAdUserPassword"></inject> 
+ 
 
     ```pwsh
     az login
