@@ -32,6 +32,9 @@ You will need to make some edits to files before running these locally. In this 
 
    > **Note**: You should replace three instances of `<yourgithubaccount>` - one instance in `docker-compose.init.yml` and two instances in `docker-compose.yml`.
 
+   > **Note**: The `<yourgithubaccount>` value must be in **lowercase**.
+   
+   
 3. Build and run the docker-compose YAML files edited in the previous step.
     
      > **Note**: Make sure that you are in `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` dir.
@@ -41,11 +44,12 @@ You will need to make some edits to files before running these locally. In this 
     docker-compose -f .\docker-compose.yml -f .\local.docker-compose.yml -f .\docker-compose.init.yml up
     ```
 
+    ![The docker-compose log output observed when running `docker-compose up` on our docker-compose harness.](media/hol-ex1-task3-step4-2.png "docker-compose log output")
+    
 4. Verify that you can browse to <http://localhost:3000> in a browser and arrive at the Fabrikam conference website.
 
     ![Fabrikam Medical's Contoso conference site.](media/hol-ex1-task3-step4-1.png "Contoso conference site")
 
-    ![The docker-compose log output observed when running `docker-compose up` on our docker-compose harness.](media/hol-ex1-task3-step4-2.png "docker-compose log output")
 
 5. Leave this PowerShell session in running and open a new session. Paste the following command and hit `<ENTER>`.
 
