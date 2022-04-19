@@ -89,11 +89,13 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
     ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step5-1.png "Azure Resource Group")
 
-7. Open the `seed-cosmosdb.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace `$studentprefix` variable value with **<inject key="Deploymentid" />**, add `$githubRepo = "Your gihub repository name here"` variable.
+7. Open the `seed-cosmosdb.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace your github username in  `$githubRepo = "Your gihub repository name here"` variable.
+
+   >**Note:** We have already updated the $studentprefix in this file with the required value. 
 
     ```pwsh
-    $studentprefix = "Your 3 letter abbreviation here"
-    $githubAccount = "hatboyzero"
+    $studentprefix = "deploymentID"
+    $githubAccount = "Your github account name here"
     $githubRepo = "mcw-continuous-delivery-lab-files"
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
@@ -148,16 +150,20 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
     ![Creating an indexing policy for the startTime field.](./media/start-time-indexing-mongo.png "startTine field indexing")
 
-15. Open the `configure-webapp.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace `$studentprefix` variable value with **<inject key="Deploymentid" />** on the first line. Once the changes is done, make sure to save the file.
-
-    ```pswh
-    $studentprefix = "hbs"                                  # <-- Modify this value
+15.  Open the `configure-webapp.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files and add your GitHub account name for the $githubAccount variable on the second line.
+   
+    >**Note:** We have already updated the $studentprefix in this file with the required value. 
+     
+    ```pwsh
+    $studentprefix = "deploymentID"
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
+    $webappName = "fabmedical-web-" + $studentprefix
     ```
-
-16. Observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
-
+  
+16.  observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
+  
+ 
     ```pwsh
     # Configure Web App
     az webapp config appsettings set `
@@ -185,11 +191,13 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     ```pwsh
     $env:CR_PAT="<GitHub Personal Access Token>"
     ```
-2. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and replace `$studentprefix` variable value with **<inject key="Deploymentid" />** on the first line and add your GitHub account name for the `$githubAccount` variable on the second line. Once the changes is done make sure to save the file. 
+2. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add your GitHub account username for the `$githubAccount` variable on the second line. Once the changes is done make sure to save the file. 
+
+    >**Note:** We have already updated the $studentprefix in this file with the required value. 
 
     ```pwsh
-    $studentprefix = "Your 3 letter abbreviation here"                                  # <-- Modify this value
-    $githubAccount = "hatboyzero"                           # <-- Modify this value
+    $studentprefix = "deploymentID"                                 
+    $githubAccount = "GitHub account username"                           # <-- Modify this value
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $webappName = "fabmedical-web-" + $studentprefix
     ```
