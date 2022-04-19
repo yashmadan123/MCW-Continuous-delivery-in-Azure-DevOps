@@ -236,7 +236,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
    
    >**Note:** If you see any nginx error while browsing the App URL, that's fine as it will take a few minutes to reflect the changes.
     
-    ![The Contoso Conference website hosted in Azure.](media/hol-ex2-task2-step5-2.png "Azure hosted Web Application")
+     ![The Contoso Conference website hosted in Azure.](media/hol-ex2-task2-step5-2.png "Azure hosted Web Application")
     
 
 ### Task 3: Continuous Deployment with GitHub Actions
@@ -245,7 +245,7 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
 
  1. Go to Environment details click on **Service principle Credentials** copy **Application id(clientId)** , **clientSecret** , **subscriptionId** and **tenantId** 
     
-    ![](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/sp-creds-auth.png)
+     ![spcreds](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/sp-creds-auth.png)
     
     Replace the values that you copied in below Json.
      ```pwsh
@@ -266,7 +266,7 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
 
  1. In your GitHub lab files repository, navigate to the `Secrets` > `Actions` blade in the `Settings` tag and create a new repository secret named `AZURE_CREDENTIALS`. Paste the JSON output copied in the previous step to the secret value and click on `Add secret`.
 
-    ![](media/azurecred.png)
+     ![azurecred](media/azurecred.png)
    
  1. Edit the `docker-publish.yml` file in the `.github\workflows` folder. Add the following job to the end of this file:
 
@@ -308,7 +308,7 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
 
  1. Observe that the action builds the docker images, pushes them to the container registry, and deploys them to the Azure web application.
 
-    ![GitHub Action detail reflecting Docker ](media/hol-ex3-task2-step8-1.png "GitHub Action detail")
+     ![GitHub Action detail reflecting Docker ](media/hol-ex3-task2-step8-1.png "GitHub Action detail")
 
  1. Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
 
@@ -320,7 +320,7 @@ In many enterprises, committing to `main` is restricted. Branch policies are use
 
  1. In your lab files GitHub repository, navigate to the `Settings` tab and select the `Branches` blade.
 
-    ![GitHub Branch settings for the repository](media/hol-ex2-task3-step1-1.png "Branch Protection Rules")
+     ![GitHub Branch settings for the repository](media/hol-ex2-task3-step1-1.png "Branch Protection Rules")
 
  1. Select the `Add rule` button to add a new branch protection rule for the `main` branch. Be sure to specify `main` in the branch name pattern field. Enable the following options and choose the `Create` button to create the branch protection rules:
 
@@ -328,7 +328,7 @@ In many enterprises, committing to `main` is restricted. Branch policies are use
    - Require status checks to pass before merging
    - Require branches to be up to date before merging
 
-    ![Branch protection rule creation form](media/hol-ex2-task3-step2-1.png "Create a new branch protection rule in GitHub")
+     ![Branch protection rule creation form](media/hol-ex2-task3-step2-1.png "Create a new branch protection rule in GitHub")
 
  1. With the branch protection rule in place, direct commits and pushes to the `main` branch will be disabled. Verify this rule by making a small change to your README.md file. Attempt to commit the change to the `main` branch in your local repository followed by a push to the remote repository.
 
