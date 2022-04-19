@@ -16,10 +16,12 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
 ### Task 1: Set up Cloud Infrastructure
 
-1. In your Labvm open file explorer,  navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` and open the `deploy-infrastructure.ps1` PowerShell script. In `deploy-infrastructure.ps1` replace studentprefix value with **<inject key="Deploymentid" />**. After updating the student prefix save the file using CTRL+S. 
+1. In your Labvm open file explorer,  navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` and open the `deploy-infrastructure.ps1` PowerShell script. 
+
+   >**Note:** We have already updated the $studentprefix in this file with the required value. 
 
     ```pswh
-    $studentprefix = "Your 3 letter abbreviation here"                                  # <-- Modify this value
+    $studentprefix = "DeploymentID"                                  
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
     $webappName = "fabmedical-web-" + $studentprefix
@@ -29,10 +31,6 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     ```
 
    ![](media/notepad1.png)
- 
-2. Remove **Create resource group** commands in the file `deploy-infrastructure.ps1`. As we already have a pre-created resource group **fabmedical-rg-<inject key="DeploymentID" enableCopy="false"/>**
-
-   ![](media/remove-create-rg.png) 
 
 3. Note the individual calls to the `azcli` for the following:
     
