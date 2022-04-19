@@ -81,7 +81,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     az login
     ```
 
-5. Run the `deploy-infrastructure.ps1` PowerShell script.
+5. Once the login is completed, navigate back to powershell window and run the `deploy-infrastructure.ps1` PowerShell script.
 
     ```pwsh
     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
@@ -156,7 +156,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
 15.  Open the `configure-webapp.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files and add your GitHub account name for the $githubAccount variable on the second line.
    
-    >**Note:** We have already updated the $studentprefix in this file with the required value. 
+   >**Note:** We have already updated the $studentprefix in this file with the required value. 
      
     ```pwsh
     $studentprefix = "deploymentID"
@@ -168,7 +168,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 16.  observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
   
  
-    ```pwsh
+   ```pwsh
     # Configure Web App
     az webapp config appsettings set `
         --name $webappName `
