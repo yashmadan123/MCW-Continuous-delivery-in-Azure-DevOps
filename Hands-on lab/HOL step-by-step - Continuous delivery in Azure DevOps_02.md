@@ -20,7 +20,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
    >**Note:** We have already updated the $studentprefix in this file with the required value. 
 
-    ```pswh
+    ```pwsh
      $studentprefix = "DeploymentID"                                  
      $resourcegroupName = "fabmedical-rg-" + $studentprefix
      $cosmosDBName = "fabmedical-cdb-" + $studentprefix
