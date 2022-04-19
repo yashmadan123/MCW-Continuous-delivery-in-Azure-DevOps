@@ -166,26 +166,25 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     ```
   
  1.  observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
-  
- 
-   ```pwsh
-    # Configure Web App
-    az webapp config appsettings set `
+   
+    ```pwsh
+     # Configure Web App
+     az webapp config appsettings set `
         --name $webappName `
         --resource-group $resourcegroupName `
         --settings MONGODB_CONNECTION=$mongodbConnectionString
-    ```
+     ```
 
  1. Run the `configure-webapp.ps1` PowerShell script.
 
-    ```pwsh
-    cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
-    ./configure-webapp.ps1
-    ```
+     ```pwsh
+     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
+     ./configure-webapp.ps1
+     ```
 
  1. Once the script execution is completed, Browse to the Azure Portal and search for **fabmedical-web-<inject key="DeploymentID" enableCopy="false" />** App service and select **Configuration** from left side menu and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
 
-    ![Azure Web Application settings reflecting the `MONGODB_CONNECTION` environment variable configured via PowerShell.](media/hol-ex2-task1-step12-1.png "Azure Web Application settings")
+     ![Azure Web Application settings reflecting the `MONGODB_CONNECTION` environment variable configured via PowerShell.](media/hol-ex2-task1-step12-1.png "Azure Web Application settings")
 
 ### Task 2: Deployment Automation to Azure Web App
 
