@@ -6,11 +6,6 @@ $planName = "fabmedical-plan-" + $studentprefix
 $location1 = "westeurope"
 $location2 = "northeurope"
 
-# Create resource group
-az group create `
-    --location $location1 `
-    --name $resourcegroupName
-
 # Create Azure Cosmos DB database
 az cosmosdb create `
     --name $cosmosDBName `
