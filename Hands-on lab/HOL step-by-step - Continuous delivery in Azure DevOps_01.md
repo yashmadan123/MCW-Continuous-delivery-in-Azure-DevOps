@@ -32,7 +32,7 @@ You will need to make some edits to files before running these locally. In this 
 
    > **Note**: You should replace three instances of `<yourgithubaccount>` - one instance in `docker-compose.init.yml` and two instances in `docker-compose.yml`.
 
-   > **Note**: The `<yourgithubaccount>` value must be in **lowercase**.
+   > **Note**: The `<yourgithubaccount>` value must be in **lowercase**, if your github account user name is in uppercase letters please change it to lowercase in Github. |Github Username Change|<https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-user-account-settings/changing-your-github-username> |
    
    
 3. Build and run the docker-compose YAML files edited in the previous step.
