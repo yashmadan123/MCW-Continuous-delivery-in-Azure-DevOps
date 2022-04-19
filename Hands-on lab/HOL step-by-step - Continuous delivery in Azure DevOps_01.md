@@ -126,7 +126,7 @@ Now that we have Docker images working locally, we can build automation in GitHu
 8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure the correct `Dockerfile` file can be found. The Build and push step should look like this:
 
 
-    ```yaml
+     ```yaml
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image for ${{ env.API_IMAGE_NAME }}
@@ -138,9 +138,9 @@ Now that we have Docker images working locally, we can build automation in GitHu
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-    ```
+     ```
     
-    ![](media/dockerfile1.png)
+    ![sd](media/dockerfile1.png)
     
 9. Commit the file to the repository. Select `Start commit`. Be sure that **Commit directly to the `main` branch** is selected. Finally, select `Commit new file`.
 
