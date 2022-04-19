@@ -335,6 +335,7 @@ In many enterprises, committing to `main` is restricted. Branch policies are use
 3. With the branch protection rule in place, direct commits and pushes to the `main` branch will be disabled. Verify this rule by making a small change to your README.md file. Attempt to commit the change to the `main` branch in your local repository followed by a push to the remote repository.
 
     ```pwsh
+    
     PS C:\Workspaces\lab\mcw-continuous-delivery-lab-files> git add .
 
     PS C:\Workspaces\lab\mcw-continuous-delivery-lab-files> git commit -m "Updating README.md"
