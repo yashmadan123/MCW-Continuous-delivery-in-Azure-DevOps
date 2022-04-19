@@ -95,17 +95,17 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
  6. Open the `seed-cosmosdb.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace your github username in  `$githubRepo = "Your gihub repository name here"` variable.
 
-   >**Note:** We have already updated the $studentprefix in this file with the required value. 
+     >**Note:** We have already updated the $studentprefix in this file with the required value. 
 
-     ```pwsh
-     $studentprefix = "deploymentID"
-     $githubAccount = "Your github account name here"
-     $githubRepo = "mcw-continuous-delivery-lab-files"
-     $resourcegroupName = "fabmedical-rg-" + $studentprefix
-     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
-     ```
+    ```pwsh
+    $studentprefix = "deploymentID"
+    $githubAccount = "Your github account name here"
+    $githubRepo = "mcw-continuous-delivery-lab-files"
+    $resourcegroupName = "fabmedical-rg-" + $studentprefix
+    $cosmosDBName = "fabmedical-cdb-" + $studentprefix
+    ```
    
-   ![vcv](media/seedcosmos.png)
+     ![vcv](media/seedcosmos.png)
 
  7. Observe the call to fetch the MongoDB connection string for the CosmosDB database.
 
@@ -144,15 +144,15 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
        
  11. Once the script execution is completed, Browse to the Azure Portal and navigate to **fabmedical-cdb-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and select **Data Explorer** from the left menu  and verify that the CosmosDB instance has been seeded.
 
-    ![Azure CosmosDB contents displayed via the CosmosDB explorer in the Azure CosmosDB resource detail.](media/hol-ex2-task1-step9-1.png "Azure CosmosDB Seeded Contents")
+     ![Azure CosmosDB contents displayed via the CosmosDB explorer in the Azure CosmosDB resource detail.](media/hol-ex2-task1-step9-1.png "Azure CosmosDB Seeded Contents")
 
  12. Below the `sessions` collection, select **Scale & Settings (1)** and **Indexing Policy (2)**.
 
-    ![Opening indexing policy for the sessions collection.](./media/sessions-collection-indexing-policy.png "Indexing policy configuration")
+     ![Opening indexing policy for the sessions collection.](./media/sessions-collection-indexing-policy.png "Indexing policy configuration")
 
  13. Create a Single Field indexing policy for the `startTime` field (1). Then, select **Save** (2).
 
-    ![Creating an indexing policy for the startTime field.](./media/start-time-indexing-mongo.png "startTine field indexing")
+     ![Creating an indexing policy for the startTime field.](./media/start-time-indexing-mongo.png "startTine field indexing")
 
  14.  Open the `configure-webapp.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files and add your GitHub account name for the $githubAccount variable on the second line.
    
