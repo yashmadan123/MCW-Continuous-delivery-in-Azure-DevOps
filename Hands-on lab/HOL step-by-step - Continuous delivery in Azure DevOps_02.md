@@ -18,21 +18,21 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
  1. In your Labvm open file explorer,  navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` and open the `deploy-infrastructure.ps1` PowerShell script. 
 
-   >**Note:** We have already updated the $studentprefix in this file with the required value. 
+     >**Note:** We have already updated the $studentprefix in this file with the required value. 
 
-    ```pwsh
-     $studentprefix = "DeploymentID"                                  
-     $resourcegroupName = "fabmedical-rg-" + $studentprefix
-     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
-     $webappName = "fabmedical-web-" + $studentprefix
-     $planName = "fabmedical-plan-" + $studentprefix
-     $location1 = "westeurope"
-     $location2 = "northeurope"
-    ```
+   ```pwsh
+   $studentprefix = "DeploymentID"                                  
+   $resourcegroupName = "fabmedical-rg-" + $studentprefix
+   $cosmosDBName = "fabmedical-cdb-" + $studentprefix
+   $webappName = "fabmedical-web-" + $studentprefix
+   $planName = "fabmedical-plan-" + $studentprefix
+   $location1 = "westeurope"
+   $location2 = "northeurope"
+   ```
 
    ![gfgffg](media/notepad1.png)
 
- 1. Note the individual calls to the `azcli` for the following:
+ 2. Note the individual calls to the `azcli` for the following:
     
     - Creating a CosmosDB Database
 
@@ -69,7 +69,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
             --deployment-container-image-name nginx
         ```
 
- 1. In your Powershell Terminal log in to Azure by running the following command. this will open edge browser, you need to enter the login details as below:
+ 3. In your Powershell Terminal log in to Azure by running the following command. this will open edge browser, you need to enter the login details as below:
    
     
      * Azure Usename/Email: <inject key="AzureAdUserEmail"></inject> 
@@ -81,7 +81,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     az login
     ```
 
- 1. Once the login is completed, navigate back to powershell window and run the `deploy-infrastructure.ps1` PowerShell script.
+ 4. Once the login is completed, navigate back to powershell window and run the `deploy-infrastructure.ps1` PowerShell script.
 
     ```pwsh
     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
@@ -89,11 +89,11 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     ./deploy-infrastructure.ps1
     ```
    
- 1. Browse to the Azure Portal and verify the creation of the resource group, CosmosDB instance, the App Service Plan, and the Web App.
+ 5. Browse to the Azure Portal and verify the creation of the resource group, CosmosDB instance, the App Service Plan, and the Web App.
 
      ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step5-1.png "Azure Resource Group")
 
- 1. Open the `seed-cosmosdb.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace your github username in  `$githubRepo = "Your gihub repository name here"` variable.
+ 6. Open the `seed-cosmosdb.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace your github username in  `$githubRepo = "Your gihub repository name here"` variable.
 
    >**Note:** We have already updated the $studentprefix in this file with the required value. 
 
@@ -107,7 +107,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
    
    ![vcv](media/seedcosmos.png)
 
- 1. Observe the call to fetch the MongoDB connection string for the CosmosDB database.
+ 7. Observe the call to fetch the MongoDB connection string for the CosmosDB database.
 
     ```pwsh
     # Fetch CosmosDB Mongo connection string
@@ -119,7 +119,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
             --query 'connectionStrings[0].connectionString')
     ```
 
- 1. Note the call to seed the CosmosDB database using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the `fabrikam-init` docker image we built in the previous exercise using `docker-compose`.
+ 8. Note the call to seed the CosmosDB database using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the `fabrikam-init` docker image we built in the previous exercise using `docker-compose`.
 
     ```pwsh
     # Seed CosmosDB database
@@ -128,7 +128,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
         docker.pkg.github.com/$githubAccount/$githubRepo/fabrikam-init
     ```
     
- 1.  Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholders appropriately. 
+ 9.  Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholders appropriately. 
 
      >**Note**: **Username is case sensitive make sure you enter the exact username and personal access token.**
 
@@ -136,25 +136,25 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
        docker login ghcr.io -u USERNAME -p PERSONAL ACCESS TOKEN 
        ```
 
- 1. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and navigate to **fabmedical-cdb-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and  and verify that the CosmosDB instance has been seeded.
+ 10. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and navigate to **fabmedical-cdb-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and  and verify that the CosmosDB instance has been seeded.
 
      ```pwsh
      ./seed-cosmosdb.ps1
      ```
        
- 1. Once the script execution is completed, Browse to the Azure Portal and navigate to **fabmedical-cdb-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and select **Data Explorer** from the left menu  and verify that the CosmosDB instance has been seeded.
+ 11. Once the script execution is completed, Browse to the Azure Portal and navigate to **fabmedical-cdb-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and select **Data Explorer** from the left menu  and verify that the CosmosDB instance has been seeded.
 
     ![Azure CosmosDB contents displayed via the CosmosDB explorer in the Azure CosmosDB resource detail.](media/hol-ex2-task1-step9-1.png "Azure CosmosDB Seeded Contents")
 
- 1. Below the `sessions` collection, select **Scale & Settings (1)** and **Indexing Policy (2)**.
+ 12. Below the `sessions` collection, select **Scale & Settings (1)** and **Indexing Policy (2)**.
 
     ![Opening indexing policy for the sessions collection.](./media/sessions-collection-indexing-policy.png "Indexing policy configuration")
 
- 1. Create a Single Field indexing policy for the `startTime` field (1). Then, select **Save** (2).
+ 13. Create a Single Field indexing policy for the `startTime` field (1). Then, select **Save** (2).
 
     ![Creating an indexing policy for the startTime field.](./media/start-time-indexing-mongo.png "startTine field indexing")
 
- 1.  Open the `configure-webapp.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files and add your GitHub account name for the $githubAccount variable on the second line.
+ 14.  Open the `configure-webapp.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files and add your GitHub account name for the $githubAccount variable on the second line.
    
    >**Note:** We have already updated the $studentprefix in this file with the required value. 
      
@@ -165,7 +165,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
      $webappName = "fabmedical-web-" + $studentprefix
      ```
   
- 1.  observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
+ 15.  observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
    
      ```pwsh
       # Configure Web App
@@ -175,14 +175,14 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
          --settings MONGODB_CONNECTION=$mongodbConnectionString
       ```
 
- 1. Run the `configure-webapp.ps1` PowerShell script.
+ 16. Run the `configure-webapp.ps1` PowerShell script.
 
      ```pwsh
      cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
      ./configure-webapp.ps1
      ```
 
- 1. Once the script execution is completed, Browse to the Azure Portal and search for **fabmedical-web-<inject key="DeploymentID" enableCopy="false" />** App service and select **Configuration** from left side menu and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
+ 17. Once the script execution is completed, Browse to the Azure Portal and search for **fabmedical-web-<inject key="DeploymentID" enableCopy="false" />** App service and select **Configuration** from left side menu and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
 
      ![Azure Web Application settings reflecting the `MONGODB_CONNECTION` environment variable configured via PowerShell.](media/hol-ex2-task1-step12-1.png "Azure Web Application settings")
 
