@@ -32,7 +32,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
    ![Quick setup screen is displayed with the copy button next to the GitHub URL textbox selected.](media/image26.png "Quick setup screen")
 
 
- 1. Set your username and email, which git uses for commits. Make sure to replace your email and username.
+1. Set your username and email, which git uses for commits. Make sure to replace your email and username.
    
      ```pwsh
      git config --global user.email "you@example.com"
@@ -114,19 +114,19 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
     ![](media/continue.png)
     
-3. On the home page of Azure Devops, select the existing organization named aiw-devops and select **Fabrikam-<inject key="DeploymentID" enableCopy="false" />** project.
+1. On the home page of Azure Devops, select the existing organization named aiw-devops and select **Fabrikam-<inject key="DeploymentID" enableCopy="false" />** project.
     
    ![](media/image08.png)
 
-4. Click on the **User settings** at the top right corner of the page and then select **Personal Access Tokens**.
+1. Click on the **User settings** at the top right corner of the page and then select **Personal Access Tokens**.
    
    ![select pat](media/image09.png)
    
-5. Now on the **Personal Access Tokens** page, click on **+ New Token**   
+1. Now on the **Personal Access Tokens** page, click on **+ New Token**   
    
    ![new token](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/azuredevops-newtoken.png)
    
-6. In the Create a new personal access token page enter the following details:
+1. In the Create a new personal access token page enter the following details:
    
    - **Name**: Enter **mcw-continuous-delivery** 
 
@@ -140,11 +140,11 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
    ![create token](media/createPAT.png)
    
-7. Copy the value of the generated token and save it in the notepad where you have stored the GitHub Personal Access Token then click on **Close**.
+1. Copy the value of the generated token and save it in the notepad where you have stored the GitHub Personal Access Token then click on **Close**.
 
    ![copy token](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/azuredevops-copypat.png)
    
-8. Keep this Personal Access token safe for later use. **DO NOT COMMIT THIS TO YOUR REPO!**
+1. Keep this Personal Access token safe for later use. **DO NOT COMMIT THIS TO YOUR REPO!**
 
 ### Task 4: Start the Docker application.
 
