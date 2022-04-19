@@ -20,7 +20,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
    >**Note:** We have already updated the $studentprefix in this file with the required value. 
 
-     ```pswh
+    ```pswh
      $studentprefix = "DeploymentID"                                  
      $resourcegroupName = "fabmedical-rg-" + $studentprefix
      $cosmosDBName = "fabmedical-cdb-" + $studentprefix
@@ -28,7 +28,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
      $planName = "fabmedical-plan-" + $studentprefix
      $location1 = "westeurope"
      $location2 = "northeurope"
-      ```
+    ```
 
    ![gfgffg](media/notepad1.png)
 
@@ -234,9 +234,9 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
     ![The Azure Web Application Overview detail in Azure Portal.](media/hol-ex2-task2-step5-1.png "Azure Web Application Overview")
    
-   >**Note:** If you see any nginx error while browsing the App URL, that's fine as it will take a few minutes to reflect the changes.
+    >**Note:** If you see any nginx error while browsing the App URL, that's fine as it will take a few minutes to reflect the changes.
     
-     ![The Contoso Conference website hosted in Azure.](media/hol-ex2-task2-step5-2.png "Azure hosted Web Application")
+    ![The Contoso Conference website hosted in Azure.](media/hol-ex2-task2-step5-2.png "Azure hosted Web Application")
     
 
 ### Task 3: Continuous Deployment with GitHub Actions
