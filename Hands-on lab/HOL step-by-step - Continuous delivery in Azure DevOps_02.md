@@ -223,8 +223,8 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 3. Run the `deploy-webapp.ps1` PowerShell script.
 
      ```pwsh
-    ./deploy-webapp.ps1
-    ```
+     ./deploy-webapp.ps1
+     ```
 
     > **Note**: Make sure to run the `deploy-webapp.ps1` script from the `infrastructure` folder
 
@@ -274,7 +274,7 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
 
    > **Note**: Make sure to change the student prefix for the last action in the `deploy` job.
 
-    ```yaml
+     ```yaml
       deploy:
         # The type of runner that the job will run on
         runs-on: ubuntu-latest
