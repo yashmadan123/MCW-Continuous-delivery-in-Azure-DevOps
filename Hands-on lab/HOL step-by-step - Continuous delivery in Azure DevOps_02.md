@@ -20,17 +20,17 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
    >**Note:** We have already updated the $studentprefix in this file with the required value. 
 
-    ```pswh
-    $studentprefix = "DeploymentID"                                  
-    $resourcegroupName = "fabmedical-rg-" + $studentprefix
-    $cosmosDBName = "fabmedical-cdb-" + $studentprefix
-    $webappName = "fabmedical-web-" + $studentprefix
-    $planName = "fabmedical-plan-" + $studentprefix
-    $location1 = "westeurope"
-    $location2 = "northeurope"
-    ```
+     ```pswh
+     $studentprefix = "DeploymentID"                                  
+     $resourcegroupName = "fabmedical-rg-" + $studentprefix
+     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
+     $webappName = "fabmedical-web-" + $studentprefix
+     $planName = "fabmedical-plan-" + $studentprefix
+     $location1 = "westeurope"
+     $location2 = "northeurope"
+      ```
 
-    ![](media/notepad1.png)
+   ![gfgffg](media/notepad1.png)
 
  1. Note the individual calls to the `azcli` for the following:
     
@@ -97,15 +97,15 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
    >**Note:** We have already updated the $studentprefix in this file with the required value. 
 
-    ```pwsh
-    $studentprefix = "deploymentID"
-    $githubAccount = "Your github account name here"
-    $githubRepo = "mcw-continuous-delivery-lab-files"
-    $resourcegroupName = "fabmedical-rg-" + $studentprefix
-    $cosmosDBName = "fabmedical-cdb-" + $studentprefix
-    ```
+     ```pwsh
+     $studentprefix = "deploymentID"
+     $githubAccount = "Your github account name here"
+     $githubRepo = "mcw-continuous-delivery-lab-files"
+     $resourcegroupName = "fabmedical-rg-" + $studentprefix
+     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
+     ```
    
-    ![](media/seedcosmos.png)
+   ![vcv](media/seedcosmos.png)
 
  1. Observe the call to fetch the MongoDB connection string for the CosmosDB database.
 
@@ -158,22 +158,22 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
    
    >**Note:** We have already updated the $studentprefix in this file with the required value. 
      
-    ```pwsh
-    $studentprefix = "deploymentID"
-    $resourcegroupName = "fabmedical-rg-" + $studentprefix
-    $cosmosDBName = "fabmedical-cdb-" + $studentprefix
-    $webappName = "fabmedical-web-" + $studentprefix
-    ```
+     ```pwsh
+     $studentprefix = "deploymentID"
+     $resourcegroupName = "fabmedical-rg-" + $studentprefix
+     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
+     $webappName = "fabmedical-web-" + $studentprefix
+     ```
   
  1.  observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
    
-    ```pwsh
-     # Configure Web App
-     az webapp config appsettings set `
-        --name $webappName `
-        --resource-group $resourcegroupName `
-        --settings MONGODB_CONNECTION=$mongodbConnectionString
-     ```
+     ```pwsh
+      # Configure Web App
+      az webapp config appsettings set `
+         --name $webappName `
+         --resource-group $resourcegroupName `
+         --settings MONGODB_CONNECTION=$mongodbConnectionString
+      ```
 
  1. Run the `configure-webapp.ps1` PowerShell script.
 
@@ -270,9 +270,9 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
    
  1. Edit the `docker-publish.yml` file in the `.github\workflows` folder. Add the following job to the end of this file:
 
-   > **Note**: Make sure to change the student prefix for the last action in the `deploy` job.
+     > **Note**: Make sure to change the student prefix for the last action in the `deploy` job.
 
-     ```yaml
+      ```yaml
       deploy:
         # The type of runner that the job will run on
         runs-on: ubuntu-latest
@@ -298,7 +298,7 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
                                                     # prefix we use in
                                                     # previous steps.
 
-    ```
+     ```
 
  1. Commit the YAML file to your `main` branch. A GitHub action should begin to execute for the updated workflow.
 
