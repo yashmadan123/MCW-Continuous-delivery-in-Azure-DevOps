@@ -235,8 +235,8 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 5. Browse to the `Overview` blade of the Azure Web Application detail page and find the web application URL. Browse to that URL to verify the deployment of the web application. It might take few minutes for the web application to reflect new changes.
 
     ![The Azure Web Application Overview detail in Azure Portal.](media/hol-ex2-task2-step5-1.png "Azure Web Application Overview")
-
-    >Note: If you see any nginx error while browsing the App URL, that's fine as it will take a few minutes to reflect the changes.
+   
+   >**Note:** If you see any nginx error while browsing the App URL, that's fine as it will take a few minutes to reflect the changes.
     
     ![The Contoso Conference website hosted in Azure.](media/hol-ex2-task2-step5-2.png "Azure hosted Web Application")
     
@@ -250,20 +250,20 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
     ![](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/sp-creds-auth.png)
     
     Replace the values that you copied in below Json.
-    ```pwsh
-    {
-        "clientId": "...",
-        "clientSecret": "...",
-        "subscriptionId": "...",
-        "tenantId": "...",
-        "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-        "resourceManagerEndpointUrl": "https://management.azure.com/",
-        "activeDirectoryGraphResourceId": "https://graph.windows.net/",
-        "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
-        "galleryEndpointUrl": "https://gallery.azure.com/",
-        "managementEndpointUrl": "https://management.core.windows.net/"
-    }
-    ```
+     ```pwsh
+     {
+         "clientId": "...",
+         "clientSecret": "...",
+         "subscriptionId": "...",
+         "tenantId": "...",
+         "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+         "resourceManagerEndpointUrl": "https://management.azure.com/",
+         "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+         "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+         "galleryEndpointUrl": "https://gallery.azure.com/",
+         "managementEndpointUrl": "https://management.core.windows.net/"
+     }
+     ```
     Copy the complete JSON output to your clipboard.
 
 2. In your GitHub lab files repository, navigate to the `Secrets` > `Actions` blade in the `Settings` tag and create a new repository secret named `AZURE_CREDENTIALS`. Paste the JSON output copied in the previous step to the secret value and click on `Add secret`.
@@ -272,7 +272,7 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
    
 3. Edit the `docker-publish.yml` file in the `.github\workflows` folder. Add the following job to the end of this file:
 
-    > **Note**: Make sure to change the student prefix for the last action in the `deploy` job.
+   > **Note**: Make sure to change the student prefix for the last action in the `deploy` job.
 
     ```yaml
       deploy:
