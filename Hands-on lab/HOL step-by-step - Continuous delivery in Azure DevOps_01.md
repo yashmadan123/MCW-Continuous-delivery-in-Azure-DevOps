@@ -139,6 +139,7 @@ Now that we have Docker images working locally, we can build automation in GitHu
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
     ```
+    
     ![](media/dockerfile1.png)
     
 9. Commit the file to the repository. Select `Start commit`. Be sure that **Commit directly to the `main` branch** is selected. Finally, select `Commit new file`.
