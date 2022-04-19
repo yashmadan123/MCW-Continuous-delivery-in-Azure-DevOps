@@ -156,7 +156,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
  14.  Open the `configure-webapp.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files and add your GitHub account name for the $githubAccount variable on the second line.
    
-   >**Note:** We have already updated the $studentprefix in this file with the required value. 
+      **Note:** We have already updated the $studentprefix in this file with the required value. 
      
      ```pwsh
      $studentprefix = "deploymentID"
@@ -167,20 +167,20 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
   
  15.  observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
    
-     ```pwsh
-      # Configure Web App
-      az webapp config appsettings set `
-         --name $webappName `
-         --resource-group $resourcegroupName `
-         --settings MONGODB_CONNECTION=$mongodbConnectionString
-      ```
+       ```pwsh
+       # Configure Web App
+       az webapp config appsettings set `
+          --name $webappName `
+          --resource-group $resourcegroupName `
+          --settings MONGODB_CONNECTION=$mongodbConnectionString
+       ```
 
  16. Run the `configure-webapp.ps1` PowerShell script.
 
-     ```pwsh
-     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
-     ./configure-webapp.ps1
-     ```
+      ```pwsh
+      cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
+      ./configure-webapp.ps1
+      ```
 
  17. Once the script execution is completed, Browse to the Azure Portal and search for **fabmedical-web-<inject key="DeploymentID" enableCopy="false" />** App service and select **Configuration** from left side menu and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
 
