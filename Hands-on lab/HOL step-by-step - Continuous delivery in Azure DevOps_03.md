@@ -6,16 +6,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 ### Task 1: Set up Application Insights
 
-1. Open the `deploy-appinsights.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace studentprefix value with **<inject key="Deploymentid" />** on the first line.
-
-    ```pwsh
-    $studentsuffix = "Your 3 letter abbreviation here"                                  # <-- Modify this
-    $resourcegroupName = "fabmedical-rg-" + $studentsuffix
-    $location1 = "westeurope"
-    $appInsights = "fabmedicalai-" + $studentsuffix
-    ```
-
-2. Navigate back to the PowerShell terminal and run the below mentioned command:
+2. Run the below mentioned command to deploy the app insights, make sure that you are in the correct directory:
 
     ```
     ./deploy-appinsights.ps1
@@ -325,7 +316,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
                   scriptLocation: 'scriptPath'
                   scriptPath: './infrastructure/deploy-webapp.ps1'
                   workingDirectory: ./infrastructure
-                  arguments: 'hbs'         # <-- This should be your custom
+                  arguments: 'deploymentID'         # <-- This should be your custom
                 env:                       # lowercase three character 
                   CR_PAT: $(CR_PAT)  # prefix from an earlier exercise.
                                 # ^^^^^^
