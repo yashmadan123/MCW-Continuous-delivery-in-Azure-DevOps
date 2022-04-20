@@ -5,7 +5,7 @@
   - Major updates in the Lab Guide.
      - Updates that are done to the lab guide in the recent release are listed below:
   
-      1.  The yml and powershell files which will cloned while performing the lab has been updated.
+      1.  The yml files and powershell scripts which will cloned while performing the lab has been updated.
       
       2.	Exercise 1: The task for connecting to Azure Boards from GitHub has been removed. Attendees will be performing the task as of pre-requisite in before hands-on lab Exercise.
 
