@@ -9,7 +9,7 @@
       
       2.	Exercise 1: The task for connecting to Azure Boards from GitHub has been removed. Attendees will be performing the task as of pre-requisite in before hands-on lab Exercise.
 
-      3.	Exercise 2: The task for continuous deployment of Azure Actions has been removed from Exercise 3 and added in the Exercise. Attendees will be performing the same task in Exercise 2. 
+      3.	Exercise 2: The task for continuous deployment of Azure Actions has been removed from Exercise 3 and added in the Exercise 2. Attendees will be performing the same task in Exercise 2 now. 
     
       4.	Exercise 3: A new task **Linking Git commits to Azure DevOps issues** has been added to the Exercise.
 
