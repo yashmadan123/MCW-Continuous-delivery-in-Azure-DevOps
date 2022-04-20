@@ -32,9 +32,10 @@ In this task, you will create an account in [GitHub](https://github.com) and use
    ![Quick setup screen is displayed with the copy button next to the GitHub URL textbox selected.](media/image26.png "Quick setup screen")
 
 
-1. Set your username and email, which git uses for commits. Make sure to replace your email and username.
+1. Open powershell with administrator and run the  below commands to set your username and email, which git uses for commits. Make sure to replace your email and username.
    
      ```pwsh
+     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files
      git config --global user.email "you@example.com"
      git config --global user.name "Your UserName"
      ```
