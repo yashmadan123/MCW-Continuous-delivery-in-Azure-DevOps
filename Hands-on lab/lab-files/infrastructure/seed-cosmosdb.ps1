@@ -15,3 +15,4 @@ $mongodbConnectionString = `
 docker run -ti `
     -e MONGODB_CONNECTION="$mongodbConnectionString" `
     ghcr.io/$githubAccount/fabrikam-init:main
+
