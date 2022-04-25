@@ -1,4 +1,4 @@
-$studentprefix = "Your 3 letter abbreviation here"
+$studentprefix = "deploymentidvalue"
 $resourcegroupName = "fabmedical-rg-" + $studentprefix
 $cosmosDBName = "fabmedical-cdb-" + $studentprefix
 $webappName = "fabmedical-web-" + $studentprefix

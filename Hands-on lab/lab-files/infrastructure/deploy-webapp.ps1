@@ -1,4 +1,4 @@
-$studentprefix = "hbs"
+$studentprefix = "deploymentidvalue"
 $githubAccount = "Your github account name here"
 $resourcegroupName = "fabmedical-rg-" + $studentprefix
 $webappName = "fabmedical-web-" + $studentprefix

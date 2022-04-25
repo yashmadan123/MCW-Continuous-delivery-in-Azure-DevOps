@@ -1,6 +1,5 @@
-$studentprefix = "Your 3 letter abbreviation here"
+$studentprefix = "deploymentidvalue"
 $githubAccount = "Your github account name here"
-$githubRepo = "Your github repository name here"
 $resourcegroupName = "fabmedical-rg-" + $studentprefix
 $cosmosDBName = "fabmedical-cdb-" + $studentprefix
 

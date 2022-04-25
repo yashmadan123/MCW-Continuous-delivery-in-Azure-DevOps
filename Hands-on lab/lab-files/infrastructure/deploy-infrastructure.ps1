@@ -1,4 +1,4 @@
-$studentprefix = "Your 3 letter abbreviation here"
+$studentprefix = "deploymentidvalue"
 $resourcegroupName = "fabmedical-rg-" + $studentprefix
 $cosmosDBName = "fabmedical-cdb-" + $studentprefix
 $webappName = "fabmedical-web-" + $studentprefix
@@ -6,7 +6,7 @@ $planName = "fabmedical-plan-" + $studentprefix
 $location1 = "westeurope"
 $location2 = "northeurope"
 
-# Create CosmosDB database
+# Create Azure Cosmos DB database
 az cosmosdb create `
     --name $cosmosDBName `
     --resource-group $resourcegroupName `
@@ -29,7 +29,7 @@ az webapp create `
     --name $webappName `
     --deployment-container-image-name nginx
 
-# Fetch CosmosDB Mongo connection string
+# Fetch Azure Cosmos DB Mongo connection string
 $mongodbConnectionString = `
     $(az cosmosdb keys list `
         --name $cosmosDBName `
