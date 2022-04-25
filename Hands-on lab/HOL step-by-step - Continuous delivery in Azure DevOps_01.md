@@ -127,17 +127,17 @@ Now that we have Docker images working locally, we can build automation in GitHu
 
 
     ```yaml
-    # Build and push Docker image with Buildx (don't push on PR)
-    # https://github.com/docker/build-push-action
-    - name: Build and push Docker image for ${{ env.API_IMAGE_NAME }}
-      id: build-and-push
-      uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-      with:
-        file: ./content-init/Dockerfile                      
-        context: ./content-init                              
-        push: ${{ github.event_name != 'pull_request' }}
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
+        # Build and push Docker image with Buildx (don't push on PR)
+        # https://github.com/docker/build-push-action
+        - name: Build and push Docker image for ${{ env.API_IMAGE_NAME }}
+          id: build-and-push
+          uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+          with:
+            file: ./content-init/Dockerfile                      
+            context: ./content-init                              
+            push: ${{ github.event_name != 'pull_request' }}
+            tags: ${{ steps.meta.outputs.tags }}
+            labels: ${{ steps.meta.outputs.labels }}
     ```
     
    ![sd](media/dockerfile1.png)
