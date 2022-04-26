@@ -253,7 +253,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
 
 1. Enter your subscription ID, Name and get the Service Principal details from **Environment Details -> Service Principal** details tab and then Service Connection name to **Fabrikam-Azure**. Value of Service Principal Id is the same as Application Id and Service Principal Key value is same as Secret key.Once done click on verify and the Save.
  
-    >  **Note**: You can get subscription name from Azure portal -> Subscriptions.
+   >**Note**: You can get subscription name from Azure portal -> Subscriptions.
 
 1. Navigate to Pipelines and select the pipeline you create in last step and click `Edit` mode, and then select the `Variables` button on the top-right corner of the pipeline editor. 
 
