@@ -274,7 +274,7 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
     
     `https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/deploy-job.yml`
     
-         ![azurecred](media/update6.png)
+    ![azurecred](media/update6.png)
     
  1. Commit the YAML file to your `main` branch. A GitHub action should begin to execute for the updated workflow.
 
