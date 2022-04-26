@@ -85,37 +85,40 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
    !["New issue for updating README.md added to Azure Boards"](media/continous1.png "Azure Boards")
 
 
-4. Update the value as **Update README.md** in Azure Boards.
+1. Update the value as **Update README.md** in Azure Boards.
 
     !["New issue for updating README.md added to Azure Boards"](media/continous2.png "Azure Boards")
 
-2. Create a branch from `main` and name it `feature/update-readme`.
+1. Create a branch from `main` and name it `feature/update-readme`.
 
     ```pwsh
     git checkout main
     git checkout -b feature/update-readme  # <- This creates the branch and checks it out    
     ```    
 
-3. Make a small change to README.md. Commit the change, and push it to GitHub.
+1. Commit the change, and push it to GitHub.
 
     ```pwsh
     git commit -m "README.md update"
     git push --set-upstream origin feature/update-readme
     ```
+1. Using Github, maunally make a small change (for ex: add an extra blank line at the end) to README.md in `feature/update-readme` branch.  
 
-4. Create a pull request to merge `feature/update-readme` into `main` in GitHub. Add the annotation `AB#YOUR_ISSUE_NUMBER_FROM_STEP_4` in the description of the pull request to link the GitHub pull request with the new Azure Boards issue in step 4. For example, if your issue number is 2, then your annotation in the pull request description should include `AB#2`. 
+     ![](media/update9.png "Create pull request")
+
+1. Create a pull request to merge `feature/update-readme` into `main` in GitHub. Add the annotation `AB#YOUR_ISSUE_NUMBER_FROM_STEP_4` in the description of the pull request to link the GitHub pull request with the new Azure Boards issue in step 4. For example, if your issue number is 2, then your annotation in the pull request description should include `AB#2`. 
 
     > **Note**: The `Docker` build workflow executes as part of the status checks.
 
      !["Pull request for merging the feature/update-main branch into main"](media/createpr.png "Create pull request")
 
-5. Select the `Merge pull request` button after the build completes successfully to merge the Pull Request into `main`.
+1. Select the `Merge pull request` button after the build completes successfully to merge the Pull Request into `main`.
 
     !["Pull request for merging the feature/update-main branch into main"](media/mergepr.png "Create pull request")
 
     > **Note**: Under normal circumstances, this pull request would be reviewed by someone other than the author of the pull request. For now, use your administrator privileges to force the merge of the pull request.
 
-6. Observe in Azure Boards that the Issue is appropriately linked to the GitHub comment.
+1. Observe in Azure Boards that the Issue is appropriately linked to the GitHub comment.
 
     !["The Update README.md issue with the comment from the pull request created in step 6 linked"](media/hol-ex2-task3-step8-1.png "Azure Boards Issue")
 
@@ -132,6 +135,8 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
         branches-ignore:    # <-- Add this list property
           - '**'            # <-- with '**' to disable all branches
     ```
+    
+   ![](media/update10.png "Azure DevOps Pipelines")
 
 1. Navigate to your Azure DevOps `Fabrikam` project, select the `Project Settings` blade, and open the `Service Connections` tab.
 
