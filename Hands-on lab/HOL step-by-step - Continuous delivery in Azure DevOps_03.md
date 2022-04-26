@@ -89,7 +89,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
 
     !["New issue for updating README.md added to Azure Boards"](media/continous2.png "Azure Boards")
 
-1. Create a branch from `main` and name it `feature/update-readme`.
+1. Using PowerShell create a branch from `main` and name it `feature/update-readme` by executing the commands mentioned below.
 
     ```pwsh
     git checkout main
@@ -102,7 +102,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
     git commit -m "README.md update"
     git push --set-upstream origin feature/update-readme
     ```
-1. Using Github, maunally make a small change (for ex: add an extra blank line at the end) to README.md in `feature/update-readme` branch.  
+1. Using Github, manually make a small change (for ex: add an extra blank line at the end) to README.md in `feature/update-readme` branch.  
 
      ![](media/update9.png "Create pull request")
 
@@ -127,7 +127,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
 > **Note**: This section demonstrates Continuous Deployment via ADO pipelines, which is equivalent to the Continuous Deployment via GitHub Actions demonstrated in Task 2. For this reason, disabling GitHub action here is critical so that both pipelines (ADO & GitHub Actions) don't interfere with each other.
 > **Note**: To complete [Exercise 3: Task 3](#task-3-continuous-deployment-with-azure-devops-pipelines), the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request). More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/)
 
-1. Disable your GitHub Actions by adding the `branches-ignore` property to the existing workflows in your lab files repository (located under the `.github/workflows` folder).
+1. Disable your GitHub Actions by adding the `branches-ignore` property to the existing `docker-publish.yml` workflow in your lab files repository (located under the `.github/workflows` folder).
 
     ```pwsh
     on:
@@ -238,6 +238,8 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
 1. On Waiting for review page, click on **Permit** to grant permissions.
 
      ![](media/permit.png)
+     
+1. Navigate to your `Fabrikam` project in Azure DevOps and select the `Project Settings` blade. From there, select the `Service Connections` tab.
 
 1. On **Service Conenctions** page, click on **New service connection**.
 
@@ -251,8 +253,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
 
 1. Enter your subscription ID, Name and get the Service Principal details from **Environment Details -> Service Principal** details tab and then Service Connection name to **Fabrikam-Azure**. Value of Service Principal Id is the same as Application Id and Service Principal Key value is same as Secret key.Once done click on verify and the Save.
  
-    >  **Note**: You can get subscription name from Azure portal -> Subscriptions
-
+    >  **Note**: You can get subscription name from Azure portal -> Subscriptions.
 
 1. Navigate to Pipelines and select the pipeline you create in last step and click `Edit` mode, and then select the `Variables` button on the top-right corner of the pipeline editor. 
 
