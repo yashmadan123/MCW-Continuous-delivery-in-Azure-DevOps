@@ -33,7 +33,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     npm install applicationinsights --save
     ```
 
-6. Modify the file `./content-web/app.js` to reflect the following to add and configure Application Insights for the web application frontend in the local folder. You can use `code app.js` to open and modify the file.
+6. Modify the file `./content-web/app.js` to reflect the following to add and configure Application Insights for the web application frontend in the local folder. You can use `code app.js` command in Poweshell to open and modify the file.
 
    >**Note**: Make sure to save the `app.js` file after modifying the content.
 
