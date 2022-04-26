@@ -19,7 +19,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     AI Instrumentation Key="55cade0c-197e-4489-961c-51e2e6423ea2"
     ```
 
-4. using PowerShell navigate to the `./content-web` folder in your GitHub lab files repository by running the below mentioned command.
+4. Using PowerShell navigate to the `./content-web` folder in your GitHub lab files repository by running the below mentioned command.
 
    ```
    cd ..
