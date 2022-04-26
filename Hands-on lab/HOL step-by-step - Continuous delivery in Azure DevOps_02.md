@@ -268,38 +268,12 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
 
      ![azurecred](media/azurecred.png)
    
- 1. Edit the `docker-publish.yml` file in the `.github\workflows` folder using github. Add the job present in the file URL to the end of the `docker-publish.yml` file.
+ 1. Edit the `docker-publish.yml` file in the `.github\workflows` folder using github. Add the job present in the file URL mentioned below to the end of the `docker-publish.yml` file.
 
-     > **Note**: Make sure to change the student prefix for the last action in the `deploy` job.
-
-      ```yaml
-      deploy:
-        # The type of runner that the job will run on
-        runs-on: ubuntu-latest
-
-        # Steps represent a sequence of tasks that will be executed as part of the job
-        steps:
-        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-        - uses: actions/checkout@v2                
-
-        - name: Login on Azure CLI
-          uses: azure/login@v1.1
-          with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-        - name: Deploy WebApp
-          shell: pwsh
-          env:
-            CR_PAT: ${{ secrets.CR_PAT }}
-          run: |
-            cd ./infrastructure
-            ./deploy-webapp.ps1  #deploymentID #<-- This needs to
-                                                    # match the student
-                                                    # prefix we use in
-                                                    # previous steps.
-
-     ```
-
+    > **Note**: Make sure to change the student prefix for the last action in the `deploy` job.
+    
+    `https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/deploy-job.yml`
+    
  1. Commit the YAML file to your `main` branch. A GitHub action should begin to execute for the updated workflow.
 
     > **Note**: Make sure that your Actions workflow file does not contain any syntax errors, which may appear when you copy and paste. They are highlighted in the editor or when the Action tries to run, as shown below.
