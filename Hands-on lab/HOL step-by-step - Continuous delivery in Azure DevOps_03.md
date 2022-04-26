@@ -27,7 +27,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
    
    ```
    
-5. Now execute the following command to install JavaScript support for Application Insights via NPM to the web application frontend.
+5. Now using PowerShell, execute the following command to install JavaScript support for Application Insights via NPM to the web application frontend.
 
     ```bash
     npm install applicationinsights --save
