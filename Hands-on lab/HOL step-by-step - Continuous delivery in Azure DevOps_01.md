@@ -219,7 +219,7 @@ Now let's make this change in our repository.
     ```yaml
     # Testing
     ```
-7. Navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-init` folder and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file.
+7. Navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-init` folder using file explorer and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file.
     
     ```yaml
     # Testing
