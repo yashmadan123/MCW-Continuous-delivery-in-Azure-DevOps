@@ -136,7 +136,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
           - '**'            # <-- with '**' to disable all branches
     ```
     
-   ![](media/update10.png "Azure DevOps Pipelines")
+   ![](media/update11.png "Azure DevOps Pipelines")
 
 1. Navigate to your Azure DevOps `Fabrikam` project, select the `Project Settings` blade, and open the `Service Connections` tab.
 
