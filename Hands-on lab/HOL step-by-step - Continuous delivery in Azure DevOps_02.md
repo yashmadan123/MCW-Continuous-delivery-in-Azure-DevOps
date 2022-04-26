@@ -268,7 +268,7 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
 
      ![azurecred](media/azurecred.png)
    
- 1. Edit the `docker-publish.yml` file in the `.github\workflows` folder. Add the following job to the end of this file:
+ 1. Edit the `docker-publish.yml` file in the `.github\workflows` folder using github. Add the job present in the file URL to the end of the `docker-publish.yml` file.
 
      > **Note**: Make sure to change the student prefix for the last action in the `deploy` job.
 
