@@ -18,9 +18,6 @@
         CR_PAT: ${{ secrets.CR_PAT }}
       run: |
         cd ./infrastructure
-        ./deploy-webapp.ps1 #deploymentID # <-- This needs to
-                                                # match the student
-                                                # prefix we use in
-                                                # previous steps.
+        ./deploy-webapp.ps1 #deploymentID # <-- REPLACE the deploymentID
                                                 
 
