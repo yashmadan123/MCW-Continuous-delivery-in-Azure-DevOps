@@ -33,7 +33,9 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     npm install applicationinsights --save
     ```
 
-6. Modify the file `./content-web/app.js` to reflect the following to add and configure Application Insights for the web application frontend in the local folder.
+6. Modify the file `./content-web/app.js` to reflect the following to add and configure Application Insights for the web application frontend in the local folder. You can use `code app.js` to open and modify the file.
+
+   >**Note**: Make sure to save the `app.js` file after modifying the content.
 
     ```js
     const express = require('express');
@@ -44,7 +46,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     const app = express();
 
     const appInsights = require("applicationinsights");         // <-- Add these lines here
-    appInsights.setup("55cade0c-197e-4489-961c-51e2e6423ea2");  // <-- Make sure AI Inst. Key matches
+    appInsights.setup("UPDATE AI Instrumentation Key");  // <-- Make sure AI Inst. Key matches
     appInsights.start();                                        // <-- key from step 2.
 
     app.use(express.static(path.join(__dirname, 'dist/content-web')));
