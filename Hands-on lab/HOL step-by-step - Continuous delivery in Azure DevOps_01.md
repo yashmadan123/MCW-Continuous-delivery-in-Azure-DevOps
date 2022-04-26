@@ -126,7 +126,7 @@ Now that we have Docker images working locally, we can build automation in GitHu
 8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure the correct `Dockerfile` file can be found. The Build and push step should look like this:
 
 
-    ```yaml
+   ```yaml
     # Build and push Docker image with Buildx (don't push on PR)
     # https://github.com/docker/build-push-action
     - name: Build and push Docker image for ${{ env.API_IMAGE_NAME }}
@@ -138,7 +138,7 @@ Now that we have Docker images working locally, we can build automation in GitHu
         push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
-    ```
+   ```
     
    ![sd](media/dockerfile1.png)
     
@@ -197,7 +197,7 @@ Now let's make this change in our repository.
     
     > **Note**: This will update the workflow and will **not** run the "Update the ... Docker image" jobs.
 
-4. Navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-api` folder and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file. 
+4. Navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-api` folder using file explorer and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file. 
 
     ```yaml
     # Testing
@@ -214,7 +214,7 @@ Now let's make this change in our repository.
 
     > **Note**: The workflow will run the "Update the API Docker image" job and skip the other 2 "Update the ... Docker image" jobs.
     
-6.  Navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web` folder and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file.
+6.  Navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web` folder using file explorer and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file.
     
     ```yaml
     # Testing
