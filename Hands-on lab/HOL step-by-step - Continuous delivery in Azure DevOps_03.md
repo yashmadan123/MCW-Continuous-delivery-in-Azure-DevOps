@@ -241,7 +241,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
      
 1. Navigate to your `Fabrikam` project in Azure DevOps and select the `Project Settings` blade. From there, select the `Service Connections` tab.
 
-1. On **Service Conenctions** page, click on **New service connection**.
+1. On **Service Connections** page, click on **New service connection**.
 
      ![](media/new%20service%20conenctions.png)
     
@@ -348,7 +348,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
     
     ![Adding an account as an `Approver` for an Approvals check.](media/create.png "Checks selection")
     
-1. Now go back to the Pipiline and run the build pipeline.
+1. Now go back to the Pipeline and run the build pipeline.
 
 1. Run the build pipeline and note how the pipeline waits before moving to the `DeployProd` stage. You will need to approve the request before the `DeployProd` stage runs.
 
