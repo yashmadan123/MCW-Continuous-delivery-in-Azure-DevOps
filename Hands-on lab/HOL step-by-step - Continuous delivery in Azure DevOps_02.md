@@ -85,7 +85,6 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
     ```pwsh
     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
-    cd ./infrastructure
     ./deploy-infrastructure.ps1
     ```
    
@@ -125,7 +124,6 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     # Seed CosmosDB database
     docker run -ti `
         -e MONGODB_CONNECTION="$mongodbConnectionString" `
-        docker.pkg.github.com/$githubAccount/$githubRepo/fabrikam-init
     ```
     
  9.  Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholders appropriately. 
@@ -154,7 +152,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
      ![Creating an indexing policy for the startTime field.](./media/start-time-indexing-mongo.png "startTine field indexing")
 
- 14.  Open the `configure-webapp.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files and add your GitHub account name for the $githubAccount variable on the second line.
+ 14.  Open the `configure-webapp.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files.
    
         **Note:** We have already updated the $studentprefix in this file with the required value. 
      
