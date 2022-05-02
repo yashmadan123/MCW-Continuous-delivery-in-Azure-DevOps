@@ -24,7 +24,7 @@
 
    `Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) `
    
-1. Run `choco install docker-desktop -Force`  command to install the Docker application. Please wait till the installation is completed.
+1. Run `choco install docker-desktop --version=4.7.0 -Force`  command to install the Docker application. Please wait till the installation is completed.
 
    ![](media/d3.png)
 
