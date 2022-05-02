@@ -82,12 +82,11 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
 
 1. Navigate to 'dev.azure.com' and select boards under **Boards** and click on **New item**.
 
-   !["New issue for updating README.md added to Azure Boards"](media/continous1.png "Azure Boards")
+     !["New issue for updating README.md added to Azure Boards"](media/continous1.png "Azure Boards")
 
+2. Update the value as **Update README.md** in Azure Boards.
 
-1. Update the value as **Update README.md** in Azure Boards.
-
-    !["New issue for updating README.md added to Azure Boards"](media/continous2.png "Azure Boards")
+     !["New issue for updating README.md added to Azure Boards"](media/continous2.png "Azure Boards")
 
 1. Using PowerShell create a branch from `main` and name it `feature/update-readme` by executing the commands mentioned below.
 
