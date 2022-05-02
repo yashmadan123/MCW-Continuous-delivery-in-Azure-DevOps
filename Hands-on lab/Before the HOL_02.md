@@ -25,14 +25,14 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
    ![The `New Repository` creation form in GitHub.](media/createrepo.png "New Repository Creation Form")
    
-   >Note: If you have done this lab in previous you may have the repositry already created in your GitHub account, Please make sure the delete the Repo and create a new one. 
+   >Note: If you have done this lab previously you may have the repository already created in your GitHub account, Please make sure the delete the Repo and create a new one. 
 
-1. On the **Quick setup** screen, copy the **HTTPS** GitHub URL for your new repository, paste this in notepad for future use.
+1. On the **Quick setup** screen, copy the **HTTPS** GitHub URL for your new repository, and paste this in notepad for future use.
 
    ![Quick setup screen is displayed with the copy button next to the GitHub URL textbox selected.](media/image26.png "Quick setup screen")
 
 
-1. Open powershell with administrator and run the  below commands to set your username and email, which git uses for commits. Make sure to replace your email and username.
+1. Open PowerShell with administrator and run the below commands to set your username and email, which git uses for commits. Make sure to replace your email and username.
    
      ```pwsh
      cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files
@@ -40,7 +40,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
      git config --global user.name "Your UserName"
      ```
      
-    - Initialize folder as a git repository, commit, and submit contents to remote GitHub branch `main` in the lab files repository created in Step 1. Make sure to replace `<your_github_repository-url>` with the value you copied in step 5.
+    - Initialize the folder as a git repository, commit, and submit contents to the remote GitHub branch `main` in the lab files repository created in Step 1. Make sure to replace `<your_github_repository-url>` with the value you copied in step 5.
 
       > **Note**: The URI of the lab files GitHub repository created in Step 1 will differ from that in the example below.
 
@@ -53,11 +53,11 @@ In this task, you will create an account in [GitHub](https://github.com) and use
       git push -u origin main
       ```
       
-    - After running the above commands, you will be prompted with a pop-up window to sign-in into the GitHub. Select **Sign in with your Browser** on the pop-up window.
+    - After running the above commands, you will be prompted with a pop-up window to sign in to the GitHub. Select **Sign in with your Browser** on the pop-up window.
 
        ![](media/siginwithbrowser.png)
      
-   - If you are re-directed to the Git Credential Manager page, sign in into the GitHub using your personal GitHub account credentials.
+   - If you are re-directed to the Git Credential Manager page, sign in to the GitHub using your personal GitHub account credentials.
 
        ![](media/gitcred.png)
        
@@ -111,7 +111,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
     ![](media/signintoAzureDevops.png)
     
-1. On **We need few more details page**, leave everthing as default and click on **Continue**.
+1. On **We need few more details page**, leave everything as default and click on **Continue**.
 
     ![](media/continue.png)
     
@@ -153,13 +153,13 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
    ![](media/d4.png)
   
-   >**Note**: If you get a warning pop up saying **Windows 17762 deprecated**. Please click on **OK**. Docker application might take few secounds to open, Please wait till the application opens.
+   >**Note**: If you get a warning pop up saying **Windows 17762 deprecated**. Please click on **OK**. Docker application might take a few seconds to open, please wait till the application opens.
    
 1. Click on **Start**.
 
    ![](media/d7.png)
 
-1. Skip the tutorial pop up by clicking on **Skip tutorial** situated in bottom-left corner of the application.
+1. Skip the tutorial pop up by clicking on **Skip tutorial** situated in the bottom-left corner of the application.
 
    ![](media/d8.png)
    
@@ -169,7 +169,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
    
    >**Note**: If the Docker application is taking more than 10 mins to start. Please follow the steps from the `https://github.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/docker-install.md` link and start the Docker again.
    
-1. In search bar, Search for **PowerShell** application and open it.
+1. In the search bar, search for **PowerShell** application and open it.
 
    ![](media/d10.png)
    
@@ -177,7 +177,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
    ![](media/d11.png)
    
-1. After the execution completes, Open the **Docker application**. You should be able see a container in running state. This confirms the running of the Docker application.
+1. After the execution completes, open the **Docker application**. You should be able to see a container in a running state. This confirms the running of the Docker application.
 
    ![](media/d12.png)
 
@@ -209,7 +209,7 @@ We can automate our project tracking with the Azure Board integration for GitHub
       
      ![The GitHub Application Authorization page.](media/azureboards02.png "GitHub Application Authorization")
     
-   - In Applications tab, select **Configure** next to **Azure Boards** under Installed GitHub Apps.
+   - In the Applications tab, select **Configure** next to **Azure Boards** under Installed GitHub Apps.
 
      ![The GitHub Application Configure.](media/azure-boards-configure.png "GitHub Application Authorization Configure")
      
@@ -229,7 +229,7 @@ We can automate our project tracking with the Azure Board integration for GitHub
 
     ![After completion of the onboarding tutorial. Two todo confirmation messages displayed.](media/image15.png "Get started and quick tip")
 
-8. Open the new Issue that the onboarding tutorial creates and observe the GitHub pull request and comment that are linked to the Azure DevOps board Issue.
+8. Open the new Issue that the onboarding tutorial creates and observe the GitHub pull request and comments that are linked to the Azure DevOps board Issue.
 
     ![Linked GitHub items in an Azure DevOps issue in Boards.](media/hol-ex1-task1-step7-1.png "GitHub Pull Request and Comment")
 
