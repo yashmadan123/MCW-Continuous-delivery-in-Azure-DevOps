@@ -2,11 +2,11 @@
 
 Duration: 40 minutes
 
-Fabrikam Medical Conferences has its first website for a customer running in the cloud, but deployment is still a largely manual process, and we have no insight into the behavior of the application in the cloud. In this exercise, we will add monitoring and logging to gain insight on the application usage in the cloud. Then, we will disable the GitHub pipeline and show how to build a deployment pipeline in Azure DevOps.
+Fabrikam Medical Conferences has its first website for a customer running in the cloud, but deployment is still a largely manual process, and we have no insight into the behavior of the application in the cloud. In this exercise, we will add monitoring and logging to gain insight into the application usage in the cloud. Then, we will disable the GitHub pipeline and show how to build a deployment pipeline in Azure DevOps.
 
 ### Task 1: Set up Application Insights
 
-1. Run the below mentioned command to deploy the app insights, make sure that you are in the correct directory:
+1. Run the below-mentioned command to deploy the app insights, make sure that you are in the correct directory:
 
     ```
     ./deploy-appinsights.ps1
@@ -19,7 +19,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     AI Instrumentation Key="55cade0c-197e-4489-961c-51e2e6423ea2"
     ```
 
-1. Using PowerShell navigate to the `./content-web` folder in your GitHub lab files repository by running the below mentioned command.
+1. Using PowerShell navigate to the `./content-web` folder in your GitHub lab files repository by running the below-mentioned command.
 
    ```
    cd ..
@@ -33,7 +33,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     npm install applicationinsights --save
     ```
 
-1. Modify the file `./content-web/app.js` to reflect the following to add and configure Application Insights for the web application frontend in the local folder. You can use `code app.js` command in Poweshell to open and modify the file.
+1. Modify the file `./content-web/app.js` to reflect the following to add and configure Application Insights for the web application frontend in the local folder. You can use `code app.js` command in Powershell to open and modify the file.
 
    >**Note**: Make sure to save the `app.js` file after modifying the content.
 
@@ -78,7 +78,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 ### Task 2: Linking Git commits to Azure DevOps issues
 
-In this task, you will create an issue in Azure DevOps and link a Git pull request from GitHub to the Azure DevOps issue. This uses the Azure Boards integration that was set up in the Before Hands on Lab.
+In this task, you will create an issue in Azure DevOps and link a Git pull request from GitHub to the Azure DevOps issue. This uses the Azure Boards integration that was set up in the Before Hands-on Lab.
 
 1. Navigate to 'dev.azure.com' and select boards under **Boards** and click on **New item**.
 
@@ -101,7 +101,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
     git commit -m "README.md update"
     git push --set-upstream origin feature/update-readme
     ```
-1. Using Github, manually make a small change (for ex: add an extra blank line at the end) to README.md in `feature/update-readme` branch.  
+1. Using Github, manually make a small change (for ex: add an extra blank line at the end) to README.md in the `feature/update-readme` branch.  
 
      ![](media/update9.png "Create pull request")
 
@@ -192,7 +192,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
     steps:
     ```
 
-1. Click on **Show assistant** to view the side bar, find the `Docker Compose` task, and configure it with the following fields:
+1. Click on **Show assistant** to view the sidebar, find the `Docker Compose` task, and configure it with the following fields:
 
     - Container Registry Type: Container Registry
     - Docker Registry Service Connection: GitHub Container Registry (created in step 3)
@@ -218,7 +218,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
 
     ![](media/docker-composer-registry.png)
     
-1. The final file should be similar like the below:
+1. The final file should be similar to the one below:
     
     ![Docker Compose Task definition in the AzureDevOps pipeline.](media/final1.png "Docker Compose Task")
 
@@ -234,27 +234,27 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
 
      ![](media/view.png)
      
-1. On Waiting for review page, click on **Permit** to grant permissions.
+1. On the Waiting for review page, click on **Permit** to grant permissions.
 
      ![](media/permit.png)
      
 1. Navigate to your `Fabrikam` project in Azure DevOps and select the `Project Settings` blade. From there, select the `Service Connections` tab.
 
-1. On **Service Connections** page, click on **New service connection**.
+1. On the **Service Connections** page, click on **New service connection**.
 
      ![](media/new%20service%20conenctions.png)
     
 1. Select  `Azure Resource Manager` and click on **Next**.
 
-1. On new service connection tab choose **Service Principal (manual)** and select **Next**
+1. On the new service connection tab choose **Service Principal (manual)** and select **Next**
 
     ![Run detail of the Azure DevOps pipeline previously created.](media/image22.png "Build Pipeline Run detail")
 
-1. Enter your subscription ID, Name and get the Service Principal details from **Environment Details -> Service Principal** details tab and then Service Connection name to **Fabrikam-Azure**. Value of Service Principal Id is the same as Application Id and Service Principal Key value is same as Secret key.Once done click on verify and the Save.
+1. Enter your subscription ID, Name and get the Service Principal details from **Environment Details -> Service Principal** details tab and then Service Connection name to **Fabrikam-Azure**. The value of the Service Principal Id is the same as the Application Id and the Service Principal Key value is the same as the Secret key. Once done click on verify and the Save.
  
-   >**Note**: You can get subscription name from Azure portal -> Subscriptions.
+   >**Note**: You can get the subscription name from the Azure portal -> Subscriptions.
 
-1. Navigate to Pipelines and select the pipeline you create in last step and click `Edit` mode, and then select the `Variables` button on the top-right corner of the pipeline editor. 
+1. Navigate to Pipelines and select the pipeline you create in the last step and click `Edit` mode, and then select the `Variables` button on the top-right corner of the pipeline editor. 
 
     ![Run detail of the Azure DevOps pipeline previously created.](media/image23.png "Build Pipeline Run detail")
     
@@ -351,17 +351,17 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
 
 1. Run the build pipeline and note how the pipeline waits before moving to the `DeployProd` stage. You will need to approve the request before the `DeployProd` stage runs.
 
-    ![Reviewing DeployProd stage transition request during a pipeline execution.](./media/wait.png "Reviewing pipeline request")
+    ![Reviewing DeployProd stage transition request during pipeline execution.](./media/wait.png "Reviewing pipeline request")
     
 1. You will be prompted with a Warning to grant permissions for the pipeline, click on **View**.
 
      ![](media/view.png)
      
-1. On Waiting for review page, click on **Permit** for both **Service Connection** and **Environment**.
+1. On the Waiting for review page, click on **Permit** for both **Service Connection** and **Environment**.
 
      ![](media/permit2.png)
   
-1. Now click on Review button and click **Approve** button to start the DeployProd stage in the pipeline
+1. Now click on the Review button and click **Approve** button to start the DeployProd stage in the pipeline
 
      ![Reviewing DeployProd stage transition request during a pipeline execution.](./media/1.png "Reviewing pipeline request")
      
