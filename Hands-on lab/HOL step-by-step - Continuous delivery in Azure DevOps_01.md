@@ -26,13 +26,13 @@ You are going to set up the local infrastructure using Docker containers. There 
 You will need to make some edits to files before running these locally. In this task, you will confirm that the Docker infrastructure works locally.
 
 1. In your Labvm open file explorer,  navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` to open your local GitHub repository.
-2. Replace `<yourgithubaccount>` value with your GitHub account name in the following files located in the root of your lab files repository. After updating save the files using CTRL+S.
+2. Replace `<yourgithubaccount>` value with your GitHub account name in the following files located at the root of your lab files repository. After updating save the files using CTRL+S.
     - `docker-compose.init.yml`
     - `docker-compose.yml`
 
    > **Note**: You should replace three instances of `<yourgithubaccount>` - one instance in `docker-compose.init.yml` and two instances in `docker-compose.yml`.
 
-   > **Note**: The `<yourgithubaccount>` value must be in **lowercase**, if your github account user name is in uppercase letters please change it to lowercase in Github. [Github Username Change](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-user-account-settings/changing-your-github-username)
+   > **Note**: The `<yourgithubaccount>` value must be in **lowercase**, if your GitHub account user name is in uppercase letters please change it to lowercase in Github. [Github Username Change](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-user-account-settings/changing-your-github-username)
    
    
 3. Build and run the docker-compose YAML files edited in the previous step.
@@ -69,7 +69,7 @@ You will need to make some edits to files before running these locally. In this 
 
 Now that we have Docker images working locally, we can build automation in GitHub for updating and republishing our Docker images when the code changes. In this task, we will create a workflow file using the GitHub interface and its GitHub Actions workflow editor. This will get you familiar with how to create and edit an action through the GitHub website.
 
-1. In your GitHub lab files repository, select the `Settings` tab from lab files repository.
+1. In your GitHub lab files repository, select the `Settings` tab from the lab files repository.
 
    ![](media/click%20settings.png)
 
@@ -144,7 +144,7 @@ Now that we have Docker images working locally, we can build automation in GitHu
     
 9. Commit the file to the repository. Select `Start commit`. Be sure that **Commit directly to the `main` branch** is selected. Finally, select `Commit new file`.
 
-10. The GitHub Action is now running and will automatically build and push the container to GitHub registry.
+10. The GitHub Action is now running and will automatically build and push the container to the GitHub registry.
 
     ![Summary of running Docker workflow executing in GitHub Actions tab of repository.](media/action1.png "GitHub Actions")
 
