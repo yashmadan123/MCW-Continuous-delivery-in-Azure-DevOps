@@ -12,9 +12,9 @@ Before the hands-on lab setup guide
 November 2021
 </div>
 
-Information in this document, including URL and other Internet website references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
+Information in this document, including URL and other Internet website references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in, or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
-Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
+Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering the subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third-party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
@@ -39,9 +39,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 # Continuous Delivery in Azure DevOps before the hands-on lab setup guide
 
-You should follow all steps in this document *before* performing the Hands-on lab. Pay close attention to product versions, as the version numbers called out in the lab have been tested and shown successful for the lab.
+You should follow all steps in this document *before* performing the Hands-on lab. Pay close attention to product versions, as the version numbers called out in the lab have been tested and shown successfully in the lab.
 
-> **Note**: If the students need to use Microsoft-hosted Azure Pipelines Agents, [Task 4: Create Azure DevOps Project](#task--4-create-azure-devops-project) will need to be completed at least **2-3 business days** before the lab in order to run parallel jobs in Azure DevOps. The other option is to use self-hosted agents. If you need to go the self-hosted route, refer to the [Azure Pipelines Agents documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/agents?view=azure-devops&tabs=browser).
+> **Note**: If the students need to use Microsoft-hosted Azure Pipelines Agents, [Task 4: Create Azure DevOps Project](#task--4-create-azure-devops-project) will need to be completed at least **2-3 business days** before the lab to run parallel jobs in Azure DevOps. The other option is to use self-hosted agents. If you need to go the self-hosted route, refer to the [Azure Pipelines Agents documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/agents?view=azure-devops&tabs=browser).
 
 ## Requirements
 
@@ -75,7 +75,7 @@ You should follow all of the steps provided in this section _before_ taking part
 
 In this task, you will create an account in [GitHub](https://github.com) and use `git` to add lab files to a new repository.
 
-1. Create a new repository in GitHub for the lab files.
+1. Create a new repository on GitHub for the lab files.
 
     - Browse to [GitHub](https://github.com) in your browser and log into your account.
 
@@ -132,7 +132,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
  Copy-Item '..\mcw-continuous-delivery-in-azure-devops\Hands-on lab\lab-files\*' -Destination ./ -Recurse
  ```
 
-- Initialize the `mcw-continuous-delivery-lab-files` folder as a git repository, commit, and submit contents to remote GitHub branch `main` in the lab files repository created in Step 1.
+- Initialize the `mcw-continuous-delivery-lab-files` folder as a git repository, commit, and submit contents to the remote GitHub branch `main` in the lab files repository created in Step 1.
 
  > **Note**: The URI of the lab files GitHub repository created in Step 1 will differ from that in the example below.
 
@@ -181,7 +181,7 @@ In this task, you will create an Azure DevOps Personal Access Token to be used i
 
 3. Copy the Azure DevOps Personal Access Token somewhere safe and accessible to you for later use during the lab. **DO NOT COMMIT THIS VALUE TO YOUR REPO!**
 
-    ![The Azure DevOps Personal Access Token created in the previous step.](media/b4-task3-step3-1.png "Created Azure DevOps Personal Access Token")
+    ![The Azure DevOps Personal Access Token was created in the previous step.](media/b4-task3-step3-1.png "Created Azure DevOps Personal Access Token")
 
 ### Task 4: Create Azure DevOps Project
 
@@ -200,7 +200,7 @@ In this task, you will set up a project in Azure DevOps to be used with the sect
 
    - Select the **Create project** button.
 
-2. To complete Exercise 3: Task 3 in the Hands on Lab, the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request). More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/).
+2. To complete Exercise 3: Task 3 in the Hands-on Lab, the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request). More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/).
 
     > **Note**: The Azure DevOps Parallelism Request can take 2-3 business days to process the request.
 
@@ -212,11 +212,11 @@ We can automate our project tracking with the Azure Board integration for GitHub
 
 1. On the GitHub Marketplace, find the [Azure Boards Integration App](https://github.com/marketplace/azure-boards).
 
-    ![The Azure Boards Integration App on GitHub Marketplace that will provide a link between Azure DevOps Boards and GitHub issues.](media/hol-ex1-task1-step1.png "Azure Boards Integration App on GitHub Marketplace")
+    ![The Azure Boards Integration App on GitHub Marketplace will provide a link between Azure DevOps Boards and GitHub issues.](media/hol-ex1-task1-step1.png "Azure Boards Integration App on GitHub Marketplace")
 
 2. Scroll to the bottom of the page and select `Install it for Free`.
 
-3. On the next page, select `Complete order and begin installation`.
+3. On the next page, select `Complete order and begin installation.
 
 4. Select the lab files repository created in [Task 1 of the Before the HOL Instructions](Before%20the%20HOL%20-%20Continuous%20delivery%20in%20Azure%20DevOps.md#task-1-create-the-project-repo) and select `Install & Authorize`.
 
@@ -228,9 +228,9 @@ We can automate our project tracking with the Azure Board integration for GitHub
 
 6. When the integration succeeds, you will be taken to the Azure DevOps Board. Follow the directions in the onboarding tutorial to create an initial Issue in the `To Do` Column and create a pull request associated with your Issue.
 
-    ![After completion of the onboarding tutorial. Two todo confirmation messages displayed.](media/hol-ex1-task1-step6-1.png "Get started and quick tip")
+    ![After completion of the onboarding tutorial. Two to-do confirmation messages are displayed.](media/hol-ex1-task1-step6-1.png "Get started and quick tip")
 
-7. Open the new Issue that the onboarding tutorial creates within Azure DevOps and observe the GitHub pull request and comment that are linked to the Azure DevOps board Issue.
+7. Open the new Issue that the onboarding tutorial creates within Azure DevOps and observe the GitHub pull request and comments that are linked to the Azure DevOps board Issue.
 
     ![Linked GitHub items in an Azure DevOps issue in Boards.](media/hol-ex1-task1-step7-1.png "GitHub Pull Request and Comment")
 
