@@ -2,7 +2,7 @@
 
 Duration: 40 minutes
 
-The Fabrikam Medical Conferences developer workflow has been improved. We are ready to consider migrating from running on-premises to a cloud implementation to reduce maintenance costs and facilitate scaling when necessary. We will take steps to run the containerized application in the cloud as well as automate its deployment.
+The Fabrikam Medical Conferences developer workflow has been improved. We are ready to consider migrating from running on-premises to cloud implementation to reduce maintenance costs and facilitate scaling when necessary. We will take steps to run the containerized application in the cloud as well as automate its deployment.
 
 **Help references**
 
@@ -69,7 +69,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
             --deployment-container-image-name nginx
         ```
 
- 3. In your Powershell Terminal log in to Azure by running the following command. this will open edge browser, you need to enter the login details as below:
+ 3. In your Powershell Terminal log in to Azure by running the following command. this will open the edge browser, you need to enter the login details below:
    
     
      * Azure Usename/Email: <inject key="AzureAdUserEmail"></inject> 
@@ -81,7 +81,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     az login
     ```
 
- 4. Once the login is completed, navigate back to powershell window and run the `deploy-infrastructure.ps1` PowerShell script.
+ 4. Once the login is completed, navigate back to the PowerShell window and run the `deploy-infrastructure.ps1` PowerShell script.
 
     ```pwsh
     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
@@ -92,7 +92,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
      ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step5-1.png "Azure Resource Group")
 
- 6. Open the `seed-cosmosdb.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace your github username in  `$githubRepo = "Your github repository name here"` variable.
+ 6. Open the `seed-cosmosdb.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace your GitHub username in  `$githubRepo = "Your github repository name here"` variable.
 
      >**Note:** We have already updated the $studentprefix in this file with the required value. 
 
@@ -140,7 +140,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
      ./seed-cosmosdb.ps1
      ```
        
- 11. Once the script execution is completed, Browse to the Azure Portal and navigate to **fabmedical-cdb-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and select **Data Explorer** from the left menu  and verify that the CosmosDB instance has been seeded.
+ 11. Once the script execution is completed, Browse to the Azure Portal and navigate to **fabmedical-cdb-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and select **Data Explorer** from the left menu and verify that the CosmosDB instance has been seeded.
 
      ![Azure CosmosDB contents displayed via the CosmosDB explorer in the Azure CosmosDB resource detail.](media/hol-ex2-task1-step9-1.png "Azure CosmosDB Seeded Contents")
 
@@ -180,7 +180,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
       ./configure-webapp.ps1
       ```
 
- 17. Once the script execution is completed, Browse to the Azure Portal and search for **fabmedical-web-<inject key="DeploymentID" enableCopy="false" />** App service and select **Configuration** from left side menu and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
+ 17. Once the script execution is completed, Browse to the Azure Portal and search for **fabmedical-web-<inject key="DeploymentID" enableCopy="false" />** App service and select **Configuration** from the left side menu and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
 
      ![Azure Web Application settings reflecting the `MONGODB_CONNECTION` environment variable configured via PowerShell.](media/hol-ex2-task1-step12-1.png "Azure Web Application settings")
 
@@ -191,7 +191,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     ```pwsh
     $env:CR_PAT="<GitHub Personal Access Token>"
     ```
- 1. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add your GitHub account username for the `$githubAccount` variable on the second line. Once the changes is done make sure to save the file. 
+ 1. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add your GitHub account username for the `$githubAccount` variable on the second line. Once the changes are done make sure to save the file. 
 
     >**Note:** We have already updated the $studentprefix in this file with the required value. 
 
@@ -228,13 +228,13 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
     ![Azure Web Application Log Stream displaying the STDOUT and STDERR output of the running container.](media/hol-ex2-task2-step4-1.png "Azure Web Application Log Stream")
 
- 1. Browse to the `Overview` blade of the Azure Web Application detail page and find the web application URL. Browse to that URL to verify the deployment of the web application. It might take few minutes for the web application to reflect new changes.
+ 1. Browse to the `Overview` blade of the Azure Web Application detail page and find the web application URL. Browse to that URL to verify the deployment of the web application. It might take a few minutes for the web application to reflect new changes.
 
     ![The Azure Web Application Overview detail in Azure Portal.](media/hol-ex2-task2-step5-1.png "Azure Web Application Overview")
    
     >**Note:** If you see any nginx error while browsing the App URL, that's fine as it will take a few minutes to reflect the changes.
     
-    ![The Contoso Conference website hosted in Azure.](media/hol-ex2-task2-step5-2.png "Azure hosted Web Application")
+    ![The Contoso Conference website is hosted in Azure.](media/hol-ex2-task2-step5-2.png "Azure hosted Web Application")
     
 
 ### Task 3: Continuous Deployment with GitHub Actions
@@ -245,7 +245,7 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
     
      ![spcreds](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/sp-creds-auth.png)
     
-    Replace the values that you copied in below Json.
+    Replace the values that you copied in the below Json.
      ```pwsh
      {
          "clientId": "...",
@@ -266,7 +266,7 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
 
      ![azurecred](media/azurecred.png)
    
- 1. Edit the `docker-publish.yml` file in the `.github\workflows` folder using github. Add the job present in the file URL mentioned below to the end of the `docker-publish.yml` file.
+ 1. Edit the `docker-publish.yml` file in the `.github\workflows` folder using Github. Add the job present in the file URL mentioned below to the end of the `docker-publish.yml` file.
 
     > **Note**: Make sure to change the student prefix for the last action in the `deploy` job.
     
@@ -298,7 +298,7 @@ In many enterprises, committing to `main` is restricted. Branch policies are use
 
  2. Select the `Add rule` button to add a new branch protection rule for the `main` branch. Be sure to specify `main` in the branch name pattern field. Enable the following options and choose the `Create` button to create the branch protection rules:
 
-   - Require pull request reviews before merging
+   - Require to pull request reviews before merging
    - Require status checks to pass before merging
    - Require branches to be up to date before merging
 
