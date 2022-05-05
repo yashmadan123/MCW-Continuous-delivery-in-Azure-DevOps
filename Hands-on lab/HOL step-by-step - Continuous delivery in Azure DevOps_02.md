@@ -124,6 +124,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     # Seed CosmosDB database
     docker run -ti `
         -e MONGODB_CONNECTION="$mongodbConnectionString" `
+        ghcr.io/$githubAccount/fabrikam-init:main
     ```
     
  9.  Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholders appropriately. 
