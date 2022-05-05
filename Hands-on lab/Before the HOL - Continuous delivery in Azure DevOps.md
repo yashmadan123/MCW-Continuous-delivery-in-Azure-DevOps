@@ -200,7 +200,7 @@ In this task, you will set up a project in Azure DevOps to be used with the sect
 
    - Select the **Create project** button.
 
-2. To complete Exercise 3: Task 3 in the Hands-on Lab, the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request). More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/).
+2. To complete Exercise 3: Task 3 in the Hands on Lab, the student will need to request a free grant of parallel jobs in Azure Pipelines via [this form](https://aka.ms/azpipelines-parallelism-request). More information can be found [here regarding changes in Azure Pipelines Grant for Public Projects](https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/).
 
     > **Note**: The Azure DevOps Parallelism Request can take 2-3 business days to process the request.
 
@@ -216,7 +216,7 @@ We can automate our project tracking with the Azure Board integration for GitHub
 
 2. Scroll to the bottom of the page and select `Install it for Free`.
 
-3. On the next page, select `Complete order and begin installation.
+3. On the next page, select `Complete order and begin installation`.
 
 4. Select the lab files repository created in [Task 1 of the Before the HOL Instructions](Before%20the%20HOL%20-%20Continuous%20delivery%20in%20Azure%20DevOps.md#task-1-create-the-project-repo) and select `Install & Authorize`.
 
