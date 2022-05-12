@@ -1,7 +1,7 @@
 
 ## Before the hands-on lab
 
-Duration: 60 minutes
+Duration: 20 minutes
 
 You should follow all of the steps provided in this section _before_ taking part in the hands-on lab ahead of time.
 
