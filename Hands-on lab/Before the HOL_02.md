@@ -101,7 +101,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
    ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/copytoken.png)
 
 
-### Task 4: Start the Docker application.
+### Task 3: Start the Docker application.
 
 1. Minimize the browser and open the **Docker application** from the LabVM desktop. You may find that docker is stopping abruptly, try starting it multiple times to fix it.
 
