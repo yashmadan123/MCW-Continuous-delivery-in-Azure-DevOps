@@ -1,6 +1,6 @@
 ## Exercise 2: Continuous Delivery / Continuous Deployment
 
-Duration: 40 minutes
+Duration: 50 minutes
 
 The Fabrikam Medical Conferences developer workflow has been improved. We are ready to consider migrating from running on-premises to cloud implementation to reduce maintenance costs and facilitate scaling when necessary. We will take steps to run the containerized application in the cloud as well as automate its deployment.
 
