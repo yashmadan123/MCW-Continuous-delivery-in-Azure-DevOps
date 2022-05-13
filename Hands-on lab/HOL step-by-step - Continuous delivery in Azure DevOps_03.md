@@ -1,6 +1,6 @@
 ## Exercise 3: Monitoring, Logging, and Continuous Deployment with Azure
 
-Duration: 15 minutes
+Duration: 20 minutes
 
 Fabrikam Medical Conferences has its first website for a customer running in the cloud, but deployment is still a largely manual process, and we have no insight into the behavior of the application in the cloud. In this exercise, we will add monitoring and logging to gain insight into the application usage in the cloud. Then, we will disable the GitHub pipeline and show how to build a deployment pipeline in Azure DevOps.
 
