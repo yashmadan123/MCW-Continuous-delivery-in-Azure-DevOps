@@ -1,4 +1,4 @@
-## Exercise 3: Monitoring, Logging, and Continuous Deployment with Azure
+## Exercise 4: Monitoring, Logging, and Continuous Deployment with Azure
 
 Duration: 30 minutes
 
