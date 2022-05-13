@@ -3,7 +3,7 @@
 
 In this hands-on lab, you will learn how to implement a solution with a combination of ARM templates and GitHub to enable continuous delivery with several Azure PaaS services.
 
-At the end of this workshop, you will be better able to implement solutions for continuous delivery with GitHub in Azure, as well create an ARM (ARM) template to provision Azure resources and configure continuous delivery with GitHub.
+At the end of this workshop, you will be better able to implement solutions for continuous delivery with GitHub in Azure, as well create an ARM template to provision Azure resources and configure continuous delivery with GitHub.
 
 ## Overview
 
