@@ -1,4 +1,4 @@
-## Exercise 2: Continuous Delivery / Continuous Deployment
+## Exercise 3: Continuous Delivery / Continuous Deployment
 
 Duration: 60 minutes
 
@@ -12,7 +12,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 | What is Continuous Delivery? | <https://docs.microsoft.com/devops/deliver/what-is-continuous-delivery> |
 | Continuous delivery vs. continuous deployment | <https://azure.microsoft.com/overview/continuous-delivery-vs-continuous-deployment/> |
 | Microsoft Learn - Introduction to continuous delivery | <https://docs.microsoft.com/learn/modules/introduction-to-continuous-delivery> |
-| Microsoft Learn - Explain DevOps Continuous Delivery and Continuous Quality | <https://docs.microsoft.com/learn/modules/explain-devops-continous-delivery-quality/> |
+
 
 ### Task 1: Set up Cloud Infrastructure
 
@@ -87,6 +87,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
     ./deploy-infrastructure.ps1
     ```
+     >**Note:** The **deploy-infrastructure.ps1** script can take upto 5 minutes to run. wait until the script runs completely.
    
  5. Browse to the Azure Portal and verify the creation of the resource group, CosmosDB instance, the App Service Plan, and the Web App.
 

@@ -1,4 +1,4 @@
-## Exercise 1: Continuous Integration
+## Exercise 2: Continuous Integration
 
 Duration: 60 minutes
 
@@ -15,7 +15,43 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 | Microsoft Learn - Build continuous integration (CI) workflows by using GitHub Actions | <https://docs.microsoft.com/learn/modules/github-actions-ci/> |
 | Microsoft Azure Well-Architected Framework - Release Engineering - Continuous Integration | <https://docs.microsoft.com/azure/architecture/framework/devops/release-engineering-ci> |
 
-### Task 1: Set up Local Infrastructure
+
+### Task 1: Start the Docker application.
+
+1. Minimize the browser and open the **Docker application** from the LabVM desktop. You may find that docker is stopping abruptly, try starting it multiple times to fix it.
+
+   ![](media/d4.png)
+  
+   >**Note**: If you get a warning pop up saying **Windows 17762 deprecated**. Please click on **OK**. Docker application might take a few seconds to open, please wait till the application opens.
+   
+1. Click on **Start**.
+
+   ![](media/d7.png)
+
+1. Skip the tutorial pop up by clicking on **Skip tutorial** situated in the bottom-left corner of the application.
+
+   ![](media/d8.png)
+   
+1. Copy the command from the docker application page and save it in a notepad.
+
+   ![](media/d9.png)
+   
+   >**Note**: If the Docker application is taking more than 10 mins to start. Please follow the steps from the `https://github.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/docker-install.md` link and start the Docker again.
+   
+1. In the search bar, search for **PowerShell** application and open it.
+
+   ![](media/d10.png)
+   
+1. Paste the **docker run** command which you had copied earlier and wait till the execution completes.
+
+   ![](media/d11.png)
+   
+1. After the execution completes, open the **Docker application**. You should be able to see a container in a running state. This confirms the running of the Docker application.
+
+   ![](media/d12.png)
+
+
+### Task 2: Set up Local Infrastructure
 
 You are going to set up the local infrastructure using Docker containers. There are three images you will be working with:
 
@@ -65,7 +101,7 @@ You will need to make some edits to files before running these locally. In this 
     git push
     ```
 
-### Task 2: Build Automation with GitHub Registry
+### Task 3: Build Automation with GitHub Registry
 
 Now that we have Docker images working locally, we can build automation in GitHub for updating and republishing our Docker images when the code changes. In this task, we will create a workflow file using the GitHub interface and its GitHub Actions workflow editor. This will get you familiar with how to create and edit an action through the GitHub website.
 
@@ -154,7 +190,7 @@ Now that we have Docker images working locally, we can build automation in GitHu
 
     > **Note**: You can optionally add `workflow_dispatch:` in the `on:` trigger section to set a manual trigger for the GitHub Actions workflow.
 
-### Task 3: Editing the GitHub Workflow File Locally
+### Task 4: Editing the GitHub Workflow File Locally
 
 The last task automated building and updating only one of the Docker images. In this task, we will update the workflow file with a more appropriate workflow for the structure of our repository. This task will end with a file named `docker-publish.yml` that will rebuild and publish Docker images as their respective code is updated.
 
@@ -239,7 +275,7 @@ Now let's make this change in our repository.
 
     ![GitHub Packages tab listing summary of container images that have been pushed to the container registry.](media/hol-ex1-task4-step12-1.png "GitHub Packages")
 
-### Task 4: Using Dependabot
+### Task 5: Using Dependabot
 
 Another part of continuous integration is having a bot help track versions of the packages used in the application and notify us when there are newer versions. In this task, we will use Dependabot to track the versions of the packages we use in our GitHub repository and create pull requests to update packages for us.
 

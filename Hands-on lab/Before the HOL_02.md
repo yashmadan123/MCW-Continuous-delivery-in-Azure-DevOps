@@ -1,5 +1,5 @@
 
-## Before the hands-on lab
+## Exercise 1: Set up repo and personal access token
 
 Duration: 30 minutes
 
@@ -99,39 +99,4 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 3. Click on the Copy icon to copy the token to your clipboard and save it on your notepad. For security reasons, after you navigate off the page, you will not be able to see the token again. **DO NOT COMMIT THIS TO YOUR REPO!**
 
    ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/copytoken.png)
-
-
-### Task 3: Start the Docker application.
-
-1. Minimize the browser and open the **Docker application** from the LabVM desktop. You may find that docker is stopping abruptly, try starting it multiple times to fix it.
-
-   ![](media/d4.png)
-  
-   >**Note**: If you get a warning pop up saying **Windows 17762 deprecated**. Please click on **OK**. Docker application might take a few seconds to open, please wait till the application opens.
-   
-1. Click on **Start**.
-
-   ![](media/d7.png)
-
-1. Skip the tutorial pop up by clicking on **Skip tutorial** situated in the bottom-left corner of the application.
-
-   ![](media/d8.png)
-   
-1. Copy the command from the docker application page and save it in a notepad.
-
-   ![](media/d9.png)
-   
-   >**Note**: If the Docker application is taking more than 10 mins to start. Please follow the steps from the `https://github.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/docker-install.md` link and start the Docker again.
-   
-1. In the search bar, search for **PowerShell** application and open it.
-
-   ![](media/d10.png)
-   
-1. Paste the **docker run** command which you had copied earlier and wait till the execution completes.
-
-   ![](media/d11.png)
-   
-1. After the execution completes, open the **Docker application**. You should be able to see a container in a running state. This confirms the running of the Docker application.
-
-   ![](media/d12.png)
 

@@ -1,8 +1,8 @@
-## Exercise 3: Monitoring, Logging, and Continuous Deployment with Azure
+## Exercise 4: Monitoring, Logging, and Continuous Deployment with Azure
 
 Duration: 30 minutes
 
-Fabrikam Medical Conferences has its first website for a customer running in the cloud, but deployment is still a largely manual process, and we have no insight into the behavior of the application in the cloud. In this exercise, we will add monitoring and logging to gain insight into the application usage in the cloud. Then, we will disable the GitHub pipeline and show how to build a deployment pipeline in Azure DevOps.
+Fabrikam Medical Conferences has its first website for a customer running in the cloud, but deployment is still a largely manual process, and we have no insight into the behavior of the application in the cloud. In this exercise, we will add monitoring and logging to gain insight into the application usage in the cloud.
 
 ### Task 1: Set up Application Insights
 
@@ -74,7 +74,9 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     ./deploy-webapp.ps1
     ```
     
-1. Visit the deployed website and check Application Insights in the Azure Portal to see instrumentation data.
+1. Browse to the `Overview` blade of the Azure Web Application detail page and find the web application URL. Browse to that URL to verify the deployment of the web application.
+   
+   ![The Azure Web Application Overview detail in Azure Portal.](media/hol-ex2-task2-step5-1.png "Azure Web Application Overview")
 
 
 Congratulation, You have completed this workshop.
