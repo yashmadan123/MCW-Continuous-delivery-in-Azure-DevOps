@@ -87,7 +87,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
     ./deploy-infrastructure.ps1
     ```
-     >**Note:** The above commands can take upto 5 minutes to run. wait until the run is completed successfully.
+     >**Note:** The **deploy-infrastructure.ps1** script can take upto 5 minutes to run. wait until the script runs completely.
    
  5. Browse to the Azure Portal and verify the creation of the resource group, CosmosDB instance, the App Service Plan, and the Web App.
 
