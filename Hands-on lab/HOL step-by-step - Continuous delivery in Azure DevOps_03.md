@@ -74,7 +74,9 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     ./deploy-webapp.ps1
     ```
     
-1. Visit the deployed website and check Application Insights in the Azure Portal to see instrumentation data.
+1. Browse to the `Overview` blade of the Azure Web Application detail page and find the web application URL. Browse to that URL to verify the deployment of the web application.
+   
+   ![The Azure Web Application Overview detail in Azure Portal.](media/hol-ex2-task2-step5-1.png "Azure Web Application Overview")
 
 
 Congratulation, You have completed this workshop.
