@@ -16,7 +16,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 | Microsoft Azure Well-Architected Framework - Release Engineering - Continuous Integration | <https://docs.microsoft.com/azure/architecture/framework/devops/release-engineering-ci> |
 
 
-### Task 1: Start the Docker application.
+### Task 1: Set up Local Infrastructure
 
 1. Minimize the browser and open the **Docker application** from the LabVM desktop. You may find that docker is stopping abruptly, try starting it multiple times to fix it.
 
@@ -51,9 +51,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
    ![](media/d12.png)
 
 
-### Task 2: Set up Local Infrastructure
-
-You are going to set up the local infrastructure using Docker containers. There are three images you will be working with:
+1. Now you are going to set up the local infrastructure using Docker containers. There are three images you will be working with:
 
 - `fabrikam-init`
 - `fabrikam-api`
@@ -101,7 +99,7 @@ You will need to make some edits to files before running these locally. In this 
     git push
     ```
 
-### Task 3: Build Automation with GitHub Registry
+### Task 2: Build Automation with GitHub Registry
 
 Now that we have Docker images working locally, we can build automation in GitHub for updating and republishing our Docker images when the code changes. In this task, we will create a workflow file using the GitHub interface and its GitHub Actions workflow editor. This will get you familiar with how to create and edit an action through the GitHub website.
 
@@ -190,7 +188,7 @@ Now that we have Docker images working locally, we can build automation in GitHu
 
     > **Note**: You can optionally add `workflow_dispatch:` in the `on:` trigger section to set a manual trigger for the GitHub Actions workflow.
 
-### Task 4: Editing the GitHub Workflow File Locally
+### Task 3: Editing the GitHub Workflow File Locally
 
 The last task automated building and updating only one of the Docker images. In this task, we will update the workflow file with a more appropriate workflow for the structure of our repository. This task will end with a file named `docker-publish.yml` that will rebuild and publish Docker images as their respective code is updated.
 
@@ -275,7 +273,7 @@ Now let's make this change in our repository.
 
     ![GitHub Packages tab listing summary of container images that have been pushed to the container registry.](media/hol-ex1-task4-step12-1.png "GitHub Packages")
 
-### Task 5: Using Dependabot
+### Task 4: Using Dependabot
 
 Another part of continuous integration is having a bot help track versions of the packages used in the application and notify us when there are newer versions. In this task, we will use Dependabot to track the versions of the packages we use in our GitHub repository and create pull requests to update packages for us.
 
