@@ -3,8 +3,6 @@
 
 Duration: 30 minutes
 
-You should follow all of the steps provided in this section _before_ taking part in the hands-on lab ahead of time.
-
 ### Task 1: Create the Project Repo
 
 In this task, you will create an account in [GitHub](https://github.com) and use `git` to add lab files to a new repository.
