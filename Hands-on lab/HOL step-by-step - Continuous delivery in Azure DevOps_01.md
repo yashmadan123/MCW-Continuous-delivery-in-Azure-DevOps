@@ -24,34 +24,34 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
   
    >**Note**: If you get a warning pop up saying **Windows 17762 deprecated**. Please click on **OK**. Docker application might take a few seconds to open, please wait till the application opens.
    
-1. Click on **Start**.
+2. Click on **Start**.
 
    ![](media/d7.png)
 
-1. Skip the tutorial pop up by clicking on **Skip tutorial** situated in the bottom-left corner of the application.
+3. Skip the tutorial pop up by clicking on **Skip tutorial** situated in the bottom-left corner of the application.
 
    ![](media/d8.png)
    
-1. Copy the command from the docker application page and save it in a notepad.
+4. Copy the command from the docker application page and save it in a notepad.
 
    ![](media/d9.png)
    
    >**Note**: If the Docker application is taking more than 10 mins to start. Please follow the steps from the `https://github.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/docker-install.md` link and start the Docker again.
    
-1. In the search bar, search for **PowerShell** application and open it.
+5. In the search bar, search for **PowerShell** application and open it.
 
    ![](media/d10.png)
    
-1. Paste the **docker run** command which you had copied earlier and wait till the execution completes.
+6. Paste the **docker run** command which you had copied earlier and wait till the execution completes.
 
    ![](media/d11.png)
    
-1. After the execution completes, open the **Docker application**. You should be able to see a container in a running state. This confirms the running of the Docker application.
+7. After the execution completes, open the **Docker application**. You should be able to see a container in a running state. This confirms the running of the Docker application.
 
    ![](media/d12.png)
 
 
-1. Now you are going to set up the local infrastructure using Docker containers. There are three images you will be working with:
+8. Now you are going to set up the local infrastructure using Docker containers. There are three images you will be working with:
 
   - `fabrikam-init`
   - `fabrikam-api`
@@ -59,8 +59,8 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
   You will need to make some edits to files before running these locally. In this task, you will confirm that the Docker infrastructure works locally.
 
-1. In your Labvm open file explorer,  navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` to open your local GitHub repository.
-1. Replace `<yourgithubaccount>` value with your GitHub account name in the following files located at the root of your lab files repository. After updating save the files using CTRL+S.
+9. In your Labvm open file explorer,  navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` to open your local GitHub repository.
+10. Replace `<yourgithubaccount>` value with your GitHub account name in the following files located at the root of your lab files repository. After updating save the files using CTRL+S.
     - `docker-compose.init.yml`
     - `docker-compose.yml`
 
@@ -69,7 +69,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
    > **Note**: The `<yourgithubaccount>` value must be in **lowercase**, if your GitHub account user name is in uppercase letters please change it to lowercase in Github. [Github Username Change](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-user-account-settings/changing-your-github-username)
    
    
-1. Build and run the docker-compose YAML files edited in the previous step.
+11. Build and run the docker-compose YAML files edited in the previous step.
     
      > **Note**: Make sure that you are in `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` dir.
 
@@ -80,17 +80,17 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ![The docker-compose log output observed when running `docker-compose up` on our docker-compose harness.](media/hol-ex1-task3-step4-2.png "docker-compose log output")
     
-1. Verify that you can browse to <http://localhost:3000> in a browser and arrive at the Fabrikam conference website.
+12. Verify that you can browse to <http://localhost:3000> in a browser and arrive at the Fabrikam conference website.
 
     ![Fabrikam Medical's Contoso conference site.](media/hol-ex1-task3-step4-1.png "Contoso conference site")
 
 
-1. Leave this PowerShell session in running and open a new session. Paste the following command and hit `<ENTER>`.
+13. Leave this PowerShell session in running and open a new session. Paste the following command and hit `<ENTER>`.
 
     ```pwsh
     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files
     ```
-1. Commit and push your changes to your GitHub repository.
+14. Commit and push your changes to your GitHub repository.
 
     ```pwsh
     git pull
