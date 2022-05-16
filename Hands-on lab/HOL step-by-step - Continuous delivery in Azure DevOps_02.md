@@ -89,7 +89,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     ```
      >**Note:** The **deploy-infrastructure.ps1** script can take upto 5 minutes to run. wait until the script runs completely.
    
- 5. Browse to the Azure Portal and verify the creation of the resource group, CosmosDB instance, the App Service Plan, and the Web App.
+ 5. Browse to the Azure Portal and verify the creation of the resources, CosmosDB instance, the App Service Plan, and the Web App.
 
      ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step5-1.png "Azure Resource Group")
 
