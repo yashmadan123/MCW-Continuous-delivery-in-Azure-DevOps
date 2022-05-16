@@ -53,14 +53,14 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 1. Now you are going to set up the local infrastructure using Docker containers. There are three images you will be working with:
 
-- `fabrikam-init`
-- `fabrikam-api`
-- `fabrikam-web`
+  - `fabrikam-init`
+  - `fabrikam-api`
+  - `fabrikam-web`
 
-You will need to make some edits to files before running these locally. In this task, you will confirm that the Docker infrastructure works locally.
+  You will need to make some edits to files before running these locally. In this task, you will confirm that the Docker infrastructure works locally.
 
 1. In your Labvm open file explorer,  navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` to open your local GitHub repository.
-2. Replace `<yourgithubaccount>` value with your GitHub account name in the following files located at the root of your lab files repository. After updating save the files using CTRL+S.
+1. Replace `<yourgithubaccount>` value with your GitHub account name in the following files located at the root of your lab files repository. After updating save the files using CTRL+S.
     - `docker-compose.init.yml`
     - `docker-compose.yml`
 
@@ -69,7 +69,7 @@ You will need to make some edits to files before running these locally. In this 
    > **Note**: The `<yourgithubaccount>` value must be in **lowercase**, if your GitHub account user name is in uppercase letters please change it to lowercase in Github. [Github Username Change](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-user-account-settings/changing-your-github-username)
    
    
-3. Build and run the docker-compose YAML files edited in the previous step.
+1. Build and run the docker-compose YAML files edited in the previous step.
     
      > **Note**: Make sure that you are in `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` dir.
 
@@ -80,17 +80,17 @@ You will need to make some edits to files before running these locally. In this 
 
     ![The docker-compose log output observed when running `docker-compose up` on our docker-compose harness.](media/hol-ex1-task3-step4-2.png "docker-compose log output")
     
-4. Verify that you can browse to <http://localhost:3000> in a browser and arrive at the Fabrikam conference website.
+1. Verify that you can browse to <http://localhost:3000> in a browser and arrive at the Fabrikam conference website.
 
     ![Fabrikam Medical's Contoso conference site.](media/hol-ex1-task3-step4-1.png "Contoso conference site")
 
 
-5. Leave this PowerShell session in running and open a new session. Paste the following command and hit `<ENTER>`.
+1. Leave this PowerShell session in running and open a new session. Paste the following command and hit `<ENTER>`.
 
     ```pwsh
     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files
     ```
-6. Commit and push your changes to your GitHub repository.
+1. Commit and push your changes to your GitHub repository.
 
     ```pwsh
     git pull
