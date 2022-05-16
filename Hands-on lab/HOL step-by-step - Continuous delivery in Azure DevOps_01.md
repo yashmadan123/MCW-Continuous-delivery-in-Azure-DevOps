@@ -309,7 +309,7 @@ Another part of continuous integration is having a bot help track versions of th
 
     ![The Pull Request Merge Button in the Pull Request detail.](media/hol-ex1-task2-step6-2.png "Pull Request Merge Button")
 
-7. Pull the latest changes from your GitHub repository to your local GitHub folder.
+7. Now run the below command to pull the latest changes from your GitHub repository to your local GitHub folder.
 
     ```pwsh
     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files  # This path may vary depending on how
