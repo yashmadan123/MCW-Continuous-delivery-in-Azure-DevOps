@@ -1,5 +1,5 @@
 
-## Exercise 1: Set up GitHub repo and personal access token
+## Exercise 1: Set up repo and personal access token
 
 Duration: 30 minutes
 
