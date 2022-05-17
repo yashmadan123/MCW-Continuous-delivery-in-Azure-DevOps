@@ -17,6 +17,10 @@
  
     > You will see the SUFFIX value on the **Environment Details** tab, use it wherever you see SUFFIX or DeploymentID in lab steps.
 
+1. In LabVM, you will get Service Agreement from Docker. Check the **I accept the terms** check box and click on **Accept**. Once done you can close the session.
+
+     ![](media/bhol-01.png)
+
 ## Set default browser
 
 1. Within the LabVM, search for the **Default apps**.
