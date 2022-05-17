@@ -20,6 +20,8 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
      >**Note:** We have already updated the $studentprefix in this file with the required value. 
 
+     >**Note:** The script will take upto 20 minutes to execute successfully.
+
    ```pwsh
    $studentprefix = "DeploymentID"                                  
    $resourcegroupName = "fabmedical-rg-" + $studentprefix
