@@ -292,5 +292,5 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
      ```BASH
      git pull
      ```
-     
-     
+1. Click on the **Next** button present in the bottom-right corner of this lab guide.  
+
