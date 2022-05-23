@@ -316,4 +316,5 @@ Another part of continuous integration is having a bot help track versions of th
                                                             # you set up your lab files repository
     git pull
     ```
-    
+1. Click on the **Next** button present in the bottom-right corner of this lab guide.      
+
