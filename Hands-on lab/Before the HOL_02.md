@@ -97,4 +97,8 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 3. Click on the Copy icon to copy the token to your clipboard and save it on your notepad. For security reasons, after you navigate off the page, you will not be able to see the token again. **DO NOT COMMIT THIS TO YOUR REPO!**
 
    ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/copytoken.png)
+   
+1. Click on the **Next** button present in the bottom-right corner of this lab guide.
+
+
 
