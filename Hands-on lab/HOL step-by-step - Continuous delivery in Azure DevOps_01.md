@@ -293,6 +293,9 @@ Another part of continuous integration is having a bot help track versions of th
 
     ![GitHub Dependabot alerts in the Security tab.](media/hol-ex1-task2-step3-1.png "GitHub Dependabot alerts")
 
+    > **Note**: In case you get zero alerts in Security, go back to **Settings** > **Security & analysis** and disable all three Dependabot alerts. Then again enable **Dependabot security updates**. Now you can check **Security** tab for alerts.
+
+
 4. Sort the Dependabot alerts by `Package name`. Locate the `handlebars` vulnerability by typing `handlebars` in the search box under the `Package` dropdown menu.
 
     ![Summary of the `handlebars` Dependabot alert in the list of Dependabot alerts.](media/hol-ex1-task2-step4-1.png "`handlebars` Dependabot alert")
