@@ -211,7 +211,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     # Deploy Azure Web App
     az webapp config container set `
         --docker-registry-server-password $env:CR_PAT `
-        --docker-registry-server-url https://docker.pkg.github.com `
+        --docker-registry-server-url https://ghcr.io `
         --docker-registry-server-user $githubAccount `
         --multicontainer-config-file ./../docker-compose.yml `
         --multicontainer-config-type COMPOSE `
