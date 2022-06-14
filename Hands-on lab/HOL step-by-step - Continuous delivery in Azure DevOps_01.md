@@ -98,8 +98,42 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
     git commit -m "Updating Docker compose files"
     git push
     ```
+    
+### Task 2: Create GitHub Personal Access Token
 
-### Task 2: Build Automation with GitHub Registry
+1. Navigate back to the **GitHub** tab and create a Personal Access Token as described below:
+
+   - In the upper-right corner of your GitHub page, click your profile photo, then click **Settings (1)** and in the left sidebar click **Developer settings (2)**.
+
+     ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/Settings_pat.png)
+
+   - Then in the left sidebar, click **Personal access tokens (3)** and select **Generate new token (4)** button on the right. Provide the GitHub password if prompted. 
+   
+     ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/Settings_pat1.png)
+
+2. Select the scopes or permissions you would like to grant this token
+
+    - **Note**: Provide the following text in the note field, **<inject key="DeploymentID" enableCopy="false" />-token**. 
+    
+    - **Select scopes**:
+
+        * repo - Full control of private repositories
+        * workflow - Update GitHub Action workflows
+        * write:packages - Upload packages to GitHub Package Registry
+        * delete:packages - Delete packages from GitHub Package Registry
+        * read:org - Read org and team membership, read org projects
+  
+      ![Permissions GH](media/image10.png)
+
+    - Click **Generate token**.
+
+      ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/gentoken.png)
+
+3. Click on the Copy icon to copy the token to your clipboard and save it on your notepad. For security reasons, after you navigate off the page, you will not be able to see the token again. **DO NOT COMMIT THIS TO YOUR REPO!**
+
+   ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/copytoken.png)
+
+### Task 3: Build Automation with GitHub Registry
 
 Now that we have Docker images working locally, we can build automation in GitHub for updating and republishing our Docker images when the code changes. In this task, we will create a workflow file using the GitHub interface and its GitHub Actions workflow editor. This will get you familiar with how to create and edit an action through the GitHub website.
 
@@ -188,7 +222,7 @@ Now that we have Docker images working locally, we can build automation in GitHu
 
     > **Note**: You can optionally add `workflow_dispatch:` in the `on:` trigger section to set a manual trigger for the GitHub Actions workflow.
 
-### Task 3: Editing the GitHub Workflow File Locally
+### Task 4: Editing the GitHub Workflow File Locally
 
 The last task automated building and updating only one of the Docker images. In this task, we will update the workflow file with a more appropriate workflow for the structure of our repository. This task will end with a file named `docker-publish.yml` that will rebuild and publish Docker images as their respective code is updated.
 
@@ -273,7 +307,7 @@ Now let's make this change in our repository.
 
     ![GitHub Packages tab listing summary of container images that have been pushed to the container registry.](media/hol-ex1-task4-step12-1.png "GitHub Packages")
 
-### Task 4: Using Dependabot
+### Task 5: Using Dependabot
 
 Another part of continuous integration is having a bot help track versions of the packages used in the application and notify us when there are newer versions. In this task, we will use Dependabot to track the versions of the packages we use in our GitHub repository and create pull requests to update packages for us.
 
@@ -319,5 +353,5 @@ Another part of continuous integration is having a bot help track versions of th
                                                             # you set up your lab files repository
     git pull
     ```
-1. Click on the **Next** button present in the bottom-right corner of this lab guide.      
+8. Click on the **Next** button present in the bottom-right corner of this lab guide.      
 
