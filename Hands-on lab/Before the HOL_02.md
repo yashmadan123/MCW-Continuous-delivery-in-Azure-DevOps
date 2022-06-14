@@ -29,14 +29,23 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
    ![Quick setup screen is displayed with the copy button next to the GitHub URL textbox selected.](media/image26.png "Quick setup screen")
 
+1. From the VM desktop, Select **Visual Studio Code** icon and open the application.
 
-1. Open PowerShell with administrator and run the below commands to set your username and email, which git uses for commits. Make sure to replace your email and username.
+   ![](media/dg1.png "New Repository Creation Form")
+   
+1. In Visual Studio Code application, Select **Terminal** **(1)** and click on **New Terminal** **(2)**. It will open a new PowerShell session which you'll be using throughout the lab.
+
+   ![](media/dg2.png "New Repository Creation Form")
+
+1. From a terminal opened in Visual Studio Code, run the below commands to set your username and email, which git uses for commits. Make sure to replace your email and username.
    
      ```pwsh
      cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files
      git config --global user.email "you@example.com"
      git config --global user.name "Your UserName"
      ```
+     
+   ![](media/dg3.png "New Repository Creation Form")
      
     - Initialize the folder as a git repository, commit, and submit contents to the remote GitHub branch `main` in the lab files repository created in Step 1. Make sure to replace `<your_github_repository-url>` with the value you copied in step 5.
 
@@ -60,43 +69,6 @@ In this task, you will create an account in [GitHub](https://github.com) and use
        ![](media/gitcred.png)
        
    - After you are prompted with the message **Authorization Succeeded**, close the tab and continue with the next task.
-      
-    
-
-### Task 2: Create GitHub Personal Access Token
-
-
-1. Navigate back to the **GitHub** tab and create a Personal Access Token as described below:
-
-   - In the upper-right corner of your GitHub page, click your profile photo, then click **Settings (1)** and in the left sidebar click **Developer settings (2)**.
-
-     ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/Settings_pat.png)
-
-   - Then in the left sidebar, click **Personal access tokens (3)** and select **Generate new token (4)** button on the right. Provide the GitHub password if prompted. 
-   
-     ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/Settings_pat1.png)
-
-2. Select the scopes or permissions you would like to grant this token
-
-    - **Note**: Provide the following text in the note field, **<inject key="DeploymentID" enableCopy="false" />-token**. 
-    
-    - **Select scopes**:
-
-        * repo - Full control of private repositories
-        * workflow - Update GitHub Action workflows
-        * write:packages - Upload packages to GitHub Package Registry
-        * delete:packages - Delete packages from GitHub Package Registry
-        * read:org - Read org and team membership, read org projects
-  
-      ![Permissions GH](media/image10.png)
-
-    - Click **Generate token**.
-
-      ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/gentoken.png)
-
-3. Click on the Copy icon to copy the token to your clipboard and save it on your notepad. For security reasons, after you navigate off the page, you will not be able to see the token again. **DO NOT COMMIT THIS TO YOUR REPO!**
-
-   ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/copytoken.png)
    
 1. Click on the **Next** button present in the bottom-right corner of this lab guide.
 
