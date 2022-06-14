@@ -38,13 +38,13 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
    
    >**Note**: If the Docker application is taking more than 10 mins to start. Please follow the steps from the `https://github.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/docker-install.md` link and start the Docker again.
    
-5. In the search bar, search for **PowerShell** application and open it.
+5. From the VM desktop, Open **Visual Studio Code** application and open new terminal.
 
-   ![](media/d10.png)
+   ![](media/dg2.png)
    
 6. Paste the **docker run** command which you had copied earlier and wait till the execution completes.
 
-   ![](media/d11.png)
+   ![](media/dg4.png)
    
 7. After the execution completes, open the **Docker application**. You should be able to see a container in a running state. This confirms the running of the Docker application.
 
