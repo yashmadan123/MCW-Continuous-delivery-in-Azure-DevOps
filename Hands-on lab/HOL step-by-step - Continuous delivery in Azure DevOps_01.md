@@ -145,7 +145,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 3. Click on the Copy icon to copy the token to your clipboard and save it on your notepad. For security reasons, after you navigate off the page, you will not be able to see the token again. **DO NOT COMMIT THIS TO YOUR REPO!**
 
-   ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/copytoken.png)
+   ![](media/ex2-t2-newpat.png)
 
 ### Task 3: Build Automation with GitHub Registry
 
