@@ -59,22 +59,33 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
   You will need to make some edits to files before running these locally. In this task, you will confirm that the Docker infrastructure works locally.
 
-9. In your Labvm open file explorer,  navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` to open your local GitHub repository.
+9. From the **Visual Studio Code**, click on **File**(1) at the left top and select **Open Folder**(2).
 
-10. Replace `<yourgithubaccount>` value with your GitHub account name in the following files located at the root of your lab files repository. After updating save the files using CTRL+S.
+   ![](media/ex2-t1-step9.png)
+
+10. In the **Open Folder** tab, navigate to the following path `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` to open your local GitHub repository and click on **Select Folder**.
+
+    ![](media/ex2-t1-selectfolder.png)
+    
+11. You may receive a prompt that: Do you trust the authors of the files in this folder? **Check** the box and click on **Yes, I trust the authors**.
+
+    ![](media/ex2-t1-trustauthor.png)
+
+12. From the Explorer, open the `docker-compose-init.yml`(1) and replace `<yourgithubaccount>`(2) value in line no. 6 with your GitHub account name. After updating save the file using CTRL+S.
    
-   - `docker-compose.init.yml`
-    - `docker-compose.yml`
+    ![](media/ex2-t1-editinit.png)
+    
+13. From the Explorer, open the `docker-compose.yml`(1) and replace `<yourgithubaccount>` value in line no. 4 and 9 with your GitHub account name. After updating save the file using CTRL+S.    
 
-   > **Note**: You should replace three instances of `<yourgithubaccount>` - one instance in `docker-compose.init.yml` and two instances in `docker-compose.yml`.
+    ![](media/ex2-t1-compose.png)
 
    > **Note**: The `<yourgithubaccount>` value must be in **lowercase**, if your GitHub account user name is in uppercase letters please change it to lowercase in Github. 
    
    [Github Username Change](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-user-account-settings/changing-your-github-username)
      
-11. Build and run the docker-compose YAML files edited in the previous step.
+11. Open a **New Terminal** in the Visual Studio Code, to build and run the docker-compose YAML files edited in the previous steps.
     
-     > **Note**: Make sure that you are in `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` dir.
+     > **Note**: Make sure that you are in `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` directory. These commands execution may take around 10-15 minutes to complete.
 
     ```pwsh
     docker-compose -f .\docker-compose.yml -f .\local.docker-compose.yml -f .\docker-compose.init.yml build
@@ -88,7 +99,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
     ![Fabrikam Medical's Contoso conference site.](media/hol-ex1-task3-step4-1.png "Contoso conference site")
 
 
-13. Leave this PowerShell session in running and open a new session. Paste the following command and hit `<ENTER>`.
+13. Leave this terminal in running and open a new terminal. Paste the following command and hit `<ENTER>`.
 
     ```pwsh
     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files
