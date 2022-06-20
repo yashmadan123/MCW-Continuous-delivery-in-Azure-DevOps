@@ -61,13 +61,13 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 9. From the **Visual Studio Code**, click on **File**(1) at the left top and select **Open Folder**(2).
 
-   ![](media/ex2-t1-step9.png)
+   ![](media/dg6.png)
 
 10. In the **Open Folder** tab, navigate to the following path `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` to open your local GitHub repository and click on **Select Folder**.
 
-    ![](media/ex2-t1-selectfolder.png)
+    ![](media/dg7.png)
     
-11. You may receive a prompt that: Do you trust the authors of the files in this folder? **Check** the box and click on **Yes, I trust the authors**.
+11. You may receive a prompt that: Do you trust the authors of the files in this folder? select the **checkbox** **(1)** the box and click on **Yes, I trust the authors** **(2)**.
 
     ![](media/ex2-t1-trustauthor.png)
 
@@ -75,13 +75,13 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
    
     ![](media/ex2-t1-editinit.png)
     
+   > **Note**: The `<yourgithubaccount>` value must be in **lowercase**, if your GitHub account user name contains uppercaase letters. Please use lowercase letters while adding it in the file.
+    
 13. From the Explorer, open the `docker-compose.yml`(1) and replace `<yourgithubaccount>` value in line no. 4 and 9 with your GitHub account name. After updating save the file using CTRL+S.    
 
     ![](media/ex2-t1-compose.png)
 
-   > **Note**: The `<yourgithubaccount>` value must be in **lowercase**, if your GitHub account user name is in uppercase letters please change it to lowercase in Github. 
-   
-   [Github Username Change](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-user-account-settings/changing-your-github-username)
+   > **Note**: The `<yourgithubaccount>` value must be in **lowercase**, if your GitHub account user name contains uppercaase letters. Please use lowercase letters while adding it in the file.
      
 11. Open a **New Terminal** in the Visual Studio Code, to build and run the docker-compose YAML files edited in the previous steps.
     
