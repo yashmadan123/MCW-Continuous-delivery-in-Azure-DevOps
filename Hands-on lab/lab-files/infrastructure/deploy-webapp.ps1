@@ -3,7 +3,7 @@ $githubAccount = "Your github account name here"
 $resourcegroupName = "fabmedical-rg-" + $studentprefix
 $webappName = "fabmedical-web-" + $studentprefix
 
-# Deploy Azure Web App
+Write-Host -ForeGround Green "Deploying Azure Web App"
 az webapp config container set `
     --docker-registry-server-password $env:CR_PAT `
     --docker-registry-server-url https://ghcr.io `
