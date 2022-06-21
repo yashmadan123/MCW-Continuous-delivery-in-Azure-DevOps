@@ -3,7 +3,7 @@ $githubAccount = "Your github account name here"
 $resourcegroupName = "fabmedical-rg-" + $studentprefix
 $cosmosDBName = "fabmedical-cdb-" + $studentprefix
 
-# Fetch CosmosDB Mongo connection string
+Write-Host -ForeGround Green "Fetching CosmosDB Mongo connection string"
 $mongodbConnectionString = `
     $(az cosmosdb keys list `
         --name $cosmosDBName `
@@ -11,7 +11,7 @@ $mongodbConnectionString = `
         --type connection-strings `
         --query 'connectionStrings[0].connectionString')
 
-# Seed CosmosDB database
+Write-Host -ForeGround Green "Seeding CosmosDB database"
 docker run -ti `
     -e MONGODB_CONNECTION="$mongodbConnectionString" `
     ghcr.io/$githubAccount/fabrikam-init:main
