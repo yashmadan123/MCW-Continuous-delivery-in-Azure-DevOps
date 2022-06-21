@@ -3,7 +3,7 @@ $resourcegroupName = "fabmedical-rg-" + $studentprefix
 $cosmosDBName = "fabmedical-cdb-" + $studentprefix
 $webappName = "fabmedical-web-" + $studentprefix
 
-# Fetch CosmosDB Mongo connection string
+Write-Host -ForeGround Green "Fetching CosmosDB Mongo connection string"
 $mongodbConnectionString = `
     $(az cosmosdb keys list `
         --name $cosmosDBName `
@@ -11,7 +11,7 @@ $mongodbConnectionString = `
         --type connection-strings `
         --query 'connectionStrings[0].connectionString')
 
-# Configure Web App
+Write-Host -ForeGround Green "Configuring Web App"
 az webapp config appsettings set `
     --name $webappName `
     --resource-group $resourcegroupName `
