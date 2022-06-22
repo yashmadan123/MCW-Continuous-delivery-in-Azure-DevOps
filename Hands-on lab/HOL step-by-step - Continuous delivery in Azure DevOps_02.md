@@ -205,8 +205,8 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $webappName = "fabmedical-web-" + $studentprefix
     ```
-
-   ![](media/ex3-t1-webapp.png)
+    
+    ![](media/ex3-t1-webapp.png)
 
  1. Note the call to deploy the Azure Web Application using the `docker-compose.yml` file we modified in the previous exercise.
 
