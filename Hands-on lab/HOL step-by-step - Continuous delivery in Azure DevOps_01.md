@@ -59,9 +59,13 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
   You will need to make some edits to files before running these locally. In this task, you will confirm that the Docker infrastructure works locally.
 
-9. From the **Visual Studio Code**, click on **File**(1) at the left top and select **Open Folder**(2).
+9. From the **Visual Studio Code**, click on **File** **(1)** at the left top and select **Open Folder** **(2)**.
 
    ![](media/dg6.png)
+   
+      > **Note**: You should replace three instances of `<yourgithubaccount>` - one instance in `docker-compose.init.yml` and two instances in `docker-compose.yml`.
+
+   > **Note**: The `<yourgithubaccount>` value must be in **lowercase**, if your GitHub account user name is in uppercase letters please change it to lowercase in Github. [Github Username Change](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-user-account-settings/changing-your-github-username)
 
 10. In the **Open Folder** tab, navigate to the following path `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` to open your local GitHub repository and click on **Select Folder**.
 
@@ -71,11 +75,9 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ![](media/ex2-t1-trustauthor.png)
 
-12. From the Explorer, open the `docker-compose-init.yml`(1) and replace `<yourgithubaccount>`(2) value in line no. 6 with your GitHub account name. After updating save the file using CTRL+S.
+12. From the Explorer, open the `docker-compose-init.yml`(1) and replace `<yourgithubaccount>`(2) value in line no. 6 with your GitHub  username. After updating save the file using CTRL+S.
    
     ![](media/ex2-t1-editinit.png)
-    
-   > **Note**: The `<yourgithubaccount>` value must be in **lowercase**, if your GitHub account user name contains uppercaase letters. Please use lowercase letters while adding it in the file.
     
 13. From the Explorer, open the `docker-compose.yml`(1) and replace `<yourgithubaccount>` value in line no. 4 and 9 with your GitHub account name. After updating save the file using CTRL+S.    
 
