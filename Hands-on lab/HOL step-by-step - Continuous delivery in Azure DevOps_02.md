@@ -272,11 +272,9 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
 
      ![azurecred](media/azurecred.png)
    
- 1. Edit the `docker-publish.yml` file in the `.github\workflows` folder using Github. Add the job present in the file URL mentioned below to the end of the `docker-publish.yml` file.
-
-    > **Note**: Make sure to change the student prefix with **Deployment ID** for the last action in the `deploy` job. **Deployment ID** value can be found in Environment details page.
+ 1. Edit the `docker-publish.yml` file in the `.github\workflows` folder using Github. Add the job present in `docker-file.yml` which is located at path `C:\Workspaces\lab\mcw-continuous-delivery-lab-files`.
     
-    `https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/deploy-job.yml`
+    >**Note**: Please verify the yaml indentation in the file before committing the file as it can lead to workflows failure.
     
     ![azurecred](media/update7.png)
     
