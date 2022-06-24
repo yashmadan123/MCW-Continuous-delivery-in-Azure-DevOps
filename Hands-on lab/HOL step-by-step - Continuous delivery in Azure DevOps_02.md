@@ -69,8 +69,11 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
             --deployment-container-image-name nginx
         ```
 
- 3. Open Terminal in **Visual Studio Code** and login to Azure by running the following command. this will open the edge browser, you need to enter the login details below:
+ 3. Open Terminal in **Visual Studio Code** is not alrwady open and login to Azure by running the following command. this will open the edge browser, you need to enter the login details below:
    
+     > Note: You can open the new terminal by selecting **Terminal (1)** then on **New Terminal (2)**.
+
+       ![](media/dg2.png)
     
      * Azure Usename/Email: <inject key="AzureAdUserEmail"></inject> 
  
@@ -190,7 +193,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
 ### Task 2: Deployment Automation to Azure Web App
 
- 1. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `CR_PAT` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
+ 1. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `CR_PAT` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value. Run the following command in **Visual Studio Code** terminal to declare the `CR_PAT` environment variable that stores the PAT token value.
 
     ```pwsh
     $env:CR_PAT="<GitHub Personal Access Token>"
@@ -288,7 +291,7 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
 
      ![GitHub Action detail reflecting Docker ](media/hol-ex3-task2-step8-1.png "GitHub Action detail")
 
- 1. Run the below command to perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
+ 1. Navigate back to the Visual Studio Code application in which terminal is already open and run the below command to perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
  
      ```BASH
      git pull

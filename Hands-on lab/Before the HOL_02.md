@@ -5,10 +5,13 @@ Duration: 30 minutes
 
 ### Task 1: Create the Project Repo
 
-In this task, you will create an account in [GitHub](https://github.com) and use `git` to add lab files to a new repository.
+In this task, you will create an account in **GitHub** and use `git` to add lab files to a new repository.
 
-1. In a new browser tab open ```https://www.github.com``` and Log in with your personal GitHub account.
+1. In a new browser tab navigate to the below URL and Log in with your personal GitHub account.
 
+   ```
+   https://www.github.com
+   ```
     > **Note** : You have to use your own GitHub account. If you don't have a GitHub account then navigate to the following link ```https://github.com/join``` and create one.
     
 1. In the upper-right corner, expand the user drop down menu and select **Your repositories**.
@@ -29,15 +32,15 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
    ![Quick setup screen is displayed with the copy button next to the GitHub URL textbox selected.](media/image26.png "Quick setup screen")
 
-1. From the VM desktop, Select **Visual Studio Code** icon and open the application.
+1. From the VM desktop, double click on the **Visual Studio Code** desktop icon to open the application.
 
    ![](media/dg1.png "New Repository Creation Form")
    
-1. In Visual Studio Code application, Select **Terminal** **(1)** and click on **New Terminal** **(2)**. It will open a new PowerShell session which you'll be using throughout the lab.
+1. In Visual Studio Code application, select **Terminal** **(1)** and click on **New Terminal** **(2)** to open the terminal. It will open a new PowerShell session which you'll be using throughout the lab.
 
    ![](media/dg2.png "New Repository Creation Form")
 
-1. From a terminal opened in Visual Studio Code, run the below commands to set your username and email, which git uses for commits. Make sure to replace your email and username.
+1. In the Visual Studio Code, run the below commands in the terminal to set your **username** and **email**, which git uses for commits. Make sure to replace your email and username.
    
      ```pwsh
      cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files
@@ -60,7 +63,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
       git push -u origin main
       ```
       
-    - After running the above commands, you will be prompted with a pop-up window to sign in to the GitHub. Select **Sign in with your Browser** on the pop-up window.
+    - After running the above commands, you will be prompted with a pop-up window to sign in to the GitHub. Select **Sign in with your Browser** on the **Connect to GitHub** pop-up window.
 
        ![](media/siginwithbrowser.png)
      
