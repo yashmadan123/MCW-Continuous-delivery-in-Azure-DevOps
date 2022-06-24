@@ -99,136 +99,55 @@ Now that we have Docker images working locally, we can build automation in GitHu
 
     > **Note**: If you have gone through this MCW in the past, note that this step has changed. Do not rename this file. Leave this file named `docker-publish.yml`.
 
-6. Change the registry to `ghcr.io/${{ github.actor }}` in line 20. Replace the **IMAGE_NAME** line with `fabrikam-init` in line 22. The `env` section of this file should look like this YAML:
-
-    ```yaml
-        env:
-        # Use docker.io for Docker Hub if empty.
-        REGISTRY: ghcr.io/${{ github.actor }}
-        # github.repository as <account>/<repo>
-        IMAGE_NAME: fabrikam-init
-    ```
-
-7. The login step needs to be adjusted to use our `CR_PAT` secret value for the `password`, replace **GITHUB_TOKEN** with **CR_PAT** in line 61. The login step should look like this:
-
-    ```yaml
-        # Login against a Docker registry except on PR
-        # https://github.com/docker/login-action
-        - name: Log into registry ${{ env.REGISTRY }}
-            if: github.event_name != 'pull_request'
-            uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
-            with:
-            registry: ${{ env.REGISTRY }}
-            username: ${{ github.actor }}
-            password: ${{ secrets.CR_PAT }} # <-- Change this from GITHUB_TOKEN
-    ```
-
-8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure the correct `Dockerfile` file can be found. The Build and push step should look like this:
-
-
-   ```yaml
-    # Build and push Docker image with Buildx (don't push on PR)
-    # https://github.com/docker/build-push-action
-    - name: Build and push Docker image for ${{ env.API_IMAGE_NAME }}
-      id: build-and-push
-      uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-      with:
-        file: ./content-init/Dockerfile                      
-        context: ./content-init                              
-        push: ${{ github.event_name != 'pull_request' }}
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
-   ```
+7. Next, in there copy and replace contents from the local file `docker-publish.yml` which can be found on the local folder `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\` within the lab VM.
     
-   ![sd](media/dockerfile1.png)
-    
-9. Commit the file to the repository. Select `Start commit`. Be sure that **Commit directly to the `main` branch** is selected. Finally, select `Commit new file`.
+8. Commit the file to the repository. Select `Start commit`. Be sure that **Commit directly to the `main` branch** is selected. Finally, select `Commit new file`.
 
 10. The GitHub Action is now running and will automatically build and push the container to the GitHub registry.
 
     ![Summary of running Docker workflow executing in GitHub Actions tab of repository.](media/action1.png "GitHub Actions")
 
-    ![Detail of running Docker workflow.](media/hol-ex1-task4-step10-2.png "GitHub Action Detail")
 
-    > **Note**: If you encounter any errors due to `cosign`, remove the image signing section from line 82 to 93 in the workflow, as it is not needed to complete the lab. You could alternatively add a manual trigger (see below) and try running the workflow again, to determine if the error is transient.
-
-    > **Note**: You can optionally add `workflow_dispatch:` in the `on:` trigger section to set a manual trigger for the GitHub Actions workflow.
-
-### Task 3: Editing the GitHub Workflow File Locally
-
-The last task automated building and updating only one of the Docker images. In this task, we will update the workflow file with a more appropriate workflow for the structure of our repository. This task will end with a file named `docker-publish.yml` that will rebuild and publish Docker images as their respective code is updated.
-
-The file copied in this task builds the following workflow:
-  ![GitHub workflow with 4 jobs - Check modified files, Update the API Docker image, Update the Init Docker image, Update the Web Docker image. This example shows a commit updating the Init and Web APIs. The workflow shows Update the API Docker image skipped, while Update the Init Docker image and Update the Web Docker image are in progress.](media/github-actions-workflow-with-skip.png)
-
-The `check_changed_folders` job takes the following steps:
-
-1. Look through all files in the `git diff`.
-2. If there are files changed in `content-api`, set a flag to update the API Docker Image.
-3. If there are files changed in `content-web`, set a flag to update the Web Docker Image.
-4. If there are files changed in `content-init`, set a flag to update the Init Docker Image.
-  
-Each of the `build-` jobs are marked with `needs` to depend on the `git diff` check. The `if` indicates the condition that will trigger that job to run.
-
-Now let's make this change in our repository.
-
-1. In case there are changes on the server that you don't have locally, pull the changes from GitHub into your local copy of the code.
-
-    ```pwsh
-    git pull
-    ```
-
-2. From your `mcw-continuous-delivery-lab-files` folder, copy `docker-publish.yml` from the `Hands-on lab\lab-files` folder to the `.github\workflows` folder, overwriting what you created in steps 1-5.
-
-    ```pwsh
-    cp .\docker-publish.yml .github\workflows
-    ```
-
-    > **Note**: This command updates the workflow file created in the previous task and contains jobs as described at the beginning of this task.
-
-3. Commit this change to your repo, then push the change to GitHub.
-
-    ```pwsh
-    git add .
-    git commit -m "Updating workflow to update Docker images only when there are changes"
-    git push
-    ```
-    ![](media/dockerrun1.png)
+    The file contents copied in the above step builds the following workflow:
+      ![GitHub workflow with 4 jobs - Check modified files, Update the API Docker image, Update the Init Docker image, Update the Web Docker image. This example shows a commit updating the Init and Web APIs. The workflow shows Update the API Docker image skipped, while Update the Init Docker image and Update the Web Docker image are in progress.](media/github-actions-workflow-with-skip.png)
     
-    > **Note**: This will update the workflow and will **not** run the "Update the ... Docker image" jobs.
+    The `check_changed_folders` job takes the following steps:
+    
+    1. Look through all files in the `git diff`.
+    2. If there are files changed in `content-api`, set a flag to update the API Docker Image.
+    3. If there are files changed in `content-web`, set a flag to update the Web Docker Image.
+    4. If there are files changed in `content-init`, set a flag to update the Init Docker Image.
+      
+    Each of the `build-` jobs are marked with `needs` to depend on the `git diff` check. The `if` indicates the condition that will trigger that job to run.
+    
+    Now let's make this change in our repository.
+    
+1. Pull the changes from GitHub into your local copy of the code.
+    
+        ```pwsh
+        git pull
+        ```
 
 4. Navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-api` folder using file explorer and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file. 
 
     ```yaml
-    # Testing
+    # Testing API change
     ```
-
-5. Commit this change to your repo, then push the change to GitHub.
-
-    ```pwsh
-    git add .
-    git commit -m "Making a change to the API content"
-    git push
-    ```
-   ![](media/dockerrun2.png)
-
-    > **Note**: The workflow will run the "Update the API Docker image" job and skip the other 2 "Update the ... Docker image" jobs.
-    
-6.  Navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web` folder using file explorer and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file.
+5.  Next, navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web` folder using file explorer and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file.
     
     ```yaml
-    # Testing
+    # Testing Web change
     ```
-7. Navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-init` folder using file explorer and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file.
+6. Finally, navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-init` folder using file explorer and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file.
     
     ```yaml
-    # Testing
+    # Testing Init change
     ```
 8. Commit these changes, then push the changes to GitHub.
 
     ```pwsh
     git add .
-    git commit -m "Updating Web and Init content"
+    git commit -m "Updating Api, Web and Init content"
     git push
     ```
     ![](media/dockerrun3.png)
@@ -241,29 +160,17 @@ Now let's make this change in our repository.
 
 ### Task 4: Using Dependabot
 
-Another part of continuous integration is having a bot help track versions of the packages used in the application and notify us when there are newer versions. In this task, we will use Dependabot to track the versions of the packages we use in our GitHub repository and create pull requests to update packages for us.
+Another part of continuous integration is having a bot help track versions of the packages used in the application and notify us when there are newer versions. In this task, we will use Dependabot features enabled earlier to track the versions of the packages we use in our GitHub repository and create pull requests to update packages for us.
 
-1. In your lab files GitHub repository, navigate to the `Security` tab. Select the `Enable Dependabot alerts` button.
-
-    ![The GitHub Repository Security Overview tab.](media/hol-ex1-task2-step1-1.png "GitHub Repository Security Overview")
-
-2. You should arrive at the `Security & analysis` blade under the `Settings` tab. Enable `Dependabot security updates`.
-
-    > **Note**: Enabling the `Dependabot security updates` will also automatically enable `Dependency graph` and `Dependabot alerts`.
-
-    ![The GitHub Repository Security and Analysis blade under the GitHub repository Settings tab. We enable Dependabot alerts and security updates here.](media/hol-ex1-task2-step2-1.png "GitHub Security & Analysis Settings")
-
-    > **Note**: The alerts for the repository may take some time to appear. The rest of the steps for this task rely on the alerts to be present. You can continue with the next exercise as this is an independent task and doesn't affect the lab. Please visit this task later and complete the task.
-
-3. To observe Dependabot issues, navigate to the `Security` tab and select the `View Dependabot alerts` link. You should arrive at the `Dependabot alerts` blade in the `Security` tab.
+1. To observe Dependabot issues (enabled previously), navigate to the `Security` tab and select the `View Dependabot alerts` link. You should arrive at the `Dependabot alerts` blade in the `Security` tab.
 
     ![GitHub Dependabot alerts in the Security tab.](media/hol-ex1-task2-step3-1.png "GitHub Dependabot alerts")
 
-4. Sort the Dependabot alerts by `Package name`. Locate the `handlebars` vulnerability by typing `handlebars` in the search box under the `Package` dropdown menu.
+1. Sort the Dependabot alerts by `Package name`. Locate the `handlebars` vulnerability by typing `handlebars` in the search box under the `Package` dropdown menu.
 
     ![Summary of the `handlebars` Dependabot alert in the list of Dependabot alerts.](media/hol-ex1-task2-step4-1.png "`handlebars` Dependabot alert")
 
-5. Select any of the `handlebars` Dependabot alert entries to see the alert detail. After reviewing the alert, select `Create Dependabot security update` and wait a few moments for GitHub to create the security update.
+1. Select any of the `handlebars` Dependabot alert entries to see the alert detail. After reviewing the alert, select `Create Dependabot security update` and wait a few moments for GitHub to create the security update.
 
     ![The `handlebars` Dependabot alert detail.](media/hol-ex1-task2-step5-1.png "Dependabot alert detail")
 

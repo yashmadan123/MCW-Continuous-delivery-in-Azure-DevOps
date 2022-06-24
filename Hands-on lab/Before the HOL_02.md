@@ -100,52 +100,6 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
    ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/copytoken.png)
 
-### Task 3: Create Azure DevOps Personal Access Token
-
-1. In your LabVM, open a new tab in the browser then copy and paste the below mentioned link.
-
-    ```pwsh
-    https://dev.azure.com/
-    ```
-1. On the **Azure Devops** page, click on **Sign in to Azure Devops**. 
-
-    ![](media/signintoAzureDevops.png)
-    
-1. On **We need few more details page**, leave everything as default and click on **Continue**.
-
-    ![](media/continue.png)
-    
-1. On the home page of Azure Devops, select the existing organization named aiw-devops and select **Fabrikam-<inject key="DeploymentID" enableCopy="false" />** project.
-    
-   ![](media/image08.png)
-
-1. Click on the **User settings** at the top right corner of the page and then select **Personal Access Tokens**.
-   
-   ![select pat](media/image09.png)
-   
-1. Now on the **Personal Access Tokens** page, click on **+ New Token**   
-   
-   ![new token](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/azuredevops-newtoken.png)
-   
-1. In the Create a new personal access token page enter the following details:
-   
-   - **Name**: Enter **mcw-continuous-delivery** 
-
-   - **Organization**: Leave as **Default**
-
-   - **Expiration** : Leave as **Default**
-
-   - **Scopes**: Full access
-
-   - Click on **Create**
-
-   ![create token](media/createPAT.png)
-   
-1. Copy the value of the generated token and save it in the notepad where you have stored the GitHub Personal Access Token then click on **Close**.
-
-   ![copy token](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/azuredevops-copypat.png)
-   
-1. Keep this Personal Access token safe for later use. **DO NOT COMMIT THIS TO YOUR REPO!**
 
 ### Task 4: Start the Docker application.
 
@@ -163,24 +117,22 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
    ![](media/d8.png)
    
-1. Copy the command from the docker application page and save it in a notepad.
+1. Minimize Desktop Desktop Application
 
-   ![](media/d9.png)
-   
-   >**Note**: If the Docker application is taking more than 10 mins to start. Please follow the steps from the `https://github.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/docker-install.md` link and start the Docker again.
-   
-1. In the search bar, search for **PowerShell** application and open it.
+### Task 5: Enable Dependabot features
+We shall enable Dependabot features to be used in the next exercise
 
-   ![](media/d10.png)
-   
-1. Paste the **docker run** command which you had copied earlier and wait till the execution completes.
+1. In your lab files GitHub repository, navigate to the `Security` tab. Select the `Enable Dependabot alerts` button.
 
-   ![](media/d11.png)
-   
-1. After the execution completes, open the **Docker application**. You should be able to see a container in a running state. This confirms the running of the Docker application.
+    ![The GitHub Repository Security Overview tab.](media/hol-ex1-task2-step1-1.png "GitHub Repository Security Overview")
 
-   ![](media/d12.png)
+2. You should arrive at the `Security & analysis` blade under the `Settings` tab. Enable `Dependabot security updates`.
 
+    > **Note**: Enabling the `Dependabot security updates` will also automatically enable `Dependency graph` and `Dependabot alerts`.
+
+    ![The GitHub Repository Security and Analysis blade under the GitHub repository Settings tab. We enable Dependabot alerts and security updates here.](media/hol-ex1-task2-step2-1.png "GitHub Security & Analysis Settings")
+
+    > **Note**: The alerts for the repository may take some time to appear by the time you reach the relevant task in exercise #1
 
 You should follow all steps provided *before* proceeding to perform steps on the Labs.
 
