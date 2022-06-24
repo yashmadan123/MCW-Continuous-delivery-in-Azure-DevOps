@@ -16,11 +16,9 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
 ### Task 1: Set up Cloud Infrastructure
 
- 1. In your Labvm open file explorer,  navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` and open the `deploy-infrastructure.ps1` PowerShell script. 
+ 1. In Visual Studio Code, open the `deploy-infrastructure.ps1` PowerShell script in the `infrastructure` folder from Explorer in the VS Code.
 
      >**Note:** We have already updated the $studentprefix in this file with the required value. 
-
-     >**Note:** The script will take upto 20 minutes to execute successfully.
 
    ```pwsh
    $studentprefix = "DeploymentID"                                  
@@ -32,7 +30,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
    $location2 = "northeurope"
    ```
 
-   ![gfgffg](media/notepad1.png)
+   ![gfgffg](media/ex3-t1-infra.png)
 
  2. Note the individual calls to the `azcli` for the following:
     
@@ -71,7 +69,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
             --deployment-container-image-name nginx
         ```
 
- 3. In your Powershell Terminal log in to Azure by running the following command. this will open the edge browser, you need to enter the login details below:
+ 3. Open Terminal in **Visual Studio Code** and login to Azure by running the following command. this will open the edge browser, you need to enter the login details below:
    
     
      * Azure Usename/Email: <inject key="AzureAdUserEmail"></inject> 
@@ -83,19 +81,19 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     az login
     ```
 
- 4. Once the login is completed, navigate back to the PowerShell window and run the `deploy-infrastructure.ps1` PowerShell script.
+ 4. Once the login is completed, navigate back to the terminal and run the `deploy-infrastructure.ps1` with the below command.
 
     ```pwsh
     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
     ./deploy-infrastructure.ps1
     ```
-     >**Note:** The **deploy-infrastructure.ps1** script can take upto 5 minutes to run. wait until the script runs completely.
+     >**Note:** The **deploy-infrastructure.ps1** script may take up to 10-20 minutes to run. wait until the script runs completely.
    
  5. Browse to the Azure Portal and verify the creation of the resources, CosmosDB instance, the App Service Plan, and the Web App.
 
      ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step5-1.png "Azure Resource Group")
 
- 6. Open the `seed-cosmosdb.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace your GitHub username in  `$githubAccount = "Your github account name here"` variable.
+ 6. Open the `seed-cosmosdb.ps1` PowerShell script in the `infrastructure` folder from Explorer in the VS Code and replace your GitHub username in  `$githubAccount = "Your github account name here"` variable. Once the changes are done make sure to save the file.
 
      >**Note:** We have already updated the $studentprefix in this file with the required value. 
 
@@ -106,7 +104,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
     ```
    
-     ![vcv](media/seedcosmos.png)
+     ![vcv](media/ex3-t1-seed.png)
 
  7. Observe the call to fetch the MongoDB connection string for the CosmosDB database.
 
@@ -136,8 +134,9 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
        ```pwsh
        docker login ghcr.io -u USERNAME -p PERSONAL ACCESS TOKEN 
        ```
+     ![vcv](media/ex3-t1-docker-login.png)
 
- 10. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and navigate to **fabmedical-cdb-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and  and verify that the CosmosDB instance has been seeded.
+ 10. Run the `seed-cosmosdb.ps1` file in terminal using the below command. Browse to the Azure Portal and navigate to **fabmedical-cdb-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and  and verify that the CosmosDB instance has been seeded.
 
      ```pwsh
      ./seed-cosmosdb.ps1
@@ -155,7 +154,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
      ![Creating an indexing policy for the startTime field.](./media/start-time-indexing-mongo.png "startTine field indexing")
 
- 14.  Open the `configure-webapp.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files.
+ 14.  Open the `configure-webapp.ps1` PowerShell script in the `infrastructure` folder from Explorer in the VS Code.
    
         **Note:** We have already updated the $studentprefix in this file with the required value. 
      
@@ -165,6 +164,8 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
       $cosmosDBName = "fabmedical-cdb-" + $studentprefix
       $webappName = "fabmedical-web-" + $studentprefix
       ```
+  
+   ![vcv](media/ex3-t1-config.png)
   
  15.  observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
    
@@ -176,7 +177,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
           --settings MONGODB_CONNECTION=$mongodbConnectionString
        ```
 
- 16. Run the `configure-webapp.ps1` PowerShell script.
+ 16. Run the `configure-webapp.ps1` file in terminal using the below command.
 
       ```pwsh
       cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
@@ -194,7 +195,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     ```pwsh
     $env:CR_PAT="<GitHub Personal Access Token>"
     ```
- 1. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add your GitHub account username for the `$githubAccount` variable on the second line. Once the changes are done make sure to save the file. 
+ 1. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder from Explorer in VS Code and add your GitHub account username for the `$githubAccount` variable on the second line. Once the changes are done make sure to save the file. 
 
     >**Note:** We have already updated the $studentprefix in this file with the required value. 
 
@@ -204,6 +205,8 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $webappName = "fabmedical-web-" + $studentprefix
     ```
+    
+    ![](media/dg9.png)
 
  1. Note the call to deploy the Azure Web Application using the `docker-compose.yml` file we modified in the previous exercise.
 
@@ -219,7 +222,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
         --resource-group $resourcegroupName
     ```
 
- 1. Run the `deploy-webapp.ps1` PowerShell script.
+ 1. Run the `deploy-webapp.ps1` file in terminal using the below command.
 
      ```pwsh
      ./deploy-webapp.ps1
@@ -269,11 +272,9 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
 
      ![azurecred](media/azurecred.png)
    
- 1. Edit the `docker-publish.yml` file in the `.github\workflows` folder using Github. Add the job present in the file URL mentioned below to the end of the `docker-publish.yml` file.
-
-    > **Note**: Make sure to change the student prefix with **Deployment ID** for the last action in the `deploy` job. **Deployment ID** value can be found in Environment details page.
+ 1. Edit the `docker-publish.yml` file in the `.github\workflows` folder using Github. Add the job present in `docker-file.yml` which is located at path `C:\Workspaces\lab\mcw-continuous-delivery-lab-files`.
     
-    `https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/deploy-job.yml`
+    >**Note**: Please verify the yaml indentation in the file before committing the file as it can lead to workflows failure.
     
     ![azurecred](media/update7.png)
     

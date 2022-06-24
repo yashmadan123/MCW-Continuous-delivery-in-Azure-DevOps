@@ -38,13 +38,13 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
    
    >**Note**: If the Docker application is taking more than 10 mins to start. Please follow the steps from the `https://github.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/docker-install.md` link and start the Docker again.
    
-5. In the search bar, search for **PowerShell** application and open it.
+5. From the VM desktop, Open **Visual Studio Code** application and open new terminal.
 
-   ![](media/d10.png)
+   ![](media/dg2.png)
    
 6. Paste the **docker run** command which you had copied earlier and wait till the execution completes.
 
-   ![](media/d11.png)
+   ![](media/dg4.png)
    
 7. After the execution completes, open the **Docker application**. You should be able to see a container in a running state. This confirms the running of the Docker application.
 
@@ -59,19 +59,35 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
   You will need to make some edits to files before running these locally. In this task, you will confirm that the Docker infrastructure works locally.
 
-9. In your Labvm open file explorer,  navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` to open your local GitHub repository.
-10. Replace `<yourgithubaccount>` value with your GitHub account name in the following files located at the root of your lab files repository. After updating save the files using CTRL+S.
-    - `docker-compose.init.yml`
-    - `docker-compose.yml`
+9. From the **Visual Studio Code**, click on **File** **(1)** at the left top and select **Open Folder** **(2)**.
 
-   > **Note**: You should replace three instances of `<yourgithubaccount>` - one instance in `docker-compose.init.yml` and two instances in `docker-compose.yml`.
+   ![](media/dg6.png)
+   
+      > **Note**: You should replace three instances of `<yourgithubaccount>` - one instance in `docker-compose.init.yml` and two instances in `docker-compose.yml`.
 
    > **Note**: The `<yourgithubaccount>` value must be in **lowercase**, if your GitHub account user name is in uppercase letters please change it to lowercase in Github. [Github Username Change](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-user-account-settings/changing-your-github-username)
-   
-   
-11. Build and run the docker-compose YAML files edited in the previous step.
+
+10. In the **Open Folder** tab, navigate to the following path `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` to open your local GitHub repository and click on **Select Folder**.
+
+    ![](media/dg7.png)
     
-     > **Note**: Make sure that you are in `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` dir.
+11. You may receive a prompt that: Do you trust the authors of the files in this folder? select the **checkbox** **(1)** the box and click on **Yes, I trust the authors** **(2)**.
+
+    ![](media/ex2-t1-trustauthor.png)
+
+12. From the Explorer, open the `docker-compose-init.yml`(1) and replace `<yourgithubaccount>`(2) value in line no. 6 with your GitHub  username. After updating save the file using CTRL+S.
+   
+    ![](media/ex2-t1-editinit.png)
+    
+13. From the Explorer, open the `docker-compose.yml`(1) and replace `<yourgithubaccount>` value in line no. 4 and 9 with your GitHub account name. After updating save the file using CTRL+S.    
+
+    ![](media/ex2-t1-compose.png)
+
+   > **Note**: The `<yourgithubaccount>` value must be in **lowercase**, if your GitHub account user name contains uppercaase letters. Please use lowercase letters while adding it in the file.
+     
+11. Open a **New Terminal** in the Visual Studio Code, to build and run the docker-compose YAML files edited in the previous steps.
+    
+     > **Note**: Make sure that you are in `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` directory. These commands execution may take around 10-15 minutes to complete.
 
     ```pwsh
     docker-compose -f .\docker-compose.yml -f .\local.docker-compose.yml -f .\docker-compose.init.yml build
@@ -85,7 +101,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
     ![Fabrikam Medical's Contoso conference site.](media/hol-ex1-task3-step4-1.png "Contoso conference site")
 
 
-13. Leave this PowerShell session in running and open a new session. Paste the following command and hit `<ENTER>`.
+13. Leave this terminal in running and open a new terminal. Paste the following command and hit `<ENTER>`.
 
     ```pwsh
     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files
@@ -98,8 +114,42 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
     git commit -m "Updating Docker compose files"
     git push
     ```
+    
+### Task 2: Create GitHub Personal Access Token
 
-### Task 2: Build Automation with GitHub Registry
+1. Navigate back to the **GitHub** tab and create a Personal Access Token as described below:
+
+   - In the upper-right corner of your GitHub page, click your profile photo, then click **Settings (1)** and in the left sidebar click **Developer settings (2)**.
+
+     ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/Settings_pat.png)
+
+   - Then in the left sidebar, click **Personal access tokens (3)** and select **Generate new token (4)** button on the right. Provide the GitHub password if prompted. 
+   
+     ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/Settings_pat1.png)
+
+2. Select the scopes or permissions you would like to grant this token
+
+    - **Note**: Provide the following text in the note field, **<inject key="DeploymentID" enableCopy="false" />-token**. 
+    
+    - **Select scopes**:
+
+        * repo - Full control of private repositories
+        * workflow - Update GitHub Action workflows
+        * write:packages - Upload packages to GitHub Package Registry
+        * delete:packages - Delete packages from GitHub Package Registry
+        * read:org - Read org and team membership, read org projects
+  
+      ![Permissions GH](media/image10.png)
+
+    - Click **Generate token**.
+
+      ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/gentoken.png)
+
+3. Click on the Copy icon to copy the token to your clipboard and save it on your notepad. For security reasons, after you navigate off the page, you will not be able to see the token again. **DO NOT COMMIT THIS TO YOUR REPO!**
+
+   ![](media/ex2-t2-newpat.png)
+
+### Task 3: Build Automation with GitHub Registry
 
 Now that we have Docker images working locally, we can build automation in GitHub for updating and republishing our Docker images when the code changes. In this task, we will create a workflow file using the GitHub interface and its GitHub Actions workflow editor. This will get you familiar with how to create and edit an action through the GitHub website.
 
@@ -188,7 +238,7 @@ Now that we have Docker images working locally, we can build automation in GitHu
 
     > **Note**: You can optionally add `workflow_dispatch:` in the `on:` trigger section to set a manual trigger for the GitHub Actions workflow.
 
-### Task 3: Editing the GitHub Workflow File Locally
+### Task 4: Editing the GitHub Workflow File Locally
 
 The last task automated building and updating only one of the Docker images. In this task, we will update the workflow file with a more appropriate workflow for the structure of our repository. This task will end with a file named `docker-publish.yml` that will rebuild and publish Docker images as their respective code is updated.
 
@@ -273,7 +323,7 @@ Now let's make this change in our repository.
 
     ![GitHub Packages tab listing summary of container images that have been pushed to the container registry.](media/hol-ex1-task4-step12-1.png "GitHub Packages")
 
-### Task 4: Using Dependabot
+### Task 5: Using Dependabot
 
 Another part of continuous integration is having a bot help track versions of the packages used in the application and notify us when there are newer versions. In this task, we will use Dependabot to track the versions of the packages we use in our GitHub repository and create pull requests to update packages for us.
 
@@ -319,5 +369,5 @@ Another part of continuous integration is having a bot help track versions of th
                                                             # you set up your lab files repository
     git pull
     ```
-1. Click on the **Next** button present in the bottom-right corner of this lab guide.      
+8. Click on the **Next** button present in the bottom-right corner of this lab guide.      
 

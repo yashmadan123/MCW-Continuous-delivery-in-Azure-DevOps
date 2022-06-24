@@ -6,7 +6,7 @@ $planName = "fabmedical-plan-" + $studentprefix
 $location1 = "westeurope"
 $location2 = "northeurope"
 
-# Create Azure Cosmos DB database
+Write-Host -ForeGround Green "Creating Azure Cosmos DB database"
 az cosmosdb create `
     --name $cosmosDBName `
     --resource-group $resourcegroupName `
@@ -15,21 +15,21 @@ az cosmosdb create `
     --enable-multiple-write-locations `
     --kind MongoDB
 
-# Create Azure App Service Plan
+Write-Host -ForeGround Green "Creating Azure App Service Plan"
 az appservice plan create `
     --name $planName `
     --resource-group $resourcegroupName `
     --sku S1 `
     --is-linux
 
-# Create Azure Web App with NGINX container
+Write-Host -ForeGround Green "Creating Azure Web App with NGINX container"
 az webapp create `
     --resource-group $resourcegroupName `
     --plan $planName `
     --name $webappName `
     --deployment-container-image-name nginx
 
-# Fetch Azure Cosmos DB Mongo connection string
+Write-Host -ForeGround Green "Fetching Azure Cosmos DB Mongo connection string"
 $mongodbConnectionString = `
     $(az cosmosdb keys list `
         --name $cosmosDBName `
