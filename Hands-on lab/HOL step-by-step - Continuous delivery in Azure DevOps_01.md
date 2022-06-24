@@ -38,7 +38,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
    
    >**Note**: If the Docker application is taking more than 10 mins to start. Please follow the steps from the `https://github.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/docker-install.md` link and start the Docker again.
    
-5. From the VM desktop, Open **Visual Studio Code** application and open new terminal.
+5. Navigate back to the **Visual Studio Code** application in which terminal is already open. If not already open, open the new terminal by selecting **Terminal (1)** then on **New Terminal (2)**.
 
    ![](media/dg2.png)
    
@@ -75,7 +75,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ![](media/ex2-t1-trustauthor.png)
 
-12. From the Explorer, open the `docker-compose-init.yml`(1) and replace `<yourgithubaccount>`(2) value in line no. 6 with your GitHub  username. After updating save the file using CTRL+S.
+12. From the Explorer, open the `docker-compose-init.yml`(1) and replace `<yourgithubaccount>`(2) value in line no. 6 with your GitHub username. After updating save the file using CTRL+S.
    
     ![](media/ex2-t1-editinit.png)
     
@@ -85,10 +85,14 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
    > **Note**: The `<yourgithubaccount>` value must be in **lowercase**, if your GitHub account user name contains uppercaase letters. Please use lowercase letters while adding it in the file.
      
-11. Open a **New Terminal** in the Visual Studio Code, to build and run the docker-compose YAML files edited in the previous steps.
+11. Open a **New Terminal** in the Visual Studio Code by selecting **Terminal (1)** then on **New Terminal (2)**.
+
+    ![](media/dg2.png)
     
      > **Note**: Make sure that you are in `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` directory. These commands execution may take around 10-15 minutes to complete.
 
+    Run the following commands in the terminal to build and run the docker-compose YAML files edited in the previous steps.
+    
     ```pwsh
     docker-compose -f .\docker-compose.yml -f .\local.docker-compose.yml -f .\docker-compose.init.yml build
     docker-compose -f .\docker-compose.yml -f .\local.docker-compose.yml -f .\docker-compose.init.yml up
@@ -96,7 +100,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
     ![The docker-compose log output observed when running `docker-compose up` on our docker-compose harness.](media/hol-ex1-task3-step4-2.png "docker-compose log output")
     
-12. Verify that you can browse to <http://localhost:3000> in a browser and arrive at the Fabrikam conference website.
+12. Verify that you can browse to `http://localhost:3000` in a browser and arrive at the Fabrikam conference website.
 
     ![Fabrikam Medical's Contoso conference site.](media/hol-ex1-task3-step4-1.png "Contoso conference site")
 
@@ -117,7 +121,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
     
 ### Task 2: Create GitHub Personal Access Token
 
-1. Navigate back to the **GitHub** tab and create a Personal Access Token as described below:
+1. Navigate back to the browser tab in which **GitHub** is open and create a Personal Access Token as described below:
 
    - In the upper-right corner of your GitHub page, click your profile photo, then click **Settings (1)** and in the left sidebar click **Developer settings (2)**.
 
@@ -129,7 +133,7 @@ After a requirements gathering effort, we find that Fabrikam Medical Conferences
 
 2. Select the scopes or permissions you would like to grant this token
 
-    - **Note**: Provide the following text in the note field, **<inject key="DeploymentID" enableCopy="false" />-token**. 
+    - **Note**: Enter this value in the note field, **<inject key="DeploymentID" enableCopy="false" />-token**. 
     
     - **Select scopes**:
 
@@ -177,7 +181,7 @@ Now that we have Docker images working locally, we can build automation in GitHu
 
     > **Note**: CR_PAT is short for Container Registry Personal Authentication Token.
 
-5. Select the `Actions` tab in your GitHub repository, under the **Continuous Integration Workflows** find the `Publish Docker Container` workflow and select `Configure`. This will create a file named `docker-publish.yml`.
+5. Select the `Actions` tab in your GitHub repository, scroll down and find the `Publish Docker Container` workflow under the **Continuous Integration Workflows** and select `Configure`. This will create a file named `docker-publish.yml`.
 
     ![The Publish Docker Container workflow that defines the series of GitHub actions used to build and push a docker container to a GitHub Container Registry.](media/hol-ex1-task4-step5-1.png "Publish Docker Container workflow")
 
