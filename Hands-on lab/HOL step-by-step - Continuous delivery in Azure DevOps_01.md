@@ -197,6 +197,8 @@ Now that we have Docker images working locally, we can build automation in GitHu
         IMAGE_NAME: fabrikam-init
     ```
 
+   ![sd](media/dockerfile1.1.png)
+   
 7. The login step needs to be adjusted to use our `CR_PAT` secret value for the `password`, replace **GITHUB_TOKEN** with **CR_PAT** in line 61. The login step should look like this:
 
     ```yaml
@@ -210,7 +212,8 @@ Now that we have Docker images working locally, we can build automation in GitHu
             username: ${{ github.actor }}
             password: ${{ secrets.CR_PAT }} # <-- Change this from GITHUB_TOKEN
     ```
-
+    
+   ![sd](media/dockerfile1.2.png)
 8. Add explicit path to `Dockerfile` and context path to the `Build and push Docker image` step. This step will ensure the correct `Dockerfile` file can be found. The Build and push step should look like this:
 
 
@@ -260,7 +263,7 @@ Each of the `build-` jobs are marked with `needs` to depend on the `git diff` ch
 
 Now let's make this change in our repository.
 
-1. In case there are changes on the server that you don't have locally, pull the changes from GitHub into your local copy of the code.
+1. Navigate back to the **Visual Studio Code** application in which terminal is already open and run the below command to  pull the changes from GitHub into your local copy of the code in case if there are changes on the server that you don't have locally.
 
     ```pwsh
     git pull
@@ -323,7 +326,7 @@ Now let's make this change in our repository.
     
     > **Note**: The workflow will run the "Update the Web Docker image" and "Update the Init Docker image" jobs. It will skip the "Update the API Docker image" job.
 
-9. Navigate to the `Packages` tab in your GitHub account and verify that the container images have been built and pushed to the container registry.
+9. Navigate to your GitHub account profile then select the `Packages` tab  and verify that the container images have been built and pushed to the container registry.
 
     ![GitHub Packages tab listing summary of container images that have been pushed to the container registry.](media/hol-ex1-task4-step12-1.png "GitHub Packages")
 
@@ -335,11 +338,11 @@ Another part of continuous integration is having a bot help track versions of th
 
     ![The GitHub Repository Security Overview tab.](media/hol-ex1-task2-step1-1.png "GitHub Repository Security Overview")
 
-2. You should arrive at the `Security & analysis` blade under the `Settings` tab. Enable `Dependabot security updates`.
+2. You should arrive at the `Code security & analysis` blade under the `Settings` tab. Enable `Dependabot security updates`.
 
     > **Note**: Enabling the `Dependabot security updates` will also automatically enable `Dependency graph` and `Dependabot alerts`.
 
-    ![The GitHub Repository Security and Analysis blade under the GitHub repository Settings tab. We enable Dependabot alerts and security updates here.](media/hol-ex1-task2-step2-1.png "GitHub Security & Analysis Settings")
+    ![The GitHub Repository Security and Analysis blade under the GitHub repository Settings tab. We enable Dependabot alerts and security updates here.](media/hol-ex1-task2-step3-1.1.png "GitHub Security & Analysis Settings")
 
     > **Note**: The alerts for the repository may take some time to appear. The rest of the steps for this task rely on the alerts to be present. You can continue with the next exercise as this is an independent task and doesn't affect the lab. Please visit this task later and complete the task.
 
