@@ -107,38 +107,38 @@ Now that we have Docker images working locally, we can build automation in GitHu
 
     ![Summary of running Docker workflow executing in GitHub Actions tab of repository.](media/action1.png "GitHub Actions")
 
-
     The file contents copied in the above step builds the following workflow:
-      ![GitHub workflow with 4 jobs - Check modified files, Update the API Docker image, Update the Init Docker image, Update the Web Docker image. This example shows a commit updating the Init and Web APIs. The workflow shows Update the API Docker image skipped, while Update the Init Docker image and Update the Web Docker image are in progress.](media/github-actions-workflow-with-skip.png)
+    ![GitHub workflow with 4 jobs - Check modified files, Update the API Docker image, Update the Init Docker image, Update the Web Docker image. This example shows a commit updating the Init and Web APIs. The workflow shows Update the API Docker image skipped, while Update the Init Docker image and Update the Web Docker image are in progress.](media/github-actions-workflow-with-skip.png)
     
-    The `check_changed_folders` job takes the following steps:
+        The `check_changed_folders` job takes the following steps:
+        
+        1. Look through all files in the `git diff`.
+        2. If there are files changed in `content-api`, set a flag to update the API Docker Image.
+        3. If there are files changed in `content-web`, set a flag to update the Web Docker Image.
+        4. If there are files changed in `content-init`, set a flag to update the Init Docker Image.
+          
+        Each of the `build-` jobs are marked with `needs` to depend on the `git diff` check. The `if` indicates the condition that will trigger that job to run.
+        
+        Now let's make this change in our repository.
+
     
-    1. Look through all files in the `git diff`.
-    2. If there are files changed in `content-api`, set a flag to update the API Docker Image.
-    3. If there are files changed in `content-web`, set a flag to update the Web Docker Image.
-    4. If there are files changed in `content-init`, set a flag to update the Init Docker Image.
-      
-    Each of the `build-` jobs are marked with `needs` to depend on the `git diff` check. The `if` indicates the condition that will trigger that job to run.
-    
-    Now let's make this change in our repository.
-    
-1. Pull the changes from GitHub into your local copy of the code.
+11. Pull the changes from GitHub into your local copy of the code.
     
         ```pwsh
         git pull
         ```
 
-4. Navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-api` folder using file explorer and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file. 
+12. Navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-api` folder using file explorer and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file. 
 
     ```yaml
     # Testing API change
     ```
-5.  Next, navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web` folder using file explorer and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file.
+13.  Next, navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web` folder using file explorer and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file.
     
     ```yaml
     # Testing Web change
     ```
-6. Finally, navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-init` folder using file explorer and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file.
+14. Finally, navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-init` folder using file explorer and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file.
     
     ```yaml
     # Testing Init change
@@ -146,10 +146,12 @@ Now that we have Docker images working locally, we can build automation in GitHu
 8. Commit these changes, then push the changes to GitHub.
 
     ```pwsh
+    git pull
     git add .
     git commit -m "Updating Api, Web and Init content"
     git push
     ```
+
     ![](media/dockerrun3.png)
     
     > **Note**: The workflow will run the "Update the Web Docker image" and "Update the Init Docker image" jobs. It will skip the "Update the API Docker image" job.
@@ -158,7 +160,7 @@ Now that we have Docker images working locally, we can build automation in GitHu
 
     ![GitHub Packages tab listing summary of container images that have been pushed to the container registry.](media/hol-ex1-task4-step12-1.png "GitHub Packages")
 
-### Task 4: Using Dependabot
+### Task 3: Using Dependabot
 
 Another part of continuous integration is having a bot help track versions of the packages used in the application and notify us when there are newer versions. In this task, we will use Dependabot features enabled earlier to track the versions of the packages we use in our GitHub repository and create pull requests to update packages for us.
 
