@@ -291,7 +291,7 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
 
      ![GitHub Action detail reflecting Docker ](media/hol-ex3-task2-step8-1.png "GitHub Action detail")
 
- 1. Run the below command to perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
+ 1. Navigate back to the Visual Studio Code application in which terminal is already open and run the below command to perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
  
      ```BASH
      git pull
