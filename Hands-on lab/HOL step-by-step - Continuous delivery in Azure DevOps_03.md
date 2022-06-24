@@ -6,8 +6,9 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 ### Task 1: Set up Application Insights
 
-1. Run the below-mentioned command to deploy the app insights, make sure that you are in the correct directory:
+1. Run the below-mentioned command in the termial to deploy the app insights, make sure that you are in the correct directory:
 
+    > Note: Make sure to run the deploy-appinsights.ps1 script from the infrastructure folder
     ```
     ./deploy-appinsights.ps1
     ```
@@ -34,13 +35,12 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     ```
 
 1. In this step we'll updating the `app.js` file by adding and configuring Application Insights for the web application frontend in the local folder. Please run the command mentioned below.
-
-    Copy-Item -Path C:\Workspaces\lab\mcw-continuous-delivery-lab-files\keyscript.txt -Destination C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web\app.js -PassThru
+   
+    `Copy-Item -Path C:\Workspaces\lab\mcw-continuous-delivery-lab-files\keyscript.txt -Destination C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web\app.js -PassThru`
     
     `$instrumentationKey` = $(az monitor app-insights component create --app fabmedicalai-<inject key="DeploymentID" enableCopy="false" /> --location westeurope --kind web --resource-group fabmedical-rg-<inject key="DeploymentID" enableCopy="false" /> --application-type web --retention-time 120 --query instrumentationKey)
     
-    (Get-Content -Path "C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web\app.js") | ForEach-Object {$_ -Replace "UPDATE AI Instrumentation Key", $instrumentationKey} | Set-Content -Path "C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web\app.js"
-
+    `(Get-Content -Path "C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web\app.js") | ForEach-Object {$_ -Replace "UPDATE AI Instrumentation Key", $instrumentationKey} | Set-Content -Path "C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web\app.js"`
 
 1. Add and commit changes to your GitHub lab-files repository. From the root of the repository, execute the following:
 
@@ -54,7 +54,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
       ![](media/update8.png "Azure Boards")
 
-1. Redeploy the web application by running the below commands:
+1. Redeploy the web application by running the below commands in the **Visual studio Code** terminal:
 
     ```
     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
