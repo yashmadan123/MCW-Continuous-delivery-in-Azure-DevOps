@@ -135,9 +135,9 @@ Now that we have Docker images working locally, we can build automation in GitHu
     ```
 13. Next, navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web` folder using file explorer and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file.
     
-   ```yaml
-   # Testing Web change
-   ```
+    ```yaml
+    # Testing Web change
+    ```
 14. Finally, navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-init` folder using file explorer and open the `Dockerfile` add the following comment to the top of `Dockerfile`. After updating the file, press CTRL+S to save the file.
     
     ```yaml
