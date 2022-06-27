@@ -27,15 +27,13 @@
 
     ![](media/MSedge.png)
     
- 3. Close the setting tab by clicking on **X** from the top right corner.
+3. Close the setting tab by clicking on **X** from the top right corner.
  
-1. If a **Welcome to Microsoft Azure** popup window appears, click **Maybe Later** to skip the tour.
-
-1. Change the default Browser to Edge using the default apps setting option in Windows.
+4. Change the default Browser to Edge using the default apps setting option in Windows.
 
    ![In this screenshot of the selection of Edge browser is set as the default browser using the "Default apps' item in settings .](media/edge-default-app.png "Make Edge the default browser using 'Default Apps' ")  
 
-1. Next, update the region + language settings of the Lab VM to region that is appropriate to your setting.
+5. Next, update the region + language settings of the Lab VM to region that is appropriate to your setting.
 
    ![Change the Region in settings to match current.](media/RegionChange.png "Change Region ")  
 
