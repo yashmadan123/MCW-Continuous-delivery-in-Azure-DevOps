@@ -12,10 +12,10 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step5-1.png "Azure Resource Group")
 
 
-2. In the LabVM, open the `seed-cosmosdb.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace `$studentprefix` variable value with **<inject key="Deploymentid" />**, add `$githubRepo = "Your gihub repository name here"` variable.
+2. In the LabVM, open the `seed-cosmosdb.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace `$studentprefix` variable value with **<inject key="Deploymentid" />**, add `$githubAccount = "Your github account name here"` variable.
 
     ```pwsh
-    $studentprefix = "Your 3 letter abbreviation here"
+    $studentprefix = "Your 6 letter abbreviation here"
     $githubAccount = "hatboyzero"
     $githubRepo = "mcw-continuous-delivery-lab-files"
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
