@@ -56,6 +56,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 6. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and navigate to **fabmedical-cdb-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and  and verify that the CosmosDB instance has been seeded.
 
      ```pwsh
+     cd infrastructure
      ./seed-cosmosdb.ps1
      ```
        
