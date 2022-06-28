@@ -65,7 +65,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 1. Wait for the GitHub Actions for your lab files repository to complete before executing the next step.
 
-      ![](media/update8.png "Azure Boards")
+   ![](media/update8.png "Azure Boards")
 
 1. Redeploy the web application by running the below commands:
 
