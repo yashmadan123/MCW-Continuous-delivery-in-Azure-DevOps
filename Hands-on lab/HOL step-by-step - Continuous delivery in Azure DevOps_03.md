@@ -6,20 +6,20 @@ Fabrikam Medical Conferences has its first website for a customer running in the
 
 ### Task 1: Set up Application Insights
 
-2. Run the below mentioned command to deploy the app insights, make sure that you are in the correct directory:
+1. Run the below mentioned command to deploy the app insights, make sure that you are in the correct directory:
 
     ```
     ./deploy-appinsights.ps1
     ```
     
-3. Now save the `AI Instrumentation Key` specified in the output - we will need it for a later step.
+1. Now save the `AI Instrumentation Key` specified in the output - we will need it for a later step.
 
     ```bash
     The installed extension 'application-insights' is in preview.
     AI Instrumentation Key="55cade0c-197e-4489-961c-51e2e6423ea2"
     ```
 
-4. Navigate to the `./content-web` folder in your GitHub lab files repository by running the below mentioned command.
+1. Navigate to the `./content-web` folder in your GitHub lab files repository by running the below mentioned command.
 
    ```
    cd ..
@@ -27,33 +27,21 @@ Fabrikam Medical Conferences has its first website for a customer running in the
    
    ```
    
-5. Now execute the following command to install JavaScript support for Application Insights via NPM to the web application frontend.
+1. Now execute the following command to install JavaScript support for Application Insights via NPM to the web application frontend.
 
     ```bash
     npm install applicationinsights --save
     ```
-
-6. Modify the file `./content-web/app.js` to reflect the following to add and configure Application Insights for the web application frontend in the local folder.
-
-    ```js
-    const express = require('express');
-    const http = require('http');
-    const path = require('path');
-    const request = require('request');
-
-    const app = express();
-
-    const appInsights = require("applicationinsights");         // <-- Add these lines here
-    appInsights.setup("55cade0c-197e-4489-961c-51e2e6423ea2");  // <-- Make sure AI Inst. Key matches
-    appInsights.start();                                        // <-- key from step 2.
-
-    app.use(express.static(path.join(__dirname, 'dist/content-web')));
-    const contentApiUrl = process.env.CONTENT_API_URL || "http://localhost:3001";
-
-    ...
-    ```
-
-7. Add and commit changes to your GitHub lab-files repository. From the root of the repository, execute the following:
+    
+1. In this step we'll updating the `app.js` file by adding and configuring Application Insights for the web application frontend in the local folder. Please run the command mentioned below.
+   
+    `Copy-Item -Path C:\Workspaces\lab\mcw-continuous-delivery-lab-files\keyscript.txt -Destination C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web\app.js -PassThru`
+    
+    `$instrumentationKey` = $(az monitor app-insights component create --app fabmedicalai-<inject key="DeploymentID" enableCopy="false" /> --location westeurope --kind web --resource-group fabmedical-rg-<inject key="DeploymentID" enableCopy="false" /> --application-type web --retention-time 120 --query instrumentationKey)
+    
+    `(Get-Content -Path "C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web\app.js") | ForEach-Object {$_ -Replace "UPDATE AI Instrumentation Key", $instrumentationKey} | Set-Content -Path "C:\Workspaces\lab\mcw-continuous-delivery-lab-files\content-web\app.js"`
+    
+1. Add and commit changes to your GitHub lab-files repository. From the root of the repository, execute the following:
 
     ```pwsh
     git add .
@@ -61,16 +49,16 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     git push
     ```
 
-8. Wait for the GitHub Actions for your lab files repository to complete before executing the next step.
+1. Wait for the GitHub Actions for your lab files repository to complete before executing the next step.
 
-9. Redeploy the web application by running the below commands:
+1. Redeploy the web application by running the below commands:
 
     ```
     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
     ./deploy-webapp.ps1
     ```
     
-10. Visit the deployed website and check Application Insights in the Azure Portal to see instrumentation data.
+1. Visit the deployed website and check Application Insights in the Azure Portal to see instrumentation data.
 
 ### Task 2: Linking Git commits to Azure DevOps issues
 
