@@ -16,97 +16,23 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
 ### Task 1: Set up Cloud Infrastructure
 
- 1. In your Labvm open file explorer,  navigate to `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` and open the `deploy-infrastructure.ps1` PowerShell script. 
+1. In the Azure Portal navigate to **fabmedical** resource group and verify CosmosDB instance, the App Service Plan, and the Web App resources which are pre deployed. We will be using this resources in the next steps of the lab.
 
-     >**Note:** We have already updated the $studentprefix in this file with the required value. 
+    ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step5-1.png "Azure Resource Group")
 
-   ```pwsh
-   $studentprefix = "DeploymentID"                                  
-   $resourcegroupName = "fabmedical-rg-" + $studentprefix
-   $cosmosDBName = "fabmedical-cdb-" + $studentprefix
-   $webappName = "fabmedical-web-" + $studentprefix
-   $planName = "fabmedical-plan-" + $studentprefix
-   $location1 = "westeurope"
-   $location2 = "northeurope"
-   ```
-
-   ![gfgffg](media/notepad1.png)
-
- 2. Note the individual calls to the `azcli` for the following:
-    
-    - Creating a CosmosDB Database
-
-        ```pwsh
-        # Create CosmosDB database
-        az cosmosdb create `
-            --name $cosmosDBName `
-            --resource-group $resourcegroupName `
-            --locations regionName=$location1 failoverPriority=0 isZoneRedundant=False `
-            --locations regionName=$location2 failoverPriority=1 isZoneRedundant=True `
-            --enable-multiple-write-locations `
-            --kind MongoDB
-        ```
-
-    - Creating an Azure App Service Plan
-
-        ```pwsh
-        # Create Azure App Service Plan
-        az appservice plan create `
-            --name $planName `
-            --resource-group $resourcegroupName `
-            --sku S1 `
-            --is-linux
-        ```
-
-    - Creating an Azure Web App
-
-        ```pwsh
-        # Create Azure Web App with NGINX container
-        az webapp create `
-            --resource-group $resourcegroupName `
-            --plan $planName `
-            --name $webappName `
-            --deployment-container-image-name nginx
-        ```
-
- 3. In your Powershell Terminal log in to Azure by running the following command. this will open the edge browser, you need to enter the login details below:
-   
-    
-     * Azure Usename/Email: <inject key="AzureAdUserEmail"></inject> 
- 
-     * Azure Password: <inject key="AzureAdUserPassword"></inject> 
- 
+2. In the LabVM, open the `seed-cosmosdb.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace `$studentprefix` variable value with **<inject key="Deploymentid" />**, add `$githubRepo = "Your gihub repository name here"` variable.
 
     ```pwsh
-    az login
-    ```
-
- 4. Once the login is completed, navigate back to the PowerShell window and run the `deploy-infrastructure.ps1` PowerShell script.
-
-    ```pwsh
-    cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
-    ./deploy-infrastructure.ps1
-    ```
-   
- 5. Browse to the Azure Portal and verify the creation of the resource group, CosmosDB instance, the App Service Plan, and the Web App.
-
-     ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step5-1.png "Azure Resource Group")
-
- 6. Open the `seed-cosmosdb.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace your GitHub username in  `$githubRepo = "Your github repository name here"` variable.
-
-     >**Note:** We have already updated the $studentprefix in this file with the required value. 
-
-    ```pwsh
-    $studentprefix = "deploymentID"
-    $githubAccount = "Your github account name here"
+    $studentprefix = "Your 3 letter abbreviation here"
+    $githubAccount = "hatboyzero"
     $githubRepo = "mcw-continuous-delivery-lab-files"
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
     ```
    
-     ![vcv](media/seedcosmos.png)
+   ![](media/seedcosmos.png)
 
- 7. Observe the call to fetch the MongoDB connection string for the CosmosDB database.
+3. Observe the call to fetch the MongoDB connection string for the CosmosDB database.
 
     ```pwsh
     # Fetch CosmosDB Mongo connection string
@@ -118,7 +44,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
             --query 'connectionStrings[0].connectionString')
     ```
 
- 8. Note the call to seed the CosmosDB database using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the `fabrikam-init` docker image we built in the previous exercise using `docker-compose`.
+4. Note the call to seed the CosmosDB database using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the `fabrikam-init` docker image we built in the previous exercise using `docker-compose`.
 
     ```pwsh
     # Seed CosmosDB database
@@ -127,7 +53,7 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
         ghcr.io/$githubAccount/fabrikam-init:main
     ```
     
- 9.  Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholders appropriately. 
+5.  Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholders appropriately. 
 
      >**Note**: **Username is case sensitive make sure you enter the exact username and personal access token.**
 
@@ -135,63 +61,64 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
        docker login ghcr.io -u USERNAME -p PERSONAL ACCESS TOKEN 
        ```
 
- 10. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and navigate to **fabmedical-cdb-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and  and verify that the CosmosDB instance has been seeded.
+6. Run the `seed-cosmosdb.ps1` PowerShell script. Browse to the Azure Portal and navigate to **fabmedical-cdb-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and  and verify that the CosmosDB instance has been seeded.
 
+     
      ```pwsh
+     cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
      ./seed-cosmosdb.ps1
      ```
        
- 11. Once the script execution is completed, Browse to the Azure Portal and navigate to **fabmedical-cdb-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and select **Data Explorer** from the left menu and verify that the CosmosDB instance has been seeded.
+7. Once the script execution is completed, Browse to the Azure Portal and navigate to **fabmedical-cdb-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and select **Data Explorer** from the left menu  and verify that the CosmosDB instance has been seeded.
 
-     ![Azure CosmosDB contents displayed via the CosmosDB explorer in the Azure CosmosDB resource detail.](media/hol-ex2-task1-step9-1.png "Azure CosmosDB Seeded Contents")
+    ![Azure CosmosDB contents displayed via the CosmosDB explorer in the Azure CosmosDB resource detail.](media/hol-ex2-task1-step9-1.png "Azure CosmosDB Seeded Contents")
 
- 12. Below the `sessions` collection, select **Scale & Settings (1)** and **Indexing Policy (2)**.
+8. Below the `sessions` collection, select **Scale & Settings (1)** and **Indexing Policy (2)**.
 
-     ![Opening indexing policy for the sessions collection.](./media/sessions-collection-indexing-policy.png "Indexing policy configuration")
+    ![Opening indexing policy for the sessions collection.](./media/sessions-collection-indexing-policy.png "Indexing policy configuration")
 
- 13. Create a Single Field indexing policy for the `startTime` field (1). Then, select **Save** (2).
+9. Create a Single Field indexing policy for the `startTime` field (1). Then, select **Save** (2).
 
-     ![Creating an indexing policy for the startTime field.](./media/start-time-indexing-mongo.png "startTine field indexing")
+    ![Creating an indexing policy for the startTime field.](./media/start-time-indexing-mongo.png "startTine field indexing")
 
- 14.  Open the `configure-webapp.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files.
-   
-        **Note:** We have already updated the $studentprefix in this file with the required value. 
-     
-      ```pwsh
-      $studentprefix = "deploymentID"
-      $resourcegroupName = "fabmedical-rg-" + $studentprefix
-      $cosmosDBName = "fabmedical-cdb-" + $studentprefix
-      $webappName = "fabmedical-web-" + $studentprefix
-      ```
-  
- 15.  observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
-   
-       ```pwsh
-       # Configure Web App
-       az webapp config appsettings set `
-          --name $webappName `
-          --resource-group $resourcegroupName `
-          --settings MONGODB_CONNECTION=$mongodbConnectionString
-       ```
+10. Open the `configure-webapp.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace `$studentprefix` variable value with **<inject key="Deploymentid" />** on the first line. Once the changes is done, make sure to save the file.
 
- 16. Run the `configure-webapp.ps1` PowerShell script.
+    ```pswh
+    $studentprefix = "hbs"                                  # <-- Modify this value
+    $resourcegroupName = "fabmedical-rg-" + $studentprefix
+    $cosmosDBName = "fabmedical-cdb-" + $studentprefix
+    ```
 
-      ```pwsh
-      cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
-      ./configure-webapp.ps1
-      ```
+11. Observe the call to configure the Azure Web App using the MongoDB connection string passed as an environment variable (`MONGODB_CONNECTION`) to the web application.
 
- 17. Once the script execution is completed, Browse to the Azure Portal and search for **fabmedical-web-<inject key="DeploymentID" enableCopy="false" />** App service and select **Configuration** from the left side menu and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
+    ```pwsh
+    # Configure Web App
+    az webapp config appsettings set `
+        --name $webappName `
+        --resource-group $resourcegroupName `
+        --settings MONGODB_CONNECTION=$mongodbConnectionString
+    ```
 
-     ![Azure Web Application settings reflecting the `MONGODB_CONNECTION` environment variable configured via PowerShell.](media/hol-ex2-task1-step12-1.png "Azure Web Application settings")
+12. Run the `configure-webapp.ps1` PowerShell script.
 
-### Task 2: Deployment Automation to Azure Web App
+    ```pwsh
+    cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure
+    ./configure-webapp.ps1
+    ```
 
- 1. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `CR_PAT` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
+13. Once the script execution is completed, Browse to the Azure Portal and search for **fabmedical-web-<inject key="DeploymentID" enableCopy="false" />** App service and select **Configuration** from left side menu and verify that the environment variable `MONGODB_CONNECTION` has been added to the Azure Web Application settings.
+
+    ![Azure Web Application settings reflecting the `MONGODB_CONNECTION` environment variable configured via PowerShell.](media/hol-ex2-task1-step12-1.png "Azure Web Application settings")
+
+14. Take the GitHub Personal Access Token you obtained in the Before the Hands-On Lab guided instruction and assign it to the `GITHUB_TOKEN` environment variable in PowerShell. We will need this environment variable for the `deploy-webapp.ps1` PowerShell script, but we do not want to add it to any files that may get committed to the repository since it is a secret value.
 
     ```pwsh
     $env:CR_PAT="<GitHub Personal Access Token>"
     ```
+
+
+### Task 2: Deployment Automation to Azure Web App
+
  1. Open the `deploy-webapp.ps1` PowerShell script in the `infrastructure` folder of your lab files GitHub repository and add your GitHub account username for the `$githubAccount` variable on the second line. Once the changes are done make sure to save the file. 
 
     >**Note:** We have already updated the $studentprefix in this file with the required value. 
