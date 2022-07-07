@@ -63,7 +63,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     
 1. Visit the deployed website and check Application Insights in the Azure Portal to see instrumentation data.
 
-   >**Note**: It can take upto 24 hours to get instrumentation data loaded in Application Insights. You can skip this step and proceed with the next tasks.
+   >**Note**: It can take upto 24 hours to get the data and logs loaded in Azure Application Insights. You can skip this step and proceed with the next tasks.
 
    ![The Azure Web Application Overview detail in Azure Portal.](media/hol-ex2-task2-step5-1.png "Azure Web Application Overview")
 
