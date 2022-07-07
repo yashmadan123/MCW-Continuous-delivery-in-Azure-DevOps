@@ -63,6 +63,8 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     
 1. Visit the deployed website and check Application Insights in the Azure Portal to see instrumentation data.
 
+   >**Note**: It can take upto 24 hours to get instrumentation data loaded in Application Insights. You can skip this step and proceed with the next tasks.
+
 ### Task 2: Linking Git commits to Azure DevOps issues
 
 In this task, you will create an issue in Azure DevOps and link a Git pull request from GitHub to the Azure DevOps issue. This uses the Azure Boards integration that was set up in the Before Hands-on Lab.
