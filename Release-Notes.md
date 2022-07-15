@@ -1,5 +1,14 @@
 # Release Notes
 
+### 28 June 2022
+
+  - Minor updates in the Lab Guide.
+     - Updates that are done to the lab guide in the recent release are listed below: <br> </br>
+     
+      1.  Exercise 3: In Exercise 3 Task 1, steps to update the app.js file are automated. Attendees will be performing the new steps which instructs to execute a few powershell commands which automates the app.js file updation with AI Instrumentation Key.
+
+-----------------
+
 ### 20 June 2022
 
   - Minor updates in the Lab Guide.
