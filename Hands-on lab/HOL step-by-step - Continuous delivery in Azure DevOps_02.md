@@ -20,12 +20,11 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
 
     ![Azure Resource Group containing cloud resources to which GitHub will deploy containers via the workflows defined in previous steps.](media/hol-ex2-task1-step5-1.png "Azure Resource Group")
 
-2. In the LabVM, open the `seed-cosmosdb.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace `$studentprefix` variable value with **<inject key="Deploymentid" />**, add `$githubRepo = "Your gihub repository name here"` variable.
+2. In the LabVM, open the `seed-cosmosdb.ps1` PowerShell script in the `C:\Workspaces\lab\mcw-continuous-delivery-lab-files\infrastructure` folder of your lab files GitHub repository and replace `$studentprefix` variable value with **<inject key="Deploymentid" />**, update `$githubAccount = "Your github account name here"` variable with your GitHub username.
 
     ```pwsh
     $studentprefix = "Your 3 letter abbreviation here"
     $githubAccount = "hatboyzero"
-    $githubRepo = "mcw-continuous-delivery-lab-files"
     $resourcegroupName = "fabmedical-rg-" + $studentprefix
     $cosmosDBName = "fabmedical-cdb-" + $studentprefix
     ```
@@ -55,11 +54,11 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     
 5.  Before you pull this image, you may need to authenticate with the GitHub Docker registry. To do this, run the following command before you execute the script. Fill the placeholders appropriately. 
 
-     >**Note**: **Username is case sensitive make sure you enter the exact username and personal access token.**
+    >**Note**: **Username is case sensitive make sure you enter the exact username and personal access token.**
 
-       ```pwsh
-       docker login ghcr.io -u USERNAME -p PERSONAL ACCESS TOKEN 
-       ```
+    ```pwsh
+    docker login ghcr.io -u USERNAME -p PERSONAL ACCESS TOKEN 
+    ```
 
 6. In your Powershell Terminal log in to Azure by running the following command. this will open edge browser, you need to enter the login details as below:
    
