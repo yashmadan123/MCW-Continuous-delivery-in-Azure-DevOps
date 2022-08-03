@@ -274,6 +274,8 @@ Another part of continuous integration is having a bot help track versions of th
     ![List of Pull Requests.](media/hol-ex1-task2-step6-1.png "Pull Requests")
 
     ![The Pull Request Merge Button in the Pull Request detail.](media/hol-ex1-task2-step6-2.png "Pull Request Merge Button")
+    
+    >**Note**: In case if you see any errors with merge request. Retry step 4 to step 6 by selecting any other`handlebars` Dependabot alert.
 
 7. Pull the latest changes from your GitHub repository to your local GitHub folder.
 
