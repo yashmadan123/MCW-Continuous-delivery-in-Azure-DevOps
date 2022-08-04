@@ -13,7 +13,7 @@ Fabrikam Medical Conferences has its first website for a customer running in the
     ./deploy-appinsights.ps1
     ```
     
-1. Now save the `AI Instrumentation Key` specified in the output - we will need it for a later step.
+1. Now the Azure Application insights is created and `AI Instrumentation Key` specified in the output.
 
     ```bash
     The installed extension 'application-insights' is in preview.
