@@ -207,7 +207,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
     - Additional Image Tags = $(Build.BuildNumber)
     - Click on **Add**
 
-    ![](media/docker-composer-registry.png)
+    ![](media/update17.png)
     
 1. The final file should be similar to the one below:
     
@@ -241,7 +241,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
 
     ![Run detail of the Azure DevOps pipeline previously created.](media/image22.png "Build Pipeline Run detail")
 
-1. Enter your subscription ID, Name and get the Service Principal details from **Environment Details -> Service Principal** details tab and then Service Connection name to **Fabrikam-Azure**. The value of the Service Principal Id is the same as the Application Id and the Service Principal Key value is the same as the Secret key. Once done click on verify and the Save.
+1. Enter your subscription ID, Name and get the Service Principal details from **Environment Details -> Service Principal** details tab and then Service Connection name to **Fabrikam-Azure**. The value of the Service Principal Id is the same as the Application Id and the Service Principal Key value is the same as the Secret key. Once done click on verify and Save.
  
    >**Note**: You can get the subscription name from the Azure portal -> Subscriptions.
 
@@ -328,9 +328,9 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
 
     ![Approvals and checks selection in the vertical ellipsis menu in the top right corner of the Azure DevOps pipeline editor interface.](media/image25.png "Approvals and checks selection")
 
-1. From the vertical ellipsis menu button in the top-right corner, select `Approvals`.
+1. From the vertical ellipsis menu button in the top-right corner, select `Approvals and checks`.
 
-    ![Approvals and checks selection in the vertical ellipsis menu in the top right corner of the Azure DevOps pipeline editor interface.](media/hol-ex3-task3-step18-1.png "Approvals and checks selection")
+    ![Approvals and checks selection in the vertical ellipsis menu in the top right corner of the Azure DevOps pipeline editor interface.](media/update18.png "Approvals and checks selection")
 
 1. Add an `Approvals` check.  Add your account as an `approvals` and create the check.
 
