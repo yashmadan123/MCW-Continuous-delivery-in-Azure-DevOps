@@ -142,21 +142,23 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
 
 1. Create a new `Docker Registry` service connection and set the values to:
 
-    - Docker Registry: `https://ghcr.io`
-    - Docker ID: [GitHub account name]
-    - Docker Password: [GitHub Personal Access Token]
-    - Service connection name: GitHub Container Registry
-    - Click on **Save**
+   - Docker Registry: `https://ghcr.io`
+   - Docker ID: [GitHub account name]
+   - Docker Password: [GitHub Personal Access Token]
+   - Service connection name: GitHub Container Registry
+   - Click on **Save**
 
-    ![Azure DevOps Project Service Connection Configuration that establishes the credentials necessary for Azure DevOps to push to the GitHub Container Registry.](media/newdocker.png "Azure DevOps Project Service Connection Configuration")
+   ![Azure DevOps Project Service Connection Configuration that establishes the credentials necessary for Azure DevOps to push to the GitHub Container Registry.](media/newdocker.png "Azure DevOps Project Service Connection Configuration")
 
 1. Navigate to your Azure DevOps `Fabrikam` project, select the `Pipelines` blade, and click on **Create pipeline**.
 
-    ![Initial creation page for a new Azure DevOps Pipeline.](media/hol-ex3-task3-step4-1.png "Azure DevOps Pipelines")
+   ![Initial creation page for a new Azure DevOps Pipeline.](media/update12.png "Azure DevOps Pipelines")
 
 1. In the `Connect` tab, choose the `GitHub` selection.
 
-    ![Azure DevOps Pipeline Connections page where we associate the GitHub repository with this pipeline.](media/hol-ex3-task3-step5-1.png "Azure DevOps Pipeline Connections")
+   ![Azure DevOps Pipeline Connections page where we associate the GitHub repository with this pipeline.](media/update13.png "Azure DevOps Pipeline Connections")
+    
+   **Note**: In case if you are navigated to GitHub, Please approve the permission to pipelines application and login to your Azure account if login prompt appears.
 
 1. Select your GitHub lab files repository.  Azure DevOps will redirect you to authorize yourself with GitHub. Log in and select the repository that you want to allow Azure DevOps to access.
 
@@ -164,7 +166,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
 
 1. In the `Configure` tab, choose the `Starter Pipeline`.
 
-    ![Initial creation page for a new Azure DevOps Pipeline.](media/starter.png "Azure DevOps Pipelines")
+    ![Initial creation page for a new Azure DevOps Pipeline.](media/update15.png "Azure DevOps Pipelines")
 
 1. Remove all the steps from the YAML. The empty pipeline should look like the following:
 
@@ -193,9 +195,7 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
     - Additional Image Tags = $(Build.BuildNumber)
     - Click on **Add**
 
-    ![Docker Compose Task definition in the AzureDevOps pipeline.](media/hol-ex3-task3-step9-1.png "Docker Compose Task")
-    
-    ![](media/docker%20compose.png)
+    ![Docker Compose Task definition in the AzureDevOps pipeline.](media/update16.png "Docker Compose Task")
 
 1. Repeat step 9 and add another `Docker Compose` task and configure it with the following fields:
 
