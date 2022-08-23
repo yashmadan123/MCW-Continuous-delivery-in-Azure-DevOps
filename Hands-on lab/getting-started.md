@@ -16,18 +16,6 @@
    ![](https://github.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/media/image02.png?raw=true "Lab Environment")
  
     > You will see the SUFFIX value on the **Environment Details** tab, use it wherever you see SUFFIX or DeploymentID in lab steps.
-
-## Set default browser
-
-1. Within the LabVM, search for the **Default apps**.
-
-    ![](media/default%20apps.png)
-    
-2. Scroll down to the web browser option at the bottom and select **Microsoft Edge** as the default browser.
-
-    ![](media/MSedge.png)
-    
- 3. Close the setting tab by clicking on **X** from the top right corner.
  
 ## Login to Azure Portal
 1. In the JumpVM, click on the Azure portal shortcut of the Microsoft Edge browser which is created on the desktop.
