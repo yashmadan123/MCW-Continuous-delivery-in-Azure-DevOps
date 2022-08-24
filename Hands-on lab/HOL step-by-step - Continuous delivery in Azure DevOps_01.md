@@ -141,18 +141,18 @@ Now that we have Docker images working locally, we can build automation in GitHu
    ```
     
    ![sd](media/dockerfile1.png)
-    
-9. Commit the file to the repository. Select `Start commit`. Be sure that **Commit directly to the `main` branch** is selected. Finally, select `Commit new file`.
+   
+9. Remove the **image signing section** from line 82 to 93 in the workflow, as it is not required.
 
-10. The GitHub Action is now running and will automatically build and push the container to the GitHub registry.
+   ![Summary of running Docker workflow executing in GitHub Actions tab of repository.](media/update22.png "GitHub Actions")
+    
+10. Commit the file to the repository. Select `Start commit`. Be sure that **Commit directly to the `main` branch** is selected. Finally, select `Commit new file`.
+
+11. The GitHub Action is now running and will automatically build and push the container to the GitHub registry.
 
     ![Summary of running Docker workflow executing in GitHub Actions tab of repository.](media/action1.png "GitHub Actions")
 
     ![Detail of running Docker workflow.](media/hol-ex1-task4-step10-2.png "GitHub Action Detail")
-
-    > **Note**: If you encounter any errors due to `cosign`, remove the image signing section from line 82 to 93 in the workflow, as it is not needed to complete the lab. You could alternatively add a manual trigger (see below) and try running the workflow again, to determine if the error is transient.
-
-    > **Note**: You can optionally add `workflow_dispatch:` in the `on:` trigger section to set a manual trigger for the GitHub Actions workflow.
 
 ### Task 3: Editing the GitHub Workflow File Locally
 
