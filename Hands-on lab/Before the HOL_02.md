@@ -187,4 +187,58 @@ In this task, you will create an account in [GitHub](https://github.com) and use
    
    ![Permissions GH](media/2dg19.png "Contoso conference site")
    
+1. Select the scopes or permissions you would like to grant this token
+
+   - **Note**: Enter this value in the note field, **<inject key="DeploymentID" enableCopy="false" />-token**. 
+    
+   - **Select scopes**:
+
+     * repo - Full control of private repositories
+     * workflow - Update GitHub Action workflows
+     * write:packages - Upload packages to GitHub Package Registry
+     * delete:packages - Delete packages from GitHub Package Registry
+     * read:org - Read org and team membership, read org projects
+  
+   ![Permissions GH](media/2dg20.png)
+   
+   - Click **Generate token**.
+
+     ![Permissions GH](media/2dg21.png)
+     
+1. Click on the Copy icon to copy the token to your clipboard and save it on your notepad. For security reasons, after you navigate off the page, you will not be able to see the token again. **DO NOT COMMIT THIS TO YOUR REPO!**
+
+   ![](media/2dg22.png)
+     
+### Task 5: Build Automation with GitHub Registry
+
+Now that we have Docker images working locally, we can build automation in GitHub for updating and republishing our Docker images when the code changes. In this task, we will create a workflow file using the GitHub interface and its GitHub Actions workflow editor. This will get you familiar with how to create and edit an action through the GitHub website.
+ 
+ 
+1. In your GitHub lab files repository, select the **Settings** tab from the lab files repository.
+
+   ![](media/2dg23.png)
+   
+1. Under **Security**, expand **Secrets** ***(1)*** by clicking the drop-down and select **Actions** ***(2)*** blade from the left navigation bar. Select the **New repository** ***(3)*** secret` button.
+
+   ![](media/2dg24.png)
+   
+1. Under **Actions Secrets/New secret** page, enter the below mentioned details and Click on **Add secret** ***(3)***.
+
+   - **Name** : Enter **CR_PAT** ***(1)***
+   - **Value** : Enter the **GitHub Personal Access Token** ***(2)*** you created in the Before the Hands-On Lab instructions.
+   
+   ![](media/2dg25.png)
+   
+1. Select the **Actions** ***(1)*** tab in your GitHub repository, scroll down and find the **Publish Docker Container** ***(2)*** workflow under the **Continuous Integration Workflows** and select **Configure** ***(3)***. This will create a file named `docker-publish.yml`.
+
+   ![](media/2dg26.png)
+   
+1. Copy the code from `https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps/microsoft-devops-with-github-v2/Hands-on%20lab/docker-flow.yml` ***(1)*** link. Select **Start commit** ***(2)***. Be sure that **Commit directly to the `main` branch** is selected. Finally, select **Commit new file** ***(3)***.
+
+   ![](media/2dg27.png)
+   
+### Task 4: Editing the GitHub Workflow File Locally
+
+The last task automated building and updating only one of the Docker images. In this task, we will update the workflow file with a more appropriate workflow for the structure of our repository. This task will end with a file named `docker-publish.yml` that will rebuild and publish Docker images as their respective code is updated.
+   
    
