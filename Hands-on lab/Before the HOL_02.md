@@ -199,7 +199,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
      * delete:packages - Delete packages from GitHub Package Registry
      * read:org - Read org and team membership, read org projects
   
-   ![Permissions GH](media/2dg20.png)
+   ![Permissions GH](media/2dg28.png)
    
    - Click **Generate token**.
 
