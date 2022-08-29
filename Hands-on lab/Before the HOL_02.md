@@ -119,13 +119,11 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
   You will need to make some edits to files before running these locally. In this task, you will confirm that the Docker infrastructure works locally.
   
-     > **Note**: You should replace three instances of `<yourgithubaccount>` - one instance in `docker-compose.init.yml` and two instances in `docker-compose.yml`.
+  >**Note**: You should replace three instances of `<yourgithubaccount>` - one instance in `docker-compose.init.yml` and two instances in `docker-compose.yml`.
 
 1. From the **Visual Studio Code**, click on **File** **(1)** at the left top and select **Open Folder** **(2)**.
 
    ![](media/2dg11.png)
-
-   > **Note**: The `<yourgithubaccount>` value must be in **lowercase**, if your GitHub account user name is in uppercase letters please change it to lowercase in Github. [Github Username Change](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-user-account-settings/changing-your-github-username)
 
 1. In the **Open Folder** tab, navigate to the following path `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` to open your local GitHub repository and click on **Select Folder**.
 
@@ -134,3 +132,59 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 1. You may receive a prompt that: Do you trust the authors of the files in this folder? select the **checkbox** **(1)** the box and click on **Yes, I trust the authors** **(2)**.
 
    ![](media/2dg13.png)
+   
+1. From the Explorer, open the `docker-compose-init.yml` ***(1)***  and replace `<yourgithubaccount>` ***(2)*** value in line no. 6 with your GitHub username. After updating save the file using CTRL+S.
+   
+   ![](media/2dg14.png)
+   
+   >**Note**: The `<yourgithubaccount>` value must be in **lowercase**, if your GitHub account user name is in uppercase letters please change it to lowercase in Github. [Github Username Change](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-user-account-settings/changing-your-github-username)
+    
+1. From the Explorer, open the `docker-compose.yml`(1) and replace `<yourgithubaccount>` value in line no. 4 and 9 with your GitHub account name. After updating save the file using CTRL+S.    
+
+   ![](media/2dg15.png)
+   
+1. Open a **New Terminal** in the Visual Studio Code by selecting **Terminal (1)** then on **New Terminal (2)**.
+
+   ![](media/2dg5.png "New Repository Creation Form")
+    
+   >**Note**: These commands execution may take around 10-15 minutes to complete.
+
+   Run the following commands in the terminal to build and run the docker-compose YAML files edited in the previous steps.
+    
+   ```pwsh
+   cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files
+   docker-compose -f .\docker-compose.yml -f .\local.docker-compose.yml -f .\docker-compose.init.yml build
+   docker-compose -f .\docker-compose.yml -f .\local.docker-compose.yml -f .\docker-compose.init.yml up
+   ```
+    
+   ![](media/2dg16.png "New Repository Creation Form")
+   
+1. Verify that you can browse to `http://localhost:3000` in a browser and arrive at the Fabrikam conference website.
+
+   ![Fabrikam Medical's Contoso conference site.](media/2dg17.png "Contoso conference site")
+    
+1. Leave this terminal in running and open a new terminal. Paste the following command and hit `<ENTER>`.
+
+   ```pwsh
+   cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files
+   ```
+1. Commit and push your changes to your GitHub repository.
+
+   ```pwsh
+   git pull
+   git add .
+   git commit -m "Updating Docker compose files"
+   git push
+   ```
+   
+### Task 4: Create GitHub Personal Access Token
+
+1. Navigate back to the browser tab in which **GitHub**. In the upper-right corner of your GitHub page, click your profile photo, then click **Settings** ***(1)*** and in the left sidebar click **Developer settings** ***(2)***.
+
+   ![Permissions GH](media/2dg18.png "Contoso conference site")
+   
+1. In the left hand sidebar, click **Personal access tokens** ***(1)*** and select **Generate new token** ***(2)*** button on the right. Provide the GitHub password if prompted. 
+   
+   ![Permissions GH](media/2dg19.png "Contoso conference site")
+   
+   
