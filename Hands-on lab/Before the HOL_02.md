@@ -227,7 +227,7 @@ Now that we have Docker images working locally, we can build automation in GitHu
    - **Name** : Enter **CR_PAT** ***(1)***
    - **Value** : Enter the **GitHub Personal Access Token** ***(2)*** you created in the Before the Hands-On Lab instructions.
    
-   ![](media/2dg25.png)
+   ![](media/2dg29.png)
    
 1. Select the **Actions** ***(1)*** tab in your GitHub repository, scroll down and find the **Publish Docker Container** ***(2)*** workflow under the **Continuous Integration Workflows** and select **Configure** ***(3)***. This will create a file named `docker-publish.yml`.
 
