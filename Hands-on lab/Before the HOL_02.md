@@ -1,9 +1,7 @@
 
-## Before the hands-on lab
+# Exercise 1: Continuous Integration
 
-Duration: 60 minutes
-
-You should follow all of the steps provided in this section _before_ taking part in the hands-on lab ahead of time.
+Duration: 90 minutes
 
 ### Task 1: Create the Project Repo
 
@@ -13,32 +11,42 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
     > **Note** : You have to use your own GitHub account. If you don't have a GitHub account then navigate to the following link ```https://github.com/join``` and create one.
     
-1. In the upper-right corner, expand the user drop down menu and select **Your repositories**.
+1. In the upper-right corner, expand the user **drop down menu** ***(1)*** and select **Your repositories** ***(2)***.
 
-   ![The user menu is expanded with the Your repositories item selected.](https://github.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/media/image04.png?raw=true "User menu, your repositories")
+   ![The `New Repository` creation form in GitHub.](media/2dg1.png "New Repository Creation Form")
 
 1. Next to the search criteria, locate and select the **New** button.
 
    ![The GitHub Find a repository search criteria is shown with the New button selected.](https://github.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/media/image05.png?raw=true "New repository button")
 
-1. On the **Create a new repository** screen, name the repository ```mcw-continuous-delivery-lab-files```, select **Private** and click on **Create repository** button.
+1. On the **Create a new repository** screen, name the repository ```mcw-continuous-delivery-lab-files``` ***(1)***, select **Private** ***(2)*** and click on **Create repository** ***(3)***  button.
 
-   ![The `New Repository` creation form in GitHub.](media/createrepo.png "New Repository Creation Form")
+   ![The `New Repository` creation form in GitHub.](media/2dg2.png "New Repository Creation Form")
    
-   >Note: If you have done this lab previously you may have the repository already created in your GitHub account, Please make sure the delete the Repo and create a new one. 
+   >**Note**: Please make sure the delete the Repo and create a new one. 
 
-1. On the **Quick setup** screen, copy the **HTTPS** GitHub URL for your new repository, and paste this in notepad for future use.
+1. On the **Quick setup** screen, copy the **HTTPS** GitHub URL for your new repository, and **save it** in a notepad for future use.
 
-   ![Quick setup screen is displayed with the copy button next to the GitHub URL textbox selected.](media/image26.png "Quick setup screen")
+   ![Quick setup screen is displayed with the copy button next to the GitHub URL textbox selected.](media/2dg3.png "Quick setup screen")
 
 
-1. Open PowerShell with administrator and run the below commands to set your username and email, which git uses for commits. Make sure to replace your email and username.
+1. From the VM desktop, double click on the **Visual Studio Code** desktop icon to open the application.
+
+   ![](media/2dg4.png "New Repository Creation Form")
+   
+1. In Visual Studio Code application, select **Terminal** **(1)** and click on **New Terminal** **(2)** to open the terminal. It will open a new PowerShell session which you'll be using throughout the lab.
+
+   ![](media/2dg5.png "New Repository Creation Form")
+
+1. In the Visual Studio Code, run the below commands in the terminal to set your **username** and **email**, which git uses for commits. Make sure to replace your email and username.
    
      ```pwsh
      cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files
      git config --global user.email "you@example.com"
      git config --global user.name "Your UserName"
      ```
+     
+   ![](media/2dg6.png "New Repository Creation Form")
      
     - Initialize the folder as a git repository, commit, and submit contents to the remote GitHub branch `main` in the lab files repository created in Step 1. Make sure to replace `<your_github_repository-url>` with the value you copied in step 5.
 
@@ -53,7 +61,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
       git push -u origin main
       ```
       
-    - After running the above commands, you will be prompted with a pop-up window to sign in to the GitHub. Select **Sign in with your Browser** on the pop-up window.
+    - After running the above commands, you will be prompted with a pop-up window to sign in to the GitHub. Select **Sign in with your Browser** on the **Connect to GitHub** pop-up window.
 
        ![](media/siginwithbrowser.png)
      
@@ -63,10 +71,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
        
    - After you are prompted with the message **Authorization Succeeded**, close the tab and continue with the next task.
       
-    
-
 ### Task 2: Create GitHub Personal Access Token
-
 
 1. Navigate back to the **GitHub** tab and create a Personal Access Token as described below:
 
