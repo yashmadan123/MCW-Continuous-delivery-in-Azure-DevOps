@@ -182,7 +182,7 @@ In this task, you will create an account in [GitHub](https://github.com) and use
    
 1. Select the scopes or permissions you would like to grant this token
 
-   - **Note**: Enter this value in the note field, **<inject key="DeploymentID" enableCopy="false" />-token**. 
+   - **Note**: Enter this value in the note field, **<inject key="DeploymentID" enableCopy="false" />-token**
     
    - **Select scopes**:
 
