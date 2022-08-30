@@ -6,8 +6,25 @@ Duration: 90 minutes
 
 ### Task 1: Access the lab files.
 
+1. From the VM desktop, double click on the **Visual Studio Code** desktop icon to open the application.
 
+   ![](media/2dg4.png "New Repository Creation Form")
+   
+1. In **Visual Studio Code**, click on **File** **(1)** at the left top and select **Open Folder** **(2)**.
 
+   ![](media/2dg11.png)
+
+1. In the **Open Folder** tab, navigate to the following path `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` to open your local GitHub repository and click on **Select Folder**.
+
+   ![](media/2dg12.png)
+    
+1. You may receive a prompt that: Do you trust the authors of the files in this folder? select the **checkbox** **(1)** the box and click on **Yes, I trust the authors** **(2)**.
+
+   ![](media/2dg13.png)
+   
+1. You'll be to see the lab files in Visual Studio code, explore the code files.
+
+  ![](media/2dg30.png)
 
 ### Task 2: Start the Docker application.
 
@@ -31,13 +48,9 @@ Duration: 90 minutes
    
    >**Note**: If the Docker application is taking more than 10 mins to start. Please follow the steps from the `https://github.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps/blob/microsoft-devops-with-github-v2/Hands-on%20lab/docker-install.md` link and start the Docker again.
    
-1. Navigate back to the **Visual Studio Code** application in which terminal is already open. In terminal, Click on the **drop down** button and select **PowerShell** to open a fresh PowerShell terminal tab
+1. Open Visual Studio Code application which was accessed in previous task. Select **Terminal** ***(1)*** and click on **New Terminal** ***(2)*** to open the terminal. It will open a new PowerShell session which you'll be using throughout the lab.
 
-   ![](media/2dg8.png)
-   
-   >**Note**: From the terminal, you can switch between the multiple mutliple terminal tabs which is one of the handy features of VS Code.
-
-   ![](media/2dg9.png)
+   ![](media/2dg5.png "New Repository Creation Form")
    
 1. Paste the **docker run** command which you had copied earlier and wait till the execution completes.
 
