@@ -302,7 +302,6 @@ The last task automated building and updating only one of the Docker images. In 
    
 1. Using terminal from codespace, run the following commands to commit this change to your repo and to push the change to GitHub.
 
-
    ```pwsh
    git add .
    git commit -m "Updating Web and Init content"
