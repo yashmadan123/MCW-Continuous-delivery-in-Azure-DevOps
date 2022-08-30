@@ -49,7 +49,7 @@ Duration: 90 minutes
    
 1. Open Visual Studio Code application which was accessed in previous task. Select **Terminal** ***(1)*** and click on **New Terminal** ***(2)*** to open the terminal. It will open a new PowerShell session which you'll be using throughout the lab.
 
-   ![](media/2dg5.png "New Repository Creation Form")
+   ![](media/2dg31.png "New Repository Creation Form")
    
 1. Paste the **docker run** command which you had copied earlier and wait till the execution completes.
 
@@ -70,20 +70,8 @@ Duration: 90 minutes
   You will need to make some edits to files before running these locally. In this task, you will confirm that the Docker infrastructure works locally.
   
   >**Note**: You should replace three instances of `<yourgithubaccount>` - one instance in `docker-compose.init.yml` and two instances in `docker-compose.yml`.
-
-1. From the **Visual Studio Code**, click on **File** **(1)** at the left top and select **Open Folder** **(2)**.
-
-   ![](media/2dg11.png)
-
-1. In the **Open Folder** tab, navigate to the following path `C:\Workspaces\lab\mcw-continuous-delivery-lab-files` to open your local GitHub repository and click on **Select Folder**.
-
-   ![](media/2dg12.png)
-    
-1. You may receive a prompt that: Do you trust the authors of the files in this folder? select the **checkbox** **(1)** the box and click on **Yes, I trust the authors** **(2)**.
-
-   ![](media/2dg13.png)
    
-1. From the Explorer, open the `docker-compose-init.yml` ***(1)***  and replace `<yourgithubaccount>` ***(2)*** value in line no. 6 with your GitHub username. After updating save the file using CTRL+S.
+1. Open Visual Studio Code application. From the Explorer, open the `docker-compose-init.yml` ***(1)***  and replace `<yourgithubaccount>` ***(2)*** value in line no. 6 with your GitHub username. After updating save the file using CTRL+S.
    
    ![](media/2dg14.png)
    
@@ -113,19 +101,7 @@ Duration: 90 minutes
 
    ![Fabrikam Medical's Contoso conference site.](media/2dg17.png "Contoso conference site")
     
-1. Leave this terminal in running and open a new terminal. Paste the following command and hit `<ENTER>`.
-
-   ```pwsh
-   cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files
-   ```
-1. Commit and push your changes to your GitHub repository.
-
-   ```pwsh
-   git pull
-   git add .
-   git commit -m "Updating Docker compose files"
-   git push
-   ```
+1. Leave this terminal in running and open a new terminal.
    
 ### Task 4: Create the Project Repo
 
@@ -152,15 +128,14 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 1. On the **Quick setup** screen, copy the **HTTPS** GitHub URL for your new repository, and **save it** in a notepad for future use.
 
    ![Quick setup screen is displayed with the copy button next to the GitHub URL textbox selected.](media/2dg3.png "Quick setup screen")
-
-
-1. From the VM desktop, double click on the **Visual Studio Code** desktop icon to open the application.
-
-   ![](media/2dg4.png "New Repository Creation Form")
    
-1. In Visual Studio Code application, select **Terminal** ***(1)*** and click on **New Terminal** ***(2)*** to open the terminal. It will open a new PowerShell session which you'll be using throughout the lab.
+1. Navigate back to the **Visual Studio Code** application in which terminal is already open. In terminal, Click on the **drop down** button and select **PowerShell** to open a fresh PowerShell terminal tab
 
-   ![](media/2dg5.png "New Repository Creation Form")
+   ![](media/2dg8.png)
+
+   >**Note**: From the terminal, you can switch between the multiple mutliple terminal tabs which is one of the handy features of VS Code.
+
+   ![](media/2dg9.png)
 
 1. In the Visual Studio Code, run the below commands in the terminal to set your **username** and **email**, which git uses for commits. Make sure to replace your email and username.
    
