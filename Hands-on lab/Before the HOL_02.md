@@ -3,7 +3,6 @@
 
 Duration: 90 minutes
 
-
 ### Task 1: Access the lab files.
 
 1. From the VM desktop, double click on the **Visual Studio Code** desktop icon to open the application.
@@ -24,7 +23,7 @@ Duration: 90 minutes
    
 1. You'll be to see the lab files in Visual Studio code, explore the code files.
 
-  ![](media/2dg30.png)
+   ![](media/2dg30.png)
 
 ### Task 2: Start the Docker application.
 
