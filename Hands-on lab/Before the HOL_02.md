@@ -230,8 +230,91 @@ Now that we have Docker images working locally, we can build automation in GitHu
 
    ![](media/2dg27.png)
    
-### Task 7: Editing the GitHub Workflow File Locally
+### Task 7: Editing the GitHub Workflow File usinf Codespace
 
 The last task automated building and updating only one of the Docker images. In this task, we will update the workflow file with a more appropriate workflow for the structure of our repository. This task will end with a file named `docker-publish.yml` that will rebuild and publish Docker images as their respective code is updated.
+
+1. From the GitHub browser tab, follow the steps given below and click on **Create  codespace on main** ***(3)***.
+
+   - click on **Code** ***(1)***, 
+   - Select the **Codespace** ***(2)*** tab
+
+   ![](media/2dg32.png)
+   
+1. You'll be redirected to a new codespace tab in browser. Please wait untill the codespace is configured.
+
+   ![](media/2dg33.png)
+   
+1. From the explorer side blade, select **docker-publish.yml** ***(1)*** file and copy all the content of the file ***(2)***.
+
+   ![](media/2dg34.png)
+   
+1. From the explorer side blade, navigate to **.github.workflows** ***(1)*** directory and replace the content of **docker-publish.yml** ***(2)*** file with the code copied in last step. After updating the file, press CTRL+S to save the file. 
+
+   ![](media/2dg35.png)
+   
+1. Using terminal from codespace, run the following commands to commit this change to your repo and to push the change to GitHub.
+
+   ```pwsh
+   git add .
+   git commit -m "Updating workflow to update Docker images only when there are changes"
+   git push
+   ```
+   ![](media/2dg36.png)
+    
+   > **Note**: This will update the workflow and will **not** run the "Update the ... Docker image" jobs.
+
+1. Navigate back to GitHub browser, select the **Actions** ***(1)*** tab and review the **workflow** ***(2)*** created automatically for the changes made. 
+
+   ![](media/2dg37.png)
+
+1. Navigate back to codespace browser tab, select **content-api** ***(1)*** folder and open the **DockerFile** ***(2)***. Add the following comment to the top of `Dockerfile` ***(3)***. After updating the file, press CTRL+S to save the file. 
+
+   ```yaml
+   # Testing
+   ```
+   
+   ![](media/2dg38.png) 
+   
+1. Using terminal from codespace, run the following commands to commit this change to your repo and to push the change to GitHub.
+
+   ![](media/2dg39.png) 
+   
+1. Navigate back to GitHub browser, select the **Actions** ***(1)*** tab and review the **workflow** ***(2)***. The workflow will run the "Update the API Docker image" job and skip the other 2 "Update the ... Docker image" jobs.
+
+   ![](media/2dg40.png) 
+   
+1. Navigate back to codespace browser tab, select **content-api** ***(1)*** folder and open the **DockerFile** ***(2)***. Add the following comment to the top of `Dockerfile` ***(3)***. After updating the file, press CTRL+S to save the file. 
+
+   ```yaml
+   # Testing
+   ```
+   
+   ![](media/2dg41.png) 
+   
+1. Navigate back to codespace browser tab, select **content-init** ***(1)*** folder and open the **DockerFile** ***(2)***. Add the following comment to the top of `Dockerfile` ***(3)***. After updating the file, press CTRL+S to save the file. 
+
+   ```yaml
+   # Testing
+   ```
+   
+   ![](media/2dg42.png)
+   
+1. Using terminal from codespace, run the following commands to commit this change to your repo and to push the change to GitHub.
+
+
+   ```pwsh
+   git add .
+   git commit -m "Updating Web and Init content"
+   git push
+   ```
+   
+   ![](media/2dg43.png)
+   
+1. Navigate back to GitHub browser, select the **Actions** ***(1)*** tab and review the **workflow** ***(2)***. The workflow will run the "Update the Web Docker image" and "Update the Init Docker image" jobs. It will skip the "Update the API Docker image" job.
+
+   ![](media/2dg44.png) 
+
+1. Click on the **Next** button present in the bottom-right corner of this lab guide.
    
    
