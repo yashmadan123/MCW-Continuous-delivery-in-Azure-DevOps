@@ -62,31 +62,40 @@ Code scanning is a feature that you use to analyze the code in a GitHub reposito
     
     ![](media/codesc8.png)
     
-  1. Add the following code after the 6th line of App.js file
+  1. Open App.js file from the content folder and Add the following code after the 6th line of App.js file
   
-     // set up rate limiter: maximum of five requests per minute
-      var RateLimit = require('express-rate-limit');
-      var limiter = new RateLimit({
-      windowMs: 1*60*1000, // 1 minute
-      max: 5
-      });
-      
+     ```pwsh
+       // set up rate limiter: maximum of five requests per minute
+        var RateLimit = require('express-rate-limit');
+       var limiter = new RateLimit({
+        windowMs: 1*60*1000, // 1 minute
+        max: 5
+        });
+      ```
+         
       
       After adding the code it will looks like this
       
       ![](media/codesc9.png)
       
-   1. Add the following code before the alert line which would be 79 starts with app.get('*', (req, res) => {
+  1. Add the following code before the alert line which would be 79 starts with app.get('*', (req, res) => {
    
-   
-   // apply rate limiter to all requests
-    app.use(limiter);
+      ```pwsh
+        // apply rate limiter to all requests
+        app.use(limiter);
+      ```
     
-    
-    After adding the code it will looks like this
-    
-    
-    ![](media/codesc10.png)
+   1. After adding the code it will looks like this
+        
+      ![](media/codesc10.png)
+      
+ 1. After adding the entire code commit the file. It will successfully commit.
+ 
+    ![](media/codesc11.png)
+  
+  1. Go to codescanning under security tab, you can see the missing rate limit cleared.
+  
+      ![](media/codesc12.png)
 
       
       
