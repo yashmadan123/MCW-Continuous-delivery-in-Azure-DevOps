@@ -35,7 +35,7 @@ Code scanning is a feature that you use to analyze the code in a GitHub reposito
 1. It will generate a workflow codeql-analysis.yml. Review the yml file, you can find how many languages supported by codeQL and click on Start Commit, then click on      commit new file
   
   
-  ![](media/imgcs3.png)
+   ![](media/imgcs3.png)
   
   
   
@@ -43,11 +43,49 @@ Code scanning is a feature that you use to analyze the code in a GitHub reposito
   
   Under Actions tab you can see the workflow committed successfully.
   
-  ![](image/imgcs4.png)
   
-1. Go to Codescanning under security tab you can see code scanning alerts enabled.
+   ![](media/imgcs4.png)
+  
+  
+1. Go to Codescanning under security tab you can see code scanning alerts enabled. Click on View alerts
    
-   ![](image/imgcs5.png)
+   
+    ![](media/imgcs5.png)
+    
+    
+ 1. Selec Missing Rate limiting alert and identify on which file it is showing.
+
+
+    ![](media/imgcs6.png)
+    
+    You can see App.js file having the issue of Missing rate Limiting under Content-web folder
+    
+    ![](media/imgcs7.png)
+    
+  1. Click on the Missing rate Limiting alert and find on which line the alert showing, it will be on 73 line of the App.js file.
+  1. Add the following code after the 6th line of App.js file
+     // set up rate limiter: maximum of five requests per minute
+      var RateLimit = require('express-rate-limit');
+      var limiter = new RateLimit({
+      windowMs: 1*60*1000, // 1 minute
+      max: 5
+      });
+      
+      After adding the code it will looks like this
+      
+      ![](media/imgcs8.png)
+      
+   1. Add the following code before the alert line whihc would be 79 starts with app.get('*', (req, res) => {
+   
+   // apply rate limiter to all requests
+    app.use(limiter);
+    
+    After adding the code it will looks like this
+    
+    ![](media/imgcs9.png)
+
+      
+      
   
   
 
