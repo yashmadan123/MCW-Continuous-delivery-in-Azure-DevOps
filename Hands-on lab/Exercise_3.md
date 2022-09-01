@@ -23,19 +23,19 @@ Code scanning is a feature that you use to analyze the code in a GitHub reposito
 1. Go to seetings tab of the repository, then under security tab select code security and analysis.
 
 
-   ![](media/imgcs.png)
+   ![](media/codesc1.png)
    
 
 1. Then you will reach into Codescanning pane under security tab, click on configure codeQL alerts.
 
 
-   ![](media/imgcs1.png)
+   ![](media/codesc2.png)
    
   
 1. It will generate a workflow codeql-analysis.yml. Review the yml file, you can find how many languages supported by codeQL and click on Start Commit, then click on      commit new file
   
   
-   ![](media/imgcs3.png)
+   ![](media/codesc4.png)
   
   
   
@@ -44,26 +44,26 @@ Code scanning is a feature that you use to analyze the code in a GitHub reposito
   Under Actions tab you can see the workflow committed successfully.
   
   
-   ![](media/imgcs4.png)
+    ![](media/codesc5.png)
   
   
 1. Go to Codescanning under security tab you can see code scanning alerts enabled. Click on View alerts
    
    
-    ![](media/imgcs5.png)
+    ![](media/codesc6.png)
     
     
- 1. Selec Missing Rate limiting alert and identify on which file it is showing.
+ 1. Click on the Missing rate Limiting alert and find on which line the alert showing, it will be on 73 line of the App.js file.
 
 
-    ![](media/imgcs6.png)
+    ![](media/codesc7.png)
     
     You can see App.js file having the issue of Missing rate Limiting under Content-web folder
     
-    ![](media/imgcs7.png)
+    ![](media/codesc8.png)
     
-  1. Click on the Missing rate Limiting alert and find on which line the alert showing, it will be on 73 line of the App.js file.
   1. Add the following code after the 6th line of App.js file
+  
      // set up rate limiter: maximum of five requests per minute
       var RateLimit = require('express-rate-limit');
       var limiter = new RateLimit({
@@ -71,18 +71,22 @@ Code scanning is a feature that you use to analyze the code in a GitHub reposito
       max: 5
       });
       
+      
       After adding the code it will looks like this
       
-      ![](media/imgcs8.png)
+      ![](media/codesc9.png)
       
-   1. Add the following code before the alert line whihc would be 79 starts with app.get('*', (req, res) => {
+   1. Add the following code before the alert line which would be 79 starts with app.get('*', (req, res) => {
+   
    
    // apply rate limiter to all requests
     app.use(limiter);
     
+    
     After adding the code it will looks like this
     
-    ![](media/imgcs9.png)
+    
+    ![](media/codesc10.png)
 
       
       
