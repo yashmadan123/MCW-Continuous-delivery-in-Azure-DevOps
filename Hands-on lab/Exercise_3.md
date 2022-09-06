@@ -97,7 +97,21 @@ Code scanning is a feature that you use to analyze the code in a GitHub reposito
       ![](media/codesc12.png)
 
       
-      
+ ## Task 4: Repository security advisories  
+ 
+ You can use GitHub Security Advisories to privately discuss, fix, and publish information about security vulnerabilities in your repository.  Anyone with admin permissions to a repository can create a security advisory. Anyone with admin permissions to a repository also has admin permissions to all security advisories in that repository. People with admin permissions to a security advisory can add collaborators, and collaborators have write permissions to the security advisory.
+ 
+ 1. Create Security Repository advisories
+ 
+     Go to Security tab and then select advisories and then select New draft security advisory option.
+     
+     ![](media/saimg1.png)
+     
+  1. 
+ 
+ 
+ 
+
   
   
 
