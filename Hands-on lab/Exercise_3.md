@@ -39,12 +39,11 @@ Code scanning is a feature that you use to analyze the code in a GitHub reposito
   
   
   
-  **Note:** For most projects, this workflow file will not need changing; you simply need to commit it to your repository. You may wish to alter this file to             override the set of languages analyzed or to provide custom queries or build logic.
+      **Note** For most projects, this workflow file will not need changing; you simply need to commit it to your repository. You may wish to alter this file to             override the set of languages analyzed or to provide custom queries or build logic.
   
-  Under Actions tab you can see the workflow committed successfully.
-  
-  
-    ![](media/codesc5.png)
+  1. Under Actions tab you can see the workflow committed successfully.
+    
+      ![](media/codesc5.png)
   
   
 1. Go to Codescanning under security tab you can see code scanning alerts enabled. Click on View alerts
