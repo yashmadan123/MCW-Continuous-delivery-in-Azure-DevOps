@@ -105,7 +105,7 @@ Code scanning is a feature that you use to analyze the code in a GitHub reposito
  
      Go to Security tab and then select advisories and then select New draft security advisory option.
      
-     ![](media/saimg1.png)
+    ![](media/secad1.png)
      
   1. 
  
