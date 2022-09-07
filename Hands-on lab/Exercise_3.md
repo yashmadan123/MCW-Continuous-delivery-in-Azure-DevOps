@@ -105,9 +105,11 @@ Code scanning is a feature that you use to analyze the code in a GitHub reposito
  
      Go to Security tab and then select advisories and then select New draft security advisory option.
      
-    ![](media/secad1.png)
+    ![](media/secad.png)
      
-  1. 
+  1. In the affected Product section Select the ecosystem as composer, provide the package name as **mcw-continuous-delivery-lab-files/content-web/app.js**, provide     affected version as <1.2 and patched version as 1.2 and provide severity as high
+  
+     ![](media/secad1.png)
  
  
  
