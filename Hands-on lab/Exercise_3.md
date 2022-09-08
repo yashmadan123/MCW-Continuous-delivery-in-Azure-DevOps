@@ -151,6 +151,15 @@ Code scanning is a feature that you use to analyze the code in a GitHub reposito
  1. After filled the description box fill the Credit section with current user name. Then click on Create draft security advisory.
  
     ![](media/secad7.png)
+    
+ 1. Once created the security advisory go to start a temporary private fork, it is used to collaborate on a patch for this advisory.
+
+    ![](media/secad8.png)
+  
+ 1. After having the temporary fork you can request for a CVE, it is used for GitHub reviews published security advisories. Upon review, we may use this advisory to send Dependabot alerts to affected repositories and redistribute the advisory through our API and Atom feed.
+
+**Note: This process may take up to 3 working days.
+Please do not close the security repository.
  
   
   
