@@ -115,7 +115,7 @@ Code scanning is a feature that you use to analyze the code in a GitHub reposito
     
       ![](media/secad4.png)
       
-    1. In the description box include the following:
+   1. In the description box include the following:
        ### Impact
       _What kind of vulnerability is it? Who is impacted?_
 
@@ -148,7 +148,10 @@ Code scanning is a feature that you use to analyze the code in a GitHub reposito
     https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa4-lack-of-resources-and-rate-limiting.md
     https://codeql.github.com/codeql-query-help/javascript/js-missing-rate-limiting/
     
-  1. After filled the description box fill the Credit section with current user name.
+ 1. After filled the description box fill the Credit section with current user name. Then click on Create draft security advisory.
+ 
+    ![](media/secad7.png)
+ 
   
   
 
