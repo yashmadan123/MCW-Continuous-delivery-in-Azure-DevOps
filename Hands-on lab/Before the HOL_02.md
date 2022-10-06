@@ -230,6 +230,8 @@ We can automate our project tracking with the Azure Board integration for GitHub
 7. Now click on **Create and link a pull request** to create a pull request associated with your Issue.
 
     ![After completion of the onboarding tutorial. Two todo confirmation messages displayed.](media/image15.png "Get started and quick tip")
+    
+    **Note**: In case you close the pop-up window by mistake. Please skip this task and continue with the next exercise.
 
 8. Open the new Issue that the onboarding tutorial creates and observe the GitHub pull request and comments that are linked to the Azure DevOps board Issue.
 
