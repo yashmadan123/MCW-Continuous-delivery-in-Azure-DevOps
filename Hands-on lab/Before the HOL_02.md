@@ -74,9 +74,9 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
      ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/Settings_pat.png)
 
-   - Then in the left sidebar, click **Personal access tokens (3)** and select **Generate new token (4)** button on the right. Provide the GitHub password if prompted. 
+   - Then in the left sidebar, expand **Personal access tokens (3)**, select **Tokens (classic) (4)**, click on **Generate new token (5)** and select **Generate new token (classic) (6)** button on the right. Provide the GitHub password if prompted. 
    
-     ![Permissions GH](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/Settings_pat1.png)
+     ![Permissions GH](https://raw.githubusercontent.com/shivaudari/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/media/BHOL-T2S1-1.png)
 
 2. Select the scopes or permissions you would like to grant this token
 
