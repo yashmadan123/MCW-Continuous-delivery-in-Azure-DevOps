@@ -150,7 +150,7 @@ Now that we have Docker images working locally, we can build automation in GitHu
 
 11. The GitHub Action is now running and will automatically build and push the container to the GitHub registry.
 
-    ![Summary of running Docker workflow executing in GitHub Actions tab of repository.](media/action1.png "GitHub Actions")
+    ![Summary of running Docker workflow executing in GitHub Actions tab of repository.](media/updatedd2.png "GitHub Actions")
 
     ![Detail of running Docker workflow.](media/hol-ex1-task4-step10-2.png "GitHub Action Detail")
 
@@ -247,7 +247,7 @@ Another part of continuous integration is having a bot help track versions of th
 
     ![The GitHub Repository Security Overview tab.](media/hol-ex1-task2-step1-1.png "GitHub Repository Security Overview")
 
-2. You should arrive at the `Security & analysis` blade under the `Settings` tab. Enable `Dependabot security updates`.
+2. You should arrive at the `Code Security & analysis` blade under the `Settings` tab. Enable `Dependabot security updates`.
 
     > **Note**: Enabling the `Dependabot security updates` will also automatically enable `Dependency graph` and `Dependabot alerts`.
 
