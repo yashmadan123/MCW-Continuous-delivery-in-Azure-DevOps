@@ -13,26 +13,25 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
     > **Note** : You have to use your own GitHub account. If you don't have a GitHub account then navigate to the following link ```https://github.com/join``` and create one.
     
-1. In the upper-right corner, expand the user drop down menu and select **Your repositories**.
+2. In the upper-right corner, expand the user drop down menu and select **Your repositories**.
 
    ![The user menu is expanded with the Your repositories item selected.](https://github.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/media/image04.png?raw=true "User menu, your repositories")
 
-1. Next to the search criteria, locate and select the **New** button.
+3. Next to the search criteria, locate and select the **New** button.
 
    ![The GitHub Find a repository search criteria is shown with the New button selected.](https://github.com/anushabc/MCW-Continuous-delivery-in-Azure-DevOps/blob/prod/Hands-on%20lab/media/image05.png?raw=true "New repository button")
 
-1. On the **Create a new repository** screen, name the repository ```mcw-continuous-delivery-lab-files```, select **Private** and click on **Create repository** button.
+4. On the **Create a new repository** screen, name the repository ```mcw-continuous-delivery-lab-files```, select **Private** and click on **Create repository** button.
 
    ![The `New Repository` creation form in GitHub.](media/createrepo.png "New Repository Creation Form")
    
-   >Note: If you have done this lab previously you may have the repository already created in your GitHub account, Please make sure the delete the Repo and create a new one. 
+   >Note: If you have done this lab previously you may have the repository already created in your GitHub account, Please make sure to delete the Repo and create a new one. 
 
-1. On the **Quick setup** screen, copy the **HTTPS** GitHub URL for your new repository, and paste this in notepad for future use.
+5. On the **Quick setup** screen, copy the **HTTPS** GitHub URL for your new repository, and paste this in notepad for future use.
 
    ![Quick setup screen is displayed with the copy button next to the GitHub URL textbox selected.](media/image26.png "Quick setup screen")
 
-
-1. Open PowerShell with administrator and run the below commands to set your username and email, which git uses for commits. Make sure to replace your email and username.
+6. Open PowerShell with administrator and run the below commands to set your username and email, which git uses for commits. Make sure to replace your email and username.
    
      ```pwsh
      cd C:\Workspaces\lab\mcw-continuous-delivery-lab-files
@@ -109,15 +108,15 @@ In this task, you will create an account in [GitHub](https://github.com) and use
   
    >**Note**: If you get a warning pop up saying **Windows 17762 deprecated**. Please click on **OK**. Docker application might take a few seconds to open, please wait till the application opens.
    
-1. Click on **Start**.
+2. Click on **Start**.
 
    ![](media/d7.png)
 
-1. Skip the tutorial pop up by clicking on **Skip tutorial** situated in the bottom-left corner of the application.
+3. Skip the tutorial pop up by clicking on **Skip tutorial** situated in the bottom-left corner of the application.
 
    ![](media/d8.png)
    
-1. Minimize Desktop Desktop Application
+4. Minimize Desktop Desktop Application
 
 ### Task 5: Enable Dependabot features
 We shall enable Dependabot features to be used in the next exercise
