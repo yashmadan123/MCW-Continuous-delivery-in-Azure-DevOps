@@ -151,5 +151,53 @@ The Fabrikam Medical Conferences developer workflow has been improved. We are re
     
     ![The Contoso Conference website hosted in Azure.](media/hol-ex2-task2-step5-2.png "Azure hosted Web Application")
     
+### Task 3: Continuous Deployment with GitHub Actions
+
+With the infrastructure in place, we can set up continuous deployment with GitHub Actions.
+
+ 1. Go to Environment details click on **Service principle Credentials** copy **Application id(clientId)** , **clientSecret(secretkey)** , **subscriptionId** and **tenantId** 
+    
+     ![spcreds](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/sp-creds-auth.png)
+    
+    Replace the values that you copied in the below Json.
+     ```pwsh
+     {
+         "clientId": "...",
+         "clientSecret": "...",
+         "subscriptionId": "...",
+         "tenantId": "...",
+         "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+         "resourceManagerEndpointUrl": "https://management.azure.com/",
+         "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+         "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+         "galleryEndpointUrl": "https://gallery.azure.com/",
+         "managementEndpointUrl": "https://management.core.windows.net/"
+     }
+     ```
+    Copy the complete JSON output to your clipboard.
+
+ 1. In your GitHub lab files repository, navigate to the `Secrets` > `Actions` blade in the `Settings` tag and create a new repository secret named `AZURE_CREDENTIALS`. Paste the JSON output copied in the previous step to the secret value and click on `Add secret`.
+
+     ![azurecred](media/azurecred.png)
+   
+ 1. Edit the `docker-publish.yml` file in the `.github\workflows` folder using Github. Add the job present in the file URL mentioned below to the end of the `docker-publish.yml` file.
+
+    > **Note**: Make sure to change the student prefix for the last action in the `deploy` job.
+    
+    `https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Continuous-delivery-in-Azure-DevOps/prod/Hands-on%20lab/deploy-job.yml`
+    
+    ![azurecred](media/update7.png)
+    
+ 1. Commit the YAML file to your `main` branch. A GitHub action should begin to execute for the updated workflow.
+
+    > **Note**: Make sure that your Actions workflow file does not contain any syntax errors, which may appear when you copy and paste. They are highlighted in the editor or when the Action tries to run, as shown below.
+
+    ![GitHub Actions workflow file syntax error.](media/github-actions-workflow-file-error.png "Syntax error in Actions workflow file")
+
+ 1. Observe that the action builds the docker images, pushes them to the container registry, and deploys them to the Azure web application.
+
+     ![GitHub Action detail reflecting Docker ](media/hol-ex3-task2-step8-1.png "GitHub Action detail")
+
+ 1. Perform a `git pull` on your local repository folder to fetch the latest changes from GitHub.
 
 
