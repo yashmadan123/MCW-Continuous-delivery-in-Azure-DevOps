@@ -148,9 +148,9 @@ In this task, you will create an issue in Azure DevOps and link a Git pull reque
    - Service connection name: GitHub Container Registry
    - Click on **Save**
 
-   ![Azure DevOps Project Service Connection Configuration that establishes the credentials necessary for Azure DevOps to push to the GitHub Container Registry.](media/newdocker.png "Azure DevOps Project Service Connection Configuration")
+   ![Azure DevOps Project Service Connection Configuration that establishes the credentials necessary for Azure DevOps to push to the GitHub Container Registry.](media/updated24.png "Azure DevOps Project Service Connection Configuration")
 
-1. Navigate to your Azure DevOps `Fabrikam` project, select the `Pipelines` blade, and click on **Create pipeline**.
+1. Navigate to your Azure DevOps `Fabrikam` project, select the `Pipelines`**(1)** blade, and click on **Create pipeline (2)**.
 
    ![Initial creation page for a new Azure DevOps Pipeline.](media/update12.png "Azure DevOps Pipelines")
 
