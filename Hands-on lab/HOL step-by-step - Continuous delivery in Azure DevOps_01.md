@@ -48,7 +48,7 @@ You will need to make some edits to files before running these locally. In this 
     
 4. Verify that you can browse to <http://localhost:3000> in a browser and arrive at the Fabrikam conference website.
 
-    ![Fabrikam Medical's Contoso conference site.](media/hol-ex1-task3-step4-1.png "Contoso conference site")
+    ![Fabrikam Medical's Contoso conference site.](media/updated20.png "Contoso conference site")
 
 
 5. Leave this PowerShell session in running and open a new session. Paste the following command and hit `<ENTER>`.
@@ -142,9 +142,9 @@ Now that we have Docker images working locally, we can build automation in GitHu
     
    ![sd](media/dockerfile1.png)
    
-9. Remove the **image signing section** from line 82 to 93 in the workflow, as it is not required.
+9. Remove the **image signing section** from line 86 to 97 in the workflow, as it is not required.
 
-   ![Summary of running Docker workflow executing in GitHub Actions tab of repository.](media/update22.png "GitHub Actions")
+   ![Summary of running Docker workflow executing in GitHub Actions tab of repository.](media/updated21.png "GitHub Actions")
     
 10. Commit the file to the repository. Select `Start commit`. Be sure that **Commit directly to the `main` branch** is selected. Finally, select `Commit new file`.
 
@@ -251,7 +251,7 @@ Another part of continuous integration is having a bot help track versions of th
 
     > **Note**: Enabling the `Dependabot security updates` will also automatically enable `Dependency graph` and `Dependabot alerts`.
 
-    ![The GitHub Repository Security and Analysis blade under the GitHub repository Settings tab. We enable Dependabot alerts and security updates here.](media/hol-ex1-task2-step2-1.png "GitHub Security & Analysis Settings")
+    ![The GitHub Repository Security and Analysis blade under the GitHub repository Settings tab. We enable Dependabot alerts and security updates here.](media/updated22.png "GitHub Security & Analysis Settings")
 
     > **Note**: The alerts for the repository may take some time to appear. The rest of the steps for this task rely on the alerts to be present. You can continue with the next exercise as this is an independent task and doesn't affect the lab. Please visit this task later and complete the task.
 
