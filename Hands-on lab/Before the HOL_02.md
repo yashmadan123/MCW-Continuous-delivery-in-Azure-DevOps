@@ -31,7 +31,6 @@ In this task, you will create an account in [GitHub](https://github.com) and use
 
    ![Quick setup screen is displayed with the copy button next to the GitHub URL textbox selected.](media/image26.png "Quick setup screen")
 
-
 1. Open PowerShell with administrator and run the below commands to set your username and email, which git uses for commits. Make sure to replace your email and username.
    
      ```pwsh
