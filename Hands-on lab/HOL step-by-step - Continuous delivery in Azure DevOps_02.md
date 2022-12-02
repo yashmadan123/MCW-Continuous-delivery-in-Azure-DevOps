@@ -181,7 +181,7 @@ With the infrastructure in place, we can set up continuous deployment with GitHu
 
  1. Go to Environment details click on **Service principle Credentials** copy **Application id(clientId)** , **clientSecret(secretkey)** , **subscriptionId** and **tenantId** 
     
-     ![spcreds](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-DevOps/main/Assets/sp-creds-auth.png)
+     ![azurecred](media/updated23.png)
     
     Replace the values that you copied in the below Json.
      ```pwsh
